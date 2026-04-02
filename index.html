@@ -21,60 +21,57 @@
       overflow-x: hidden;
     }
 
- .hero {
-  height: 100vh;
-  background: url('images/hero.jpg') center center / cover no-repeat;
-  background-position: 60% center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  
-}
+    /* HERO */
+    .hero {
+      height: 100vh;
+      background: url('images/hero.jpg') center center / cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
 
- .hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.1),
-    rgba(0,0,0,0.85)
-  );
-  backdrop-filter: brightness(1.3) contrast(1.15);
-}
+    /* Overlay mejorado */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.85)
+      );
+      z-index: 1;
+    }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  animation: fadeUp 5s ease forwards;
-  opacity: 0;
-  transform: translateY(150px);
-}
-    
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-    
-    .section-title {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  margin-bottom: 30px;
-  letter-spacing: 2px;
-  color: #e0f7ff;
-  text-shadow: 
-    0 0 10px rgba(0,150,255,0.3),
-    0 0 20px rgba(0,150,255,0.2);
-}
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      /* 🔥 ANIMACIÓN QUE SÍ SE VE */
+      opacity: 0;
+      transform: translateY(100px);
+      animation: fadeUp 2.5s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+    }
 
     .tagline {
       font-size: 1.2rem;
-      opacity: 0.8;
+      opacity: 0.85;
       max-width: 600px;
       margin-bottom: 30px;
     }
