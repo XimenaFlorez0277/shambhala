@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shambhala</title>
+  <title>Shambhala Saga</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
@@ -23,8 +23,9 @@
 
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* 🔥 SUBE TODO */
       text-align: center;
+      padding-top: 80px;
     }
 
     #starsCanvas {
@@ -38,8 +39,8 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.85)
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.9)
       );
       z-index: 2;
     }
@@ -48,6 +49,7 @@
       position: relative;
       z-index: 3;
       animation: fadeUp 1.5s ease;
+      max-width: 800px;
     }
 
     @keyframes fadeUp {
@@ -66,17 +68,24 @@
       font-size: 4rem;
       letter-spacing: 6px;
       margin-bottom: 20px;
+
       text-shadow:
         0 0 10px rgba(255,255,255,0.3),
-        0 0 40px rgba(0,150,255,0.4);
+        0 0 40px rgba(0,150,255,0.5);
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      opacity: 0.6;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.2rem;
       opacity: 0.9;
-      max-width: 600px;
-      margin: auto;
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .buttons a {
@@ -102,20 +111,24 @@
   <div class="hero">
 
     <canvas id="starsCanvas"></canvas>
-
     <div class="overlay"></div>
 
     <div class="content">
+
+      <div class="subtitle">SAGA</div>
+
       <h1>SHAMBHALA</h1>
+
       <p>
-        La humanidad ya no pertenece a la Tierra.
-        Pero tampoco sabe dónde pertenece.
+        La humanidad dejó la Tierra. <br>
+        Ahora debe descubrir dónde pertenece.
       </p>
 
       <div class="buttons">
         <a href="#">Explorar el universo</a>
         <a href="#">Personajes</a>
       </div>
+
     </div>
 
   </div>
@@ -138,11 +151,7 @@
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-
-          // ⭐ MÁS PEQUEÑAS
           size: Math.random() * 1.2 + 0.2,
-
-          // ⭐ velocidad según tamaño (profundidad real)
           speed: Math.random() * 3 + 0.5
         });
       }
@@ -152,15 +161,11 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach(star => {
-
-        // ⭐ brillo sutil
         ctx.fillStyle = "rgba(255,255,255," + (0.5 + Math.random()*0.5) + ")";
-
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // movimiento derecha → izquierda
         star.x -= star.speed;
 
         if (star.x < 0) {
