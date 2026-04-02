@@ -26,75 +26,13 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      overflow: hidden;
     }
 
-    /* ⭐ CAPA 1 (muchas estrellas pequeñas) */
-    .stars {
+    /* CANVAS ESTRELLAS */
+    #starsCanvas {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background:
-        radial-gradient(1px 1px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 30% 70%, white, transparent),
-        radial-gradient(1px 1px at 50% 40%, white, transparent),
-        radial-gradient(1px 1px at 70% 80%, white, transparent),
-        radial-gradient(1px 1px at 90% 30%, white, transparent),
-        radial-gradient(1px 1px at 20% 90%, white, transparent),
-        radial-gradient(1px 1px at 80% 10%, white, transparent),
-        radial-gradient(1px 1px at 40% 50%, white, transparent),
-        radial-gradient(1px 1px at 60% 60%, white, transparent),
-        radial-gradient(1px 1px at 15% 40%, white, transparent),
-        radial-gradient(1px 1px at 85% 70%, white, transparent);
-
-      animation: moveStars 120s linear infinite;
-      opacity: 0.5;
-    }
-
-    /* ⭐ CAPA 2 (más grandes) */
-    .stars::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(2px 2px at 20% 30%, white, transparent),
-        radial-gradient(2px 2px at 40% 80%, white, transparent),
-        radial-gradient(2px 2px at 60% 20%, white, transparent),
-        radial-gradient(2px 2px at 80% 60%, white, transparent),
-        radial-gradient(2px 2px at 50% 50%, white, transparent);
-
-      animation: moveStarsSlow 200s linear infinite;
-      opacity: 0.8;
-    }
-
-    /* ⭐ CAPA 3 (pocas pero brillantes) */
-    .stars::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(3px 3px at 30% 40%, white, transparent),
-        radial-gradient(3px 3px at 70% 20%, white, transparent),
-        radial-gradient(3px 3px at 50% 80%, white, transparent);
-
-      animation: moveStarsReverse 300s linear infinite;
-      opacity: 1;
-    }
-
-    /* movimiento */
-    @keyframes moveStars {
-      from { transform: translate(0,0); }
-      to { transform: translate(-300px, -300px); }
-    }
-
-    @keyframes moveStarsSlow {
-      from { transform: translate(0,0); }
-      to { transform: translate(-150px, -150px); }
-    }
-
-    @keyframes moveStarsReverse {
-      from { transform: translate(0,0); }
-      to { transform: translate(200px, 200px); }
     }
 
     /* overlay */
@@ -167,7 +105,8 @@
 
   <div class="hero">
 
-    <div class="stars"></div>
+    <canvas id="starsCanvas"></canvas>
+
     <div class="overlay"></div>
 
     <div class="content">
@@ -184,6 +123,63 @@
     </div>
 
   </div>
+
+  <script>
+    const canvas = document.getElementById("starsCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let stars = [];
+    let numStars = 300;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < numStars; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2,
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        star.y -= star.speed;
+
+        if (star.y < 0) {
+          star.y = canvas.height;
+          star.x = Math.random() * canvas.width;
+        }
+      });
+    }
+
+    function animate() {
+      drawStars();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", () => {
+      resize();
+      createStars();
+    });
+
+    resize();
+    createStars();
+    animate();
+  </script>
 
 </body>
 </html>
