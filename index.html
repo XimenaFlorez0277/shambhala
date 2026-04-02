@@ -125,7 +125,7 @@
     const ctx = canvas.getContext("2d");
 
     let stars = [];
-    let numStars = 400;
+    let numStars = 500;
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -139,7 +139,7 @@
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2,
-          speed: Math.random() * 1 + 0.3
+          speed: Math.random() * 2 + 0.5   // ⭐ AQUÍ está la velocidad
         });
       }
     }
@@ -153,10 +153,9 @@
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
 
-        // ⭐ MOVIMIENTO DERECHA → IZQUIERDA
+        // ⭐ movimiento derecha → izquierda
         star.x -= star.speed;
 
-        // ⭐ reaparece al salir
         if (star.x < 0) {
           star.x = canvas.width;
           star.y = Math.random() * canvas.height;
