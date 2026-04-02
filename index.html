@@ -7,33 +7,42 @@
 <style>
 body {
   margin: 0;
+  font-family: Arial, sans-serif;
   background: black;
   color: white;
-  font-family: Arial;
+}
+
+/* HERO */
+.hero {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, #0a0f2a, black 70%);
 }
 
-.container {
-  text-align: center;
+.hero-content {
   max-width: 700px;
 }
 
 h1 {
-  font-size: 3em;
-  letter-spacing: 4px;
+  font-size: 3.5em;
+  letter-spacing: 5px;
 }
 
-p {
-  opacity: 0.8;
+.hero p {
   margin-top: 20px;
+  opacity: 0.8;
+}
+
+.buttons {
+  margin-top: 40px;
 }
 
 a {
   display: inline-block;
-  margin-top: 30px;
+  margin: 10px;
   padding: 14px 24px;
   background: white;
   color: black;
@@ -44,21 +53,47 @@ a {
 a:hover {
   background: #ccc;
 }
+
+/* SECCIÓN */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section p {
+  max-width: 600px;
+  margin: auto;
+  opacity: 0.8;
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>SHAMBHALA</h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>SHAMBHALA</h1>
 
+    <p>
+      La humanidad dio el siguiente paso.<br>
+      No todas estaban preparadas.
+    </p>
+
+    <div class="buttons">
+      <a href="#">Explorar</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOOK -->
+<section class="section">
+  <h2>Algo cambió</h2>
   <p>
-    Antes de explorar este universo…<br>
-    descubre quién eres dentro de él.
+    Un descubrimiento. Una decisión.  
+    Un viaje que redefine lo que significa existir.
   </p>
-
-  <a href="quiz.html">Descubre tu rol</a>
-</div>
+</section>
 
 </body>
 </html>
