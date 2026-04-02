@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Tu llegada a Shambhala</title>
+<title>Tu lugar en Shambhala</title>
 
 <style>
 body {
@@ -14,7 +14,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  line-height: 1.6;
 }
 
 .container {
@@ -24,7 +23,6 @@ body {
 
 p {
   margin-bottom: 20px;
-  opacity: 0.9;
 }
 
 button {
@@ -47,84 +45,92 @@ button:hover {
 <body>
 
 <div class="container">
-  <p id="text"></p>
-  <div id="choices"></div>
+  <p id="question"></p>
+  <div id="answers"></div>
 </div>
 
 <script>
-const scenes = [
+const questions = [
   {
-    text: "Despiertas. No reconoces el lugar.\n\nUna voz te observa antes de que puedas reaccionar.",
-    choices: [
-      { text: "¿Quién eres?", type: "cientifica" },
-      { text: "La observo en silencio", type: "diana" },
-      { text: "Me levanto sin esperar explicación", type: "exploradora" }
+    question: "La Fundación Portal al Porvenir te ofrece un puesto en su laboratorio orbital. ¿Qué es lo primero que piensas?",
+    answers: [
+      { text: "¿Qué tecnología tienen exactamente?", type: "cientifica" },
+      { text: "¿Quiénes forman parte del equipo?", type: "humana" },
+      { text: "¿Qué tan lejos podríamos llegar con esto?", type: "exploradora" }
     ]
   },
   {
-    text: "La compuerta se abre.\n\nEl aire es distinto. Más limpio. Más vivo.",
-    choices: [
-      { text: "Intento entender cómo es posible", type: "cientifica" },
-      { text: "Observo a la mujer que me trajo aquí", type: "diana" },
-      { text: "Doy un paso adelante sin dudar", type: "exploradora" }
+    question: "Llegas a Arcadia por primera vez. Ves un ecosistema artificial perfecto bajo la superficie lunar.",
+    answers: [
+      { text: "Analizo cómo logran mantener el equilibrio", type: "cientifica" },
+      { text: "Observo a las personas y cómo viven allí", type: "humana" },
+      { text: "Quiero recorrer todo el lugar de inmediato", type: "exploradora" }
     ]
   },
   {
-    text: "El espacio se despliega ante ti.\n\nPlantas. Luz. Silencio.\nNo debería existir… pero existe.",
-    choices: [
-      { text: "Analizo cada detalle", type: "cientifica" },
-      { text: "Siento una conexión con este lugar", type: "diana" },
-      { text: "Quiero explorar todo", type: "exploradora" }
+    question: "Durante el viaje, surge una conversación sobre si existen personas verdaderamente malvadas.",
+    answers: [
+      { text: "Intento entenderlo desde la lógica y la evidencia", type: "cientifica" },
+      { text: "Pienso en la empatía y la posibilidad de cambio", type: "humana" },
+      { text: "Me interesa más cómo eso afecta el futuro", type: "exploradora" }
+    ]
+  },
+  {
+    question: "Tienes acceso a tecnología capaz de avanzar el viaje supralumínico.",
+    answers: [
+      { text: "Me concentro en resolver el problema físico", type: "cientifica" },
+      { text: "Pienso en cómo esto cambiaría a la humanidad", type: "humana" },
+      { text: "Solo quiero probarlo y ver hasta dónde llega", type: "exploradora" }
     ]
   }
 ];
 
-let index = 0;
-let score = { cientifica: 0, diana: 0, exploradora: 0 };
+let current = 0;
+let score = { cientifica: 0, humana: 0, exploradora: 0 };
 
-function showScene() {
-  const scene = scenes[index];
-  document.getElementById("text").innerText = scene.text;
+function showQuestion() {
+  const q = questions[current];
+  document.getElementById("question").innerText = q.question;
 
-  const choicesDiv = document.getElementById("choices");
-  choicesDiv.innerHTML = "";
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
 
-  scene.choices.forEach(choice => {
+  q.answers.forEach(a => {
     const btn = document.createElement("button");
-    btn.innerText = choice.text;
+    btn.innerText = a.text;
 
     btn.onclick = () => {
-      score[choice.type]++;
-      index++;
+      score[a.type]++;
+      current++;
 
-      if (index < scenes.length) {
-        showScene();
+      if (current < questions.length) {
+        showQuestion();
       } else {
         showResult();
       }
     };
 
-    choicesDiv.appendChild(btn);
+    answersDiv.appendChild(btn);
   });
 }
 
 function showResult() {
-  document.getElementById("choices").innerHTML = "";
+  document.getElementById("answers").innerHTML = "";
 
   let result = Object.keys(score).reduce((a, b) =>
     score[a] > score[b] ? a : b
   );
 
-  const texts = {
-    cientifica: "Eres como Cali.\n\nVes patrones donde otros ven caos.\nNo necesitas certezas… necesitas entender.",
-    diana: "Eres como Diana.\n\nTu presencia cambia el espacio.\nLas personas no siempre entienden por qué… pero lo sienten.",
-    exploradora: "Eres exploradora.\n\nNo esperas respuestas.\nCruzas el umbral incluso cuando no sabes qué hay al otro lado."
+  const results = {
+    cientifica: "Eres como Cali.\n\nTu mente está orientada a entender lo imposible. Donde otros ven límites, tú ves preguntas.",
+    humana: "Eres como Diana.\n\nEntiendes que el futuro no se construye solo con ciencia, sino con personas.",
+    exploradora: "Eres exploradora.\n\nNo te basta con teorizar. Necesitas ir, ver y cruzar los límites."
   };
 
-  document.getElementById("text").innerText = texts[result];
+  document.getElementById("question").innerText = results[result];
 }
 
-showScene();
+showQuestion();
 </script>
 
 </body>
