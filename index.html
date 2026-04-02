@@ -37,32 +37,41 @@
     }
 
     .stars::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background-image:
-        radial-gradient(2px 2px at 20px 30px, white, transparent),
-        radial-gradient(2px 2px at 100px 150px, white, transparent),
-        radial-gradient(2px 2px at 200px 80px, white, transparent),
-        radial-gradient(2px 2px at 300px 200px, white, transparent),
-        radial-gradient(2px 2px at 400px 120px, white, transparent),
-        radial-gradient(2px 2px at 500px 50px, white, transparent),
-        radial-gradient(2px 2px at 600px 300px, white, transparent),
-        radial-gradient(2px 2px at 700px 200px, white, transparent),
-        radial-gradient(2px 2px at 800px 100px, white, transparent);
-      animation: moveStars 60s linear infinite;
-      opacity: 0.6;
-    }
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
 
-    @keyframes moveStars {
-      from {
-        transform: translate(0,0);
-      }
-      to {
-        transform: translate(-500px, -500px);
-      }
-    }
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 100px 150px, white, transparent),
+    radial-gradient(2px 2px at 200px 80px, white, transparent),
+    radial-gradient(1px 1px at 300px 200px, white, transparent),
+    radial-gradient(2px 2px at 400px 120px, white, transparent),
+    radial-gradient(1px 1px at 500px 50px, white, transparent),
+    radial-gradient(2px 2px at 600px 300px, white, transparent),
+    radial-gradient(1px 1px at 700px 200px, white, transparent),
+    radial-gradient(2px 2px at 800px 100px, white, transparent),
+    radial-gradient(1px 1px at 900px 250px, white, transparent),
+    radial-gradient(2px 2px at 1000px 180px, white, transparent),
+    radial-gradient(1px 1px at 1100px 90px, white, transparent),
+    radial-gradient(2px 2px at 1200px 220px, white, transparent),
+    radial-gradient(1px 1px at 1300px 140px, white, transparent),
+    radial-gradient(2px 2px at 1400px 60px, white, transparent),
+    radial-gradient(1px 1px at 1500px 300px, white, transparent);
+
+  animation: moveStars 60s linear infinite;
+  opacity: 0.8;
+}
+
+  @keyframes moveStars {
+  from {
+    transform: translate(0,0);
+  }
+  to {
+    transform: translate(-800px, -400px);
+  }
+}
 
     /* overlay */
     .overlay {
