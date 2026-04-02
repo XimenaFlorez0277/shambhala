@@ -16,7 +16,6 @@
       overflow-x: hidden;
     }
 
-    /* HERO */
     .hero {
       height: 100vh;
       background: url('images/hero.jpg') center center / cover no-repeat;
@@ -28,14 +27,12 @@
       text-align: center;
     }
 
-    /* CANVAS ESTRELLAS */
     #starsCanvas {
       position: absolute;
       inset: 0;
       z-index: 1;
     }
 
-    /* overlay */
     .overlay {
       position: absolute;
       inset: 0;
@@ -47,7 +44,6 @@
       z-index: 2;
     }
 
-    /* contenido */
     .content {
       position: relative;
       z-index: 3;
@@ -129,7 +125,7 @@
     const ctx = canvas.getContext("2d");
 
     let stars = [];
-    let numStars = 300;
+    let numStars = 400;
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -143,7 +139,7 @@
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 2,
-          speed: Math.random() * 0.5 + 0.2
+          speed: Math.random() * 1 + 0.3
         });
       }
     }
@@ -157,11 +153,13 @@
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
 
-        star.y -= star.speed;
+        // ⭐ MOVIMIENTO DERECHA → IZQUIERDA
+        star.x -= star.speed;
 
-        if (star.y < 0) {
-          star.y = canvas.height;
-          star.x = Math.random() * canvas.width;
+        // ⭐ reaparece al salir
+        if (star.x < 0) {
+          star.x = canvas.width;
+          star.y = Math.random() * canvas.height;
         }
       });
     }
