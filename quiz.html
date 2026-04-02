@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Descubre tu rol - Shambhala</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 600px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1 id="question"></h1>
+  <div id="answers"></div>
+  <div id="result"></div>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "Llegas a Arcadia por primera vez. ¿Qué haces?",
+    answers: [
+      { text: "Observar todo en silencio", type: "cientifica" },
+      { text: "Hablar con todos", type: "lider" },
+      { text: "Explorar sin permiso", type: "exploradora" }
+    ]
+  },
+  {
+    question: "Un sistema falla en la nave...",
+    answers: [
+      { text: "Analizo el problema", type: "cientifica" },
+      { text: "Coordino al equipo", type: "lider" },
+      { text: "Voy directo al lugar", type: "exploradora" }
+    ]
+  },
+  {
+    question: "Lo desconocido te provoca...",
+    answers: [
+      { text: "Curiosidad", type: "cientifica" },
+      { text: "Responsabilidad", type: "lider" },
+      { text: "Adrenalina", type: "exploradora" }
+    ]
+  }
+];
+
+let current = 0;
+let scores = { cientifica: 0, lider: 0, exploradora: 0 };
+
+function showQuestion() {
+  const q = questions[current];
+  document.getElementById("question").innerText = q.question;
+
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => {
+      scores[a.type]++;
+      current++;
+      if (current < questions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    };
+    answersDiv.appendChild(btn);
+  });
+}
+
+function showResult() {
+  document.getElementById("answers").innerHTML = "";
+
+  let result = Object.keys(scores).reduce((a, b) =>
+    scores[a] > scores[b] ? a : b
+  );
+
+  const texts = {
+    cientifica: "Eres mente brillante de Shambhala.",
+    lider: "Eres quien guía a los demás.",
+    exploradora: "Eres quien se adentra en lo desconocido."
+  };
+
+  document.getElementById("question").innerText = "Resultado";
+  document.getElementById("result").innerText = texts[result];
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
