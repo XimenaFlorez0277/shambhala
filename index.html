@@ -2,128 +2,129 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shambhala</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <title>Shambhala Saga</title>
 
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Inter', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      overflow-x: hidden;
       background: black;
       color: white;
-      overflow-x: hidden;
     }
 
     /* HERO */
     .hero {
-      height: 100vh;
-      background: url('images/hero.jpg') center center / cover no-repeat;
       position: relative;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
+      height: 100vh;
+      overflow: hidden;
     }
 
-    /* ⭐ ESTRELLAS (MUCHAS Y BIEN DISTRIBUIDAS) */
-    .stars {
+    /* Imagen de fondo (tu nave) */
+    .hero img {
       position: absolute;
-      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       z-index: 1;
-
-      background-image:
-        radial-gradient(1px 1px at 20% 30%, white, transparent),
-        radial-gradient(1px 1px at 40% 70%, white, transparent),
-        radial-gradient(2px 2px at 60% 20%, white, transparent),
-        radial-gradient(1px 1px at 80% 50%, white, transparent),
-        radial-gradient(2px 2px at 30% 80%, white, transparent),
-        radial-gradient(1px 1px at 70% 60%, white, transparent),
-        radial-gradient(2px 2px at 90% 10%, white, transparent),
-        radial-gradient(1px 1px at 10% 90%, white, transparent),
-        radial-gradient(2px 2px at 50% 50%, white, transparent),
-        radial-gradient(1px 1px at 75% 25%, white, transparent),
-        radial-gradient(1px 1px at 25% 55%, white, transparent),
-        radial-gradient(2px 2px at 65% 75%, white, transparent),
-        radial-gradient(1px 1px at 85% 85%, white, transparent);
-
-      opacity: 0.8;
-
-      animation: moveStars 120s linear infinite;
     }
 
-    @keyframes moveStars {
-      from {
-        transform: translate(0,0);
-      }
-      to {
-        transform: translate(-200px, -200px);
-      }
-    }
-
-    /* overlay oscuro */
+    /* Overlay oscuro cinematográfico */
     .overlay {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.85)
-      );
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
       z-index: 2;
     }
 
-    /* contenido */
-    .content {
+    /* CONTENIDO */
+    .hero-content {
       position: relative;
       z-index: 3;
-      animation: fadeUp 1.5s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
     }
 
-    @keyframes fadeUp {
+    .hero-content h1 {
+      font-size: 4rem;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      opacity: 0.9;
+    }
+
+    /* ✨ ESTRELLAS - CAPA 1 */
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: transparent;
+      box-shadow:
+        50px 100px white, 200px 300px white, 400px 600px white,
+        800px 200px white, 1200px 500px white, 1600px 700px white,
+        300px 900px white, 700px 1200px white, 1400px 300px white,
+        1800px 800px white, 100px 1300px white, 900px 1500px white,
+        1700px 1100px white, 600px 400px white, 1300px 900px white;
+      animation: moveStars 120s linear infinite;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* ✨ CAPA 2 (más estrellas) */
+    .stars2 {
+      width: 2px;
+      height: 2px;
+      background: transparent;
+      box-shadow:
+        150px 200px white, 350px 500px white, 650px 800px white,
+        950px 1100px white, 1250px 300px white, 1550px 600px white,
+        1750px 900px white, 1850px 1200px white;
+      animation: moveStars 200s linear infinite;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* ✨ CAPA 3 (estrellas grandes) */
+    .stars3 {
+      width: 3px;
+      height: 3px;
+      background: transparent;
+      box-shadow:
+        250px 300px white, 850px 700px white, 1450px 400px white,
+        1750px 1000px white;
+      animation: moveStars 300s linear infinite;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Animación */
+    @keyframes moveStars {
       from {
-        opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(0px);
       }
       to {
-        opacity: 1;
-        transform: translateY(0);
+        transform: translateY(-2000px);
       }
-    }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 4rem;
-      letter-spacing: 6px;
-      margin-bottom: 20px;
-      text-shadow:
-        0 0 10px rgba(255,255,255,0.3),
-        0 0 40px rgba(0,150,255,0.4);
-    }
-
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 600px;
-      margin: auto;
-      margin-bottom: 30px;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      border: 1px solid white;
-      text-decoration: none;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .buttons a:hover {
-      color: #00aaff;
-      border-color: #00aaff;
     }
 
   </style>
@@ -131,25 +132,26 @@
 
 <body>
 
-  <div class="hero">
+  <section class="hero">
 
+    <!-- ESTRELLAS -->
     <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+
+    <!-- IMAGEN -->
+    <img src="images/tu-imagen.jpg" alt="Nave espacial">
+
+    <!-- OVERLAY -->
     <div class="overlay"></div>
 
-    <div class="content">
+    <!-- TEXTO -->
+    <div class="hero-content">
       <h1>SHAMBHALA</h1>
-      <p>
-        La humanidad ya no pertenece a la Tierra.
-        Pero tampoco sabe dónde pertenece.
-      </p>
-
-      <div class="buttons">
-        <a href="#">Explorar el universo</a>
-        <a href="#">Personajes</a>
-      </div>
+      <p>Un viaje más allá de la velocidad de la luz… donde la humanidad cambia para siempre.</p>
     </div>
 
-  </div>
+  </section>
 
 </body>
 </html>
