@@ -23,7 +23,7 @@
 
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* 🔥 SUBE TODO */
+      align-items: flex-start;
       text-align: center;
       padding-top: 80px;
     }
@@ -49,7 +49,7 @@
       position: relative;
       z-index: 3;
       animation: fadeUp 1.5s ease;
-      max-width: 800px;
+      max-width: 900px;
     }
 
     @keyframes fadeUp {
@@ -63,28 +63,23 @@
       }
     }
 
+    /* 🔥 TÍTULO PRINCIPAL */
     h1 {
       font-family: 'Orbitron', sans-serif;
       font-size: 4rem;
       letter-spacing: 6px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
 
       text-shadow:
-        0 0 10px rgba(255,255,255,0.3),
-        0 0 40px rgba(0,150,255,0.5);
+        0 0 10px rgba(255,255,255,0.4),
+        0 0 50px rgba(0,150,255,0.6);
     }
 
-    .subtitle {
-      font-size: 0.9rem;
-      letter-spacing: 4px;
-      opacity: 0.6;
-      margin-bottom: 10px;
-    }
-
+    /* FRASE */
     p {
       font-size: 1.2rem;
-      opacity: 0.9;
-      margin-bottom: 30px;
+      opacity: 0.95;
+      margin-bottom: 40px;
       line-height: 1.6;
     }
 
@@ -115,13 +110,12 @@
 
     <div class="content">
 
-      <div class="subtitle">SAGA</div>
+      <!-- 🔥 NUEVO TÍTULO -->
+      <h1>SHAMBHALA SAGA</h1>
 
-      <h1>SHAMBHALA</h1>
-
+      <!-- 🔥 TU FRASE -->
       <p>
-        La humanidad dejó la Tierra. <br>
-        Ahora debe descubrir dónde pertenece.
+        Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
       </p>
 
       <div class="buttons">
@@ -152,7 +146,7 @@
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 1.2 + 0.2,
-          speed: Math.random() * 3 + 0.5
+          speed: Math.random() * 6 + 2
         });
       }
     }
