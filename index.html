@@ -20,6 +20,7 @@
       height: 100vh;
       background: url('images/hero.jpg') center center / cover no-repeat;
       position: relative;
+
       display: flex;
       justify-content: center;
       align-items: center;
@@ -124,7 +125,7 @@
     const ctx = canvas.getContext("2d");
 
     let stars = [];
-    let numStars = 600;
+    let numStars = 700;
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -137,17 +138,24 @@
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2.5,
-          speed: Math.random() * 6 + 2   // 🚀 VELOCIDAD AUMENTADA
+
+          // ⭐ MÁS PEQUEÑAS
+          size: Math.random() * 1.2 + 0.2,
+
+          // ⭐ velocidad según tamaño (profundidad real)
+          speed: Math.random() * 3 + 0.5
         });
       }
     }
 
     function drawStars() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "white";
 
       stars.forEach(star => {
+
+        // ⭐ brillo sutil
+        ctx.fillStyle = "rgba(255,255,255," + (0.5 + Math.random()*0.5) + ")";
+
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
@@ -155,7 +163,6 @@
         // movimiento derecha → izquierda
         star.x -= star.speed;
 
-        // reaparece
         if (star.x < 0) {
           star.x = canvas.width;
           star.y = Math.random() * canvas.height;
