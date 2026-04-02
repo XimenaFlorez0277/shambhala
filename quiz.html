@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Descubre tu rol - Shambhala</title>
+<title>Tu llegada a Shambhala</title>
 
 <style>
 body {
@@ -14,22 +14,24 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  line-height: 1.6;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 700px;
   text-align: center;
 }
 
-h1 {
+p {
   margin-bottom: 20px;
+  opacity: 0.9;
 }
 
 button {
   display: block;
   width: 100%;
   margin: 10px 0;
-  padding: 12px;
+  padding: 14px;
   background: white;
   color: black;
   border: none;
@@ -45,83 +47,84 @@ button:hover {
 <body>
 
 <div class="container">
-  <h1 id="question"></h1>
-  <div id="answers"></div>
-  <div id="result"></div>
+  <p id="text"></p>
+  <div id="choices"></div>
 </div>
 
 <script>
-const questions = [
+const scenes = [
   {
-    question: "Llegas a Arcadia por primera vez. ¿Qué haces?",
-    answers: [
-      { text: "Observar todo en silencio", type: "cientifica" },
-      { text: "Hablar con todos", type: "lider" },
-      { text: "Explorar sin permiso", type: "exploradora" }
+    text: "Despiertas. No reconoces el lugar.\n\nUna voz te observa antes de que puedas reaccionar.",
+    choices: [
+      { text: "¿Quién eres?", type: "cientifica" },
+      { text: "La observo en silencio", type: "diana" },
+      { text: "Me levanto sin esperar explicación", type: "exploradora" }
     ]
   },
   {
-    question: "Un sistema falla en la nave...",
-    answers: [
-      { text: "Analizo el problema", type: "cientifica" },
-      { text: "Coordino al equipo", type: "lider" },
-      { text: "Voy directo al lugar", type: "exploradora" }
+    text: "La compuerta se abre.\n\nEl aire es distinto. Más limpio. Más vivo.",
+    choices: [
+      { text: "Intento entender cómo es posible", type: "cientifica" },
+      { text: "Observo a la mujer que me trajo aquí", type: "diana" },
+      { text: "Doy un paso adelante sin dudar", type: "exploradora" }
     ]
   },
   {
-    question: "Lo desconocido te provoca...",
-    answers: [
-      { text: "Curiosidad", type: "cientifica" },
-      { text: "Responsabilidad", type: "lider" },
-      { text: "Adrenalina", type: "exploradora" }
+    text: "El espacio se despliega ante ti.\n\nPlantas. Luz. Silencio.\nNo debería existir… pero existe.",
+    choices: [
+      { text: "Analizo cada detalle", type: "cientifica" },
+      { text: "Siento una conexión con este lugar", type: "diana" },
+      { text: "Quiero explorar todo", type: "exploradora" }
     ]
   }
 ];
 
-let current = 0;
-let scores = { cientifica: 0, lider: 0, exploradora: 0 };
+let index = 0;
+let score = { cientifica: 0, diana: 0, exploradora: 0 };
 
-function showQuestion() {
-  const q = questions[current];
-  document.getElementById("question").innerText = q.question;
+function showScene() {
+  const scene = scenes[index];
+  document.getElementById("text").innerText = scene.text;
 
-  const answersDiv = document.getElementById("answers");
-  answersDiv.innerHTML = "";
+  const choicesDiv = document.getElementById("choices");
+  choicesDiv.innerHTML = "";
 
-  q.answers.forEach(a => {
+  scene.choices.forEach(choice => {
     const btn = document.createElement("button");
-    btn.innerText = a.text;
+    btn.innerText = choice.text;
+
     btn.onclick = () => {
-      scores[a.type]++;
-      current++;
-      if (current < questions.length) {
-        showQuestion();
+      score[choice.type]++;
+      index++;
+
+      if (index < scenes.length) {
+        showScene();
       } else {
         showResult();
       }
     };
-    answersDiv.appendChild(btn);
+
+    choicesDiv.appendChild(btn);
   });
 }
 
 function showResult() {
-  document.getElementById("answers").innerHTML = "";
+  document.getElementById("choices").innerHTML = "";
 
-  let result = Object.keys(scores).reduce((a, b) =>
-    scores[a] > scores[b] ? a : b
+  let result = Object.keys(score).reduce((a, b) =>
+    score[a] > score[b] ? a : b
   );
 
   const texts = {
-    cientifica: "Eres mente brillante de Shambhala.",
-    lider: "Eres quien guía a los demás.",
-    exploradora: "Eres quien se adentra en lo desconocido."
+    cientifica: "Eres como Cali.\n\nVes patrones donde otros ven caos.\nNo necesitas certezas… necesitas entender.",
+    diana: "Eres como Diana.\n\nTu presencia cambia el espacio.\nLas personas no siempre entienden por qué… pero lo sienten.",
+    exploradora: "Eres exploradora.\n\nNo esperas respuestas.\nCruzas el umbral incluso cuando no sabes qué hay al otro lado."
   };
 
-  document.getElementById("question").innerText = "Resultado";
-  document.getElementById("result").innerText = texts[result];
+  document.getElementById("text").innerText = texts[result];
 }
 
-showQuestion();
+showScene();
 </script>
 
 </body>
