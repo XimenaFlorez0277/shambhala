@@ -51,7 +51,7 @@ body {
   50% { transform: translate(-50%, -52%) translateY(-10px); }
 }
 
-/* 🔵 MOTOR */
+/* MOTOR */
 .engine-glow {
   position: absolute;
   top: 48%;
@@ -76,14 +76,6 @@ body {
 @keyframes pulse {
   0%,100% { transform: scale(1); opacity: 0.6; }
   50% { transform: scale(1.8); opacity: 1; }
-}
-
-/* overlay */
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.2);
-  z-index: 1;
 }
 
 /* TEXTO */
@@ -130,7 +122,6 @@ p {
 
 <div class="hero">
 
-  <div class="overlay"></div>
   <div class="engine-glow"></div>
 
   <img src="images/hero.jpg" id="ship">
@@ -171,7 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function createStars() {
     stars = [];
 
-    for (let i = 0; i < 1500; i++) { // 🔥 MUCHAS MÁS
+    for (let i = 0; i < 1500; i++) {
 
       const depth = Math.random();
 
@@ -179,9 +170,10 @@ document.addEventListener("DOMContentLoaded", () => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: depth * 2 + 0.2,
-        baseSpeed: depth * 6 + 1, // 🔥 MÁS RÁPIDO
+        baseSpeed: depth * 6 + 1,
         depth: depth,
-        tilt: (Math.random() - 0.5) * 0.6
+        tilt: (Math.random() - 0.5) * 0.8,
+        brightness: 0.5 + Math.random() * 0.5
       });
     }
   }
@@ -195,14 +187,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (s.depth > 0.3) {
 
-        // 🔥 RAYAS MUCHO MÁS LARGAS
+        const length = speed * (3 + Math.random() * 3);
+
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
-        ctx.lineTo(
-          s.x + speed * 6, // 🔥 CLAVE
-          s.y + s.tilt * speed
+
+        ctx.quadraticCurveTo(
+          s.x + length * 0.5,
+          s.y + s.tilt * length * 0.5,
+          s.x + length,
+          s.y + s.tilt * length
         );
-        ctx.strokeStyle = "white";
+
+        ctx.strokeStyle = `rgba(255,255,255,${s.brightness})`;
         ctx.lineWidth = s.size;
         ctx.stroke();
 
@@ -227,12 +224,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", () => {
-
-    warp = 1 + window.scrollY / 120; // 🔥 MÁS AGRESIVO
+    warp = 1 + window.scrollY / 120;
 
     const offset = Math.min(warp * 8, 30);
     ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
-
   });
 
   resize();
