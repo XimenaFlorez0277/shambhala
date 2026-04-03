@@ -28,7 +28,7 @@ body {
   overflow: hidden;
 }
 
-/* ESTRELLAS */
+/* 🌌 ESTRELLAS */
 #stars {
   position: absolute;
   inset: 0;
@@ -36,7 +36,7 @@ body {
   pointer-events: none;
 }
 
-/* NAVE */
+/* 🚀 NAVE */
 .hero img {
   position: absolute;
   top: 48%;
@@ -44,6 +44,12 @@ body {
   transform: translate(-50%, -50%);
   width: min(110vw, 1100px);
   z-index: 2;
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -52%) translateY(-10px); }
 }
 
 /* TEXTO */
@@ -66,34 +72,78 @@ p {
   margin-bottom: 40px;
 }
 
-/* BOTONES */
+/* 🔥 BOTONES SCI-FI */
 .buttons {
   display: flex;
   gap: 20px;
+  justify-content: center;
 }
 
 .btn {
+  position: relative;
   padding: 14px 30px;
-  border: 1px solid rgba(0,170,255,0.6);
   text-decoration: none;
-  color: white;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  border: 1px solid rgba(0,170,255,0.5);
   background: rgba(0,0,0,0.4);
-  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
+
+  box-shadow:
+    0 0 10px rgba(0,170,255,0.4),
+    inset 0 0 15px rgba(0,170,255,0.1);
 }
 
-/* FLASH */
-.flash {
-  position: fixed;
+/* pulso */
+.btn::after {
+  content: "";
+  position: absolute;
   inset: 0;
-  background: white;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10;
-  transition: opacity 0.5s;
+  border: 1px solid rgba(0,170,255,0.3);
+  animation: pulse 2.5s infinite;
 }
 
-.flash.active {
-  opacity: 1;
+@keyframes pulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+
+/* scan */
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0,170,255,0.8), transparent);
+  top: 0;
+  left: -100%;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* hover */
+.btn:hover {
+  color: #00aaff;
+  border-color: #00aaff;
+  box-shadow:
+    0 0 20px rgba(0,170,255,1),
+    0 0 60px rgba(0,170,255,0.7);
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .hero img {
+    width: 120vw;
+    top: 52%;
+  }
+  h1 { font-size: 2rem; }
 }
 
 </style>
@@ -103,7 +153,7 @@ p {
 
 <div class="hero">
 
-  <img src="images/hero.jpg" id="ship">
+  <img src="images/hero.jpg" alt="Nave Shambhala" id="ship">
 
   <canvas id="stars"></canvas>
 
@@ -122,11 +172,9 @@ p {
 
 </div>
 
-<div class="flash" id="flash"></div>
-
 <script>
 
-/* ESTRELLAS */
+/* 🌌 ESTRELLAS */
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
@@ -142,10 +190,12 @@ function resize() {
 function createStars() {
   stars = [];
   for (let i = 0; i < 900; i++) {
+    const depth = Math.random();
     stars.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      speed: Math.random() * 5 + 0.5
+      depth: depth,
+      speed: depth * 5 + 0.5
     });
   }
 }
@@ -156,13 +206,41 @@ function draw() {
   warp += (warpTarget - warp) * 0.05;
 
   stars.forEach(s => {
-    const speed = s.speed * warp;
 
-    ctx.beginPath();
-    ctx.moveTo(s.x, s.y);
-    ctx.lineTo(s.x + speed * 3, s.y);
-    ctx.strokeStyle = "white";
-    ctx.stroke();
+    let speed = s.speed * warp;
+    let alpha = 1;
+    let lengthFactor = 3;
+
+    if (s.y < canvas.height * 0.3) {
+      alpha = 0.2;
+      speed *= 0.5;
+      lengthFactor = 1;
+    }
+    else if (s.y < canvas.height * 0.7) {
+      alpha = 0.9;
+      speed *= 1.6;
+      lengthFactor = 4;
+    }
+    else {
+      alpha = 0.2;
+      speed *= 0.5;
+      lengthFactor = 1;
+    }
+
+    if (s.depth > 0.5) {
+      const length = speed * lengthFactor;
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(s.x + length, s.y);
+      ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+      ctx.lineWidth = s.depth * 2;
+      ctx.stroke();
+    } else {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+      ctx.fill();
+    }
 
     s.x -= speed;
 
@@ -170,6 +248,7 @@ function draw() {
       s.x = canvas.width;
       s.y = Math.random() * canvas.height;
     }
+
   });
 
   requestAnimationFrame(draw);
@@ -184,35 +263,24 @@ window.addEventListener("resize", () => {
   createStars();
 });
 
-/* 🚀 WARP CON TIMING */
+/* 🚀 WARP FINAL */
 const btn = document.getElementById("exploreBtn");
 const ship = document.getElementById("ship");
-const flash = document.getElementById("flash");
 
 btn.addEventListener("click", (e) => {
   e.preventDefault();
 
+  console.log("WARP ACTIVADO 🚀");
+
   warpTarget = 25;
 
-  // vibración
   let i = 0;
   const vib = setInterval(() => {
     ship.style.transform =
       `translate(-50%, -50%) translate(${Math.random()*8-4}px, ${Math.random()*8-4}px) scale(1.05)`;
     i++;
-    if (i > 30) clearInterval(vib);
+    if (i > 25) clearInterval(vib);
   }, 30);
-
-  // ⏳ PAUSA CINEMÁTICA
-  setTimeout(() => {
-    flash.classList.add("active");
-  }, 1200);
-
-  // 🌌 CAMBIO DE SECCIÓN
-  setTimeout(() => {
-    window.location.href = "#"; // 👉 aquí tu sección real
-  }, 1700);
-
 });
 
 </script>
