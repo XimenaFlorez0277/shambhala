@@ -93,7 +93,7 @@ p {
   margin-bottom: 40px;
 }
 
-/* 🔥 BOTONES MEJORADOS */
+/* 🔥 BOTONES MEJORADOS DE VERDAD */
 .buttons {
   display: flex;
   gap: 20px;
@@ -104,29 +104,28 @@ p {
   position: relative;
   padding: 14px 30px;
   text-decoration: none;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255,255,255,0.95);
   font-size: 0.9rem;
   letter-spacing: 2px;
 
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(0,170,255,0.4);
 
+  /* 🔥 FONDO MÁS VISIBLE */
   background: linear-gradient(
     to bottom,
-    rgba(255,255,255,0.05),
-    rgba(0,0,0,0.2)
+    rgba(0,170,255,0.15),
+    rgba(0,0,0,0.6)
   );
 
-  backdrop-filter: blur(4px);
+  /* 🔥 GLOW SIEMPRE VISIBLE */
+  box-shadow:
+    0 0 10px rgba(0,170,255,0.3),
+    inset 0 0 15px rgba(0,170,255,0.1);
 
   transition: all 0.3s ease;
-
-  /* 🔥 glow leve SIEMPRE */
-  box-shadow:
-    0 0 6px rgba(255,255,255,0.1),
-    inset 0 0 10px rgba(255,255,255,0.05);
 }
 
-/* ✨ línea energética interna */
+/* línea energética */
 .btn::before {
   content: "";
   position: absolute;
@@ -134,42 +133,28 @@ p {
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(0,170,255,0.5),
+    rgba(0,170,255,0.8),
     transparent
   );
-  opacity: 0.2;
+  opacity: 0.3;
   transition: 0.4s;
 }
 
-/* 🚀 hover (más potente, como ya tienes) */
+/* HOVER MÁS FUERTE */
 .btn:hover {
   color: #00aaff;
   border-color: #00aaff;
 
   box-shadow:
-    0 0 10px rgba(0,170,255,0.6),
-    0 0 30px rgba(0,170,255,0.3);
+    0 0 15px rgba(0,170,255,0.9),
+    0 0 40px rgba(0,170,255,0.6);
 }
 
 .btn:hover::before {
   opacity: 1;
 }
 
-/* 🔹 botón principal ligeramente destacado */
-.btn.primary {
-  background: linear-gradient(
-    to bottom,
-    rgba(0,170,255,0.12),
-    rgba(0,0,0,0.3)
-  );
-
-  border-color: rgba(0,170,255,0.4);
-
-  box-shadow:
-    0 0 8px rgba(0,170,255,0.2);
-}
-
-/* 🔹 secundario más discreto */
+/* secundario un poco menos intenso */
 .btn.secondary {
   opacity: 0.85;
 }
@@ -228,10 +213,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createStars() {
     stars = [];
-
     for (let i = 0; i < 900; i++) {
       const depth = Math.random();
-
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -250,21 +233,18 @@ document.addEventListener("DOMContentLoaded", () => {
       let alpha = 1;
       let lengthFactor = 3;
 
-      // 🌌 ARRIBA (suave)
       if (s.y < canvas.height * 0.3) {
         alpha = 0.2;
         speed *= 0.5;
         lengthFactor = 1;
       }
 
-      // 🚀 CENTRO (túnel)
       else if (s.y < canvas.height * 0.7) {
         alpha = 0.9;
         speed *= 1.6;
         lengthFactor = 4;
       }
 
-      // 🌌 ABAJO (suave igual que arriba)
       else {
         alpha = 0.2;
         speed *= 0.5;
@@ -272,18 +252,14 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (s.depth > 0.5) {
-
         const length = speed * lengthFactor;
-
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
         ctx.lineTo(s.x + length, s.y);
         ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
         ctx.lineWidth = s.depth * 2;
         ctx.stroke();
-
       } else {
-
         ctx.beginPath();
         ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${alpha})`;
@@ -301,10 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     requestAnimationFrame(draw);
   }
-
-  window.addEventListener("scroll", () => {
-    warp = 1 + window.scrollY / 150;
-  });
 
   resize();
   createStars();
