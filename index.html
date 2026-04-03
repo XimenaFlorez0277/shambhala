@@ -1,4 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shambhala Saga</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 6vh;
+  overflow: hidden;
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* 🚀 NAVE */
+.hero img {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(110vw, 1100px);
+  z-index: 2;
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -52%) translateY(-10px); }
+}
+
+/* 🔵 MOTOR */
+.engine-glow {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(110vw, 1100px);
+  z-index: 1;
+}
+
+.engine-glow::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  top: 52%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #00aaff, transparent 70%);
+  filter: blur(25px);
+}
+
+/* TEXTO */
+.content {
+  position: relative;
+  z-index: 4;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 6px;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.6),
+    0 0 40px rgba(0,150,255,0.7);
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 25px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .hero img {
+    width: 120vw;
+    top: 52%;
+  }
+  h1 { font-size: 2rem; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+  <div class="engine-glow"></div>
+
+  <img src="images/hero.jpg" id="ship">
+
+  <canvas id="stars"></canvas>
+
+  <div class="content">
+    <h1>SHAMBHALA SAGA</h1>
+
+    <p>
+      Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
+    </p>
+
+    <div class="buttons">
+      <a href="#">Explorar</a>
+      <a href="#">Personajes</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
 document.addEventListener("DOMContentLoaded", () => {
+
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
 
@@ -8,94 +150,99 @@ document.addEventListener("DOMContentLoaded", () => {
   function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    createStars();
   }
 
   function createStars() {
     stars = [];
-    // Aumentamos el número para una sensación más rica
-    for (let i = 0; i < 1500; i++) {
-      const z = Math.random(); // Profundidad (0 al fondo, 1 al frente)
+
+    for (let i = 0; i < 900; i++) {
+
+      const depth = Math.random();
+
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        z: z,
-        // Velocidad base que depende de la profundidad
-        speed: (z * 12) + 0.5, 
-        o: Math.random(), // Opacidad inicial
-        hue: z > 0.85 ? 195 : (z < 0.2 ? 30 : 0) // Cromatismo sutil
+        depth: depth,
+        speed: depth * 5 + 0.5
       });
     }
   }
 
   function draw() {
-    // 🔥 EFECTO CINEMÁTICO 1: Motion Blur (Rastro)
-    // Usamos un fondo negro casi transparente para que las estrellas dejen rastro
-    ctx.fillStyle = "rgba(0, 0, 0, 0.2)"; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    const baseWarp = warp;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     stars.forEach(s => {
-      // Cálculo de velocidad final
-      let finalSpeed = s.speed * baseWarp;
 
-      // 🔥 EFECTO 2: Zonas de Seguridad para el Texto y la Nave
-      // (Asegurar que las estrellas no interfieran excesivamente con el texto o el centro de la nave)
-      const textZoneUpper = canvas.height * 0.20;
-      const shipZoneUpper = canvas.height * 0.45;
-      const shipZoneLower = canvas.height * 0.65;
+      let speed = s.speed * warp;
+      let alpha = 1;
+      let lengthFactor = 3;
 
-      // Suavizar la intensidad en zonas críticas
-      if (s.y < textZoneUpper || (s.y > shipZoneUpper && s.y < shipZoneLower)) {
-        finalSpeed *= 0.6; // Reducimos la velocidad para limpiar
+      // 🔥 PARTE SUPERIOR → suave (pero visible)
+      if (s.y < canvas.height * 0.25) {
+        alpha = 0.25;
+        speed *= 0.4;
+        lengthFactor = 1;
       }
 
-      // Actualizar posición (movimiento lateral de derecha a izquierda)
-      s.x -= finalSpeed;
+      // 🔥 ZONA MEDIA (nave)
+      else if (s.y < canvas.height * 0.6) {
+        alpha = 0.5;
+        lengthFactor = 2;
+      }
 
-      // Reiniciar estrella si sale de la pantalla
-      if (s.x < -100) { // Un poco más allá del borde para suavizar la entrada
-        s.x = canvas.width + 100;
+      // 🔥 ABAJO → velocidad fuerte
+      else {
+        alpha = 1;
+        lengthFactor = 4;
+      }
+
+      if (s.depth > 0.5) {
+
+        const length = speed * lengthFactor;
+
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x + length, s.y);
+        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+        ctx.lineWidth = s.depth * 2;
+        ctx.stroke();
+
+      } else {
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fill();
+      }
+
+      s.x -= speed;
+
+      if (s.x < 0) {
+        s.x = canvas.width;
         s.y = Math.random() * canvas.height;
       }
 
-      // 🔥 EFECTO 3: Profundidad y Color (Look de Película)
-      // Definir color con HSLA para variaciones sutiles (azul frío, naranja cálido o blanco)
-      const color = s.hue === 0 
-        ? `rgba(255, 255, 255, ${s.o})` 
-        : `hsla(${s.hue}, 80%, 80%, ${s.o})`;
-
-      // 🔥 EFECTO 4: Estelas de Velocidad (Cuando haces scroll)
-      ctx.beginPath();
-      
-      if (baseWarp > 1.8) {
-        // Modo "Hipervelocidad" (estelas largas)
-        const length = finalSpeed * (1 - s.z) * 10; // Longitud basada en profundidad y warp
-        ctx.moveTo(s.x, s.y);
-        ctx.lineTo(s.x + length, s.y);
-        ctx.strokeStyle = color;
-        ctx.lineWidth = (s.z * 1.5) + 0.5; // Grosor basado en profundidad
-        ctx.stroke();
-      } else {
-        // Modo Normal: Puntos con brillo sutil
-        const size = (s.z * 1.5) + 0.5;
-        ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.fill();
-      }
     });
 
     requestAnimationFrame(draw);
   }
 
   window.addEventListener("scroll", () => {
-    // El scroll acelera el efecto de barrido lateral
-    warp = 1 + window.scrollY / 200;
+    warp = 1 + window.scrollY / 150;
   });
 
-  window.addEventListener("resize", resize);
-
   resize();
+  createStars();
   draw();
+
+  window.addEventListener("resize", () => {
+    resize();
+    createStars();
+  });
+
 });
+
+</script>
+
+</body>
+</html>
