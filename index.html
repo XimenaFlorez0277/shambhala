@@ -73,10 +73,11 @@ p {
   margin-bottom: 40px;
 }
 
-/* BOTONES */
+/* BOTONES SCI-FI */
 .buttons {
   display: flex;
   gap: 20px;
+  justify-content: center;
 }
 
 .btn {
@@ -96,6 +97,44 @@ p {
     inset 0 0 15px rgba(0,170,255,0.1);
 }
 
+/* pulso */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0,170,255,0.3);
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+
+/* scan */
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0,170,255,0.8),
+    transparent
+  );
+  top: 0;
+  left: -100%;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* hover */
 .btn:hover {
   color: #00aaff;
   border-color: #00aaff;
@@ -132,7 +171,7 @@ p {
 
 <script>
 
-/* 🌌 ESTRELLAS */
+/* ESTRELLAS */
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
@@ -190,7 +229,7 @@ window.addEventListener("resize", () => {
   createStars();
 });
 
-/* 🚀 WARP + TRANSICIÓN */
+/* WARP + TRANSICIÓN */
 const btn = document.getElementById("exploreBtn");
 const ship = document.getElementById("ship");
 
@@ -199,7 +238,6 @@ btn.addEventListener("click", (e) => {
 
   warpTarget = 25;
 
-  // vibración nave
   let i = 0;
   const vib = setInterval(() => {
     ship.style.transform =
@@ -208,7 +246,6 @@ btn.addEventListener("click", (e) => {
     if (i > 25) clearInterval(vib);
   }, 30);
 
-  // ⏳ pausa cinematográfica
   setTimeout(() => {
     window.location.href = "explorar.html";
   }, 1200);
