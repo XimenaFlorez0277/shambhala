@@ -177,18 +177,25 @@ document.addEventListener("DOMContentLoaded", () => {
     let alpha = 1;
     let lengthFactor = 3;
 
-    // 🌌 ARRIBA → suave (se queda igual)
+    // 🌌 ARRIBA (suave)
     if (s.y < canvas.height * 0.3) {
       alpha = 0.2;
       speed *= 0.5;
       lengthFactor = 1;
     }
 
-    // 🚀 MEDIO + ABAJO → IGUALES (CLAVE)
-    else {
-      alpha = 0.8;
-      speed *= 1.4;
+    // 🚀 CENTRO (velocidad)
+    else if (s.y < canvas.height * 0.7) {
+      alpha = 0.9;
+      speed *= 1.6;
       lengthFactor = 4;
+    }
+
+    // 🌌 ABAJO (igual que arriba)
+    else {
+      alpha = 0.2;
+      speed *= 0.5;
+      lengthFactor = 1;
     }
 
     if (s.depth > 0.5) {
