@@ -29,15 +29,13 @@ body {
   overflow: hidden;
 }
 
-/* CANVAS */
-canvas {
+/* 🌌 ESTRELLAS (DELANTE DE TODO) */
+#stars {
   position: absolute;
   inset: 0;
+  z-index: 3;
   pointer-events: none;
 }
-
-#starsBack { z-index: 0; }
-#starsFront { z-index: 3; }
 
 /* 🚀 NAVE */
 .hero img {
@@ -54,7 +52,6 @@ canvas {
     drift 6s ease-in-out infinite 2s;
 }
 
-/* entrada */
 @keyframes shipEntry {
   from {
     opacity: 0;
@@ -66,9 +63,8 @@ canvas {
   }
 }
 
-/* movimiento sutil */
 @keyframes drift {
-  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
   50% { transform: translate(-50%, -52%) translateY(-10px); }
 }
 
@@ -141,7 +137,6 @@ p {
   margin-bottom: 40px;
 }
 
-/* botones */
 .buttons a {
   display: inline-block;
   margin: 10px;
@@ -166,7 +161,7 @@ p {
   h1 { font-size: 2rem; }
 }
 
-/* SECCIÓN SIGUIENTE (para scroll cinematico) */
+/* siguiente sección */
 .next {
   height: 120vh;
   background: radial-gradient(circle at top, #020617, black);
@@ -179,13 +174,12 @@ p {
 
 <div class="hero">
 
-  <canvas id="starsBack"></canvas>
-  <canvas id="starsFront"></canvas>
-
   <div class="overlay"></div>
   <div class="engine-glow"></div>
 
   <img src="images/hero.jpg">
+
+  <canvas id="stars"></canvas>
 
   <div class="content">
     <h1>SHAMBHALA SAGA</h1>
@@ -200,77 +194,63 @@ p {
 
 <div class="next"></div>
 
-<!-- 🔊 AUDIO -->
-<audio id="ambience" loop>
-  <source src="space.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 
-/* 🎧 sonido */
-window.addEventListener("click", () => {
-  document.getElementById("ambience").play();
-}, { once: true });
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
 
-/* 🌌 estrellas con warp */
-function createLayer(canvas, speedFactor) {
-  const ctx = canvas.getContext("2d");
-  let stars = [];
-  let warp = 1;
+let stars = [];
+let warp = 1;
 
-  function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-  }
-
-  function init() {
-    stars = [];
-    for (let i = 0; i < 400; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 1.5,
-        speed: (Math.random() * 2 + 0.5) * speedFactor
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    stars.forEach(s => {
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-
-      s.x -= s.speed * warp;
-
-      if (s.x < 0) {
-        s.x = canvas.width;
-        s.y = Math.random() * canvas.height;
-      }
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener("scroll", () => {
-    warp = 1 + window.scrollY / 300; /* 🔥 efecto warp */
-  });
-
-  resize();
-  init();
-  draw();
-
-  window.addEventListener("resize", () => {
-    resize();
-    init();
-  });
+function resize() {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 }
 
-createLayer(document.getElementById("starsBack"), 0.5);
-createLayer(document.getElementById("starsFront"), 1.5);
+function createStars() {
+  stars = [];
+  for (let i = 0; i < 700; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2,
+      speed: Math.random() * 3 + 0.5
+    });
+  }
+}
+
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  stars.forEach(s => {
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+
+    s.x -= s.speed * warp;
+
+    if (s.x < 0) {
+      s.x = canvas.width;
+      s.y = Math.random() * canvas.height;
+    }
+  });
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener("scroll", () => {
+  warp = 1 + window.scrollY / 300;
+});
+
+resize();
+createStars();
+draw();
+
+window.addEventListener("resize", () => {
+  resize();
+  createStars();
+});
 
 </script>
 
