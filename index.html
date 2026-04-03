@@ -29,7 +29,7 @@ body {
   overflow: hidden;
 }
 
-/* 🌌 ESTRELLAS */
+/* ESTRELLAS */
 #stars {
   position: absolute;
   inset: 0;
@@ -45,20 +45,9 @@ body {
   transform: translate(-50%, -50%);
   width: min(110vw, 1100px);
   z-index: 2;
-  opacity: 0;
 }
 
-/* 🔵 GLOW */
-.engine-glow {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(110vw, 1100px);
-  z-index: 1;
-}
-
-/* overlay dinámico */
+/* overlay */
 .overlay {
   position: absolute;
   inset: 0;
@@ -79,7 +68,6 @@ h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   letter-spacing: 6px;
-  color: white;
 }
 
 p {
@@ -87,7 +75,7 @@ p {
   margin-bottom: 40px;
 }
 
-/* botones */
+/* BOTONES */
 .buttons a {
   display: inline-block;
   margin: 10px;
@@ -97,7 +85,6 @@ p {
   text-decoration: none;
 }
 
-/* 📱 MOBILE */
 @media (max-width: 768px) {
   .hero img {
     width: 120vw;
@@ -114,7 +101,6 @@ p {
 <div class="hero">
 
   <div class="overlay" id="overlay"></div>
-  <div class="engine-glow"></div>
 
   <img src="images/hero.jpg" id="ship">
 
@@ -152,14 +138,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createStars() {
     stars = [];
-    for (let i = 0; i < 1000; i++) {
+
+    for (let i = 0; i < 900; i++) {
+
       const depth = Math.random();
 
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
+        depth: depth,
         size: depth * 2 + 0.3,
-        baseSpeed: depth * 4 + 0.5
+        baseSpeed: depth * 3 + 0.5
       });
     }
   }
@@ -171,7 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const speed = s.baseSpeed * warp;
 
-      const stretch = speed * 2;
+      // 🔥 ESTIRAMIENTO REAL (warp visible)
+      const stretch = Math.min(speed * 3, 20);
 
       ctx.beginPath();
       ctx.moveTo(s.x, s.y);
@@ -192,17 +182,16 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(draw);
   }
 
-  /* 🎬 SCROLL = WARP REAL */
   window.addEventListener("scroll", () => {
 
     warp = 1 + window.scrollY / 150;
 
-    /* 🚀 nave empuje */
-    const offset = Math.min(warp * 5, 20);
+    // 🚀 nave empuje (SIN romper centrado)
+    const offset = Math.min(warp * 4, 20);
     ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
 
-    /* 🌌 espacio más oscuro */
-    const darkness = Math.min(warp * 0.15, 0.6);
+    // 🌌 oscurecer espacio
+    const darkness = Math.min(warp * 0.2, 0.6);
     overlay.style.background = `rgba(0,0,0,${darkness})`;
 
   });
