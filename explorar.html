@@ -14,6 +14,23 @@ body {
   background: black;
   color: white;
   font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+
+  /* empieza oscuro */
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+/* cuando carga */
+body.loaded {
+  opacity: 1;
+}
+
+/* 🌌 FONDO ESTRELLAS SUAVE */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
 }
 
 /* HERO */
@@ -23,6 +40,8 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 0 10%;
+  position: relative;
+  z-index: 1;
 }
 
 /* TÍTULO */
@@ -46,6 +65,8 @@ p {
 .section {
   padding: 120px 10%;
   border-top: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  z-index: 1;
 }
 
 /* BLOQUES */
@@ -68,6 +89,8 @@ p {
 </head>
 
 <body>
+
+<canvas id="stars"></canvas>
 
 <section class="hero">
   <h1>EXPLORAR EL UNIVERSO</h1>
@@ -105,6 +128,68 @@ p {
   </div>
 
 </section>
+
+<script>
+
+/* 🎬 FADE IN */
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
+
+/* 🌌 ESTRELLAS SUAVES */
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+let stars = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function createStars() {
+  stars = [];
+  for (let i = 0; i < 200; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      speed: Math.random() * 0.3 + 0.1
+    });
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach(s => {
+
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "white";
+    ctx.fill();
+
+    s.x -= s.speed;
+
+    if (s.x < 0) {
+      s.x = canvas.width;
+      s.y = Math.random() * canvas.height;
+    }
+
+  });
+
+  requestAnimationFrame(draw);
+}
+
+resize();
+createStars();
+draw();
+
+window.addEventListener("resize", () => {
+  resize();
+  createStars();
+});
+
+</script>
 
 </body>
 </html>
