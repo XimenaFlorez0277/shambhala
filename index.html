@@ -70,12 +70,6 @@ body {
   height: 80px;
   background: radial-gradient(circle, #00aaff, transparent 70%);
   filter: blur(25px);
-  animation: pulse 2s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%,100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.8); opacity: 1; }
 }
 
 /* TEXTO */
@@ -107,14 +101,6 @@ p {
   text-decoration: none;
 }
 
-@media (max-width: 768px) {
-  .hero img {
-    width: 120vw;
-    top: 52%;
-  }
-  h1 { font-size: 2rem; }
-}
-
 </style>
 </head>
 
@@ -130,11 +116,9 @@ p {
 
   <div class="content">
     <h1>SHAMBHALA SAGA</h1>
-
     <p>
       Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
     </p>
-
     <div class="buttons">
       <a href="#">Explorar</a>
       <a href="#">Personajes</a>
@@ -149,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
-  const ship = document.getElementById("ship");
 
   let stars = [];
   let warp = 1;
@@ -162,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function createStars() {
     stars = [];
 
-    for (let i = 0; i < 1500; i++) {
+    for (let i = 0; i < 1000; i++) {
 
       const depth = Math.random();
 
@@ -170,10 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: depth * 2 + 0.2,
-        baseSpeed: depth * 6 + 1,
-        depth: depth,
-        tilt: (Math.random() - 0.5) * 0.8,
-        brightness: 0.5 + Math.random() * 0.5
+        baseSpeed: depth * 5 + 0.8,
+        depth: depth
       });
     }
   }
@@ -185,26 +166,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const speed = s.baseSpeed * warp;
 
-      if (s.depth > 0.3) {
+      if (s.depth > 0.5) {
 
-        const length = speed * (3 + Math.random() * 3);
+        // 🔥 líneas limpias (SIN caos)
+        const length = speed * 3;
 
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
-
-        ctx.quadraticCurveTo(
-          s.x + length * 0.5,
-          s.y + s.tilt * length * 0.5,
-          s.x + length,
-          s.y + s.tilt * length
-        );
-
-        ctx.strokeStyle = `rgba(255,255,255,${s.brightness})`;
+        ctx.lineTo(s.x + length, s.y);
+        ctx.strokeStyle = "white";
         ctx.lineWidth = s.size;
         ctx.stroke();
 
       } else {
 
+        // profundidad
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size * 0.6, 0, Math.PI * 2);
         ctx.fillStyle = "white";
@@ -224,10 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", () => {
-    warp = 1 + window.scrollY / 120;
-
-    const offset = Math.min(warp * 8, 30);
-    ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
+    warp = 1 + window.scrollY / 140;
   });
 
   resize();
