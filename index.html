@@ -5,30 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shambhala Saga</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
 <style>
-
 body {
   margin: 0;
   background: black;
   color: white;
-  font-family: 'Inter', sans-serif;
   overflow: hidden;
 }
 
 /* HERO */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
   position: relative;
-  text-align: center;
 }
 
 /* CANVAS */
 #stars {
   position: absolute;
   inset: 0;
-  z-index: 2;
 }
 
 /* NAVE */
@@ -36,31 +30,19 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: min(110vw, 1100px);
+  width: 800px;
   transform: translate(-50%, -50%);
-  z-index: 1;
-  transition: transform 0.2s;
+  transition: 0.2s;
 }
 
-/* TEXTO */
-.content {
-  position: relative;
-  z-index: 3;
-  padding-top: 80px;
-}
-
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 4rem;
-  letter-spacing: 6px;
-  text-shadow: 0 0 40px #00aaff;
-}
-
-/* BOTONES */
-.btn {
+/* BOTÓN */
+#exploreBtn {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 12px 25px;
-  border: 1px solid #00aaff;
-  margin: 10px;
+  border: 1px solid cyan;
   cursor: pointer;
 }
 
@@ -70,8 +52,7 @@ h1 {
   inset: 0;
   background: white;
   opacity: 0;
-  z-index: 10;
-  transition: opacity 0.4s;
+  transition: 0.4s;
 }
 
 .flash.active {
@@ -80,14 +61,12 @@ h1 {
 
 /* SHAKE */
 .shake {
-  animation: shake 0.2s infinite;
+  animation: shake 0.15s infinite;
 }
 
 @keyframes shake {
   0% { transform: translate(0,0); }
-  25% { transform: translate(3px,-3px); }
-  50% { transform: translate(-3px,3px); }
-  75% { transform: translate(3px,3px); }
+  50% { transform: translate(3px,-3px); }
   100% { transform: translate(0,0); }
 }
 
@@ -102,23 +81,15 @@ h1 {
 
   <canvas id="stars"></canvas>
 
-  <div class="content">
-    <h1>SHAMBHALA SAGA</h1>
-    <p>Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.</p>
-
-    <div>
-      <button class="btn" id="exploreBtn">Explorar el universo</button>
-    </div>
-  </div>
+  <button id="exploreBtn">Explorar</button>
 
 </div>
 
 <div class="flash" id="flash"></div>
 
-<audio id="warpSound" src="https://assets.mixkit.co/active_storage/sfx/2993/2993-preview.mp3"></audio>
-
 <script>
 
+/* 🌌 ESTRELLAS */
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
@@ -133,11 +104,11 @@ function resize() {
 
 function createStars() {
   stars = [];
-  for (let i = 0; i < 800; i++) {
+  for (let i = 0; i < 500; i++) {
     stars.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      speed: Math.random() * 4 + 0.5
+      speed: Math.random() * 4 + 1
     });
   }
 }
@@ -145,10 +116,9 @@ function createStars() {
 function draw() {
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  warp += (targetWarp - warp) * 0.07;
+  warp += (targetWarp - warp) * 0.08;
 
   stars.forEach(s => {
-
     const speed = s.speed * warp;
 
     ctx.beginPath();
@@ -163,7 +133,6 @@ function draw() {
       s.x = canvas.width;
       s.y = Math.random() * canvas.height;
     }
-
   });
 
   requestAnimationFrame(draw);
@@ -173,30 +142,24 @@ resize();
 createStars();
 draw();
 
-window.addEventListener("resize", () => {
-  resize();
-  createStars();
-});
-
-/* 🚀 EVENTO CINE TOTAL */
+/* 🚀 EVENTO */
 const btn = document.getElementById("exploreBtn");
 const ship = document.getElementById("ship");
 const flash = document.getElementById("flash");
 const hero = document.getElementById("hero");
-const sound = document.getElementById("warpSound");
 
-btn.addEventListener("click", () => {
+btn.onclick = () => {
 
-  sound.play();
+  console.log("CLICK DETECTADO"); // 🔥 DEBUG
 
-  targetWarp = 30;
+  targetWarp = 25;
 
   hero.classList.add("shake");
 
   let i = 0;
   const vib = setInterval(() => {
     ship.style.transform =
-      `translate(-50%, -50%) translate(${Math.random()*6-3}px, ${Math.random()*6-3}px) scale(1.05)`;
+      `translate(-50%, -50%) translate(${Math.random()*6-3}px, ${Math.random()*6-3}px)`;
     i++;
     if (i > 20) clearInterval(vib);
   }, 30);
@@ -205,11 +168,7 @@ btn.addEventListener("click", () => {
     flash.classList.add("active");
   }, 800);
 
-  setTimeout(() => {
-    window.location.href = "#"; // siguiente sección
-  }, 1200);
-
-});
+};
 
 </script>
 
