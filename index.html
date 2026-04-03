@@ -19,28 +19,43 @@
     /* HERO */
     .hero {
       height: 100vh;
-
-      /* 🔥 CLAVE: mostrar nave completa */
-      background: url('images/hero.jpg') center bottom / contain no-repeat;
-
-      background-color: black; /* relleno */
-
       position: relative;
 
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
       text-align: center;
 
       padding-top: 60px;
     }
 
+    /* ⭐ ESTRELLAS */
     #starsCanvas {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 0;
     }
 
+    /* 🚀 NAVE */
+    .hero img {
+      position: absolute;
+      bottom: 0;
+
+      left: 50%;
+      transform: translate(-50%, 8%); /* 🔥 SUBIDA PERFECTA */
+
+      width: 100%;
+      height: auto;
+
+      max-height: 80vh;
+      object-fit: contain;
+
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* overlay */
     .overlay {
       position: absolute;
       inset: 0;
@@ -52,11 +67,24 @@
       z-index: 2;
     }
 
+    /* contenido */
     .content {
       position: relative;
       z-index: 3;
       max-width: 900px;
       padding: 0 20px;
+      animation: fadeUp 1.5s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h1 {
@@ -92,15 +120,11 @@
       border-color: #00aaff;
     }
 
-    /* 📱 RESPONSIVE */
+    /* 📱 MOBILE */
     @media (max-width: 768px) {
 
-      .hero {
-        padding-top: 40px;
-      }
-
       h1 {
-        font-size: 2.2rem;
+        font-size: 2rem;
         letter-spacing: 3px;
       }
 
@@ -108,9 +132,9 @@
         font-size: 1rem;
       }
 
-      .buttons a {
-        padding: 10px 18px;
-        font-size: 0.9rem;
+      .hero img {
+        max-height: 65vh;
+        transform: translate(-50%, 5%);
       }
 
     }
@@ -123,6 +147,10 @@
   <div class="hero">
 
     <canvas id="starsCanvas"></canvas>
+
+    <!-- 🚀 NAVE -->
+    <img src="images/hero.jpg" alt="Nave Shambhala">
+
     <div class="overlay"></div>
 
     <div class="content">
