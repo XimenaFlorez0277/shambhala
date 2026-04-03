@@ -25,6 +25,7 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding-top: 6vh;
 }
 
 /* ESTRELLAS */
@@ -32,6 +33,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 3;
+  pointer-events: none;
 }
 
 /* NAVE */
@@ -48,38 +50,98 @@ body {
 .content {
   position: relative;
   z-index: 4;
-  margin-top: 80px;
 }
 
 h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   letter-spacing: 6px;
-  text-shadow: 0 0 60px #00aaff;
+  text-shadow:
+    0 0 15px rgba(255,255,255,0.7),
+    0 0 60px rgba(0,150,255,0.8);
 }
 
 p {
   margin-bottom: 40px;
 }
 
-/* BOTONES */
-.btn {
-  padding: 14px 30px;
-  border: 1px solid #00aaff;
-  text-decoration: none;
-  color: white;
-  margin: 10px;
-  cursor: pointer;
+/* 🔥 BOTONES SCI-FI */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
-/* 💡 TRANSICIÓN */
+.btn {
+  position: relative;
+  padding: 14px 30px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 2px;
+  border: 1px solid rgba(0,170,255,0.5);
+  background: rgba(0,0,0,0.4);
+  overflow: hidden;
+  transition: 0.3s;
+
+  box-shadow:
+    0 0 10px rgba(0,170,255,0.4),
+    inset 0 0 15px rgba(0,170,255,0.1);
+}
+
+/* pulso */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(0,170,255,0.3);
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+
+/* scan */
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0,170,255,0.8),
+    transparent
+  );
+  top: 0;
+  left: -100%;
+  animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* hover */
+.btn:hover {
+  color: #00aaff;
+  border-color: #00aaff;
+  box-shadow:
+    0 0 20px rgba(0,170,255,1),
+    0 0 60px rgba(0,170,255,0.7);
+}
+
+/* 🌑 TRANSICIÓN NEGRA */
 .transition {
   position: fixed;
   inset: 0;
-  background: white;
+  background: black;
   opacity: 0;
-  z-index: 10;
   pointer-events: none;
+  z-index: 10;
   transition: opacity 1s ease;
 }
 
@@ -101,12 +163,18 @@ p {
   <div class="content">
     <h1>SHAMBHALA SAGA</h1>
 
-    <p>Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.</p>
+    <p>
+      Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
+    </p>
 
-    <a href="explorar.html" class="btn" id="exploreBtn">
-      Explorar el universo
-    </a>
-
+    <div class="buttons">
+      <a href="explorar.html" class="btn" id="exploreBtn">
+        Explorar el universo
+      </a>
+      <a href="#" class="btn">
+        Personajes
+      </a>
+    </div>
   </div>
 
 </div>
@@ -168,7 +236,7 @@ resize();
 createStars();
 draw();
 
-/* 🚀 TRANSICIÓN SUAVE */
+/* 🚀 TRANSICIÓN FINAL */
 const btn = document.getElementById("exploreBtn");
 const ship = document.getElementById("ship");
 const transition = document.getElementById("transition");
@@ -178,21 +246,21 @@ btn.addEventListener("click", (e) => {
 
   warpTarget = 20;
 
-  // vibración
+  // vibración nave
   let i = 0;
   const vib = setInterval(() => {
     ship.style.transform =
-      `translate(-50%, -50%) translate(${Math.random()*6-3}px, ${Math.random()*6-3}px)`;
+      `translate(-50%, -50%) translate(${Math.random()*6-3}px, ${Math.random()*6-3}px) scale(1.05)`;
     i++;
-    if (i > 20) clearInterval(vib);
+    if (i > 25) clearInterval(vib);
   }, 30);
 
-  // 💡 fade suave
+  // fade negro (más natural)
   setTimeout(() => {
     transition.classList.add("active");
   }, 800);
 
-  // 🌌 navegación
+  // navegación
   setTimeout(() => {
     window.location.href = "explorar.html";
   }, 1500);
