@@ -93,7 +93,7 @@ p {
   margin-bottom: 40px;
 }
 
-/* 🔥 BOTONES */
+/* 🔥 BOTONES MEJORADOS */
 .buttons {
   display: flex;
   gap: 20px;
@@ -104,26 +104,48 @@ p {
   position: relative;
   padding: 14px 30px;
   text-decoration: none;
-  color: white;
+  color: rgba(255,255,255,0.9);
   font-size: 0.9rem;
   letter-spacing: 2px;
-  border: 1px solid rgba(255,255,255,0.4);
-  overflow: hidden;
+
+  border: 1px solid rgba(255,255,255,0.25);
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05),
+    rgba(0,0,0,0.2)
+  );
+
+  backdrop-filter: blur(4px);
+
   transition: all 0.3s ease;
+
+  /* 🔥 glow leve SIEMPRE */
+  box-shadow:
+    0 0 6px rgba(255,255,255,0.1),
+    inset 0 0 10px rgba(255,255,255,0.05);
 }
 
+/* ✨ línea energética interna */
 .btn::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(0,170,255,0.6), transparent);
-  opacity: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0,170,255,0.5),
+    transparent
+  );
+  opacity: 0.2;
   transition: 0.4s;
 }
 
+/* 🚀 hover (más potente, como ya tienes) */
 .btn:hover {
-  border-color: #00aaff;
   color: #00aaff;
+  border-color: #00aaff;
+
   box-shadow:
     0 0 10px rgba(0,170,255,0.6),
     0 0 30px rgba(0,170,255,0.3);
@@ -133,12 +155,23 @@ p {
   opacity: 1;
 }
 
+/* 🔹 botón principal ligeramente destacado */
 .btn.primary {
-  background: rgba(0,170,255,0.05);
+  background: linear-gradient(
+    to bottom,
+    rgba(0,170,255,0.12),
+    rgba(0,0,0,0.3)
+  );
+
+  border-color: rgba(0,170,255,0.4);
+
+  box-shadow:
+    0 0 8px rgba(0,170,255,0.2);
 }
 
+/* 🔹 secundario más discreto */
 .btn.secondary {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 /* 📱 MOBILE */
