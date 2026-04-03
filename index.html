@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function draw() {
+ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   stars.forEach(s => {
@@ -177,24 +177,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let alpha = 1;
     let lengthFactor = 2;
 
-    // 🔥 ARRIBA → suave
+    // 🌌 ARRIBA → elegante
     if (s.y < canvas.height * 0.3) {
       alpha = 0.2;
       speed *= 0.5;
       lengthFactor = 1;
     }
 
-    // 🔥 MEDIO → normal
+    // 🚀 CENTRO → balance
     else if (s.y < canvas.height * 0.6) {
       alpha = 0.5;
       lengthFactor = 2;
     }
 
-    // 🔥 ABAJO → velocidad fuerte (CLAVE)
+    // ⚡ ABAJO → BOOST REAL (CLAVE)
     else {
       alpha = 1;
-      speed *= 1.8;
-      lengthFactor = 5;
+      speed *= 2.2;          // 🔥 MÁS VELOCIDAD
+      lengthFactor = 7;      // 🔥 MÁS LONGITUD
     }
 
     if (s.depth > 0.5) {
