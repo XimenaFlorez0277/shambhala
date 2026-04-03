@@ -29,7 +29,7 @@ body {
   overflow: hidden;
 }
 
-/* ESTRELLAS */
+/* 🌌 ESTRELLAS */
 #stars {
   position: absolute;
   inset: 0;
@@ -53,7 +53,6 @@ body {
   inset: 0;
   background: rgba(0,0,0,0.2);
   z-index: 1;
-  transition: background 0.2s;
 }
 
 /* TEXTO */
@@ -100,7 +99,7 @@ p {
 
 <div class="hero">
 
-  <div class="overlay" id="overlay"></div>
+  <div class="overlay"></div>
 
   <img src="images/hero.jpg" id="ship">
 
@@ -127,8 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
-  const ship = document.getElementById("ship");
-  const overlay = document.getElementById("overlay");
 
   let stars = [];
   let warp = 1;
@@ -141,47 +138,52 @@ document.addEventListener("DOMContentLoaded", () => {
   function createStars() {
     stars = [];
 
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 900; i++) {
+
+      const depth = Math.random();
+
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        z: Math.random() * canvas.width
+        size: depth * 2 + 0.3,
+        baseSpeed: depth * 4 + 0.5,
+        depth: depth
       });
     }
   }
 
   function draw() {
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     stars.forEach(s => {
 
-      s.z -= warp * 6;
+      const speed = s.baseSpeed * warp;
 
-      if (s.z <= 0) {
-        s.x = Math.random() * canvas.width;
-        s.y = Math.random() * canvas.height;
-        s.z = canvas.width;
+      // 🔥 motion blur solo en estrellas cercanas
+      if (s.depth > 0.6) {
+
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x + speed * 3, s.y);
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = s.size;
+        ctx.stroke();
+
+      } else {
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+
       }
 
-      const k = 128 / s.z;
-      const px = (s.x - cx) * k + cx;
-      const py = (s.y - cy) * k + cy;
+      s.x -= speed;
 
-      const dx = px - cx;
-      const dy = py - cy;
-
-      const length = warp * 8;
-
-      ctx.beginPath();
-      ctx.moveTo(px, py);
-      ctx.lineTo(px + dx * 0.03 * length, py + dy * 0.03 * length);
-      ctx.strokeStyle = "white";
-      ctx.lineWidth = (1 - s.z / canvas.width) * 2;
-      ctx.stroke();
+      if (s.x < 0) {
+        s.x = canvas.width;
+        s.y = Math.random() * canvas.height;
+      }
 
     });
 
@@ -189,17 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", () => {
-
-    warp = 1 + window.scrollY / 120;
-
-    // 🚀 nave empuje
-    const offset = Math.min(warp * 5, 25);
-    ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
-
-    // 🌑 oscurecer
-    const darkness = Math.min(warp * 0.25, 0.7);
-    overlay.style.background = `rgba(0,0,0,${darkness})`;
-
+    warp = 1 + window.scrollY / 200;
   });
 
   resize();
