@@ -43,7 +43,6 @@ body {
   transform: translate(-50%, -50%);
   width: min(110vw, 1100px);
   z-index: 2;
-
   animation: drift 6s ease-in-out infinite;
 }
 
@@ -76,7 +75,7 @@ body {
 
 @keyframes pulse {
   0%,100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.6); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 1; }
 }
 
 /* overlay */
@@ -97,7 +96,6 @@ h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   letter-spacing: 6px;
-
   text-shadow:
     0 0 10px rgba(255,255,255,0.6),
     0 0 40px rgba(0,150,255,0.7);
@@ -173,17 +171,17 @@ document.addEventListener("DOMContentLoaded", () => {
   function createStars() {
     stars = [];
 
-    for (let i = 0; i < 1200; i++) { // 🔥 MÁS ESTRELLAS
+    for (let i = 0; i < 1500; i++) { // 🔥 MUCHAS MÁS
 
       const depth = Math.random();
 
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: depth * 2 + 0.3,
-        baseSpeed: depth * 5 + 0.8, // 🔥 MÁS VELOCIDAD
+        size: depth * 2 + 0.2,
+        baseSpeed: depth * 6 + 1, // 🔥 MÁS RÁPIDO
         depth: depth,
-        tilt: (Math.random() - 0.5) * 0.5
+        tilt: (Math.random() - 0.5) * 0.6
       });
     }
   }
@@ -195,13 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const speed = s.baseSpeed * warp;
 
-      // 🔥 MÁS ESTRELLAS EN FORMA DE RAYA
-      if (s.depth > 0.4) {
+      if (s.depth > 0.3) {
 
+        // 🔥 RAYAS MUCHO MÁS LARGAS
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
         ctx.lineTo(
-          s.x + speed * 4, // 🔥 MÁS LARGO
+          s.x + speed * 6, // 🔥 CLAVE
           s.y + s.tilt * speed
         );
         ctx.strokeStyle = "white";
@@ -211,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
 
         ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size * 0.7, 0, Math.PI * 2);
+        ctx.arc(s.x, s.y, s.size * 0.6, 0, Math.PI * 2);
         ctx.fillStyle = "white";
         ctx.fill();
       }
@@ -230,10 +228,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", () => {
 
-    warp = 1 + window.scrollY / 150;
+    warp = 1 + window.scrollY / 120; // 🔥 MÁS AGRESIVO
 
-    // 🚀 empuje nave
-    const offset = Math.min(warp * 6, 25);
+    const offset = Math.min(warp * 8, 30);
     ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
 
   });
