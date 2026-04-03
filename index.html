@@ -1,58 +1,101 @@
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById("stars");
+  const ctx = canvas.getContext("2d");
 
-  stars.forEach(s => {
+  let stars = [];
+  let warp = 1;
 
-    let speed = s.speed * warp;
-    let alpha = 1;
-    let lengthFactor = 3;
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    createStars();
+  }
 
-    // 🔥 ZONA SUPERIOR (texto) → suave, no desaparece
-    if (s.y < canvas.height * 0.25) {
-      alpha = 0.25;
-      speed *= 0.4;
-      lengthFactor = 1;
+  function createStars() {
+    stars = [];
+    // Aumentamos el número para una sensación más rica
+    for (let i = 0; i < 1500; i++) {
+      const z = Math.random(); // Profundidad (0 al fondo, 1 al frente)
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        z: z,
+        // Velocidad base que depende de la profundidad
+        speed: (z * 12) + 0.5, 
+        o: Math.random(), // Opacidad inicial
+        hue: z > 0.85 ? 195 : (z < 0.2 ? 30 : 0) // Cromatismo sutil
+      });
     }
+  }
 
-    // 🔥 ZONA MEDIA (nave) → más sutil
-    else if (s.y < canvas.height * 0.6) {
-      alpha = 0.5;
-      lengthFactor = 2;
-    }
+  function draw() {
+    // 🔥 EFECTO CINEMÁTICO 1: Motion Blur (Rastro)
+    // Usamos un fondo negro casi transparente para que las estrellas dejen rastro
+    ctx.fillStyle = "rgba(0, 0, 0, 0.2)"; 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // 🔥 ABAJO → máxima velocidad
-    else {
-      alpha = 1;
-      lengthFactor = 4;
-    }
+    const baseWarp = warp;
 
-    if (s.depth > 0.5) {
+    stars.forEach(s => {
+      // Cálculo de velocidad final
+      let finalSpeed = s.speed * baseWarp;
 
-      const length = speed * lengthFactor;
+      // 🔥 EFECTO 2: Zonas de Seguridad para el Texto y la Nave
+      // (Asegurar que las estrellas no interfieran excesivamente con el texto o el centro de la nave)
+      const textZoneUpper = canvas.height * 0.20;
+      const shipZoneUpper = canvas.height * 0.45;
+      const shipZoneLower = canvas.height * 0.65;
 
+      // Suavizar la intensidad en zonas críticas
+      if (s.y < textZoneUpper || (s.y > shipZoneUpper && s.y < shipZoneLower)) {
+        finalSpeed *= 0.6; // Reducimos la velocidad para limpiar
+      }
+
+      // Actualizar posición (movimiento lateral de derecha a izquierda)
+      s.x -= finalSpeed;
+
+      // Reiniciar estrella si sale de la pantalla
+      if (s.x < -100) { // Un poco más allá del borde para suavizar la entrada
+        s.x = canvas.width + 100;
+        s.y = Math.random() * canvas.height;
+      }
+
+      // 🔥 EFECTO 3: Profundidad y Color (Look de Película)
+      // Definir color con HSLA para variaciones sutiles (azul frío, naranja cálido o blanco)
+      const color = s.hue === 0 
+        ? `rgba(255, 255, 255, ${s.o})` 
+        : `hsla(${s.hue}, 80%, 80%, ${s.o})`;
+
+      // 🔥 EFECTO 4: Estelas de Velocidad (Cuando haces scroll)
       ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(s.x + length, s.y);
-      ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-      ctx.lineWidth = s.depth * 2;
-      ctx.stroke();
+      
+      if (baseWarp > 1.8) {
+        // Modo "Hipervelocidad" (estelas largas)
+        const length = finalSpeed * (1 - s.z) * 10; // Longitud basada en profundidad y warp
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x + length, s.y);
+        ctx.strokeStyle = color;
+        ctx.lineWidth = (s.z * 1.5) + 0.5; // Grosor basado en profundidad
+        ctx.stroke();
+      } else {
+        // Modo Normal: Puntos con brillo sutil
+        const size = (s.z * 1.5) + 0.5;
+        ctx.arc(s.x, s.y, size, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+      }
+    });
 
-    } else {
+    requestAnimationFrame(draw);
+  }
 
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-      ctx.fill();
-    }
-
-    s.x -= speed;
-
-    if (s.x < 0) {
-      s.x = canvas.width;
-      s.y = Math.random() * canvas.height;
-    }
-
+  window.addEventListener("scroll", () => {
+    // El scroll acelera el efecto de barrido lateral
+    warp = 1 + window.scrollY / 200;
   });
 
-  requestAnimationFrame(draw);
-}
+  window.addEventListener("resize", resize);
+
+  resize();
+  draw();
+});
