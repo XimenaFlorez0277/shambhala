@@ -26,7 +26,7 @@
       align-items: center;
       text-align: center;
 
-      padding-top: 6vh; /* 🔥 TODO MÁS ARRIBA */
+      padding-top: 6vh;
     }
 
     /* ⭐ ESTRELLAS */
@@ -36,15 +36,15 @@
       z-index: 0;
     }
 
-    /* 🚀 NAVE */
+    /* 🚀 NAVE (MÁS GRANDE) */
     .hero img {
       position: absolute;
 
-      top: 48%; /* 🔥 SUBIMOS LA NAVE */
+      top: 48%;
       left: 50%;
       transform: translate(-50%, -50%);
 
-      width: min(90vw, 900px);
+      width: min(110vw, 1100px); /* 🔥 MÁS GRANDE */
       height: auto;
 
       z-index: 2;
@@ -53,17 +53,18 @@
       pointer-events: none;
     }
 
-    /* overlay (ajustado para no matar estrellas) */
+    /* overlay MÁS SUAVE (no tapa estrellas) */
     .overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.05),  /* 🔥 casi transparente arriba */
-        rgba(0,0,0,0.4),   /* 🔥 suave en medio */
-        rgba(0,0,0,0.85)   /* 🔥 oscuro abajo */
+        rgba(0,0,0,0.02),  /* 🔥 casi nada arriba */
+        rgba(0,0,0,0.25),  /* 🔥 leve */
+        rgba(0,0,0,0.8)    /* 🔥 abajo oscuro */
       );
       z-index: 1;
+      pointer-events: none;
     }
 
     /* contenido */
@@ -115,8 +116,8 @@
       }
 
       .hero img {
-        top: 52%; /* 🔥 ajuste fino móvil */
-        width: 95vw;
+        top: 52%;
+        width: 120vw; /* 🔥 MÁS GRANDE EN MÓVIL */
       }
 
       h1 {
@@ -162,7 +163,7 @@
     const ctx = canvas.getContext("2d");
 
     let stars = [];
-    let numStars = 700;
+    let numStars = 900; // 🔥 más densidad
 
     function resize() {
       canvas.width = window.innerWidth;
@@ -175,8 +176,8 @@
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 1.2 + 0.2,
-          speed: Math.random() * 2 + 0.3
+          size: Math.random() * 1.5 + 0.3,
+          speed: Math.random() * 3 + 0.5 // 🔥 más velocidad
         });
       }
     }
