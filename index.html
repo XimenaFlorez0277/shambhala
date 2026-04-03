@@ -45,6 +45,40 @@ body {
   transform: translate(-50%, -50%);
   width: min(110vw, 1100px);
   z-index: 2;
+
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -52%) translateY(-10px); }
+}
+
+/* 🔵 MOTOR */
+.engine-glow {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(110vw, 1100px);
+  z-index: 1;
+}
+
+.engine-glow::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  top: 52%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #00aaff, transparent 70%);
+  filter: blur(25px);
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
 }
 
 /* overlay */
@@ -59,14 +93,16 @@ body {
 .content {
   position: relative;
   z-index: 4;
-  max-width: 900px;
-  padding: 0 20px;
 }
 
 h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   letter-spacing: 6px;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.6),
+    0 0 40px rgba(0,150,255,0.7);
 }
 
 p {
@@ -74,7 +110,6 @@ p {
   margin-bottom: 40px;
 }
 
-/* BOTONES */
 .buttons a {
   display: inline-block;
   margin: 10px;
@@ -84,6 +119,7 @@ p {
   text-decoration: none;
 }
 
+/* 📱 MOBILE */
 @media (max-width: 768px) {
   .hero img {
     width: 120vw;
@@ -100,6 +136,7 @@ p {
 <div class="hero">
 
   <div class="overlay"></div>
+  <div class="engine-glow"></div>
 
   <img src="images/hero.jpg" id="ship">
 
@@ -126,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.getElementById("stars");
   const ctx = canvas.getContext("2d");
+  const ship = document.getElementById("ship");
 
   let stars = [];
   let warp = 1;
@@ -139,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
     stars = [];
 
     for (let i = 0; i < 900; i++) {
-
       const depth = Math.random();
 
       stars.push({
@@ -147,7 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
         y: Math.random() * canvas.height,
         size: depth * 2 + 0.3,
         baseSpeed: depth * 4 + 0.5,
-        depth: depth
+        depth: depth,
+        tilt: (Math.random() - 0.5) * 0.5
       });
     }
   }
@@ -159,23 +197,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const speed = s.baseSpeed * warp;
 
-      // 🔥 motion blur solo en estrellas cercanas
       if (s.depth > 0.6) {
-
         ctx.beginPath();
         ctx.moveTo(s.x, s.y);
-        ctx.lineTo(s.x + speed * 3, s.y);
+        ctx.lineTo(s.x + speed * 3, s.y + s.tilt * speed);
         ctx.strokeStyle = "white";
         ctx.lineWidth = s.size;
         ctx.stroke();
-
       } else {
-
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
         ctx.fillStyle = "white";
         ctx.fill();
-
       }
 
       s.x -= speed;
@@ -191,7 +224,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", () => {
+
     warp = 1 + window.scrollY / 200;
+
+    // 🚀 nave responde SIN romper animación
+    const offset = Math.min(warp * 5, 20);
+    ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
+
   });
 
   resize();
