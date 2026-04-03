@@ -1,96 +1,58 @@
-<script>
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-document.addEventListener("DOMContentLoaded", () => {
+  stars.forEach(s => {
 
-  const canvas = document.getElementById("stars");
-  const ctx = canvas.getContext("2d");
+    let speed = s.speed * warp;
+    let alpha = 1;
+    let lengthFactor = 3;
 
-  let stars = [];
-  let warp = 1;
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  function createStars() {
-    stars = [];
-
-    for (let i = 0; i < 900; i++) {
-
-      const depth = Math.random();
-
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        depth: depth,
-        speed: depth * 5 + 0.5
-      });
+    // 🔥 ZONA SUPERIOR (texto) → suave, no desaparece
+    if (s.y < canvas.height * 0.25) {
+      alpha = 0.25;
+      speed *= 0.4;
+      lengthFactor = 1;
     }
-  }
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // 🔥 ZONA MEDIA (nave) → más sutil
+    else if (s.y < canvas.height * 0.6) {
+      alpha = 0.5;
+      lengthFactor = 2;
+    }
 
-    const centerY = canvas.height * 0.55;
+    // 🔥 ABAJO → máxima velocidad
+    else {
+      alpha = 1;
+      lengthFactor = 4;
+    }
 
-    stars.forEach(s => {
+    if (s.depth > 0.5) {
 
-      const speed = s.speed * warp;
+      const length = speed * lengthFactor;
 
-      // 🔥 ZONA SUPERIOR LIMPIA (texto)
-      if (s.y < canvas.height * 0.25) {
-        s.x -= speed * 0.3;
-        return;
-      }
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(s.x + length, s.y);
+      ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+      ctx.lineWidth = s.depth * 2;
+      ctx.stroke();
 
-      // 🔥 ZONA DE LA NAVE (menos agresivo)
-      let alpha = 1;
-      if (s.y > canvas.height * 0.4 && s.y < canvas.height * 0.7) {
-        alpha = 0.4;
-      }
+    } else {
 
-      // 🔥 MÁS FUERZA ABAJO
-      const intensityBoost = s.y > centerY ? 1.5 : 1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+      ctx.fill();
+    }
 
-      if (s.depth > 0.5) {
+    s.x -= speed;
 
-        const length = speed * 3 * intensityBoost;
+    if (s.x < 0) {
+      s.x = canvas.width;
+      s.y = Math.random() * canvas.height;
+    }
 
-        ctx.beginPath();
-        ctx.moveTo(s.x, s.y);
-        ctx.lineTo(s.x + length, s.y);
-        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-        ctx.lineWidth = s.depth * 2;
-        ctx.stroke();
-
-      } else {
-
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-        ctx.fill();
-      }
-
-      s.x -= speed;
-
-      if (s.x < 0) {
-        s.x = canvas.width;
-        s.y = Math.random() * canvas.height;
-      }
-
-    });
-
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener("scroll", () => {
-    warp = 1 + window.scrollY / 150;
   });
 
-  resize();
-  createStars();
-  draw();
-
-});
-</script>
+  requestAnimationFrame(draw);
+}
