@@ -1,87 +1,315 @@
-<script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shambhala Saga</title>
 
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
-let stars = [];
-let warp = 1;
+<style>
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: black;
+  color: white;
+  overflow-x: hidden;
 }
 
-function createStars() {
-  stars = [];
+/* HERO */
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 6vh;
+  overflow: hidden;
+}
 
-  for (let i = 0; i < 900; i++) {
+/* 🌌 ESTRELLAS */
+#stars {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
 
-    const depth = Math.random(); // 🔥 profundidad
+/* 🚀 NAVE */
+.hero img {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(110vw, 1100px);
+  z-index: 2;
+  opacity: 0;
 
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+  animation:
+    shipEntry 2s ease-out forwards,
+    drift 6s ease-in-out infinite 2s;
+}
 
-      depth: depth,
-
-      size: depth * 2 + 0.3,
-
-      speed: (depth * 4 + 0.5),
-
-      baseSpeed: (depth * 4 + 0.5)
-    });
+@keyframes shipEntry {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  stars.forEach(s => {
-
-    const speed = s.baseSpeed * warp;
-
-    // 🔥 MOTION BLUR SOLO PARA ESTRELLAS RÁPIDAS
-    if (speed > 2.5) {
-
-      ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(s.x + speed * 2, s.y); // estirado
-      ctx.strokeStyle = "white";
-      ctx.lineWidth = s.size * 0.8;
-      ctx.stroke();
-
-    } else {
-
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-      ctx.fillStyle = "white";
-      ctx.fill();
-
-    }
-
-    s.x -= speed;
-
-    if (s.x < 0) {
-      s.x = canvas.width;
-      s.y = Math.random() * canvas.height;
-    }
-
-  });
-
-  requestAnimationFrame(draw);
+@keyframes drift {
+  0%,100% { transform: translate(-50%, -50%) translateY(0); }
+  50% { transform: translate(-50%, -52%) translateY(-10px); }
 }
 
-window.addEventListener("scroll", () => {
-  warp = 1 + window.scrollY / 200; // 🔥 más intenso
-});
+/* 🔵 GLOW */
+.engine-glow {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(110vw, 1100px);
+  z-index: 1;
+}
 
-resize();
-createStars();
-draw();
+.engine-glow::after {
+  content: "";
+  position: absolute;
+  left: 18%;
+  top: 52%;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #00aaff, transparent 70%);
+  filter: blur(25px);
+  animation: pulse 2s infinite ease-in-out;
+}
 
-window.addEventListener("resize", () => {
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+/* overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(0,0,0,0.02),
+    rgba(0,0,0,0.25),
+    rgba(0,0,0,0.85));
+  z-index: 1;
+}
+
+/* TEXTO */
+.content {
+  position: relative;
+  z-index: 4;
+  max-width: 900px;
+  padding: 0 20px;
+
+  opacity: 0;
+  transform: translateY(-20px);
+
+  animation: fadeIn 2s ease 0.8s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ✨ TÍTULO */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  letter-spacing: 6px;
+  margin-bottom: 20px;
+
+  color: transparent;
+
+  background: linear-gradient(
+    120deg,
+    #ffffff,
+    #cceeff,
+    #00aaff,
+    #ffffff
+  );
+
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  animation: shimmer 6s linear infinite;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.3),
+    0 0 30px rgba(0,150,255,0.5);
+}
+
+@keyframes shimmer {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* FRASE */
+p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* BOTONES */
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 25px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.buttons a:hover {
+  color: #00aaff;
+  border-color: #00aaff;
+}
+
+/* 📱 MOBILE (mínimo, no romper) */
+@media (max-width: 768px) {
+  #stars { opacity: 0.6; }
+
+  .hero img {
+    top: 58%;
+    width: 115vw;
+  }
+
+  h1 {
+    font-size: 2rem;
+    animation: none;
+    background: none;
+    color: white;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+
+  <div class="overlay"></div>
+  <div class="engine-glow"></div>
+
+  <img src="images/hero.jpg" alt="Nave Shambhala">
+
+  <canvas id="stars"></canvas>
+
+  <div class="content">
+    <h1>SHAMBHALA SAGA</h1>
+
+    <p>
+      Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
+    </p>
+
+    <div class="buttons">
+      <a href="#">Explorar</a>
+      <a href="#">Personajes</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const canvas = document.getElementById("stars");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+
+  let stars = [];
+  let warp = 1;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function createStars() {
+    stars = [];
+
+    for (let i = 0; i < 900; i++) {
+      const depth = Math.random();
+
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: depth * 2 + 0.3,
+        baseSpeed: depth * 4 + 0.5
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    stars.forEach(s => {
+
+      const speed = s.baseSpeed * warp;
+
+      if (speed > 2.5) {
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x + speed * 2, s.y);
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = s.size * 0.8;
+        ctx.stroke();
+      } else {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = "white";
+        ctx.fill();
+      }
+
+      s.x -= speed;
+
+      if (s.x < 0) {
+        s.x = canvas.width;
+        s.y = Math.random() * canvas.height;
+      }
+
+    });
+
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("scroll", () => {
+    warp = 1 + window.scrollY / 200;
+  });
+
+  window.addEventListener("resize", () => {
+    resize();
+    createStars();
+  });
+
   resize();
   createStars();
+  draw();
+
 });
 
 </script>
+
+</body>
+</html>
