@@ -108,9 +108,11 @@ p {
 
   <div class="content">
     <h1>SHAMBHALA SAGA</h1>
+
     <p>
       Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
     </p>
+
     <div class="buttons">
       <a href="#">Explorar</a>
       <a href="#">Personajes</a>
@@ -139,43 +141,47 @@ document.addEventListener("DOMContentLoaded", () => {
   function createStars() {
     stars = [];
 
-    for (let i = 0; i < 900; i++) {
-
-      const depth = Math.random();
-
+    for (let i = 0; i < 1000; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        depth: depth,
-        size: depth * 2 + 0.3,
-        baseSpeed: depth * 3 + 0.5
+        z: Math.random() * canvas.width
       });
     }
   }
 
   function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const cx = canvas.width / 2;
+    const cy = canvas.height / 2;
 
     stars.forEach(s => {
 
-      const speed = s.baseSpeed * warp;
+      s.z -= warp * 6;
 
-      // 🔥 ESTIRAMIENTO REAL (warp visible)
-      const stretch = Math.min(speed * 3, 20);
+      if (s.z <= 0) {
+        s.x = Math.random() * canvas.width;
+        s.y = Math.random() * canvas.height;
+        s.z = canvas.width;
+      }
+
+      const k = 128 / s.z;
+      const px = (s.x - cx) * k + cx;
+      const py = (s.y - cy) * k + cy;
+
+      const dx = px - cx;
+      const dy = py - cy;
+
+      const length = warp * 8;
 
       ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(s.x + stretch, s.y);
+      ctx.moveTo(px, py);
+      ctx.lineTo(px + dx * 0.03 * length, py + dy * 0.03 * length);
       ctx.strokeStyle = "white";
-      ctx.lineWidth = s.size;
+      ctx.lineWidth = (1 - s.z / canvas.width) * 2;
       ctx.stroke();
-
-      s.x -= speed;
-
-      if (s.x < 0) {
-        s.x = canvas.width;
-        s.y = Math.random() * canvas.height;
-      }
 
     });
 
@@ -184,14 +190,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", () => {
 
-    warp = 1 + window.scrollY / 150;
+    warp = 1 + window.scrollY / 120;
 
-    // 🚀 nave empuje (SIN romper centrado)
-    const offset = Math.min(warp * 4, 20);
+    // 🚀 nave empuje
+    const offset = Math.min(warp * 5, 25);
     ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
 
-    // 🌌 oscurecer espacio
-    const darkness = Math.min(warp * 0.2, 0.6);
+    // 🌑 oscurecer
+    const darkness = Math.min(warp * 0.25, 0.7);
     overlay.style.background = `rgba(0,0,0,${darkness})`;
 
   });
