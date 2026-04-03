@@ -28,6 +28,7 @@ body {
   overflow: hidden;
 }
 
+/* 🌌 ESTRELLAS */
 #stars {
   position: absolute;
   inset: 0;
@@ -92,15 +93,55 @@ p {
   margin-bottom: 40px;
 }
 
-.buttons a {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 25px;
-  border: 1px solid white;
-  color: white;
-  text-decoration: none;
+/* 🔥 BOTONES */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
+.btn {
+  position: relative;
+  padding: 14px 30px;
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  border: 1px solid rgba(255,255,255,0.4);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(0,170,255,0.6), transparent);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.btn:hover {
+  border-color: #00aaff;
+  color: #00aaff;
+  box-shadow:
+    0 0 10px rgba(0,170,255,0.6),
+    0 0 30px rgba(0,170,255,0.3);
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn.primary {
+  background: rgba(0,170,255,0.05);
+}
+
+.btn.secondary {
+  opacity: 0.8;
+}
+
+/* 📱 MOBILE */
 @media (max-width: 768px) {
   .hero img {
     width: 120vw;
@@ -118,7 +159,7 @@ p {
 
   <div class="engine-glow"></div>
 
-  <img src="images/hero.jpg" id="ship">
+  <img src="images/hero.jpg" alt="Nave Shambhala">
 
   <canvas id="stars"></canvas>
 
@@ -130,8 +171,8 @@ p {
     </p>
 
     <div class="buttons">
-      <a href="#">Explorar</a>
-      <a href="#">Personajes</a>
+      <a href="#" class="btn primary">Explorar el universo</a>
+      <a href="#" class="btn secondary">Personajes</a>
     </div>
   </div>
 
@@ -156,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
     stars = [];
 
     for (let i = 0; i < 900; i++) {
-
       const depth = Math.random();
 
       stars.push({
@@ -168,66 +208,66 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
- function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  stars.forEach(s => {
+    stars.forEach(s => {
 
-    let speed = s.speed * warp;
-    let alpha = 1;
-    let lengthFactor = 3;
+      let speed = s.speed * warp;
+      let alpha = 1;
+      let lengthFactor = 3;
 
-    // 🌌 ARRIBA (suave)
-    if (s.y < canvas.height * 0.3) {
-      alpha = 0.2;
-      speed *= 0.5;
-      lengthFactor = 1;
-    }
+      // 🌌 ARRIBA (suave)
+      if (s.y < canvas.height * 0.3) {
+        alpha = 0.2;
+        speed *= 0.5;
+        lengthFactor = 1;
+      }
 
-    // 🚀 CENTRO (velocidad)
-    else if (s.y < canvas.height * 0.7) {
-      alpha = 0.9;
-      speed *= 1.6;
-      lengthFactor = 4;
-    }
+      // 🚀 CENTRO (túnel)
+      else if (s.y < canvas.height * 0.7) {
+        alpha = 0.9;
+        speed *= 1.6;
+        lengthFactor = 4;
+      }
 
-    // 🌌 ABAJO (igual que arriba)
-    else {
-      alpha = 0.2;
-      speed *= 0.5;
-      lengthFactor = 1;
-    }
+      // 🌌 ABAJO (suave igual que arriba)
+      else {
+        alpha = 0.2;
+        speed *= 0.5;
+        lengthFactor = 1;
+      }
 
-    if (s.depth > 0.5) {
+      if (s.depth > 0.5) {
 
-      const length = speed * lengthFactor;
+        const length = speed * lengthFactor;
 
-      ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(s.x + length, s.y);
-      ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
-      ctx.lineWidth = s.depth * 2;
-      ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x + length, s.y);
+        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+        ctx.lineWidth = s.depth * 2;
+        ctx.stroke();
 
-    } else {
+      } else {
 
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-      ctx.fill();
-    }
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, 1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fill();
+      }
 
-    s.x -= speed;
+      s.x -= speed;
 
-    if (s.x < 0) {
-      s.x = canvas.width;
-      s.y = Math.random() * canvas.height;
-    }
+      if (s.x < 0) {
+        s.x = canvas.width;
+        s.y = Math.random() * canvas.height;
+      }
 
-  });
+    });
 
-  requestAnimationFrame(draw);
-}
+    requestAnimationFrame(draw);
+  }
 
   window.addEventListener("scroll", () => {
     warp = 1 + window.scrollY / 150;
