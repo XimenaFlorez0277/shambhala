@@ -18,30 +18,29 @@
 
     /* HERO */
     .hero {
-      min-height: 100svh; /* 🔥 mejor que vh en móvil */
+      min-height: 100svh;
       position: relative;
 
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: center;
       text-align: center;
 
-      padding-top: 12vh; /* control cinematográfico */
+      padding-top: 6vh; /* 🔥 TODO MÁS ARRIBA */
     }
 
     /* ⭐ ESTRELLAS */
     #starsCanvas {
       position: absolute;
       inset: 0;
-      z-index: 0; /* fondo real */
+      z-index: 0;
     }
 
     /* 🚀 NAVE */
     .hero img {
       position: absolute;
 
-      top: 55%; /* 🔥 posición cinematográfica */
+      top: 48%; /* 🔥 SUBIMOS LA NAVE */
       left: 50%;
       transform: translate(-50%, -50%);
 
@@ -54,14 +53,15 @@
       pointer-events: none;
     }
 
-    /* overlay */
+    /* overlay (ajustado para no matar estrellas) */
     .overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.1),
-        rgba(0,0,0,0.85)
+        rgba(0,0,0,0.05),  /* 🔥 casi transparente arriba */
+        rgba(0,0,0,0.4),   /* 🔥 suave en medio */
+        rgba(0,0,0,0.85)   /* 🔥 oscuro abajo */
       );
       z-index: 1;
     }
@@ -111,11 +111,11 @@
     @media (max-width: 768px) {
 
       .hero {
-        padding-top: 8vh;
+        padding-top: 4vh;
       }
 
       .hero img {
-        top: 60%;
+        top: 52%; /* 🔥 ajuste fino móvil */
         width: 95vw;
       }
 
