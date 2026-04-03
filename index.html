@@ -67,10 +67,10 @@ body {
   position: absolute;
   left: 18%;
   top: 52%;
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   background: radial-gradient(circle, #00aaff, transparent 70%);
-  filter: blur(25px);
+  filter: blur(30px);
 }
 
 /* TEXTO */
@@ -84,8 +84,8 @@ h1 {
   font-size: 4rem;
   letter-spacing: 6px;
   text-shadow:
-    0 0 10px rgba(255,255,255,0.6),
-    0 0 40px rgba(0,150,255,0.7);
+    0 0 15px rgba(255,255,255,0.7),
+    0 0 60px rgba(0,150,255,0.8);
 }
 
 p {
@@ -93,7 +93,7 @@ p {
   margin-bottom: 40px;
 }
 
-/* 🔥 BOTONES MEJORADOS DE VERDAD */
+/* 🔥 BOTONES SCI-FI */
 .buttons {
   display: flex;
   gap: 20px;
@@ -104,59 +104,78 @@ p {
   position: relative;
   padding: 14px 30px;
   text-decoration: none;
-  color: rgba(255,255,255,0.95);
+  color: rgba(255,255,255,0.9);
   font-size: 0.9rem;
   letter-spacing: 2px;
+  border: 1px solid rgba(0,170,255,0.5);
 
-  border: 1px solid rgba(0,170,255,0.4);
+  background: rgba(0,0,0,0.4);
 
-  /* 🔥 FONDO MÁS VISIBLE */
-  background: linear-gradient(
-    to bottom,
-    rgba(0,170,255,0.15),
-    rgba(0,0,0,0.6)
-  );
+  overflow: hidden;
 
-  /* 🔥 GLOW SIEMPRE VISIBLE */
-  box-shadow:
-    0 0 10px rgba(0,170,255,0.3),
-    inset 0 0 15px rgba(0,170,255,0.1);
-
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-/* línea energética */
-.btn::before {
+/* ✨ GLOW BASE */
+.btn {
+  box-shadow:
+    0 0 10px rgba(0,170,255,0.4),
+    inset 0 0 15px rgba(0,170,255,0.1);
+}
+
+/* 🔵 PULSO */
+.btn::after {
   content: "";
   position: absolute;
   inset: 0;
+  border: 1px solid rgba(0,170,255,0.3);
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.6; }
+  100% { opacity: 0.2; }
+}
+
+/* ⚡ LINEA EN MOVIMIENTO */
+.btn::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
   background: linear-gradient(
     120deg,
     transparent,
     rgba(0,170,255,0.8),
     transparent
   );
-  opacity: 0.3;
-  transition: 0.4s;
+  top: 0;
+  left: -100%;
+  animation: scan 3s linear infinite;
 }
 
-/* HOVER MÁS FUERTE */
+@keyframes scan {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 🚀 HOVER = ACTIVACIÓN */
 .btn:hover {
   color: #00aaff;
   border-color: #00aaff;
 
   box-shadow:
-    0 0 15px rgba(0,170,255,0.9),
-    0 0 40px rgba(0,170,255,0.6);
+    0 0 20px rgba(0,170,255,1),
+    0 0 60px rgba(0,170,255,0.7);
 }
 
 .btn:hover::before {
-  opacity: 1;
+  animation-duration: 0.8s;
 }
 
-/* secundario un poco menos intenso */
 .btn.secondary {
-  opacity: 0.85;
+  opacity: 0.8;
 }
 
 /* 📱 MOBILE */
@@ -204,7 +223,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
 
   let stars = [];
-  let warp = 1;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -229,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     stars.forEach(s => {
 
-      let speed = s.speed * warp;
+      let speed = s.speed;
       let alpha = 1;
       let lengthFactor = 3;
 
