@@ -46,26 +46,6 @@ body {
   width: min(110vw, 1100px);
   z-index: 2;
   opacity: 0;
-
-  animation:
-    shipEntry 2s ease-out forwards,
-    drift 6s ease-in-out infinite 2s;
-}
-
-@keyframes shipEntry {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -40%) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes drift {
-  0%,100% { transform: translate(-50%, -50%) translateY(0); }
-  50% { transform: translate(-50%, -52%) translateY(-10px); }
 }
 
 /* 🔵 GLOW */
@@ -78,32 +58,13 @@ body {
   z-index: 1;
 }
 
-.engine-glow::after {
-  content: "";
-  position: absolute;
-  left: 18%;
-  top: 52%;
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, #00aaff, transparent 70%);
-  filter: blur(25px);
-  animation: pulse 2s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%,100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.4); opacity: 1; }
-}
-
-/* overlay */
+/* overlay dinámico */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(0,0,0,0.02),
-    rgba(0,0,0,0.25),
-    rgba(0,0,0,0.85));
+  background: rgba(0,0,0,0.2);
   z-index: 1;
+  transition: background 0.2s;
 }
 
 /* TEXTO */
@@ -112,58 +73,21 @@ body {
   z-index: 4;
   max-width: 900px;
   padding: 0 20px;
-
-  opacity: 0;
-  transform: translateY(-20px);
-
-  animation: fadeIn 2s ease 0.8s forwards;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ✨ TÍTULO */
 h1 {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
   letter-spacing: 6px;
-  margin-bottom: 20px;
-
-  color: transparent;
-
-  background: linear-gradient(
-    120deg,
-    #ffffff,
-    #cceeff,
-    #00aaff,
-    #ffffff
-  );
-
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-
-  animation: shimmer 6s linear infinite;
-
-  text-shadow:
-    0 0 10px rgba(255,255,255,0.3),
-    0 0 30px rgba(0,150,255,0.5);
+  color: white;
 }
 
-@keyframes shimmer {
-  0% { background-position: 0%; }
-  100% { background-position: 200%; }
-}
-
-/* FRASE */
 p {
   font-size: 1.2rem;
   margin-bottom: 40px;
-  line-height: 1.6;
 }
 
-/* BOTONES */
+/* botones */
 .buttons a {
   display: inline-block;
   margin: 10px;
@@ -171,33 +95,15 @@ p {
   border: 1px solid white;
   color: white;
   text-decoration: none;
-  transition: 0.3s;
 }
 
-.buttons a:hover {
-  color: #00aaff;
-  border-color: #00aaff;
-}
-
-/* 📱 MOBILE (mínimo, no romper) */
+/* 📱 MOBILE */
 @media (max-width: 768px) {
-  #stars { opacity: 0.6; }
-
   .hero img {
-    top: 58%;
-    width: 115vw;
+    width: 120vw;
+    top: 52%;
   }
-
-  h1 {
-    font-size: 2rem;
-    animation: none;
-    background: none;
-    color: white;
-  }
-
-  p {
-    font-size: 1rem;
-  }
+  h1 { font-size: 2rem; }
 }
 
 </style>
@@ -207,20 +113,18 @@ p {
 
 <div class="hero">
 
-  <div class="overlay"></div>
+  <div class="overlay" id="overlay"></div>
   <div class="engine-glow"></div>
 
-  <img src="images/hero.jpg" alt="Nave Shambhala">
+  <img src="images/hero.jpg" id="ship">
 
   <canvas id="stars"></canvas>
 
   <div class="content">
     <h1>SHAMBHALA SAGA</h1>
-
     <p>
       Un universo donde las posibilidades se expanden tanto como quienes se atreven a explorarlo.
     </p>
-
     <div class="buttons">
       <a href="#">Explorar</a>
       <a href="#">Personajes</a>
@@ -234,9 +138,9 @@ p {
 document.addEventListener("DOMContentLoaded", () => {
 
   const canvas = document.getElementById("stars");
-  if (!canvas) return;
-
   const ctx = canvas.getContext("2d");
+  const ship = document.getElementById("ship");
+  const overlay = document.getElementById("overlay");
 
   let stars = [];
   let warp = 1;
@@ -248,8 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function createStars() {
     stars = [];
-
-    for (let i = 0; i < 900; i++) {
+    for (let i = 0; i < 1000; i++) {
       const depth = Math.random();
 
       stars.push({
@@ -268,19 +171,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const speed = s.baseSpeed * warp;
 
-      if (speed > 2.5) {
-        ctx.beginPath();
-        ctx.moveTo(s.x, s.y);
-        ctx.lineTo(s.x + speed * 2, s.y);
-        ctx.strokeStyle = "white";
-        ctx.lineWidth = s.size * 0.8;
-        ctx.stroke();
-      } else {
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-        ctx.fillStyle = "white";
-        ctx.fill();
-      }
+      const stretch = speed * 2;
+
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(s.x + stretch, s.y);
+      ctx.strokeStyle = "white";
+      ctx.lineWidth = s.size;
+      ctx.stroke();
 
       s.x -= speed;
 
@@ -294,18 +192,29 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(draw);
   }
 
+  /* 🎬 SCROLL = WARP REAL */
   window.addEventListener("scroll", () => {
-    warp = 1 + window.scrollY / 200;
-  });
 
-  window.addEventListener("resize", () => {
-    resize();
-    createStars();
+    warp = 1 + window.scrollY / 150;
+
+    /* 🚀 nave empuje */
+    const offset = Math.min(warp * 5, 20);
+    ship.style.transform = `translate(-50%, -50%) translateY(${offset}px)`;
+
+    /* 🌌 espacio más oscuro */
+    const darkness = Math.min(warp * 0.15, 0.6);
+    overlay.style.background = `rgba(0,0,0,${darkness})`;
+
   });
 
   resize();
   createStars();
   draw();
+
+  window.addEventListener("resize", () => {
+    resize();
+    createStars();
+  });
 
 });
 
