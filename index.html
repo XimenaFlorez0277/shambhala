@@ -13,7 +13,7 @@
       font-family: 'Inter', sans-serif;
       background: black;
       color: white;
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     .hero {
@@ -22,14 +22,12 @@
 
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* 🔥 CLAVE */
+      justify-content: center; /* 🔥 CENTRADO REAL */
       align-items: center;
       text-align: center;
-
-      padding-top: 60px;
     }
 
-    /* ⭐ ESTRELLAS (VISIBLE SIEMPRE) */
+    /* ⭐ ESTRELLAS */
     #starsCanvas {
       position: absolute;
       inset: 0;
@@ -38,14 +36,17 @@
 
     /* 🚀 NAVE */
     .hero img {
-      width: 100%;
+      position: absolute;
+      bottom: 10%; /* 🔥 SUBE LA NAVE */
+
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 90%;
       max-width: 900px;
-      height: auto;
 
       z-index: 2;
-      position: relative;
-
-      margin-bottom: 20px; /* 🔥 separación */
+      opacity: 0.95;
     }
 
     /* overlay */
@@ -54,30 +55,18 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.9)
+        rgba(0,0,0,0.1),
+        rgba(0,0,0,0.85)
       );
       z-index: 2;
-      pointer-events: none;
     }
 
+    /* contenido */
     .content {
       position: relative;
       z-index: 3;
       max-width: 900px;
       padding: 0 20px;
-      animation: fadeUp 1.5s ease;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     h1 {
@@ -88,14 +77,14 @@
 
       text-shadow:
         0 0 10px rgba(255,255,255,0.4),
-        0 0 50px rgba(0,150,255,0.6);
+        0 0 60px rgba(0,150,255,0.7);
     }
 
     p {
       font-size: 1.2rem;
-      opacity: 0.95;
       margin-bottom: 40px;
       line-height: 1.6;
+      opacity: 0.95;
     }
 
     .buttons a {
@@ -125,12 +114,9 @@
         font-size: 1rem;
       }
 
-      .hero {
-        justify-content: space-around; /* 🔥 CLAVE móvil */
-      }
-
       .hero img {
-        max-width: 95%;
+        bottom: 15%; /* 🔥 MÁS ARRIBA EN CELULAR */
+        width: 95%;
       }
 
     }
@@ -144,6 +130,10 @@
 
     <canvas id="starsCanvas"></canvas>
 
+    <img src="images/hero.jpg" alt="Nave Shambhala">
+
+    <div class="overlay"></div>
+
     <div class="content">
       <h1>SHAMBHALA SAGA</h1>
 
@@ -156,9 +146,6 @@
         <a href="#">Personajes</a>
       </div>
     </div>
-
-    <!-- 🚀 NAVE AHORA EN FLOW NORMAL -->
-    <img src="images/hero.jpg" alt="Nave Shambhala">
 
   </div>
 
@@ -181,7 +168,7 @@
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * 1.2 + 0.2,
-          speed: Math.random() * 3 + 0.5
+          speed: Math.random() * 2 + 0.3
         });
       }
     }
@@ -190,7 +177,7 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       stars.forEach(star => {
-        ctx.fillStyle = "rgba(255,255,255," + (0.5 + Math.random()*0.5) + ")";
+        ctx.fillStyle = "white";
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
         ctx.fill();
