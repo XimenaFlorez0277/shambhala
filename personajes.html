@@ -508,30 +508,6 @@
         radial-gradient(circle at 74% 30%, rgba(255, 220, 160, 0.08), transparent 18%);
     }
 
-    .naomi-card {
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255, 200, 140, 0.12), transparent 18%),
-        radial-gradient(circle at 80% 24%, rgba(130, 190, 255, 0.14), transparent 20%),
-        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.04), transparent 16%),
-        linear-gradient(145deg, #0d1018, #04060a 70%);
-    }
-
-    .naomi-fallback {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.10);
-      font-size: clamp(2rem, 4vw, 3rem);
-      text-align: center;
-      padding: 24px;
-    }
-
     .annie-card {
       background:
         radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.18), transparent 18%),
@@ -1044,8 +1020,8 @@
         </div>
       </a>
 
-      <a class="featured-card small naomi-card reveal" href="naomi.html">
-        <div class="naomi-fallback">Naomi</div>
+      <a class="featured-card small reveal" href="naomi.html">
+        <img class="featured-image" src="images/naomi.jpg" alt="Naomi">
         <div class="featured-overlay"></div>
         <div class="character-aura aura-naomi"></div>
         <div class="ambient-name">Naomi</div>
