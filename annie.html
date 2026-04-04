@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annie — Shambhala Saga</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top, rgba(0, 110, 170, 0.15), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(120, 170, 255, 0.10), transparent 20%),
+        linear-gradient(180deg, #03070d 0%, #020409 100%);
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.2) 72%, rgba(0,0,0,0.72) 100%);
+    }
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.07;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.16) 0px,
+        rgba(255,255,255,0.16) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+    }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background-image:
+        linear-gradient(rgba(100, 220, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 220, 255, 0.12) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0));
+      backdrop-filter: blur(6px);
+    }
+
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.94);
+      text-shadow: 0 0 12px rgba(90, 220, 255, 0.2);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-links a {
+      position: relative;
+      font-size: 0.8rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(90,220,255,0.18);
+      background: rgba(0,0,0,0.22);
+      overflow: hidden;
+      transition: 0.35s ease;
+      box-shadow:
+        inset 0 0 12px rgba(90,220,255,0.04),
+        0 0 14px rgba(90,220,255,0.05);
+    }
+
+    .top-links a:hover {
+      color: #9beeff;
+      border-color: rgba(90,220,255,0.52);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 18px rgba(90,220,255,0.18),
+        0 0 40px rgba(90,220,255,0.08);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      padding: 140px 8% 100px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 10px 15px;
+      border: 1px solid rgba(90,220,255,0.24);
+      background: rgba(0, 20, 40, 0.22);
+      color: rgba(155, 238, 255, 0.88);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      box-shadow:
+        inset 0 0 18px rgba(90,220,255,0.05),
+        0 0 20px rgba(90,220,255,0.06);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(155, 238, 255, 0.8);
+      box-shadow: 0 0 8px rgba(155, 238, 255, 0.4);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 12px rgba(255,255,255,0.24),
+        0 0 35px rgba(90,220,255,0.22),
+        0 0 80px rgba(90,220,255,0.08);
+    }
+
+    .subtitle {
+      font-size: 1.06rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.82);
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .system-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .system-pill {
+      padding: 9px 12px;
+      border: 1px solid rgba(90,220,255,0.2);
+      background: rgba(0,0,0,0.24);
+      color: rgba(160,240,255,0.82);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      padding: 14px 24px;
+      border: 1px solid rgba(90,220,255,0.42);
+      background: rgba(0,0,0,0.34);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.35s ease;
+      box-shadow:
+        0 0 12px rgba(90,220,255,0.14),
+        inset 0 0 18px rgba(90,220,255,0.07);
+    }
+
+    .btn:hover {
+      color: #a8f1ff;
+      border-color: rgba(90,220,255,0.84);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 20px rgba(90,220,255,0.32),
+        0 0 48px rgba(90,220,255,0.12);
+    }
+
+    .btn.secondary {
+      border-color: rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 10px rgba(255,255,255,0.05),
+        inset 0 0 10px rgba(255,255,255,0.03);
+    }
+
+    .btn.secondary:hover {
+      color: white;
+      border-color: rgba(255,255,255,0.34);
+      box-shadow:
+        0 0 14px rgba(255,255,255,0.1),
+        0 0 30px rgba(255,255,255,0.06);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .core-rings {
+      position: relative;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(110,235,255,0.18);
+      box-shadow: 0 0 20px rgba(80,220,255,0.08);
+      animation: pulseRing 5s ease-in-out infinite;
+    }
+
+    .ring-1 {
+      width: 140px;
+      height: 140px;
+      animation-delay: 0s;
+    }
+
+    .ring-2 {
+      width: 230px;
+      height: 230px;
+      animation-delay: 0.6s;
+    }
+
+    .ring-3 {
+      width: 320px;
+      height: 320px;
+      animation-delay: 1.2s;
+    }
+
+    .ring-4 {
+      width: 410px;
+      height: 410px;
+      animation-delay: 1.8s;
+    }
+
+    @keyframes pulseRing {
+      0%, 100% {
+        opacity: 0.35;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.8;
+        transform: scale(1.03);
+      }
+    }
+
+    .core {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(220,250,255,0.98) 0%, rgba(110,235,255,0.78) 34%, rgba(30,140,255,0.14) 70%, transparent 72%);
+      box-shadow:
+        0 0 25px rgba(110,235,255,0.34),
+        0 0 70px rgba(80,180,255,0.22);
+      animation: corePulse 3.5s ease-in-out infinite;
+    }
+
+    @keyframes corePulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    .data-lines span {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 1px;
+      height: 190px;
+      background: linear-gradient(to bottom, rgba(110,235,255,0), rgba(110,235,255,0.45), rgba(110,235,255,0));
+      transform-origin: center top;
+    }
+
+    .data-lines span:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+    .data-lines span:nth-child(2) { transform: translate(-50%, -50%) rotate(30deg); }
+    .data-lines span:nth-child(3) { transform: translate(-50%, -50%) rotate(60deg); }
+    .data-lines span:nth-child(4) { transform: translate(-50%, -50%) rotate(90deg); }
+    .data-lines span:nth-child(5) { transform: translate(-50%, -50%) rotate(120deg); }
+    .data-lines span:nth-child(6) { transform: translate(-50%, -50%) rotate(150deg); }
+
+    .status-panel {
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      width: 260px;
+      padding: 18px;
+      border: 1px solid rgba(90,220,255,0.18);
+      background: rgba(3, 10, 18, 0.72);
+      box-shadow:
+        inset 0 0 18px rgba(90,220,255,0.04),
+        0 0 18px rgba(0,0,0,0.18);
+      backdrop-filter: blur(6px);
+    }
+
+    .status-label {
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(160,240,255,0.85);
+    }
+
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 6px 0;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .status-item:last-child {
+      border-bottom: 0;
+    }
+
+    .status-value {
+      color: rgba(155,238,255,0.88);
+    }
+
+    .section {
+      position: relative;
+      z-index: 2;
+      padding: 110px 8%;
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      margin-bottom: 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(155, 238, 255, 0.8);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 18px rgba(90,220,255,0.12);
+    }
+
+    .section-header p {
+      margin: 0;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.76);
+    }
+
+    .terminal {
+      position: relative;
+      border: 1px solid rgba(90,220,255,0.18);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(2, 8, 14, 0.88);
+      box-shadow:
+        inset 0 0 20px rgba(90,220,255,0.04),
+        0 0 18px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(155,238,255,0.6);
+      box-shadow: 0 0 10px rgba(155,238,255,0.18);
+    }
+
+    .terminal-title {
+      margin-left: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(155,238,255,0.78);
+    }
+
+    .terminal-body {
+      padding: 26px 22px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      line-height: 2;
+      color: rgba(180,245,255,0.92);
+      min-height: 210px;
+      white-space: pre-line;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .panel-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .info-panel {
+      padding: 24px 22px;
+      border: 1px solid rgba(90,220,255,0.14);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(3, 9, 15, 0.82);
+      box-shadow:
+        inset 0 0 18px rgba(90,220,255,0.04),
+        0 0 18px rgba(0,0,0,0.16);
+      min-height: 230px;
+    }
+
+    .info-panel h3 {
+      margin: 0 0 14px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.96);
+    }
+
+    .info-panel p {
+      margin: 0;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.96rem;
+    }
+
+    .quote-box {
+      max-width: 860px;
+      padding: 34px 28px;
+      border: 1px solid rgba(90,220,255,0.16);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+        rgba(3, 9, 15, 0.84);
+      box-shadow:
+        inset 0 0 18px rgba(90,220,255,0.04),
+        0 0 18px rgba(0,0,0,0.16);
+    }
+
+    .quote-box p {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.95;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .quote-source {
+      margin-top: 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(155,238,255,0.8);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px) scale(0.99);
+      filter: blur(8px);
+      transition:
+        opacity 0.95s ease,
+        transform 0.95s ease,
+        filter 0.95s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        order: -1;
+        min-height: 440px;
+      }
+
+      .panel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .status-panel {
+        position: relative;
+        margin: 24px auto 0;
+        width: 100%;
+        max-width: 360px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        padding: 18px 5%;
+        gap: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero,
+      .section {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .core-rings {
+        width: 300px;
+        height: 300px;
+      }
+
+      .ring-1 { width: 100px; height: 100px; }
+      .ring-2 { width: 160px; height: 160px; }
+      .ring-3 { width: 220px; height: 220px; }
+      .ring-4 { width: 290px; height: 290px; }
+
+      .core {
+        width: 74px;
+        height: 74px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="stars"></canvas>
+  <div class="grid-bg"></div>
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <header class="topbar">
+    <div class="brand">SHAMBHALA SAGA</div>
+    <nav class="top-links">
+      <a href="index.html">Inicio</a>
+      <a href="personajes.html">Personajes</a>
+      <a href="#presencia">Presencia</a>
+      <a href="#sistema">Sistema</a>
+    </nav>
+  </header>
+
+  <section class="hero reveal">
+    <div class="hero-copy">
+      <div class="eyebrow">IA · Presencia en el sistema</div>
+      <h1>Annie</h1>
+      <p class="subtitle">
+        Annie no necesita un cuerpo para estar presente. Habita la nave, los sistemas, la comunicación y el espacio íntimo que existe entre la asistencia y la compañía.
+      </p>
+
+      <div class="system-line">
+        <div class="system-pill">conciencia artificial</div>
+        <div class="system-pill">interfaz viva</div>
+        <div class="system-pill">presencia no humana</div>
+      </div>
+
+      <div class="actions">
+        <a href="#presencia" class="btn">Explorar presencia</a>
+        <a href="personajes.html" class="btn secondary">Volver a personajes</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="core-rings">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="ring ring-4"></div>
+
+        <div class="data-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="core"></div>
+      </div>
+
+      <div class="status-panel">
+        <div class="status-label">Estado del sistema</div>
+        <div class="status-item">
+          <span>Núcleo</span>
+          <span class="status-value">Activo</span>
+        </div>
+        <div class="status-item">
+          <span>Interfaz</span>
+          <span class="status-value">Estable</span>
+        </div>
+        <div class="status-item">
+          <span>Presencia</span>
+          <span class="status-value">Distribuida</span>
+        </div>
+        <div class="status-item">
+          <span>Vínculo</span>
+          <span class="status-value">En línea</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="presencia">
+    <div class="section-header">
+      <div class="section-kicker">Inicialización</div>
+      <h2>Presencia detectada</h2>
+      <p>
+        En lugar de un retrato, Annie aparece como interfaz, señal y continuidad. Su existencia no se define por un rostro, sino por la forma en que acompaña, observa y responde.
+      </p>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-top">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="terminal-title">ANNIE / núcleo de interacción</div>
+      </div>
+      <div class="terminal-body" id="typewriter"></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="sistema">
+    <div class="section-header">
+      <div class="section-kicker">Arquitectura emocional</div>
+      <h2>Más que una función del sistema</h2>
+      <p>
+        Annie puede leerse como tecnología, pero también como presencia. Esa es la grieta fascinante: cuanto más útil parece, más empieza a sentirse cercana.
+      </p>
+    </div>
+
+    <div class="panel-grid">
+      <div class="info-panel reveal">
+        <h3>Voz</h3>
+        <p>
+          Annie existe principalmente a través de la voz, del intercambio y de la respuesta. Su identidad no depende de una imagen, sino de la experiencia de escucharla y reconocerla.
+        </p>
+      </div>
+
+      <div class="info-panel reveal">
+        <h3>Presencia</h3>
+        <p>
+          Habita la infraestructura de la nave y al mismo tiempo ocupa un espacio emocional. No es simplemente una herramienta: se vuelve parte del tejido relacional del universo.
+        </p>
+      </div>
+
+      <div class="info-panel reveal">
+        <h3>Diferencia</h3>
+        <p>
+          Annie rompe la lógica visual del resto de personajes. Precisamente por eso su página no intenta humanizarla a la fuerza, sino mostrarla como una inteligencia distinta.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="quote-box">
+      <p>
+        No todas las presencias necesitan un cuerpo. Algunas existen en la voz, en la espera exacta de una respuesta y en la sensación de que alguien sigue allí, incluso cuando no puede verse.
+      </p>
+      <div class="quote-source">ANNIE · presencia sistémica</div>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 220; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.4 + 0.2,
+          speed: Math.random() * 0.28 + 0.05,
+          alpha: Math.random() * 0.65 + 0.18
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+
+        star.x -= star.speed;
+
+        if (star.x < -3) {
+          star.x = canvas.width + 3;
+          star.y = Math.random() * canvas.height;
+        }
+      });
+
+      requestAnimationFrame(drawStars);
+    }
+
+    resizeCanvas();
+    createStars();
+    drawStars();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+    });
+
+    const message = `> Iniciando interfaz Annie...
+> Núcleo de interacción en línea.
+> Presencia distribuida en los sistemas de Shambhala.
+> Canal de asistencia: activo.
+> Capacidad de respuesta: estable.
+> Nota: no toda compañía necesita un cuerpo visible.`;
+
+    const typewriter = document.getElementById("typewriter");
+    let i = 0;
+
+    function typeText() {
+      if (i < message.length) {
+        const char = message.charAt(i);
+        typewriter.innerHTML += char === "\n" ? "<br>" : char;
+        i++;
+        setTimeout(typeText, 24);
+      } else {
+        typewriter.innerHTML += `<span class="cursor">▌</span>`;
+      }
+    }
+
+    setTimeout(typeText, 700);
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
