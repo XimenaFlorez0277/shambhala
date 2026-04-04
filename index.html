@@ -26,9 +26,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
-      padding: 4vh 5vw;
+      padding: 7vh 5vw 0;
     }
 
     #stars {
@@ -40,11 +40,12 @@
 
     .hero img {
       position: absolute;
-      top: 52%;
+      top: 58%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: min(100vw, 950px);
+      width: min(95vw, 900px);
       z-index: 2;
+      transition: transform 0.2s ease;
     }
 
     .content {
@@ -56,11 +57,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
     }
 
     h1 {
-      margin: 0;
+      margin: 0 0 16px;
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(2.6rem, 7vw, 5rem);
       line-height: 0.95;
@@ -73,7 +73,7 @@
 
     p {
       max-width: 700px;
-      margin: 0;
+      margin: 0 0 26px;
       font-size: 1.05rem;
       line-height: 1.7;
       color: rgba(255,255,255,0.9);
@@ -84,7 +84,6 @@
       gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 6px;
     }
 
     .btn {
@@ -167,44 +166,44 @@
     }
 
     @media (max-width: 1100px) {
+      .hero {
+        padding-top: 6vh;
+      }
+
       .hero img {
         width: min(92vw, 820px);
-        top: 55%;
+        top: 60%;
       }
 
       h1 {
-        font-size: clamp(2.4rem, 6.5vw, 4.3rem);
+        font-size: clamp(2.4rem, 6.4vw, 4.5rem);
       }
 
       p {
         max-width: 620px;
         font-size: 1rem;
       }
-
-      .btn {
-        min-width: 220px;
-      }
     }
 
     @media (max-width: 820px) {
       .hero {
-        justify-content: flex-start;
-        padding-top: 10vh;
+        padding-top: 7vh;
       }
 
       .hero img {
-        width: min(95vw, 760px);
-        top: 58%;
+        width: min(95vw, 720px);
+        top: 63%;
       }
 
       h1 {
-        font-size: clamp(2.2rem, 8vw, 3.6rem);
+        font-size: clamp(2.2rem, 8vw, 3.8rem);
         letter-spacing: 4px;
       }
 
       p {
         max-width: 560px;
         font-size: 0.98rem;
+        margin-bottom: 22px;
       }
 
       .buttons {
@@ -222,26 +221,23 @@
 
     @media (max-width: 560px) {
       .hero {
-        padding-top: 9vh;
+        padding-top: 8vh;
       }
 
       .hero img {
-        width: 115vw;
-        top: 60%;
+        width: 120vw;
+        top: 66%;
       }
 
       h1 {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: clamp(2rem, 10vw, 3.1rem);
         line-height: 0.98;
       }
 
       p {
         font-size: 0.95rem;
         line-height: 1.6;
-      }
-
-      .content {
-        gap: 16px;
+        margin-bottom: 18px;
       }
     }
   </style>
