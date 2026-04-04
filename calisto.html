@@ -261,33 +261,18 @@
       height: 100%;
       object-fit: cover;
       filter: brightness(0.74) contrast(1.06) saturate(0.95);
+      z-index: 1;
     }
 
     .hero-image-panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
       background:
         linear-gradient(to top, rgba(2,4,9,0.35), rgba(2,4,9,0.04)),
         linear-gradient(to left, rgba(2,4,9,0.20), rgba(2,4,9,0.02));
       pointer-events: none;
-    }
-
-    .image-fallback {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: rgba(150, 228, 255, 0.22);
-      font-size: clamp(2rem, 5vw, 4rem);
-      text-align: center;
-      padding: 30px;
     }
 
     .section {
@@ -529,8 +514,7 @@
 
     <div class="hero-image-wrap">
       <div class="hero-image-panel">
-        <div class="image-fallback">Calisto</div>
-        <img src="images/personajes/calisto.jpg" alt="Calisto">
+        <img src="images/calisto.jpg" alt="Calisto">
       </div>
     </div>
   </section>
