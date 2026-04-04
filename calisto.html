@@ -109,7 +109,7 @@
     .hero {
       position: relative;
       z-index: 2;
-      min-height: 100vh;
+      min-height: 78vh;
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       align-items: stretch;
@@ -118,7 +118,7 @@
     .hero-copy {
       display: flex;
       align-items: center;
-      padding: 140px 8% 80px;
+      padding: 130px 8% 40px;
       position: relative;
       z-index: 2;
     }
@@ -167,7 +167,7 @@
     }
 
     .role {
-      margin-bottom: 28px;
+      margin-bottom: 22px;
       font-size: 1.2rem;
       color: rgba(165, 230, 255, 0.82);
       letter-spacing: 1px;
@@ -178,7 +178,7 @@
       line-height: 1.9;
       color: rgba(255,255,255,0.82);
       max-width: 650px;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     .actions {
@@ -231,47 +231,74 @@
 
     .hero-image-wrap {
       position: relative;
-      min-height: 100vh;
+      min-height: 78vh;
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 110px 7% 40px 0;
+    }
+
+    .hero-image-panel {
+      position: relative;
+      width: 100%;
+      max-width: 620px;
+      min-height: 560px;
+      border: 1px solid rgba(0,170,255,0.14);
+      background:
+        radial-gradient(circle at top right, rgba(0,170,255,0.10), transparent 24%),
+        linear-gradient(145deg, rgba(7,12,22,0.88), rgba(2,5,10,0.96));
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.04),
+        0 0 28px rgba(0,0,0,0.18);
       overflow: hidden;
     }
 
-    .hero-image-wrap img {
+    .hero-image-panel img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.72) contrast(1.06) saturate(0.95);
+      filter: brightness(0.74) contrast(1.06) saturate(0.95);
     }
 
-    .hero-image-wrap::before {
+    .hero-image-panel::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(to left, rgba(2,4,9,0.15), rgba(2,4,9,0.80)),
-        linear-gradient(to top, rgba(2,4,9,0.55), rgba(2,4,9,0.08));
+        linear-gradient(to top, rgba(2,4,9,0.35), rgba(2,4,9,0.04)),
+        linear-gradient(to left, rgba(2,4,9,0.20), rgba(2,4,9,0.02));
+      pointer-events: none;
     }
 
-    .hero-image-wrap::after {
-      content: "";
+    .image-fallback {
       position: absolute;
       inset: 0;
-      z-index: 1;
-      background: radial-gradient(circle at 60% 35%, rgba(0,170,255,0.12), transparent 24%);
-      pointer-events: none;
+      z-index: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(150, 228, 255, 0.22);
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-align: center;
+      padding: 30px;
     }
 
     .section {
       position: relative;
       z-index: 2;
-      padding: 110px 8%;
+      padding: 70px 8% 110px;
     }
 
     .section-header {
       max-width: 780px;
-      margin-bottom: 44px;
+      margin-bottom: 36px;
     }
 
     .section-kicker {
@@ -413,11 +440,27 @@
     @media (max-width: 980px) {
       .hero {
         grid-template-columns: 1fr;
+        min-height: auto;
       }
 
       .hero-image-wrap {
-        min-height: 70vh;
+        min-height: auto;
         order: -1;
+        padding: 110px 5% 0;
+      }
+
+      .hero-image-panel {
+        min-height: 480px;
+        max-width: 100%;
+      }
+
+      .hero-copy {
+        padding: 40px 5% 20px;
+      }
+
+      .section {
+        padding-left: 5%;
+        padding-right: 5%;
       }
 
       .info-grid {
@@ -433,12 +476,6 @@
         align-items: flex-start;
       }
 
-      .hero-copy,
-      .section {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
       .actions {
         flex-direction: column;
         align-items: stretch;
@@ -450,6 +487,10 @@
 
       h1 {
         letter-spacing: 4px;
+      }
+
+      .hero-image-panel {
+        min-height: 380px;
       }
     }
   </style>
@@ -487,7 +528,10 @@
     </div>
 
     <div class="hero-image-wrap">
-      <img src="images/personajes/calisto.jpg" alt="Calisto">
+      <div class="hero-image-panel">
+        <div class="image-fallback">Calisto</div>
+        <img src="images/personajes/calisto.jpg" alt="Calisto">
+      </div>
     </div>
   </section>
 
