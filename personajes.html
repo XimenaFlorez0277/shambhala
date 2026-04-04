@@ -378,8 +378,8 @@
     .featured-card {
       position: relative;
       overflow: hidden;
-      min-height: 430px;
-      padding: 30px;
+      min-height: 460px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -401,7 +401,7 @@
       inset: 0;
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.05), transparent 25%),
-        linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.14));
+        linear-gradient(to top, rgba(0,0,0,0.76), rgba(0,0,0,0.14));
       z-index: -1;
     }
 
@@ -440,13 +440,13 @@
 
     .featured-card.small {
       grid-column: span 3;
-      min-height: 320px;
+      min-height: 340px;
     }
 
     .featured-card .ambient-name {
       position: absolute;
-      top: 18px;
-      right: 20px;
+      top: 16px;
+      right: 18px;
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(2rem, 4vw, 3.3rem);
       letter-spacing: 4px;
@@ -454,6 +454,52 @@
       text-transform: uppercase;
       pointer-events: none;
       user-select: none;
+    }
+
+    .featured-card .character-aura {
+      position: absolute;
+      inset: 0;
+      opacity: 0.95;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .aura-calisto {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(0, 190, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 75% 20%, rgba(120, 220, 255, 0.10), transparent 20%),
+        radial-gradient(circle at 50% 85%, rgba(255,255,255,0.04), transparent 22%);
+    }
+
+    .aura-pavani {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(170, 140, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(90, 170, 255, 0.10), transparent 20%),
+        radial-gradient(circle at 50% 78%, rgba(255,255,255,0.04), transparent 18%);
+    }
+
+    .aura-diana {
+      background:
+        radial-gradient(circle at 25% 22%, rgba(255, 210, 120, 0.14), transparent 20%),
+        radial-gradient(circle at 72% 24%, rgba(255, 130, 180, 0.10), transparent 18%);
+    }
+
+    .aura-izumi {
+      background:
+        radial-gradient(circle at 30% 22%, rgba(120, 255, 220, 0.13), transparent 22%),
+        radial-gradient(circle at 70% 28%, rgba(100, 180, 255, 0.10), transparent 18%);
+    }
+
+    .aura-naomi {
+      background:
+        radial-gradient(circle at 26% 24%, rgba(255, 160, 120, 0.14), transparent 22%),
+        radial-gradient(circle at 74% 30%, rgba(255, 220, 160, 0.08), transparent 18%);
+    }
+
+    .aura-annie {
+      background:
+        radial-gradient(circle at 25% 20%, rgba(100, 255, 255, 0.14), transparent 22%),
+        radial-gradient(circle at 70% 22%, rgba(120, 150, 255, 0.12), transparent 18%);
     }
 
     .character-tag {
@@ -468,22 +514,28 @@
       text-transform: uppercase;
       color: rgba(176, 230, 255, 0.92);
       backdrop-filter: blur(4px);
+      position: relative;
+      z-index: 2;
     }
 
     .featured-card h3 {
       margin: 0 0 12px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.7rem;
+      font-size: 1.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      position: relative;
+      z-index: 2;
     }
 
     .featured-card p {
       margin: 0 0 22px;
       max-width: 95%;
       line-height: 1.8;
-      color: rgba(255,255,255,0.78);
+      color: rgba(255,255,255,0.8);
       font-size: 0.98rem;
+      position: relative;
+      z-index: 2;
     }
 
     .card-link {
@@ -495,6 +547,8 @@
       border-bottom: 1px solid rgba(139,223,255,0.35);
       padding-bottom: 5px;
       transition: 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
 
     .featured-card:hover .card-link,
@@ -763,7 +817,7 @@
       <h1>Personajes</h1>
 
       <p class="hero-subtitle">
-        No están aquí para llenar un archivo. Están aquí para sostener tensiones, afectos, decisiones, pérdidas, descubrimientos y vínculos que hacen latir el universo de Shambhala.
+        No están aquí para llenar un archivo. Están aquí para sostener tensiones, afectos, descubrimientos, heridas, amistades y transformaciones que hacen latir el universo de Shambhala.
       </p>
 
       <div class="hero-actions">
@@ -779,12 +833,12 @@
 
         <div class="note-box">
           <div class="note-label">Tensión</div>
-          <p>Algunos arrastran preguntas. Otros sostienen el deseo, la ambigüedad o la herida que atraviesa la saga.</p>
+          <p>Algunos arrastran preguntas. Otros sostienen el deseo, la amistad, la ambigüedad o la herida que atraviesa la saga.</p>
         </div>
 
         <div class="note-box">
           <div class="note-label">Universo</div>
-          <p>La ciencia, la intimidad, la amistad y la transformación se leen distinto a través de cada una de estas voces.</p>
+          <p>La ciencia, la intimidad, la colonia lunar y el viaje se perciben distinto a través de cada una de estas voces.</p>
         </div>
       </div>
     </div>
@@ -802,27 +856,30 @@
     </div>
 
     <div class="featured-grid">
-      <a class="featured-card large reveal" href="cali.html">
-        <div class="ambient-name">Cali</div>
+      <a class="featured-card large reveal" href="calisto.html">
+        <div class="character-aura aura-calisto"></div>
+        <div class="ambient-name">Calisto</div>
         <span class="character-tag">Protagonista</span>
-        <h3>Cali</h3>
+        <h3>Calisto</h3>
         <p>
-          Ciencia, ironía, deseo de comprender y una vulnerabilidad que no siempre quiere mostrarse. Su mirada convierte lo imposible en algo íntimo.
+          Ciencia, ironía, impulso emocional y una necesidad profunda de comprender lo imposible sin dejar de sentirlo.
         </p>
         <span class="card-link">Entrar al perfil</span>
       </a>
 
       <a class="featured-card large reveal" href="pavani.html">
+        <div class="character-aura aura-pavani"></div>
         <div class="ambient-name">Pavani</div>
         <span class="character-tag">Centro emocional</span>
         <h3>Pavani</h3>
         <p>
-          Profundidad, contención y una forma distinta de sentir que transforma la gravedad emocional de todo lo que toca.
+          Contención, profundidad y una forma distinta de amar y percibir el mundo que cambia el eje íntimo de la historia.
         </p>
         <span class="card-link">Entrar al perfil</span>
       </a>
 
       <a class="featured-card small reveal" href="diana.html">
+        <div class="character-aura aura-diana"></div>
         <div class="ambient-name">Diana</div>
         <span class="character-tag">Órbita cercana</span>
         <h3>Diana</h3>
@@ -833,6 +890,7 @@
       </a>
 
       <a class="featured-card small reveal" href="izumi.html">
+        <div class="character-aura aura-izumi"></div>
         <div class="ambient-name">Izumi</div>
         <span class="character-tag">Órbita cercana</span>
         <h3>Izumi</h3>
@@ -843,6 +901,7 @@
       </a>
 
       <a class="featured-card small reveal" href="naomi.html">
+        <div class="character-aura aura-naomi"></div>
         <div class="ambient-name">Naomi</div>
         <span class="character-tag">Vínculo esencial</span>
         <h3>Naomi</h3>
@@ -853,6 +912,7 @@
       </a>
 
       <a class="featured-card small reveal" href="annie.html">
+        <div class="character-aura aura-annie"></div>
         <div class="ambient-name">Annie</div>
         <span class="character-tag">Conciencia artificial</span>
         <h3>Annie</h3>
@@ -880,7 +940,7 @@
       <div class="section-kicker">Universo expandido</div>
       <h2>Elenco completo</h2>
       <p>
-        Aquí puedes poner a las 30 sin perder elegancia. Primero viven las presencias centrales; luego, el resto del universo se despliega con orden, claridad y atmósfera.
+        Aquí está el universo completo. La estructura mantiene primero el impacto visual y luego despliega al resto del elenco con orden y atmósfera.
       </p>
     </div>
 
@@ -953,38 +1013,39 @@
       createStars();
     });
 
-    /* PERSONAJES */
+    /* LISTA COMPLETA DE PERSONAJES */
     const characters = [
-      { name: "Cali", role: "Protagonista", text: "Ciencia, ironía y una sensibilidad que no siempre quiere dejarse ver.", link: "cali.html" },
-      { name: "Pavani", role: "Centro emocional", text: "Una presencia profunda cuya manera de sentir cambia el mapa íntimo de la saga.", link: "pavani.html" },
-      { name: "Diana", role: "Figura clave", text: "Carisma e inteligencia en una combinación difícil de ignorar.", link: "diana.html" },
-      { name: "Izumi", role: "Figura clave", text: "Precisión, visión y una calma que sostiene decisiones enormes.", link: "izumi.html" },
-      { name: "Naomi", role: "Vínculo esencial", text: "Una amistad que aporta cercanía, verdad y refugio.", link: "naomi.html" },
-      { name: "Annie", role: "Presencia artificial", text: "Otra forma de conciencia dentro del universo Shambhala.", link: "annie.html" },
-      { name: "Quinn", role: "Tripulación", text: "Determinación, historia propia y una energía que deja huella.", link: "quinn.html" },
-      { name: "Olivia", role: "Tripulación", text: "Curiosidad y entusiasmo frente a lo desconocido.", link: "olivia.html" },
-      { name: "Marta", role: "Tripulación", text: "Una mirada capaz de contener emoción y asombro.", link: "marta.html" },
       { name: "Andrea", role: "Tripulación", text: "Presencia cálida dentro de un entorno de alta exigencia.", link: "andrea.html" },
-      { name: "Kenna", role: "Tripulación", text: "Impulso, sensibilidad y reacciones que humanizan la travesía.", link: "kenna.html" },
-      { name: "Remi", role: "Tripulación", text: "Afecto, observación y pequeños gestos que importan.", link: "remi.html" },
-      { name: "Aster", role: "Tripulación", text: "Una presencia que añade textura al ecosistema humano de la nave.", link: "aster.html" },
-      { name: "Mei Xing", role: "Tripulación", text: "Atención, cuidado y una lectura aguda de los demás.", link: "mei-xing.html" },
-      { name: "Gamon", role: "Tripulación", text: "Tensión, responsabilidad y fragilidad bajo presión.", link: "gamon.html" },
-      { name: "Yasmin", role: "Arcadia", text: "Otra voz dentro del tejido social y emocional de la colonia.", link: "yasmin.html" },
+      { name: "Annie", role: "Conciencia artificial", text: "Otra forma de presencia dentro del universo Shambhala.", link: "annie.html" },
       { name: "Berit", role: "Arcadia", text: "Una presencia firme dentro del entramado humano de Arcadia.", link: "berit.html" },
+      { name: "Calisto", role: "Protagonista", text: "Ciencia, ironía y sensibilidad en tensión constante.", link: "calisto.html" },
+      { name: "Diana", role: "Figura clave", text: "Carisma e inteligencia en una combinación difícil de ignorar.", link: "diana.html" },
+      { name: "Elena", role: "Entorno cercano", text: "Otra pieza dentro del tejido humano que rodea la historia.", link: "elena.html" },
+      { name: "Fae", role: "Entorno cercano", text: "Una presencia que añade textura y matices al universo.", link: "fae.html" },
       { name: "Fátima", role: "Arcadia", text: "Transformación, renacer y una identidad en movimiento.", link: "fatima.html" },
-      { name: "Marley", role: "Tensión narrativa", text: "Ambigüedad, manipulación y una capa de inquietud.", link: "marley.html" },
-      { name: "Amélie", role: "Pasado vivo", text: "Remordimiento, herida y emociones que no dejan de resonar.", link: "amelie.html" },
-      { name: "Simón", role: "Entorno cercano", text: "Un vínculo externo que afecta el equilibrio de los demás.", link: "simon.html" },
-      { name: "Lysette", role: "Entorno humano", text: "Un pequeño gesto puede bastar para dejar impresión.", link: "lysette.html" },
-      { name: "Personaje 23", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-23.html" },
-      { name: "Personaje 24", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-24.html" },
-      { name: "Personaje 25", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-25.html" },
-      { name: "Personaje 26", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-26.html" },
-      { name: "Personaje 27", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-27.html" },
-      { name: "Personaje 28", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-28.html" },
-      { name: "Personaje 29", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-29.html" },
-      { name: "Personaje 30", role: "Por definir", text: "Aquí irá otro personaje del universo Shambhala.", link: "personaje-30.html" }
+      { name: "Gamon", role: "Tripulación", text: "Tensión, responsabilidad y fragilidad bajo presión.", link: "gamon.html" },
+      { name: "Hadley", role: "Entorno cercano", text: "Otra voz dentro del entramado más amplio de la saga.", link: "hadley.html" },
+      { name: "Izumi", role: "Figura clave", text: "Precisión, visión y una calma que sostiene decisiones enormes.", link: "izumi.html" },
+      { name: "Jacinda", role: "Entorno cercano", text: "Una presencia adicional dentro del universo humano de Shambhala.", link: "jacinda.html" },
+      { name: "Jordyn", role: "Entorno cercano", text: "Un matiz más dentro del ecosistema emocional de la historia.", link: "jordyn.html" },
+      { name: "Kalifa", role: "Entorno cercano", text: "Otra figura que amplía el universo interpersonal de la saga.", link: "kalifa.html" },
+      { name: "Kamana", role: "Entorno cercano", text: "Una presencia más dentro del mapa humano del relato.", link: "kamana.html" },
+      { name: "Kenna", role: "Tripulación", text: "Impulso, sensibilidad y reacciones que humanizan la travesía.", link: "kenna.html" },
+      { name: "Marta", role: "Tripulación", text: "Una mirada capaz de contener emoción y asombro.", link: "marta.html" },
+      { name: "Mei Xing", role: "Tripulación", text: "Atención, cuidado y una lectura aguda de los demás.", link: "mei-xing.html" },
+      { name: "Nalah", role: "Entorno cercano", text: "Otra presencia dentro del entramado amplio del universo.", link: "nalah.html" },
+      { name: "Naomi", role: "Vínculo esencial", text: "Una amistad que aporta cercanía, verdad y refugio.", link: "naomi.html" },
+      { name: "Olivia", role: "Tripulación", text: "Curiosidad y entusiasmo frente a lo desconocido.", link: "olivia.html" },
+      { name: "Pavani", role: "Centro emocional", text: "Una presencia profunda cuya manera de sentir cambia el mapa íntimo de la saga.", link: "pavani.html" },
+      { name: "Quinn", role: "Tripulación", text: "Determinación, historia propia y una energía que deja huella.", link: "quinn.html" },
+      { name: "Raven", role: "Entorno cercano", text: "Otra figura que añade fuerza al tejido del elenco.", link: "raven.html" },
+      { name: "Remi", role: "Tripulación", text: "Afecto, observación y pequeños gestos que importan.", link: "remi.html" },
+      { name: "Rika", role: "Entorno cercano", text: "Una presencia más dentro del universo expandido.", link: "rika.html" },
+      { name: "Sasha", role: "Entorno cercano", text: "Otra voz dentro del amplio coro humano de la saga.", link: "sasha.html" },
+      { name: "Sook", role: "Arcadia", text: "Una presencia significativa dentro del tejido emocional y humano.", link: "sook.html" },
+      { name: "Tanya", role: "Entorno cercano", text: "Otra figura que aporta relieve al universo narrativo.", link: "tanya.html" },
+      { name: "Yasmin", role: "Arcadia", text: "Otra voz dentro del tejido social y emocional de la colonia.", link: "yasmin.html" },
+      { name: "Zoe", role: "Entorno cercano", text: "Una presencia más dentro del mapa humano de Shambhala.", link: "zoe.html" }
     ];
 
     const rosterGrid = document.getElementById("rosterGrid");
