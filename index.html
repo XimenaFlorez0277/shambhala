@@ -149,6 +149,22 @@ p {
   opacity: 1;
 }
 
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.6rem;
+    letter-spacing: 4px;
+  }
+
+  .hero img {
+    width: min(130vw, 900px);
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 </style>
 </head>
 
@@ -171,7 +187,7 @@ p {
       <a href="explorar.html" class="btn" id="exploreBtn">
         Explorar el universo
       </a>
-      <a href="#" class="btn">
+      <a href="personajes.html" class="btn" id="charactersBtn">
         Personajes
       </a>
     </div>
@@ -236,17 +252,20 @@ resize();
 createStars();
 draw();
 
-/* 🚀 TRANSICIÓN FINAL */
-const btn = document.getElementById("exploreBtn");
+window.addEventListener("resize", () => {
+  resize();
+  createStars();
+});
+
+/* 🚀 TRANSICIONES */
 const ship = document.getElementById("ship");
 const transition = document.getElementById("transition");
+const exploreBtn = document.getElementById("exploreBtn");
+const charactersBtn = document.getElementById("charactersBtn");
 
-btn.addEventListener("click", (e) => {
-  e.preventDefault();
-
+function cinematicTransition(targetUrl) {
   warpTarget = 20;
 
-  // vibración nave
   let i = 0;
   const vib = setInterval(() => {
     ship.style.transform =
@@ -255,16 +274,23 @@ btn.addEventListener("click", (e) => {
     if (i > 25) clearInterval(vib);
   }, 30);
 
-  // fade negro (más natural)
   setTimeout(() => {
     transition.classList.add("active");
   }, 800);
 
-  // navegación
   setTimeout(() => {
-    window.location.href = "explorar.html";
+    window.location.href = targetUrl;
   }, 1500);
+}
 
+exploreBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  cinematicTransition("explorar.html");
+});
+
+charactersBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  cinematicTransition("personajes.html");
 });
 
 </script>
