@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calisto — Shambhala Saga</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: white;
+      background:
+        radial-gradient(circle at top, rgba(0, 120, 200, 0.14), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(90, 160, 255, 0.08), transparent 18%),
+        linear-gradient(180deg, #03070d 0%, #020409 100%);
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.18) 72%, rgba(0,0,0,0.72) 100%);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      padding: 20px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0));
+      backdrop-filter: blur(6px);
+    }
+
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.94);
+      text-shadow: 0 0 12px rgba(0,170,255,0.18);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-links a {
+      font-size: 0.8rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 10px 15px;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(0,170,255,0.18);
+      background: rgba(0,0,0,0.22);
+      transition: 0.35s ease;
+      box-shadow:
+        inset 0 0 12px rgba(0,170,255,0.04),
+        0 0 14px rgba(0,170,255,0.05);
+    }
+
+    .top-links a:hover {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.55);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 18px rgba(0,170,255,0.18),
+        0 0 40px rgba(0,170,255,0.08);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      display: flex;
+      align-items: center;
+      padding: 140px 8% 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-copy-inner {
+      max-width: 700px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      padding: 10px 15px;
+      border: 1px solid rgba(0,170,255,0.22);
+      background: rgba(0, 20, 40, 0.20);
+      color: rgba(150, 228, 255, 0.88);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      box-shadow:
+        inset 0 0 18px rgba(0,170,255,0.05),
+        0 0 20px rgba(0,170,255,0.06);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: rgba(150, 228, 255, 0.8);
+      box-shadow: 0 0 8px rgba(150, 228, 255, 0.4);
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 12px rgba(255,255,255,0.28),
+        0 0 38px rgba(0,170,255,0.22),
+        0 0 80px rgba(0,170,255,0.08);
+    }
+
+    .role {
+      margin-bottom: 28px;
+      font-size: 1.2rem;
+      color: rgba(165, 230, 255, 0.82);
+      letter-spacing: 1px;
+    }
+
+    .intro {
+      font-size: 1.06rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.82);
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      padding: 14px 24px;
+      border: 1px solid rgba(0,170,255,0.42);
+      background: rgba(0,0,0,0.34);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.35s ease;
+      box-shadow:
+        0 0 12px rgba(0,170,255,0.14),
+        inset 0 0 18px rgba(0,170,255,0.07);
+    }
+
+    .btn:hover {
+      color: #a8f1ff;
+      border-color: rgba(0,170,255,0.84);
+      transform: translateY(-2px);
+      box-shadow:
+        0 0 20px rgba(0,170,255,0.32),
+        0 0 48px rgba(0,170,255,0.12);
+    }
+
+    .btn.secondary {
+      border-color: rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 10px rgba(255,255,255,0.05),
+        inset 0 0 10px rgba(255,255,255,0.03);
+    }
+
+    .btn.secondary:hover {
+      color: white;
+      border-color: rgba(255,255,255,0.34);
+      box-shadow:
+        0 0 14px rgba(255,255,255,0.1),
+        0 0 30px rgba(255,255,255,0.06);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-image-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.72) contrast(1.06) saturate(0.95);
+    }
+
+    .hero-image-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to left, rgba(2,4,9,0.15), rgba(2,4,9,0.80)),
+        linear-gradient(to top, rgba(2,4,9,0.55), rgba(2,4,9,0.08));
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at 60% 35%, rgba(0,170,255,0.12), transparent 24%);
+      pointer-events: none;
+    }
+
+    .section {
+      position: relative;
+      z-index: 2;
+      padding: 110px 8%;
+    }
+
+    .section-header {
+      max-width: 780px;
+      margin-bottom: 44px;
+    }
+
+    .section-kicker {
+      margin-bottom: 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(150, 228, 255, 0.8);
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 18px rgba(0,170,255,0.12);
+    }
+
+    .section-header p {
+      margin: 0;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.76);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .info-card {
+      padding: 26px 24px;
+      border: 1px solid rgba(0,170,255,0.14);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(3, 9, 15, 0.84);
+      box-shadow:
+        inset 0 0 18px rgba(0,170,255,0.04),
+        0 0 18px rgba(0,0,0,0.16);
+      min-height: 180px;
+    }
+
+    .info-label {
+      margin-bottom: 12px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(150, 228, 255, 0.84);
+    }
+
+    .info-value {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      max-width: 900px;
+    }
+
+    .timeline-item {
+      padding: 22px 22px;
+      border-left: 2px solid rgba(0,170,255,0.35);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-right: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(3, 9, 15, 0.8);
+      box-shadow:
+        inset 0 0 18px rgba(0,170,255,0.03),
+        0 0 18px rgba(0,0,0,0.12);
+    }
+
+    .timeline-years {
+      margin-bottom: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(150, 228, 255, 0.82);
+    }
+
+    .timeline-place {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .quote-box {
+      max-width: 860px;
+      padding: 34px 28px;
+      border: 1px solid rgba(0,170,255,0.16);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+        rgba(3, 9, 15, 0.84);
+      box-shadow:
+        inset 0 0 18px rgba(0,170,255,0.04),
+        0 0 18px rgba(0,0,0,0.16);
+    }
+
+    .quote-box p {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.95;
+      color: rgba(255,255,255,0.82);
+    }
+
+    .quote-source {
+      margin-top: 16px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(150, 228, 255, 0.8);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(45px) scale(0.99);
+      filter: blur(8px);
+      transition:
+        opacity 0.95s ease,
+        transform 0.95s ease,
+        filter 0.95s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        min-height: 70vh;
+        order: -1;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar {
+        padding: 18px 5%;
+        gap: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-copy,
+      .section {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      h1 {
+        letter-spacing: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="stars"></canvas>
+  <div class="vignette"></div>
+
+  <header class="topbar">
+    <div class="brand">SHAMBHALA SAGA</div>
+    <nav class="top-links">
+      <a href="index.html">Inicio</a>
+      <a href="personajes.html">Personajes</a>
+      <a href="#datos">Datos</a>
+      <a href="#trayectoria">Trayectoria</a>
+    </nav>
+  </header>
+
+  <section class="hero reveal">
+    <div class="hero-copy">
+      <div class="hero-copy-inner">
+        <div class="eyebrow">Protagonista · física teórica</div>
+        <h1>Calisto</h1>
+        <div class="role">Física</div>
+        <p class="intro">
+          Una mente entrenada para pensar lo imposible y una sensibilidad que nunca deja del todo de sentirlo. En Calisto conviven la precisión científica, la ironía y una forma profundamente humana de mirar el universo.
+        </p>
+
+        <div class="actions">
+          <a href="#datos" class="btn">Ver datos esenciales</a>
+          <a href="personajes.html" class="btn secondary">Volver a personajes</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <img src="images/personajes/calisto.jpg" alt="Calisto">
+    </div>
+  </section>
+
+  <section class="section reveal" id="datos">
+    <div class="section-header">
+      <div class="section-kicker">Archivo biográfico</div>
+      <h2>Datos esenciales</h2>
+      <p>
+        Más que una ficha, esta información funciona como un mapa de formación, origen e impulso intelectual.
+      </p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="info-label">País de origen</div>
+        <div class="info-value">California</div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-label">Fecha de nacimiento</div>
+        <div class="info-value">12 enero, 2066</div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-label">Educación</div>
+        <div class="info-value">PhD en Física Teorética</div>
+      </div>
+
+      <div class="info-card reveal">
+        <div class="info-label">Intereses de investigación</div>
+        <div class="info-value">Tecnología de Motores de Curvatura</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="trayectoria">
+    <div class="section-header">
+      <div class="section-kicker">Trayectoria</div>
+      <h2>Recorrido profesional</h2>
+      <p>
+        La formación de Calisto no solo está en sus estudios, sino también en el lugar desde donde piensa y trabaja: el espacio donde la teoría se acerca a lo desconocido.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-years">2097 — presente</div>
+        <div class="timeline-place">Shambhala Laboratorio Orbital</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="quote-box">
+      <p>
+        Algunas personas miran el universo para confirmar lo que ya saben. Otras lo miran porque sospechan que todavía no entienden nada del todo. Calisto pertenece peligrosamente al segundo grupo.
+      </p>
+      <div class="quote-source">Calisto · presencia central</div>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 220; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.4 + 0.2,
+          speed: Math.random() * 0.28 + 0.05,
+          alpha: Math.random() * 0.65 + 0.18
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+
+        star.x -= star.speed;
+
+        if (star.x < -3) {
+          star.x = canvas.width + 3;
+          star.y = Math.random() * canvas.height;
+        }
+      });
+
+      requestAnimationFrame(drawStars);
+    }
+
+    resizeCanvas();
+    createStars();
+    drawStars();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
