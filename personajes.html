@@ -508,10 +508,111 @@
         radial-gradient(circle at 74% 30%, rgba(255, 220, 160, 0.08), transparent 18%);
     }
 
-    .aura-annie {
+    .annie-card {
       background:
-        radial-gradient(circle at 25% 20%, rgba(100, 255, 255, 0.14), transparent 22%),
-        radial-gradient(circle at 70% 22%, rgba(120, 150, 255, 0.12), transparent 18%);
+        radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.18), transparent 18%),
+        radial-gradient(circle at 80% 24%, rgba(140, 170, 255, 0.16), transparent 20%),
+        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 16%),
+        linear-gradient(145deg, #07101a, #020409 70%);
+    }
+
+    .annie-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+    }
+
+    .annie-rings {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .annie-rings::before,
+    .annie-rings::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(120, 230, 255, 0.22);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
+    }
+
+    .annie-rings::before {
+      width: 220px;
+      height: 220px;
+      top: 22%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .annie-rings::after {
+      width: 320px;
+      height: 320px;
+      top: 13%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .annie-core {
+      position: absolute;
+      top: 31%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      z-index: 2;
+      background:
+        radial-gradient(circle, rgba(180,245,255,0.95) 0%, rgba(60,210,255,0.72) 35%, rgba(0,120,255,0.08) 70%, transparent 72%);
+      box-shadow:
+        0 0 24px rgba(80,220,255,0.32),
+        0 0 60px rgba(60,180,255,0.18);
+    }
+
+    .annie-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .annie-lines span {
+      position: absolute;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.35), rgba(120,230,255,0.0));
+      transform-origin: top center;
+    }
+
+    .annie-lines span:nth-child(1) {
+      height: 170px;
+      top: 13%;
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    .annie-lines span:nth-child(2) {
+      height: 170px;
+      top: 13%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .annie-lines span:nth-child(3) {
+      height: 170px;
+      top: 13%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    .annie-lines span:nth-child(4) {
+      height: 170px;
+      top: 13%;
+      transform: translateX(-50%) rotate(135deg);
     }
 
     .featured-content {
@@ -932,15 +1033,24 @@
         </div>
       </a>
 
-      <a class="featured-card small reveal" href="annie.html">
-        <img class="featured-image" src="images/personajes/annie.jpg" alt="Annie">
+      <a class="featured-card small annie-card reveal" href="annie.html">
+        <div class="annie-grid"></div>
+        <div class="annie-rings"></div>
+        <div class="annie-core"></div>
+        <div class="annie-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div class="featured-overlay"></div>
-        <div class="character-aura aura-annie"></div>
         <div class="ambient-name">Annie</div>
         <div class="featured-content">
-          <span class="character-tag">Conciencia artificial</span>
+          <span class="character-tag">IA · Presencia</span>
           <h3>Annie</h3>
-          <p>Otra forma de presencia dentro de Shambhala.</p>
+          <p>
+            Una voz sin cuerpo visible. Una conciencia que habita el sistema y transforma la idea misma de compañía.
+          </p>
           <span class="card-link">Ver más</span>
         </div>
       </a>
@@ -1037,7 +1147,7 @@
 
     const characters = [
       { name: "Andrea", role: "Tripulación", text: "Presencia cálida dentro de un entorno de alta exigencia.", link: "andrea.html" },
-      { name: "Annie", role: "Conciencia artificial", text: "Otra forma de presencia dentro del universo Shambhala.", link: "annie.html" },
+      { name: "Annie", role: "IA · Presencia", text: "Una voz sin cuerpo visible que habita el sistema y reconfigura la idea de compañía.", link: "annie.html" },
       { name: "Berit", role: "Arcadia", text: "Una presencia firme dentro del entramado humano de Arcadia.", link: "berit.html" },
       { name: "Calisto", role: "Protagonista", text: "Ciencia, ironía y sensibilidad en tensión constante.", link: "calisto.html" },
       { name: "Diana", role: "Figura clave", text: "Carisma e inteligencia en una combinación difícil de ignorar.", link: "diana.html" },
