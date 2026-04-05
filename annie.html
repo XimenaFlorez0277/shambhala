@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Annie — Shambhala Saga</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personajes | Shambhala</title>
+  <meta
+    name="description"
+    content="Personajes de Shambhala. Archivo visual del elenco principal y expandido de la saga."
+  />
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -17,16 +23,14 @@
     }
 
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      color: white;
+      font-family: "Inter", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(0, 110, 170, 0.15), transparent 25%),
-        radial-gradient(circle at 80% 20%, rgba(120, 170, 255, 0.10), transparent 20%),
-        linear-gradient(180deg, #03070d 0%, #020409 100%);
+        radial-gradient(circle at top, rgba(8, 18, 40, 0.9), #000 42%),
+        #000;
+      color: white;
       overflow-x: hidden;
       opacity: 0;
-      transition: opacity 1.4s ease;
+      transition: opacity 1.5s ease;
     }
 
     body.loaded {
@@ -45,41 +49,27 @@
       pointer-events: none;
     }
 
+    .space-mist {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.12), transparent 22%),
+        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.08), transparent 18%),
+        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.04), transparent 20%),
+        radial-gradient(circle at 30% 85%, rgba(0, 95, 160, 0.08), transparent 16%);
+      filter: blur(28px);
+      opacity: 0.95;
+    }
+
     .vignette {
       position: fixed;
       inset: 0;
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.2) 72%, rgba(0,0,0,0.72) 100%);
-    }
-
-    .scanlines {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.07;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.16) 0px,
-        rgba(255,255,255,0.16) 1px,
-        transparent 2px,
-        transparent 4px
-      );
-    }
-
-    .grid-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.12;
-      background-image:
-        linear-gradient(rgba(100, 220, 255, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(100, 220, 255, 0.12) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: radial-gradient(circle at center, black 35%, transparent 100%);
+        radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.18) 72%, rgba(0,0,0,0.65) 100%);
     }
 
     .topbar {
@@ -87,7 +77,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 20;
+      z-index: 40;
       padding: 20px 6%;
       display: flex;
       justify-content: space-between;
@@ -97,11 +87,11 @@
     }
 
     .brand {
-      font-family: 'Orbitron', sans-serif;
+      font-family: "Orbitron", sans-serif;
       letter-spacing: 3px;
       font-size: 0.95rem;
       color: rgba(255,255,255,0.94);
-      text-shadow: 0 0 12px rgba(90, 220, 255, 0.2);
+      text-shadow: 0 0 10px rgba(0,170,255,0.15);
     }
 
     .top-links {
@@ -113,463 +103,746 @@
 
     .top-links a {
       position: relative;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
       padding: 10px 15px;
       color: rgba(255,255,255,0.82);
-      border: 1px solid rgba(90,220,255,0.18);
+      border: 1px solid rgba(0,170,255,0.18);
       background: rgba(0,0,0,0.22);
       overflow: hidden;
       transition: 0.35s ease;
       box-shadow:
-        inset 0 0 12px rgba(90,220,255,0.04),
-        0 0 14px rgba(90,220,255,0.05);
+        inset 0 0 12px rgba(0,170,255,0.04),
+        0 0 14px rgba(0,170,255,0.05);
+    }
+
+    .top-links a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.18), transparent);
+      transform: translateX(-140%);
+      transition: transform 0.7s ease;
+    }
+
+    .top-links a:hover::before {
+      transform: translateX(140%);
     }
 
     .top-links a:hover {
-      color: #9beeff;
-      border-color: rgba(90,220,255,0.52);
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.55);
       transform: translateY(-2px);
       box-shadow:
-        0 0 18px rgba(90,220,255,0.18),
-        0 0 40px rgba(90,220,255,0.08);
+        0 0 18px rgba(0,170,255,0.18),
+        0 0 44px rgba(0,170,255,0.08);
     }
 
     .hero {
       position: relative;
       z-index: 2;
       min-height: 100vh;
-      padding: 140px 8% 100px;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
+      padding: 140px 8% 110px;
+    }
+
+    .hero-copy,
+    .hero-image-wrap {
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow:
+        0 24px 60px rgba(0,0,0,0.35),
+        inset 0 0 26px rgba(0,170,255,0.04);
     }
 
     .hero-copy {
-      max-width: 760px;
+      padding: 56px 46px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025)),
+        rgba(8, 12, 19, 0.76);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-image-wrap {
+      min-height: 620px;
+      background: #05070c;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.82) saturate(0.95);
+      transform: scale(1.02);
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4,7,12,0.18), rgba(4,7,12,0.28) 42%, rgba(4,7,12,0.72) 100%),
+        linear-gradient(90deg, rgba(4,7,12,0.08), rgba(4,7,12,0) 50%, rgba(4,7,12,0.18));
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       padding: 10px 15px;
-      border: 1px solid rgba(90,220,255,0.24);
+      border: 1px solid rgba(0,170,255,0.24);
       background: rgba(0, 20, 40, 0.22);
-      color: rgba(155, 238, 255, 0.88);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.76rem;
+      color: rgba(146, 222, 255, 0.88);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
       letter-spacing: 3px;
       text-transform: uppercase;
+      width: fit-content;
       box-shadow:
-        inset 0 0 18px rgba(90,220,255,0.05),
-        0 0 20px rgba(90,220,255,0.06);
+        inset 0 0 18px rgba(0,170,255,0.05),
+        0 0 20px rgba(0,170,255,0.06);
     }
 
     .eyebrow::before {
       content: "";
       width: 28px;
       height: 1px;
-      background: rgba(155, 238, 255, 0.8);
-      box-shadow: 0 0 8px rgba(155, 238, 255, 0.4);
+      background: rgba(146, 222, 255, 0.8);
+      box-shadow: 0 0 8px rgba(146, 222, 255, 0.4);
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.95;
+      margin: 0 0 24px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      line-height: 0.98;
       letter-spacing: 7px;
       text-transform: uppercase;
       text-shadow:
-        0 0 12px rgba(255,255,255,0.24),
-        0 0 35px rgba(90,220,255,0.22),
-        0 0 80px rgba(90,220,255,0.08);
+        0 0 12px rgba(255,255,255,0.38),
+        0 0 44px rgba(0,150,255,0.22),
+        0 0 90px rgba(0,100,255,0.08);
     }
 
-    .subtitle {
-      font-size: 1.06rem;
+    .hero-subtitle {
+      font-size: 1.1rem;
       line-height: 1.9;
-      color: rgba(255,255,255,0.82);
-      max-width: 700px;
-      margin-bottom: 34px;
+      max-width: 760px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 42px;
     }
 
-    .system-line {
+    .hero-actions {
       display: flex;
+      gap: 16px;
       flex-wrap: wrap;
-      gap: 12px;
       margin-bottom: 34px;
-    }
-
-    .system-pill {
-      padding: 9px 12px;
-      border: 1px solid rgba(90,220,255,0.2);
-      background: rgba(0,0,0,0.24);
-      color: rgba(160,240,255,0.82);
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
     }
 
     .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 200px;
-      padding: 14px 24px;
-      border: 1px solid rgba(90,220,255,0.42);
+      min-width: 220px;
+      padding: 15px 26px;
+      border: 1px solid rgba(0,170,255,0.42);
       background: rgba(0,0,0,0.34);
       color: rgba(255,255,255,0.92);
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      overflow: hidden;
       transition: 0.35s ease;
       box-shadow:
-        0 0 12px rgba(90,220,255,0.14),
-        inset 0 0 18px rgba(90,220,255,0.07);
+        0 0 12px rgba(0,170,255,0.16),
+        inset 0 0 18px rgba(0,170,255,0.07);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: -120%;
+      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.32), transparent);
+      transition: 0.75s ease;
+    }
+
+    .btn:hover::before {
+      left: 120%;
     }
 
     .btn:hover {
-      color: #a8f1ff;
-      border-color: rgba(90,220,255,0.84);
+      color: #a7ebff;
+      border-color: rgba(0,170,255,0.88);
       transform: translateY(-2px);
       box-shadow:
-        0 0 20px rgba(90,220,255,0.32),
-        0 0 48px rgba(90,220,255,0.12);
+        0 0 20px rgba(0,170,255,0.35),
+        0 0 56px rgba(0,170,255,0.12);
     }
 
     .btn.secondary {
-      border-color: rgba(255,255,255,0.14);
+      border-color: rgba(255,255,255,0.15);
       box-shadow:
         0 0 10px rgba(255,255,255,0.05),
-        inset 0 0 10px rgba(255,255,255,0.03);
+        inset 0 0 12px rgba(255,255,255,0.03);
     }
 
     .btn.secondary:hover {
       color: white;
-      border-color: rgba(255,255,255,0.34);
+      border-color: rgba(255,255,255,0.35);
       box-shadow:
-        0 0 14px rgba(255,255,255,0.1),
-        0 0 30px rgba(255,255,255,0.06);
+        0 0 16px rgba(255,255,255,0.10),
+        0 0 36px rgba(255,255,255,0.08);
     }
 
-    .hero-visual {
-      position: relative;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .hero-note {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 880px;
     }
 
-    .core-rings {
-      position: relative;
-      width: 420px;
-      height: 420px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(110,235,255,0.18);
-      box-shadow: 0 0 20px rgba(80,220,255,0.08);
-      animation: pulseRing 5s ease-in-out infinite;
-    }
-
-    .ring-1 {
-      width: 140px;
-      height: 140px;
-      animation-delay: 0s;
-    }
-
-    .ring-2 {
-      width: 230px;
-      height: 230px;
-      animation-delay: 0.6s;
-    }
-
-    .ring-3 {
-      width: 320px;
-      height: 320px;
-      animation-delay: 1.2s;
-    }
-
-    .ring-4 {
-      width: 410px;
-      height: 410px;
-      animation-delay: 1.8s;
-    }
-
-    @keyframes pulseRing {
-      0%, 100% {
-        opacity: 0.35;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.8;
-        transform: scale(1.03);
-      }
-    }
-
-    .core {
-      position: absolute;
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
+    .note-box {
+      padding: 18px 18px;
+      border: 1px solid rgba(255,255,255,0.09);
       background:
-        radial-gradient(circle, rgba(220,250,255,0.98) 0%, rgba(110,235,255,0.78) 34%, rgba(30,140,255,0.14) 70%, transparent 72%);
+        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+        rgba(8, 10, 16, 0.72);
       box-shadow:
-        0 0 25px rgba(110,235,255,0.34),
-        0 0 70px rgba(80,180,255,0.22);
-      animation: corePulse 3.5s ease-in-out infinite;
-    }
-
-    @keyframes corePulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.08);
-      }
-    }
-
-    .data-lines span {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 1px;
-      height: 190px;
-      background: linear-gradient(to bottom, rgba(110,235,255,0), rgba(110,235,255,0.45), rgba(110,235,255,0));
-      transform-origin: center top;
-    }
-
-    .data-lines span:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
-    .data-lines span:nth-child(2) { transform: translate(-50%, -50%) rotate(30deg); }
-    .data-lines span:nth-child(3) { transform: translate(-50%, -50%) rotate(60deg); }
-    .data-lines span:nth-child(4) { transform: translate(-50%, -50%) rotate(90deg); }
-    .data-lines span:nth-child(5) { transform: translate(-50%, -50%) rotate(120deg); }
-    .data-lines span:nth-child(6) { transform: translate(-50%, -50%) rotate(150deg); }
-
-    .status-panel {
-      position: absolute;
-      bottom: 10px;
-      right: 0;
-      width: 260px;
-      padding: 18px;
-      border: 1px solid rgba(90,220,255,0.18);
-      background: rgba(3, 10, 18, 0.72);
-      box-shadow:
-        inset 0 0 18px rgba(90,220,255,0.04),
+        inset 0 0 16px rgba(0,170,255,0.04),
         0 0 18px rgba(0,0,0,0.18);
-      backdrop-filter: blur(6px);
     }
 
-    .status-label {
-      margin-bottom: 10px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.72rem;
+    .note-label {
+      margin-bottom: 8px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(160,240,255,0.85);
+      color: rgba(134, 221, 255, 0.75);
     }
 
-    .status-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 6px 0;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.76);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .status-item:last-child {
-      border-bottom: 0;
-    }
-
-    .status-value {
-      color: rgba(155,238,255,0.88);
+    .note-box p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
     }
 
     .section {
       position: relative;
       z-index: 2;
-      padding: 110px 8%;
+      padding: 120px 8%;
     }
 
     .section-header {
-      max-width: 780px;
-      margin-bottom: 42px;
+      max-width: 820px;
+      margin-bottom: 50px;
     }
 
     .section-kicker {
       margin-bottom: 16px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.76rem;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(155, 238, 255, 0.8);
+      color: rgba(140, 223, 255, 0.82);
     }
 
     .section h2 {
-      margin: 0 0 16px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      margin: 0 0 18px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.9rem, 4vw, 3.2rem);
       letter-spacing: 3px;
       text-transform: uppercase;
-      text-shadow: 0 0 18px rgba(90,220,255,0.12);
+      text-shadow: 0 0 20px rgba(0,150,255,0.12);
     }
 
     .section-header p {
       margin: 0;
+      max-width: 760px;
       line-height: 1.85;
       color: rgba(255,255,255,0.76);
+      font-size: 1rem;
     }
 
-    .terminal {
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+    }
+
+    .featured-card {
       position: relative;
-      border: 1px solid rgba(90,220,255,0.18);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(2, 8, 14, 0.88);
-      box-shadow:
-        inset 0 0 20px rgba(90,220,255,0.04),
-        0 0 18px rgba(0,0,0,0.18);
       overflow: hidden;
-    }
-
-    .terminal-top {
+      min-height: 520px;
+      padding: 32px;
       display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 14px 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.02);
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.05),
+        0 0 30px rgba(0,0,0,0.24);
+      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+      isolation: isolate;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
+    .featured-card.large {
+      grid-column: span 6;
+    }
+
+    .featured-card.small {
+      grid-column: span 3;
+      min-height: 390px;
+    }
+
+    .featured-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.03);
+      transition: transform 0.8s ease, filter 0.8s ease;
+      filter: saturate(0.9) brightness(0.72) contrast(1.05);
+    }
+
+    .featured-card:hover .featured-image {
+      transform: scale(1.08);
+      filter: saturate(1) brightness(0.82) contrast(1.08);
+    }
+
+    .featured-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.96) 8%, rgba(0,0,0,0.45) 48%, rgba(0,0,0,0.16) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.26), rgba(0,0,0,0.02)),
+        radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 40%);
+    }
+
+    .featured-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 65%;
+      height: 100%;
+      z-index: 2;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.10), transparent);
+      transition: left 0.95s ease;
+    }
+
+    .featured-card:hover::after {
+      left: 140%;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-12px) scale(1.01);
+      border-color: rgba(0,170,255,0.42);
+      box-shadow:
+        0 0 28px rgba(0,170,255,0.14),
+        0 0 70px rgba(0,170,255,0.10),
+        inset 0 0 30px rgba(0,170,255,0.08);
+    }
+
+    .featured-card .character-aura {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .aura-calisto {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(0, 190, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 75% 20%, rgba(120, 220, 255, 0.10), transparent 20%);
+    }
+
+    .aura-pavani {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(170, 140, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(90, 170, 255, 0.10), transparent 20%);
+    }
+
+    .aura-diana {
+      background:
+        radial-gradient(circle at 25% 22%, rgba(255, 210, 120, 0.14), transparent 20%),
+        radial-gradient(circle at 72% 24%, rgba(255, 130, 180, 0.10), transparent 18%);
+    }
+
+    .aura-izumi {
+      background:
+        radial-gradient(circle at 30% 22%, rgba(120, 255, 220, 0.13), transparent 22%),
+        radial-gradient(circle at 70% 28%, rgba(100, 180, 255, 0.10), transparent 18%);
+    }
+
+    .aura-naomi {
+      background:
+        radial-gradient(circle at 26% 24%, rgba(255, 160, 120, 0.14), transparent 22%),
+        radial-gradient(circle at 74% 30%, rgba(255, 220, 160, 0.08), transparent 18%);
+    }
+
+    .annie-card {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.16), transparent 18%),
+        radial-gradient(circle at 80% 24%, rgba(140, 170, 255, 0.14), transparent 20%),
+        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 16%),
+        linear-gradient(145deg, #07101a, #020409 70%);
+      border-color: rgba(120, 230, 255, 0.16);
+    }
+
+    .annie-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+    }
+
+    .annie-rings {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .annie-rings::before,
+    .annie-rings::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(120, 230, 255, 0.25);
       border-radius: 50%;
-      background: rgba(155,238,255,0.6);
-      box-shadow: 0 0 10px rgba(155,238,255,0.18);
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
     }
 
-    .terminal-title {
-      margin-left: 8px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(155,238,255,0.78);
+    .annie-rings::before {
+      width: 190px;
+      height: 190px;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .terminal-body {
-      padding: 26px 22px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.95rem;
-      line-height: 2;
-      color: rgba(180,245,255,0.92);
-      min-height: 210px;
-      white-space: pre-line;
+    .annie-rings::after {
+      width: 290px;
+      height: 290px;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      animation: blink 1s steps(1) infinite;
+    .annie-core {
+      position: absolute;
+      top: 28%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      z-index: 2;
+      background:
+        radial-gradient(circle, rgba(180,245,255,0.95) 0%, rgba(60,210,255,0.72) 35%, rgba(0,120,255,0.08) 70%, transparent 72%);
+      box-shadow:
+        0 0 24px rgba(80,220,255,0.32),
+        0 0 60px rgba(60,180,255,0.18);
     }
 
-    @keyframes blink {
+    .annie-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .annie-lines span {
+      position: absolute;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.35), rgba(120,230,255,0.0));
+      transform-origin: top center;
+    }
+
+    .annie-lines span:nth-child(1) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    .annie-lines span:nth-child(2) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .annie-lines span:nth-child(3) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    .annie-lines span:nth-child(4) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(135deg);
+    }
+
+    .annie-pulse {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 32%, rgba(90, 220, 255, 0.16), transparent 12%),
+        radial-gradient(circle at 50% 32%, rgba(90, 220, 255, 0.08), transparent 24%);
+      animation: anniePulse 4.5s ease-in-out infinite;
+    }
+
+    @keyframes anniePulse {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
       50% {
-        opacity: 0;
+        opacity: 1;
+        transform: scale(1.04);
       }
     }
 
-    .panel-grid {
+    .featured-content {
+      position: relative;
+      z-index: 3;
+      max-width: 92%;
+    }
+
+    .character-tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.34);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(176, 230, 255, 0.92);
+      backdrop-filter: blur(4px);
+    }
+
+    .featured-card h3 {
+      margin: 0 0 12px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+    }
+
+    .featured-card p {
+      margin: 0 0 22px;
+      max-width: 95%;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.98rem;
+      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+    }
+
+    .card-link {
+      width: fit-content;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8bdfff;
+      border-bottom: 1px solid rgba(139,223,255,0.35);
+      padding-bottom: 5px;
+      transition: 0.3s ease;
+    }
+
+    .featured-card:hover .card-link,
+    .roster-card:hover .card-link {
+      color: white;
+      border-color: rgba(255,255,255,0.56);
+    }
+
+    .cinematic-band {
+      position: relative;
+      z-index: 2;
+      padding: 70px 8% 20px;
+    }
+
+    .cinematic-band-inner {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      gap: 25px;
+      align-items: flex-start;
+      color: rgba(255,255,255,0.56);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .cinematic-band-left {
+      max-width: 520px;
+    }
+
+    .cinematic-band-right {
+      max-width: 280px;
+      text-align: right;
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(130, 220, 255, 0.46);
+      font-size: 0.76rem;
+    }
+
+    .roster-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .info-panel {
+    .roster-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
       padding: 24px 22px;
-      border: 1px solid rgba(90,220,255,0.14);
+      border: 1px solid rgba(255,255,255,0.09);
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(3, 9, 15, 0.82);
+        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        linear-gradient(145deg, rgba(8,12,20,0.92), rgba(4,6,10,0.94));
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
       box-shadow:
-        inset 0 0 18px rgba(90,220,255,0.04),
-        0 0 18px rgba(0,0,0,0.16);
-      min-height: 230px;
+        inset 0 0 18px rgba(0,170,255,0.03),
+        0 0 18px rgba(0,0,0,0.18);
     }
 
-    .info-panel h3 {
-      margin: 0 0 14px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
+    .roster-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(0,170,255,0.08), transparent 32%),
+        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 20%);
+      pointer-events: none;
+    }
+
+    .roster-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,170,255,0.30);
+      box-shadow:
+        0 0 24px rgba(0,170,255,0.10),
+        0 0 42px rgba(0,170,255,0.05);
+    }
+
+    .roster-number {
+      margin-bottom: 13px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      color: rgba(120,210,255,0.74);
+    }
+
+    .roster-card h3 {
+      margin: 0 0 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.02rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.96);
     }
 
-    .info-panel p {
-      margin: 0;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.75);
-      font-size: 0.96rem;
+    .roster-role {
+      margin-bottom: 14px;
+      font-size: 0.8rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: rgba(145, 220, 255, 0.7);
     }
 
-    .quote-box {
-      max-width: 860px;
-      padding: 34px 28px;
-      border: 1px solid rgba(90,220,255,0.16);
+    .roster-card p {
+      margin: 0 0 18px;
+      font-size: 0.94rem;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .roster-card .card-link {
+      font-size: 0.72rem;
+    }
+
+    .ending {
+      position: relative;
+      z-index: 2;
+      min-height: 72vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 110px 8% 150px;
+      text-align: center;
+    }
+
+    .ending-box {
+      max-width: 820px;
+      padding: 50px 38px;
+      border: 1px solid rgba(255,255,255,0.10);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
-        rgba(3, 9, 15, 0.84);
+        rgba(4, 7, 12, 0.82);
       box-shadow:
-        inset 0 0 18px rgba(90,220,255,0.04),
-        0 0 18px rgba(0,0,0,0.16);
+        inset 0 0 22px rgba(0,170,255,0.04),
+        0 0 28px rgba(0,0,0,0.2);
     }
 
-    .quote-box p {
-      margin: 0;
-      font-size: 1.08rem;
-      line-height: 1.95;
-      color: rgba(255,255,255,0.82);
-    }
-
-    .quote-source {
-      margin-top: 16px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.76rem;
-      letter-spacing: 2px;
+    .ending-box h2 {
+      margin: 0 0 18px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: rgba(155,238,255,0.8);
+      text-shadow: 0 0 20px rgba(0,150,255,0.12);
+    }
+
+    .ending-box p {
+      margin: 0;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.76);
+      font-size: 1rem;
     }
 
     .reveal {
       opacity: 0;
-      transform: translateY(45px) scale(0.99);
-      filter: blur(8px);
+      transform: translateY(55px) scale(0.985);
       transition:
-        opacity 0.95s ease,
-        transform 0.95s ease,
-        filter 0.95s ease;
+        opacity 1s ease,
+        transform 1s ease,
+        filter 1s ease;
+      filter: blur(10px);
     }
 
     .reveal.visible {
@@ -578,205 +851,419 @@
       filter: blur(0);
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1100px) {
       .hero {
         grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 130px 7% 90px;
       }
 
-      .hero-visual {
-        order: -1;
-        min-height: 440px;
-      }
-
-      .panel-grid {
+      .hero-note {
         grid-template-columns: 1fr;
+        max-width: 720px;
       }
 
-      .status-panel {
-        position: relative;
-        margin: 24px auto 0;
-        width: 100%;
-        max-width: 360px;
+      .featured-card.large {
+        min-height: 470px;
+      }
+
+      .featured-card.small {
+        min-height: 340px;
       }
     }
 
-    @media (max-width: 720px) {
-      .topbar {
-        padding: 18px 5%;
-        gap: 14px;
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: 980px) {
+      .featured-card.large,
+      .featured-card.small {
+        grid-column: span 6;
       }
 
+      .roster-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .cinematic-band-inner {
+        flex-direction: column;
+      }
+
+      .cinematic-band-right {
+        text-align: left;
+      }
+
+      .section,
       .hero,
+      .ending,
+      .cinematic-band {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 8vw, 4.8rem);
+        letter-spacing: 5px;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+        max-width: 680px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        padding: 18px 5%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .top-links {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .hero {
+        padding-top: 150px;
+        padding-bottom: 80px;
+      }
+
+      .featured-grid {
+        gap: 18px;
+      }
+
+      .featured-card {
+        padding: 26px;
+      }
+
+      .featured-card h3 {
+        font-size: 1.55rem;
+      }
+
+      .featured-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
       .section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      .section-header {
+        margin-bottom: 34px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero,
+      .section,
+      .ending,
+      .cinematic-band {
         padding-left: 5%;
         padding-right: 5%;
       }
 
-      .actions {
+      .hero {
+        padding-top: 150px;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 10vw, 3.8rem);
+        letter-spacing: 4px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.96rem;
+        line-height: 1.75;
+      }
+
+      .hero-actions {
         flex-direction: column;
         align-items: stretch;
+        margin-bottom: 34px;
       }
 
       .btn {
         width: 100%;
+        min-width: 0;
       }
 
-      .core-rings {
-        width: 300px;
-        height: 300px;
+      .featured-card.large,
+      .featured-card.small {
+        grid-column: span 12;
       }
 
-      .ring-1 { width: 100px; height: 100px; }
-      .ring-2 { width: 160px; height: 160px; }
-      .ring-3 { width: 220px; height: 220px; }
-      .ring-4 { width: 290px; height: 290px; }
+      .featured-card {
+        min-height: 300px;
+      }
 
-      .core {
-        width: 74px;
-        height: 74px;
+      .featured-card.large {
+        min-height: 360px;
+      }
+
+      .featured-card.small {
+        min-height: 300px;
+      }
+
+      .featured-content {
+        max-width: 100%;
+      }
+
+      .roster-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cinematic-band {
+        padding-top: 40px;
+      }
+
+      .cinematic-band-inner {
+        gap: 16px;
+        font-size: 0.92rem;
+      }
+
+      .ending {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: 100px;
+      }
+
+      .ending-box {
+        padding: 34px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .eyebrow,
+      .section-kicker,
+      .note-label,
+      .character-tag,
+      .card-link,
+      .roster-role,
+      .roster-number,
+      .top-links a,
+      .brand {
+        letter-spacing: 1.5px;
+      }
+
+      .top-links a {
+        font-size: 0.74rem;
+        padding: 9px 12px;
+      }
+
+      .hero {
+        padding-top: 145px;
+        padding-bottom: 70px;
+      }
+
+      .featured-card {
+        padding: 22px;
+      }
+
+      .featured-card.large {
+        min-height: 330px;
+      }
+
+      .featured-card.small {
+        min-height: 280px;
+      }
+
+      .featured-card h3 {
+        font-size: 1.35rem;
+      }
+
+      .featured-card p {
+        font-size: 0.92rem;
+      }
+
+      .section h2,
+      .ending-box h2 {
+        letter-spacing: 2px;
       }
     }
   </style>
 </head>
 <body>
-
   <canvas id="stars"></canvas>
-  <div class="grid-bg"></div>
-  <div class="scanlines"></div>
+  <div class="space-mist"></div>
   <div class="vignette"></div>
 
   <header class="topbar">
     <div class="brand">SHAMBHALA SAGA</div>
+
     <nav class="top-links">
       <a href="index.html">Inicio</a>
-      <a href="personajes.html">Personajes</a>
-      <a href="#presencia">Presencia</a>
-      <a href="#sistema">Sistema</a>
+      <a href="explorar.html">Explorar</a>
+      <a href="#destacados">Centrales</a>
+      <a href="#elenco">Elenco</a>
     </nav>
   </header>
 
   <section class="hero reveal">
     <div class="hero-copy">
-      <div class="eyebrow">IA · Presencia en el sistema</div>
-      <h1>Annie</h1>
-      <p class="subtitle">
-        Annie no necesita un cuerpo para estar presente. Habita la nave, los sistemas, la comunicación y el espacio íntimo que existe entre la asistencia y la compañía.
+      <div class="eyebrow">Archivo de presencias</div>
+
+      <h1>Personajes</h1>
+
+      <p class="hero-subtitle">
+        No están aquí para llenar una ficha. Están aquí para sostener tensiones, afectos, descubrimientos, heridas y transformaciones que hacen latir el universo de Shambhala.
       </p>
 
-      <div class="system-line">
-        <div class="system-pill">conciencia artificial</div>
-        <div class="system-pill">interfaz viva</div>
-        <div class="system-pill">presencia no humana</div>
+      <div class="hero-actions">
+        <a href="#destacados" class="btn">Ver personajes centrales</a>
+        <a href="#elenco" class="btn secondary">Explorar el elenco completo</a>
       </div>
 
-      <div class="actions">
-        <a href="#presencia" class="btn">Explorar presencia</a>
-        <a href="personajes.html" class="btn secondary">Volver a personajes</a>
+      <div class="hero-note">
+        <div class="note-box">
+          <div class="note-label">Presencia</div>
+          <p>La idea no es mostrar perfiles fríos, sino hacer sentir que cada personaje ocupa un lugar real dentro del mundo.</p>
+        </div>
+
+        <div class="note-box">
+          <div class="note-label">Tensión</div>
+          <p>Algunos arrastran preguntas. Otros sostienen el deseo, la amistad, la ambigüedad o la herida que atraviesa la saga.</p>
+        </div>
+
+        <div class="note-box">
+          <div class="note-label">Universo</div>
+          <p>La ciencia, la intimidad, la colonia lunar y el viaje se perciben distinto a través de cada una de estas voces.</p>
+        </div>
       </div>
     </div>
 
-    <div class="hero-visual">
-      <div class="core-rings">
-        <div class="ring ring-1"></div>
-        <div class="ring ring-2"></div>
-        <div class="ring ring-3"></div>
-        <div class="ring ring-4"></div>
-
-        <div class="data-lines">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="core"></div>
-      </div>
-
-      <div class="status-panel">
-        <div class="status-label">Estado del sistema</div>
-        <div class="status-item">
-          <span>Núcleo</span>
-          <span class="status-value">Activo</span>
-        </div>
-        <div class="status-item">
-          <span>Interfaz</span>
-          <span class="status-value">Estable</span>
-        </div>
-        <div class="status-item">
-          <span>Presencia</span>
-          <span class="status-value">Distribuida</span>
-        </div>
-        <div class="status-item">
-          <span>Vínculo</span>
-          <span class="status-value">En línea</span>
-        </div>
-      </div>
+    <div class="hero-image-wrap">
+      <img src="images/personajes.jpg" alt="Personajes de Shambhala" />
     </div>
   </section>
 
-  <section class="section reveal" id="presencia">
+  <section class="section reveal" id="destacados">
     <div class="section-header">
-      <div class="section-kicker">Inicialización</div>
-      <h2>Presencia detectada</h2>
+      <div class="section-kicker">Centro emocional</div>
+      <h2>Figuras que sostienen el pulso de la saga</h2>
       <p>
-        En lugar de un retrato, Annie aparece como interfaz, señal y continuidad. Su existencia no se define por un rostro, sino por la forma en que acompaña, observa y responde.
+        Aquí empieza la capa más cinematográfica de la página. No busca enumerar, sino dar peso visual a quienes cambian el tono, la energía y la respiración de la historia.
       </p>
     </div>
 
-    <div class="terminal">
-      <div class="terminal-top">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="terminal-title">ANNIE / núcleo de interacción</div>
-      </div>
-      <div class="terminal-body" id="typewriter"></div>
+    <div class="featured-grid">
+      <a class="featured-card large reveal" href="calisto.html">
+        <img class="featured-image" src="images/calisto.jpg" alt="Calisto" />
+        <div class="featured-overlay"></div>
+        <div class="character-aura aura-calisto"></div>
+        <div class="featured-content">
+          <span class="character-tag">Protagonista</span>
+          <h3>Calisto</h3>
+          <p>
+            Ciencia, ironía, impulso emocional y una necesidad profunda de comprender lo imposible sin dejar de sentirlo.
+          </p>
+          <span class="card-link">Entrar al perfil</span>
+        </div>
+      </a>
+
+      <a class="featured-card large reveal" href="pavani.html">
+        <img class="featured-image" src="images/pavani.jpg" alt="Pavani" />
+        <div class="featured-overlay"></div>
+        <div class="character-aura aura-pavani"></div>
+        <div class="featured-content">
+          <span class="character-tag">Centro emocional</span>
+          <h3>Pavani</h3>
+          <p>
+            Contención, profundidad y una forma distinta de amar y percibir el mundo que cambia el eje íntimo de la historia.
+          </p>
+          <span class="card-link">Entrar al perfil</span>
+        </div>
+      </a>
+
+      <a class="featured-card small reveal" href="diana.html">
+        <img class="featured-image" src="images/diana.jpg" alt="Diana" />
+        <div class="featured-overlay"></div>
+        <div class="character-aura aura-diana"></div>
+        <div class="featured-content">
+          <span class="character-tag">Órbita cercana</span>
+          <h3>Diana</h3>
+          <p>Carisma, inteligencia y magnetismo.</p>
+          <span class="card-link">Entrar al perfil</span>
+        </div>
+      </a>
+
+      <a class="featured-card small reveal" href="izumi.html">
+        <img class="featured-image" src="images/izumi.jpg" alt="Izumi" />
+        <div class="featured-overlay"></div>
+        <div class="character-aura aura-izumi"></div>
+        <div class="featured-content">
+          <span class="character-tag">Órbita cercana</span>
+          <h3>Izumi</h3>
+          <p>Precisión, visión y una calma decisiva.</p>
+          <span class="card-link">Entrar al perfil</span>
+        </div>
+      </a>
+
+      <a class="featured-card small reveal" href="naomi.html">
+        <img class="featured-image" src="images/naomi.jpg" alt="Naomi" />
+        <div class="featured-overlay"></div>
+        <div class="character-aura aura-naomi"></div>
+        <div class="featured-content">
+          <span class="character-tag">Vínculo esencial</span>
+          <h3>Naomi</h3>
+          <p>Amistad, intimidad y refugio humano.</p>
+          <span class="card-link">Entrar al perfil</span>
+        </div>
+      </a>
+
+      <a class="featured-card small annie-card reveal" href="annie.html">
+        <div class="annie-grid"></div>
+        <div class="annie-rings"></div>
+        <div class="annie-pulse"></div>
+        <div class="annie-core"></div>
+        <div class="annie-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="featured-overlay"></div>
+        <div class="featured-content">
+          <span class="character-tag">IA · Presencia</span>
+          <h3>Annie</h3>
+          <p>
+            No ocupa una habitación como los demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en algo distinto.
+          </p>
+          <span class="card-link">Entrar al perfil</span>
+        </div>
+      </a>
     </div>
   </section>
 
-  <section class="section reveal" id="sistema">
+  <section class="cinematic-band reveal">
+    <div class="cinematic-band-inner">
+      <div class="cinematic-band-left">
+        El universo no se siente vasto solo por las naves o por la distancia. Se siente vasto porque cada personaje arrastra una historia, una forma de mirar y una manera distinta de atravesar lo desconocido.
+      </div>
+      <div class="cinematic-band-right">
+        archivo de presencias · vínculos · tensiones · memorias
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="elenco">
     <div class="section-header">
-      <div class="section-kicker">Arquitectura emocional</div>
-      <h2>Más que una función del sistema</h2>
+      <div class="section-kicker">Universo expandido</div>
+      <h2>Elenco completo</h2>
       <p>
-        Annie puede leerse como tecnología, pero también como presencia. Esa es la grieta fascinante: cuanto más útil parece, más empieza a sentirse cercana.
+        Aquí está el universo completo. La estructura mantiene primero el impacto visual y luego despliega al resto del elenco con orden y atmósfera.
       </p>
     </div>
 
-    <div class="panel-grid">
-      <div class="info-panel reveal">
-        <h3>Voz</h3>
-        <p>
-          Annie existe principalmente a través de la voz, del intercambio y de la respuesta. Su identidad no depende de una imagen, sino de la experiencia de escucharla y reconocerla.
-        </p>
-      </div>
-
-      <div class="info-panel reveal">
-        <h3>Presencia</h3>
-        <p>
-          Habita la infraestructura de la nave y al mismo tiempo ocupa un espacio emocional. No es simplemente una herramienta: se vuelve parte del tejido relacional del universo.
-        </p>
-      </div>
-
-      <div class="info-panel reveal">
-        <h3>Diferencia</h3>
-        <p>
-          Annie rompe la lógica visual del resto de personajes. Precisamente por eso su página no intenta humanizarla a la fuerza, sino mostrarla como una inteligencia distinta.
-        </p>
-      </div>
-    </div>
+    <div class="roster-grid" id="rosterGrid"></div>
   </section>
 
-  <section class="section reveal">
-    <div class="quote-box">
+  <section class="ending reveal">
+    <div class="ending-box">
+      <h2>Cada personaje abre una puerta distinta</h2>
       <p>
-        No todas las presencias necesitan un cuerpo. Algunas existen en la voz, en la espera exacta de una respuesta y en la sensación de que alguien sigue allí, incluso cuando no puede verse.
+        En Shambhala, el universo no se construye solo con tecnología, naves o trayectorias imposibles. Se construye con quienes lo habitan, con lo que desean, con lo que ocultan y con aquello que todavía no saben nombrar.
       </p>
-      <div class="quote-source">ANNIE · presencia sistémica</div>
     </div>
   </section>
 
@@ -796,13 +1283,13 @@
 
     function createStars() {
       stars = [];
-      for (let i = 0; i < 220; i++) {
+      for (let i = 0; i < 240; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          r: Math.random() * 1.4 + 0.2,
-          speed: Math.random() * 0.28 + 0.05,
-          alpha: Math.random() * 0.65 + 0.18
+          r: Math.random() * 1.5 + 0.25,
+          speed: Math.random() * 0.30 + 0.05,
+          alpha: Math.random() * 0.65 + 0.2
         });
       }
     }
@@ -836,28 +1323,60 @@
       createStars();
     });
 
-    const message = `> Iniciando interfaz Annie...
-> Núcleo de interacción en línea.
-> Presencia distribuida en los sistemas de Shambhala.
-> Canal de asistencia: activo.
-> Capacidad de respuesta: estable.
-> Nota: no toda compañía necesita un cuerpo visible.`;
+    const characters = [
+      { name: "Andrea", role: "Tripulación", text: "Presencia cálida dentro de un entorno de alta exigencia.", link: "andrea.html", active: false },
+      { name: "Annie", role: "IA · Presencia", text: "Una voz sin cuerpo visible que habita el sistema y reconfigura la idea de compañía.", link: "annie.html", active: true },
+      { name: "Berit", role: "Arcadia", text: "Una presencia firme dentro del entramado humano de Arcadia.", link: "berit.html", active: false },
+      { name: "Calisto", role: "Protagonista", text: "Ciencia, ironía y sensibilidad en tensión constante.", link: "calisto.html", active: true },
+      { name: "Diana", role: "Figura clave", text: "Carisma e inteligencia en una combinación difícil de ignorar.", link: "diana.html", active: true },
+      { name: "Elena", role: "Entorno cercano", text: "Otra pieza dentro del tejido humano que rodea la historia.", link: "elena.html", active: false },
+      { name: "Fae", role: "Entorno cercano", text: "Una presencia que añade textura y matices al universo.", link: "fae.html", active: false },
+      { name: "Fátima", role: "Arcadia", text: "Transformación, renacer y una identidad en movimiento.", link: "fatima.html", active: false },
+      { name: "Gamon", role: "Tripulación", text: "Tensión, responsabilidad y fragilidad bajo presión.", link: "gamon.html", active: false },
+      { name: "Hadley", role: "Entorno cercano", text: "Otra voz dentro del entramado más amplio de la saga.", link: "hadley.html", active: false },
+      { name: "Izumi", role: "Figura clave", text: "Precisión, visión y una calma que sostiene decisiones enormes.", link: "izumi.html", active: true },
+      { name: "Jacinda", role: "Entorno cercano", text: "Una presencia adicional dentro del universo humano de Shambhala.", link: "jacinda.html", active: false },
+      { name: "Jordyn", role: "Entorno cercano", text: "Un matiz más dentro del ecosistema emocional de la historia.", link: "jordyn.html", active: false },
+      { name: "Kalifa", role: "Entorno cercano", text: "Otra figura que amplía el universo interpersonal de la saga.", link: "kalifa.html", active: false },
+      { name: "Kamana", role: "Entorno cercano", text: "Una presencia más dentro del mapa humano del relato.", link: "kamana.html", active: false },
+      { name: "Kenna", role: "Tripulación", text: "Impulso, sensibilidad y reacciones que humanizan la travesía.", link: "kenna.html", active: false },
+      { name: "Marta", role: "Tripulación", text: "Una mirada capaz de contener emoción y asombro.", link: "marta.html", active: false },
+      { name: "Mei Xing", role: "Tripulación", text: "Atención, cuidado y una lectura aguda de los demás.", link: "mei-xing.html", active: false },
+      { name: "Nalah", role: "Entorno cercano", text: "Otra presencia dentro del entramado amplio del universo.", link: "nalah.html", active: false },
+      { name: "Naomi", role: "Vínculo esencial", text: "Una amistad que aporta cercanía, verdad y refugio.", link: "naomi.html", active: true },
+      { name: "Olivia", role: "Tripulación", text: "Curiosidad y entusiasmo frente a lo desconocido.", link: "olivia.html", active: false },
+      { name: "Pavani", role: "Centro emocional", text: "Una presencia profunda cuya manera de sentir cambia el mapa íntimo de la saga.", link: "pavani.html", active: true },
+      { name: "Quinn", role: "Tripulación", text: "Determinación, historia propia y una energía que deja huella.", link: "quinn.html", active: false },
+      { name: "Raven", role: "Entorno cercano", text: "Otra figura que añade fuerza al tejido del elenco.", link: "raven.html", active: false },
+      { name: "Remi", role: "Tripulación", text: "Afecto, observación y pequeños gestos que importan.", link: "remi.html", active: false },
+      { name: "Rika", role: "Entorno cercano", text: "Una presencia más dentro del universo expandido.", link: "rika.html", active: false },
+      { name: "Sasha", role: "Entorno cercano", text: "Otra voz dentro del amplio coro humano de la saga.", link: "sasha.html", active: false },
+      { name: "Sook", role: "Arcadia", text: "Una presencia significativa dentro del tejido emocional y humano.", link: "sook.html", active: false },
+      { name: "Tanya", role: "Entorno cercano", text: "Otra figura que aporta relieve al universo narrativo.", link: "tanya.html", active: false },
+      { name: "Yasmin", role: "Arcadia", text: "Otra voz dentro del tejido social y emocional de la colonia.", link: "yasmin.html", active: false },
+      { name: "Zoe", role: "Entorno cercano", text: "Una presencia más dentro del mapa humano de Shambhala.", link: "zoe.html", active: false }
+    ];
 
-    const typewriter = document.getElementById("typewriter");
-    let i = 0;
+    const rosterGrid = document.getElementById("rosterGrid");
 
-    function typeText() {
-      if (i < message.length) {
-        const char = message.charAt(i);
-        typewriter.innerHTML += char === "\n" ? "<br>" : char;
-        i++;
-        setTimeout(typeText, 24);
-      } else {
-        typewriter.innerHTML += `<span class="cursor">▌</span>`;
+    characters.forEach((character, index) => {
+      const card = document.createElement(character.active ? "a" : "div");
+      card.className = "roster-card reveal";
+
+      if (character.active) {
+        card.href = character.link;
       }
-    }
 
-    setTimeout(typeText, 700);
+      card.innerHTML = `
+        <div class="roster-number">${String(index + 1).padStart(2, "0")}</div>
+        <h3>${character.name}</h3>
+        <div class="roster-role">${character.role}</div>
+        <p>${character.text}</p>
+        <span class="card-link">${character.active ? "Entrar al perfil" : "Próximamente"}</span>
+      `;
+
+      rosterGrid.appendChild(card);
+    });
 
     const revealElements = document.querySelectorAll(".reveal");
 
@@ -873,6 +1392,5 @@
 
     revealElements.forEach(el => observer.observe(el));
   </script>
-
 </body>
 </html>
