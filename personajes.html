@@ -142,18 +142,18 @@
     .hero {
       position: relative;
       z-index: 2;
-      min-height: 100vh;
+      min-height: 92vh;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 28px;
+      grid-template-columns: 1fr 0.92fr;
+      gap: 24px;
       align-items: stretch;
-      padding: 140px 8% 110px;
+      padding: 120px 8% 85px;
     }
 
     .hero-copy,
     .hero-image-wrap {
       position: relative;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 30px;
       overflow: hidden;
       box-shadow:
@@ -162,9 +162,9 @@
     }
 
     .hero-copy {
-      padding: 56px 46px;
+      padding: 40px 40px 36px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025)),
+        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
         rgba(8, 12, 19, 0.76);
       display: flex;
       flex-direction: column;
@@ -173,7 +173,7 @@
     }
 
     .hero-image-wrap {
-      min-height: 620px;
+      min-height: 520px;
       background: #05070c;
     }
 
@@ -181,9 +181,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      filter: brightness(0.82) saturate(0.95);
-      transform: scale(1.02);
+      object-position: center center;
+      filter: brightness(0.86) saturate(0.95);
+      transform: scale(1.01);
     }
 
     .hero-image-wrap::after {
@@ -191,22 +191,22 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(4,7,12,0.18), rgba(4,7,12,0.28) 42%, rgba(4,7,12,0.72) 100%),
-        linear-gradient(90deg, rgba(4,7,12,0.08), rgba(4,7,12,0) 50%, rgba(4,7,12,0.18));
+        linear-gradient(180deg, rgba(4,7,12,0.10), rgba(4,7,12,0.16) 40%, rgba(4,7,12,0.46) 100%),
+        linear-gradient(90deg, rgba(4,7,12,0.02), rgba(4,7,12,0) 50%, rgba(4,7,12,0.10));
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       padding: 10px 15px;
       border: 1px solid rgba(0,170,255,0.24);
       background: rgba(0, 20, 40, 0.22);
       color: rgba(146, 222, 255, 0.88);
       font-family: "Orbitron", sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 3px;
+      font-size: 0.74rem;
+      letter-spacing: 2.4px;
       text-transform: uppercase;
       width: fit-content;
       box-shadow:
@@ -216,38 +216,40 @@
 
     .eyebrow::before {
       content: "";
-      width: 28px;
+      width: 26px;
       height: 1px;
       background: rgba(146, 222, 255, 0.8);
       box-shadow: 0 0 8px rgba(146, 222, 255, 0.4);
     }
 
     h1 {
-      margin: 0 0 24px;
+      margin: 0 0 22px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(3rem, 8vw, 6.2rem);
+      font-size: clamp(2.4rem, 5.8vw, 4.9rem);
       line-height: 0.98;
-      letter-spacing: 7px;
+      letter-spacing: 3px;
       text-transform: uppercase;
+      max-width: 100%;
+      word-break: normal;
+      overflow-wrap: anywhere;
       text-shadow:
-        0 0 12px rgba(255,255,255,0.38),
-        0 0 44px rgba(0,150,255,0.22),
-        0 0 90px rgba(0,100,255,0.08);
+        0 0 8px rgba(255,255,255,0.24),
+        0 0 24px rgba(0,150,255,0.12);
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
-      line-height: 1.9;
-      max-width: 760px;
+      font-size: 1rem;
+      line-height: 1.85;
+      max-width: 720px;
       color: rgba(255,255,255,0.8);
-      margin-bottom: 42px;
+      margin-bottom: 32px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 34px;
+      margin-bottom: 28px;
     }
 
     .btn {
@@ -255,13 +257,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 220px;
-      padding: 15px 26px;
+      min-width: 210px;
+      padding: 14px 22px;
       border: 1px solid rgba(0,170,255,0.42);
       background: rgba(0,0,0,0.34);
       color: rgba(255,255,255,0.92);
-      font-size: 0.82rem;
-      letter-spacing: 2px;
+      font-size: 0.8rem;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       overflow: hidden;
       transition: 0.35s ease;
@@ -312,15 +314,15 @@
     .hero-note {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
       max-width: 880px;
     }
 
     .note-box {
-      padding: 18px 18px;
-      border: 1px solid rgba(255,255,255,0.09);
+      padding: 16px 16px;
+      border: 1px solid rgba(255,255,255,0.07);
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
         rgba(8, 10, 16, 0.72);
       box-shadow:
         inset 0 0 16px rgba(0,170,255,0.04),
@@ -330,15 +332,15 @@
     .note-label {
       margin-bottom: 8px;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
+      font-size: 0.68rem;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       color: rgba(134, 221, 255, 0.75);
     }
 
     .note-box p {
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       line-height: 1.7;
       color: rgba(255,255,255,0.72);
     }
@@ -346,7 +348,7 @@
     .section {
       position: relative;
       z-index: 2;
-      padding: 120px 8%;
+      padding: 110px 8%;
     }
 
     .section-header {
@@ -855,12 +857,16 @@
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding: 130px 7% 90px;
+        padding: 118px 7% 80px;
       }
 
       .hero-note {
         grid-template-columns: 1fr;
         max-width: 720px;
+      }
+
+      .hero-image-wrap {
+        min-height: 420px;
       }
 
       .featured-card.large {
@@ -899,8 +905,8 @@
       }
 
       h1 {
-        font-size: clamp(2.8rem, 8vw, 4.8rem);
-        letter-spacing: 5px;
+        font-size: clamp(2.4rem, 8vw, 4rem);
+        letter-spacing: 2px;
       }
 
       .hero-subtitle {
@@ -923,8 +929,12 @@
       }
 
       .hero {
-        padding-top: 150px;
-        padding-bottom: 80px;
+        padding-top: 138px;
+        padding-bottom: 72px;
+      }
+
+      .hero-copy {
+        padding: 30px 24px;
       }
 
       .featured-grid {
@@ -964,23 +974,23 @@
       }
 
       .hero {
-        padding-top: 150px;
+        padding-top: 138px;
       }
 
       h1 {
-        font-size: clamp(2.3rem, 10vw, 3.8rem);
-        letter-spacing: 4px;
+        font-size: clamp(2.1rem, 10vw, 3.4rem);
+        letter-spacing: 1.5px;
       }
 
       .hero-subtitle {
-        font-size: 0.96rem;
+        font-size: 0.95rem;
         line-height: 1.75;
       }
 
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
-        margin-bottom: 34px;
+        margin-bottom: 26px;
       }
 
       .btn {
@@ -1043,7 +1053,7 @@
       .roster-number,
       .top-links a,
       .brand {
-        letter-spacing: 1.5px;
+        letter-spacing: 1.4px;
       }
 
       .top-links a {
@@ -1052,8 +1062,8 @@
       }
 
       .hero {
-        padding-top: 145px;
-        padding-bottom: 70px;
+        padding-top: 140px;
+        padding-bottom: 64px;
       }
 
       .featured-card {
