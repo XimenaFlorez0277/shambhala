@@ -418,68 +418,91 @@
       color: var(--soft);
     }
 
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .character-link {
-      padding: 18px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    }
-
-    .character-link:hover {
-      transform: translateY(-4px);
-      border-color: rgba(143,211,255,0.3);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .character-link strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .character-link span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
+    .links-grid,
     .return-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
       margin-top: 20px;
     }
 
+    .character-link,
     .return-link {
-      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
       border-radius: var(--radius-md);
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.035);
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
     }
 
+    .character-link:hover,
     .return-link:hover {
-      transform: translateY(-4px);
-      border-color: rgba(143,211,255,0.3);
-      background: rgba(255,255,255,0.06);
+      transform: translateY(-6px);
+      border-color: rgba(143,211,255,0.32);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
     }
 
-    .return-link strong {
+    .card-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.72) saturate(0.92);
+      transform: scale(1.02);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .character-link:hover .card-thumb,
+    .return-link:hover .card-thumb {
+      transform: scale(1.08);
+      filter: brightness(0.8) saturate(1);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(4, 7, 12, 0.96) 12%, rgba(4, 7, 12, 0.58) 48%, rgba(4, 7, 12, 0.18) 100%),
+        linear-gradient(to right, rgba(4, 7, 12, 0.28), rgba(4, 7, 12, 0.02));
+      z-index: 1;
+    }
+
+    .card-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 18px;
+    }
+
+    .card-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.28);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card-content strong {
       display: block;
       margin-bottom: 6px;
-      font-size: 1rem;
+      font-size: 1.08rem;
+      font-weight: 600;
     }
 
-    .return-link span {
+    .card-content span {
       color: var(--muted);
       font-size: 0.95rem;
+      display: block;
     }
 
     footer {
@@ -551,6 +574,11 @@
 
       .hero h1 {
         line-height: 0.98;
+      }
+
+      .character-link,
+      .return-link {
+        min-height: 240px;
       }
     }
 
@@ -722,18 +750,33 @@
 
           <div class="links-grid">
             <a class="character-link" href="pavani.html">
-              <strong>Pavani</strong>
-              <span>Bióloga · Biología de la Resurrección</span>
+              <img class="card-thumb" src="images/pavani.jpg" alt="Pavani" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Personaje</div>
+                <strong>Pavani</strong>
+                <span>Bióloga · Biología de la Resurrección</span>
+              </div>
             </a>
 
             <a class="character-link" href="diana.html">
-              <strong>Diana</strong>
-              <span>Científica jefe · Gestión de tecnología e innovación</span>
+              <img class="card-thumb" src="images/diana.jpg" alt="Diana" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Personaje</div>
+                <strong>Diana</strong>
+                <span>Científica jefe · Gestión de tecnología e innovación</span>
+              </div>
             </a>
 
             <a class="character-link" href="naomi.html">
-              <strong>Naomi</strong>
-              <span>Bióloga · Reproducción partenogénica de mamíferos</span>
+              <img class="card-thumb" src="images/naomi.jpg" alt="Naomi" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Personaje</div>
+                <strong>Naomi</strong>
+                <span>Bióloga · Reproducción partenogénica de mamíferos</span>
+              </div>
             </a>
           </div>
         </article>
@@ -746,18 +789,33 @@
 
           <div class="return-grid">
             <a class="return-link" href="index.html">
-              <strong>Volver al inicio</strong>
-              <span>Regresa a la entrada principal de la saga</span>
+              <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Portal</div>
+                <strong>Volver al inicio</strong>
+                <span>Regresa a la entrada principal de la saga</span>
+              </div>
             </a>
 
             <a class="return-link" href="explorar.html">
-              <strong>Ir a explorar</strong>
-              <span>Continúa recorriendo el universo de Shambhala</span>
+              <img class="card-thumb" src="images/hero.jpg" alt="Explorar Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Universo</div>
+                <strong>Ir a explorar</strong>
+                <span>Continúa recorriendo el universo de Shambhala</span>
+              </div>
             </a>
 
             <a class="return-link" href="personajes.html">
-              <strong>Ver personajes</strong>
-              <span>Vuelve al archivo completo del elenco</span>
+              <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Archivo</div>
+                <strong>Ver personajes</strong>
+                <span>Vuelve al archivo completo del elenco</span>
+              </div>
             </a>
           </div>
         </article>
