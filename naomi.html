@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naomi | Shambhala</title>
+  <meta
+    name="description"
+    content="Naomi — Bióloga de Shambhala. Página de personaje de la saga Shambhala."
+  />
+
+  <style>
+    :root {
+      --bg: #06080d;
+      --bg-soft: #0d1118;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f5f7fb;
+      --muted: rgba(245, 247, 251, 0.72);
+      --soft: rgba(245, 247, 251, 0.52);
+      --accent: #9fd8c3;
+      --accent-2: #d8d1a8;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max-width: 1240px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(159, 216, 195, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(216, 209, 168, 0.08), transparent 24%),
+        linear-gradient(180deg, #06080d 0%, #0a0d14 35%, #06080d 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page-shell {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .stars,
+    .stars::before,
+    .stars::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-repeat: repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stars {
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.5px 1.5px at 140px 80px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 280px 120px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 420px 40px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 560px 140px, rgba(255,255,255,0.7), transparent);
+      background-size: 600px 220px;
+      opacity: 0.32;
+      animation: driftStars 80s linear infinite;
+    }
+
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 50px 60px, rgba(159,216,195,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 260px 120px, rgba(216,209,168,0.55), transparent),
+        radial-gradient(1px 1px at 480px 40px, rgba(255,255,255,0.7), transparent);
+      background-size: 520px 200px;
+      opacity: 0.25;
+      animation: driftStarsReverse 110s linear infinite;
+    }
+
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 100px 90px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 360px 160px, rgba(159,216,195,0.55), transparent),
+        radial-gradient(1px 1px at 540px 60px, rgba(255,255,255,0.55), transparent);
+      background-size: 640px 260px;
+      opacity: 0.2;
+      animation: driftStars 140s linear infinite;
+    }
+
+    @keyframes driftStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-180px); }
+    }
+
+    @keyframes driftStarsReverse {
+      from { transform: translateY(0); }
+      to { transform: translateY(140px); }
+    }
+
+    .top-nav {
+      position: relative;
+      z-index: 3;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 0.82rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav-pill {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 0.92rem;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .nav-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(159,216,195,0.35);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 24px auto 0;
+      min-height: 78vh;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-image-wrap {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 56px 46px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)),
+        rgba(8, 12, 19, 0.72);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 46px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent));
+      display: inline-block;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      line-height: 0.95;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 42rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-description {
+      max-width: 44rem;
+      color: var(--muted);
+      font-size: 1.04rem;
+      margin-bottom: 36px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .hero-meta-card {
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-meta-card span {
+      display: block;
+      color: var(--soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-meta-card strong {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .hero-image-wrap {
+      min-height: 620px;
+      background: #05070c;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(0.96) contrast(1.03) brightness(0.9);
+      transform: scale(1.02);
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,7,12,0.08), rgba(5,7,12,0.18) 38%, rgba(5,7,12,0.72) 100%),
+        linear-gradient(90deg, rgba(5,7,12,0.08), rgba(5,7,12,0) 45%, rgba(5,7,12,0.22));
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 34px auto 90px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .section-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025)),
+        rgba(8, 12, 19, 0.78);
+      padding: 34px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .section-title {
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-text {
+      color: var(--muted);
+      max-width: 75rem;
+      font-size: 1rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .info-card {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+    }
+
+    .info-card span {
+      display: block;
+      color: var(--soft);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .info-card strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+    }
+
+    .highlight-box {
+      margin-top: 20px;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(159,216,195,0.18);
+      background:
+        linear-gradient(135deg, rgba(159,216,195,0.08), rgba(255,255,255,0.03));
+    }
+
+    .highlight-box p {
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .quote-block {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.7;
+      color: rgba(245, 247, 251, 0.92);
+      max-width: 58rem;
+    }
+
+    .quote-block span {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--soft);
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .character-link {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .character-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(159,216,195,0.3);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .character-link strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .character-link span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto 34px;
+      padding-top: 4px;
+      color: var(--soft);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1080px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        min-height: 560px;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .top-nav {
+        padding-top: 18px;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .hero {
+        width: min(var(--max-width), calc(100% - 20px));
+        margin-top: 18px;
+        gap: 18px;
+      }
+
+      .content,
+      footer {
+        width: min(var(--max-width), calc(100% - 20px));
+      }
+
+      .hero-copy,
+      .section-card {
+        padding: 24px 20px;
+      }
+
+      .hero-meta,
+      .profile-grid,
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .timeline-date {
+        white-space: normal;
+      }
+
+      .hero-image-wrap {
+        min-height: 420px;
+      }
+
+      .hero h1 {
+        line-height: 0.98;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+      }
+
+      .nav-pill {
+        padding: 9px 14px;
+        font-size: 0.88rem;
+      }
+
+      .hero-copy,
+      .section-card {
+        border-radius: 22px;
+      }
+
+      .hero-image-wrap {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="stars"></div>
+
+    <header class="top-nav">
+      <div class="brand">Shambhala Saga</div>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html" class="nav-pill">Inicio</a>
+        <a href="explorar.html" class="nav-pill">Explorar</a>
+        <a href="personajes.html" class="nav-pill">Personajes</a>
+        <a href="calisto.html" class="nav-pill">Calisto</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Archivo de personaje</div>
+
+          <h1>Naomi</h1>
+
+          <p class="hero-subtitle">
+            Bióloga. Precisión, intuición y una mente orientada a lo improbable.
+          </p>
+
+          <p class="hero-description">
+            Naomi pertenece a esa clase de científicas que sostienen una frontera
+            entera con paciencia, inteligencia y una curiosidad feroz. En Shambhala,
+            su trabajo examina las posibilidades más complejas de la reproducción
+            mamífera, abriendo preguntas que no solo son biológicas, sino también
+            humanas.
+          </p>
+
+          <div class="hero-meta">
+            <div class="hero-meta-card">
+              <span>Especialidad</span>
+              <strong>Bióloga</strong>
+            </div>
+
+            <div class="hero-meta-card">
+              <span>Origen</span>
+              <strong>Gran Bretaña</strong>
+            </div>
+
+            <div class="hero-meta-card">
+              <span>Educación</span>
+              <strong>PhD en Biología</strong>
+            </div>
+
+            <div class="hero-meta-card">
+              <span>Investigación</span>
+              <strong>Reproducción partenogénica de mamíferos</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrap">
+          <img src="images/naomi.jpg" alt="Naomi" />
+        </div>
+      </section>
+
+      <section class="content">
+        <article class="section-card">
+          <h2 class="section-title">Presencia</h2>
+          <p class="quote-block">
+            Naomi observa el mundo como quien sabe que la vida siempre encuentra
+            rutas nuevas, incluso cuando la lógica insiste en cerrar todas las puertas.
+            En esa tensión entre conocimiento y asombro se mueve su verdadera fuerza.
+            <span>Shambhala · Universo de personajes</span>
+          </p>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Perfil</h2>
+          <p class="section-text">
+            Especialista en biología, Naomi desarrolla su trabajo en uno de los
+            territorios más fascinantes de Shambhala: la reproducción partenogénica
+            de mamíferos. Su investigación desafía modelos tradicionales de origen,
+            continuidad y herencia, situándola en un espacio donde la ciencia toca
+            preguntas profundas sobre la vida y sus posibilidades.
+          </p>
+
+          <div class="profile-grid">
+            <div class="info-card">
+              <span>Nombre</span>
+              <strong>Naomi</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Rol</span>
+              <strong>Bióloga</strong>
+            </div>
+
+            <div class="info-card">
+              <span>País de origen</span>
+              <strong>Gran Bretaña</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Fecha de nacimiento</span>
+              <strong>3 enero, 2065</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Educación</span>
+              <strong>PhD en Biología</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Interés de investigación</span>
+              <strong>Reproducción Partenogénica de Mamíferos</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Trayectoria</h2>
+          <p class="section-text">
+            Su recorrido profesional enlaza investigación lunar y laboratorio orbital,
+            consolidando una línea de trabajo dedicada a comprender formas alternativas
+            de reproducción y continuidad biológica.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2092 – 2095</div>
+              <div class="timeline-content">
+                <h3>Arcadia Estación de Investigación</h3>
+                <p>
+                  Investigación biológica en el entorno lunar, con trabajo enfocado en
+                  procesos reproductivos y adaptación científica en condiciones no terrestres.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2095 – presente</div>
+              <div class="timeline-content">
+                <h3>Shambhala Laboratorio Orbital</h3>
+                <p>
+                  Desarrollo de investigación avanzada en reproducción partenogénica de
+                  mamíferos dentro del núcleo científico de la misión.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
+            <p>
+              Su trabajo explora una pregunta radical: cómo puede persistir la vida
+              cuando sus reglas más antiguas dejan de ser suficientes.
+            </p>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Línea de investigación</h2>
+          <p class="section-text">
+            La reproducción partenogénica de mamíferos representa uno de los desafíos
+            más complejos dentro del universo científico de Shambhala. Naomi se mueve
+            en ese borde con rigor y claridad, estudiando mecanismos que cuestionan
+            supuestos fundamentales sobre origen, reproducción y continuidad de especie.
+            Su investigación no solo amplía el conocimiento: altera la manera en que
+            ese conocimiento puede ser imaginado.
+          </p>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Explorar más personajes</h2>
+          <p class="section-text">
+            Cada figura en Shambhala ilumina una parte distinta del universo.
+          </p>
+
+          <div class="links-grid">
+            <a class="character-link" href="pavani.html">
+              <strong>Pavani</strong>
+              <span>Bióloga · Biología de la resurrección</span>
+            </a>
+
+            <a class="character-link" href="calisto.html">
+              <strong>Calisto</strong>
+              <span>Física · Tecnología de motores de curvatura</span>
+            </a>
+
+            <a class="character-link" href="personajes.html">
+              <strong>Ver elenco completo</strong>
+              <span>Explora el universo de personajes de la saga</span>
+            </a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      Shambhala Saga · Universo en expansión
+    </footer>
+  </div>
+</body>
+</html>
