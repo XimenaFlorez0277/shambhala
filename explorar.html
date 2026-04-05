@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personajes — Shambhala Saga</title>
+  <title>Explorar — Shambhala Saga</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -19,13 +19,13 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
+      color: #ffffff;
       background:
-        radial-gradient(circle at top, rgba(8, 18, 40, 0.9), #000 42%),
+        radial-gradient(circle at top, rgba(8, 20, 42, 0.9), #000 48%),
         #000;
-      color: white;
       overflow-x: hidden;
       opacity: 0;
-      transition: opacity 1.5s ease;
+      transition: opacity 1.3s ease;
     }
 
     body.loaded {
@@ -33,8 +33,8 @@
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
 
     #stars {
@@ -50,12 +50,12 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.12), transparent 22%),
-        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.08), transparent 18%),
-        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.04), transparent 20%),
-        radial-gradient(circle at 30% 85%, rgba(0, 95, 160, 0.08), transparent 16%);
-      filter: blur(28px);
-      opacity: 0.95;
+        radial-gradient(circle at 18% 20%, rgba(0, 140, 255, 0.14), transparent 20%),
+        radial-gradient(circle at 78% 24%, rgba(110, 198, 255, 0.10), transparent 18%),
+        radial-gradient(circle at 50% 72%, rgba(255,255,255,0.04), transparent 18%),
+        radial-gradient(circle at 24% 80%, rgba(0, 80, 160, 0.08), transparent 16%);
+      filter: blur(30px);
+      opacity: 0.9;
     }
 
     .vignette {
@@ -64,7 +64,7 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.18) 72%, rgba(0,0,0,0.65) 100%);
+        radial-gradient(circle at center, transparent 42%, rgba(0,0,0,0.18) 68%, rgba(0,0,0,0.72) 100%);
     }
 
     .topbar {
@@ -72,13 +72,13 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 40;
+      z-index: 50;
       padding: 20px 6%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0));
-      backdrop-filter: blur(6px);
+      background: linear-gradient(to bottom, rgba(0,0,0,0.84), rgba(0,0,0,0));
+      backdrop-filter: blur(8px);
     }
 
     .brand {
@@ -86,7 +86,7 @@
       letter-spacing: 3px;
       font-size: 0.95rem;
       color: rgba(255,255,255,0.94);
-      text-shadow: 0 0 10px rgba(0,170,255,0.15);
+      text-shadow: 0 0 12px rgba(0,170,255,0.18);
     }
 
     .top-links {
@@ -98,13 +98,13 @@
 
     .top-links a {
       position: relative;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      padding: 10px 15px;
+      padding: 10px 14px;
       color: rgba(255,255,255,0.82);
       border: 1px solid rgba(0,170,255,0.18);
-      background: rgba(0,0,0,0.22);
+      background: rgba(0,0,0,0.24);
       overflow: hidden;
       transition: 0.35s ease;
       box-shadow:
@@ -119,7 +119,7 @@
       background: linear-gradient(
         120deg,
         transparent,
-        rgba(0,170,255,0.18),
+        rgba(0,170,255,0.16),
         transparent
       );
       transform: translateX(-140%);
@@ -132,11 +132,11 @@
 
     .top-links a:hover {
       color: #9be6ff;
-      border-color: rgba(0,170,255,0.55);
+      border-color: rgba(0,170,255,0.56);
       transform: translateY(-2px);
       box-shadow:
         0 0 18px rgba(0,170,255,0.18),
-        0 0 44px rgba(0,170,255,0.08);
+        0 0 42px rgba(0,170,255,0.08);
     }
 
     .hero {
@@ -149,30 +149,32 @@
       overflow: hidden;
     }
 
-    .hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.34), rgba(0,0,0,0.78)),
+        linear-gradient(to right, rgba(0,0,0,0.58), rgba(0,0,0,0.22)),
+        url('images/world.jpg') center center / cover no-repeat;
+      transform: scale(1.02);
+    }
+
+    .hero::after {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 1;
       background:
-        linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.45)),
-        radial-gradient(circle at 70% 45%, rgba(0,170,255,0.10), transparent 25%);
+        radial-gradient(circle at 72% 32%, rgba(0,170,255,0.14), transparent 22%),
+        linear-gradient(to bottom, rgba(4,8,18,0.08), rgba(0,0,0,0.42));
       pointer-events: none;
-    }
-
-    .hero-glow-line {
-      position: absolute;
-      left: 8%;
-      right: 8%;
-      bottom: 70px;
-      height: 1px;
-      background: linear-gradient(to right, transparent, rgba(130,220,255,0.28), transparent);
-      box-shadow: 0 0 18px rgba(0,170,255,0.12);
     }
 
     .hero-inner {
       position: relative;
       z-index: 2;
-      max-width: 920px;
+      max-width: 980px;
     }
 
     .eyebrow {
@@ -204,29 +206,29 @@
     h1 {
       margin: 0 0 24px;
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(3rem, 8vw, 6.2rem);
+      font-size: clamp(3rem, 8vw, 6rem);
       line-height: 0.98;
       letter-spacing: 7px;
       text-transform: uppercase;
       text-shadow:
-        0 0 12px rgba(255,255,255,0.38),
+        0 0 12px rgba(255,255,255,0.36),
         0 0 44px rgba(0,150,255,0.22),
         0 0 90px rgba(0,100,255,0.08);
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
+      max-width: 780px;
+      margin: 0 0 40px;
+      font-size: 1.08rem;
       line-height: 1.9;
-      max-width: 760px;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 42px;
+      color: rgba(255,255,255,0.82);
     }
 
     .hero-actions {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      margin-bottom: 44px;
     }
 
     .btn {
@@ -259,7 +261,7 @@
       background: linear-gradient(
         120deg,
         transparent,
-        rgba(0,170,255,0.32),
+        rgba(0,170,255,0.28),
         transparent
       );
       transition: 0.75s ease;
@@ -279,7 +281,7 @@
     }
 
     .btn.secondary {
-      border-color: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.16);
       box-shadow:
         0 0 10px rgba(255,255,255,0.05),
         inset 0 0 12px rgba(255,255,255,0.03);
@@ -293,15 +295,15 @@
         0 0 36px rgba(255,255,255,0.08);
     }
 
-    .hero-note {
+    .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      max-width: 880px;
+      max-width: 900px;
     }
 
-    .note-box {
-      padding: 18px 18px;
+    .stat-box {
+      padding: 18px;
       border: 1px solid rgba(255,255,255,0.09);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
@@ -311,20 +313,20 @@
         0 0 18px rgba(0,0,0,0.18);
     }
 
-    .note-label {
+    .stat-label {
       margin-bottom: 8px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: rgba(134, 221, 255, 0.75);
     }
 
-    .note-box p {
+    .stat-box p {
       margin: 0;
       font-size: 0.95rem;
       line-height: 1.7;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.74);
     }
 
     .section {
@@ -334,8 +336,8 @@
     }
 
     .section-header {
-      max-width: 820px;
-      margin-bottom: 50px;
+      max-width: 860px;
+      margin-bottom: 48px;
     }
 
     .section-kicker {
@@ -350,7 +352,7 @@
     .section h2 {
       margin: 0 0 18px;
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      font-size: clamp(1.9rem, 4vw, 3.1rem);
       letter-spacing: 3px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
@@ -364,283 +366,219 @@
       font-size: 1rem;
     }
 
-    .featured-grid {
+    .world-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 22px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
     }
 
-    .featured-card {
+    .world-panel {
       position: relative;
       overflow: hidden;
-      min-height: 520px;
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.08);
       background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
+        linear-gradient(145deg, rgba(9,16,30,0.94), rgba(2,5,10,0.96));
       box-shadow:
-        inset 0 0 28px rgba(0,170,255,0.05),
-        0 0 30px rgba(0,0,0,0.24);
-      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
-      isolation: isolate;
+        inset 0 0 24px rgba(0,170,255,0.04),
+        0 0 28px rgba(0,0,0,0.22);
     }
 
-    .featured-card.large {
-      grid-column: span 6;
+    .world-panel.image-panel {
+      min-height: 520px;
     }
 
-    .featured-card.small {
-      grid-column: span 3;
-      min-height: 390px;
-    }
-
-    .featured-image {
-      position: absolute;
-      inset: 0;
+    .world-panel.image-panel img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
-      transform: scale(1.03);
-      transition: transform 0.8s ease, filter 0.8s ease;
-      filter: saturate(0.9) brightness(0.72) contrast(1.05);
+      display: block;
+      filter: brightness(0.72) contrast(1.04) saturate(0.96);
     }
 
-    .featured-card:hover .featured-image {
-      transform: scale(1.08);
-      filter: saturate(1) brightness(0.82) contrast(1.08);
-    }
-
-    .featured-overlay {
+    .world-panel.image-panel::after {
+      content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.96) 8%, rgba(0,0,0,0.45) 48%, rgba(0,0,0,0.16) 100%),
-        linear-gradient(to right, rgba(0,0,0,0.26), rgba(0,0,0,0.02)),
-        radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 40%);
+        linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.18)),
+        radial-gradient(circle at 72% 26%, rgba(0,170,255,0.14), transparent 24%);
     }
 
-    .featured-card::after {
+    .image-caption {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 26px;
+      z-index: 2;
+    }
+
+    .image-caption span {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(140, 223, 255, 0.88);
+    }
+
+    .image-caption p {
+      margin: 0;
+      max-width: 560px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.84);
+      font-size: 0.98rem;
+    }
+
+    .world-panel.text-panel {
+      padding: 34px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .world-lines {
+      display: grid;
+      gap: 16px;
+    }
+
+    .world-line {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .world-line:last-child {
+      border-bottom: none;
+    }
+
+    .world-line h3 {
+      margin: 0 0 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.96rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.95);
+    }
+
+    .world-line p {
+      margin: 0;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.97rem;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .book-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 430px;
+      padding: 28px 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        linear-gradient(145deg, rgba(8,12,20,0.96), rgba(3,5,8,0.98));
+      box-shadow:
+        inset 0 0 22px rgba(0,170,255,0.04),
+        0 0 24px rgba(0,0,0,0.2);
+      transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+    }
+
+    .book-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(0,170,255,0.10), transparent 28%),
+        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 18%);
+      pointer-events: none;
+    }
+
+    .book-card::after {
       content: "";
       position: absolute;
       top: 0;
       left: -120%;
-      width: 65%;
+      width: 60%;
       height: 100%;
-      z-index: 2;
       background: linear-gradient(
         120deg,
         transparent,
-        rgba(255,255,255,0.10),
+        rgba(255,255,255,0.08),
         transparent
       );
-      transition: left 0.95s ease;
+      transition: left 0.9s ease;
     }
 
-    .featured-card:hover::after {
+    .book-card:hover::after {
       left: 140%;
     }
 
-    .featured-card:hover {
-      transform: translateY(-12px) scale(1.01);
-      border-color: rgba(0,170,255,0.42);
+    .book-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0,170,255,0.34);
       box-shadow:
-        0 0 28px rgba(0,170,255,0.14),
-        0 0 70px rgba(0,170,255,0.10),
-        inset 0 0 30px rgba(0,170,255,0.08);
+        0 0 26px rgba(0,170,255,0.12),
+        0 0 56px rgba(0,170,255,0.08);
     }
 
-    .featured-card .character-aura {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      opacity: 0.9;
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    .aura-calisto {
-      background:
-        radial-gradient(circle at 20% 25%, rgba(0, 190, 255, 0.18), transparent 22%),
-        radial-gradient(circle at 75% 20%, rgba(120, 220, 255, 0.10), transparent 20%);
-    }
-
-    .aura-pavani {
-      background:
-        radial-gradient(circle at 30% 25%, rgba(170, 140, 255, 0.16), transparent 24%),
-        radial-gradient(circle at 70% 30%, rgba(90, 170, 255, 0.10), transparent 20%);
-    }
-
-    .aura-diana {
-      background:
-        radial-gradient(circle at 25% 22%, rgba(255, 210, 120, 0.14), transparent 20%),
-        radial-gradient(circle at 72% 24%, rgba(255, 130, 180, 0.10), transparent 18%);
-    }
-
-    .aura-izumi {
-      background:
-        radial-gradient(circle at 30% 22%, rgba(120, 255, 220, 0.13), transparent 22%),
-        radial-gradient(circle at 70% 28%, rgba(100, 180, 255, 0.10), transparent 18%);
-    }
-
-    .aura-naomi {
-      background:
-        radial-gradient(circle at 26% 24%, rgba(255, 160, 120, 0.14), transparent 22%),
-        radial-gradient(circle at 74% 30%, rgba(255, 220, 160, 0.08), transparent 18%);
-    }
-
-    .annie-card {
-      background:
-        radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.18), transparent 18%),
-        radial-gradient(circle at 80% 24%, rgba(140, 170, 255, 0.16), transparent 20%),
-        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 16%),
-        linear-gradient(145deg, #07101a, #020409 70%);
-    }
-
-    .annie-grid {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      opacity: 0.18;
-      background-image:
-        linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
-    }
-
-    .annie-rings {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .annie-rings::before,
-    .annie-rings::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(120, 230, 255, 0.22);
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
-    }
-
-    .annie-rings::before {
-      width: 220px;
-      height: 220px;
-      top: 22%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .annie-rings::after {
-      width: 320px;
-      height: 320px;
-      top: 13%;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .annie-core {
-      position: absolute;
-      top: 31%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      z-index: 2;
-      background:
-        radial-gradient(circle, rgba(180,245,255,0.95) 0%, rgba(60,210,255,0.72) 35%, rgba(0,120,255,0.08) 70%, transparent 72%);
-      box-shadow:
-        0 0 24px rgba(80,220,255,0.32),
-        0 0 60px rgba(60,180,255,0.18);
-    }
-
-    .annie-lines {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .annie-lines span {
-      position: absolute;
-      left: 50%;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.35), rgba(120,230,255,0.0));
-      transform-origin: top center;
-    }
-
-    .annie-lines span:nth-child(1) {
-      height: 170px;
-      top: 13%;
-      transform: translateX(-50%) rotate(0deg);
-    }
-
-    .annie-lines span:nth-child(2) {
-      height: 170px;
-      top: 13%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    .annie-lines span:nth-child(3) {
-      height: 170px;
-      top: 13%;
-      transform: translateX(-50%) rotate(90deg);
-    }
-
-    .annie-lines span:nth-child(4) {
-      height: 170px;
-      top: 13%;
-      transform: translateX(-50%) rotate(135deg);
-    }
-
-    .featured-content {
-      position: relative;
-      z-index: 3;
-      max-width: 92%;
-    }
-
-    .character-tag {
-      display: inline-block;
-      width: fit-content;
-      padding: 7px 12px;
+    .book-number {
       margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
-    }
-
-    .featured-card h3 {
-      margin: 0 0 12px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: 0.74rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+      color: rgba(130,220,255,0.74);
     }
 
-    .featured-card p {
-      margin: 0 0 22px;
-      max-width: 95%;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.86);
-      font-size: 0.98rem;
-      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+    .book-card h3 {
+      margin: 0 0 14px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.25;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.96);
     }
 
-    .card-link {
-      width: fit-content;
+    .book-phase {
+      margin-bottom: 14px;
       font-size: 0.8rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: rgba(145,220,255,0.74);
+    }
+
+    .book-card p {
+      margin: 0 0 18px;
+      font-size: 0.96rem;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.74);
+    }
+
+    .book-meta {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      gap: 10px;
+    }
+
+    .book-meta div {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .book-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.78rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #8bdfff;
@@ -649,36 +587,35 @@
       transition: 0.3s ease;
     }
 
-    .featured-card:hover .card-link,
-    .roster-card:hover .card-link {
+    .book-card:hover .book-link {
       color: white;
       border-color: rgba(255,255,255,0.56);
     }
 
-    .cinematic-band {
+    .band {
       position: relative;
       z-index: 2;
       padding: 70px 8% 20px;
     }
 
-    .cinematic-band-inner {
+    .band-inner {
       border-top: 1px solid rgba(255,255,255,0.08);
       padding-top: 28px;
       display: flex;
       justify-content: space-between;
-      gap: 25px;
+      gap: 24px;
       align-items: flex-start;
       color: rgba(255,255,255,0.56);
       font-size: 0.95rem;
       line-height: 1.8;
     }
 
-    .cinematic-band-left {
-      max-width: 520px;
+    .band-left {
+      max-width: 560px;
     }
 
-    .cinematic-band-right {
-      max-width: 280px;
+    .band-right {
+      max-width: 300px;
       text-align: right;
       font-family: 'Orbitron', sans-serif;
       letter-spacing: 2px;
@@ -687,85 +624,51 @@
       font-size: 0.76rem;
     }
 
-    .roster-grid {
+    .portal-grid {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
     }
 
-    .roster-card {
-      position: relative;
-      overflow: hidden;
-      min-height: 220px;
-      padding: 24px 22px;
-      border: 1px solid rgba(255,255,255,0.09);
+    .portal-card {
+      padding: 26px 24px;
+      border: 1px solid rgba(255,255,255,0.08);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
         linear-gradient(145deg, rgba(8,12,20,0.92), rgba(4,6,10,0.94));
-      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
       box-shadow:
         inset 0 0 18px rgba(0,170,255,0.03),
         0 0 18px rgba(0,0,0,0.18);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .roster-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(0,170,255,0.08), transparent 32%),
-        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 20%);
-      pointer-events: none;
-    }
-
-    .roster-card:hover {
-      transform: translateY(-7px);
-      border-color: rgba(0,170,255,0.30);
+    .portal-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,170,255,0.28);
       box-shadow:
-        0 0 24px rgba(0,170,255,0.10),
+        0 0 22px rgba(0,170,255,0.10),
         0 0 42px rgba(0,170,255,0.05);
     }
 
-    .roster-number {
-      margin-bottom: 13px;
+    .portal-card h3 {
+      margin: 0 0 12px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.76rem;
-      letter-spacing: 2px;
-      color: rgba(120,210,255,0.74);
-    }
-
-    .roster-card h3 {
-      margin: 0 0 10px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.02rem;
+      font-size: 1rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
     }
 
-    .roster-role {
-      margin-bottom: 14px;
-      font-size: 0.8rem;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: rgba(145, 220, 255, 0.7);
-    }
-
-    .roster-card p {
-      margin: 0 0 18px;
-      font-size: 0.94rem;
-      line-height: 1.72;
+    .portal-card p {
+      margin: 0;
+      line-height: 1.8;
       color: rgba(255,255,255,0.72);
-    }
-
-    .roster-card .card-link {
-      font-size: 0.72rem;
+      font-size: 0.96rem;
     }
 
     .ending {
       position: relative;
       z-index: 2;
-      min-height: 72vh;
+      min-height: 70vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -774,7 +677,7 @@
     }
 
     .ending-box {
-      max-width: 820px;
+      max-width: 860px;
       padding: 50px 38px;
       border: 1px solid rgba(255,255,255,0.10);
       background:
@@ -817,54 +720,48 @@
       filter: blur(0);
     }
 
-    @media (max-width: 1100px) {
-      .hero {
-        min-height: auto;
-        padding: 130px 7% 90px;
+    @media (max-width: 1180px) {
+      .books-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .hero-note {
+      .world-grid {
         grid-template-columns: 1fr;
-        max-width: 720px;
       }
 
-      .featured-card.large {
-        min-height: 470px;
+      .world-panel.image-panel {
+        min-height: 440px;
       }
 
-      .featured-card.small {
-        min-height: 340px;
+      .hero-stats {
+        grid-template-columns: 1fr;
+        max-width: 760px;
       }
     }
 
     @media (max-width: 980px) {
-      .featured-card.large,
-      .featured-card.small {
-        grid-column: span 6;
+      .portal-grid {
+        grid-template-columns: 1fr;
       }
 
-      .roster-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .cinematic-band-inner {
+      .band-inner {
         flex-direction: column;
       }
 
-      .cinematic-band-right {
+      .band-right {
         text-align: left;
       }
 
       .section,
       .hero,
       .ending,
-      .cinematic-band {
+      .band {
         padding-left: 6%;
         padding-right: 6%;
       }
 
       h1 {
-        font-size: clamp(2.8rem, 8vw, 4.8rem);
+        font-size: clamp(2.8rem, 8vw, 4.9rem);
         letter-spacing: 5px;
       }
 
@@ -889,24 +786,8 @@
 
       .hero {
         padding-top: 150px;
-        padding-bottom: 80px;
-      }
-
-      .featured-grid {
-        gap: 18px;
-      }
-
-      .featured-card {
-        padding: 26px;
-      }
-
-      .featured-card h3 {
-        font-size: 1.55rem;
-      }
-
-      .featured-card p {
-        font-size: 0.95rem;
-        line-height: 1.7;
+        padding-bottom: 84px;
+        min-height: auto;
       }
 
       .section {
@@ -914,8 +795,12 @@
         padding-bottom: 90px;
       }
 
-      .section-header {
-        margin-bottom: 34px;
+      .world-panel.text-panel,
+      .book-card,
+      .portal-card,
+      .ending-box {
+        padding-left: 24px;
+        padding-right: 24px;
       }
     }
 
@@ -923,17 +808,13 @@
       .hero,
       .section,
       .ending,
-      .cinematic-band {
+      .band {
         padding-left: 5%;
         padding-right: 5%;
       }
 
-      .hero {
-        padding-top: 150px;
-      }
-
       h1 {
-        font-size: clamp(2.3rem, 10vw, 3.8rem);
+        font-size: clamp(2.3rem, 10vw, 3.9rem);
         letter-spacing: 4px;
       }
 
@@ -953,43 +834,21 @@
         min-width: 0;
       }
 
-      .featured-card.large,
-      .featured-card.small {
-        grid-column: span 12;
-      }
-
-      .featured-card {
-        min-height: 300px;
-      }
-
-      .featured-card.large {
-        min-height: 360px;
-      }
-
-      .featured-card.small {
-        min-height: 300px;
-      }
-
-      .featured-content {
-        max-width: 100%;
-      }
-
-      .roster-grid {
+      .books-grid {
         grid-template-columns: 1fr;
       }
 
-      .cinematic-band {
-        padding-top: 40px;
+      .world-panel.image-panel {
+        min-height: 320px;
       }
 
-      .cinematic-band-inner {
-        gap: 16px;
-        font-size: 0.92rem;
+      .band {
+        padding-top: 40px;
       }
 
       .ending {
         min-height: auto;
-        padding-top: 80px;
+        padding-top: 84px;
         padding-bottom: 100px;
       }
 
@@ -1001,13 +860,12 @@
     @media (max-width: 480px) {
       .eyebrow,
       .section-kicker,
-      .note-label,
-      .character-tag,
-      .card-link,
-      .roster-role,
-      .roster-number,
+      .stat-label,
       .top-links a,
-      .brand {
+      .brand,
+      .book-number,
+      .book-phase,
+      .book-link {
         letter-spacing: 1.5px;
       }
 
@@ -1021,29 +879,13 @@
         padding-bottom: 70px;
       }
 
-      .featured-card {
-        padding: 22px;
-      }
-
-      .featured-card.large {
-        min-height: 330px;
-      }
-
-      .featured-card.small {
-        min-height: 280px;
-      }
-
-      .featured-card h3 {
-        font-size: 1.35rem;
-      }
-
-      .featured-card p {
-        font-size: 0.92rem;
-      }
-
       .section h2,
       .ending-box h2 {
         letter-spacing: 2px;
+      }
+
+      .book-card {
+        min-height: auto;
       }
     }
   </style>
@@ -1060,172 +902,211 @@
     <nav class="top-links">
       <a href="index.html">Inicio</a>
       <a href="explorar.html">Explorar</a>
-      <a href="#destacados">Centrales</a>
-      <a href="#elenco">Elenco</a>
+      <a href="personajes.html">Personajes</a>
+      <a href="#libros">Libros</a>
+      <a href="#universo">Universo</a>
     </nav>
   </header>
 
   <section class="hero reveal">
-    <div class="hero-inner">
-      <div class="eyebrow">Presencias dentro del universo</div>
+    <div class="hero-bg"></div>
 
-      <h1>Personajes</h1>
+    <div class="hero-inner">
+      <div class="eyebrow">Umbral del universo</div>
+
+      <h1>Explorar</h1>
 
       <p class="hero-subtitle">
-        No están aquí para llenar un archivo. Están aquí para sostener tensiones, afectos, descubrimientos, heridas, amistades y transformaciones que hacen latir el universo de Shambhala.
+        Este no es un catálogo de datos. Es una puerta. Un punto de entrada al universo de Shambhala: sus libros, sus trayectorias, sus tensiones emocionales, sus preguntas científicas y los espacios donde lo humano cambia al tocar lo imposible.
       </p>
 
       <div class="hero-actions">
-        <a href="#destacados" class="btn">Ver personajes centrales</a>
-        <a href="#elenco" class="btn secondary">Explorar el elenco completo</a>
+        <a href="#libros" class="btn">Entrar a la saga</a>
+        <a href="#universo" class="btn secondary">Ver el mundo</a>
       </div>
 
-      <div class="hero-note">
-        <div class="note-box">
-          <div class="note-label">Presencia</div>
-          <p>La idea no es mostrar perfiles fríos, sino hacer sentir que cada personaje ocupa un lugar real dentro del mundo.</p>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="stat-label">La saga</div>
+          <p>Una estructura pensada como recorrido: cada libro expande el universo, cambia su escala emocional y desplaza la forma de mirar.</p>
         </div>
 
-        <div class="note-box">
-          <div class="note-label">Tensión</div>
-          <p>Algunos arrastran preguntas. Otros sostienen el deseo, la amistad, la ambigüedad o la herida que atraviesa la saga.</p>
+        <div class="stat-box">
+          <div class="stat-label">El mundo</div>
+          <p>Luna, laboratorios, estaciones, vínculos, conciencia artificial y ciencia llevada al límite de lo imaginable.</p>
         </div>
 
-        <div class="note-box">
-          <div class="note-label">Universo</div>
-          <p>La ciencia, la intimidad, la colonia lunar y el viaje se perciben distinto a través de cada una de estas voces.</p>
+        <div class="stat-box">
+          <div class="stat-label">La experiencia</div>
+          <p>Esta página no busca explicarlo todo. Busca dejarte entrar con deseo, atmósfera y curiosidad.</p>
         </div>
       </div>
     </div>
-
-    <div class="hero-glow-line"></div>
   </section>
 
-  <section class="section reveal" id="destacados">
+  <section class="section reveal" id="universo">
     <div class="section-header">
-      <div class="section-kicker">Centro emocional</div>
-      <h2>Figuras que sostienen el pulso de la saga</h2>
+      <div class="section-kicker">Cartografía sensible</div>
+      <h2>El mundo de Shambhala</h2>
       <p>
-        Aquí empieza la capa más cinematográfica de la página. No busca enumerar, sino dar peso visual a quienes cambian el tono, la energía y la respiración de la historia.
+        Antes de seguir a cada personaje o a cada libro, conviene sentir primero el espacio que los contiene: un universo donde la ciencia altera el horizonte, pero también el deseo, la memoria, la amistad y la identidad.
       </p>
     </div>
 
-    <div class="featured-grid">
-      <a class="featured-card large reveal" href="calisto.html">
-        <img class="featured-image" src="images/calisto.jpg" alt="Calisto">
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-calisto"></div>
-        <div class="featured-content">
-          <span class="character-tag">Protagonista</span>
-          <h3>Calisto</h3>
+    <div class="world-grid">
+      <div class="world-panel image-panel reveal">
+        <img src="images/world.jpg" alt="Mundo de Shambhala">
+        <div class="image-caption">
+          <span>Universo expandido</span>
           <p>
-            Ciencia, ironía, impulso emocional y una necesidad profunda de comprender lo imposible sin dejar de sentirlo.
+            Shambhala no se reduce a un lugar. Es una red de trayectorias, estaciones, mundos posibles, presencias y decisiones que transforman a quienes la habitan.
           </p>
-          <span class="card-link">Entrar al perfil</span>
         </div>
-      </a>
-
-      <a class="featured-card large reveal" href="pavani.html">
-        <img class="featured-image" src="images/pavani.jpg" alt="Pavani">
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-pavani"></div>
-        <div class="featured-content">
-          <span class="character-tag">Centro emocional</span>
-          <h3>Pavani</h3>
-          <p>
-            Contención, profundidad y una forma distinta de amar y percibir el mundo que cambia el eje íntimo de la historia.
-          </p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
-
-      <a class="featured-card small reveal" href="diana.html">
-        <img class="featured-image" src="images/diana.jpg" alt="Diana">
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-diana"></div>
-        <div class="featured-content">
-          <span class="character-tag">Órbita cercana</span>
-          <h3>Diana</h3>
-          <p>Carisma, inteligencia y magnetismo.</p>
-          <span class="card-link">Ver más</span>
-        </div>
-      </a>
-
-      <a class="featured-card small reveal" href="izumi.html">
-        <img class="featured-image" src="images/izumi.jpg" alt="Izumi">
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-izumi"></div>
-        <div class="featured-content">
-          <span class="character-tag">Órbita cercana</span>
-          <h3>Izumi</h3>
-          <p>Precisión, visión y una calma decisiva.</p>
-          <span class="card-link">Ver más</span>
-        </div>
-      </a>
-
-      <a class="featured-card small reveal" href="naomi.html">
-        <img class="featured-image" src="images/naomi.jpg" alt="Naomi">
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-naomi"></div>
-        <div class="featured-content">
-          <span class="character-tag">Vínculo esencial</span>
-          <h3>Naomi</h3>
-          <p>Amistad, intimidad y refugio humano.</p>
-          <span class="card-link">Ver más</span>
-        </div>
-      </a>
-
-      <a class="featured-card small annie-card reveal" href="annie.html">
-        <div class="annie-grid"></div>
-        <div class="annie-rings"></div>
-        <div class="annie-core"></div>
-        <div class="annie-lines">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="featured-overlay"></div>
-        <div class="featured-content">
-          <span class="character-tag">IA · Presencia</span>
-          <h3>Annie</h3>
-          <p>
-            Una voz sin cuerpo visible. Una conciencia que habita el sistema y transforma la idea misma de compañía.
-          </p>
-          <span class="card-link">Ver más</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <section class="cinematic-band reveal">
-    <div class="cinematic-band-inner">
-      <div class="cinematic-band-left">
-        El universo no se siente vasto solo por las naves o por la distancia. Se siente vasto porque cada personaje arrastra una historia, una forma de mirar y una manera distinta de atravesar lo desconocido.
       </div>
-      <div class="cinematic-band-right">
-        archivo de presencias · vínculos · tensiones · memorias
+
+      <div class="world-panel text-panel reveal">
+        <div class="world-lines">
+          <div class="world-line">
+            <h3>Ciencia y vértigo</h3>
+            <p>La saga dialoga con motores de curvatura, biología, antropología, terraformación, conciencia artificial y los límites del conocimiento humano.</p>
+          </div>
+
+          <div class="world-line">
+            <h3>Intimidad y riesgo</h3>
+            <p>Lo épico no desplaza lo íntimo. Aquí lo inmenso convive con lo vulnerable: vínculos, pérdidas, deseo, humor, culpa, ternura y transformación.</p>
+          </div>
+
+          <div class="world-line">
+            <h3>Colonias, estaciones y tránsito</h3>
+            <p>La Luna, Arcadia, laboratorios orbitales y otros espacios no son simples escenarios. Son atmósferas vivas que moldean decisiones y afectos.</p>
+          </div>
+
+          <div class="world-line">
+            <h3>Presencias no humanas</h3>
+            <p>Annie no ocupa el lugar de un personaje tradicional. Su existencia desacomoda la idea de compañía, conciencia, memoria y cercanía.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="section reveal" id="elenco">
+  <section class="band reveal">
+    <div class="band-inner">
+      <div class="band-left">
+        Cada libro no solo cuenta otra parte de la historia. Cambia el clima del universo, abre otro ángulo emocional y ensancha la experiencia de lo posible.
+      </div>
+      <div class="band-right">
+        saga · mundo · ciencia · deseo · memoria · trayectorias
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="libros">
     <div class="section-header">
-      <div class="section-kicker">Universo expandido</div>
-      <h2>Elenco completo</h2>
+      <div class="section-kicker">Núcleo narrativo</div>
+      <h2>Los libros que componen el universo</h2>
       <p>
-        Aquí está el universo completo. La estructura mantiene primero el impacto visual y luego despliega al resto del elenco con orden y atmósfera.
+        Aquí puedes presentar la saga como una constelación de cuatro movimientos. Ya te dejo la estructura completa para que luego solo cambiemos títulos, frases y enlaces exactos.
       </p>
     </div>
 
-    <div class="roster-grid" id="rosterGrid"></div>
+    <div class="books-grid">
+      <article class="book-card reveal">
+        <div class="book-number">Libro I</div>
+        <h3>Calisto 2.0</h3>
+        <div class="book-phase">Inicio de trayectoria</div>
+        <p>
+          El comienzo del viaje. El punto donde la curiosidad científica, el desconcierto, la atracción por lo desconocido y el primer contacto con el universo de Shambhala empiezan a alterar la vida de Calisto.
+        </p>
+        <div class="book-meta">
+          <div><strong>Función dentro de la saga:</strong> apertura del mundo, del tono y de la protagonista.</div>
+          <div><strong>Clima:</strong> descubrimiento, extrañeza, fascinación, tensión inicial.</div>
+        </div>
+        <a href="#" class="book-link">Agregar enlace del libro</a>
+      </article>
+
+      <article class="book-card reveal">
+        <div class="book-number">Libro II</div>
+        <h3>La Flecha de Cupido</h3>
+        <div class="book-phase">Expansión emocional</div>
+        <p>
+          La historia se vuelve más íntima, más compleja y más vulnerable. Los vínculos se tensan, los afectos se profundizan y el universo empieza a respirarse también desde el deseo y la cercanía.
+        </p>
+        <div class="book-meta">
+          <div><strong>Función dentro de la saga:</strong> expansión del corazón emocional del universo.</div>
+          <div><strong>Clima:</strong> intimidad, deseo, contención, descubrimiento afectivo.</div>
+        </div>
+        <a href="#" class="book-link">Agregar enlace del libro</a>
+      </article>
+
+      <article class="book-card reveal">
+        <div class="book-number">Libro III</div>
+        <h3>Título del libro III</h3>
+        <div class="book-phase">Escala mayor</div>
+        <p>
+          Aquí puedes colocar el momento en que la saga crece en alcance, complejidad y consecuencias. Esta tarjeta ya queda lista para integrar el tercer libro cuando me pases el título y el enfoque exacto.
+        </p>
+        <div class="book-meta">
+          <div><strong>Función dentro de la saga:</strong> transición hacia una escala narrativa más amplia.</div>
+          <div><strong>Clima:</strong> redefinición, tensión, apertura del horizonte.</div>
+        </div>
+        <a href="#" class="book-link">Agregar enlace del libro</a>
+      </article>
+
+      <article class="book-card reveal">
+        <div class="book-number">Libro IV</div>
+        <h3>Horizontes infinitos</h3>
+        <div class="book-phase">Proyección y trascendencia</div>
+        <p>
+          Una etapa donde el universo alcanza una amplitud nueva. Las preguntas ya no son solo personales o científicas: también son existenciales, colectivas y profundamente transformadoras.
+        </p>
+        <div class="book-meta">
+          <div><strong>Función dentro de la saga:</strong> expansión final del horizonte del universo.</div>
+          <div><strong>Clima:</strong> amplitud, transformación, proyección, asombro.</div>
+        </div>
+        <a href="#" class="book-link">Agregar enlace del libro</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="section-header">
+      <div class="section-kicker">Puertas de entrada</div>
+      <h2>Cómo explorar este universo</h2>
+      <p>
+        Esta página puede funcionar como un nodo central: desde aquí el visitante entra a los personajes, entiende la estructura de la saga y empieza a percibir el tono del mundo sin que le contemos demasiado.
+      </p>
+    </div>
+
+    <div class="portal-grid">
+      <article class="portal-card reveal">
+        <h3>Personajes</h3>
+        <p>
+          Entra al mapa humano del universo: presencias, vínculos, tensiones, inteligencias, heridas y afectos que sostienen la historia.
+        </p>
+      </article>
+
+      <article class="portal-card reveal">
+        <h3>La saga</h3>
+        <p>
+          Presenta cada libro como una fase distinta del viaje, con su propia respiración, escala emocional y expansión del mundo.
+        </p>
+      </article>
+
+      <article class="portal-card reveal">
+        <h3>El mundo</h3>
+        <p>
+          Refuerza el tono: ciencia, Luna, Arcadia, laboratorios, trayectorias imposibles y una atmósfera que no se siente como ciencia ficción genérica.
+        </p>
+      </article>
+    </div>
   </section>
 
   <section class="ending reveal">
     <div class="ending-box">
-      <h2>Cada personaje abre una puerta distinta</h2>
+      <h2>No se entra a Shambhala solo por la historia</h2>
       <p>
-        En Shambhala, el universo no se construye solo con tecnología, naves o trayectorias imposibles. Se construye con quienes lo habitan, con lo que desean, con lo que ocultan y con aquello que todavía no saben nombrar.
+        Se entra por la sensación de que algo inmenso y profundamente humano está ocurriendo allí. Por eso esta página debe sentirse como un umbral: una promesa de mundo, de emoción y de descubrimiento.
       </p>
     </div>
   </section>
@@ -1284,58 +1165,6 @@
     window.addEventListener("resize", () => {
       resizeCanvas();
       createStars();
-    });
-
-    const characters = [
-      { name: "Andrea", role: "Tripulación", text: "Presencia cálida dentro de un entorno de alta exigencia.", link: "andrea.html" },
-      { name: "Annie", role: "IA · Presencia", text: "Una voz sin cuerpo visible que habita el sistema y reconfigura la idea de compañía.", link: "annie.html" },
-      { name: "Berit", role: "Arcadia", text: "Una presencia firme dentro del entramado humano de Arcadia.", link: "berit.html" },
-      { name: "Calisto", role: "Protagonista", text: "Ciencia, ironía y sensibilidad en tensión constante.", link: "calisto.html" },
-      { name: "Diana", role: "Figura clave", text: "Carisma e inteligencia en una combinación difícil de ignorar.", link: "diana.html" },
-      { name: "Elena", role: "Entorno cercano", text: "Otra pieza dentro del tejido humano que rodea la historia.", link: "elena.html" },
-      { name: "Fae", role: "Entorno cercano", text: "Una presencia que añade textura y matices al universo.", link: "fae.html" },
-      { name: "Fátima", role: "Arcadia", text: "Transformación, renacer y una identidad en movimiento.", link: "fatima.html" },
-      { name: "Gamon", role: "Tripulación", text: "Tensión, responsabilidad y fragilidad bajo presión.", link: "gamon.html" },
-      { name: "Hadley", role: "Entorno cercano", text: "Otra voz dentro del entramado más amplio de la saga.", link: "hadley.html" },
-      { name: "Izumi", role: "Figura clave", text: "Precisión, visión y una calma que sostiene decisiones enormes.", link: "izumi.html" },
-      { name: "Jacinda", role: "Entorno cercano", text: "Una presencia adicional dentro del universo humano de Shambhala.", link: "jacinda.html" },
-      { name: "Jordyn", role: "Entorno cercano", text: "Un matiz más dentro del ecosistema emocional de la historia.", link: "jordyn.html" },
-      { name: "Kalifa", role: "Entorno cercano", text: "Otra figura que amplía el universo interpersonal de la saga.", link: "kalifa.html" },
-      { name: "Kamana", role: "Entorno cercano", text: "Una presencia más dentro del mapa humano del relato.", link: "kamana.html" },
-      { name: "Kenna", role: "Tripulación", text: "Impulso, sensibilidad y reacciones que humanizan la travesía.", link: "kenna.html" },
-      { name: "Marta", role: "Tripulación", text: "Una mirada capaz de contener emoción y asombro.", link: "marta.html" },
-      { name: "Mei Xing", role: "Tripulación", text: "Atención, cuidado y una lectura aguda de los demás.", link: "mei-xing.html" },
-      { name: "Nalah", role: "Entorno cercano", text: "Otra presencia dentro del entramado amplio del universo.", link: "nalah.html" },
-      { name: "Naomi", role: "Vínculo esencial", text: "Una amistad que aporta cercanía, verdad y refugio.", link: "naomi.html" },
-      { name: "Olivia", role: "Tripulación", text: "Curiosidad y entusiasmo frente a lo desconocido.", link: "olivia.html" },
-      { name: "Pavani", role: "Centro emocional", text: "Una presencia profunda cuya manera de sentir cambia el mapa íntimo de la saga.", link: "pavani.html" },
-      { name: "Quinn", role: "Tripulación", text: "Determinación, historia propia y una energía que deja huella.", link: "quinn.html" },
-      { name: "Raven", role: "Entorno cercano", text: "Otra figura que añade fuerza al tejido del elenco.", link: "raven.html" },
-      { name: "Remi", role: "Tripulación", text: "Afecto, observación y pequeños gestos que importan.", link: "remi.html" },
-      { name: "Rika", role: "Entorno cercano", text: "Una presencia más dentro del universo expandido.", link: "rika.html" },
-      { name: "Sasha", role: "Entorno cercano", text: "Otra voz dentro del amplio coro humano de la saga.", link: "sasha.html" },
-      { name: "Sook", role: "Arcadia", text: "Una presencia significativa dentro del tejido emocional y humano.", link: "sook.html" },
-      { name: "Tanya", role: "Entorno cercano", text: "Otra figura que aporta relieve al universo narrativo.", link: "tanya.html" },
-      { name: "Yasmin", role: "Arcadia", text: "Otra voz dentro del tejido social y emocional de la colonia.", link: "yasmin.html" },
-      { name: "Zoe", role: "Entorno cercano", text: "Una presencia más dentro del mapa humano de Shambhala.", link: "zoe.html" }
-    ];
-
-    const rosterGrid = document.getElementById("rosterGrid");
-
-    characters.forEach((character, index) => {
-      const card = document.createElement("a");
-      card.className = "roster-card reveal";
-      card.href = character.link;
-
-      card.innerHTML = `
-        <div class="roster-number">${String(index + 1).padStart(2, "0")}</div>
-        <h3>${character.name}</h3>
-        <div class="roster-role">${character.role}</div>
-        <p>${character.text}</p>
-        <span class="card-link">Entrar al perfil</span>
-      `;
-
-      rosterGrid.appendChild(card);
     });
 
     const revealElements = document.querySelectorAll(".reveal");
