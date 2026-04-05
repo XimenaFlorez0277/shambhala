@@ -3,34 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Izumi | Shambhala Saga</title>
+  <title>Izumi | Shambhala</title>
   <meta
     name="description"
-    content="Izumi, antropóloga de Shambhala. Página de personaje de la saga Shambhala."
+    content="Izumi — Antropóloga de Shambhala. Página de personaje de la saga Shambhala."
   />
+
   <style>
     :root {
-      --bg: #05070d;
-      --bg-soft: #0a0f1a;
-      --panel: rgba(11, 16, 28, 0.72);
-      --panel-strong: rgba(10, 14, 24, 0.9);
-      --line: rgba(255, 255, 255, 0.12);
-      --line-strong: rgba(255, 255, 255, 0.22);
-      --text: #f3f6fb;
-      --muted: #b7c0d4;
-      --soft: #8e98ac;
-      --accent: #e0e8ff;
-      --accent-2: #a8c4ff;
-      --glow: rgba(168, 196, 255, 0.16);
+      --bg: #06080d;
+      --bg-soft: #0d1118;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #f5f7fb;
+      --muted: rgba(245, 247, 251, 0.72);
+      --soft: rgba(245, 247, 251, 0.52);
+      --accent: #8fd3ff;
+      --accent-2: #8aa7ff;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
-      --max: 1200px;
+      --max-width: 1240px;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -38,32 +39,14 @@
     }
 
     body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", Arial, sans-serif;
-      color: var(--text);
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(135, 166, 255, 0.13), transparent 26%),
-        radial-gradient(circle at 82% 18%, rgba(183, 205, 255, 0.08), transparent 22%),
-        radial-gradient(circle at bottom right, rgba(110, 144, 255, 0.08), transparent 22%),
-        linear-gradient(180deg, #04060b 0%, #070b13 42%, #05070d 100%);
-      min-height: 100vh;
+        radial-gradient(circle at top, rgba(143, 211, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(138, 167, 255, 0.08), transparent 24%),
+        linear-gradient(180deg, #06080d 0%, #0a0d14 35%, #06080d 100%);
+      color: var(--text);
+      line-height: 1.6;
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        radial-gradient(2px 2px at 12% 22%, rgba(255,255,255,0.95), transparent 60%),
-        radial-gradient(1.5px 1.5px at 24% 72%, rgba(255,255,255,0.7), transparent 60%),
-        radial-gradient(1.8px 1.8px at 68% 18%, rgba(255,255,255,0.8), transparent 60%),
-        radial-gradient(1.4px 1.4px at 78% 62%, rgba(255,255,255,0.65), transparent 60%),
-        radial-gradient(2px 2px at 90% 28%, rgba(255,255,255,0.85), transparent 60%),
-        radial-gradient(1.2px 1.2px at 54% 82%, rgba(255,255,255,0.75), transparent 60%);
-      opacity: 0.72;
-      z-index: 0;
     }
 
     a {
@@ -71,97 +54,120 @@
       text-decoration: none;
     }
 
-    .page {
-      position: relative;
-      z-index: 1;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
-    .topbar {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 18px auto 0;
-      padding: 16px 20px;
+    .page-shell {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .stars,
+    .stars::before,
+    .stars::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-repeat: repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stars {
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
+        radial-gradient(1.5px 1.5px at 140px 80px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 280px 120px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(2px 2px at 420px 40px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.5px 1.5px at 560px 140px, rgba(255,255,255,0.7), transparent);
+      background-size: 600px 220px;
+      opacity: 0.32;
+      animation: driftStars 80s linear infinite;
+    }
+
+    .stars::before {
+      background-image:
+        radial-gradient(1px 1px at 50px 60px, rgba(143,211,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 260px 120px, rgba(138,167,255,0.55), transparent),
+        radial-gradient(1px 1px at 480px 40px, rgba(255,255,255,0.7), transparent);
+      background-size: 520px 200px;
+      opacity: 0.25;
+      animation: driftStarsReverse 110s linear infinite;
+    }
+
+    .stars::after {
+      background-image:
+        radial-gradient(1px 1px at 100px 90px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1px 1px at 360px 160px, rgba(143,211,255,0.55), transparent),
+        radial-gradient(1px 1px at 540px 60px, rgba(255,255,255,0.55), transparent);
+      background-size: 640px 260px;
+      opacity: 0.2;
+      animation: driftStars 140s linear infinite;
+    }
+
+    @keyframes driftStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-180px); }
+    }
+
+    @keyframes driftStarsReverse {
+      from { transform: translateY(0); }
+      to { transform: translateY(140px); }
+    }
+
+    .top-nav {
+      position: relative;
+      z-index: 3;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 0;
       display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      border: 1px solid var(--line);
-      background: rgba(8, 12, 22, 0.68);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: 999px;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 14px;
-      z-index: 20;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffffff 0%, #a8c4ff 100%);
-      box-shadow: 0 0 22px rgba(168, 196, 255, 0.55);
-      flex-shrink: 0;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      min-width: 0;
-    }
-
-    .brand-text span:first-child {
-      font-size: 0.74rem;
-      letter-spacing: 0.32em;
+      font-size: 0.82rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--soft);
     }
 
-    .brand-text span:last-child {
-      font-size: 0.98rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .nav {
+    .nav-links {
       display: flex;
-      align-items: center;
-      gap: 10px;
       flex-wrap: wrap;
-      justify-content: flex-end;
+      gap: 10px;
     }
 
-    .nav a {
-      padding: 11px 16px;
+    .nav-pill {
+      padding: 10px 16px;
+      border: 1px solid var(--border);
       border-radius: 999px;
-      border: 1px solid var(--line);
-      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
       font-size: 0.92rem;
-      transition: 0.25s ease;
-      background: rgba(255,255,255,0.02);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
-    .nav a:hover,
-    .nav a.active {
-      color: var(--text);
-      border-color: rgba(168, 196, 255, 0.4);
-      background: rgba(168, 196, 255, 0.1);
-      box-shadow: 0 0 0 1px rgba(168, 196, 255, 0.08) inset;
+    .nav-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(143,211,255,0.35);
     }
 
     .hero {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 34px auto 0;
-      min-height: calc(100vh - 150px);
+      position: relative;
+      z-index: 2;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 24px auto 0;
+      min-height: 78vh;
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
       gap: 28px;
@@ -169,657 +175,543 @@
     }
 
     .hero-copy,
-    .hero-visual {
+    .hero-image-wrap {
       position: relative;
+      border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       overflow: hidden;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       box-shadow: var(--shadow);
     }
 
     .hero-copy {
-      padding: 42px;
+      padding: 56px 46px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)),
+        rgba(8, 12, 19, 0.72);
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%),
-        radial-gradient(circle at top left, rgba(168, 196, 255, 0.13), transparent 38%),
-        radial-gradient(circle at bottom right, rgba(168, 196, 255, 0.07), transparent 34%),
-        var(--panel-strong);
-    }
-
-    .hero-copy::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.04), transparent 35%),
-        repeating-linear-gradient(
-          180deg,
-          transparent 0,
-          transparent 28px,
-          rgba(255,255,255,0.018) 28px,
-          rgba(255,255,255,0.018) 29px
-        );
-      pointer-events: none;
+      justify-content: center;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     .eyebrow {
-      position: relative;
-      z-index: 1;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 22px;
-      color: var(--accent);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
     }
 
     .eyebrow::before {
       content: "";
-      width: 34px;
+      width: 46px;
       height: 1px;
-      background: linear-gradient(90deg, rgba(168,196,255,0), rgba(168,196,255,0.95));
+      background: linear-gradient(90deg, transparent, var(--accent));
       display: inline-block;
     }
 
     .hero h1 {
-      position: relative;
-      z-index: 1;
-      margin: 0;
-      font-size: clamp(3rem, 7vw, 6.2rem);
+      font-size: clamp(3rem, 7vw, 6.4rem);
       line-height: 0.95;
+      font-weight: 700;
       letter-spacing: -0.04em;
-      max-width: 7ch;
+      margin-bottom: 18px;
     }
 
     .hero-subtitle {
-      position: relative;
-      z-index: 1;
-      margin-top: 16px;
-      font-size: 1rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent-2);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 42rem;
+      margin-bottom: 26px;
     }
 
     .hero-description {
-      position: relative;
-      z-index: 1;
-      margin-top: 28px;
-      max-width: 58ch;
+      max-width: 44rem;
       color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.85;
+      font-size: 1.04rem;
+      margin-bottom: 36px;
     }
 
-    .hero-actions {
-      position: relative;
-      z-index: 1;
-      margin-top: 32px;
-      display: flex;
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      flex-wrap: wrap;
+      margin-top: 10px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      font-size: 0.95rem;
-      transition: 0.25s ease;
-      min-height: 48px;
+    .hero-meta-card {
+      padding: 16px 18px;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.04);
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(168,196,255,0.18));
+    .hero-meta-card span {
+      display: block;
+      color: var(--soft);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-meta-card strong {
+      font-size: 1rem;
+      font-weight: 600;
       color: var(--text);
-      border-color: rgba(168, 196, 255, 0.35);
-      box-shadow: 0 12px 30px rgba(168, 196, 255, 0.12);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      background: linear-gradient(135deg, rgba(255,255,255,0.18), rgba(168,196,255,0.24));
+    .hero-image-wrap {
+      min-height: 620px;
+      background: #05070c;
     }
 
-    .btn-secondary {
-      color: var(--muted);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .btn-secondary:hover {
-      color: var(--text);
-      border-color: var(--line-strong);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .hero-visual {
-      min-height: 640px;
-      background:
-        linear-gradient(180deg, rgba(6, 9, 16, 0.08) 0%, rgba(6, 9, 16, 0.5) 100%),
-        radial-gradient(circle at 50% 18%, rgba(189, 213, 255, 0.18), transparent 26%),
-        #09101c;
-    }
-
-    .hero-visual img {
+    .hero-image-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      display: block;
-      filter: saturate(0.95) contrast(1.03) brightness(0.88);
+      filter: saturate(0.96) contrast(1.03) brightness(0.9);
+      transform: scale(1.02);
     }
 
-    .hero-visual::after {
+    .hero-image-wrap::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(5, 8, 13, 0.1) 0%, rgba(5, 8, 13, 0.64) 82%, rgba(5, 8, 13, 0.9) 100%),
-        linear-gradient(90deg, rgba(5, 8, 13, 0.18) 0%, rgba(5, 8, 13, 0) 22%, rgba(5, 8, 13, 0) 78%, rgba(5, 8, 13, 0.22) 100%);
-      pointer-events: none;
-    }
-
-    .hero-quote {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 26px;
-      z-index: 2;
-      padding: 18px 18px 16px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(7, 11, 20, 0.5);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .hero-quote p {
-      margin: 0;
-      color: var(--text);
-      line-height: 1.7;
-      font-size: 0.98rem;
-    }
-
-    .hero-quote span {
-      display: block;
-      margin-top: 8px;
-      color: var(--soft);
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+        linear-gradient(180deg, rgba(5,7,12,0.08), rgba(5,7,12,0.18) 38%, rgba(5,7,12,0.72) 100%),
+        linear-gradient(90deg, rgba(5,7,12,0.08), rgba(5,7,12,0) 45%, rgba(5,7,12,0.22));
     }
 
     .content {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 34px auto 80px;
-      display: grid;
-      gap: 24px;
-    }
-
-    .grid-two {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-    }
-
-    .panel {
       position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
+      z-index: 2;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 34px auto 90px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .section-card {
+      border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.015) 100%),
-        var(--panel);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025)),
+        rgba(8, 12, 19, 0.78);
+      padding: 34px;
       box-shadow: var(--shadow);
-      padding: 28px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
 
-    .panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at top right, rgba(168,196,255,0.08), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 35%);
+    .section-title {
+      font-size: clamp(1.4rem, 2vw, 1.9rem);
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
     }
 
-    .panel h2 {
-      position: relative;
-      z-index: 1;
-      margin: 0 0 18px;
-      font-size: 1.35rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .panel p {
-      position: relative;
-      z-index: 1;
-      margin: 0;
+    .section-text {
       color: var(--muted);
-      line-height: 1.9;
+      max-width: 75rem;
       font-size: 1rem;
     }
 
-    .data-list {
-      position: relative;
-      z-index: 1;
+    .profile-grid {
       display: grid;
-      gap: 14px;
-      margin-top: 8px;
-    }
-
-    .data-row {
-      display: grid;
-      grid-template-columns: 170px 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 16px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .data-row:last-child {
-      padding-bottom: 0;
-      border-bottom: none;
-    }
-
-    .data-label {
-      color: var(--soft);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.76rem;
-      padding-top: 4px;
-    }
-
-    .data-value {
-      color: var(--text);
-      line-height: 1.8;
-      font-size: 1rem;
-    }
-
-    .timeline {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 18px;
-      margin-top: 6px;
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 22px;
-      border-left: 1px solid rgba(168, 196, 255, 0.2);
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 6px;
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ffffff 0%, #a8c4ff 100%);
-      box-shadow: 0 0 0 6px rgba(168, 196, 255, 0.07);
-    }
-
-    .timeline-item strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-
-    .timeline-item span {
-      display: block;
-      color: var(--muted);
-      line-height: 1.8;
-    }
-
-    .presence {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 24px;
-    }
-
-    .presence-image {
-      min-height: 360px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      background: #0b111c;
-      box-shadow: var(--shadow);
-    }
-
-    .presence-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-      filter: saturate(0.95) contrast(1.02) brightness(0.92);
-    }
-
-    .presence-copy {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .presence-copy h2 {
-      margin: 0 0 18px;
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .presence-copy p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 1rem;
-    }
-
-    .continue-section {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto 40px;
-      padding: 32px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.015) 100%),
-        rgba(10, 14, 24, 0.82);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-    }
-
-    .continue-section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at top right, rgba(168,196,255,0.08), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 35%);
-    }
-
-    .continue-header {
-      position: relative;
-      z-index: 1;
-      margin-bottom: 24px;
-    }
-
-    .continue-kicker {
-      display: inline-block;
-      margin-bottom: 10px;
-      font-size: 0.76rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-
-    .continue-header h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-    }
-
-    .continue-header p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.85;
-      max-width: 62ch;
-    }
-
-    .continue-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
       margin-top: 22px;
     }
 
-    .continue-card {
-      display: block;
-      padding: 22px;
-      border-radius: 20px;
+    .info-card {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-md);
       border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      transition: 0.28s ease;
-      min-height: 190px;
+      background: rgba(255,255,255,0.035);
     }
 
-    .continue-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(168, 196, 255, 0.3);
-      background: rgba(168, 196, 255, 0.07);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+    .info-card span {
+      display: block;
+      color: var(--soft);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
     }
 
-    .continue-card span {
-      display: inline-block;
-      font-size: 0.74rem;
+    .info-card strong {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 20px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.08rem;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+    }
+
+    .highlight-box {
+      margin-top: 20px;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(143,211,255,0.18);
+      background:
+        linear-gradient(135deg, rgba(143,211,255,0.08), rgba(255,255,255,0.03));
+    }
+
+    .highlight-box p {
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .quote-block {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      line-height: 1.7;
+      color: rgba(245, 247, 251, 0.92);
+      max-width: 58rem;
+    }
+
+    .quote-block span {
+      display: block;
+      margin-top: 14px;
+      font-size: 0.9rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent-2);
-      margin-bottom: 14px;
-    }
-
-    .continue-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.35rem;
-      line-height: 1.1;
-    }
-
-    .continue-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 0.97rem;
-    }
-
-    .continue-links {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 26px;
-    }
-
-    .footer-nav {
-      width: min(calc(100% - 32px), var(--max));
-      margin: 0 auto 40px;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
       color: var(--soft);
     }
 
-    .footer-nav a {
-      padding: 12px 16px;
-      border: 1px solid var(--line);
+    .links-grid,
+    .return-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .character-link,
+    .return-link {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .character-link:hover,
+    .return-link:hover {
+      transform: translateY(-6px);
+      border-color: rgba(143,211,255,0.32);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+    }
+
+    .character-link {
+      min-height: 126px;
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: 1fr 92px;
+      gap: 14px;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(7, 12, 24, 0.96), rgba(10, 18, 34, 0.9));
+    }
+
+    .character-content {
+      min-width: 0;
+    }
+
+    .character-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border: 1px solid rgba(255,255,255,0.14);
       border-radius: 999px;
-      background: rgba(255,255,255,0.025);
-      transition: 0.25s ease;
+      background: rgba(0,0,0,0.22);
+      color: var(--accent);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .footer-nav a:hover {
-      color: var(--text);
-      border-color: var(--line-strong);
-      background: rgba(255,255,255,0.05);
+    .character-content strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+      font-weight: 600;
     }
 
-    @media (max-width: 1100px) {
+    .character-content span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.45;
+      display: block;
+    }
+
+    .character-thumb-wrap {
+      width: 92px;
+      height: 112px;
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      justify-self: end;
+      flex-shrink: 0;
+    }
+
+    .character-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.35s ease;
+    }
+
+    .character-link:hover .character-thumb {
+      transform: scale(1.03);
+    }
+
+    .return-link {
+      min-height: 260px;
+    }
+
+    .card-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.72) saturate(0.92);
+      transform: scale(1.02);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .return-link:hover .card-thumb {
+      transform: scale(1.08);
+      filter: brightness(0.8) saturate(1);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(4, 7, 12, 0.96) 12%, rgba(4, 7, 12, 0.58) 48%, rgba(4, 7, 12, 0.18) 100%),
+        linear-gradient(to right, rgba(4, 7, 12, 0.28), rgba(4, 7, 12, 0.02));
+      z-index: 1;
+    }
+
+    .card-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 18px;
+    }
+
+    .card-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.28);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card-content strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .card-content span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max-width), calc(100% - 32px));
+      margin: 0 auto 34px;
+      padding-top: 4px;
+      color: var(--soft);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1080px) {
       .hero {
         grid-template-columns: 1fr;
-        min-height: auto;
       }
 
-      .hero-visual {
+      .hero-image-wrap {
         min-height: 560px;
-      }
-
-      .grid-two,
-      .presence,
-      .continue-grid {
-        grid-template-columns: 1fr;
+        order: -1;
       }
     }
 
-    @media (max-width: 760px) {
-      .topbar {
-        width: min(calc(100% - 20px), var(--max));
-        padding: 14px 16px;
-        border-radius: 24px;
-        align-items: flex-start;
-        flex-direction: column;
+    @media (max-width: 780px) {
+      .top-nav {
+        padding-top: 18px;
       }
 
-      .brand-text span:first-child {
-        font-size: 0.68rem;
-      }
-
-      .brand-text span:last-child {
-        font-size: 0.88rem;
-        white-space: normal;
-      }
-
-      .nav {
+      .nav-links {
         width: 100%;
-        justify-content: flex-start;
-      }
-
-      .nav a {
-        font-size: 0.88rem;
-        padding: 10px 14px;
-      }
-
-      .hero,
-      .content,
-      .continue-section,
-      .footer-nav {
-        width: min(calc(100% - 20px), var(--max));
       }
 
       .hero {
-        margin-top: 24px;
+        width: min(var(--max-width), calc(100% - 20px));
+        margin-top: 18px;
         gap: 18px;
       }
 
-      .hero-copy {
-        padding: 28px 22px;
+      .content,
+      footer {
+        width: min(var(--max-width), calc(100% - 20px));
       }
 
-      .hero-description {
-        font-size: 1rem;
-        line-height: 1.8;
+      .hero-copy,
+      .section-card {
+        padding: 24px 20px;
       }
 
-      .hero-visual {
-        min-height: 430px;
-      }
-
-      .hero-quote {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
-        padding: 14px;
-      }
-
-      .panel,
-      .continue-section {
-        padding: 22px 18px;
-      }
-
-      .data-row {
+      .hero-meta,
+      .profile-grid,
+      .links-grid,
+      .return-grid {
         grid-template-columns: 1fr;
-        gap: 6px;
       }
 
-      .data-label {
-        padding-top: 0;
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
       }
 
-      .presence-image {
-        min-height: 280px;
+      .timeline-date {
+        white-space: normal;
       }
 
-      .footer-nav {
-        flex-direction: column;
+      .hero-image-wrap {
+        min-height: 420px;
       }
 
-      .footer-nav a {
-        width: 100%;
-        text-align: center;
+      .hero h1 {
+        line-height: 0.98;
+      }
+
+      .character-link {
+        grid-template-columns: 1fr 84px;
+        min-height: 118px;
+        padding: 12px;
+      }
+
+      .character-thumb-wrap {
+        width: 84px;
+        height: 102px;
+      }
+
+      .return-link {
+        min-height: 220px;
       }
     }
 
     @media (max-width: 480px) {
-      .hero h1 {
-        max-width: none;
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
       }
 
-      .hero-subtitle {
-        font-size: 0.86rem;
-        letter-spacing: 0.18em;
+      .nav-pill {
+        padding: 9px 14px;
+        font-size: 0.88rem;
       }
 
-      .eyebrow {
-        font-size: 0.7rem;
-        letter-spacing: 0.23em;
+      .hero-copy,
+      .section-card {
+        border-radius: 22px;
       }
 
-      .btn {
-        width: 100%;
+      .hero-image-wrap {
+        min-height: 360px;
       }
 
-      .continue-links {
-        flex-direction: column;
+      .character-link {
+        grid-template-columns: 1fr 76px;
+        min-height: 112px;
+        gap: 12px;
       }
 
-      .continue-links .btn {
-        width: 100%;
+      .character-thumb-wrap {
+        width: 76px;
+        height: 94px;
+      }
+
+      .character-content strong {
+        font-size: 0.94rem;
+      }
+
+      .character-content span {
+        font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header class="topbar">
-      <a href="index.html" class="brand" aria-label="Ir al inicio de Shambhala">
-        <div class="brand-mark"></div>
-        <div class="brand-text">
-          <span>Saga Shambhala</span>
-          <span>Portal narrativo</span>
-        </div>
-      </a>
+  <div class="page-shell">
+    <div class="stars"></div>
 
-      <nav class="nav" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="explorar.html">Explorar</a>
-        <a href="personajes.html" class="active">Personajes</a>
-        <a href="annie.html">Annie</a>
+    <header class="top-nav">
+      <div class="brand">Shambhala Saga</div>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="index.html" class="nav-pill">Inicio</a>
+        <a href="explorar.html" class="nav-pill">Explorar</a>
+        <a href="personajes.html" class="nav-pill">Personajes</a>
+        <a href="diana.html" class="nav-pill">Diana</a>
       </nav>
     </header>
 
@@ -827,180 +719,231 @@
       <section class="hero">
         <div class="hero-copy">
           <div class="eyebrow">Archivo de personaje</div>
-          <h1>Izumi</h1>
-          <div class="hero-subtitle">Antropóloga · Japón</div>
 
-          <p class="hero-description">
-            Izumi mira a las personas como quien ha aprendido a leer capas invisibles:
-            gestos, silencios, rituales, contradicciones. En un universo sostenido por
-            ciencia, estructuras y misiones imposibles, su campo de estudio sigue siendo
-            uno de los más complejos: la conducta humana.
+          <h1>Izumi</h1>
+
+          <p class="hero-subtitle">
+            Antropóloga. Precisión, visión y una calma lúcida para leer lo humano incluso en medio de lo extraordinario.
           </p>
 
-          <div class="hero-actions">
-            <a href="#perfil" class="btn btn-primary">Ver perfil</a>
-            <a href="#trayectoria" class="btn btn-secondary">Explorar trayectoria</a>
+          <p class="hero-description">
+            En Shambhala, Izumi aporta una forma de inteligencia distinta: observa, interpreta y comprende el comportamiento humano con una claridad que da profundidad a todo lo que ocurre a su alrededor. Su presencia transmite serenidad, criterio y una mirada capaz de ver patrones emocionales y sociales donde otras personas solo ven hechos aislados.
+          </p>
+
+          <div class="hero-meta">
+            <div class="hero-meta-card">
+              <span>Especialidad</span>
+              <strong>Antropóloga</strong>
+            </div>
+
+            <div class="hero-meta-card">
+              <span>Origen</span>
+              <strong>Japón</strong>
+            </div>
+
+            <div class="hero-meta-card">
+              <span>Educación</span>
+              <strong>PhD en Antropología Evolucionaria</strong>
+            </div>
+
+            <div class="hero-meta-card">
+              <span>Área</span>
+              <strong>Comportamiento Humano</strong>
+            </div>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <img src="images/izumi.jpg" alt="Retrato de Izumi" />
-          <div class="hero-quote">
-            <p>
-              No todo en Shambhala se entiende desde los sistemas o los datos.
-              Algunas fuerzas solo se revelan cuando alguien sabe observar a las personas.
-            </p>
-            <span>Shambhala · Antropología evolutiva</span>
-          </div>
+        <div class="hero-image-wrap">
+          <img src="images/izumi.jpg" alt="Izumi" />
         </div>
       </section>
 
       <section class="content">
-        <div class="grid-two">
-          <article class="panel" id="perfil">
-            <h2>Perfil</h2>
-            <div class="data-list">
-              <div class="data-row">
-                <div class="data-label">Especialidad</div>
-                <div class="data-value">Antropóloga</div>
-              </div>
+        <article class="section-card">
+          <h2 class="section-title">Presencia</h2>
+          <p class="quote-block">
+            Izumi no ocupa el espacio con ruido, sino con precisión. Hay en ella una calma inteligente que ordena, observa y comprende. Su presencia aporta equilibrio y una profundidad silenciosa que cambia la lectura de cada vínculo.
+            <span>Shambhala · Universo de personajes</span>
+          </p>
+        </article>
 
-              <div class="data-row">
-                <div class="data-label">País de origen</div>
-                <div class="data-value">Japón</div>
-              </div>
+        <article class="section-card">
+          <h2 class="section-title">Perfil</h2>
+          <p class="section-text">
+            Especialista en Antropología Evolucionaria, Izumi trabaja con aquello que define a las personas en un sentido profundo: sus comportamientos, sus vínculos, sus respuestas ante lo desconocido. Dentro de Shambhala, su mirada permite interpretar el lado humano de una historia atravesada por ciencia, exploración y transformación.
+          </p>
 
-              <div class="data-row">
-                <div class="data-label">Fecha de nacimiento</div>
-                <div class="data-value">2 mayo, 2051</div>
-              </div>
-
-              <div class="data-row">
-                <div class="data-label">Educación</div>
-                <div class="data-value">PhD en Antropología Evolucionaria</div>
-              </div>
-
-              <div class="data-row">
-                <div class="data-label">Intereses de investigación</div>
-                <div class="data-value">Comportamiento Humano</div>
-              </div>
-
-              <div class="data-row">
-                <div class="data-label">Afiliación actual</div>
-                <div class="data-value">Shambhala Laboratorio Orbital · 2095 – presente</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="panel">
-            <h2>Presencia</h2>
-            <p>
-              Izumi aporta una clase de lectura distinta. Donde otras miradas se fijan
-              en la materia, en la ingeniería o en la supervivencia, ella atiende la
-              dimensión humana: lo que repetimos, lo que ocultamos, lo que construimos
-              juntos incluso cuando no sabemos nombrarlo.
-              <br /><br />
-              Su presencia introduce otra textura en Shambhala. Más silenciosa quizá,
-              pero no menos decisiva. Comprender a una comunidad, sus vínculos y sus
-              tensiones también es una forma de sostener el futuro.
-            </p>
-          </article>
-        </div>
-
-        <article class="panel" id="trayectoria">
-          <h2>Trayectoria</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <strong>Sede Principal de Portal al Porvenir</strong>
-              <span>2088 – 2091</span>
+          <div class="profile-grid">
+            <div class="info-card">
+              <span>Nombre</span>
+              <strong>Izumi</strong>
             </div>
 
-            <div class="timeline-item">
-              <strong>Arcadia Estación de Investigación</strong>
-              <span>2091 – 2095</span>
+            <div class="info-card">
+              <span>Rol</span>
+              <strong>Antropóloga</strong>
             </div>
 
-            <div class="timeline-item">
-              <strong>Shambhala Laboratorio Orbital</strong>
-              <span>2095 – presente</span>
+            <div class="info-card">
+              <span>País de origen</span>
+              <strong>Japón</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Fecha de nacimiento</span>
+              <strong>2 mayo, 2051</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Educación</span>
+              <strong>PhD en Antropología Evolucionaria</strong>
+            </div>
+
+            <div class="info-card">
+              <span>Interés de investigación</span>
+              <strong>Comportamiento Humano</strong>
             </div>
           </div>
         </article>
 
-        <section class="presence">
-          <div class="presence-image">
-            <img src="images/izumi.jpg" alt="Izumi en la saga Shambhala" />
-          </div>
-
-          <div class="panel presence-copy">
-            <h2>La ciencia de observar lo humano</h2>
-            <p>
-              En una historia atravesada por exploración, tecnología y expansión hacia
-              lo desconocido, Izumi recuerda que ninguna misión existe al margen de las
-              personas que la habitan. Su formación en antropología evolutiva convierte
-              la conducta humana en una clave de lectura tan necesaria como cualquier
-              instrumento de laboratorio.
-              <br /><br />
-              Su recorrido entre Portal al Porvenir, Arcadia y Shambhala sugiere una
-              figura capaz de atravesar contextos distintos sin perder profundidad.
-              Allí donde otros buscan respuestas inmediatas, Izumi parece interesada
-              en algo más difícil: entender qué nos vuelve reconocibles incluso en el
-              borde de lo desconocido.
-            </p>
-          </div>
-        </section>
-      </section>
-
-      <section class="continue-section">
-        <div class="continue-header">
-          <span class="continue-kicker">Sigue explorando</span>
-          <h2>Otros personajes, otros accesos, otras órbitas</h2>
-          <p>
-            Cada presencia dentro de Shambhala abre una puerta distinta hacia este universo.
-            Puedes seguir explorando otros personajes o regresar a las secciones principales del sitio.
+        <article class="section-card">
+          <h2 class="section-title">Trayectoria</h2>
+          <p class="section-text">
+            Su recorrido atraviesa algunos de los espacios más importantes del universo de Shambhala. En todos ellos, Izumi aparece vinculada a procesos donde entender a las personas resulta tan importante como comprender la tecnología o la ciencia.
           </p>
-        </div>
 
-        <div class="continue-grid">
-          <a href="calisto.html" class="continue-card">
-            <span>Personaje</span>
-            <h3>Calisto</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2088 – 2091</div>
+              <div class="timeline-content">
+                <h3>Sede Principal de Portal al Porvenir</h3>
+                <p>
+                  Trabajo en un entorno de investigación estratégica, aportando una mirada centrada en los comportamientos y las dinámicas humanas.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2091 – 2095</div>
+              <div class="timeline-content">
+                <h3>Arcadia Estación de Investigación</h3>
+                <p>
+                  Participación en una etapa clave dentro de la expansión científica del proyecto, observando las relaciones humanas en un contexto de cambio constante.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2095 – presente</div>
+              <div class="timeline-content">
+                <h3>Shambhala Laboratorio Orbital</h3>
+                <p>
+                  Investigación en comportamiento humano dentro del entorno orbital, atendiendo a la complejidad emocional y social de quienes habitan el proyecto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-box">
             <p>
-              Física teórica, motores de curvatura y una mirada que mezcla ciencia,
-              ironía y vértigo ante lo desconocido.
+              Su trabajo recuerda que ningún avance científico ocurre fuera de lo humano.
             </p>
-          </a>
+          </div>
+        </article>
 
-          <a href="diana.html" class="continue-card">
-            <span>Personaje</span>
-            <h3>Diana</h3>
-            <p>
-              Estrategia, liderazgo y visión científica. Una presencia capaz de ordenar
-              el futuro sin necesidad de imponerse.
-            </p>
-          </a>
+        <article class="section-card">
+          <h2 class="section-title">Línea de investigación</h2>
+          <p class="section-text">
+            El comportamiento humano ocupa en Izumi un territorio central: no como una categoría abstracta, sino como la clave para entender decisiones, tensiones, afectos y formas de adaptación. En una saga donde la ciencia abre puertas enormes, su mirada ayuda a recordar que toda transformación tecnológica también modifica las relaciones, los miedos, los deseos y la forma en que las personas aprenden a convivir con lo imposible.
+          </p>
+        </article>
 
-          <a href="personajes.html" class="continue-card">
-            <span>Archivo</span>
-            <h3>Todos los personajes</h3>
-            <p>
-              Recorre el elenco completo y entra poco a poco en las relaciones, tensiones
-              y presencias que sostienen la saga.
-            </p>
-          </a>
-        </div>
+        <article class="section-card">
+          <h2 class="section-title">Explorar más personajes</h2>
+          <p class="section-text">
+            Cada presencia en Shambhala cambia el modo en que el universo respira.
+          </p>
 
-        <div class="continue-links">
-          <a href="index.html" class="btn btn-primary">Volver al inicio</a>
-          <a href="explorar.html" class="btn btn-secondary">Ir a explorar</a>
-        </div>
+          <div class="links-grid">
+            <a class="character-link" href="diana.html">
+              <div class="character-content">
+                <div class="character-label">Personaje</div>
+                <strong>Diana</strong>
+                <span>Científica jefe · Gestión de Tecnología e Innovación</span>
+              </div>
+              <div class="character-thumb-wrap">
+                <img class="character-thumb" src="images/diana.jpg" alt="Diana" />
+              </div>
+            </a>
+
+            <a class="character-link" href="calisto.html">
+              <div class="character-content">
+                <div class="character-label">Personaje</div>
+                <strong>Calisto</strong>
+                <span>Física · Tecnología de Motores de Curvatura</span>
+              </div>
+              <div class="character-thumb-wrap">
+                <img class="character-thumb" src="images/calisto.jpg" alt="Calisto" />
+              </div>
+            </a>
+
+            <a class="character-link" href="naomi.html">
+              <div class="character-content">
+                <div class="character-label">Personaje</div>
+                <strong>Naomi</strong>
+                <span>Bióloga · Reproducción partenogénica de mamíferos</span>
+              </div>
+              <div class="character-thumb-wrap">
+                <img class="character-thumb" src="images/naomi.jpg" alt="Naomi" />
+              </div>
+            </a>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Seguir explorando</h2>
+          <p class="section-text">
+            Puedes volver al portal principal, entrar de nuevo al universo o recorrer el archivo completo de personajes.
+          </p>
+
+          <div class="return-grid">
+            <a class="return-link" href="index.html">
+              <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Portal</div>
+                <strong>Volver al inicio</strong>
+                <span>Regresa a la entrada principal de la saga</span>
+              </div>
+            </a>
+
+            <a class="return-link" href="explorar.html">
+              <img class="card-thumb" src="images/world.jpg" alt="Explorar el mundo de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Universo</div>
+                <strong>Ir a explorar</strong>
+                <span>Continúa recorriendo el mundo y la atmósfera de Shambhala</span>
+              </div>
+            </a>
+
+            <a class="return-link" href="personajes.html">
+              <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Archivo</div>
+                <strong>Ver personajes</strong>
+                <span>Vuelve al archivo completo del elenco</span>
+              </div>
+            </a>
+          </div>
+        </article>
       </section>
     </main>
 
-    <div class="footer-nav">
-      <a href="personajes.html">← Volver a personajes</a>
-      <a href="index.html">Ir al inicio</a>
-    </div>
+    <footer>
+      Shambhala Saga · Universo en expansión
+    </footer>
   </div>
 </body>
 </html>
