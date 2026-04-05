@@ -9,7 +9,7 @@
     content="Personajes de Shambhala. Archivo visual del elenco principal y expandido de la saga."
   />
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <style>
     * {
@@ -25,12 +25,12 @@
     body {
       font-family: "Inter", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(8, 18, 40, 0.9), #000 42%),
+        radial-gradient(circle at top, rgba(8, 18, 40, 0.88), #000 42%),
         #000;
-      color: white;
+      color: #fff;
       overflow-x: hidden;
       opacity: 0;
-      transition: opacity 1.5s ease;
+      transition: opacity 1.2s ease;
     }
 
     body.loaded {
@@ -55,12 +55,11 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.12), transparent 22%),
-        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.08), transparent 18%),
-        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.04), transparent 20%),
-        radial-gradient(circle at 30% 85%, rgba(0, 95, 160, 0.08), transparent 16%);
+        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.10), transparent 22%),
+        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.06), transparent 18%),
+        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.03), transparent 20%);
       filter: blur(28px);
-      opacity: 0.95;
+      opacity: 0.9;
     }
 
     .vignette {
@@ -69,7 +68,7 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.18) 72%, rgba(0,0,0,0.65) 100%);
+        radial-gradient(circle at center, transparent 48%, rgba(0,0,0,0.14) 74%, rgba(0,0,0,0.50) 100%);
     }
 
     .topbar {
@@ -78,271 +77,194 @@
       left: 0;
       width: 100%;
       z-index: 40;
-      padding: 20px 6%;
+      padding: 18px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0));
       backdrop-filter: blur(6px);
     }
 
     .brand {
       font-family: "Orbitron", sans-serif;
-      letter-spacing: 3px;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.94);
-      text-shadow: 0 0 10px rgba(0,170,255,0.15);
+      letter-spacing: 2px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.92);
     }
 
     .top-links {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     .top-links a {
-      position: relative;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      padding: 10px 15px;
+      padding: 10px 14px;
       color: rgba(255,255,255,0.82);
-      border: 1px solid rgba(0,170,255,0.18);
-      background: rgba(0,0,0,0.22);
-      overflow: hidden;
-      transition: 0.35s ease;
-      box-shadow:
-        inset 0 0 12px rgba(0,170,255,0.04),
-        0 0 14px rgba(0,170,255,0.05);
-    }
-
-    .top-links a::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.18), transparent);
-      transform: translateX(-140%);
-      transition: transform 0.7s ease;
-    }
-
-    .top-links a:hover::before {
-      transform: translateX(140%);
+      border: 1px solid rgba(0,170,255,0.16);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
     }
 
     .top-links a:hover {
       color: #9be6ff;
-      border-color: rgba(0,170,255,0.55);
-      transform: translateY(-2px);
-      box-shadow:
-        0 0 18px rgba(0,170,255,0.18),
-        0 0 44px rgba(0,170,255,0.08);
+      border-color: rgba(0,170,255,0.4);
+      background: rgba(0, 25, 45, 0.26);
     }
 
     .hero {
       position: relative;
       z-index: 2;
-      min-height: 92vh;
+      width: min(1840px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 0.92fr;
-      gap: 24px;
-      align-items: stretch;
-      padding: 120px 8% 85px;
-    }
-
-    .hero-copy,
-    .hero-image-wrap {
-      position: relative;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 30px;
-      overflow: hidden;
-      box-shadow:
-        0 24px 60px rgba(0,0,0,0.35),
-        inset 0 0 26px rgba(0,170,255,0.04);
+      grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.9fr);
+      gap: 22px;
+      align-items: center;
+      padding: 88px 0 50px;
     }
 
     .hero-copy {
-      padding: 40px 40px 36px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
-        rgba(8, 12, 19, 0.76);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      backdrop-filter: blur(16px);
-    }
-
-    .hero-image-wrap {
-      min-height: 520px;
-      background: #05070c;
-    }
-
-    .hero-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      filter: brightness(0.86) saturate(0.95);
-      transform: scale(1.01);
-    }
-
-    .hero-image-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(4,7,12,0.10), rgba(4,7,12,0.16) 40%, rgba(4,7,12,0.46) 100%),
-        linear-gradient(90deg, rgba(4,7,12,0.02), rgba(4,7,12,0) 50%, rgba(4,7,12,0.10));
+      padding: 0;
+      max-width: 1120px;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding: 10px 15px;
-      border: 1px solid rgba(0,170,255,0.24);
-      background: rgba(0, 20, 40, 0.22);
-      color: rgba(146, 222, 255, 0.88);
+      gap: 14px;
+      margin-bottom: 26px;
+      padding: 12px 18px;
+      border: 1px solid rgba(0,170,255,0.26);
+      color: rgba(146, 222, 255, 0.92);
       font-family: "Orbitron", sans-serif;
-      font-size: 0.74rem;
-      letter-spacing: 2.4px;
+      font-size: 0.78rem;
+      letter-spacing: 2.8px;
       text-transform: uppercase;
       width: fit-content;
-      box-shadow:
-        inset 0 0 18px rgba(0,170,255,0.05),
-        0 0 20px rgba(0,170,255,0.06);
     }
 
     .eyebrow::before {
       content: "";
       width: 26px;
       height: 1px;
-      background: rgba(146, 222, 255, 0.8);
-      box-shadow: 0 0 8px rgba(146, 222, 255, 0.4);
+      background: rgba(146, 222, 255, 0.9);
     }
 
     h1 {
-      margin: 0 0 22px;
+      margin: 0 0 26px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.4rem, 5.8vw, 4.9rem);
-      line-height: 0.98;
-      letter-spacing: 3px;
+      font-size: clamp(4rem, 8vw, 8.1rem);
+      line-height: 0.94;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      max-width: 100%;
-      word-break: normal;
-      overflow-wrap: anywhere;
+      color: #f8fbff;
       text-shadow:
-        0 0 8px rgba(255,255,255,0.24),
-        0 0 24px rgba(0,150,255,0.12);
+        0 0 10px rgba(255,255,255,0.22),
+        0 0 26px rgba(80,170,255,0.10);
     }
 
     .hero-subtitle {
-      font-size: 1rem;
-      line-height: 1.85;
-      max-width: 720px;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 32px;
+      max-width: 980px;
+      font-size: 1.05rem;
+      line-height: 1.95;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 42px;
     }
 
     .hero-actions {
       display: flex;
-      gap: 14px;
+      gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 62px;
     }
 
     .btn {
-      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 210px;
-      padding: 14px 22px;
-      border: 1px solid rgba(0,170,255,0.42);
-      background: rgba(0,0,0,0.34);
+      min-width: 372px;
+      padding: 18px 28px;
+      border: 1px solid rgba(0,170,255,0.38);
+      background: rgba(0,0,0,0.22);
       color: rgba(255,255,255,0.92);
-      font-size: 0.8rem;
-      letter-spacing: 1.8px;
+      font-size: 0.84rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      overflow: hidden;
-      transition: 0.35s ease;
-      box-shadow:
-        0 0 12px rgba(0,170,255,0.16),
-        inset 0 0 18px rgba(0,170,255,0.07);
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 100%;
-      top: 0;
-      left: -120%;
-      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.32), transparent);
-      transition: 0.75s ease;
-    }
-
-    .btn:hover::before {
-      left: 120%;
+      transition: 0.3s ease;
+      box-shadow: inset 0 0 18px rgba(0,170,255,0.05);
     }
 
     .btn:hover {
       color: #a7ebff;
-      border-color: rgba(0,170,255,0.88);
+      border-color: rgba(0,170,255,0.72);
+      background: rgba(0, 30, 50, 0.26);
       transform: translateY(-2px);
-      box-shadow:
-        0 0 20px rgba(0,170,255,0.35),
-        0 0 56px rgba(0,170,255,0.12);
     }
 
     .btn.secondary {
-      border-color: rgba(255,255,255,0.15);
-      box-shadow:
-        0 0 10px rgba(255,255,255,0.05),
-        inset 0 0 12px rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
     }
 
     .btn.secondary:hover {
-      color: white;
-      border-color: rgba(255,255,255,0.35);
-      box-shadow:
-        0 0 16px rgba(255,255,255,0.10),
-        0 0 36px rgba(255,255,255,0.08);
+      color: #fff;
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.04);
     }
 
     .hero-note {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      max-width: 880px;
+      gap: 18px;
+      max-width: 1100px;
     }
 
     .note-box {
-      padding: 16px 16px;
+      padding: 20px 22px;
       border: 1px solid rgba(255,255,255,0.07);
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        rgba(8, 10, 16, 0.72);
-      box-shadow:
-        inset 0 0 16px rgba(0,170,255,0.04),
-        0 0 18px rgba(0,0,0,0.18);
+        linear-gradient(to bottom, rgba(255,255,255,0.025), rgba(255,255,255,0.01)),
+        rgba(8, 10, 16, 0.52);
     }
 
     .note-label {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 1.8px;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(134, 221, 255, 0.75);
+      color: rgba(134, 221, 255, 0.8);
     }
 
     .note-box p {
-      margin: 0;
-      font-size: 0.93rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.75;
       color: rgba(255,255,255,0.72);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      width: 100%;
+      align-self: center;
+      justify-self: end;
+      border: 1px solid rgba(255,255,255,0.12);
+      overflow: hidden;
+      background: #dcdcdc;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.24);
+    }
+
+    .hero-image-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center center;
     }
 
     .section {
@@ -442,24 +364,8 @@
         radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 40%);
     }
 
-    .featured-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 65%;
-      height: 100%;
-      z-index: 2;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.10), transparent);
-      transition: left 0.95s ease;
-    }
-
-    .featured-card:hover::after {
-      left: 140%;
-    }
-
     .featured-card:hover {
-      transform: translateY(-12px) scale(1.01);
+      transform: translateY(-10px);
       border-color: rgba(0,170,255,0.42);
       box-shadow:
         0 0 28px rgba(0,170,255,0.14),
@@ -853,20 +759,31 @@
       filter: blur(0);
     }
 
-    @media (max-width: 1100px) {
+    @media (max-width: 1400px) {
+      .hero {
+        grid-template-columns: 1.18fr 0.82fr;
+      }
+
+      .btn {
+        min-width: 300px;
+      }
+    }
+
+    @media (max-width: 1150px) {
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding: 118px 7% 80px;
+        padding: 108px 0 70px;
       }
 
       .hero-note {
         grid-template-columns: 1fr;
-        max-width: 720px;
+        max-width: 760px;
       }
 
       .hero-image-wrap {
-        min-height: 420px;
+        max-width: 760px;
+        justify-self: start;
       }
 
       .featured-card.large {
@@ -897,7 +814,6 @@
       }
 
       .section,
-      .hero,
       .ending,
       .cinematic-band {
         padding-left: 6%;
@@ -905,13 +821,8 @@
       }
 
       h1 {
-        font-size: clamp(2.4rem, 8vw, 4rem);
-        letter-spacing: 2px;
-      }
-
-      .hero-subtitle {
-        font-size: 1rem;
-        max-width: 680px;
+        font-size: clamp(3.2rem, 9vw, 5.4rem);
+        letter-spacing: 3px;
       }
     }
 
@@ -929,12 +840,9 @@
       }
 
       .hero {
-        padding-top: 138px;
-        padding-bottom: 72px;
-      }
-
-      .hero-copy {
-        padding: 30px 24px;
+        width: min(1840px, calc(100% - 24px));
+        padding-top: 132px;
+        padding-bottom: 62px;
       }
 
       .featured-grid {
@@ -973,24 +881,20 @@
         padding-right: 5%;
       }
 
-      .hero {
-        padding-top: 138px;
-      }
-
       h1 {
-        font-size: clamp(2.1rem, 10vw, 3.4rem);
-        letter-spacing: 1.5px;
+        font-size: clamp(2.4rem, 11vw, 4rem);
+        letter-spacing: 2px;
       }
 
       .hero-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.75;
+        font-size: 0.96rem;
+        line-height: 1.8;
       }
 
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
-        margin-bottom: 26px;
+        margin-bottom: 28px;
       }
 
       .btn {
@@ -1062,8 +966,8 @@
       }
 
       .hero {
-        padding-top: 140px;
-        padding-bottom: 64px;
+        padding-top: 136px;
+        padding-bottom: 56px;
       }
 
       .featured-card {
@@ -1111,12 +1015,12 @@
 
   <section class="hero reveal">
     <div class="hero-copy">
-      <div class="eyebrow">Archivo de presencias</div>
+      <div class="eyebrow">Presencias dentro del universo</div>
 
       <h1>Personajes</h1>
 
       <p class="hero-subtitle">
-        No están aquí para llenar una ficha. Están aquí para sostener tensiones, afectos, descubrimientos, heridas y transformaciones que hacen latir el universo de Shambhala.
+        No están aquí para llenar un archivo. Están aquí para sostener tensiones, afectos, descubrimientos, heridas, amistades y transformaciones que hacen latir el universo de Shambhala.
       </p>
 
       <div class="hero-actions">
