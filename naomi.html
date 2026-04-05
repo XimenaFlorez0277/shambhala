@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Naomi | Shambhala</title>
+  <title>Izumi | Shambhala</title>
   <meta
     name="description"
-    content="Naomi — Bióloga de Shambhala. Página de personaje de la saga Shambhala."
+    content="Izumi — Antropóloga de Shambhala. Página de personaje de la saga Shambhala."
   />
 
   <style>
@@ -19,8 +19,8 @@
       --text: #f5f7fb;
       --muted: rgba(245, 247, 251, 0.72);
       --soft: rgba(245, 247, 251, 0.52);
-      --accent: #9fd8c3;
-      --accent-2: #d8d1a8;
+      --accent: #8fd3ff;
+      --accent-2: #8aa7ff;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius-xl: 28px;
       --radius-lg: 22px;
@@ -41,8 +41,8 @@
     body {
       font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(159, 216, 195, 0.12), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(216, 209, 168, 0.08), transparent 24%),
+        radial-gradient(circle at top, rgba(143, 211, 255, 0.12), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(138, 167, 255, 0.08), transparent 24%),
         linear-gradient(180deg, #06080d 0%, #0a0d14 35%, #06080d 100%);
       color: var(--text);
       line-height: 1.6;
@@ -90,8 +90,8 @@
 
     .stars::before {
       background-image:
-        radial-gradient(1px 1px at 50px 60px, rgba(159,216,195,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 260px 120px, rgba(216,209,168,0.55), transparent),
+        radial-gradient(1px 1px at 50px 60px, rgba(143,211,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 260px 120px, rgba(138,167,255,0.55), transparent),
         radial-gradient(1px 1px at 480px 40px, rgba(255,255,255,0.7), transparent);
       background-size: 520px 200px;
       opacity: 0.25;
@@ -101,7 +101,7 @@
     .stars::after {
       background-image:
         radial-gradient(1px 1px at 100px 90px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 360px 160px, rgba(159,216,195,0.55), transparent),
+        radial-gradient(1px 1px at 360px 160px, rgba(143,211,255,0.55), transparent),
         radial-gradient(1px 1px at 540px 60px, rgba(255,255,255,0.55), transparent);
       background-size: 640px 260px;
       opacity: 0.2;
@@ -159,7 +159,7 @@
     .nav-pill:hover {
       transform: translateY(-2px);
       background: rgba(255,255,255,0.08);
-      border-color: rgba(159,216,195,0.35);
+      border-color: rgba(143,211,255,0.35);
     }
 
     .hero {
@@ -392,9 +392,9 @@
       margin-top: 20px;
       padding: 24px;
       border-radius: var(--radius-md);
-      border: 1px solid rgba(159,216,195,0.18);
+      border: 1px solid rgba(143,211,255,0.18);
       background:
-        linear-gradient(135deg, rgba(159,216,195,0.08), rgba(255,255,255,0.03));
+        linear-gradient(135deg, rgba(143,211,255,0.08), rgba(255,255,255,0.03));
     }
 
     .highlight-box p {
@@ -418,70 +418,158 @@
       color: var(--soft);
     }
 
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .character-link {
-      padding: 18px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    }
-
-    .character-link:hover {
-      transform: translateY(-4px);
-      border-color: rgba(159,216,195,0.3);
-      background: rgba(255,255,255,0.06);
-    }
-
-    .character-link strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .character-link span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
+    .links-grid,
     .return-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
 
+    .character-link,
     .return-link {
-      padding: 22px;
+      position: relative;
+      overflow: hidden;
       border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.1);
-      background:
-        linear-gradient(135deg, rgba(159,216,195,0.08), rgba(255,255,255,0.03));
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.035);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
     }
 
+    .character-link:hover,
     .return-link:hover {
-      transform: translateY(-4px);
-      border-color: rgba(159,216,195,0.35);
+      transform: translateY(-6px);
+      border-color: rgba(143,211,255,0.32);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+    }
+
+    .character-link {
+      min-height: 126px;
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: 1fr 92px;
+      gap: 14px;
+      align-items: center;
       background:
-        linear-gradient(135deg, rgba(159,216,195,0.12), rgba(255,255,255,0.05));
+        linear-gradient(135deg, rgba(7, 12, 24, 0.96), rgba(10, 18, 34, 0.9));
     }
 
-    .return-link strong {
+    .character-content {
+      min-width: 0;
+    }
+
+    .character-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.22);
+      color: var(--accent);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .character-content strong {
       display: block;
-      margin-bottom: 8px;
-      font-size: 1.05rem;
+      margin-bottom: 4px;
+      font-size: 1rem;
+      font-weight: 600;
     }
 
-    .return-link span {
+    .character-content span {
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      display: block;
+    }
+
+    .character-thumb-wrap {
+      width: 92px;
+      height: 112px;
+      border-radius: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      justify-self: end;
+      flex-shrink: 0;
+    }
+
+    .character-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.35s ease;
+    }
+
+    .character-link:hover .character-thumb {
+      transform: scale(1.03);
+    }
+
+    .return-link {
+      min-height: 260px;
+    }
+
+    .card-thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.72) saturate(0.92);
+      transform: scale(1.02);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .return-link:hover .card-thumb {
+      transform: scale(1.08);
+      filter: brightness(0.8) saturate(1);
+    }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(4, 7, 12, 0.96) 12%, rgba(4, 7, 12, 0.58) 48%, rgba(4, 7, 12, 0.18) 100%),
+        linear-gradient(to right, rgba(4, 7, 12, 0.28), rgba(4, 7, 12, 0.02));
+      z-index: 1;
+    }
+
+    .card-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      z-index: 2;
+      padding: 18px;
+    }
+
+    .card-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 999px;
+      background: rgba(0,0,0,0.28);
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .card-content strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+
+    .card-content span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: block;
     }
 
     footer {
@@ -554,6 +642,21 @@
       .hero h1 {
         line-height: 0.98;
       }
+
+      .character-link {
+        grid-template-columns: 1fr 84px;
+        min-height: 118px;
+        padding: 12px;
+      }
+
+      .character-thumb-wrap {
+        width: 84px;
+        height: 102px;
+      }
+
+      .return-link {
+        min-height: 220px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -575,6 +678,25 @@
       .hero-image-wrap {
         min-height: 360px;
       }
+
+      .character-link {
+        grid-template-columns: 1fr 76px;
+        min-height: 112px;
+        gap: 12px;
+      }
+
+      .character-thumb-wrap {
+        width: 76px;
+        height: 94px;
+      }
+
+      .character-content strong {
+        font-size: 0.94rem;
+      }
+
+      .character-content span {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -589,7 +711,7 @@
         <a href="index.html" class="nav-pill">Inicio</a>
         <a href="explorar.html" class="nav-pill">Explorar</a>
         <a href="personajes.html" class="nav-pill">Personajes</a>
-        <a href="calisto.html" class="nav-pill">Calisto</a>
+        <a href="diana.html" class="nav-pill">Diana</a>
       </nav>
     </header>
 
@@ -598,45 +720,41 @@
         <div class="hero-copy">
           <div class="eyebrow">Archivo de personaje</div>
 
-          <h1>Naomi</h1>
+          <h1>Izumi</h1>
 
           <p class="hero-subtitle">
-            Bióloga. Precisión, intuición y una mente orientada a lo improbable.
+            Antropóloga. Precisión, visión y una calma lúcida para leer lo humano incluso en medio de lo extraordinario.
           </p>
 
           <p class="hero-description">
-            Naomi pertenece a esa clase de científicas que sostienen una frontera
-            entera con paciencia, inteligencia y una curiosidad feroz. En Shambhala,
-            su trabajo examina las posibilidades más complejas de la reproducción
-            mamífera, abriendo preguntas que no solo son biológicas, sino también
-            humanas.
+            En Shambhala, Izumi aporta una forma de inteligencia distinta: observa, interpreta y comprende el comportamiento humano con una claridad que da profundidad a todo lo que ocurre a su alrededor. Su presencia transmite serenidad, criterio y una mirada capaz de ver patrones emocionales y sociales donde otras personas solo ven hechos aislados.
           </p>
 
           <div class="hero-meta">
             <div class="hero-meta-card">
               <span>Especialidad</span>
-              <strong>Bióloga</strong>
+              <strong>Antropóloga</strong>
             </div>
 
             <div class="hero-meta-card">
               <span>Origen</span>
-              <strong>Gran Bretaña</strong>
+              <strong>Japón</strong>
             </div>
 
             <div class="hero-meta-card">
               <span>Educación</span>
-              <strong>PhD en Biología</strong>
+              <strong>PhD en Antropología Evolucionaria</strong>
             </div>
 
             <div class="hero-meta-card">
-              <span>Investigación</span>
-              <strong>Reproducción partenogénica de mamíferos</strong>
+              <span>Área</span>
+              <strong>Comportamiento Humano</strong>
             </div>
           </div>
         </div>
 
         <div class="hero-image-wrap">
-          <img src="images/naomi.jpg" alt="Naomi" />
+          <img src="images/izumi.jpg" alt="Izumi" />
         </div>
       </section>
 
@@ -644,9 +762,7 @@
         <article class="section-card">
           <h2 class="section-title">Presencia</h2>
           <p class="quote-block">
-            Naomi observa el mundo como quien sabe que la vida siempre encuentra
-            rutas nuevas, incluso cuando la lógica insiste en cerrar todas las puertas.
-            En esa tensión entre conocimiento y asombro se mueve su verdadera fuerza.
+            Izumi no ocupa el espacio con ruido, sino con precisión. Hay en ella una calma inteligente que ordena, observa y comprende. Su presencia aporta equilibrio y una profundidad silenciosa que cambia la lectura de cada vínculo.
             <span>Shambhala · Universo de personajes</span>
           </p>
         </article>
@@ -654,42 +770,38 @@
         <article class="section-card">
           <h2 class="section-title">Perfil</h2>
           <p class="section-text">
-            Especialista en biología, Naomi desarrolla su trabajo en uno de los
-            territorios más fascinantes de Shambhala: la reproducción partenogénica
-            de mamíferos. Su investigación desafía modelos tradicionales de origen,
-            continuidad y herencia, situándola en un espacio donde la ciencia toca
-            preguntas profundas sobre la vida y sus posibilidades.
+            Especialista en Antropología Evolucionaria, Izumi trabaja con aquello que define a las personas en un sentido profundo: sus comportamientos, sus vínculos, sus respuestas ante lo desconocido. Dentro de Shambhala, su mirada permite interpretar el lado humano de una historia atravesada por ciencia, exploración y transformación.
           </p>
 
           <div class="profile-grid">
             <div class="info-card">
               <span>Nombre</span>
-              <strong>Naomi</strong>
+              <strong>Izumi</strong>
             </div>
 
             <div class="info-card">
               <span>Rol</span>
-              <strong>Bióloga</strong>
+              <strong>Antropóloga</strong>
             </div>
 
             <div class="info-card">
               <span>País de origen</span>
-              <strong>Gran Bretaña</strong>
+              <strong>Japón</strong>
             </div>
 
             <div class="info-card">
               <span>Fecha de nacimiento</span>
-              <strong>3 enero, 2065</strong>
+              <strong>2 mayo, 2051</strong>
             </div>
 
             <div class="info-card">
               <span>Educación</span>
-              <strong>PhD en Biología</strong>
+              <strong>PhD en Antropología Evolucionaria</strong>
             </div>
 
             <div class="info-card">
               <span>Interés de investigación</span>
-              <strong>Reproducción Partenogénica de Mamíferos</strong>
+              <strong>Comportamiento Humano</strong>
             </div>
           </div>
         </article>
@@ -697,19 +809,26 @@
         <article class="section-card">
           <h2 class="section-title">Trayectoria</h2>
           <p class="section-text">
-            Su recorrido profesional enlaza investigación lunar y laboratorio orbital,
-            consolidando una línea de trabajo dedicada a comprender formas alternativas
-            de reproducción y continuidad biológica.
+            Su recorrido atraviesa algunos de los espacios más importantes del universo de Shambhala. En todos ellos, Izumi aparece vinculada a procesos donde entender a las personas resulta tan importante como comprender la tecnología o la ciencia.
           </p>
 
           <div class="timeline">
             <div class="timeline-item">
-              <div class="timeline-date">2092 – 2095</div>
+              <div class="timeline-date">2088 – 2091</div>
+              <div class="timeline-content">
+                <h3>Sede Principal de Portal al Porvenir</h3>
+                <p>
+                  Trabajo en un entorno de investigación estratégica, aportando una mirada centrada en los comportamientos y las dinámicas humanas.
+                </p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2091 – 2095</div>
               <div class="timeline-content">
                 <h3>Arcadia Estación de Investigación</h3>
                 <p>
-                  Investigación biológica en el entorno lunar, con trabajo enfocado en
-                  procesos reproductivos y adaptación científica en condiciones no terrestres.
+                  Participación en una etapa clave dentro de la expansión científica del proyecto, observando las relaciones humanas en un contexto de cambio constante.
                 </p>
               </div>
             </div>
@@ -719,8 +838,7 @@
               <div class="timeline-content">
                 <h3>Shambhala Laboratorio Orbital</h3>
                 <p>
-                  Desarrollo de investigación avanzada en reproducción partenogénica de
-                  mamíferos dentro del núcleo científico de la misión.
+                  Investigación en comportamiento humano dentro del entorno orbital, atendiendo a la complejidad emocional y social de quienes habitan el proyecto.
                 </p>
               </div>
             </div>
@@ -728,8 +846,7 @@
 
           <div class="highlight-box">
             <p>
-              Su trabajo explora una pregunta radical: cómo puede persistir la vida
-              cuando sus reglas más antiguas dejan de ser suficientes.
+              Su trabajo recuerda que ningún avance científico ocurre fuera de lo humano.
             </p>
           </div>
         </article>
@@ -737,35 +854,48 @@
         <article class="section-card">
           <h2 class="section-title">Línea de investigación</h2>
           <p class="section-text">
-            La reproducción partenogénica de mamíferos representa uno de los desafíos
-            más complejos dentro del universo científico de Shambhala. Naomi se mueve
-            en ese borde con rigor y claridad, estudiando mecanismos que cuestionan
-            supuestos fundamentales sobre origen, reproducción y continuidad de especie.
-            Su investigación no solo amplía el conocimiento: altera la manera en que
-            ese conocimiento puede ser imaginado.
+            El comportamiento humano ocupa en Izumi un territorio central: no como una categoría abstracta, sino como la clave para entender decisiones, tensiones, afectos y formas de adaptación. En una saga donde la ciencia abre puertas enormes, su mirada ayuda a recordar que toda transformación tecnológica también modifica las relaciones, los miedos, los deseos y la forma en que las personas aprenden a convivir con lo imposible.
           </p>
         </article>
 
         <article class="section-card">
           <h2 class="section-title">Explorar más personajes</h2>
           <p class="section-text">
-            Cada figura en Shambhala ilumina una parte distinta del universo.
+            Cada presencia en Shambhala cambia el modo en que el universo respira.
           </p>
 
           <div class="links-grid">
-            <a class="character-link" href="pavani.html">
-              <strong>Pavani</strong>
-              <span>Bióloga · Biología de la resurrección</span>
+            <a class="character-link" href="diana.html">
+              <div class="character-content">
+                <div class="character-label">Personaje</div>
+                <strong>Diana</strong>
+                <span>Científica jefe · Gestión de Tecnología e Innovación</span>
+              </div>
+              <div class="character-thumb-wrap">
+                <img class="character-thumb" src="images/diana.jpg" alt="Diana" />
+              </div>
             </a>
 
             <a class="character-link" href="calisto.html">
-              <strong>Calisto</strong>
-              <span>Física · Tecnología de motores de curvatura</span>
+              <div class="character-content">
+                <div class="character-label">Personaje</div>
+                <strong>Calisto</strong>
+                <span>Física · Tecnología de Motores de Curvatura</span>
+              </div>
+              <div class="character-thumb-wrap">
+                <img class="character-thumb" src="images/calisto.jpg" alt="Calisto" />
+              </div>
             </a>
 
-            <a class="character-link" href="personajes.html">
-              <strong>Ver elenco completo</strong>
-              <span>Explora el universo de personajes de la saga</span>
+            <a class="character-link" href="naomi.html">
+              <div class="character-content">
+                <div class="character-label">Personaje</div>
+                <strong>Naomi</strong>
+                <span>Bióloga · Reproducción partenogénica de mamíferos</span>
+              </div>
+              <div class="character-thumb-wrap">
+                <img class="character-thumb" src="images/naomi.jpg" alt="Naomi" />
+              </div>
             </a>
           </div>
         </article>
@@ -773,18 +903,38 @@
         <article class="section-card">
           <h2 class="section-title">Seguir explorando</h2>
           <p class="section-text">
-            Desde aquí puedes regresar al corazón del sitio o seguir recorriendo el universo de Shambhala.
+            Puedes volver al portal principal, entrar de nuevo al universo o recorrer el archivo completo de personajes.
           </p>
 
           <div class="return-grid">
             <a class="return-link" href="index.html">
-              <strong>Volver al inicio</strong>
-              <span>Regresa a la entrada principal del universo Shambhala.</span>
+              <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Portal</div>
+                <strong>Volver al inicio</strong>
+                <span>Regresa a la entrada principal de la saga</span>
+              </div>
             </a>
 
             <a class="return-link" href="explorar.html">
-              <strong>Ir a explorar</strong>
-              <span>Continúa navegando por el mundo, la atmósfera y las conexiones de la saga.</span>
+              <img class="card-thumb" src="images/world.jpg" alt="Explorar el mundo de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Universo</div>
+                <strong>Ir a explorar</strong>
+                <span>Continúa recorriendo el mundo y la atmósfera de Shambhala</span>
+              </div>
+            </a>
+
+            <a class="return-link" href="personajes.html">
+              <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <div class="card-label">Archivo</div>
+                <strong>Ver personajes</strong>
+                <span>Vuelve al archivo completo del elenco</span>
+              </div>
             </a>
           </div>
         </article>
