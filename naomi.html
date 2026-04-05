@@ -450,6 +450,40 @@
       font-size: 0.95rem;
     }
 
+    .return-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .return-link {
+      padding: 22px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.1);
+      background:
+        linear-gradient(135deg, rgba(159,216,195,0.08), rgba(255,255,255,0.03));
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .return-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(159,216,195,0.35);
+      background:
+        linear-gradient(135deg, rgba(159,216,195,0.12), rgba(255,255,255,0.05));
+    }
+
+    .return-link strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .return-link span {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
     footer {
       position: relative;
       z-index: 2;
@@ -499,7 +533,8 @@
 
       .hero-meta,
       .profile-grid,
-      .links-grid {
+      .links-grid,
+      .return-grid {
         grid-template-columns: 1fr;
       }
 
@@ -731,6 +766,25 @@
             <a class="character-link" href="personajes.html">
               <strong>Ver elenco completo</strong>
               <span>Explora el universo de personajes de la saga</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Seguir explorando</h2>
+          <p class="section-text">
+            Desde aquí puedes regresar al corazón del sitio o seguir recorriendo el universo de Shambhala.
+          </p>
+
+          <div class="return-grid">
+            <a class="return-link" href="index.html">
+              <strong>Volver al inicio</strong>
+              <span>Regresa a la entrada principal del universo Shambhala.</span>
+            </a>
+
+            <a class="return-link" href="explorar.html">
+              <strong>Ir a explorar</strong>
+              <span>Continúa navegando por el mundo, la atmósfera y las conexiones de la saga.</span>
             </a>
           </div>
         </article>
