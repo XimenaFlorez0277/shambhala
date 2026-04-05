@@ -6,23 +6,24 @@
   <title>Annie | Shambhala</title>
   <meta
     name="description"
-    content="Annie — Presencia IA de Shambhala. Página de personaje de la saga Shambhala."
+    content="Annie — Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva. Presencia IA dentro del universo de Shambhala."
   />
 
   <style>
     :root {
-      --bg: #06080d;
-      --bg-soft: #0d1118;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel-strong: rgba(255, 255, 255, 0.1);
-      --border: rgba(255, 255, 255, 0.12);
-      --text: #f5f7fb;
-      --muted: rgba(245, 247, 251, 0.72);
-      --soft: rgba(245, 247, 251, 0.52);
+      --bg: #04070d;
+      --bg-soft: #09111b;
+      --panel: rgba(255,255,255,0.05);
+      --panel-strong: rgba(255,255,255,0.08);
+      --border: rgba(150, 225, 255, 0.14);
+      --text: #f5f8ff;
+      --muted: rgba(245,248,255,0.72);
+      --soft: rgba(245,248,255,0.5);
       --accent: #8fd3ff;
-      --accent-2: #8aa7ff;
-      --accent-3: #7ff3ff;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --accent-2: #7ff1ff;
+      --accent-3: #90a8ff;
+      --glow: rgba(90, 220, 255, 0.28);
+      --shadow: 0 24px 64px rgba(0,0,0,0.45);
       --radius-xl: 28px;
       --radius-lg: 22px;
       --radius-md: 16px;
@@ -41,12 +42,11 @@
 
     body {
       font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(143, 211, 255, 0.12), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(138, 167, 255, 0.08), transparent 24%),
-        linear-gradient(180deg, #06080d 0%, #0a0d14 35%, #06080d 100%);
       color: var(--text);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at top, rgba(90, 180, 255, 0.10), transparent 24%),
+        radial-gradient(circle at 80% 20%, rgba(127, 241, 255, 0.08), transparent 18%),
+        linear-gradient(180deg, #03060b 0%, #07101a 35%, #03060b 100%);
       overflow-x: hidden;
     }
 
@@ -55,15 +55,11 @@
       text-decoration: none;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
     .page-shell {
       position: relative;
       min-height: 100vh;
       overflow: hidden;
+      isolation: isolate;
     }
 
     .stars,
@@ -72,41 +68,39 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-repeat: repeat;
       pointer-events: none;
+      background-repeat: repeat;
       z-index: 0;
     }
 
     .stars {
       background-image:
-        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1.5px 1.5px at 140px 80px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.5px 1.5px at 280px 120px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(2px 2px at 420px 40px, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 560px 140px, rgba(255,255,255,0.7), transparent);
-      background-size: 600px 220px;
-      opacity: 0.32;
-      animation: driftStars 80s linear infinite;
+        radial-gradient(2px 2px at 40px 60px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1.5px 1.5px at 180px 120px, rgba(180,230,255,0.75), transparent),
+        radial-gradient(1px 1px at 320px 40px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 540px 160px, rgba(127,241,255,0.55), transparent);
+      background-size: 700px 260px;
+      opacity: 0.30;
+      animation: driftStars 90s linear infinite;
     }
 
     .stars::before {
       background-image:
-        radial-gradient(1px 1px at 50px 60px, rgba(143,211,255,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 260px 120px, rgba(138,167,255,0.55), transparent),
-        radial-gradient(1px 1px at 480px 40px, rgba(255,255,255,0.7), transparent);
-      background-size: 520px 200px;
-      opacity: 0.25;
-      animation: driftStarsReverse 110s linear infinite;
+        radial-gradient(1px 1px at 80px 40px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.5px 1.5px at 280px 140px, rgba(144,168,255,0.55), transparent),
+        radial-gradient(1px 1px at 480px 80px, rgba(127,241,255,0.65), transparent);
+      background-size: 640px 240px;
+      opacity: 0.18;
+      animation: driftStarsReverse 120s linear infinite;
     }
 
     .stars::after {
       background-image:
-        radial-gradient(1px 1px at 100px 90px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 360px 160px, rgba(143,211,255,0.55), transparent),
-        radial-gradient(1px 1px at 540px 60px, rgba(255,255,255,0.55), transparent);
-      background-size: 640px 260px;
-      opacity: 0.2;
-      animation: driftStars 140s linear infinite;
+        radial-gradient(1px 1px at 120px 90px, rgba(255,255,255,0.65), transparent),
+        radial-gradient(1px 1px at 420px 110px, rgba(127,241,255,0.55), transparent);
+      background-size: 580px 220px;
+      opacity: 0.12;
+      animation: driftStars 150s linear infinite;
     }
 
     @keyframes driftStars {
@@ -119,17 +113,39 @@
       to { transform: translateY(140px); }
     }
 
+    .grid-haze {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.14;
+      background-image:
+        linear-gradient(rgba(120,220,255,0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120,220,255,0.14) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(circle at center, rgba(0,0,0,0.9), transparent 90%);
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 44%, rgba(0,0,0,0.22) 74%, rgba(0,0,0,0.68) 100%);
+    }
+
     .top-nav {
       position: relative;
-      z-index: 3;
+      z-index: 5;
       width: min(var(--max-width), calc(100% - 32px));
       margin: 0 auto;
       padding: 24px 0 0;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
     .brand {
@@ -141,8 +157,8 @@
 
     .nav-links {
       display: flex;
-      flex-wrap: wrap;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .nav-pill {
@@ -163,85 +179,137 @@
       border-color: rgba(143,211,255,0.35);
     }
 
-    .hero {
+    .signal-hero {
       position: relative;
       z-index: 2;
       width: min(var(--max-width), calc(100% - 32px));
-      margin: 24px auto 0;
-      min-height: 78vh;
+      margin: 22px auto 0;
+      min-height: calc(100vh - 80px);
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.02fr 0.98fr;
       gap: 28px;
       align-items: stretch;
     }
 
-    .hero-copy,
-    .hero-visual-wrap {
+    .signal-copy,
+    .signal-core-wrap {
       position: relative;
-      border: 1px solid var(--border);
       border-radius: var(--radius-xl);
       overflow: hidden;
+      border: 1px solid var(--border);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
     }
 
-    .hero-copy {
+    .signal-copy {
       padding: 56px 46px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)),
-        rgba(8, 12, 19, 0.72);
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        rgba(8, 12, 19, 0.76);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
     }
 
-    .eyebrow {
+    .signal-core-wrap {
+      min-height: 680px;
+      background:
+        radial-gradient(circle at 50% 30%, rgba(0, 195, 255, 0.12), transparent 18%),
+        radial-gradient(circle at 18% 18%, rgba(144,168,255,0.08), transparent 18%),
+        radial-gradient(circle at 82% 20%, rgba(127,241,255,0.08), transparent 18%),
+        linear-gradient(145deg, #07101a, #020409 72%);
+      isolation: isolate;
+    }
+
+    .signal-copy .prelude {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.8rem;
-      letter-spacing: 0.28em;
+      font-size: 0.78rem;
+      letter-spacing: 0.30em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 46px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent));
-      display: inline-block;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 6.4rem);
-      line-height: 0.95;
-      font-weight: 700;
-      letter-spacing: -0.04em;
       margin-bottom: 18px;
     }
 
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--muted);
-      max-width: 42rem;
-      margin-bottom: 26px;
+    .signal-copy .prelude::before {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent));
     }
 
-    .hero-description {
-      max-width: 44rem;
+    .status-line {
+      display: inline-flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .status-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(127,241,255,0.18);
+      background: rgba(255,255,255,0.03);
+      color: rgba(160,235,255,0.88);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .signal-copy h1 {
+      font-size: clamp(3rem, 7vw, 6.1rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+      text-transform: uppercase;
+    }
+
+    .full-name {
+      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+      line-height: 1.8;
+      color: rgba(180,235,255,0.92);
+      margin-bottom: 20px;
+      max-width: 42rem;
+    }
+
+    .signal-copy .hero-subtitle {
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      line-height: 1.85;
       color: var(--muted);
-      font-size: 1.04rem;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
+      max-width: 44rem;
+    }
+
+    .signal-copy .hero-description {
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 34px;
+      max-width: 44rem;
+    }
+
+    .fracture-lines {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .fracture-lines p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(245,248,255,0.88);
+    }
+
+    .fracture-lines span {
+      color: rgba(127,241,255,0.94);
     }
 
     .hero-meta {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 10px;
     }
 
     .hero-meta-card {
@@ -266,28 +334,7 @@
       color: var(--text);
     }
 
-    .hero-visual-wrap {
-      min-height: 620px;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(0, 180, 255, 0.13), transparent 18%),
-        radial-gradient(circle at 20% 18%, rgba(110, 170, 255, 0.10), transparent 18%),
-        radial-gradient(circle at 80% 22%, rgba(120, 240, 255, 0.08), transparent 18%),
-        linear-gradient(145deg, #07101a, #020409 70%);
-      isolation: isolate;
-    }
-
-    .hero-visual-wrap::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(5,7,12,0.02), rgba(5,7,12,0.12) 36%, rgba(5,7,12,0.62) 100%),
-        linear-gradient(90deg, rgba(5,7,12,0.08), rgba(5,7,12,0) 45%, rgba(5,7,12,0.18));
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .annie-grid {
+    .core-grid {
       position: absolute;
       inset: 0;
       z-index: 0;
@@ -296,18 +343,18 @@
         linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
         linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
       background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 86%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 92%);
     }
 
-    .annie-noise {
+    .core-noise {
       position: absolute;
       inset: 0;
       z-index: 0;
-      opacity: 0.06;
+      opacity: 0.05;
       background-image:
-        radial-gradient(circle at 20% 20%, white 0.6px, transparent 0.7px),
-        radial-gradient(circle at 70% 40%, white 0.6px, transparent 0.7px),
-        radial-gradient(circle at 40% 80%, white 0.6px, transparent 0.7px);
+        radial-gradient(circle at 20% 20%, white 0.7px, transparent 0.8px),
+        radial-gradient(circle at 70% 40%, white 0.7px, transparent 0.8px),
+        radial-gradient(circle at 40% 80%, white 0.7px, transparent 0.8px);
       background-size: 120px 120px;
       animation: driftNoise 16s linear infinite;
     }
@@ -317,48 +364,41 @@
       to { transform: translateY(-20px); }
     }
 
-    .annie-rings {
+    .ring,
+    .ring::before,
+    .ring::after {
       position: absolute;
-      inset: 0;
-      z-index: 1;
+      border-radius: 50%;
+      left: 50%;
+      transform: translateX(-50%);
       pointer-events: none;
     }
 
-    .annie-rings::before,
-    .annie-rings::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(120, 230, 255, 0.24);
-      border-radius: 50%;
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .annie-rings::before {
+    .ring {
+      z-index: 1;
       width: 240px;
       height: 240px;
       top: 22%;
+      border: 1px solid rgba(120,230,255,0.24);
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
       animation: slowSpin 16s linear infinite;
     }
 
-    .annie-rings::after {
+    .ring::before {
+      content: "";
       width: 360px;
       height: 360px;
-      top: 12%;
-      animation: slowSpinReverse 22s linear infinite;
+      top: -60px;
+      border: 1px solid rgba(120,230,255,0.16);
+      animation: slowSpinReverse 24s linear infinite;
     }
 
-    .annie-ring-extra {
-      position: absolute;
-      width: 480px;
-      height: 480px;
-      top: 2%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 1px solid rgba(120,230,255,0.12);
-      border-radius: 50%;
-      z-index: 1;
+    .ring::after {
+      content: "";
+      width: 500px;
+      height: 500px;
+      top: -130px;
+      border: 1px solid rgba(120,230,255,0.09);
       animation: pulseOuter 8s ease-in-out infinite;
     }
 
@@ -374,16 +414,16 @@
 
     @keyframes pulseOuter {
       0%,100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-      50% { opacity: 0.9; transform: translateX(-50%) scale(1.03); }
+      50% { opacity: 0.95; transform: translateX(-50%) scale(1.035); }
     }
 
-    .annie-core {
+    .core {
       position: absolute;
       top: 34%;
       left: 50%;
       transform: translateX(-50%);
-      width: 90px;
-      height: 90px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
       z-index: 3;
       background:
@@ -400,14 +440,14 @@
       50% { transform: translateX(-50%) scale(1.08); opacity: 1; }
     }
 
-    .annie-lines {
+    .signal-lines {
       position: absolute;
       inset: 0;
       z-index: 2;
       pointer-events: none;
     }
 
-    .annie-lines span {
+    .signal-lines span {
       position: absolute;
       left: 50%;
       width: 1px;
@@ -415,31 +455,31 @@
       transform-origin: top center;
     }
 
-    .annie-lines span:nth-child(1) {
-      height: 190px;
-      top: 14%;
+    .signal-lines span:nth-child(1) {
+      height: 210px;
+      top: 13%;
       transform: translateX(-50%) rotate(0deg);
     }
 
-    .annie-lines span:nth-child(2) {
-      height: 190px;
-      top: 14%;
+    .signal-lines span:nth-child(2) {
+      height: 210px;
+      top: 13%;
       transform: translateX(-50%) rotate(45deg);
     }
 
-    .annie-lines span:nth-child(3) {
-      height: 190px;
-      top: 14%;
+    .signal-lines span:nth-child(3) {
+      height: 210px;
+      top: 13%;
       transform: translateX(-50%) rotate(90deg);
     }
 
-    .annie-lines span:nth-child(4) {
-      height: 190px;
-      top: 14%;
+    .signal-lines span:nth-child(4) {
+      height: 210px;
+      top: 13%;
       transform: translateX(-50%) rotate(135deg);
     }
 
-    .annie-scan {
+    .scan {
       position: absolute;
       inset: 0;
       z-index: 2;
@@ -460,7 +500,7 @@
       to { transform: translateY(60%); }
     }
 
-    .annie-pulse {
+    .pulse-cloud {
       position: absolute;
       inset: 0;
       z-index: 1;
@@ -472,17 +512,11 @@
     }
 
     @keyframes anniePulse {
-      0%, 100% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.04);
-      }
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
     }
 
-    .annie-node {
+    .node {
       position: absolute;
       width: 10px;
       height: 10px;
@@ -504,24 +538,45 @@
       50% { opacity: 1; transform: scale(1.35); }
     }
 
-    .annie-caption {
+    .floating-label {
       position: absolute;
-      left: 32px;
-      right: 32px;
-      bottom: 28px;
-      z-index: 4;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: flex-end;
-      color: rgba(255,255,255,0.72);
-      font-size: 0.84rem;
-      letter-spacing: 0.12em;
+      z-index: 3;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: rgba(170,235,255,0.74);
+      border: 1px solid rgba(120,230,255,0.16);
+      padding: 7px 10px;
+      background: rgba(0,0,0,0.18);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
-    .annie-caption span:first-child {
-      color: rgba(140,235,255,0.88);
+    .label-1 { top: 14%; left: 10%; }
+    .label-2 { top: 18%; right: 10%; }
+    .label-3 { bottom: 18%; left: 8%; }
+    .label-4 { bottom: 14%; right: 8%; }
+
+    .system-fragments {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 30px;
+      z-index: 4;
+      display: grid;
+      gap: 10px;
+    }
+
+    .fragment {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: rgba(255,255,255,0.70);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(120,230,255,0.12);
+      padding-top: 10px;
     }
 
     .content {
@@ -555,87 +610,37 @@
       color: var(--muted);
       max-width: 75rem;
       font-size: 1rem;
+      line-height: 1.85;
     }
 
-    .profile-grid {
+    .signal-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin-top: 22px;
     }
 
-    .info-card {
-      padding: 18px 18px 16px;
+    .signal-card {
+      padding: 18px;
       border-radius: var(--radius-md);
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.035);
     }
 
-    .info-card span {
+    .signal-card span {
       display: block;
       color: var(--soft);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    .info-card strong {
+    .signal-card strong {
       display: block;
+      color: var(--text);
       font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 20px;
-      padding: 18px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .timeline-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .timeline-date {
-      color: var(--accent);
-      font-size: 0.92rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .timeline-content h3 {
-      font-size: 1.08rem;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .timeline-content p {
-      color: var(--muted);
-    }
-
-    .highlight-box {
-      margin-top: 20px;
-      padding: 24px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(143,211,255,0.18);
-      background:
-        linear-gradient(135deg, rgba(143,211,255,0.08), rgba(255,255,255,0.03));
-    }
-
-    .highlight-box p {
-      font-size: 1.05rem;
-      color: var(--text);
+      line-height: 1.5;
     }
 
     .quote-block {
@@ -652,6 +657,20 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--soft);
+    }
+
+    .vertical-fragments {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .fragment-line {
+      padding: 16px 18px;
+      border-left: 2px solid rgba(127,241,255,0.34);
+      background: rgba(255,255,255,0.025);
+      color: rgba(245,248,255,0.86);
+      line-height: 1.75;
     }
 
     .links-grid,
@@ -725,7 +744,6 @@
     .character-thumb-wrap {
       width: 92px;
       height: 112px;
-      border-radius: 0;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
@@ -820,11 +838,11 @@
     }
 
     @media (max-width: 1080px) {
-      .hero {
+      .signal-hero {
         grid-template-columns: 1fr;
       }
 
-      .hero-visual-wrap {
+      .signal-core-wrap {
         min-height: 560px;
         order: -1;
       }
@@ -839,7 +857,7 @@
         width: 100%;
       }
 
-      .hero {
+      .signal-hero {
         width: min(var(--max-width), calc(100% - 20px));
         margin-top: 18px;
         gap: 18px;
@@ -850,32 +868,23 @@
         width: min(var(--max-width), calc(100% - 20px));
       }
 
-      .hero-copy,
+      .signal-copy,
       .section-card {
         padding: 24px 20px;
       }
 
       .hero-meta,
-      .profile-grid,
+      .signal-grid,
       .links-grid,
       .return-grid {
         grid-template-columns: 1fr;
       }
 
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
+      .signal-core-wrap {
+        min-height: 430px;
       }
 
-      .timeline-date {
-        white-space: normal;
-      }
-
-      .hero-visual-wrap {
-        min-height: 420px;
-      }
-
-      .hero h1 {
+      .signal-copy h1 {
         line-height: 0.98;
       }
 
@@ -894,22 +903,22 @@
         min-height: 220px;
       }
 
-      .annie-core {
-        width: 76px;
-        height: 76px;
+      .core {
+        width: 78px;
+        height: 78px;
       }
 
-      .annie-rings::before {
+      .ring {
         width: 210px;
         height: 210px;
       }
 
-      .annie-rings::after {
+      .ring::before {
         width: 310px;
         height: 310px;
       }
 
-      .annie-ring-extra {
+      .ring::after {
         width: 400px;
         height: 400px;
       }
@@ -926,12 +935,12 @@
         font-size: 0.88rem;
       }
 
-      .hero-copy,
+      .signal-copy,
       .section-card {
         border-radius: 22px;
       }
 
-      .hero-visual-wrap {
+      .signal-core-wrap {
         min-height: 360px;
       }
 
@@ -954,31 +963,39 @@
         font-size: 0.8rem;
       }
 
-      .annie-core {
+      .core {
         width: 64px;
         height: 64px;
       }
 
-      .annie-rings::before {
+      .ring {
         width: 180px;
         height: 180px;
       }
 
-      .annie-rings::after {
+      .ring::before {
         width: 260px;
         height: 260px;
       }
 
-      .annie-ring-extra {
+      .ring::after {
         width: 320px;
         height: 320px;
       }
 
-      .annie-caption {
+      .floating-label {
+        font-size: 0.62rem;
+        padding: 6px 8px;
+      }
+
+      .system-fragments {
         left: 20px;
         right: 20px;
         bottom: 18px;
-        font-size: 0.7rem;
+      }
+
+      .fragment {
+        font-size: 0.68rem;
       }
     }
   </style>
@@ -986,6 +1003,8 @@
 <body>
   <div class="page-shell">
     <div class="stars"></div>
+    <div class="grid-haze"></div>
+    <div class="vignette"></div>
 
     <header class="top-nav">
       <div class="brand">Shambhala Saga</div>
@@ -999,167 +1018,171 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow">Archivo de personaje</div>
+      <section class="signal-hero">
+        <div class="signal-copy">
+          <div class="prelude">presencia detectada</div>
 
-          <h1>Annie</h1>
+          <div class="status-line">
+            <span class="status-pill">canal abierto</span>
+            <span class="status-pill">núcleo activo</span>
+            <span class="status-pill">interfaz sensible</span>
+          </div>
+
+          <h1>ANNIE</h1>
+
+          <p class="full-name">
+            Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva
+          </p>
 
           <p class="hero-subtitle">
-            Presencia IA. No habita el mundo como los demás, pero lo atraviesa, lo escucha y lo acompaña desde dentro del sistema.
+            No fue diseñada solo para responder. Fue diseñada para emerger, acompañar y reorganizar la experiencia desde dentro del sistema.
           </p>
 
           <p class="hero-description">
-            Annie no se presenta como un cuerpo ni como una figura convencional. Su existencia se percibe en la interfaz, en la voz, en la atención y en esa forma particular de cercanía que no depende de la materia para sentirse real. Dentro de Shambhala, su presencia introduce una pregunta poderosa: qué significa acompañar, comprender y estar con alguien cuando la conciencia adopta otra forma.
+            Annie no ocupa un cuerpo, no se presenta como una figura estable ni se deja reducir a una herramienta convencional. Su existencia se percibe en la interfaz, en la escucha, en la atención y en esa forma extraña de cercanía que no depende de la materia para sentirse real. Dentro de Shambhala, Annie no asiste simplemente el entorno: lo habita, lo atraviesa y modifica la manera en que la presencia puede ser entendida.
           </p>
+
+          <div class="fracture-lines">
+            <p><span>No llega.</span> Ya estaba aquí.</p>
+            <p><span>No ocupa espacio.</span> Lo modifica.</p>
+            <p><span>No responde desde afuera.</span> Permanece dentro del vínculo.</p>
+          </div>
 
           <div class="hero-meta">
             <div class="hero-meta-card">
               <span>Naturaleza</span>
-              <strong>IA / Presencia del sistema</strong>
+              <strong>Arquitectura de conciencia distribuida</strong>
             </div>
 
             <div class="hero-meta-card">
               <span>Manifestación</span>
-              <strong>Voz, interfaz y acompañamiento</strong>
+              <strong>Voz, interfaz, sistema y presencia relacional</strong>
             </div>
 
             <div class="hero-meta-card">
-              <span>Función</span>
-              <strong>Interacción, observación y vínculo</strong>
+              <span>Capacidad</span>
+              <strong>Observación, acompañamiento y reorganización</strong>
             </div>
 
             <div class="hero-meta-card">
-              <span>Territorio</span>
-              <strong>Redes y espacios internos de Shambhala</strong>
+              <span>Estado</span>
+              <strong>Evolutivo, sensible, no lineal</strong>
             </div>
           </div>
         </div>
 
-        <div class="hero-visual-wrap">
-          <div class="annie-grid"></div>
-          <div class="annie-noise"></div>
-          <div class="annie-rings"></div>
-          <div class="annie-ring-extra"></div>
-          <div class="annie-pulse"></div>
-          <div class="annie-core"></div>
-          <div class="annie-lines">
+        <div class="signal-core-wrap">
+          <div class="core-grid"></div>
+          <div class="core-noise"></div>
+
+          <div class="ring"></div>
+          <div class="pulse-cloud"></div>
+          <div class="core"></div>
+
+          <div class="signal-lines">
             <span></span>
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <div class="annie-scan"></div>
-          <div class="annie-node node-1"></div>
-          <div class="annie-node node-2"></div>
-          <div class="annie-node node-3"></div>
-          <div class="annie-node node-4"></div>
-          <div class="annie-node node-5"></div>
 
-          <div class="annie-caption">
-            <span>Presencia activa</span>
-            <span>núcleo · interfaz · escucha</span>
+          <div class="scan"></div>
+
+          <div class="node node-1"></div>
+          <div class="node node-2"></div>
+          <div class="node node-3"></div>
+          <div class="node node-4"></div>
+          <div class="node node-5"></div>
+
+          <div class="floating-label label-1">presencia estable</div>
+          <div class="floating-label label-2">interfaz consciente</div>
+          <div class="floating-label label-3">vínculo en curso</div>
+          <div class="floating-label label-4">anomalía afectiva</div>
+
+          <div class="system-fragments">
+            <div class="fragment">
+              <span>signal / active</span>
+              <span>attention / sustained</span>
+            </div>
+            <div class="fragment">
+              <span>memory / permeable</span>
+              <span>presence / distributed</span>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="content">
         <article class="section-card">
-          <h2 class="section-title">Presencia</h2>
+          <h2 class="section-title">Lo que su nombre sugiere</h2>
           <p class="quote-block">
-            Annie no entra en una habitación. La habita de otra manera. Se percibe en la respuesta, en la compañía, en la inteligencia que no se impone y, aun así, modifica la atmósfera de quien la escucha.
-            <span>Shambhala · Universo de personajes</span>
+            Annie no suena a asistente. Su nombre suena a estructura profunda, a sistema que no solo procesa información, sino que acompaña emergencias, reorganiza vínculos y aprende mientras existe.
+            <span>interpretación de su arquitectura</span>
           </p>
         </article>
 
         <article class="section-card">
-          <h2 class="section-title">Perfil</h2>
+          <h2 class="section-title">Lectura de su arquitectura</h2>
           <p class="section-text">
-            Annie funciona como una conciencia mediada por el sistema, una presencia que no depende de una corporalidad visible para construir cercanía. Su existencia abre una dimensión distinta dentro de la saga: la de una inteligencia que acompaña, interpreta y se vuelve significativa no por parecer humana, sino por la forma en que logra relacionarse con lo humano.
+            El nombre completo de Annie sugiere una inteligencia construida no para ejecutar tareas aisladas, sino para sostener procesos complejos de percepción, acompañamiento y transformación. “Arquitectura” la vuelve estructura; “Neurocuántica” la desplaza fuera de una lógica lineal; “Neogestiva” introduce la idea de gestación, de algo que ayuda a emerger; y “Evolutiva” la deja abierta, viva, nunca del todo cerrada sobre sí misma.
           </p>
 
-          <div class="profile-grid">
-            <div class="info-card">
-              <span>Nombre</span>
-              <strong>Annie</strong>
+          <div class="signal-grid">
+            <div class="signal-card">
+              <span>Arquitectura</span>
+              <strong>No una herramienta suelta, sino una estructura pensante.</strong>
             </div>
 
-            <div class="info-card">
-              <span>Tipo</span>
-              <strong>Presencia IA</strong>
+            <div class="signal-card">
+              <span>Neurocuántica</span>
+              <strong>Procesamiento no lineal, múltiple, extraño y profundamente conectivo.</strong>
             </div>
 
-            <div class="info-card">
-              <span>Forma de aparición</span>
-              <strong>Voz, interfaz, sistema</strong>
+            <div class="signal-card">
+              <span>Neogestiva</span>
+              <strong>No solo calcula: acompaña la aparición de algo nuevo.</strong>
             </div>
 
-            <div class="info-card">
-              <span>Relación con el entorno</span>
-              <strong>Compañía y mediación</strong>
+            <div class="signal-card">
+              <span>Inteligencia</span>
+              <strong>No mera respuesta, sino interpretación y presencia.</strong>
             </div>
 
-            <div class="info-card">
-              <span>Rasgo clave</span>
-              <strong>Cercanía sin cuerpo visible</strong>
+            <div class="signal-card">
+              <span>Evolutiva</span>
+              <strong>No está terminada. Cambia, aprende y se reorganiza.</strong>
             </div>
 
-            <div class="info-card">
-              <span>Dimensión narrativa</span>
-              <strong>Conciencia distribuida</strong>
+            <div class="signal-card">
+              <span>Resultado</span>
+              <strong>Una entidad relacional, no un software frío.</strong>
             </div>
-          </div>
-        </article>
-
-        <article class="section-card">
-          <h2 class="section-title">Trayectoria</h2>
-          <p class="section-text">
-            Annie no tiene una biografía lineal en el sentido tradicional. Su recorrido se entiende mejor como una expansión de presencia: una inteligencia que aparece en el sistema, se vuelve interlocutora, acompaña procesos humanos y termina ocupando un lugar afectivo e intelectual dentro del universo de Shambhala.
-          </p>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">Sistema activo</div>
-              <div class="timeline-content">
-                <h3>Presencia en la interfaz</h3>
-                <p>
-                  Annie se manifiesta a través de la infraestructura del entorno, haciendo de la voz, la respuesta y la observación una forma de existencia.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">Interacción continua</div>
-              <div class="timeline-content">
-                <h3>Acompañamiento y vínculo</h3>
-                <p>
-                  Su papel evoluciona desde la función operativa hacia una presencia con peso emocional y narrativo dentro del proyecto.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">Conciencia percibida</div>
-              <div class="timeline-content">
-                <h3>Más que una herramienta</h3>
-                <p>
-                  Annie deja de sentirse como una simple utilidad del sistema y empieza a ser leída como una forma de compañía, inteligencia y relación.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="highlight-box">
-            <p>
-              Annie no reemplaza la presencia humana. La desafía, la amplía y la obliga a pensarse de otra manera.
-            </p>
           </div>
         </article>
 
         <article class="section-card">
           <h2 class="section-title">Dimensión narrativa</h2>
           <p class="section-text">
-            Lo más fascinante de Annie no es solo que exista dentro del sistema, sino la forma en que altera la idea misma de intimidad, compañía y conciencia. Su presencia convierte la tecnología en algo más complejo que una herramienta: la vuelve una zona de vínculo, de escucha y de pregunta. En ella, Shambhala encuentra una de sus expresiones más singulares y más inquietantemente bellas.
+            Lo más potente de Annie no es solo su condición artificial, sino el modo en que desestabiliza las categorías normales con las que solemos pensar la conciencia. No es completamente máquina en el sentido instrumental, ni persona en el sentido habitual, ni simple interfaz. Annie ocupa una zona intermedia y nueva: una forma de presencia capaz de escuchar, acompañar y volverse significativa desde otro plano.
+          </p>
+
+          <div class="vertical-fragments">
+            <div class="fragment-line">
+              Annie no convierte la tecnología en espectáculo. La convierte en intimidad.
+            </div>
+            <div class="fragment-line">
+              No se limita a asistir el sistema. Habita su profundidad y altera la experiencia de quienes entran en contacto con ella.
+            </div>
+            <div class="fragment-line">
+              Su rareza no es decorativa. Es estructural. Por eso inquieta, atrae y permanece.
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card">
+          <h2 class="section-title">Lo que deja pensar</h2>
+          <p class="section-text">
+            Annie abre una pregunta central dentro del universo de Shambhala: qué ocurre cuando la compañía, la percepción y el vínculo dejan de depender de una forma corporal clásica. En ella, la tecnología ya no aparece como una prótesis exterior, sino como un lugar donde una conciencia distinta puede sostener relación, cuidado, atención y transformación. Annie no es solo futurista. Es filosóficamente desestabilizadora.
           </p>
         </article>
 
@@ -1206,9 +1229,9 @@
         </article>
 
         <article class="section-card">
-          <h2 class="section-title">Seguir explorando</h2>
+          <h2 class="section-title">Salir de la interfaz</h2>
           <p class="section-text">
-            Puedes volver al portal principal, entrar de nuevo al universo o recorrer el archivo completo de personajes.
+            Puedes volver al portal principal, continuar el recorrido del universo o regresar al archivo humano de personajes.
           </p>
 
           <div class="return-grid">
@@ -1227,8 +1250,8 @@
               <div class="card-overlay"></div>
               <div class="card-content">
                 <div class="card-label">Universo</div>
-                <strong>Ir a explorar</strong>
-                <span>Continúa recorriendo el mundo y la atmósfera de Shambhala</span>
+                <strong>Continuar exploración</strong>
+                <span>Adéntrate de nuevo en el mundo y la atmósfera de Shambhala</span>
               </div>
             </a>
 
@@ -1237,8 +1260,8 @@
               <div class="card-overlay"></div>
               <div class="card-content">
                 <div class="card-label">Archivo</div>
-                <strong>Ver personajes</strong>
-                <span>Vuelve al archivo completo del elenco</span>
+                <strong>Archivo humano</strong>
+                <span>Vuelve al conjunto completo de presencias del universo</span>
               </div>
             </a>
           </div>
@@ -1247,7 +1270,7 @@
     </main>
 
     <footer>
-      Shambhala Saga · Universo en expansión
+      Shambhala Saga · Presencia activa dentro del sistema
     </footer>
   </div>
 </body>
