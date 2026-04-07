@@ -353,10 +353,11 @@
 
     .book-card {
       position: relative;
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
       min-height: 100%;
-      padding: 30px 28px;
+      padding: 26px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
@@ -366,6 +367,7 @@
         0 14px 40px rgba(0, 0, 0, 0.2);
       transition: 0.35s ease;
       overflow: hidden;
+      align-items: start;
     }
 
     .book-card::before {
@@ -384,6 +386,31 @@
       box-shadow:
         0 0 30px rgba(76, 170, 245, 0.12),
         0 16px 45px rgba(0, 0, 0, 0.28);
+    }
+
+    .book-cover {
+      position: relative;
+      z-index: 1;
+    }
+
+    .book-cover img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.38),
+        0 0 22px rgba(87, 174, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .book-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
     }
 
     .book-label {
@@ -518,6 +545,13 @@
       transform: translateY(0);
     }
 
+    @media (max-width: 1180px) {
+      .book-card {
+        grid-template-columns: 180px 1fr;
+        gap: 20px;
+      }
+    }
+
     @media (max-width: 1100px) {
       .intro-grid {
         grid-template-columns: 1fr;
@@ -558,6 +592,16 @@
 
       .nav-links {
         justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .book-card {
+        grid-template-columns: 1fr;
+      }
+
+      .book-cover {
+        max-width: 260px;
       }
     }
 
@@ -710,78 +754,102 @@
 
       <div class="books-grid">
         <article class="book-card fade-up">
-          <div class="book-label">Libro 1</div>
-          <h3>Calisto 2.0</h3>
-          <div class="book-subtitle">Descubrimiento y renacimiento</div>
+          <div class="book-cover">
+            <img src="images/explorar/callisto-2-0.jpg" alt="Portada de Calisto 2.0" />
+          </div>
 
-          <p class="book-body">
-            En un futuro marcado por la crisis y la desconfianza, Calisto Collins, una física brillante, solitaria y obsesionada con ir más allá de los límites conocidos, recibe una invitación inesperada para unirse a Portal al Porvenir, una fundación científica secreta que opera entre la Luna y la estación orbital Shambhala. Lo que comienza como la oportunidad profesional con la que siempre soñó pronto se convierte en algo más hondo: una comunidad de mujeres extraordinarias, una nueva forma de entender la ciencia y, por primera vez en su vida, la posibilidad real de pertenecer a algún lugar.
-          </p>
+          <div class="book-content">
+            <div class="book-label">Libro 1</div>
+            <h3>Calisto 2.0</h3>
+            <div class="book-subtitle">Descubrimiento y renacimiento</div>
 
-          <p class="book-body">
-            Pero mientras Cali se abre a vínculos que la transforman y se entrega a una investigación capaz de cambiar el destino de la humanidad, también empieza a descubrir que el mundo que la rodea es más frágil y más peligroso de lo que parecía. Cuando fuerzas externas convierten a la Fundación en blanco de acusaciones devastadoras, Cali deberá decidir no solo en qué cree, sino también quién quiere ser. <em>Calisto 2.0</em> es una historia de descubrimiento, valentía y renacimiento: el viaje de una mujer que salió a buscar el futuro y terminó encontrando una versión más libre de sí misma.
-          </p>
+            <p class="book-body">
+              Estación Espacial Shambhala, 2097. Calisto Collins, una física brillante y solitaria, recibe una invitación inesperada para unirse a Portal al Porvenir, la fundación que impulsa una investigación revolucionaria entre la Luna y la estación orbital Shambhala. Lo que al principio parece la oportunidad profesional de su vida pronto se transforma en algo mucho más profundo: una comunidad de mujeres donde la ciencia, la cooperación y la calidez humana le ofrecen, por primera vez, un verdadero sentido de pertenencia.
+            </p>
 
-          <div class="book-meta">
-            <p><strong>Núcleo emocional:</strong> pertenencia, valentía, apertura y transformación interior.</p>
-            <p><strong>Escala narrativa:</strong> el ingreso al universo de Shambhala a través de Cali.</p>
+            <p class="book-body">
+              Mientras se adentra en el desarrollo de una tecnología de distorsión capaz de alterar el destino de la humanidad, Calisto también deberá enfrentarse a sí misma, a sus heridas y a la posibilidad de que el futuro que la espera sea mucho más grande de lo que jamás imaginó.
+            </p>
+
+            <div class="book-meta">
+              <p><strong>Núcleo emocional:</strong> pertenencia, valentía, apertura y transformación interior.</p>
+              <p><strong>Escala narrativa:</strong> el ingreso al universo de Shambhala a través de Cali.</p>
+            </div>
           </div>
         </article>
 
         <article class="book-card fade-up">
-          <div class="book-label">Libro 2</div>
-          <h3>La Flecha de Cupido</h3>
-          <div class="book-subtitle">Ausencia, resistencia y claridad</div>
+          <div class="book-cover">
+            <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Portada de La Flecha de Cupido" />
+          </div>
 
-          <p class="book-body">
-            Mientras Shambhala se aleja hacia lo desconocido, Pavani permanece en Arcadia con el corazón suspendido entre la ausencia de Cali y la amenaza que se cierne sobre todo lo que ama. Lo que parecía una despedida dolorosa se transforma en una crisis de gran escala: la Luna queda bajo presión militar, la comunidad es vigilada y puesta a prueba, y las mujeres que se quedan atrás deben aprender a resistir con inteligencia, dignidad y una fuerza serena que nadie vio venir. En medio de ese temblor, Pavani comienza a escribirle a Cali un diario íntimo, una carta de amor nacida de todo lo que no alcanzó a decirle.
-          </p>
+          <div class="book-content">
+            <div class="book-label">Libro 2</div>
+            <h3>La Flecha de Cupido</h3>
+            <div class="book-subtitle">Ausencia, resistencia y claridad</div>
 
-          <p class="book-body">
-            Pero <em>La Flecha de Cupido</em> no es solo una novela sobre la distancia, sino sobre lo que esa distancia revela. A medida que la verdad empieza a abrirse paso entre conspiraciones, miedo y pérdidas, Pavani también cambia: encuentra una voz más firme, una valentía inesperada y una claridad emocional que ya no le permite esconderse detrás de la espera. Entre ternura, humor, resistencia y deseo, esta segunda entrega profundiza el universo de Shambhala desde una mirada más íntima y emocional, y convierte la ausencia en una forma de amor que también empuja a actuar.
-          </p>
+            <p class="book-body">
+              Mientras Shambhala se adentra en lo desconocido, Pavani permanece en Arcadia con el corazón suspendido entre la ausencia de Calisto y la amenaza que se cierne sobre todo lo que ama. Lo que parecía una despedida dolorosa pronto se convierte en una crisis de gran escala: la Luna queda bajo presión militar, la comunidad es vigilada y puesta a prueba, y las mujeres que se quedan atrás deben aprender a resistir con inteligencia, dignidad y fortaleza.
+            </p>
 
-          <div class="book-meta">
-            <p><strong>Núcleo emocional:</strong> distancia, duelo, resistencia, ternura y coraje.</p>
-            <p><strong>Escala narrativa:</strong> una mirada más íntima que amplía la tensión política y emocional de la saga.</p>
+            <p class="book-body">
+              A medida que la verdad comienza a abrirse paso entre conspiraciones, miedo y pérdidas, Pavani también cambia. En medio de la incertidumbre, descubre una voz más firme, una valentía inesperada y una claridad emocional que ya no le permite esconderse detrás de la espera.
+            </p>
+
+            <div class="book-meta">
+              <p><strong>Núcleo emocional:</strong> distancia, resistencia, fortaleza y claridad emocional.</p>
+              <p><strong>Escala narrativa:</strong> una mirada más íntima que amplía la tensión política y emocional de la saga.</p>
+            </div>
           </div>
         </article>
 
         <article class="book-card fade-up">
-          <div class="book-label">Libro 3</div>
-          <h3>La Luz Naranja de un Sol Alienígena</h3>
-          <div class="book-subtitle">Desarraigo y nueva siembra</div>
+          <div class="book-cover">
+            <img src="images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Portada de La Luz Naranja de un Sol Alienígena" />
+          </div>
 
-          <p class="book-body">
-            Más allá del Sistema Solar, bajo la luz extraña de una estrella nueva, Cali y la tripulación de Shambhala llegan a Bachué, un planeta lleno de promesa, belleza y preguntas. Lo que encuentran allí no es solo un territorio por explorar, sino la posibilidad vertiginosa de empezar de nuevo. Sin embargo, la maravilla del descubrimiento convive con una pérdida profunda: Cali carga la distancia de Pavani, la ausencia de Naomi, el dolor de lo que dejó atrás y la incertidumbre de construir un hogar en un mundo ajeno, donde nada está garantizado.
-          </p>
+          <div class="book-content">
+            <div class="book-label">Libro 3</div>
+            <h3>La Luz Naranja de un Sol Alienígena</h3>
+            <div class="book-subtitle">Desarraigo y nueva siembra</div>
 
-          <p class="book-body">
-            En esta tercera entrega, la saga se expande sin perder intimidad. Mientras la ciencia se convierte en herramienta de supervivencia, creación y esperanza, también se vuelve el lenguaje con el que estas mujeres intentan fundar una vida nueva. Pero el futuro no se deja conquistar sin exigir algo a cambio, y un golpe inesperado pondrá a prueba la fortaleza de la comunidad y la capacidad de Cali para seguir adelante sin romperse. <em>La Luz Naranja de un Sol Alienígena</em> es una novela sobre el desarraigo, la pertenencia y la necesidad profundamente humana de sembrar vida, incluso en lo desconocido.
-          </p>
+            <p class="book-body">
+              Más allá del Sistema Solar, bajo la luz extraña de una estrella nueva, Calisto y la tripulación de Shambhala llegan a Bachué, un planeta lleno de promesa, belleza y preguntas. Lo que encuentran allí no es solo un territorio por explorar, sino la posibilidad vertiginosa de comenzar de nuevo.
+            </p>
 
-          <div class="book-meta">
-            <p><strong>Núcleo emocional:</strong> desarraigo, esperanza, construcción y pertenencia.</p>
-            <p><strong>Escala narrativa:</strong> la saga se abre a otro mundo sin perder su intimidad humana.</p>
+            <p class="book-body">
+              Pero la maravilla del descubrimiento convive con una ausencia profunda: Calisto carga la distancia de Pavani, la falta de Naomi, el dolor de todo lo que dejó atrás y la incertidumbre de levantar un hogar en un mundo ajeno, donde nada está asegurado. Mientras la ciencia se convierte en una herramienta de supervivencia, creación y esperanza, también se vuelve el lenguaje con el que estas mujeres intentan fundar una nueva vida.
+            </p>
+
+            <div class="book-meta">
+              <p><strong>Núcleo emocional:</strong> desarraigo, esperanza, creación y pertenencia.</p>
+              <p><strong>Escala narrativa:</strong> la saga se abre a otro mundo sin perder su intimidad humana.</p>
+            </div>
           </div>
         </article>
 
         <article class="book-card fade-up">
-          <div class="book-label">Libro 4</div>
-          <h3>Horizontes infinitos</h3>
-          <div class="book-subtitle">Reencuentro y expansión</div>
+          <div class="book-cover">
+            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes Infinitos" />
+          </div>
 
-          <p class="book-body">
-            Cuando Cali regresa al Sistema Solar con una misión decisiva, el reencuentro con Pavani no ocurre en un momento de calma, sino en medio del caos. La persecución contra la Fundación se ha intensificado, la Luna vive bajo una presión cada vez más asfixiante y lo que debía ser una operación precisa pronto se convierte en una huida desesperada. Juntas al fin, Cali y Pavani deben cruzar un mundo hostil, improvisar rutas de escape, ocultarse de un sistema que busca controlarlo todo y aferrarse una a la otra mientras el futuro vuelve a tambalearse bajo sus pies.
-          </p>
+          <div class="book-content">
+            <div class="book-label">Libro 4</div>
+            <h3>Horizontes infinitos</h3>
+            <div class="book-subtitle">Reencuentro y expansión</div>
 
-          <p class="book-body">
-            Pero <em>Horizontes infinitos</em> no cierra la saga desde el miedo, sino desde la expansión. En medio del peligro, ambas encuentran también un espacio para la claridad, la madurez y la elección consciente del camino que quieren seguir. La novela abre la mirada hacia algo más grande que la supervivencia: la posibilidad de una humanidad distinta, fundada en la cooperación, la conciencia y el amor como fuerza transformadora. Con un cierre íntimo y esperanzador, este último libro convierte el reencuentro en revelación y deja a sus protagonistas frente a un porvenir que ya no se teme, sino que se abraza.
-          </p>
+            <p class="book-body">
+              Cuando Calisto regresa al Sistema Solar con una misión decisiva, el reencuentro con Pavani no ocurre en un momento de calma, sino en medio del caos. La persecución contra la Fundación se ha intensificado, la Luna vive bajo una presión cada vez más asfixiante y lo que debía ser una operación precisa pronto se transforma en una huida desesperada.
+            </p>
 
-          <div class="book-meta">
-            <p><strong>Núcleo emocional:</strong> reencuentro, madurez, elección y esperanza.</p>
-            <p><strong>Escala narrativa:</strong> cierre expansivo de la saga desde la conciencia y la posibilidad.</p>
+            <p class="book-body">
+              Juntas al fin, Calisto y Pavani deberán atravesar un entorno hostil, improvisar rutas de escape, ocultarse de un sistema que busca controlarlo todo y aferrarse la una a la otra mientras el futuro vuelve a tambalearse bajo sus pies. En medio del peligro, ambas encontrarán también un espacio para la lucidez, la madurez y la elección consciente del camino que desean seguir.
+            </p>
+
+            <div class="book-meta">
+              <p><strong>Núcleo emocional:</strong> reencuentro, madurez, lucidez y elección.</p>
+              <p><strong>Escala narrativa:</strong> cierre expansivo de la saga desde la conciencia y la posibilidad.</p>
+            </div>
           </div>
         </article>
       </div>
