@@ -101,10 +101,10 @@
 
     .hero {
       position: relative;
-      min-height: 72vh;
+      min-height: 78vh;
       display: flex;
       align-items: center;
-      padding: 150px 7% 90px;
+      padding: 150px 7% 100px;
       overflow: hidden;
     }
 
@@ -113,12 +113,12 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to right, rgba(2, 4, 10, 0.90) 0%, rgba(2, 4, 10, 0.62) 42%, rgba(2, 4, 10, 0.44) 100%),
-        linear-gradient(to top, rgba(2, 4, 10, 0.92) 0%, rgba(2, 4, 10, 0.22) 48%),
-        url("images/world.jpg") center center / cover no-repeat;
+        linear-gradient(to right, rgba(2, 4, 10, 0.88) 0%, rgba(2, 4, 10, 0.58) 42%, rgba(2, 4, 10, 0.38) 100%),
+        linear-gradient(to top, rgba(2, 4, 10, 0.92) 0%, rgba(2, 4, 10, 0.16) 48%),
+        url("images/galeria/corazon.jpg") center center / cover no-repeat;
       transform: scale(1.03);
       z-index: 0;
-      filter: saturate(0.90);
+      filter: saturate(0.92) brightness(0.82);
     }
 
     .hero::after {
@@ -126,8 +126,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 72% 26%, rgba(100, 185, 255, 0.12), transparent 20%),
-        radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.04), transparent 25%);
+        radial-gradient(circle at 72% 26%, rgba(100, 185, 255, 0.14), transparent 20%),
+        radial-gradient(circle at 32% 72%, rgba(255, 255, 255, 0.05), transparent 24%),
+        linear-gradient(to bottom, rgba(0, 160, 255, 0.06), transparent 28%);
       z-index: 0;
       pointer-events: none;
     }
@@ -149,6 +150,7 @@
       color: #a9defe;
       border: 1px solid rgba(139, 216, 255, 0.22);
       background: rgba(7, 18, 35, 0.38);
+      box-shadow: 0 0 18px rgba(71, 164, 245, 0.08);
     }
 
     h1 {
@@ -168,8 +170,9 @@
       max-width: 780px;
       font-size: 1.04rem;
       line-height: 1.9;
-      color: rgba(242, 247, 255, 0.82);
+      color: rgba(242, 247, 255, 0.84);
       margin: 0;
+      text-shadow: 0 0 14px rgba(0, 0, 0, 0.22);
     }
 
     .section {
@@ -279,17 +282,86 @@
       z-index: 1;
       margin: 0 0 26px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow:
-        0 14px 34px rgba(0,0,0,0.35),
-        0 0 24px rgba(71, 164, 245, 0.08);
+      border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.02);
+      box-shadow:
+        0 16px 36px rgba(0,0,0,0.38),
+        0 0 28px rgba(71, 164, 245, 0.12);
+      isolation: isolate;
     }
 
     .image-wrap img {
       width: 100%;
       display: block;
       object-fit: cover;
+      filter: contrast(1.02) saturate(1.02);
+      transform: scale(1.001);
+    }
+
+    .image-wrap::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(to bottom, rgba(120, 210, 255, 0.08), transparent 22%, transparent 78%, rgba(120, 210, 255, 0.06)),
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.035) 0px,
+          rgba(255,255,255,0.035) 1px,
+          transparent 2px,
+          transparent 4px
+        );
+      mix-blend-mode: screen;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+
+    .image-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      border: 1px solid rgba(126, 212, 255, 0.20);
+      box-shadow:
+        inset 0 0 24px rgba(86, 176, 255, 0.12),
+        0 0 24px rgba(86, 176, 255, 0.10);
+      pointer-events: none;
+    }
+
+    .image-wrap .corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      z-index: 4;
+      pointer-events: none;
+      border-color: rgba(144, 223, 255, 0.62);
+      border-style: solid;
+      filter: drop-shadow(0 0 8px rgba(86, 176, 255, 0.22));
+    }
+
+    .image-wrap .corner.tl {
+      top: 10px;
+      left: 10px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .image-wrap .corner.tr {
+      top: 10px;
+      right: 10px;
+      border-width: 2px 2px 0 0;
+    }
+
+    .image-wrap .corner.bl {
+      bottom: 10px;
+      left: 10px;
+      border-width: 0 0 2px 2px;
+    }
+
+    .image-wrap .corner.br {
+      bottom: 10px;
+      right: 10px;
+      border-width: 0 2px 2px 0;
     }
 
     .author-photo {
@@ -472,6 +544,10 @@
           <h3>Sobre la autora</h3>
 
           <div class="image-wrap author-photo">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
             <img src="images/galeria/susan-autor.jpg" alt="Susan English" />
           </div>
 
@@ -548,6 +624,10 @@
           <h3>Nuestra historia</h3>
 
           <div class="image-wrap story-photo">
+            <span class="corner tl"></span>
+            <span class="corner tr"></span>
+            <span class="corner bl"></span>
+            <span class="corner br"></span>
             <img src="images/galeria/susan-ximena-1.jpg" alt="Susan y Ximena" />
           </div>
 
