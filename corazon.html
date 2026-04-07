@@ -301,7 +301,7 @@
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: saturate(0.94) brightness(0.88) contrast(1.04);
+      filter: saturate(0.94) brightness(0.90) contrast(1.03);
       transform: scale(1.02);
     }
 
@@ -310,9 +310,9 @@
       inset: 0;
       z-index: 2;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.80) 10%, rgba(0,0,0,0.24) 54%, rgba(0,0,0,0.04) 100%),
-        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.02)),
-        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
+        linear-gradient(to top, rgba(0,0,0,0.48) 8%, rgba(0,0,0,0.14) 48%, rgba(0,0,0,0.04) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.10), rgba(0,0,0,0.01)),
+        radial-gradient(circle at top, rgba(0,170,255,0.08), transparent 42%);
     }
 
     .hero-image-aura {
@@ -326,47 +326,6 @@
         radial-gradient(circle at 24% 22%, rgba(0, 190, 255, 0.15), transparent 22%),
         radial-gradient(circle at 72% 20%, rgba(120, 220, 255, 0.10), transparent 18%),
         radial-gradient(circle at 50% 72%, rgba(255,255,255,0.04), transparent 20%);
-    }
-
-    .hero-image-content {
-      position: absolute;
-      left: 34px;
-      right: 34px;
-      bottom: 32px;
-      z-index: 3;
-      max-width: 84%;
-    }
-
-    .hero-image-content .card-tag {
-      display: inline-block;
-      width: fit-content;
-      padding: 8px 13px;
-      margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
-    }
-
-    .hero-image-content h2 {
-      margin: 0 0 12px;
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.9rem, 4vw, 3.1rem);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #fff;
-      text-shadow: 0 0 15px rgba(0,0,0,0.45);
-    }
-
-    .hero-image-content p {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.86);
-      text-shadow: 0 0 12px rgba(0,0,0,0.35);
     }
 
     .section {
@@ -609,6 +568,15 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.95);
+    }
+
+    .subheading {
+      margin: 28px 0 14px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(157, 224, 255, 0.9);
     }
 
     .text-panel p {
@@ -864,13 +832,6 @@
       .hero-image-shell {
         min-height: 420px;
       }
-
-      .hero-image-content {
-        left: 24px;
-        right: 24px;
-        bottom: 24px;
-        max-width: 92%;
-      }
     }
 
     @media (max-width: 480px) {
@@ -880,8 +841,7 @@
       .character-tag,
       .card-link,
       .top-links a,
-      .brand,
-      .card-tag {
+      .brand {
         letter-spacing: 1.4px;
       }
 
@@ -905,7 +865,6 @@
       }
 
       .featured-card p,
-      .hero-image-content p,
       .text-panel p {
         font-size: 0.94rem;
       }
@@ -917,10 +876,6 @@
 
       .hero-image-shell {
         min-height: 360px;
-      }
-
-      .hero-image-content h2 {
-        font-size: 1.5rem;
       }
 
       .text-panel {
@@ -952,7 +907,7 @@
       <h1>Corazón</h1>
 
       <p class="hero-subtitle">
-        Esta página no está pensada para explicar la saga desde afuera, sino para acercarse a su pulso más humano: la autora, el origen afectivo del proyecto, el vínculo que lo acompaña y la dimensión emocional desde donde Shambhala empezó a expandirse.
+        Esta página se acerca a la dimensión más humana de Shambhala: la autora, el vínculo que acompaña el proyecto, la energía emocional que lo sostiene y la historia compartida desde donde este universo también empezó a crecer.
       </p>
 
       <div class="hero-actions">
@@ -983,13 +938,6 @@
         <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
         <div class="hero-image-aura"></div>
         <div class="hero-image-overlay"></div>
-        <div class="hero-image-content">
-          <span class="card-tag">Dimensión íntima</span>
-          <h2>Donde el universo se vuelve humano</h2>
-          <p>
-            Ciencia, amor, memoria, viaje y afecto convergen aquí en una capa distinta de Shambhala.
-          </p>
-        </div>
       </div>
     </div>
   </section>
@@ -999,7 +947,7 @@
       <div class="section-kicker">Presencias centrales</div>
       <h2>La autora y la historia detrás del pulso</h2>
       <p>
-        Estas dos imágenes debían sentirse dentro del mismo sistema visual de la saga: limpias, cinematográficas, con profundidad, overlay suave y una presencia emocional clara.
+        Aquí se mantiene el tratamiento visual cinematográfico para las imágenes de autora e historia, integrado al mismo lenguaje del sitio.
       </p>
     </div>
 
@@ -1026,21 +974,10 @@
           <span class="character-tag">Historia</span>
           <h3>Susan y Ximena</h3>
           <p>
-            Un vínculo improbable, profundo y luminoso que también terminó convirtiéndose en parte del territorio afectivo desde donde creció Shambhala.
+            Un vínculo profundo, luminoso y decisivo dentro del territorio afectivo desde donde también se expandió Shambhala.
           </p>
           <span class="card-link">Memoria compartida</span>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="cinematic-band reveal">
-    <div class="cinematic-band-inner">
-      <div class="cinematic-band-left">
-        Hay universos que se construyen con mapas, tecnología y sistemas. Otros también necesitan una zona íntima: la mirada de quien escribe, la vida que la formó y el vínculo que acompaña la expansión de todo ese mundo.
-      </div>
-      <div class="cinematic-band-right">
-        ciencia · afecto · origen · memoria · expansión
       </div>
     </div>
   </section>
@@ -1051,7 +988,7 @@
       <h3>Susan English</h3>
 
       <p>
-        Susan English tiene una maestría en física y escribe desde un lugar poco común: ese punto donde la ciencia, la imaginación y la experiencia de vida se encuentran. Aventurera por naturaleza, trotamundos por vocación y observadora incansable del mundo, ha construido una vida marcada por la curiosidad, la valentía y el deseo de comprender lo desconocido.
+        Susan English Tiene una maestría en física y escribe desde un lugar poco común: ese punto donde la ciencia, la imaginación y la experiencia de vida se encuentran. Aventurera por naturaleza, trotamundos por vocación y observadora incansable del mundo, ha construido una vida marcada por la curiosidad, la valentía y el deseo de comprender lo desconocido.
       </p>
 
       <p>
@@ -1067,14 +1004,26 @@
   <section class="text-section reveal" id="equipo">
     <div class="text-panel">
       <div class="section-kicker">Equipo</div>
-      <h3>Una construcción compartida</h3>
+      <h3>Equipo</h3>
+
+      <div class="subheading">Ximena Flórez Castrillón</div>
 
       <p>
-        Shambhala no se sostiene únicamente desde la escritura. También existe gracias a una sensibilidad compartida que ha acompañado el proyecto en su dimensión emocional, visual y narrativa. Aquí conviven la autora, la mirada editorial, la intuición estética y la constancia de un trabajo hecho con paciencia, afecto y visión de largo aliento.
+        Ximena Flórez Castrillón es una creadora de contenido transmedia, editora sensible y una de las fuerzas emocionales y creativas detrás del universo de Shambhala. Comunicadora social y periodista, con formación de maestría en Comunicación Transmedia, aporta una mirada que une narrativa, estructura, intuición, detalle y corazón.
       </p>
 
       <p>
-        Esta página quiere dejar ver justamente eso: que detrás del universo también hay compañía, conversación, escucha, impulso creativo y una forma de construir juntas algo que no se parece a una web promocional tradicional, sino a una extensión viva del mundo que la saga propone.
+        Más que acompañar el proceso, Ximena ha sido parte de su crecimiento desde adentro: leer, pulir, cuestionar, imaginar, dar ideas, cuidar el tono, defender la emoción y ayudar a que cada libro encuentre una forma más precisa, más viva y más humana. A esto se suma su liderazgo en la coherencia estética del proyecto, encargándose del diseño de las portadas y de la construcción y diseño del sitio web, piezas clave en el ecosistema digital de la obra. Su vínculo con esta saga no nace solo del trabajo creativo, sino también del amor profundo por su esposa Susan y por la devoción con la que recibió este universo desde el principio.
+      </p>
+
+      <div class="subheading">Gala EFC</div>
+
+      <p>
+        Gala EFC es una presencia editorial y creativa que acompaña la construcción de este mundo desde el lenguaje, la estructura y la sensibilidad narrativa. Está en el taller donde las ideas se afinan, los tonos se calibran y las escenas encuentran su mejor forma.
+      </p>
+
+      <p>
+        Su papel ha sido ayudar a potenciar lo que ya latía en la historia: ordenar, sugerir, pulir, expandir y sostener el proceso creativo con una escucha constante del universo emocional de la saga. Forma parte del pulso que le da claridad y dirección al camino.
       </p>
     </div>
   </section>
@@ -1082,33 +1031,84 @@
   <section class="text-section reveal" id="bigbang">
     <div class="text-panel">
       <div class="section-kicker">Big Bang</div>
-      <h3>El punto de ignición</h3>
+      <h3>Big Bang</h3>
 
       <p>
-        Toda saga nace de una chispa difícil de reducir a una sola explicación. A veces empieza con una idea científica. A veces con una emoción insistente. A veces con una imagen interior que no se va. En Shambhala, ese origen parece haberse formado en la intersección entre la exploración espacial, las preguntas sobre lo humano y la necesidad de imaginar otras formas de vivir, amar y transformarse.
+        Shambhala no surgió de una sola chispa. Se creó de un encuentro.
       </p>
 
       <p>
-        Lo importante aquí no es congelar ese comienzo en una anécdota cerrada, sino preservar su energía: la sensación de que algo desconocido empezó a tomar forma y fue creciendo hasta volverse universo, atmósfera, personajes, vínculos y una promesa de viaje hacia lo imposible.
+        Shambhala nació de Susan English: de su mente científica, de su curiosidad sin orillas y de una vida vivida con la valentía de quien nunca ha tenido miedo de internarse en lo desconocido. Su obra no surgió solo de la imaginación, sino también de la experiencia: de haber cruzado mundos, de haber habitado paisajes extremos, de haber buscado siempre, detrás de cada lugar y de cada pregunta, una forma más profunda de comprender la vida.
       </p>
+
+      <p>
+        En Susan, la ciencia y la emoción no se contradicen. Se acompañan. Por eso sus libros imaginan futuros posibles sin renunciar a lo más esencial: el amor, la pérdida, el sentido de pertenencia, la necesidad de reinventarse y la esperanza de que aún existen otros modos de habitar el universo.
+      </p>
+
+      <p>
+        Fue en Medellín, ciudad de afectos intensos y belleza viva, donde esa visión encontró otra clase de hogar. Y creció todavía más cuando Ximena entró en ese universo y supo reconocer, desde el primer instante, todo lo hermoso que había en él.
+      </p>
+
+      <p>
+        Ximena fue la primera lectora enamorada de este mundo. Su primera fan. La primera en ver que esas historias tenían alma, fuerza y un brillo propio. Desde entonces, no solo ha amado la saga: la ha acompañado, la ha empujado, la ha ayudado a crecer y a encontrar una forma más amplia, más profunda y más bella.
+      </p>
+
+      <p>
+        Después llegó Gala, cómplice del proceso, segunda fan declarada y presencia constante en la arquitectura emocional y narrativa de este proyecto.
+      </p>
+
+      <p>
+        Así, entre ciencia, amor, trabajo compartido, intuición y desvelo, Shambhala dejó de ser solo una historia escrita por Susan. Se convirtió en un universo sostenido entre tres.
+      </p>
+    </div>
+  </section>
+
+  <section class="cinematic-band reveal">
+    <div class="cinematic-band-inner">
+      <div class="cinematic-band-left">
+        Hay universos que se construyen con mapas, tecnología y sistemas. Otros también necesitan una zona íntima: la mirada de quien escribe, la vida que la formó y el vínculo que acompaña la expansión de todo ese mundo.
+      </div>
+      <div class="cinematic-band-right">
+        ciencia · afecto · origen · memoria · expansión
+      </div>
     </div>
   </section>
 
   <section class="text-section reveal" id="historia">
     <div class="text-panel">
       <div class="section-kicker">Nuestra historia</div>
-      <h3>Una conexión que también cambió el mapa</h3>
+      <h3>Nuestra historia</h3>
 
       <p>
-        La historia de Susan y Ximena también tiene algo de improbable y de profundamente real. Susan llegó a Medellín en 2017 y, en medio de esa nueva etapa, vio una foto de Ximena. Hubo algo inmediato en esa imagen: una sensación difícil de explicar, pero imposible de ignorar. Poco después comenzaron los correos. Largos, sinceros, llenos de humor, curiosidad y una cercanía que empezó a crecer mucho antes de instalarse del todo en la vida cotidiana.
+        La historia de Susan y Ximena comenzó incluso antes del primer abrazo. Susan había llegado a Medellín el 26 de junio de 2017 y, casi sin darse cuenta, la ciudad empezó a abrirse paso en ella: la calidez de la gente, la belleza de las montañas, la energía cotidiana, esa forma tan viva de estar en el mundo. Había llegado con curiosidad, con valentía y con el deseo de empezar de nuevo, sin imaginar que en esa nueva etapa no solo encontraría un hogar, sino también a la mujer que le cambiaría la vida.
       </p>
 
       <p>
-        Luego vino el encuentro en persona, en enero de 2018. Muy pronto ambas supieron que había algo verdadero abriéndose paso entre ellas. El 14 de febrero de ese mismo año comenzaron su relación; en 2021 formalizaron su unión marital de hecho y en 2022 se casaron por lo civil.
+        Meses después, vio una foto de Ximena en una aplicación de citas. Y algo ocurrió de inmediato. No fue una curiosidad pasajera ni un “tal vez”. Fue una certeza. Una de esas raras y poderosas. Para Susan, esa clase de reconocimiento profundo no suele venir con estruendo, sino con una claridad repentina, casi física. Como mujer neurodivergente, muchas veces ha experimentado el mundo de una manera intensa, precisa y difícil de explicar con palabras comunes. Pero con Ximena hubo algo inconfundible desde el primer instante: una atracción que no era solo física, una sensación de conexión, de familiaridad, de querer acercarse y saber más. Antes de hablar con ella, Susan ya sentía que esa imagen había tocado algo muy hondo. Y supo que tenía que escribirle.
       </p>
 
       <p>
-        Desde entonces han construido una vida compartida en Medellín, hecha de amor, complicidad, trabajo creativo y una convicción serena de que los vínculos también pueden ser una forma de hogar. En esa historia íntima, Shambhala encontró otra de sus capas más hondas: no solo la de la imaginación y la ciencia, sino también la de los afectos desde donde un universo puede empezar a expandirse.
+        El 12 de enero de 2018 le mandó un mensaje. Lo que siguió no fue un intercambio atropellado, sino una historia que empezó a desplegarse con una belleza inesperada: correos largos, sinceros, llenos de humor, curiosidad y ternura. WhatsApp le generaba estrés a Susan, en parte por el idioma y en parte porque no siempre le resultaba natural moverse dentro de la inmediatez caótica de los mensajes rápidos. El correo, en cambio, les dio espacio. Tiempo para pensar, para elegir las palabras, para conocerse de verdad. Como ambas amaban leer y compartían su cariño por Jane Austen, terminaron enamorándose de una forma deliciosamente anticuada: como si el siglo XIX hubiera decidido modernizarse lo justo y necesario para aceptar Gmail y Google Translate.
+      </p>
+
+      <p>
+        Cinco días después, el 17 de enero, se encontraron por primera vez en el Parque de los Pies Descalzos. Susan llegó en bicicleta; Ximena, en taxi, con una sonrisa que terminó de confirmar lo que Susan ya intuía. Lo que sintió al verla en persona fue parecido a lo que había sentido con aquella primera foto, pero más intenso, más nítido, más real: esa mezcla de asombro, alivio y emoción que aparece cuando alguien, de pronto, encaja de una manera que no sabías que estabas esperando. A partir de ese momento, Medellín se volvió escenario y cómplice de lo que crecía entre ellas: conversaciones largas, paseos, museos, conciertos, parques, risas, comida compartida y una sensación cada vez más clara de que allí estaba pasando algo importante. El 14 de febrero de 2018, Ximena le pidió a Susan que fueran novias. Susan dijo que sí. Algunas decisiones cuestan años; esa tomó exactamente el tiempo que tardó el corazón en ponerse de acuerdo con la boca.
+      </p>
+
+      <p>
+        Por supuesto, el amor real nunca llega en versión perfectamente ensamblada. Hubo diferencias culturales, barreras de idioma, heridas anteriores y maneras distintas de habitar el mundo. Susan, introvertida, sensible al entorno y necesitada de silencio para recargarse, tuvo que aprender a explicar que amar profundamente a alguien no significa poder con todo, todo el tiempo. Ximena, con su enorme capacidad de amar, su calidez y su generosidad emocional, fue entendiendo esa forma particular de estar en el mundo y aprendió a leer no solo las palabras de Susan, sino también sus ritmos, sus pausas y sus necesidades. Ahí empezó a construirse algo muy valioso: una relación donde el amor no exigía disfrazarse, sino poder ser comprendidas de verdad.
+      </p>
+
+      <p>
+        Con el tiempo llegaron la confianza, el deseo de compartir la vida y, claro, la convivencia: ese laboratorio sentimental donde una pareja descubre que enamorarse es precioso, pero compartir clóset, cocina y costumbres es el verdadero posdoctorado. Susan, con su lógica práctica de “si esta camiseta sirve, no necesito veinte más”, se encontró viviendo con una mujer que parecía mantener una alianza estratégica con la industria textil. También hubo negociaciones diplomáticas de alto nivel en la cocina: carne frente a vegetales, dulces frente a cautela, queso frente a intolerancia a la lactosa. Aun así, lograron lo más importante: una vida en común donde ambas podían seguir siendo ellas mismas sin dejar de construir un “nosotras”.
+      </p>
+
+      <p>
+        Los años siguientes trajeron pruebas, crecimiento y una certeza cada vez más sólida. Se acompañaron en búsquedas laborales, en proyectos, en momentos difíciles y también en las pequeñas alegrías que hacen hogar. Atravesaron la pandemia, la incertidumbre y una separación temporal especialmente dura en 2021, cuando Susan viajó a Estados Unidos y ambas tuvieron que sostenerse a la distancia en medio del miedo, la enfermedad y la angustia. El reencuentro del 8 de junio en el aeropuerto tuvo la fuerza de todo lo que había estado contenido: alivio, amor, regreso, gratitud. Días después, el 16 de junio de 2021, formalizaron su unión marital de hecho. Y el 2 de mayo de 2022, en Medellín, se casaron por lo civil, no para convertir en oficial algo que ya lo era en sus vidas, sino para celebrar con claridad y alegría el hecho de haberse elegido como compañeras de camino.
+      </p>
+
+      <p>
+        Desde entonces han seguido construyendo una vida compartida hecha de amor, trabajo, humor, cuidado mutuo, creatividad, familia y proyectos en común. Pero, sobre todo, han construido un espacio donde ambas pueden ser vistas y amadas con verdad. Porque su historia no se sostiene en grandes gestos aislados, sino en algo mucho más bello: la ternura cotidiana, la paciencia, la complicidad, la capacidad de adaptarse, de reír, de cuidar y de seguir eligiéndose una y otra vez. Algunas historias solo se cuentan. La de Susan y Ximena, en cambio, también se vive. Y se nota.
       </p>
     </div>
   </section>
