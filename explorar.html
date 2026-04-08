@@ -496,7 +496,7 @@
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 28px;
-      align-items: center;
+      align-items: start;
     }
 
     .awards-kicker {
@@ -534,37 +534,20 @@
       margin-bottom: 20px;
     }
 
-    .awards-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 22px;
-    }
-
-    .awards-list span {
-      padding: 10px 14px;
-      border: 1px solid rgba(112, 196, 255, 0.16);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(239, 246, 255, 0.82);
-      font-size: 0.8rem;
-      line-height: 1.4;
-    }
-
     .awards-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
     }
 
-    .awards-badges {
+    .awards-groups {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
 
-    .award-badge {
+    .award-book-group {
       position: relative;
-      padding: 14px;
+      padding: 20px 18px 18px;
       border: 1px solid rgba(255, 255, 255, 0.08);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
@@ -572,41 +555,110 @@
       box-shadow:
         inset 0 0 18px rgba(90, 168, 255, 0.03),
         0 10px 28px rgba(0, 0, 0, 0.18);
-      transition: 0.3s ease;
-      min-height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
 
-    .award-badge:hover {
-      transform: translateY(-4px);
-      border-color: rgba(112, 196, 255, 0.32);
-      box-shadow:
-        0 0 24px rgba(80, 174, 255, 0.12),
-        0 16px 34px rgba(0, 0, 0, 0.25);
-    }
-
-    .award-badge::after {
+    .award-book-group::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(3, 7, 14, 0.32), rgba(255,255,255,0)),
-        radial-gradient(circle at top, rgba(114, 201, 255, 0.08), transparent 42%);
+        radial-gradient(circle at top, rgba(114, 201, 255, 0.08), transparent 42%),
+        linear-gradient(to top, rgba(3, 7, 14, 0.22), rgba(255,255,255,0));
       pointer-events: none;
     }
 
-    .award-badge img {
+    .award-book-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .award-book-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.94rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f4fbff;
+      margin-bottom: 6px;
+    }
+
+    .award-book-subtitle {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(183, 228, 255, 0.74);
+    }
+
+    .award-count {
+      flex-shrink: 0;
+      padding: 8px 10px;
+      border: 1px solid rgba(112, 196, 255, 0.16);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(239, 246, 255, 0.74);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .award-book-badges {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .award-book-badges.cupids {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .award-mini-badge {
+      position: relative;
+      min-height: 108px;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(7, 12, 22, 0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .award-mini-badge:hover {
+      transform: translateY(-3px);
+      border-color: rgba(112, 196, 255, 0.28);
+      box-shadow:
+        0 0 20px rgba(80, 174, 255, 0.10),
+        0 12px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .award-mini-badge::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(3, 7, 14, 0.24), rgba(255,255,255,0)),
+        radial-gradient(circle at top, rgba(114, 201, 255, 0.07), transparent 40%);
+      pointer-events: none;
+    }
+
+    .award-mini-badge img {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 140px;
-      max-height: 120px;
+      max-width: 104px;
+      max-height: 72px;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 0 16px rgba(108, 187, 255, 0.12));
+      filter: drop-shadow(0 0 14px rgba(108, 187, 255, 0.10));
     }
 
     .portal-grid {
@@ -693,6 +745,10 @@
         grid-template-columns: 180px 1fr;
         gap: 20px;
       }
+
+      .award-book-badges {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 1100px) {
@@ -741,8 +797,9 @@
         justify-content: flex-start;
       }
 
-      .awards-badges {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .award-book-badges,
+      .award-book-badges.cupids {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -811,12 +868,29 @@
         padding-right: 5%;
       }
 
-      .awards-badges {
+      .award-book-head {
+        flex-direction: column;
+      }
+
+      .award-book-badges,
+      .award-book-badges.cupids {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 480px) {
+      .award-book-badges,
+      .award-book-badges.cupids {
         grid-template-columns: 1fr;
       }
 
-      .award-badge {
-        min-height: 150px;
+      .award-mini-badge {
+        min-height: 120px;
+      }
+
+      .award-mini-badge img {
+        max-width: 130px;
+        max-height: 84px;
       }
     }
   </style>
@@ -832,6 +906,7 @@
         <a href="index.html">Inicio</a>
         <a href="explorar.html">Explorar</a>
         <a href="personajes.html">Personajes</a>
+        <a href="premios.html">Premios</a>
         <a href="#libros">Libros</a>
         <a href="#universo">Universo</a>
       </nav>
@@ -1019,52 +1094,87 @@
         <div class="awards-grid">
           <div class="awards-text">
             <div class="awards-kicker">Premios y reconocimientos</div>
-            <h3>La edición original en inglés de <em>Calisto 2.0</em> ha recibido reconocimientos literarios internacionales</h3>
+            <h3>Las ediciones originales en inglés de algunos libros de la saga han recibido reconocimientos literarios internacionales</h3>
 
             <p>
-              La obra de Susan English en su edición original en inglés ha recibido varios reconocimientos literarios internacionales. Este bloque presenta una mirada breve a algunos de ellos dentro del recorrido general de la saga.
+              La obra de Susan English, en sus ediciones originales en inglés, ha recibido distintos premios, medallones y menciones. Aquí aparece una mirada breve y visual dentro del recorrido general de la saga.
             </p>
 
             <p class="awards-note">
-              Todos los premios mostrados aquí corresponden a la edición original en inglés de <em>Calisto 2.0</em>, para mantener una referencia clara, precisa y elegante dentro del sitio en español.
+              Para mantener precisión dentro de esta web en español, los logos que aparecen a continuación corresponden a las ediciones originales en inglés de <em>Calisto 2.0</em> y <em>Cupid’s Arrow</em>.
             </p>
 
-            <div class="awards-list">
-              <span>International Impact Book Awards</span>
-              <span>Readers’ Favorite Five Stars</span>
-              <span>B.R.A.G.</span>
-              <span>San Francisco Book Festival</span>
-              <span>Firebird Book Award</span>
-            </div>
-
             <div class="awards-actions">
-              <a href="calisto.html" class="button">Ver el libro</a>
+              <a href="premios.html" class="button">Ver premios completos</a>
+              <a href="corazon.html" class="button secondary">Conocer a Susan</a>
             </div>
           </div>
 
-          <div class="awards-badges">
-            <div class="award-badge">
-              <img src="images/premios/premio-1.jpg" alt="International Impact Book Awards" />
+          <div class="awards-groups">
+            <div class="award-book-group">
+              <div class="award-book-head">
+                <div>
+                  <div class="award-book-title">Calisto 2.0</div>
+                  <div class="award-book-subtitle">Edición original en inglés</div>
+                </div>
+
+                <div class="award-count">7 logos</div>
+              </div>
+
+              <div class="award-book-badges">
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
+                </div>
+
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-02-readers-favorite-five-stars.png" alt="Readers’ Favorite Five Stars" />
+                </div>
+
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
+                </div>
+
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-04-brag-medallion.png" alt="B.R.A.G. Medallion" />
+                </div>
+
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
+                </div>
+
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-06-literary-titan-book-award.png" alt="Literary Titan Book Award" />
+                </div>
+
+                <div class="award-mini-badge">
+                  <img src="images/premios/calisto-2-0-07-pencraft-award.png" alt="PenCraft Award" />
+                </div>
+              </div>
             </div>
 
-            <div class="award-badge">
-              <img src="images/premios/premio-2.jpg" alt="Readers’ Favorite Five Stars" />
-            </div>
+            <div class="award-book-group">
+              <div class="award-book-head">
+                <div>
+                  <div class="award-book-title">La Flecha de Cupido</div>
+                  <div class="award-book-subtitle">Cupid’s Arrow · edición original en inglés</div>
+                </div>
 
-            <div class="award-badge">
-              <img src="images/premios/premio-4.jpg" alt="B.R.A.G. Book Readers Appreciation Group" />
-            </div>
+                <div class="award-count">3 logos</div>
+              </div>
 
-            <div class="award-badge">
-              <img src="images/premios/premio-5.jpg" alt="San Francisco Book Festival Honorable Mention 2022" />
-            </div>
+              <div class="award-book-badges cupids">
+                <div class="award-mini-badge">
+                  <img src="images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
+                </div>
 
-            <div class="award-badge">
-              <img src="images/premios/premio-6.jpg" alt="Firebird Book Award Winner" />
-            </div>
+                <div class="award-mini-badge">
+                  <img src="images/premios/cupids-arrow-02-brag-medallion.png" alt="B.R.A.G. Medallion" />
+                </div>
 
-            <div class="award-badge">
-              <img src="images/premios/premio-3.jpg" alt="Certificado International Impact Book Awards para Susan English" />
+                <div class="award-mini-badge">
+                  <img src="images/premios/cupids-arrow-03-literary-titan-book-award.png" alt="Literary Titan Book Award" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
