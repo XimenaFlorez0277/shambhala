@@ -466,6 +466,149 @@
       font-weight: 600;
     }
 
+    .awards-showcase {
+      position: relative;
+      margin-top: 42px;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
+      box-shadow:
+        inset 0 0 20px rgba(108, 187, 255, 0.03),
+        0 14px 40px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+
+    .awards-showcase::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(86, 176, 255, 0.12), transparent 26%),
+        radial-gradient(circle at bottom left, rgba(98, 187, 255, 0.08), transparent 22%);
+      pointer-events: none;
+    }
+
+    .awards-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .awards-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #9cdcff;
+    }
+
+    .awards-text h3 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fbfdff;
+      margin-bottom: 16px;
+    }
+
+    .awards-text p {
+      line-height: 1.9;
+      color: rgba(236, 243, 255, 0.78);
+      font-size: 0.98rem;
+      margin-bottom: 16px;
+      max-width: 640px;
+    }
+
+    .awards-note {
+      font-size: 0.84rem;
+      line-height: 1.8;
+      color: rgba(210, 227, 242, 0.62);
+      margin-bottom: 20px;
+    }
+
+    .awards-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .awards-list span {
+      padding: 10px 14px;
+      border: 1px solid rgba(112, 196, 255, 0.16);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(239, 246, 255, 0.82);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .awards-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .awards-badges {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .award-badge {
+      position: relative;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(7, 12, 22, 0.72);
+      box-shadow:
+        inset 0 0 18px rgba(90, 168, 255, 0.03),
+        0 10px 28px rgba(0, 0, 0, 0.18);
+      transition: 0.3s ease;
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .award-badge:hover {
+      transform: translateY(-4px);
+      border-color: rgba(112, 196, 255, 0.32);
+      box-shadow:
+        0 0 24px rgba(80, 174, 255, 0.12),
+        0 16px 34px rgba(0, 0, 0, 0.25);
+    }
+
+    .award-badge::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(3, 7, 14, 0.32), rgba(255,255,255,0)),
+        radial-gradient(circle at top, rgba(114, 201, 255, 0.08), transparent 42%);
+      pointer-events: none;
+    }
+
+    .award-badge img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 140px;
+      max-height: 120px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 16px rgba(108, 187, 255, 0.12));
+    }
+
     .portal-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -564,6 +707,10 @@
       .image-panel {
         min-height: 380px;
       }
+
+      .awards-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 900px) {
@@ -593,6 +740,10 @@
       .nav-links {
         justify-content: flex-start;
       }
+
+      .awards-badges {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 760px) {
@@ -616,7 +767,8 @@
       .portal-card p,
       .closing-box p,
       .text-panel p,
-      .image-caption p {
+      .image-caption p,
+      .awards-text p {
         font-size: 0.95rem;
         line-height: 1.8;
       }
@@ -634,7 +786,8 @@
       .book-card,
       .text-panel,
       .portal-card,
-      .closing-box {
+      .closing-box,
+      .awards-showcase {
         padding-left: 22px;
         padding-right: 22px;
       }
@@ -656,6 +809,14 @@
       .closing {
         padding-left: 5%;
         padding-right: 5%;
+      }
+
+      .awards-badges {
+        grid-template-columns: 1fr;
+      }
+
+      .award-badge {
+        min-height: 150px;
       }
     }
   </style>
@@ -830,7 +991,7 @@
 
         <article class="book-card fade-up">
           <div class="book-cover">
-            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes Infinitos" />
+            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes infinitos" />
           </div>
 
           <div class="book-content">
@@ -852,6 +1013,61 @@
             </div>
           </div>
         </article>
+      </div>
+
+      <div class="awards-showcase fade-up">
+        <div class="awards-grid">
+          <div class="awards-text">
+            <div class="awards-kicker">Premios y reconocimientos</div>
+            <h3>La edición original en inglés de <em>Calisto 2.0</em> ha recibido reconocimientos literarios internacionales</h3>
+
+            <p>
+              La obra de Susan English en su edición original en inglés ha recibido varios reconocimientos literarios internacionales. Este bloque presenta una mirada breve a algunos de ellos dentro del recorrido general de la saga.
+            </p>
+
+            <p class="awards-note">
+              Todos los premios mostrados aquí corresponden a la edición original en inglés de <em>Calisto 2.0</em>, para mantener una referencia clara, precisa y elegante dentro del sitio en español.
+            </p>
+
+            <div class="awards-list">
+              <span>International Impact Book Awards</span>
+              <span>Readers’ Favorite Five Stars</span>
+              <span>B.R.A.G.</span>
+              <span>San Francisco Book Festival</span>
+              <span>Firebird Book Award</span>
+            </div>
+
+            <div class="awards-actions">
+              <a href="calisto.html" class="button">Ver el libro</a>
+            </div>
+          </div>
+
+          <div class="awards-badges">
+            <div class="award-badge">
+              <img src="images/premios/premio-1.jpg" alt="International Impact Book Awards" />
+            </div>
+
+            <div class="award-badge">
+              <img src="images/premios/premio-2.jpg" alt="Readers’ Favorite Five Stars" />
+            </div>
+
+            <div class="award-badge">
+              <img src="images/premios/premio-4.jpg" alt="B.R.A.G. Book Readers Appreciation Group" />
+            </div>
+
+            <div class="award-badge">
+              <img src="images/premios/premio-5.jpg" alt="San Francisco Book Festival Honorable Mention 2022" />
+            </div>
+
+            <div class="award-badge">
+              <img src="images/premios/premio-6.jpg" alt="Firebird Book Award Winner" />
+            </div>
+
+            <div class="award-badge">
+              <img src="images/premios/premio-3.jpg" alt="Certificado International Impact Book Awards para Susan English" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
