@@ -271,10 +271,6 @@
     }
 
     .book-head {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      align-items: end;
       margin-bottom: 28px;
     }
 
@@ -293,16 +289,6 @@
       font-size: 0.82rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-    }
-
-    .book-note {
-      padding: 14px 16px;
-      border: 1px solid rgba(112, 196, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(223, 235, 247, 0.72);
-      font-size: 0.84rem;
-      line-height: 1.7;
-      max-width: 360px;
     }
 
     .awards-grid {
@@ -559,15 +545,6 @@
       .mention-grid {
         grid-template-columns: 1fr;
       }
-
-      .book-head {
-        grid-template-columns: 1fr;
-        align-items: start;
-      }
-
-      .book-note {
-        max-width: none;
-      }
     }
 
     @media (max-width: 900px) {
@@ -657,10 +634,10 @@
       <section class="section section-first">
         <article class="section-card fade-up">
           <div class="section-inner">
-            <div class="section-kicker">Premios verificados</div>
-            <h2 class="section-title">Reconocimientos confirmados públicamente</h2>
+            <div class="section-kicker">Reconocimientos destacados</div>
+            <h2 class="section-title">Reconocimientos destacados</h2>
             <p class="section-text">
-              Aquí se agrupan solo los premios y resultados que ya quedaron confirmados en fuentes públicas. La idea es que esta parte del sitio se vea sólida, clara y fácil de recorrer.
+              Aquí reunimos los premios y resultados validados por fuentes externas. Un espacio diseñado para dar visibilidad clara a los logros que respaldan esta obra.
             </p>
 
             <div class="verified-grid">
@@ -742,14 +719,8 @@
         <article class="section-card fade-up" id="calisto-awards">
           <div class="section-inner">
             <div class="book-head">
-              <div>
-                <h2 class="book-title">Calisto 2.0</h2>
-                <div class="book-subtitle">Premios y reconocimientos de la edición original en inglés</div>
-              </div>
-
-              <div class="book-note">
-                Dejé cada tarjeta limpia: logo arriba y nombre del premio abajo, sin texto extra.
-              </div>
+              <h2 class="book-title">Calisto 2.0</h2>
+              <div class="book-subtitle">Premios y reconocimientos de la edición original en inglés</div>
             </div>
 
             <div class="awards-grid">
@@ -808,14 +779,8 @@
         <article class="section-card fade-up" id="cupids-arrow-awards">
           <div class="section-inner">
             <div class="book-head">
-              <div>
-                <h2 class="book-title">La Flecha de Cupido</h2>
-                <div class="book-subtitle">Premios y reconocimientos de <em>Cupid’s Arrow</em>, edición original en inglés</div>
-              </div>
-
-              <div class="book-note">
-                Aquí también quedó la misma lógica visual: solo logo y nombre del premio.
-              </div>
+              <h2 class="book-title">La Flecha de Cupido</h2>
+              <div class="book-subtitle">Premios y reconocimientos de <em>Cupid’s Arrow</em>, edición original en inglés</div>
             </div>
 
             <div class="awards-grid three">
@@ -953,14 +918,16 @@
 
         <article class="section-card fade-up">
           <div class="section-inner closing-box">
-            <h2>La historia también deja huella fuera de la página</h2>
+            <h2>UNA HUELLA QUE TRASCIENDE LA LECTURA</h2>
             <p>
-              Estos premios y menciones no sustituyen la experiencia de entrar al universo de Shambhala, pero sí acompañan el recorrido público de sus libros originales en inglés y ayudan a mostrar la recepción que han tenido.
+              Aunque los premios no reemplazan la experiencia de sumergirse en Shambhala, sí celebran el camino recorrido por los libros originales en inglés y muestran la gran acogida que han recibido por parte del público.
             </p>
 
             <div class="button-row">
-              <a href="explorar.html" class="button">Volver a explorar</a>
-              <a href="corazon.html" class="button secondary">Ir a corazón</a>
+              <a href="index.html" class="button">Inicio</a>
+              <a href="explorar.html" class="button secondary">Explorar</a>
+              <a href="personajes.html" class="button">Personajes</a>
+              <a href="corazon.html" class="button secondary">Corazón</a>
             </div>
           </div>
         </article>
