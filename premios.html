@@ -28,7 +28,6 @@
       --soft: rgba(232, 240, 252, 0.52);
       --accent: #9ad8ff;
       --accent-2: #7fb4ff;
-      --glow: rgba(108, 191, 255, 0.22);
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
       --radius-xl: 30px;
       --radius-lg: 24px;
@@ -132,180 +131,15 @@
       transform: translateY(-1px);
     }
 
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 30px;
-      align-items: center;
-      width: min(var(--max-width), calc(100% - 10%));
-      margin: 0 auto;
-      padding: 140px 0 90px;
-    }
-
-    .hero-copy,
-    .hero-visual {
-      position: relative;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.015)),
-        rgba(7, 12, 22, 0.76);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .hero-copy {
-      padding: 56px 48px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 18px;
-      padding: 8px 14px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(139, 216, 255, 0.20);
-      background: rgba(7, 18, 35, 0.34);
-    }
-
-    .hero h1 {
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.8rem);
-      line-height: 0.96;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #f7fbff;
-      text-shadow: 0 0 30px rgba(89, 176, 255, 0.14);
-      margin-bottom: 18px;
-    }
-
-    .hero-lead {
-      font-size: 1.04rem;
-      line-height: 1.9;
-      color: var(--muted);
-      max-width: 52rem;
-      margin-bottom: 18px;
-    }
-
-    .hero-note {
-      font-size: 0.92rem;
-      line-height: 1.8;
-      color: var(--soft);
-      max-width: 48rem;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 210px;
-      padding: 14px 22px;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border: 1px solid rgba(112, 196, 255, 0.35);
-      background: rgba(10, 20, 38, 0.34);
-      color: #eff8ff;
-      transition: 0.35s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: rgba(112, 196, 255, 0.7);
-      box-shadow: 0 0 28px rgba(71, 164, 245, 0.18);
-    }
-
-    .button.secondary {
-      border-color: rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(245, 248, 255, 0.82);
-    }
-
-    .button.secondary:hover {
-      border-color: rgba(255, 255, 255, 0.28);
-      box-shadow: 0 0 22px rgba(255, 255, 255, 0.08);
-    }
-
-    .hero-visual {
-      padding: 26px;
-      min-height: 620px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(86, 176, 255, 0.12), transparent 24%),
-        radial-gradient(circle at bottom left, rgba(98, 187, 255, 0.09), transparent 22%);
-      pointer-events: none;
-    }
-
-    .hero-badges {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      width: 100%;
-    }
-
-    .hero-badge {
-      min-height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
-      box-shadow:
-        inset 0 0 18px rgba(90, 168, 255, 0.03),
-        0 10px 28px rgba(0, 0, 0, 0.18);
-      transition: 0.35s ease;
-    }
-
-    .hero-badge:hover {
-      transform: translateY(-4px);
-      border-color: rgba(112, 196, 255, 0.26);
-      box-shadow:
-        0 0 24px rgba(80, 174, 255, 0.12),
-        0 16px 34px rgba(0, 0, 0, 0.22);
-    }
-
-    .hero-badge img {
-      width: 100%;
-      max-width: 160px;
-      max-height: 110px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 16px rgba(108, 187, 255, 0.10));
-    }
-
     .section {
       position: relative;
       width: min(var(--max-width), calc(100% - 10%));
       margin: 0 auto;
       padding-bottom: 90px;
+    }
+
+    .section-first {
+      padding-top: 140px;
     }
 
     .section-card {
@@ -622,6 +456,46 @@
       color: #ffffff;
     }
 
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 210px;
+      padding: 14px 22px;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      border: 1px solid rgba(112, 196, 255, 0.35);
+      background: rgba(10, 20, 38, 0.34);
+      color: #eff8ff;
+      transition: 0.35s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(112, 196, 255, 0.7);
+      box-shadow: 0 0 28px rgba(71, 164, 245, 0.18);
+    }
+
+    .button.secondary {
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(245, 248, 255, 0.82);
+    }
+
+    .button.secondary:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      box-shadow: 0 0 22px rgba(255, 255, 255, 0.08);
+    }
+
     .closing-box {
       text-align: center;
       padding: 40px 28px;
@@ -681,12 +555,9 @@
     }
 
     @media (max-width: 1040px) {
-      .hero {
+      .verified-grid,
+      .mention-grid {
         grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
-        min-height: 420px;
       }
 
       .book-head {
@@ -696,11 +567,6 @@
 
       .book-note {
         max-width: none;
-      }
-
-      .verified-grid,
-      .mention-grid {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -715,7 +581,6 @@
         justify-content: flex-start;
       }
 
-      .hero,
       .section,
       footer {
         width: min(var(--max-width), calc(100% - 12%));
@@ -725,55 +590,22 @@
       .awards-grid.three {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .hero-badges {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 680px) {
-      .hero,
       .section,
       footer {
         width: min(var(--max-width), calc(100% - 10%));
       }
 
-      .hero {
+      .section-first {
         padding-top: 150px;
-        padding-bottom: 70px;
       }
 
-      .hero-copy,
-      .hero-visual,
       .section-card,
       .closing-box {
         padding-left: 22px;
         padding-right: 22px;
-      }
-
-      .hero-visual {
-        padding-top: 22px;
-        padding-bottom: 22px;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-        min-width: 0;
-      }
-
-      .awards-grid,
-      .awards-grid.three,
-      .hero-badges {
-        grid-template-columns: 1fr;
-      }
-
-      .award-logo {
-        height: 120px;
       }
 
       .verified-list li {
@@ -783,6 +615,25 @@
       .verified-result {
         text-align: left;
         white-space: normal;
+      }
+
+      .awards-grid,
+      .awards-grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .award-logo {
+        height: 120px;
+      }
+
+      .button-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .button {
+        width: 100%;
+        min-width: 0;
       }
     }
   </style>
@@ -803,47 +654,7 @@
     </header>
 
     <main>
-      <section class="hero fade-up">
-        <div class="hero-copy">
-          <div class="eyebrow">Ediciones originales en inglés</div>
-          <h1>Premios y reconocimientos</h1>
-
-          <p class="hero-lead">
-            Algunas obras de la Saga Shambhala han recibido premios y reconocimientos literarios internacionales en sus ediciones originales en inglés. Esta página reúne esos logros de forma clara, elegante y coherente con el universo visual del sitio.
-          </p>
-
-          <p class="hero-note">
-            Para mantener precisión dentro de la versión en español de la web, los reconocimientos que aparecen aquí se presentan como distinciones obtenidas por las ediciones originales en inglés de <em>Calisto 2.0</em> y <em>Cupid’s Arrow</em>.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#calisto-awards" class="button">Ver Calisto 2.0</a>
-            <a href="#cupids-arrow-awards" class="button secondary">Ver La Flecha de Cupido</a>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="hero-badges">
-            <div class="hero-badge">
-              <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
-            </div>
-
-            <div class="hero-badge">
-              <img src="images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
-            </div>
-
-            <div class="hero-badge">
-              <img src="images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
-            </div>
-
-            <div class="hero-badge">
-              <img src="images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
+      <section class="section section-first">
         <article class="section-card fade-up">
           <div class="section-inner">
             <div class="section-kicker">Premios verificados</div>
@@ -1147,7 +958,7 @@
               Estos premios y menciones no sustituyen la experiencia de entrar al universo de Shambhala, pero sí acompañan el recorrido público de sus libros originales en inglés y ayudan a mostrar la recepción que han tenido.
             </p>
 
-            <div class="hero-actions" style="justify-content:center;">
+            <div class="button-row">
               <a href="explorar.html" class="button">Volver a explorar</a>
               <a href="corazon.html" class="button secondary">Ir a corazón</a>
             </div>
