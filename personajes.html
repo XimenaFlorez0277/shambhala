@@ -709,6 +709,13 @@
         0 0 42px rgba(0,170,255,0.05);
     }
 
+    .roster-card.last-card {
+      grid-column: 2 / span 2;
+      max-width: 320px;
+      width: 100%;
+      justify-self: center;
+    }
+
     .roster-thumb-wrap {
       position: relative;
       width: 100%;
@@ -828,7 +835,8 @@
     }
 
     .ending-box {
-      max-width: 820px;
+      max-width: 980px;
+      width: 100%;
       padding: 50px 38px;
       border: 1px solid rgba(255,255,255,0.10);
       background:
@@ -846,13 +854,44 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
+      line-height: 1.08;
     }
 
     .ending-box p {
-      margin: 0;
+      margin: 0 auto 28px;
+      max-width: 760px;
       line-height: 1.9;
       color: rgba(255,255,255,0.76);
       font-size: 1rem;
+    }
+
+    .ending-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .ending-nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 14px 20px;
+      border: 1px solid rgba(0,170,255,0.28);
+      background: rgba(0,0,0,0.20);
+      color: rgba(255,255,255,0.90);
+      font-size: 0.78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+    }
+
+    .ending-nav a:hover {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.52);
+      background: rgba(0, 25, 45, 0.26);
+      transform: translateY(-2px);
     }
 
     .reveal {
@@ -918,6 +957,11 @@
       .roster-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
+
+      .roster-card.last-card {
+        grid-column: 2 / span 1;
+        max-width: none;
+      }
     }
 
     @media (max-width: 980px) {
@@ -948,6 +992,13 @@
 
       .roster-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .roster-card.last-card {
+        grid-column: 1 / -1;
+        max-width: 340px;
+        width: 100%;
+        justify-self: center;
       }
     }
 
@@ -1056,6 +1107,12 @@
         grid-template-columns: 1fr;
       }
 
+      .roster-card.last-card {
+        grid-column: auto;
+        max-width: none;
+        width: 100%;
+      }
+
       .cinematic-band {
         padding-top: 24px;
         padding-bottom: 0;
@@ -1083,6 +1140,16 @@
       .hero {
         padding-top: 122px;
         padding-bottom: 28px;
+      }
+
+      .ending-nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .ending-nav a {
+        width: 100%;
+        min-width: 0;
       }
     }
 
@@ -1151,6 +1218,7 @@
     <nav class="top-links">
       <a href="index.html">Inicio</a>
       <a href="explorar.html">Explorar</a>
+      <a href="premios.html">Premios</a>
       <a href="#destacados">Centrales</a>
       <a href="#elenco">Elenco</a>
     </nav>
@@ -1163,7 +1231,7 @@
       <h1>Personajes</h1>
 
       <p class="hero-subtitle">
-        No están aquí para llenar un archivo. Están aquí para sostener tensiones, afectos, descubrimientos, heridas, amistades y transformaciones que hacen latir el universo de Shambhala.
+        No están aquí para ocupar espacio. Están aquí para abrir preguntas, encender vínculos, tensar el deseo, sostener la herida y darle pulso al universo de Shambhala.
       </p>
 
       <div class="hero-actions">
@@ -1174,17 +1242,17 @@
       <div class="hero-note">
         <div class="note-box">
           <div class="note-label">Presencia</div>
-          <p>La idea no es mostrar perfiles fríos, sino hacer sentir que cada personaje ocupa un lugar real dentro del mundo.</p>
+          <p>Cada personaje deja una huella en este mundo: en la ciencia, en los afectos, en las decisiones que cambian una vida.</p>
         </div>
 
         <div class="note-box">
           <div class="note-label">Tensión</div>
-          <p>Algunos arrastran preguntas. Otros sostienen el deseo, la amistad, la ambigüedad o la herida que atraviesa la saga.</p>
+          <p>Algunas presencias traen refugio. Otras desordenan el equilibrio. Todas empujan la historia hacia algo más hondo.</p>
         </div>
 
         <div class="note-box">
           <div class="note-label">Universo</div>
-          <p>La ciencia, la intimidad, la colonia lunar y el viaje se perciben distinto a través de cada una de estas voces.</p>
+          <p>La Luna, Shambhala, Arcadia y la intimidad de sus vínculos se revelan a través de quienes habitan este universo.</p>
         </div>
       </div>
     </div>
@@ -1199,7 +1267,7 @@
       <div class="section-kicker">Centro emocional</div>
       <h2>Figuras que sostienen el pulso de la saga</h2>
       <p>
-        Aquí empieza la capa más cinematográfica de la página. No busca enumerar, sino dar peso visual a quienes cambian el tono, la energía y la respiración de la historia.
+        Aquí laten las presencias que cambian la gravedad emocional de Shambhala. No están reunidas para ser observadas desde lejos, sino para dejar huella en la historia, en la ciencia y en los vínculos que la atraviesan.
       </p>
     </div>
 
@@ -1212,7 +1280,7 @@
           <span class="character-tag">Protagonista</span>
           <h3>Calisto</h3>
           <p>
-            Ciencia, ironía, impulso emocional y una necesidad profunda de comprender lo imposible sin dejar de sentirlo.
+            Introspección, curiosidad, vulnerabilidad, deseo.
           </p>
           <span class="card-link">Entrar al perfil</span>
         </div>
@@ -1226,7 +1294,7 @@
           <span class="character-tag">Centro emocional</span>
           <h3>Pavani</h3>
           <p>
-            Contención, profundidad y una forma distinta de amar y percibir el mundo que cambia el eje íntimo de la historia.
+            Calma, profundidad, misterio y una ternura que no necesita imponerse.
           </p>
           <span class="card-link">Entrar al perfil</span>
         </div>
@@ -1284,7 +1352,7 @@
           <span class="character-tag">IA · Presencia</span>
           <h3>Annie</h3>
           <p>
-            No ocupa una habitación como los demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en algo distinto.
+            No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.
           </p>
           <span class="card-link">Entrar al perfil</span>
         </div>
@@ -1295,7 +1363,7 @@
   <section class="cinematic-band reveal">
     <div class="cinematic-band-inner">
       <div class="cinematic-band-left">
-        El universo no se siente vasto solo por las naves o por la distancia. Se siente vasto porque cada personaje arrastra una historia, una forma de mirar y una manera distinta de atravesar lo desconocido.
+        El universo no se vuelve inmenso solo por la distancia, sino por las vidas que lo atraviesan. Cada presencia carga su propia historia y una manera distinta de mirar lo desconocido.
       </div>
       <div class="cinematic-band-right">
         archivo de presencias · vínculos · tensiones · memorias
@@ -1308,7 +1376,7 @@
       <div class="section-kicker">Universo expandido</div>
       <h2>Presencias secundarias</h2>
       <p>
-        Aquí se despliega el elenco que amplía la textura humana, científica y emocional de la saga. Cada una aporta una especialidad, una procedencia y una forma distinta de sostener el universo de Shambhala.
+        Aquí aparecen las figuras que ensanchan el mundo de Shambhala. Algunas acompañan, otras alteran, otras dejan preguntas. Todas aportan una forma distinta de habitar esta historia.
       </p>
     </div>
 
@@ -1317,10 +1385,17 @@
 
   <section class="ending reveal">
     <div class="ending-box">
-      <h2>Cada personaje abre una puerta distinta</h2>
+      <h2>Cada personaje<br>abre una puerta<br>distinta</h2>
       <p>
         En Shambhala, el universo no se construye solo con tecnología, naves o trayectorias imposibles. Se construye con quienes lo habitan, con lo que desean, con lo que ocultan y con aquello que todavía no saben nombrar.
       </p>
+
+      <div class="ending-nav">
+        <a href="index.html">Inicio</a>
+        <a href="explorar.html">Explorar</a>
+        <a href="personajes.html">Personajes</a>
+        <a href="premios.html">Premios</a>
+      </div>
     </div>
   </section>
 
@@ -1388,7 +1463,8 @@
         education: "PhD en Ingeniería",
         focus: "Ingeniería aeroespacial",
         work: "Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: null
+        image: "images/secundarios/Andrea.jpg",
+        imageAlt: "images/secundarios/andrea.jpg"
       },
       {
         name: "Berit",
@@ -1572,7 +1648,7 @@
       },
       {
         name: "Sook",
-        role: "Pilota",
+        role: "Piloto",
         country: "Corea",
         education: "Certificado de Aviación",
         focus: "Vuelo y navegación",
@@ -1604,7 +1680,8 @@
         education: "PhD en Botánica",
         focus: "Cultivo en microgravedad",
         work: "Arcadia 2094–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/Zoe.jpg"
+        image: "images/secundarios/Zoe.jpg",
+        imageAlt: "images/secundarios/zoe.jpg"
       }
     ];
 
@@ -1614,10 +1691,18 @@
       const card = document.createElement("article");
       card.className = "roster-card reveal";
 
+      if (index === secondaryCharacters.length - 1) {
+        card.classList.add("last-card");
+      }
+
+      const fallbackAttr = character.imageAlt
+        ? ` onerror="this.onerror=null;this.src='${character.imageAlt}'"`
+        : "";
+
       const thumb = character.image
         ? `
           <div class="roster-thumb-wrap">
-            <img class="roster-thumb" src="${character.image}" alt="${character.name}" />
+            <img class="roster-thumb" src="${character.image}" alt="${character.name}"${fallbackAttr} />
           </div>
         `
         : `
