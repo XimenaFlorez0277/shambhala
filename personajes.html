@@ -121,12 +121,12 @@
       z-index: 2;
       width: min(1840px, calc(100% - 40px));
       margin: 0 auto;
-      min-height: 100vh;
+      min-height: auto;
       display: grid;
       grid-template-columns: minmax(0, 1.38fr) minmax(340px, 0.82fr);
-      gap: 34px;
-      align-items: center;
-      padding: 92px 0 54px;
+      gap: 30px;
+      align-items: start;
+      padding: 118px 0 26px;
     }
 
     .hero-copy {
@@ -140,7 +140,7 @@
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       padding: 12px 18px;
       border: 1px solid rgba(0,170,255,0.26);
       color: rgba(146, 222, 255, 0.92);
@@ -160,7 +160,7 @@
     }
 
     h1 {
-      margin: 0 0 24px;
+      margin: 0 0 22px;
       font-family: "Orbitron", sans-serif;
       font-size: clamp(3.2rem, 6.8vw, 6.9rem);
       line-height: 0.94;
@@ -176,16 +176,16 @@
     .hero-subtitle {
       max-width: 980px;
       font-size: 1.03rem;
-      line-height: 1.95;
+      line-height: 1.9;
       color: rgba(255,255,255,0.82);
-      margin-bottom: 38px;
+      margin-bottom: 28px;
     }
 
     .hero-actions {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 54px;
+      margin-bottom: 30px;
     }
 
     .btn {
@@ -225,7 +225,7 @@
     .hero-note {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
       max-width: 1100px;
     }
 
@@ -256,16 +256,17 @@
     .hero-image-wrap {
       position: relative;
       width: 100%;
-      align-self: center;
+      align-self: start;
       justify-self: end;
-      min-height: 420px;
+      min-height: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       isolation: isolate;
       background: transparent;
       border: none;
       box-shadow: none;
+      padding-top: 10px;
     }
 
     .hero-image-wrap::before {
@@ -296,7 +297,7 @@
       z-index: 1;
       display: block;
       width: 100%;
-      max-width: 620px;
+      max-width: 600px;
       height: auto;
       object-fit: contain;
       object-position: center center;
@@ -310,12 +311,12 @@
     .section {
       position: relative;
       z-index: 2;
-      padding: 110px 8%;
+      padding: 88px 8%;
     }
 
     .section-header {
       max-width: 920px;
-      margin-bottom: 50px;
+      margin-bottom: 42px;
     }
 
     .section-kicker {
@@ -639,12 +640,12 @@
     .cinematic-band {
       position: relative;
       z-index: 2;
-      padding: 70px 8% 20px;
+      padding: 34px 8% 6px;
     }
 
     .cinematic-band-inner {
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 28px;
+      padding-top: 22px;
       display: flex;
       justify-content: space-between;
       gap: 25px;
@@ -818,11 +819,11 @@
     .ending {
       position: relative;
       z-index: 2;
-      min-height: 72vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 110px 8% 150px;
+      padding: 84px 8% 110px;
       text-align: center;
     }
 
@@ -888,7 +889,7 @@
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding: 108px 0 70px;
+        padding: 118px 0 42px;
       }
 
       .hero-note {
@@ -899,6 +900,7 @@
       .hero-image-wrap {
         max-width: 760px;
         justify-self: start;
+        padding-top: 18px;
       }
 
       .hero-image-wrap img {
@@ -964,8 +966,8 @@
 
       .hero {
         width: min(1840px, calc(100% - 24px));
-        padding-top: 132px;
-        padding-bottom: 62px;
+        padding-top: 126px;
+        padding-bottom: 36px;
       }
 
       .featured-grid {
@@ -986,12 +988,12 @@
       }
 
       .section {
-        padding-top: 90px;
-        padding-bottom: 90px;
+        padding-top: 82px;
+        padding-bottom: 82px;
       }
 
       .section-header {
-        margin-bottom: 34px;
+        margin-bottom: 32px;
       }
 
       .hero-image-wrap img {
@@ -1021,7 +1023,7 @@
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
       }
 
       .btn {
@@ -1055,7 +1057,8 @@
       }
 
       .cinematic-band {
-        padding-top: 40px;
+        padding-top: 24px;
+        padding-bottom: 0;
       }
 
       .cinematic-band-inner {
@@ -1065,8 +1068,8 @@
 
       .ending {
         min-height: auto;
-        padding-top: 80px;
-        padding-bottom: 100px;
+        padding-top: 70px;
+        padding-bottom: 90px;
       }
 
       .ending-box {
@@ -1075,6 +1078,11 @@
 
       .hero-image-wrap img {
         max-width: 420px;
+      }
+
+      .hero {
+        padding-top: 122px;
+        padding-bottom: 28px;
       }
     }
 
@@ -1097,8 +1105,8 @@
       }
 
       .hero {
-        padding-top: 136px;
-        padding-bottom: 56px;
+        padding-top: 126px;
+        padding-bottom: 24px;
       }
 
       .featured-card {
@@ -1380,7 +1388,7 @@
         education: "PhD en Ingeniería",
         focus: "Ingeniería aeroespacial",
         work: "Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/andrea.jpg"
+        image: null
       },
       {
         name: "Berit",
