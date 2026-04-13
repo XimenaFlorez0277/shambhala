@@ -381,6 +381,13 @@
       grid-column: span 6;
     }
 
+    .featured-card.full-width {
+      min-height: 700px;
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
     .featured-image {
       position: absolute;
       inset: 0;
@@ -446,6 +453,10 @@
       max-width: 92%;
     }
 
+    .featured-card.full-width .featured-content {
+      max-width: 780px;
+    }
+
     .character-tag {
       display: inline-block;
       width: fit-content;
@@ -469,6 +480,13 @@
       text-shadow: 0 0 15px rgba(0,0,0,0.35);
     }
 
+    .featured-card.full-width h3 {
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: 18px;
+    }
+
     .title-link {
       color: inherit;
       transition: color 0.3s ease;
@@ -487,6 +505,13 @@
       text-shadow: 0 0 12px rgba(0,0,0,0.35);
     }
 
+    .featured-card.full-width p {
+      font-size: 1rem;
+      line-height: 1.85;
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
     .card-link {
       width: fit-content;
       display: inline-flex;
@@ -499,6 +524,11 @@
       border-bottom: 1px solid rgba(139,223,255,0.35);
       padding-bottom: 5px;
       transition: 0.3s ease;
+    }
+
+    .featured-card.full-width .card-link {
+      font-size: 0.88rem;
+      letter-spacing: 3px;
     }
 
     .featured-card:hover .card-link {
@@ -536,6 +566,12 @@
       text-transform: uppercase;
       color: rgba(130, 220, 255, 0.46);
       font-size: 0.72rem;
+    }
+
+    .history-feature {
+      position: relative;
+      z-index: 2;
+      padding: 18px 8% 0;
     }
 
     .text-section {
@@ -733,6 +769,10 @@
       .featured-card {
         min-height: 520px;
       }
+
+      .featured-card.full-width {
+        min-height: 640px;
+      }
     }
 
     @media (max-width: 1150px) {
@@ -775,6 +815,7 @@
       .section,
       .ending,
       .cinematic-band,
+      .history-feature,
       .text-section,
       .page-footer {
         padding-left: 6%;
@@ -792,6 +833,10 @@
 
       .featured-card {
         min-height: 480px;
+      }
+
+      .featured-card.full-width {
+        min-height: 560px;
       }
     }
 
@@ -836,8 +881,16 @@
         padding: 26px;
       }
 
+      .featured-card.full-width {
+        min-height: 500px;
+      }
+
       .featured-card h3 {
         font-size: 1.55rem;
+      }
+
+      .featured-card.full-width h3 {
+        font-size: clamp(1.55rem, 7vw, 3rem);
       }
 
       .featured-card p {
@@ -855,6 +908,7 @@
       .section,
       .ending,
       .cinematic-band,
+      .history-feature,
       .text-section,
       .page-footer {
         padding-left: 5%;
@@ -887,6 +941,10 @@
 
       .featured-card {
         min-height: 380px;
+      }
+
+      .featured-card.full-width {
+        min-height: 420px;
       }
 
       .featured-content {
@@ -955,8 +1013,17 @@
         min-height: 340px;
       }
 
+      .featured-card.full-width {
+        min-height: 360px;
+      }
+
       .featured-card h3 {
         font-size: 1.2rem;
+      }
+
+      .featured-card.full-width h3 {
+        font-size: 1.15rem;
+        line-height: 1.1;
       }
 
       .featured-card p,
@@ -1173,7 +1240,23 @@
     </div>
   </section>
 
-  <section class="text-section reveal" id="historia">
+  <section class="history-feature reveal" id="historia">
+    <div class="featured-card full-width">
+      <img class="featured-image" src="images/galeria/susan-ximena-1.jpg" alt="Susan y Ximena" />
+      <div class="featured-overlay"></div>
+      <div class="character-aura aura-history"></div>
+      <div class="featured-content">
+        <span class="character-tag">Historia</span>
+        <h3><a class="title-link" href="#historia">Susan y Ximena</a></h3>
+        <p>
+          Un vínculo profundo, luminoso y decisivo dentro del territorio afectivo desde donde también se expandió Shambhala.
+        </p>
+        <a href="#historia" class="card-link">Ir a nuestra historia</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-section reveal">
     <div class="text-panel">
       <div class="section-kicker">Nuestra historia</div>
       <h3>Susan y Ximena · <a class="title-link" href="galeria.html">Galería</a></h3>
@@ -1224,7 +1307,7 @@
   <footer class="page-footer reveal">
     <div class="page-footer-inner">
       <a href="index.html" class="footer-card">
-        <img src="images/hero.jpg" alt="Inicio" />
+        <img src="images/secundarios/hero.jpg" alt="Inicio" />
         <span>Inicio</span>
       </a>
 
@@ -1239,7 +1322,7 @@
       </a>
 
       <a href="explorar.html#libros" class="footer-card">
-        <img src="images/explorar/calisto-2-0.jpg" alt="Libros" />
+        <img src="images/explorar/callisto-2-0.jpg" alt="Libros" />
         <span>Libros</span>
       </a>
     </div>
