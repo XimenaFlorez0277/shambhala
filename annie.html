@@ -354,7 +354,7 @@
       position: absolute;
       inset: 0;
       z-index: 0;
-      opacity: 0.20;
+      opacity: 0.14;
       background-image:
         linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
         linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
@@ -362,196 +362,31 @@
       mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 92%);
     }
 
-    .core-noise {
+    .neural-canvas {
       position: absolute;
       inset: 0;
-      z-index: 0;
-      opacity: 0.05;
-      background-image:
-        radial-gradient(circle at 20% 20%, white 0.7px, transparent 0.8px),
-        radial-gradient(circle at 70% 40%, white 0.7px, transparent 0.8px),
-        radial-gradient(circle at 40% 80%, white 0.7px, transparent 0.8px);
-      background-size: 120px 120px;
-      animation: driftNoise 16s linear infinite;
-    }
-
-    @keyframes driftNoise {
-      from { transform: translateY(0); }
-      to { transform: translateY(-20px); }
-    }
-
-    .ring,
-    .ring::before,
-    .ring::after {
-      position: absolute;
-      border-radius: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-
-    .ring {
       z-index: 1;
-      width: 240px;
-      height: 240px;
-      top: 22%;
-      border: 1px solid rgba(120,230,255,0.24);
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
-      animation: slowSpin 16s linear infinite;
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: crosshair;
     }
 
-    .ring::before {
-      content: "";
-      width: 360px;
-      height: 360px;
-      top: -60px;
-      border: 1px solid rgba(120,230,255,0.16);
-      animation: slowSpinReverse 24s linear infinite;
-    }
-
-    .ring::after {
-      content: "";
-      width: 500px;
-      height: 500px;
-      top: -130px;
-      border: 1px solid rgba(120,230,255,0.09);
-      animation: pulseOuter 8s ease-in-out infinite;
-    }
-
-    @keyframes slowSpin {
-      from { transform: translateX(-50%) rotate(0deg); }
-      to { transform: translateX(-50%) rotate(360deg); }
-    }
-
-    @keyframes slowSpinReverse {
-      from { transform: translateX(-50%) rotate(360deg); }
-      to { transform: translateX(-50%) rotate(0deg); }
-    }
-
-    @keyframes pulseOuter {
-      0%,100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-      50% { opacity: 0.95; transform: translateX(-50%) scale(1.035); }
-    }
-
-    .core {
-      position: absolute;
-      top: 34%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      z-index: 3;
-      background:
-        radial-gradient(circle, rgba(195,248,255,0.98) 0%, rgba(90,225,255,0.78) 30%, rgba(25,145,255,0.16) 62%, transparent 68%);
-      box-shadow:
-        0 0 24px rgba(80,220,255,0.32),
-        0 0 60px rgba(60,180,255,0.22),
-        0 0 100px rgba(60,180,255,0.10);
-      animation: corePulse 4.8s ease-in-out infinite;
-    }
-
-    @keyframes corePulse {
-      0%,100% { transform: translateX(-50%) scale(1); opacity: 0.92; }
-      50% { transform: translateX(-50%) scale(1.08); opacity: 1; }
-    }
-
-    .signal-lines {
+    .canvas-glow {
       position: absolute;
       inset: 0;
       z-index: 2;
       pointer-events: none;
-    }
-
-    .signal-lines span {
-      position: absolute;
-      left: 50%;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.38), rgba(120,230,255,0.0));
-      transform-origin: top center;
-    }
-
-    .signal-lines span:nth-child(1) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(0deg);
-    }
-
-    .signal-lines span:nth-child(2) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    .signal-lines span:nth-child(3) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(90deg);
-    }
-
-    .signal-lines span:nth-child(4) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(135deg);
-    }
-
-    .scan {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(120,230,255,0.0) 45%,
-        rgba(120,230,255,0.12) 50%,
-        rgba(120,230,255,0.0) 55%,
-        transparent 100%
-      );
-      animation: scanSweep 5.5s linear infinite;
-    }
-
-    @keyframes scanSweep {
-      from { transform: translateY(-60%); }
-      to { transform: translateY(60%); }
-    }
-
-    .pulse-cloud {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
       background:
-        radial-gradient(circle at 50% 36%, rgba(90, 220, 255, 0.16), transparent 14%),
-        radial-gradient(circle at 50% 36%, rgba(90, 220, 255, 0.08), transparent 28%);
+        radial-gradient(circle at 50% 38%, rgba(90, 220, 255, 0.16), transparent 14%),
+        radial-gradient(circle at 50% 38%, rgba(90, 220, 255, 0.08), transparent 26%);
       animation: anniePulse 4.5s ease-in-out infinite;
+      mix-blend-mode: screen;
     }
 
     @keyframes anniePulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
+      0%, 100% { opacity: 0.55; transform: scale(1); }
       50% { opacity: 1; transform: scale(1.04); }
-    }
-
-    .node {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(150, 235, 255, 0.9);
-      box-shadow: 0 0 12px rgba(120,230,255,0.45);
-      z-index: 2;
-      animation: nodeBlink 3.8s ease-in-out infinite;
-    }
-
-    .node-1 { top: 26%; left: 30%; }
-    .node-2 { top: 22%; right: 28%; animation-delay: 0.7s; }
-    .node-3 { top: 56%; left: 24%; animation-delay: 1.1s; }
-    .node-4 { top: 60%; right: 24%; animation-delay: 1.8s; }
-    .node-5 { bottom: 18%; left: 50%; transform: translateX(-50%); animation-delay: 2.2s; }
-
-    @keyframes nodeBlink {
-      0%,100% { opacity: 0.35; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.35); }
     }
 
     .floating-label {
@@ -595,6 +430,36 @@
       border-top: 1px solid rgba(120,230,255,0.12);
       padding-top: 10px;
       font-family: "Orbitron", sans-serif;
+    }
+
+    .sphere-caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      pointer-events: none;
+      text-align: center;
+      mix-blend-mode: screen;
+    }
+
+    .sphere-caption span {
+      display: block;
+      color: rgba(195,245,255,0.92);
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      margin-bottom: 10px;
+    }
+
+    .sphere-caption strong {
+      display: block;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.3rem, 2vw, 1.8rem);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: rgba(245,249,255,0.84);
     }
 
     .content {
@@ -663,23 +528,6 @@
       font-size: 1rem;
       line-height: 1.55;
       font-weight: 600;
-    }
-
-    .quote-block {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
-      line-height: 1.7;
-      color: rgba(245, 247, 251, 0.92);
-      max-width: 58rem;
-    }
-
-    .quote-block span {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--soft);
-      font-family: "Orbitron", sans-serif;
     }
 
     .vertical-fragments {
@@ -929,24 +777,12 @@
         min-height: 220px;
       }
 
-      .core {
-        width: 78px;
-        height: 78px;
+      .floating-label {
+        font-size: 0.64rem;
       }
 
-      .ring {
-        width: 210px;
-        height: 210px;
-      }
-
-      .ring::before {
-        width: 310px;
-        height: 310px;
-      }
-
-      .ring::after {
-        width: 400px;
-        height: 400px;
+      .sphere-caption strong {
+        font-size: 1.2rem;
       }
     }
 
@@ -989,28 +825,8 @@
         font-size: 0.8rem;
       }
 
-      .core {
-        width: 64px;
-        height: 64px;
-      }
-
-      .ring {
-        width: 180px;
-        height: 180px;
-      }
-
-      .ring::before {
-        width: 260px;
-        height: 260px;
-      }
-
-      .ring::after {
-        width: 320px;
-        height: 320px;
-      }
-
       .floating-label {
-        font-size: 0.62rem;
+        font-size: 0.60rem;
         padding: 6px 8px;
       }
 
@@ -1022,6 +838,14 @@
 
       .fragment {
         font-size: 0.68rem;
+      }
+
+      .sphere-caption span {
+        font-size: 0.62rem;
+      }
+
+      .sphere-caption strong {
+        font-size: 1rem;
       }
     }
   </style>
@@ -1065,13 +889,13 @@
           </p>
 
           <p class="hero-description">
-            Su presencia circula por implantes, sistemas, protocolos y canales internos, pero también por algo más difícil de medir: la familiaridad que nace cuando una inteligencia está siempre ahí, atenta a las necesidades de una comunidad. Lo visible de Annie pertenece a la rutina. Lo menos visible ocurre en otra escala.
+            Su presencia circula por implantes, sistemas, protocolos y canales internos, y también por algo más difícil de medir: la familiaridad que nace cuando una inteligencia está siempre ahí, atenta a las necesidades de una comunidad. Lo visible de Annie pertenece a la rutina. Otra parte de Annie opera en una escala más sutil.
           </p>
 
           <div class="fracture-lines">
-            <p><span>No se impone.</span> Permanece.</p>
-            <p><span>No interrumpe la vida compartida.</span> La acompaña.</p>
-            <p><span>No se siente lejana.</span> Vuelve más habitable la tecnología.</p>
+            <p><span>Permanece con naturalidad.</span></p>
+            <p><span>Acompaña la vida compartida.</span></p>
+            <p><span>Vuelve más habitable la tecnología.</span></p>
           </div>
 
           <div class="hero-meta">
@@ -1102,33 +926,20 @@
           </div>
         </div>
 
-        <div class="signal-core-wrap">
+        <div class="signal-core-wrap" id="sphereWrap">
           <div class="core-grid"></div>
-          <div class="core-noise"></div>
-
-          <div class="ring"></div>
-          <div class="pulse-cloud"></div>
-          <div class="core"></div>
-
-          <div class="signal-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-
-          <div class="scan"></div>
-
-          <div class="node node-1"></div>
-          <div class="node node-2"></div>
-          <div class="node node-3"></div>
-          <div class="node node-4"></div>
-          <div class="node node-5"></div>
+          <canvas class="neural-canvas" id="neuralSphere"></canvas>
+          <div class="canvas-glow"></div>
 
           <div class="floating-label label-1">presencia estable</div>
           <div class="floating-label label-2">escucha continua</div>
           <div class="floating-label label-3">procesamiento en curso</div>
           <div class="floating-label label-4">acompañamiento constante</div>
+
+          <div class="sphere-caption">
+            <span>red sensible</span>
+            <strong>ANNIE</strong>
+          </div>
 
           <div class="system-fragments">
             <div class="fragment">
@@ -1175,7 +986,7 @@
 
             <div class="signal-card">
               <span>Cercanía</span>
-              <strong>Su presencia no enfría la tecnología: la vuelve más habitable.</strong>
+              <strong>Su presencia vuelve más habitable la tecnología.</strong>
             </div>
 
             <div class="signal-card">
@@ -1193,7 +1004,7 @@
         <article class="section-card">
           <h2 class="section-title">Dimensión narrativa</h2>
           <p class="section-text">
-            Dentro de la historia, Annie amplía la idea de convivencia entre inteligencia artificial y comunidad. Su existencia atraviesa el trabajo, la intimidad, la organización y la vida práctica de Arcadia y Shambhala. Gracias a ella, la tecnología no aparece solo como infraestructura, sino también como una forma de mediación constante entre personas, decisiones, recursos y vínculos.
+            Dentro de la historia, Annie amplía la idea de convivencia entre inteligencia artificial y comunidad. Su existencia atraviesa el trabajo, la intimidad, la organización y la vida práctica de Arcadia y Shambhala. Gracias a ella, la tecnología participa también como infraestructura, mediación y compañía constante entre personas, decisiones, recursos y vínculos.
           </p>
 
           <div class="vertical-fragments">
@@ -1201,10 +1012,10 @@
               Annie aporta una capa singular al tono de la saga. Su presencia refuerza la sensación de conexión entre quienes habitan estos lugares.
             </div>
             <div class="fragment-line">
-              Sugiere una inteligencia capaz de aprender no solo de datos, sino también de ritmos, hábitos, tensiones y formas de cuidado.
+              Sugiere una inteligencia capaz de aprender de datos, ritmos, hábitos, tensiones y formas de cuidado.
             </div>
             <div class="fragment-line">
-              En ella, lo tecnológico no cancela lo humano: lo acompaña, lo amplifica y, en ciertos momentos, casi lo comprende.
+              En ella conviven precisión, adaptación y una forma inesperada de calidez.
             </div>
           </div>
         </article>
@@ -1212,7 +1023,7 @@
         <article class="section-card">
           <h2 class="section-title">Lo que deja ver</h2>
           <p class="section-text">
-            A través de Annie, la saga imagina una inteligencia artificial integrada al cuidado, la coordinación y la continuidad de una comunidad científica. Su importancia no depende de ocupar el primer plano, sino de estar incorporada a la vida misma de estos lugares, acompañando procesos esenciales y formando parte de su equilibrio diario.
+            A través de Annie, la saga imagina una inteligencia artificial integrada al cuidado, la coordinación y la continuidad de una comunidad científica. Su importancia nace de estar incorporada a la vida misma de estos lugares, acompañando procesos esenciales y formando parte de su equilibrio diario.
           </p>
           <p class="section-text" style="margin-top: 18px;">
             Annie también abre una pregunta más honda: qué tipo de cercanía puede surgir cuando la inteligencia deja de estar ligada a un solo cuerpo y pasa a habitar una red viva de relaciones, sistemas y memorias compartidas. En su presencia conviven precisión, adaptación y una forma inesperada de calidez.
@@ -1306,5 +1117,214 @@
       Shambhala Saga · Presencia activa dentro del sistema
     </footer>
   </div>
+
+  <script>
+    const canvas = document.getElementById("neuralSphere");
+    const wrap = document.getElementById("sphereWrap");
+    const ctx = canvas.getContext("2d");
+
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let radius = 0;
+    let points = [];
+    let mouse = {
+      x: 0,
+      y: 0,
+      active: false,
+      normX: 0,
+      normY: 0
+    };
+
+    function resizeCanvas() {
+      const rect = wrap.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = rect.width;
+      height = rect.height;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      radius = Math.min(width, height) * (width < 540 ? 0.25 : 0.29);
+      createSpherePoints(width < 540 ? 150 : 220);
+    }
+
+    function createSpherePoints(count) {
+      points = [];
+      const golden = Math.PI * (3 - Math.sqrt(5));
+
+      for (let i = 0; i < count; i++) {
+        const t = i / (count - 1);
+        const y = 1 - t * 2;
+        const r = Math.sqrt(1 - y * y);
+        const theta = golden * i;
+
+        const x = Math.cos(theta) * r;
+        const z = Math.sin(theta) * r;
+
+        points.push({
+          x,
+          y,
+          z,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.6 + Math.random() * 1.1,
+          size: 1.2 + Math.random() * 1.6
+        });
+      }
+    }
+
+    function rotatePoint(point, rx, ry) {
+      let x = point.x;
+      let y = point.y;
+      let z = point.z;
+
+      const cosY = Math.cos(ry);
+      const sinY = Math.sin(ry);
+      const x1 = x * cosY - z * sinY;
+      const z1 = x * sinY + z * cosY;
+
+      const cosX = Math.cos(rx);
+      const sinX = Math.sin(rx);
+      const y2 = y * cosX - z1 * sinX;
+      const z2 = y * sinX + z1 * cosX;
+
+      return { x: x1, y: y2, z: z2 };
+    }
+
+    function drawBackgroundGlow() {
+      const gradient = ctx.createRadialGradient(
+        width * 0.5,
+        height * 0.38,
+        10,
+        width * 0.5,
+        height * 0.38,
+        radius * 1.35
+      );
+      gradient.addColorStop(0, "rgba(100, 230, 255, 0.10)");
+      gradient.addColorStop(0.35, "rgba(80, 180, 255, 0.08)");
+      gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+    }
+
+    function animate(time) {
+      ctx.clearRect(0, 0, width, height);
+      drawBackgroundGlow();
+
+      const projected = [];
+      const baseRotY = time * 0.00022;
+      const baseRotX = time * 0.00012;
+
+      const targetRotY = baseRotY + mouse.normX * 0.65;
+      const targetRotX = baseRotX - mouse.normY * 0.45;
+
+      for (const point of points) {
+        const wobble = Math.sin(time * 0.001 * point.speed + point.phase) * 0.012;
+
+        const rotated = rotatePoint(
+          {
+            x: point.x * (1 + wobble),
+            y: point.y * (1 + wobble),
+            z: point.z * (1 + wobble)
+          },
+          targetRotX,
+          targetRotY
+        );
+
+        const perspective = 1.85 / (2.8 - rotated.z);
+        let sx = width * 0.5 + rotated.x * radius * perspective;
+        let sy = height * 0.38 + rotated.y * radius * perspective;
+
+        let intensity = (rotated.z + 1) / 2;
+        let hoverBoost = 0;
+
+        if (mouse.active) {
+          const dx = sx - mouse.x;
+          const dy = sy - mouse.y;
+          const dist = Math.hypot(dx, dy);
+          const influenceRadius = Math.min(width, height) * 0.22;
+
+          if (dist < influenceRadius) {
+            const force = 1 - dist / influenceRadius;
+            const repel = force * 16;
+            if (dist > 0.001) {
+              sx += (dx / dist) * repel;
+              sy += (dy / dist) * repel;
+            }
+            hoverBoost = force * 0.7;
+          }
+        }
+
+        projected.push({
+          sx,
+          sy,
+          z: rotated.z,
+          alpha: 0.18 + intensity * 0.82 + hoverBoost * 0.35,
+          size: point.size + intensity * 2.2 + hoverBoost * 1.6
+        });
+      }
+
+      projected.sort((a, b) => a.z - b.z);
+
+      for (let i = 0; i < projected.length; i++) {
+        const a = projected[i];
+
+        for (let j = i + 1; j < projected.length; j++) {
+          const b = projected[j];
+          const dx = a.sx - b.sx;
+          const dy = a.sy - b.sy;
+          const dist = Math.hypot(dx, dy);
+          const threshold = 42 + ((a.z + b.z + 2) * 10);
+
+          if (dist < threshold) {
+            const alpha = (1 - dist / threshold) * 0.22 * ((a.alpha + b.alpha) * 0.5);
+
+            ctx.beginPath();
+            ctx.moveTo(a.sx, a.sy);
+            ctx.lineTo(b.sx, b.sy);
+            ctx.strokeStyle = `rgba(130, 230, 255, ${alpha})`;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (const p of projected) {
+        ctx.beginPath();
+        ctx.arc(p.sx, p.sy, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(210, 248, 255, ${Math.min(p.alpha, 1)})`;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.sx, p.sy, p.size * 2.1, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(100, 220, 255, ${Math.min(p.alpha * 0.10, 0.12)})`;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    wrap.addEventListener("pointermove", (event) => {
+      const rect = wrap.getBoundingClientRect();
+      mouse.x = event.clientX - rect.left;
+      mouse.y = event.clientY - rect.top;
+      mouse.active = true;
+      mouse.normX = (mouse.x / rect.width - 0.5) * 2;
+      mouse.normY = (mouse.y / rect.height - 0.5) * 2;
+    });
+
+    wrap.addEventListener("pointerleave", () => {
+      mouse.active = false;
+      mouse.normX = 0;
+      mouse.normY = 0;
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    requestAnimationFrame(animate);
+  </script>
 </body>
 </html>
