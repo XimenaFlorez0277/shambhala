@@ -18,7 +18,6 @@
 
   <style>
     :root {
-      --bg: #020816;
       --text: #eef6ff;
       --muted: #b6c7da;
       --soft: #89b9e8;
@@ -177,7 +176,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 30px;
       align-items: stretch;
-      min-height: 560px;
+      min-height: 540px;
       margin-top: 22px;
     }
 
@@ -192,7 +191,7 @@
     }
 
     .hero-copy {
-      padding: 38px 32px 30px;
+      padding: 34px 28px 28px;
     }
 
     .hero-copy::before,
@@ -216,36 +215,34 @@
     }
 
     h1 {
-      margin-top: 16px;
-      font-size: clamp(1.9rem, 4vw, 3rem);
+      margin-top: 14px;
+      font-size: clamp(1.7rem, 3.4vw, 2.45rem);
       text-wrap: balance;
     }
 
     .hero-subtitle {
-      margin-top: 16px;
-      max-width: 58ch;
+      margin-top: 14px;
       color: var(--soft);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      line-height: 1.6;
+      line-height: 1.55;
       text-align: justify;
     }
 
     .hero-text {
-      margin-top: 14px;
-      max-width: 64ch;
+      margin-top: 12px;
       color: var(--muted);
-      font-size: 0.96rem;
+      font-size: 0.94rem;
       text-align: justify;
     }
 
     .system-lines {
       display: grid;
       gap: 8px;
-      margin-top: 18px;
+      margin-top: 16px;
       color: #d9f6ff;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       font-family: var(--font-display);
@@ -255,11 +252,11 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 22px;
+      margin-top: 20px;
     }
 
     .meta-card {
-      padding: 16px;
+      padding: 15px;
       border-radius: var(--radius-sm);
       background: rgba(8, 18, 35, 0.62);
       border: 1px solid rgba(138, 216, 255, 0.12);
@@ -269,14 +266,14 @@
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-family: var(--font-display);
     }
 
     .meta-value {
       margin-top: 8px;
       color: var(--text);
-      font-size: 0.94rem;
+      font-size: 0.92rem;
       text-align: justify;
     }
 
@@ -293,15 +290,15 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      padding: 26px;
+      padding: 24px;
       filter: saturate(1.02) contrast(1.02);
-      transform: scale(0.96);
+      transform: scale(0.95);
     }
 
     .hero-media-overlay {
       position: absolute;
       inset: auto 0 0 0;
-      padding: 20px 20px 22px;
+      padding: 18px 18px 20px;
       background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.14) 16%, rgba(2, 8, 22, 0.9) 100%);
     }
 
@@ -311,7 +308,7 @@
       border-radius: 999px;
       border: 1px solid rgba(138, 216, 255, 0.2);
       color: var(--soft);
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       font-family: var(--font-display);
@@ -320,15 +317,14 @@
 
     .media-note {
       margin-top: 12px;
-      max-width: 48ch;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       text-align: justify;
     }
 
     .section {
-      margin-top: 28px;
-      padding: 24px;
+      margin-top: 24px;
+      padding: 20px 22px;
       border-radius: calc(var(--radius) + 2px);
       border: 1px solid rgba(138, 216, 255, 0.1);
       background: linear-gradient(180deg, rgba(7, 18, 38, 0.78), rgba(4, 11, 24, 0.88));
@@ -338,27 +334,28 @@
     .section-header {
       display: grid;
       gap: 8px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .section-kicker {
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       font-family: var(--font-display);
     }
 
     .section h2 {
-      font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+      font-size: clamp(0.98rem, 2vw, 1.28rem);
       line-height: 1.08;
     }
 
     .section p {
-      margin: 0 0 14px;
-      max-width: 74ch;
+      margin: 0 0 12px;
+      width: 100%;
+      max-width: none;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       text-align: justify;
     }
 
@@ -370,38 +367,40 @@
     .related-grid,
     .bottom-nav {
       display: grid;
-      gap: 18px;
+      gap: 16px;
     }
 
     .capabilities-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .cap-card {
-      padding: 17px;
-      border-radius: 22px;
+      padding: 16px;
+      border-radius: 20px;
       border: 1px solid rgba(138, 216, 255, 0.12);
       background: rgba(8, 19, 39, 0.62);
       min-height: 100%;
     }
 
     .cap-card h3 {
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       line-height: 1.2;
       color: var(--text);
     }
 
     .cap-card p {
       margin-top: 10px;
-      font-size: 0.92rem;
+      width: 100%;
+      max-width: none;
+      font-size: 0.9rem;
       color: var(--muted);
       text-align: justify;
     }
 
     .related-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .related-card {
@@ -410,8 +409,8 @@
       border-radius: 24px;
       border: 1px solid rgba(138, 216, 255, 0.12);
       background: linear-gradient(180deg, rgba(10, 21, 43, 0.72), rgba(7, 14, 29, 0.9));
-      min-height: 250px;
-      padding: 20px;
+      min-height: 230px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -428,10 +427,10 @@
 
     .related-thumb {
       position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 78px;
-      height: 102px;
+      top: 14px;
+      right: 14px;
+      width: 74px;
+      height: 96px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(138, 216, 255, 0.16);
@@ -458,53 +457,55 @@
     .related-content {
       position: relative;
       z-index: 2;
-      padding-right: 80px;
+      padding-right: 78px;
     }
 
     .related-role {
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.66rem;
+      font-size: 0.64rem;
       font-family: var(--font-display);
     }
 
     .related-card h3 {
       margin-top: 8px;
-      font-size: 1.02rem;
+      font-size: 0.96rem;
       line-height: 1.1;
     }
 
     .related-card p {
       margin-top: 10px;
+      width: 100%;
+      max-width: none;
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       text-align: left;
     }
 
     .related-link {
-      margin-top: 14px;
+      margin-top: 12px;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-family: var(--font-display);
     }
 
     .bottom-nav {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      margin-top: 18px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      margin-top: 16px;
     }
 
     .bottom-link {
-      padding: 16px;
+      padding: 14px;
       border-radius: 22px;
       border: 1px solid rgba(138, 216, 255, 0.12);
       background: rgba(8, 18, 35, 0.56);
       transition: 0.24s ease;
       display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 14px;
+      grid-template-columns: 62px 1fr;
+      gap: 12px;
       align-items: center;
     }
 
@@ -517,9 +518,9 @@
     }
 
     .bottom-thumb {
-      width: 72px;
-      height: 96px;
-      border-radius: 14px;
+      width: 62px;
+      height: 82px;
+      border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(138, 216, 255, 0.14);
       background: rgba(255,255,255,0.03);
@@ -540,31 +541,31 @@
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.64rem;
+      font-size: 0.6rem;
       font-family: var(--font-display);
     }
 
     .bottom-title {
-      margin-top: 7px;
+      margin-top: 6px;
       color: var(--text);
-      font-size: 0.94rem;
-      line-height: 1.28;
+      font-size: 0.88rem;
+      line-height: 1.22;
     }
 
     .bottom-copy {
-      margin-top: 7px;
+      margin-top: 6px;
       color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.55;
+      font-size: 0.82rem;
+      line-height: 1.45;
       text-align: left;
     }
 
     .site-footer {
       width: min(var(--max), calc(100% - 40px));
-      margin: 30px auto 30px;
+      margin: 28px auto 28px;
       padding: 12px 0 0;
       color: rgba(214, 230, 246, 0.72);
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       text-align: center;
     }
 
@@ -589,7 +590,7 @@
 
       .hero-copy,
       .section {
-        padding: 20px 14px;
+        padding: 18px 14px;
       }
 
       .hero {
@@ -597,11 +598,11 @@
       }
 
       h1 {
-        font-size: clamp(1.7rem, 10vw, 2.4rem);
+        font-size: clamp(1.5rem, 9vw, 2rem);
       }
 
       .section h2 {
-        font-size: clamp(1rem, 5vw, 1.28rem);
+        font-size: clamp(0.92rem, 4.5vw, 1.1rem);
       }
 
       .hero-meta,
@@ -617,16 +618,16 @@
 
       .related-thumb {
         width: 68px;
-        height: 92px;
+        height: 88px;
       }
 
       .bottom-link {
-        grid-template-columns: 64px 1fr;
+        grid-template-columns: 60px 1fr;
       }
 
       .bottom-thumb {
-        width: 64px;
-        height: 88px;
+        width: 60px;
+        height: 80px;
       }
 
       .nav {
@@ -891,7 +892,7 @@
         </div>
 
         <p>
-          Puedes volver al inicio, explorar el mundo de la saga, recorrer el archivo de personajes o entrar a la sección de libros.
+          Puedes volver al inicio, explorar el mundo de la saga, recorrer el archivo de personajes, entrar a la sección de libros o pasar al corazón de Shambhala.
         </p>
 
         <div class="bottom-nav">
@@ -936,6 +937,17 @@
               <span class="bottom-label">Libros</span>
               <span class="bottom-title">Libros</span>
               <span class="bottom-copy">Entra a la sección donde se reúnen las novelas de la saga.</span>
+            </div>
+          </a>
+
+          <a class="bottom-link" href="corazon.html">
+            <div class="bottom-thumb">
+              <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+            </div>
+            <div class="bottom-meta">
+              <span class="bottom-label">Corazón</span>
+              <span class="bottom-title">Corazón de Shambhala</span>
+              <span class="bottom-copy">Pasa a la dimensión íntima y emocional del proyecto.</span>
             </div>
           </a>
         </div>
