@@ -581,15 +581,12 @@
     }
 
     .explore-link-card {
-      padding: 18px 18px 22px;
+      padding: 20px;
       border: 1px solid rgba(255,255,255,0.08);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
         rgba(7, 12, 22, 0.72);
       transition: 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
     }
 
     .explore-link-card:hover {
@@ -598,17 +595,24 @@
       box-shadow: 0 0 24px rgba(80, 174, 255, 0.12);
     }
 
+    .explore-link-inner {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
     .explore-link-thumb {
       position: relative;
-      display: block;
-      width: 100%;
-      height: 110px;
+      width: 84px;
+      height: 84px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(255,255,255,0.02);
       box-shadow:
         inset 0 0 18px rgba(90, 168, 255, 0.04),
         0 10px 24px rgba(0, 0, 0, 0.16);
+      flex-shrink: 0;
     }
 
     .explore-link-thumb::after {
@@ -616,7 +620,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(2, 5, 12, 0.55), rgba(2, 5, 12, 0.08)),
+        linear-gradient(to top, rgba(2, 5, 12, 0.45), rgba(2, 5, 12, 0.05)),
         radial-gradient(circle at top right, rgba(93, 182, 255, 0.16), transparent 28%);
       pointer-events: none;
     }
@@ -626,29 +630,30 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: brightness(0.82) contrast(1.04);
+      filter: brightness(0.84) contrast(1.04);
     }
 
     .explore-link-thumb.logo img {
       object-fit: contain;
-      padding: 14px;
+      padding: 10px;
       background:
         radial-gradient(circle at center, rgba(84, 165, 255, 0.08), transparent 46%),
         rgba(4, 8, 16, 0.96);
     }
 
-    .explore-link-card h3 {
+    .explore-link-text h3 {
       font-family: "Orbitron", sans-serif;
-      font-size: 0.88rem;
-      letter-spacing: 0.14em;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #f1f8ff;
       margin-bottom: 8px;
+      line-height: 1.3;
     }
 
-    .explore-link-card p {
+    .explore-link-text p {
       font-size: 0.9rem;
-      line-height: 1.8;
+      line-height: 1.72;
       color: rgba(236, 243, 255, 0.72);
     }
 
@@ -826,18 +831,28 @@
       .award-book-badges,
       .award-book-badges.cupids,
       .explore-links-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: 1fr;
+      }
+
+      .explore-link-inner {
+        grid-template-columns: 70px 1fr;
+        gap: 14px;
+        align-items: center;
       }
 
       .explore-link-thumb {
-        height: 95px;
+        width: 70px;
+        height: 70px;
+      }
+
+      .explore-link-text h3 {
+        font-size: 0.78rem;
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 430px) {
       .award-book-badges,
-      .award-book-badges.cupids,
-      .explore-links-grid {
+      .award-book-badges.cupids {
         grid-template-columns: 1fr;
       }
 
@@ -850,8 +865,14 @@
         max-height: 84px;
       }
 
+      .explore-link-inner {
+        grid-template-columns: 62px 1fr;
+        gap: 12px;
+      }
+
       .explore-link-thumb {
-        height: 105px;
+        width: 62px;
+        height: 62px;
       }
     }
   </style>
@@ -1137,62 +1158,74 @@
 
       <div class="explore-links-grid">
         <a class="explore-link-card" href="index.html">
-          <span class="explore-link-thumb">
-            <img src="images/hero.jpg" alt="Vista de inicio de la saga Shambhala" />
-          </span>
-          <div>
-            <h3>Inicio</h3>
-            <p>Vuelve a la entrada principal del universo Shambhala.</p>
+          <div class="explore-link-inner">
+            <span class="explore-link-thumb">
+              <img src="images/hero.jpg" alt="Vista de inicio de la saga Shambhala" />
+            </span>
+            <div class="explore-link-text">
+              <h3>Inicio</h3>
+              <p>Vuelve a la entrada principal del universo Shambhala.</p>
+            </div>
           </div>
         </a>
 
         <a class="explore-link-card" href="explorar.html">
-          <span class="explore-link-thumb">
-            <img src="images/world.jpg" alt="Mapa visual del universo Shambhala" />
-          </span>
-          <div>
-            <h3>Explorar</h3>
-            <p>Recorre de nuevo el mapa general del mundo y la saga.</p>
+          <div class="explore-link-inner">
+            <span class="explore-link-thumb">
+              <img src="images/world.jpg" alt="Mapa visual del universo Shambhala" />
+            </span>
+            <div class="explore-link-text">
+              <h3>Explorar</h3>
+              <p>Recorre de nuevo el mapa general del mundo y la saga.</p>
+            </div>
           </div>
         </a>
 
         <a class="explore-link-card" href="corazon.html">
-          <span class="explore-link-thumb">
-            <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
-          </span>
-          <div>
-            <h3>Corazón de Shambhala</h3>
-            <p>Entra al espacio más íntimo y emocional que sostiene el pulso de la saga.</p>
+          <div class="explore-link-inner">
+            <span class="explore-link-thumb">
+              <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+            </span>
+            <div class="explore-link-text">
+              <h3>Corazón de Shambhala</h3>
+              <p>Entra al espacio más íntimo y emocional que sostiene el pulso de la saga.</p>
+            </div>
           </div>
         </a>
 
         <a class="explore-link-card" href="personajes.html">
-          <span class="explore-link-thumb">
-            <img src="images/calisto.jpg" alt="Personajes de la saga Shambhala" />
-          </span>
-          <div>
-            <h3>Personajes</h3>
-            <p>Conoce a las presencias que sostienen la historia.</p>
+          <div class="explore-link-inner">
+            <span class="explore-link-thumb">
+              <img src="images/calisto.jpg" alt="Personajes de la saga Shambhala" />
+            </span>
+            <div class="explore-link-text">
+              <h3>Personajes</h3>
+              <p>Conoce a las presencias que sostienen la historia.</p>
+            </div>
           </div>
         </a>
 
         <a class="explore-link-card" href="premios.html">
-          <span class="explore-link-thumb logo">
-            <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios y reconocimientos de la saga" />
-          </span>
-          <div>
-            <h3>Premios</h3>
-            <p>Descubre la recepción y los reconocimientos de la obra.</p>
+          <div class="explore-link-inner">
+            <span class="explore-link-thumb logo">
+              <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios y reconocimientos de la saga" />
+            </span>
+            <div class="explore-link-text">
+              <h3>Premios</h3>
+              <p>Descubre la recepción y los reconocimientos de la obra.</p>
+            </div>
           </div>
         </a>
 
         <a class="explore-link-card" href="#libros">
-          <span class="explore-link-thumb">
-            <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Libros de la saga Shambhala" />
-          </span>
-          <div>
-            <h3>Libros</h3>
-            <p>Vuelve a la constelación narrativa de la saga.</p>
+          <div class="explore-link-inner">
+            <span class="explore-link-thumb">
+              <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Libros de la saga Shambhala" />
+            </span>
+            <div class="explore-link-text">
+              <h3>Libros</h3>
+              <p>Vuelve a la constelación narrativa de la saga.</p>
+            </div>
           </div>
         </a>
       </div>
