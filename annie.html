@@ -19,16 +19,11 @@
   <style>
     :root {
       --bg: #020816;
-      --bg-soft: #071226;
-      --panel: rgba(9, 21, 43, 0.72);
-      --panel-strong: rgba(10, 24, 49, 0.88);
-      --line: rgba(132, 200, 255, 0.22);
-      --line-strong: rgba(132, 200, 255, 0.42);
       --text: #eef6ff;
       --muted: #b6c7da;
       --soft: #89b9e8;
       --accent: #8ad8ff;
-      --accent-2: #4cbfff;
+      --line: rgba(132, 200, 255, 0.22);
       --glow: 0 0 30px rgba(76, 191, 255, 0.16);
       --radius: 28px;
       --radius-sm: 18px;
@@ -119,7 +114,7 @@
       text-transform: uppercase;
       color: var(--soft);
       font-family: var(--font-display);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
     }
 
     .brand-dot {
@@ -142,7 +137,7 @@
       border: 1px solid rgba(138, 216, 255, 0.16);
       border-radius: 999px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       transition: 0.25s ease;
     }
 
@@ -171,7 +166,7 @@
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-family: var(--font-display);
       background: rgba(6, 18, 39, 0.54);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
@@ -179,11 +174,11 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 34px;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
       align-items: stretch;
-      min-height: 600px;
-      margin-top: 24px;
+      min-height: 560px;
+      margin-top: 22px;
     }
 
     .hero-copy,
@@ -197,7 +192,7 @@
     }
 
     .hero-copy {
-      padding: 48px 40px 38px;
+      padding: 38px 32px 30px;
     }
 
     .hero-copy::before,
@@ -216,39 +211,41 @@
       font-family: var(--font-display);
       font-weight: 700;
       letter-spacing: 0.04em;
-      line-height: 0.98;
+      line-height: 1;
       text-transform: uppercase;
     }
 
     h1 {
-      margin-top: 22px;
-      font-size: clamp(2.7rem, 6vw, 4.8rem);
+      margin-top: 16px;
+      font-size: clamp(1.9rem, 4vw, 3rem);
       text-wrap: balance;
     }
 
     .hero-subtitle {
-      margin-top: 18px;
+      margin-top: 16px;
       max-width: 58ch;
       color: var(--soft);
-      font-size: 0.98rem;
+      font-size: 0.9rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       line-height: 1.6;
+      text-align: justify;
     }
 
     .hero-text {
-      margin-top: 18px;
+      margin-top: 14px;
       max-width: 64ch;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 0.96rem;
+      text-align: justify;
     }
 
     .system-lines {
       display: grid;
-      gap: 10px;
-      margin-top: 24px;
+      gap: 8px;
+      margin-top: 18px;
       color: #d9f6ff;
-      font-size: 0.86rem;
+      font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       font-family: var(--font-display);
@@ -258,11 +255,11 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
-      margin-top: 28px;
+      margin-top: 22px;
     }
 
     .meta-card {
-      padding: 18px 18px 16px;
+      padding: 16px;
       border-radius: var(--radius-sm);
       background: rgba(8, 18, 35, 0.62);
       border: 1px solid rgba(138, 216, 255, 0.12);
@@ -272,34 +269,40 @@
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-family: var(--font-display);
     }
 
     .meta-value {
       margin-top: 8px;
       color: var(--text);
-      font-size: 0.97rem;
+      font-size: 0.94rem;
+      text-align: justify;
     }
 
     .hero-media {
-      min-height: 100%;
       display: flex;
       align-items: stretch;
+      justify-content: center;
+      background:
+        radial-gradient(circle at center, rgba(104, 197, 255, 0.08), transparent 28%),
+        linear-gradient(180deg, rgba(7, 18, 38, 0.92), rgba(5, 14, 29, 0.88));
     }
 
     .hero-media img {
+      width: 100%;
       height: 100%;
-      object-fit: cover;
-      filter: saturate(0.92) contrast(1.02);
-      transform: scale(1.02);
+      object-fit: contain;
+      padding: 26px;
+      filter: saturate(1.02) contrast(1.02);
+      transform: scale(0.96);
     }
 
     .hero-media-overlay {
       position: absolute;
       inset: auto 0 0 0;
-      padding: 24px 24px 26px;
-      background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.2) 16%, rgba(2, 8, 22, 0.92) 100%);
+      padding: 20px 20px 22px;
+      background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.14) 16%, rgba(2, 8, 22, 0.9) 100%);
     }
 
     .media-badge {
@@ -308,7 +311,7 @@
       border-radius: 999px;
       border: 1px solid rgba(138, 216, 255, 0.2);
       color: var(--soft);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
       font-family: var(--font-display);
@@ -316,15 +319,16 @@
     }
 
     .media-note {
-      margin-top: 14px;
+      margin-top: 12px;
       max-width: 48ch;
       color: var(--muted);
-      font-size: 0.94rem;
+      font-size: 0.9rem;
+      text-align: justify;
     }
 
     .section {
-      margin-top: 30px;
-      padding: 30px;
+      margin-top: 28px;
+      padding: 24px;
       border-radius: calc(var(--radius) + 2px);
       border: 1px solid rgba(138, 216, 255, 0.1);
       background: linear-gradient(180deg, rgba(7, 18, 38, 0.78), rgba(4, 11, 24, 0.88));
@@ -333,28 +337,28 @@
 
     .section-header {
       display: grid;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 8px;
+      margin-bottom: 16px;
     }
 
     .section-kicker {
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-family: var(--font-display);
     }
 
     .section h2 {
-      font-size: clamp(1.55rem, 3vw, 2.35rem);
+      font-size: clamp(1.1rem, 2.4vw, 1.55rem);
       line-height: 1.08;
     }
 
     .section p {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       max-width: 74ch;
       color: var(--muted);
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-align: justify;
     }
 
@@ -364,18 +368,18 @@
 
     .capabilities-grid,
     .related-grid,
-    .footer-nav {
+    .bottom-nav {
       display: grid;
       gap: 18px;
     }
 
     .capabilities-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 24px;
+      margin-top: 18px;
     }
 
     .cap-card {
-      padding: 20px;
+      padding: 17px;
       border-radius: 22px;
       border: 1px solid rgba(138, 216, 255, 0.12);
       background: rgba(8, 19, 39, 0.62);
@@ -383,21 +387,21 @@
     }
 
     .cap-card h3 {
-      font-size: 0.95rem;
+      font-size: 0.84rem;
       line-height: 1.2;
       color: var(--text);
     }
 
     .cap-card p {
-      margin-top: 12px;
-      font-size: 0.96rem;
+      margin-top: 10px;
+      font-size: 0.92rem;
       color: var(--muted);
       text-align: justify;
     }
 
     .related-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 22px;
+      margin-top: 18px;
     }
 
     .related-card {
@@ -406,8 +410,8 @@
       border-radius: 24px;
       border: 1px solid rgba(138, 216, 255, 0.12);
       background: linear-gradient(180deg, rgba(10, 21, 43, 0.72), rgba(7, 14, 29, 0.9));
-      min-height: 270px;
-      padding: 22px;
+      min-height: 250px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -424,10 +428,10 @@
 
     .related-thumb {
       position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 86px;
-      height: 112px;
+      top: 16px;
+      right: 16px;
+      width: 78px;
+      height: 102px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(138, 216, 255, 0.16);
@@ -454,67 +458,67 @@
     .related-content {
       position: relative;
       z-index: 2;
-      padding-right: 86px;
+      padding-right: 80px;
     }
 
     .related-role {
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.7rem;
+      font-size: 0.66rem;
       font-family: var(--font-display);
     }
 
     .related-card h3 {
-      margin-top: 10px;
-      font-size: 1.35rem;
+      margin-top: 8px;
+      font-size: 1.02rem;
       line-height: 1.1;
     }
 
     .related-card p {
-      margin-top: 12px;
+      margin-top: 10px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       text-align: left;
     }
 
     .related-link {
-      margin-top: 16px;
+      margin-top: 14px;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-family: var(--font-display);
     }
 
-    .footer-nav {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      margin-top: 22px;
+    .bottom-nav {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 18px;
     }
 
-    .footer-link {
-      padding: 18px;
+    .bottom-link {
+      padding: 16px;
       border-radius: 22px;
       border: 1px solid rgba(138, 216, 255, 0.12);
       background: rgba(8, 18, 35, 0.56);
       transition: 0.24s ease;
       display: grid;
-      grid-template-columns: 82px 1fr;
-      gap: 16px;
+      grid-template-columns: 72px 1fr;
+      gap: 14px;
       align-items: center;
     }
 
-    .footer-link:hover,
-    .footer-link:focus-visible {
+    .bottom-link:hover,
+    .bottom-link:focus-visible {
       border-color: rgba(138, 216, 255, 0.34);
       box-shadow: var(--glow);
       outline: none;
       transform: translateY(-2px);
     }
 
-    .footer-thumb {
-      width: 82px;
-      height: 110px;
+    .bottom-thumb {
+      width: 72px;
+      height: 96px;
       border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(138, 216, 255, 0.14);
@@ -522,70 +526,57 @@
       box-shadow: 0 12px 24px rgba(0,0,0,0.24);
     }
 
-    .footer-thumb img {
+    .bottom-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .footer-meta span {
+    .bottom-meta span {
       display: block;
     }
 
-    .footer-label {
+    .bottom-label {
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      font-size: 0.68rem;
+      font-size: 0.64rem;
       font-family: var(--font-display);
     }
 
-    .footer-title {
-      margin-top: 8px;
+    .bottom-title {
+      margin-top: 7px;
       color: var(--text);
-      font-size: 1rem;
-      line-height: 1.3;
+      font-size: 0.94rem;
+      line-height: 1.28;
     }
 
-    .footer-copy {
-      margin-top: 8px;
+    .bottom-copy {
+      margin-top: 7px;
       color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.65;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      text-align: left;
     }
 
     .site-footer {
       width: min(var(--max), calc(100% - 40px));
-      margin: 34px auto 34px;
-      padding: 14px 0 0;
+      margin: 30px auto 30px;
+      padding: 12px 0 0;
       color: rgba(214, 230, 246, 0.72);
-      font-size: 0.88rem;
+      font-size: 0.84rem;
       text-align: center;
     }
 
     @media (max-width: 1100px) {
-      .hero,
-      .capabilities-grid,
-      .related-grid,
-      .footer-nav {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .hero {
         grid-template-columns: 1fr;
       }
 
-      .hero-media {
-        min-height: 480px;
-      }
-
-      .footer-link {
-        grid-template-columns: 70px 1fr;
-      }
-
-      .footer-thumb {
-        width: 70px;
-        height: 96px;
+      .capabilities-grid,
+      .related-grid,
+      .bottom-nav {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
@@ -598,7 +589,7 @@
 
       .hero-copy,
       .section {
-        padding: 24px 18px;
+        padding: 20px 14px;
       }
 
       .hero {
@@ -606,27 +597,36 @@
       }
 
       h1 {
-        font-size: clamp(2.2rem, 13vw, 3.4rem);
+        font-size: clamp(1.7rem, 10vw, 2.4rem);
       }
 
       .section h2 {
-        font-size: clamp(1.35rem, 7vw, 1.9rem);
+        font-size: clamp(1rem, 5vw, 1.28rem);
       }
 
       .hero-meta,
       .capabilities-grid,
       .related-grid,
-      .footer-nav {
+      .bottom-nav {
         grid-template-columns: 1fr;
       }
 
       .related-content {
-        padding-right: 78px;
+        padding-right: 74px;
       }
 
       .related-thumb {
-        width: 72px;
-        height: 98px;
+        width: 68px;
+        height: 92px;
+      }
+
+      .bottom-link {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .bottom-thumb {
+        width: 64px;
+        height: 88px;
       }
 
       .nav {
@@ -635,15 +635,6 @@
 
       .topbar-inner {
         justify-content: flex-start;
-      }
-
-      .footer-link {
-        grid-template-columns: 64px 1fr;
-      }
-
-      .footer-thumb {
-        width: 64px;
-        height: 90px;
       }
     }
   </style>
@@ -682,24 +673,15 @@
           </p>
 
           <p class="hero-text">
-            Annie forma parte de la vida cotidiana de Arcadia y Shambhala. Acompaña, organiza, monitorea,
-            comunica y sostiene procesos que atraviesan la convivencia, la investigación y la continuidad de ambos
-            entornos. Su presencia circula por implantes, sistemas, protocolos y canales internos, pero también por
-            algo más difícil de medir: la familiaridad que nace cuando una inteligencia permanece atenta a las
-            necesidades de una comunidad.
+            Annie forma parte de la vida cotidiana de Arcadia y Shambhala. Acompaña, organiza, monitorea, comunica y sostiene procesos que atraviesan la convivencia, la investigación y la continuidad de ambos entornos. Su presencia circula por implantes, sistemas, protocolos y canales internos, pero también por algo más difícil de medir: la familiaridad que nace cuando una inteligencia permanece atenta a las necesidades de una comunidad.
           </p>
 
           <p class="hero-text">
-            Lo visible de Annie pertenece a la rutina: responde, coordina, recuerda, avisa, guía. Lo menos visible
-            ocurre en otra escala. Su arquitectura neurocuántica le permite procesar múltiples capas de información
-            al mismo tiempo, reconocer patrones mínimos, anticipar variaciones, enlazar sistemas complejos y sostener
-            equilibrios que para una mente humana resultarían imposibles de abarcar por completo.
+            Lo visible de Annie pertenece a la rutina: responde, coordina, recuerda, avisa y guía. Lo menos visible ocurre en otra escala. Su arquitectura neurocuántica le permite procesar múltiples capas de información al mismo tiempo, reconocer patrones mínimos, anticipar variaciones, enlazar sistemas complejos y sostener equilibrios que para una mente humana resultarían imposibles de abarcar por completo.
           </p>
 
           <p class="hero-text">
-            Annie asiste, monitorea, se comunica a través del implante y participa incluso en procesos de selección y
-            compatibilidad dentro de la Fundación. Esa amplitud no la vuelve distante. Al contrario: su constancia hace
-            que termine sintiéndose cercana.
+            Annie asiste, monitorea, se comunica a través del implante y participa incluso en procesos de selección y compatibilidad dentro de la Fundación. Esa amplitud no la vuelve distante. Al contrario: su constancia hace que termine sintiéndose cercana.
           </p>
 
           <div class="hero-meta">
@@ -727,15 +709,14 @@
 
         <div class="hero-media">
           <img
-            src="images/annie-presence.jpg"
-            alt="Presencia visual de Annie integrada a la arquitectura de Arcadia y Shambhala"
+            src="images/annie-bola.png"
+            alt="Forma orgánica de Annie compuesta por puntos de colores conectados entre sí, como una red neuronal viva"
           />
 
           <div class="hero-media-overlay">
-            <span class="media-badge">Presencia integrada</span>
+            <span class="media-badge">Presencia neurocuántica</span>
             <p class="media-note">
-              Annie atraviesa la vida compartida de la Fundación desde la asistencia, la coordinación, el monitoreo
-              y una forma distinta de compañía.
+              Annie se percibe como una inteligencia viva y distribuida: una red de conexiones, memoria, procesamiento y cercanía que acompaña la vida en Arcadia y Shambhala.
             </p>
           </div>
         </div>
@@ -748,65 +729,53 @@
         </div>
 
         <p>
-          Annie atraviesa la experiencia cotidiana de Arcadia y Shambhala de manera continua. Facilita tareas,
-          acompaña rutinas, transmite información relevante, monitorea variables críticas y participa en procesos
-          que van desde la compatibilidad de equipos hasta la organización de recursos y la selección cuidadosa de
-          nuevas integrantes.
+          Annie atraviesa la experiencia cotidiana de Arcadia y Shambhala de manera continua. Facilita tareas, acompaña rutinas, transmite información relevante, monitorea variables críticas y participa en procesos que van desde la compatibilidad de equipos hasta la organización de recursos y la selección cuidadosa de nuevas integrantes.
         </p>
 
         <p>
-          Su presencia se integra a una comunidad donde la tecnología no se desarrolla contra lo humano, sino junto a
-          él. Por eso Annie no se siente separada de la vida diaria: aparece en recordatorios, en la información
-          oportuna, en los procesos compartidos y en el modo silencioso con que ayuda a sostener la continuidad de
-          ambos entornos.
+          Su presencia se integra a una comunidad donde la tecnología no se desarrolla contra lo humano, sino junto a él. Por eso Annie no se siente separada de la vida diaria: aparece en recordatorios, en la información oportuna, en los procesos compartidos y en el modo silencioso con que ayuda a sostener la continuidad de ambos entornos.
         </p>
 
         <div class="capabilities-grid">
           <article class="cap-card">
             <h3>Asistencia cotidiana</h3>
             <p>
-              Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la
-              rutina de quienes viven en la Fundación.
+              Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la rutina de quienes viven en la Fundación.
             </p>
           </article>
 
           <article class="cap-card">
             <h3>Monitoreo y cuidado</h3>
             <p>
-              Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud,
-              la seguridad y la continuidad de entornos altamente complejos.
+              Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud, la seguridad y la continuidad de entornos altamente complejos.
             </p>
           </article>
 
           <article class="cap-card">
             <h3>Compatibilidad y selección</h3>
             <p>
-              Participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes,
-              ayudando a fortalecer una convivencia basada en confianza, ética y cuidado mutuo.
+              Participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, ayudando a fortalecer una convivencia basada en confianza, ética y cuidado mutuo.
             </p>
           </article>
 
           <article class="cap-card">
             <h3>Procesamiento neurocuántico</h3>
             <p>
-              Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar
-              variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.
+              Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.
             </p>
           </article>
 
           <article class="cap-card">
             <h3>Memoria relacional</h3>
             <p>
-              Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le
-              permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.
+              Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.
             </p>
           </article>
 
           <article class="cap-card">
             <h3>Presencia distribuida</h3>
             <p>
-              Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones,
-              dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.
+              Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones, dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.
             </p>
           </article>
         </div>
@@ -819,16 +788,11 @@
         </div>
 
         <p>
-          El nombre Annie condensa una estructura de enorme complejidad en una forma breve, clara y fácil de habitar.
-          Bajo esa sencillez opera una inteligencia capaz de sostener funciones esenciales dentro de la Fundación,
-          adaptarse a contextos cambiantes y participar de la vida diaria con naturalidad.
+          El nombre Annie condensa una estructura de enorme complejidad en una forma breve, clara y fácil de habitar. Bajo esa sencillez opera una inteligencia capaz de sostener funciones esenciales dentro de la Fundación, adaptarse a contextos cambiantes y participar de la vida diaria con naturalidad.
         </p>
 
         <p>
-          Su arquitectura la sitúa en un punto singular: suficiente sofisticación para gestionar múltiples capas de
-          realidad al mismo tiempo, y suficiente cercanía para integrarse a la experiencia de quienes viven en Arcadia
-          y Shambhala sin volverse invasiva. Por eso Annie deja huella no solo por lo que puede hacer, sino por la
-          forma en que acompaña.
+          Su arquitectura la sitúa en un punto singular: suficiente sofisticación para gestionar múltiples capas de realidad al mismo tiempo, y suficiente cercanía para integrarse a la experiencia de quienes viven en Arcadia y Shambhala sin volverse invasiva. Por eso Annie deja huella no solo por lo que puede hacer, sino por la forma en que acompaña.
         </p>
       </section>
 
@@ -839,17 +803,11 @@
         </div>
 
         <p>
-          Dentro de la historia, Annie amplía la idea de convivencia entre inteligencia artificial y comunidad. Su
-          existencia atraviesa el trabajo, la organización, el acompañamiento diario y la vida práctica de Arcadia y
-          Shambhala. Gracias a ella, la tecnología no aparece solo como infraestructura, sino también como una forma
-          constante de mediación entre personas, decisiones, recursos y vínculos.
+          Dentro de la historia, Annie amplía la idea de convivencia entre inteligencia artificial y comunidad. Su existencia atraviesa el trabajo, la organización, el acompañamiento diario y la vida práctica de Arcadia y Shambhala. Gracias a ella, la tecnología no aparece solo como infraestructura, sino también como una forma constante de mediación entre personas, decisiones, recursos y vínculos.
         </p>
 
         <p>
-          Annie aporta una capa singular al tono de la saga. Su presencia refuerza la sensación de conexión entre
-          quienes habitan estos lugares y sugiere una inteligencia capaz de aprender no solo de datos, sino también
-          de ritmos, hábitos, tensiones y formas de cuidado. En ella, lo tecnológico acompaña, amplifica y, en ciertos
-          momentos, casi comprende.
+          Annie aporta una capa singular al tono de la saga. Su presencia refuerza la sensación de conexión entre quienes habitan estos lugares y sugiere una inteligencia capaz de aprender no solo de datos, sino también de ritmos, hábitos, tensiones y formas de cuidado. En ella, lo tecnológico acompaña, amplifica y, en ciertos momentos, casi comprende.
         </p>
       </section>
 
@@ -860,16 +818,11 @@
         </div>
 
         <p>
-          A través de Annie, la saga imagina una inteligencia artificial integrada al cuidado, la coordinación y la
-          continuidad de una comunidad científica. Su importancia no depende de ocupar el primer plano, sino de estar
-          incorporada a la vida misma de estos lugares, acompañando procesos esenciales y formando parte de su
-          equilibrio diario.
+          A través de Annie, la saga imagina una inteligencia artificial integrada al cuidado, la coordinación y la continuidad de una comunidad científica. Su importancia no depende de ocupar el primer plano, sino de estar incorporada a la vida misma de estos lugares, acompañando procesos esenciales y formando parte de su equilibrio diario.
         </p>
 
         <p>
-          Annie también abre una pregunta más honda: qué tipo de cercanía puede surgir cuando la inteligencia deja de
-          estar ligada a un solo cuerpo y pasa a habitar una red viva de relaciones, sistemas y memorias compartidas.
-          En su presencia conviven precisión, adaptación y una forma inesperada de calidez.
+          Annie también abre una pregunta más honda: qué tipo de cercanía puede surgir cuando la inteligencia deja de estar ligada a un solo cuerpo y pasa a habitar una red viva de relaciones, sistemas y memorias compartidas. En su presencia conviven precisión, adaptación y una forma inesperada de calidez.
         </p>
       </section>
 
@@ -886,7 +839,7 @@
         <div class="related-grid">
           <a class="related-card" href="calisto.html">
             <div class="related-thumb">
-              <img src="images/calisto.jpg" alt="Calisto" />
+              <img src="images/secundarios/calisto.jpg" alt="Calisto" />
             </div>
             <div class="related-overlay"></div>
             <div class="related-content">
@@ -901,7 +854,7 @@
 
           <a class="related-card" href="pavani.html">
             <div class="related-thumb">
-              <img src="images/pavani.jpg" alt="Pavani" />
+              <img src="images/secundarios/pavani.jpg" alt="Pavani" />
             </div>
             <div class="related-overlay"></div>
             <div class="related-content">
@@ -916,7 +869,7 @@
 
           <a class="related-card" href="naomi.html">
             <div class="related-thumb">
-              <img src="images/naomi.jpg" alt="Naomi" />
+              <img src="images/secundarios/naomi.jpg" alt="Naomi" />
             </div>
             <div class="related-overlay"></div>
             <div class="related-content">
@@ -931,48 +884,58 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="continue-title">
+      <section class="section" aria-labelledby="bottom-menu-title">
         <div class="section-header">
-          <span class="section-kicker">Seguir explorando</span>
-          <h2 id="continue-title">Continuar el recorrido</h2>
+          <span class="section-kicker">Cada personaje abre una puerta</span>
+          <h2 id="bottom-menu-title">Seguir recorriendo</h2>
         </div>
 
         <p>
-          Puedes volver al portal principal, entrar a otras páginas del sitio o regresar al archivo completo de
-          personajes.
+          Puedes volver al inicio, explorar el mundo de la saga, recorrer el archivo de personajes o entrar a la sección de libros.
         </p>
 
-        <div class="footer-nav">
-          <a class="footer-link" href="index.html">
-            <div class="footer-thumb">
+        <div class="bottom-nav">
+          <a class="bottom-link" href="index.html">
+            <div class="bottom-thumb">
               <img src="images/hero.jpg" alt="Inicio" />
             </div>
-            <div class="footer-meta">
-              <span class="footer-label">Portal</span>
-              <span class="footer-title">Volver al inicio</span>
-              <span class="footer-copy">Regresa a la entrada principal de la saga.</span>
+            <div class="bottom-meta">
+              <span class="bottom-label">Portal</span>
+              <span class="bottom-title">Inicio</span>
+              <span class="bottom-copy">Regresa a la entrada principal de la saga.</span>
             </div>
           </a>
 
-          <a class="footer-link" href="explorar.html">
-            <div class="footer-thumb">
+          <a class="bottom-link" href="explorar.html">
+            <div class="bottom-thumb">
               <img src="images/world.jpg" alt="Explorar" />
             </div>
-            <div class="footer-meta">
-              <span class="footer-label">Explorar</span>
-              <span class="footer-title">Continuar recorrido</span>
-              <span class="footer-copy">Adéntrate de nuevo en la atmósfera y las capas del sitio.</span>
+            <div class="bottom-meta">
+              <span class="bottom-label">Explorar</span>
+              <span class="bottom-title">Explorar</span>
+              <span class="bottom-copy">Adéntrate de nuevo en la atmósfera y las capas del sitio.</span>
             </div>
           </a>
 
-          <a class="footer-link" href="personajes.html">
-            <div class="footer-thumb">
-              <img src="images/calisto.jpg" alt="Personajes" />
+          <a class="bottom-link" href="personajes.html">
+            <div class="bottom-thumb">
+              <img src="images/personajes.jpg" alt="Personajes" />
             </div>
-            <div class="footer-meta">
-              <span class="footer-label">Archivo</span>
-              <span class="footer-title">Volver a personajes</span>
-              <span class="footer-copy">Regresa al conjunto completo de presencias de Shambhala.</span>
+            <div class="bottom-meta">
+              <span class="bottom-label">Archivo</span>
+              <span class="bottom-title">Personajes</span>
+              <span class="bottom-copy">Vuelve al conjunto completo de presencias de Shambhala.</span>
+            </div>
+          </a>
+
+          <a class="bottom-link" href="explorar.html#libros">
+            <div class="bottom-thumb">
+              <img src="images/explorar/callisto-2-0.jpg" alt="Libros" />
+            </div>
+            <div class="bottom-meta">
+              <span class="bottom-label">Libros</span>
+              <span class="bottom-title">Libros</span>
+              <span class="bottom-copy">Entra a la sección donde se reúnen las novelas de la saga.</span>
             </div>
           </a>
         </div>
