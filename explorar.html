@@ -149,7 +149,6 @@
     .book-body,
     .book-meta p,
     .awards-text p,
-    .explore-link-card p,
     .closing-box p {
       text-align: justify;
       text-align-last: left;
@@ -576,85 +575,77 @@
     .explore-links-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      gap: 24px;
       margin-top: 20px;
     }
 
     .explore-link-card {
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
-      transition: 0.3s ease;
+      position: relative;
+      display: block;
+      min-height: 210px;
+      overflow: hidden;
+      border: 1px solid rgba(78, 171, 255, 0.24);
+      background-color: #050914;
+      box-shadow:
+        inset 0 0 28px rgba(60, 146, 255, 0.05),
+        0 14px 32px rgba(0, 0, 0, 0.22);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     }
 
     .explore-link-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(112, 196, 255, 0.32);
-      box-shadow: 0 0 24px rgba(80, 174, 255, 0.12);
-    }
-
-    .explore-link-inner {
-      display: grid;
-      grid-template-columns: 84px 1fr;
-      gap: 16px;
-      align-items: center;
-    }
-
-    .explore-link-thumb {
-      position: relative;
-      width: 84px;
-      height: 84px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255,255,255,0.02);
+      transform: translateY(-6px);
+      border-color: rgba(111, 195, 255, 0.55);
       box-shadow:
-        inset 0 0 18px rgba(90, 168, 255, 0.04),
-        0 10px 24px rgba(0, 0, 0, 0.16);
-      flex-shrink: 0;
+        0 0 28px rgba(67, 161, 255, 0.14),
+        0 18px 40px rgba(0, 0, 0, 0.28);
     }
 
-    .explore-link-thumb::after {
-      content: "";
+    .explore-link-card img {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to top, rgba(2, 5, 12, 0.45), rgba(2, 5, 12, 0.05)),
-        radial-gradient(circle at top right, rgba(93, 182, 255, 0.16), transparent 28%);
-      pointer-events: none;
-    }
-
-    .explore-link-thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: brightness(0.84) contrast(1.04);
+      filter: brightness(0.82) contrast(1.04);
+      transform: scale(1.01);
     }
 
-    .explore-link-thumb.logo img {
-      object-fit: contain;
-      padding: 10px;
+    .explore-link-card.logo-card {
       background:
-        radial-gradient(circle at center, rgba(84, 165, 255, 0.08), transparent 46%),
-        rgba(4, 8, 16, 0.96);
+        radial-gradient(circle at center, rgba(83, 162, 255, 0.12), transparent 42%),
+        linear-gradient(180deg, rgba(6, 10, 20, 0.94), rgba(3, 6, 14, 0.98));
     }
 
-    .explore-link-text h3 {
+    .explore-link-card.logo-card img {
+      object-fit: contain;
+      padding: 24px;
+      filter: none;
+    }
+
+    .explore-link-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(3, 7, 14, 0.88) 8%, rgba(3, 7, 14, 0.34) 42%, rgba(3, 7, 14, 0.10) 100%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0));
+      z-index: 1;
+    }
+
+    .explore-link-title {
+      position: absolute;
+      left: 22px;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.82rem;
+      font-size: 0.86rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #f1f8ff;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .explore-link-text p {
-      font-size: 0.9rem;
-      line-height: 1.72;
-      color: rgba(236, 243, 255, 0.72);
+      color: #f3f8ff;
+      line-height: 1.25;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
     }
 
     .closing {
@@ -770,6 +761,10 @@
       .book-cover {
         max-width: 260px;
       }
+
+      .explore-link-card {
+        min-height: 190px;
+      }
     }
 
     @media (max-width: 680px) {
@@ -782,7 +777,6 @@
       .text-panel p,
       .image-caption p,
       .awards-text p,
-      .explore-link-card p,
       .closing-box p {
         font-size: 0.94rem;
         line-height: 1.8;
@@ -829,24 +823,23 @@
       }
 
       .award-book-badges,
-      .award-book-badges.cupids,
+      .award-book-badges.cupids {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .explore-links-grid {
         grid-template-columns: 1fr;
       }
 
-      .explore-link-inner {
-        grid-template-columns: 70px 1fr;
-        gap: 14px;
-        align-items: center;
+      .explore-link-card {
+        min-height: 180px;
       }
 
-      .explore-link-thumb {
-        width: 70px;
-        height: 70px;
-      }
-
-      .explore-link-text h3 {
-        font-size: 0.78rem;
+      .explore-link-title {
+        font-size: 0.8rem;
+        left: 18px;
+        right: 18px;
+        bottom: 16px;
       }
     }
 
@@ -865,14 +858,13 @@
         max-height: 84px;
       }
 
-      .explore-link-inner {
-        grid-template-columns: 62px 1fr;
-        gap: 12px;
+      .explore-link-card {
+        min-height: 168px;
       }
 
-      .explore-link-thumb {
-        width: 62px;
-        height: 62px;
+      .explore-link-title {
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
       }
     }
   </style>
@@ -1158,75 +1150,33 @@
 
       <div class="explore-links-grid">
         <a class="explore-link-card" href="index.html">
-          <div class="explore-link-inner">
-            <span class="explore-link-thumb">
-              <img src="images/hero.jpg" alt="Vista de inicio de la saga Shambhala" />
-            </span>
-            <div class="explore-link-text">
-              <h3>Inicio</h3>
-              <p>Vuelve a la entrada principal del universo Shambhala.</p>
-            </div>
-          </div>
+          <img src="images/secundarios/hero.jpg" alt="Inicio" />
+          <span class="explore-link-title">Inicio</span>
         </a>
 
         <a class="explore-link-card" href="explorar.html">
-          <div class="explore-link-inner">
-            <span class="explore-link-thumb">
-              <img src="images/world.jpg" alt="Mapa visual del universo Shambhala" />
-            </span>
-            <div class="explore-link-text">
-              <h3>Explorar</h3>
-              <p>Recorre de nuevo el mapa general del mundo y la saga.</p>
-            </div>
-          </div>
+          <img src="images/world.jpg" alt="Explorar" />
+          <span class="explore-link-title">Explorar</span>
         </a>
 
         <a class="explore-link-card" href="corazon.html">
-          <div class="explore-link-inner">
-            <span class="explore-link-thumb">
-              <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
-            </span>
-            <div class="explore-link-text">
-              <h3>Corazón de Shambhala</h3>
-              <p>Entra al espacio más íntimo y emocional que sostiene el pulso de la saga.</p>
-            </div>
-          </div>
+          <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+          <span class="explore-link-title">Corazón</span>
         </a>
 
         <a class="explore-link-card" href="personajes.html">
-          <div class="explore-link-inner">
-            <span class="explore-link-thumb">
-              <img src="images/calisto.jpg" alt="Personajes de la saga Shambhala" />
-            </span>
-            <div class="explore-link-text">
-              <h3>Personajes</h3>
-              <p>Conoce a las presencias que sostienen la historia.</p>
-            </div>
-          </div>
+          <img src="images/secundarios/calisto.jpg" alt="Personajes" />
+          <span class="explore-link-title">Personajes</span>
         </a>
 
-        <a class="explore-link-card" href="premios.html">
-          <div class="explore-link-inner">
-            <span class="explore-link-thumb logo">
-              <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios y reconocimientos de la saga" />
-            </span>
-            <div class="explore-link-text">
-              <h3>Premios</h3>
-              <p>Descubre la recepción y los reconocimientos de la obra.</p>
-            </div>
-          </div>
+        <a class="explore-link-card logo-card" href="premios.html">
+          <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios" />
+          <span class="explore-link-title">Premios</span>
         </a>
 
         <a class="explore-link-card" href="#libros">
-          <div class="explore-link-inner">
-            <span class="explore-link-thumb">
-              <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Libros de la saga Shambhala" />
-            </span>
-            <div class="explore-link-text">
-              <h3>Libros</h3>
-              <p>Vuelve a la constelación narrativa de la saga.</p>
-            </div>
-          </div>
+          <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Libros" />
+          <span class="explore-link-title">Libros</span>
         </a>
       </div>
     </section>
