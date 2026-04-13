@@ -15,7 +15,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
-F
+
   <style>
     :root {
       --text: #eef6ff;
@@ -500,7 +500,7 @@ F
     .bottom-link {
       padding: 14px;
       border-radius: 22px;
-      border: 1px solid rgba(138, 216, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(8, 18, 35, 0.56);
       transition: 0.24s ease;
       display: grid;
@@ -511,8 +511,8 @@ F
 
     .bottom-link:hover,
     .bottom-link:focus-visible {
-      border-color: rgba(138, 216, 255, 0.34);
-      box-shadow: var(--glow);
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 0 24px rgba(255, 255, 255, 0.06);
       outline: none;
       transform: translateY(-2px);
     }
@@ -522,7 +522,7 @@ F
       height: 82px;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid rgba(138, 216, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(255,255,255,0.03);
       box-shadow: 0 12px 24px rgba(0,0,0,0.24);
     }
@@ -537,19 +537,13 @@ F
       display: block;
     }
 
-    .bottom-label {
-      color: var(--soft);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.6rem;
-      font-family: var(--font-display);
-    }
-
     .bottom-title {
-      margin-top: 6px;
-      color: var(--text);
-      font-size: 0.88rem;
-      line-height: 1.22;
+      color: #ffffff;
+      font-size: 0.9rem;
+      line-height: 1.24;
+      font-family: var(--font-display);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .bottom-copy {
@@ -892,7 +886,7 @@ F
         </div>
 
         <p>
-          Puedes volver al inicio, explorar el mundo de la saga, recorrer el archivo de personajes, entrar a la sección de libros o pasar al corazón de Shambhala.
+          Puedes volver al inicio, entrar al mundo de la saga, recorrer el archivo de personajes, pasar a los libros o visitar el corazón de Shambhala.
         </p>
 
         <div class="bottom-nav">
@@ -901,7 +895,6 @@ F
               <img src="images/hero.jpg" alt="Inicio" />
             </div>
             <div class="bottom-meta">
-              <span class="bottom-label">Portal</span>
               <span class="bottom-title">Inicio</span>
               <span class="bottom-copy">Regresa a la entrada principal de la saga.</span>
             </div>
@@ -909,35 +902,19 @@ F
 
           <a class="bottom-link" href="explorar.html">
             <div class="bottom-thumb">
-              <img src="images/world.jpg" alt="Explorar" />
+              <img src="images/world.jpg" alt="El mundo" />
             </div>
             <div class="bottom-meta">
-              <span class="bottom-label">Explorar</span>
-              <span class="bottom-title">Explorar</span>
+              <span class="bottom-title">El mundo</span>
               <span class="bottom-copy">Adéntrate de nuevo en la atmósfera y las capas del sitio.</span>
             </div>
           </a>
-          
-             <a class="bottom-link" href="corazon.html">
-            <div class="bottom-thumb">
-              <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
-            </div>
-            <div class="bottom-meta">
-              <span class="bottom-label">Corazón</span>
-              <span class="bottom-title">Corazón de Shambhala</span>
-              <span class="bottom-copy">Pasa a la dimensión íntima y emocional del proyecto.</span>
-            </div>
-          </a>
-        </div>
-      </section>
-    </main>
 
           <a class="bottom-link" href="personajes.html">
             <div class="bottom-thumb">
               <img src="images/personajes.jpg" alt="Personajes" />
             </div>
             <div class="bottom-meta">
-              <span class="bottom-label">Archivo</span>
               <span class="bottom-title">Personajes</span>
               <span class="bottom-copy">Vuelve al conjunto completo de presencias de Shambhala.</span>
             </div>
@@ -948,13 +925,23 @@ F
               <img src="images/explorar/callisto-2-0.jpg" alt="Libros" />
             </div>
             <div class="bottom-meta">
-              <span class="bottom-label">Libros</span>
               <span class="bottom-title">Libros</span>
               <span class="bottom-copy">Entra a la sección donde se reúnen las novelas de la saga.</span>
             </div>
           </a>
 
-       
+          <a class="bottom-link" href="corazon.html">
+            <div class="bottom-thumb">
+              <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+            </div>
+            <div class="bottom-meta">
+              <span class="bottom-title">Corazón de Shambhala</span>
+              <span class="bottom-copy">Pasa a la dimensión íntima y emocional del proyecto.</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
 
     <footer class="site-footer">
       Shambhala Saga · Presencia activa dentro del sistema
