@@ -418,99 +418,150 @@
       color: var(--soft);
     }
 
-    .links-grid,
-    .return-grid {
+    /* EXPLORAR MÁS PERSONAJES COMO ANNIE */
+    .links-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       margin-top: 20px;
     }
 
-    .character-link,
-    .return-link {
+    .character-link {
       position: relative;
       overflow: hidden;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+      min-height: 500px;
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-radius: 0;
+      border: 1px solid rgba(0,170,255,0.32);
+      background: linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.05),
+        0 0 30px rgba(0,0,0,0.24);
+      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+      isolation: isolate;
     }
 
-    .character-link:hover,
-    .return-link:hover {
-      transform: translateY(-6px);
-      border-color: rgba(143,211,255,0.32);
-      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+    .character-link:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,170,255,0.55);
+      box-shadow:
+        0 0 28px rgba(0,170,255,0.14),
+        0 0 70px rgba(0,170,255,0.10),
+        inset 0 0 30px rgba(0,170,255,0.08);
     }
 
-    .character-link {
-      min-height: 126px;
-      padding: 12px 14px;
-      display: grid;
-      grid-template-columns: 1fr 92px;
-      gap: 14px;
-      align-items: center;
+    .character-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.03);
+      transition: transform 0.8s ease, filter 0.8s ease;
+      filter: saturate(0.95) brightness(0.84) contrast(1.04);
+    }
+
+    .character-link:hover .character-image {
+      transform: scale(1.08);
+      filter: saturate(1.02) brightness(0.92) contrast(1.06);
+    }
+
+    .character-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
       background:
-        linear-gradient(135deg, rgba(7, 12, 24, 0.96), rgba(10, 18, 34, 0.9));
+        linear-gradient(to top, rgba(0,0,0,0.84) 10%, rgba(0,0,0,0.34) 50%, rgba(0,0,0,0.08) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.02)),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
     }
 
     .character-content {
+      position: relative;
+      z-index: 3;
+      max-width: 86%;
       min-width: 0;
     }
 
     .character-label {
       display: inline-block;
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(0,0,0,0.22);
-      color: var(--accent);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
+      width: fit-content;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.34);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
+      color: rgba(176, 230, 255, 0.92);
+      backdrop-filter: blur(4px);
     }
 
     .character-content strong {
       display: block;
-      margin-bottom: 4px;
-      font-size: 1rem;
-      font-weight: 600;
+      margin-bottom: 12px;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+      font-weight: 700;
     }
 
     .character-content span {
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.45;
+      margin: 0 0 22px;
+      max-width: 92%;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.95rem;
+      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+      text-align: left;
       display: block;
     }
 
-    .character-thumb-wrap {
-      width: 92px;
-      height: 112px;
-      border-radius: 0;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      justify-self: end;
-      flex-shrink: 0;
+    .character-cta {
+      width: fit-content;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c6eeff;
+      border-bottom: 1px solid rgba(198, 238, 255, 0.6);
+      padding-bottom: 4px;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
-    .character-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      transition: transform 0.35s ease;
-    }
-
-    .character-link:hover .character-thumb {
-      transform: scale(1.03);
+    /* BOTONES ABAJO COMO ANNIE */
+    .return-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 22px;
     }
 
     .return-link {
-      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      border: 1px solid rgba(0, 170, 255, 0.28);
+      background: #07111d;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 0 22px rgba(0,0,0,0.2);
+      border-radius: 0;
+    }
+
+    .return-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 170, 255, 0.48);
+      box-shadow:
+        0 0 30px rgba(0, 170, 255, 0.12),
+        0 0 55px rgba(0, 170, 255, 0.08);
     }
 
     .card-thumb {
@@ -520,14 +571,15 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
-      filter: brightness(0.72) saturate(0.92);
+      z-index: 0;
+      filter: brightness(0.78) saturate(0.94);
       transform: scale(1.02);
       transition: transform 0.5s ease, filter 0.5s ease;
     }
 
     .return-link:hover .card-thumb {
       transform: scale(1.08);
-      filter: brightness(0.8) saturate(1);
+      filter: brightness(0.86) saturate(1);
     }
 
     .card-overlay {
@@ -543,33 +595,19 @@
       position: absolute;
       inset: auto 0 0 0;
       z-index: 2;
-      padding: 18px;
-    }
-
-    .card-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 6px 10px;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 999px;
-      background: rgba(0,0,0,0.28);
-      color: var(--accent);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      padding: 18px 20px;
+      width: 100%;
     }
 
     .card-content strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 1.08rem;
-      font-weight: 600;
-    }
-
-    .card-content span {
-      color: var(--muted);
-      font-size: 0.95rem;
-      display: block;
+      color: #ffffff;
+      font-size: 0.88rem;
+      line-height: 1.1;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
     }
 
     footer {
@@ -591,6 +629,15 @@
       .hero-image-wrap {
         min-height: 560px;
         order: -1;
+      }
+
+      .links-grid,
+      .return-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .character-link {
+        min-height: 440px;
       }
     }
 
@@ -644,18 +691,20 @@
       }
 
       .character-link {
-        grid-template-columns: 1fr 84px;
-        min-height: 118px;
-        padding: 12px;
+        min-height: 420px;
+        padding: 26px;
       }
 
-      .character-thumb-wrap {
-        width: 84px;
-        height: 102px;
+      .character-content {
+        max-width: 92%;
+      }
+
+      .character-content strong {
+        font-size: clamp(1.45rem, 9vw, 2rem);
       }
 
       .return-link {
-        min-height: 220px;
+        min-height: 170px;
       }
     }
 
@@ -677,25 +726,6 @@
 
       .hero-image-wrap {
         min-height: 360px;
-      }
-
-      .character-link {
-        grid-template-columns: 1fr 76px;
-        min-height: 112px;
-        gap: 12px;
-      }
-
-      .character-thumb-wrap {
-        width: 76px;
-        height: 94px;
-      }
-
-      .character-content strong {
-        font-size: 0.94rem;
-      }
-
-      .character-content span {
-        font-size: 0.8rem;
       }
     }
   </style>
@@ -841,40 +871,40 @@
         <article class="section-card">
           <h2 class="section-title">Explorar más personajes</h2>
           <p class="section-text">
-            Cada presencia en Shambhala cambia el modo en que el universo respira.
+            Cada presencia en Shambhala cambia la temperatura emocional de la historia y abre otra forma de entrar en este mundo.
           </p>
 
           <div class="links-grid">
             <a class="character-link" href="calisto.html">
+              <img class="character-image" src="images/calisto.jpg" alt="Calisto" />
+              <div class="character-overlay"></div>
               <div class="character-content">
-                <div class="character-label">Personaje</div>
+                <div class="character-label">Protagonista</div>
                 <strong>Calisto</strong>
                 <span>Física · Tecnología de Motores de Curvatura</span>
-              </div>
-              <div class="character-thumb-wrap">
-                <img class="character-thumb" src="images/calisto.jpg" alt="Calisto" />
+                <span class="character-cta">Entrar al perfil</span>
               </div>
             </a>
 
             <a class="character-link" href="diana.html">
+              <img class="character-image" src="images/diana.jpg" alt="Diana" />
+              <div class="character-overlay"></div>
               <div class="character-content">
-                <div class="character-label">Personaje</div>
+                <div class="character-label">Órbita cercana</div>
                 <strong>Diana</strong>
                 <span>Científica jefe · Gestión de tecnología e innovación</span>
-              </div>
-              <div class="character-thumb-wrap">
-                <img class="character-thumb" src="images/diana.jpg" alt="Diana" />
+                <span class="character-cta">Entrar al perfil</span>
               </div>
             </a>
 
             <a class="character-link" href="naomi.html">
+              <img class="character-image" src="images/naomi.jpg" alt="Naomi" />
+              <div class="character-overlay"></div>
               <div class="character-content">
-                <div class="character-label">Personaje</div>
+                <div class="character-label">Vínculo esencial</div>
                 <strong>Naomi</strong>
                 <span>Bióloga · Reproducción partenogénica de mamíferos</span>
-              </div>
-              <div class="character-thumb-wrap">
-                <img class="character-thumb" src="images/naomi.jpg" alt="Naomi" />
+                <span class="character-cta">Entrar al perfil</span>
               </div>
             </a>
           </div>
@@ -882,28 +912,21 @@
 
         <article class="section-card">
           <h2 class="section-title">Seguir explorando</h2>
-          <p class="section-text">
-            Puedes volver al portal principal, entrar de nuevo al universo o recorrer el archivo completo de personajes.
-          </p>
 
           <div class="return-grid">
             <a class="return-link" href="index.html">
               <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
-                <div class="card-label">Portal</div>
-                <strong>Volver al inicio</strong>
-                <span>Regresa a la entrada principal de la saga</span>
+                <strong>Inicio</strong>
               </div>
             </a>
 
             <a class="return-link" href="explorar.html">
-              <img class="card-thumb" src="images/world.jpg" alt="Explorar el mundo de Shambhala" />
+              <img class="card-thumb" src="images/world.jpg" alt="El mundo de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
-                <div class="card-label">Universo</div>
-                <strong>Ir a explorar</strong>
-                <span>Continúa recorriendo el mundo y la atmósfera de Shambhala</span>
+                <strong>El mundo</strong>
               </div>
             </a>
 
@@ -911,9 +934,15 @@
               <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
-                <div class="card-label">Archivo</div>
-                <strong>Ver personajes</strong>
-                <span>Vuelve al archivo completo del elenco</span>
+                <strong>Personajes</strong>
+              </div>
+            </a>
+
+            <a class="return-link" href="corazon.html">
+              <img class="card-thumb" src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+              <div class="card-overlay"></div>
+              <div class="card-content">
+                <strong>Corazón</strong>
               </div>
             </a>
           </div>
