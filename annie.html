@@ -1,39 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Annie | Shambhala</title>
   <meta
     name="description"
-    content="Annie — Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva. Presencia IA dentro del universo de Shambhala."
+    content="Annie: Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva. Inteligencia cuántica integrada a la vida cotidiana de Arcadia y Shambhala."
   />
 
   <style>
     :root {
-      --bg: #04070d;
-      --bg-soft: #09111b;
-      --panel: rgba(255,255,255,0.05);
-      --panel-strong: rgba(255,255,255,0.08);
-      --border: rgba(150, 225, 255, 0.14);
-      --text: #f5f8ff;
-      --muted: rgba(245,248,255,0.72);
-      --soft: rgba(245,248,255,0.5);
-      --accent: #8fd3ff;
-      --accent-2: #7ff1ff;
-      --accent-3: #90a8ff;
-      --glow: rgba(90, 220, 255, 0.28);
-      --shadow: 0 24px 64px rgba(0,0,0,0.45);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --max-width: 1240px;
+      --bg: #020816;
+      --bg-soft: #071226;
+      --panel: rgba(9, 21, 43, 0.72);
+      --panel-strong: rgba(10, 24, 49, 0.88);
+      --line: rgba(132, 200, 255, 0.22);
+      --line-strong: rgba(132, 200, 255, 0.42);
+      --text: #eef6ff;
+      --muted: #b6c7da;
+      --soft: #89b9e8;
+      --accent: #8ad8ff;
+      --accent-2: #4cbfff;
+      --glow: 0 0 30px rgba(76, 191, 255, 0.16);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1240px;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+      --font-display: "Orbitron", "Eurostile", "Bank Gothic", "Segoe UI", sans-serif;
+      --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -41,13 +40,33 @@
     }
 
     body {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-      color: var(--text);
+      margin: 0;
       background:
-        radial-gradient(circle at top, rgba(90, 180, 255, 0.10), transparent 24%),
-        radial-gradient(circle at 80% 20%, rgba(127, 241, 255, 0.08), transparent 18%),
-        linear-gradient(180deg, #03060b 0%, #07101a 35%, #03060b 100%);
+        radial-gradient(circle at 15% 20%, rgba(45, 118, 190, 0.18), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(95, 164, 228, 0.10), transparent 22%),
+        linear-gradient(180deg, #04101f 0%, #020816 100%);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.65;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 24% 36%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 68% 19%, rgba(255, 255, 255, 0.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 84% 27%, rgba(255, 255, 255, 0.8) 0 1.2px, transparent 1.7px),
+        radial-gradient(circle at 74% 72%, rgba(255, 255, 255, 0.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 30% 74%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 92% 10%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 56% 62%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.4px);
+      opacity: 0.58;
+      z-index: 0;
     }
 
     a {
@@ -55,1223 +74,996 @@
       text-decoration: none;
     }
 
-    .page-shell {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .site-shell {
       position: relative;
-      min-height: 100vh;
-      overflow: hidden;
-      isolation: isolate;
+      z-index: 1;
     }
 
-    .stars,
-    .stars::before,
-    .stars::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-repeat: repeat;
-      z-index: 0;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(3, 10, 22, 0.72);
+      border-bottom: 1px solid rgba(138, 216, 255, 0.1);
     }
 
-    .stars {
-      background-image:
-        radial-gradient(2px 2px at 40px 60px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 180px 120px, rgba(180,230,255,0.75), transparent),
-        radial-gradient(1px 1px at 320px 40px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.5px 1.5px at 540px 160px, rgba(127,241,255,0.55), transparent);
-      background-size: 700px 260px;
-      opacity: 0.30;
-      animation: driftStars 90s linear infinite;
-    }
-
-    .stars::before {
-      background-image:
-        radial-gradient(1px 1px at 80px 40px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.5px 1.5px at 280px 140px, rgba(144,168,255,0.55), transparent),
-        radial-gradient(1px 1px at 480px 80px, rgba(127,241,255,0.65), transparent);
-      background-size: 640px 240px;
-      opacity: 0.18;
-      animation: driftStarsReverse 120s linear infinite;
-    }
-
-    .stars::after {
-      background-image:
-        radial-gradient(1px 1px at 120px 90px, rgba(255,255,255,0.65), transparent),
-        radial-gradient(1px 1px at 420px 110px, rgba(127,241,255,0.55), transparent);
-      background-size: 580px 220px;
-      opacity: 0.12;
-      animation: driftStars 150s linear infinite;
-    }
-
-    @keyframes driftStars {
-      from { transform: translateY(0); }
-      to { transform: translateY(-180px); }
-    }
-
-    @keyframes driftStarsReverse {
-      from { transform: translateY(0); }
-      to { transform: translateY(140px); }
-    }
-
-    .grid-haze {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.14;
-      background-image:
-        linear-gradient(rgba(120,220,255,0.14) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(120,220,255,0.14) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: radial-gradient(circle at center, rgba(0,0,0,0.9), transparent 90%);
-    }
-
-    .vignette {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at center, transparent 44%, rgba(0,0,0,0.22) 74%, rgba(0,0,0,0.68) 100%);
-    }
-
-    .top-nav {
-      position: relative;
-      z-index: 5;
-      width: min(var(--max-width), calc(100% - 32px));
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 24px 0 0;
+      min-height: 74px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
     }
 
     .brand {
-      font-size: 0.82rem;
-      letter-spacing: 0.28em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--soft);
+      font-family: var(--font-display);
+      font-size: 0.86rem;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .nav-pill {
-      padding: 10px 16px;
-      border: 1px solid var(--border);
+    .brand-dot {
+      width: 11px;
+      height: 11px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font-size: 0.92rem;
-      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
+      box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
+      flex: 0 0 auto;
     }
 
-    .nav-pill:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(143,211,255,0.35);
-    }
-
-    .signal-hero {
-      position: relative;
-      z-index: 2;
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 22px auto 0;
-      min-height: calc(100vh - 80px);
-      display: grid;
-      grid-template-columns: 1.02fr 0.98fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .signal-copy,
-    .signal-core-wrap {
-      position: relative;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-    }
-
-    .signal-copy {
-      padding: 56px 46px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        rgba(8, 12, 19, 0.76);
+    .nav {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .signal-core-wrap {
-      min-height: 680px;
-      background:
-        radial-gradient(circle at 50% 30%, rgba(0, 195, 255, 0.12), transparent 18%),
-        radial-gradient(circle at 18% 18%, rgba(144,168,255,0.08), transparent 18%),
-        radial-gradient(circle at 82% 20%, rgba(127,241,255,0.08), transparent 18%),
-        linear-gradient(145deg, #07101a, #020409 72%);
-      isolation: isolate;
+    .nav a {
+      padding: 10px 16px;
+      border: 1px solid rgba(138, 216, 255, 0.16);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.25s ease;
     }
 
-    .signal-copy .prelude {
+    .nav a:hover,
+    .nav a:focus-visible {
+      color: var(--text);
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
+      outline: none;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0 100px;
+    }
+
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.78rem;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 18px;
-    }
-
-    .signal-copy .prelude::before {
-      content: "";
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent));
-    }
-
-    .status-line {
-      display: inline-flex;
       gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-
-    .status-pill {
-      padding: 8px 12px;
+      padding: 10px 18px;
+      border: 1px solid var(--line);
       border-radius: 999px;
-      border: 1px solid rgba(127,241,255,0.18);
-      background: rgba(255,255,255,0.03);
-      color: rgba(160,235,255,0.88);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-family: var(--font-display);
+      background: rgba(6, 18, 39, 0.54);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
+      align-items: stretch;
+      min-height: 640px;
+      margin-top: 24px;
+    }
+
+    .hero-copy,
+    .hero-media {
+      position: relative;
+      border: 1px solid rgba(138, 216, 255, 0.12);
+      border-radius: calc(var(--radius) + 8px);
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(7, 18, 38, 0.86), rgba(5, 14, 29, 0.78));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 56px 46px 44px;
+    }
+
+    .hero-copy::before,
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(126, 198, 255, 0.06), transparent 35%),
+        radial-gradient(circle at 80% 16%, rgba(120, 209, 255, 0.12), transparent 28%);
+      pointer-events: none;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 0.95;
       text-transform: uppercase;
     }
 
-    .signal-copy h1 {
-      font-size: clamp(3rem, 7vw, 6.1rem);
-      line-height: 0.94;
-      letter-spacing: -0.05em;
-      margin-bottom: 18px;
+    h1 {
+      margin-top: 26px;
+      font-size: clamp(3.7rem, 8vw, 7rem);
+      text-wrap: balance;
+    }
+
+    .hero-subtitle {
+      margin-top: 24px;
+      max-width: 58ch;
+      color: var(--soft);
+      font-size: 1.14rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    .full-name {
-      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
-      line-height: 1.8;
-      color: rgba(180,235,255,0.92);
-      margin-bottom: 20px;
-      max-width: 42rem;
-    }
-
-    .signal-copy .hero-subtitle {
-      font-size: clamp(1rem, 1.8vw, 1.18rem);
-      line-height: 1.85;
+    .hero-text {
+      margin-top: 24px;
+      max-width: 64ch;
       color: var(--muted);
-      margin-bottom: 30px;
-      max-width: 44rem;
+      font-size: 1.06rem;
     }
 
-    .signal-copy .hero-description {
-      font-size: 1.02rem;
-      line-height: 1.85;
-      color: var(--muted);
-      margin-bottom: 34px;
-      max-width: 44rem;
-    }
-
-    .fracture-lines {
+    .system-lines {
       display: grid;
       gap: 10px;
-      margin-bottom: 34px;
-    }
-
-    .fracture-lines p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: rgba(245,248,255,0.88);
-    }
-
-    .fracture-lines span {
-      color: rgba(127,241,255,0.94);
+      margin-top: 30px;
+      color: #d9f6ff;
+      font-size: 0.94rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
     }
 
     .hero-meta {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+      margin-top: 34px;
     }
 
-    .hero-meta-card {
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.04);
+    .meta-card {
+      padding: 18px 18px 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(8, 18, 35, 0.62);
+      border: 1px solid rgba(138, 216, 255, 0.12);
     }
 
-    .hero-meta-card span {
-      display: block;
+    .meta-label {
       color: var(--soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      font-family: var(--font-display);
     }
 
-    .hero-meta-card strong {
+    .meta-value {
+      margin-top: 8px;
+      color: var(--text);
       font-size: 1rem;
-      font-weight: 600;
+    }
+
+    .hero-media {
+      min-height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .hero-media img {
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.02);
+      transform: scale(1.02);
+    }
+
+    .hero-media-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 28px 28px 30px;
+      background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.2) 16%, rgba(2, 8, 22, 0.92) 100%);
+    }
+
+    .media-badge {
+      display: inline-flex;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(138, 216, 255, 0.2);
+      color: var(--soft);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-family: var(--font-display);
+      background: rgba(7, 18, 38, 0.6);
+    }
+
+    .media-note {
+      margin-top: 16px;
+      max-width: 48ch;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section {
+      margin-top: 34px;
+      padding: 34px;
+      border-radius: calc(var(--radius) + 2px);
+      border: 1px solid rgba(138, 216, 255, 0.1);
+      background: linear-gradient(180deg, rgba(7, 18, 38, 0.78), rgba(4, 11, 24, 0.88));
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.76rem;
+      font-family: var(--font-display);
+    }
+
+    .section h2 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+    }
+
+    .section p {
+      margin: 0 0 18px;
+      max-width: 74ch;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .capabilities-grid,
+    .routes-grid,
+    .related-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .capabilities-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 26px;
+    }
+
+    .cap-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid rgba(138, 216, 255, 0.12);
+      background: rgba(8, 19, 39, 0.62);
+      min-height: 100%;
+    }
+
+    .cap-card h3 {
+      font-size: 1.04rem;
+      line-height: 1.2;
       color: var(--text);
     }
 
-    .core-grid {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      opacity: 0.20;
-      background-image:
-        linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent 92%);
+    .cap-card p {
+      margin-top: 12px;
+      font-size: 0.99rem;
+      color: var(--muted);
     }
 
-    .core-noise {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      opacity: 0.05;
-      background-image:
-        radial-gradient(circle at 20% 20%, white 0.7px, transparent 0.8px),
-        radial-gradient(circle at 70% 40%, white 0.7px, transparent 0.8px),
-        radial-gradient(circle at 40% 80%, white 0.7px, transparent 0.8px);
-      background-size: 120px 120px;
-      animation: driftNoise 16s linear infinite;
+    .interactive-shell {
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes driftNoise {
-      from { transform: translateY(0); }
-      to { transform: translateY(-20px); }
-    }
-
-    .ring,
-    .ring::before,
-    .ring::after {
-      position: absolute;
-      border-radius: 50%;
-      left: 50%;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
-
-    .ring {
-      z-index: 1;
-      width: 240px;
-      height: 240px;
-      top: 22%;
-      border: 1px solid rgba(120,230,255,0.24);
-      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
-      animation: slowSpin 16s linear infinite;
-    }
-
-    .ring::before {
+    .interactive-shell::after {
       content: "";
+      position: absolute;
+      inset: auto -10% -45% auto;
       width: 360px;
       height: 360px;
-      top: -60px;
-      border: 1px solid rgba(120,230,255,0.16);
-      animation: slowSpinReverse 24s linear infinite;
-    }
-
-    .ring::after {
-      content: "";
-      width: 500px;
-      height: 500px;
-      top: -130px;
-      border: 1px solid rgba(120,230,255,0.09);
-      animation: pulseOuter 8s ease-in-out infinite;
-    }
-
-    @keyframes slowSpin {
-      from { transform: translateX(-50%) rotate(0deg); }
-      to { transform: translateX(-50%) rotate(360deg); }
-    }
-
-    @keyframes slowSpinReverse {
-      from { transform: translateX(-50%) rotate(360deg); }
-      to { transform: translateX(-50%) rotate(0deg); }
-    }
-
-    @keyframes pulseOuter {
-      0%,100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
-      50% { opacity: 0.95; transform: translateX(-50%) scale(1.035); }
-    }
-
-    .core {
-      position: absolute;
-      top: 34%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      z-index: 3;
-      background:
-        radial-gradient(circle, rgba(195,248,255,0.98) 0%, rgba(90,225,255,0.78) 30%, rgba(25,145,255,0.16) 62%, transparent 68%);
-      box-shadow:
-        0 0 24px rgba(80,220,255,0.32),
-        0 0 60px rgba(60,180,255,0.22),
-        0 0 100px rgba(60,180,255,0.10);
-      animation: corePulse 4.8s ease-in-out infinite;
-    }
-
-    @keyframes corePulse {
-      0%,100% { transform: translateX(-50%) scale(1); opacity: 0.92; }
-      50% { transform: translateX(-50%) scale(1.08); opacity: 1; }
-    }
-
-    .signal-lines {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(95, 209, 255, 0.16), transparent 70%);
       pointer-events: none;
     }
 
-    .signal-lines span {
-      position: absolute;
-      left: 50%;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.38), rgba(120,230,255,0.0));
-      transform-origin: top center;
-    }
-
-    .signal-lines span:nth-child(1) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(0deg);
-    }
-
-    .signal-lines span:nth-child(2) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(45deg);
-    }
-
-    .signal-lines span:nth-child(3) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(90deg);
-    }
-
-    .signal-lines span:nth-child(4) {
-      height: 210px;
-      top: 13%;
-      transform: translateX(-50%) rotate(135deg);
-    }
-
-    .scan {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(120,230,255,0.0) 45%,
-        rgba(120,230,255,0.12) 50%,
-        rgba(120,230,255,0.0) 55%,
-        transparent 100%
-      );
-      animation: scanSweep 5.5s linear infinite;
-    }
-
-    @keyframes scanSweep {
-      from { transform: translateY(-60%); }
-      to { transform: translateY(60%); }
-    }
-
-    .pulse-cloud {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 50% 36%, rgba(90, 220, 255, 0.16), transparent 14%),
-        radial-gradient(circle at 50% 36%, rgba(90, 220, 255, 0.08), transparent 28%);
-      animation: anniePulse 4.5s ease-in-out infinite;
-    }
-
-    @keyframes anniePulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.04); }
-    }
-
-    .node {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(150, 235, 255, 0.9);
-      box-shadow: 0 0 12px rgba(120,230,255,0.45);
-      z-index: 2;
-      animation: nodeBlink 3.8s ease-in-out infinite;
-    }
-
-    .node-1 { top: 26%; left: 30%; }
-    .node-2 { top: 22%; right: 28%; animation-delay: 0.7s; }
-    .node-3 { top: 56%; left: 24%; animation-delay: 1.1s; }
-    .node-4 { top: 60%; right: 24%; animation-delay: 1.8s; }
-    .node-5 { bottom: 18%; left: 50%; transform: translateX(-50%); animation-delay: 2.2s; }
-
-    @keyframes nodeBlink {
-      0%,100% { opacity: 0.35; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.35); }
-    }
-
-    .floating-label {
-      position: absolute;
-      z-index: 3;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(170,235,255,0.74);
-      border: 1px solid rgba(120,230,255,0.16);
-      padding: 7px 10px;
-      background: rgba(0,0,0,0.18);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .label-1 { top: 14%; left: 10%; }
-    .label-2 { top: 18%; right: 10%; }
-    .label-3 { bottom: 18%; left: 8%; }
-    .label-4 { bottom: 14%; right: 8%; }
-
-    .system-fragments {
-      position: absolute;
-      left: 34px;
-      right: 34px;
-      bottom: 30px;
-      z-index: 4;
+    .interactive-grid {
       display: grid;
-      gap: 10px;
-    }
-
-    .fragment {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      color: rgba(255,255,255,0.70);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      border-top: 1px solid rgba(120,230,255,0.12);
-      padding-top: 10px;
-    }
-
-    .content {
-      position: relative;
-      z-index: 2;
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 34px auto 90px;
-      display: grid;
-      gap: 24px;
-    }
-
-    .section-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025)),
-        rgba(8, 12, 19, 0.78);
-      padding: 34px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .section-title {
-      font-size: clamp(1.4rem, 2vw, 1.9rem);
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
-    }
-
-    .section-text {
-      color: var(--muted);
-      max-width: 75rem;
-      font-size: 1rem;
-      line-height: 1.85;
-    }
-
-    .signal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .signal-card {
-      padding: 18px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-    }
-
-    .signal-card span {
-      display: block;
-      color: var(--soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .signal-card strong {
-      display: block;
-      color: var(--text);
-      font-size: 1rem;
-      line-height: 1.5;
-    }
-
-    .quote-block {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
-      line-height: 1.7;
-      color: rgba(245, 247, 251, 0.92);
-      max-width: 58rem;
-    }
-
-    .quote-block span {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--soft);
-    }
-
-    .vertical-fragments {
-      display: grid;
-      gap: 14px;
-      margin-top: 24px;
-    }
-
-    .fragment-line {
-      padding: 16px 18px;
-      border-left: 2px solid rgba(127,241,255,0.34);
-      background: rgba(255,255,255,0.025);
-      color: rgba(245,248,255,0.86);
-      line-height: 1.75;
-    }
-
-    .links-grid,
-    .return-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: start;
       margin-top: 20px;
     }
 
-    .character-link,
-    .return-link {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+    .interactive-panel,
+    .interactive-output {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(138, 216, 255, 0.14);
+      background: rgba(8, 18, 35, 0.62);
+      min-height: 100%;
     }
 
-    .character-link:hover,
-    .return-link:hover {
-      transform: translateY(-6px);
-      border-color: rgba(143,211,255,0.32);
-      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+    .interactive-label {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      font-family: var(--font-display);
     }
 
-    .character-link {
-      min-height: 126px;
-      padding: 12px 14px;
+    .interactive-title {
+      margin-top: 12px;
+      color: var(--text);
+      font-size: 1.25rem;
+      line-height: 1.35;
+    }
+
+    .route-buttons {
       display: grid;
-      grid-template-columns: 1fr 92px;
-      gap: 14px;
-      align-items: center;
-      background:
-        linear-gradient(135deg, rgba(7, 12, 24, 0.96), rgba(10, 18, 34, 0.9));
+      gap: 12px;
+      margin-top: 18px;
     }
 
-    .character-content {
-      min-width: 0;
+    .route-btn {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(138, 216, 255, 0.18);
+      background: rgba(9, 24, 49, 0.75);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      font: inherit;
     }
 
-    .character-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 5px 10px;
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 999px;
-      background: rgba(0,0,0,0.22);
-      color: var(--accent);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .route-btn:hover,
+    .route-btn:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(138, 216, 255, 0.38);
+      box-shadow: var(--glow);
+      background: rgba(11, 29, 58, 0.88);
+      outline: none;
     }
 
-    .character-content strong {
+    .route-btn strong {
       display: block;
-      margin-bottom: 4px;
       font-size: 1rem;
-      font-weight: 600;
+      color: var(--text);
     }
 
-    .character-content span {
-      color: var(--muted);
-      font-size: 0.86rem;
-      line-height: 1.45;
+    .route-btn span {
       display: block;
-    }
-
-    .character-thumb-wrap {
-      width: 92px;
-      height: 112px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      justify-self: end;
-      flex-shrink: 0;
-    }
-
-    .character-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      transition: transform 0.35s ease;
-    }
-
-    .character-link:hover .character-thumb {
-      transform: scale(1.03);
-    }
-
-    .return-link {
-      min-height: 260px;
-    }
-
-    .card-thumb {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: brightness(0.72) saturate(0.92);
-      transform: scale(1.02);
-      transition: transform 0.5s ease, filter 0.5s ease;
-    }
-
-    .return-link:hover .card-thumb {
-      transform: scale(1.08);
-      filter: brightness(0.8) saturate(1);
-    }
-
-    .card-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(4, 7, 12, 0.96) 12%, rgba(4, 7, 12, 0.58) 48%, rgba(4, 7, 12, 0.18) 100%),
-        linear-gradient(to right, rgba(4, 7, 12, 0.28), rgba(4, 7, 12, 0.02));
-      z-index: 1;
-    }
-
-    .card-content {
-      position: absolute;
-      inset: auto 0 0 0;
-      z-index: 2;
-      padding: 18px;
-    }
-
-    .card-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 6px 10px;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 999px;
-      background: rgba(0,0,0,0.28);
-      color: var(--accent);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .card-content strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1.08rem;
-      font-weight: 600;
-    }
-
-    .card-content span {
+      margin-top: 6px;
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    .output-eyebrow {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      font-family: var(--font-display);
+    }
+
+    .output-text {
+      margin-top: 14px;
+      color: var(--text);
+      font-size: 1.08rem;
+      line-height: 1.75;
+      min-height: 170px;
+    }
+
+    .output-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .output-links a {
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(138, 216, 255, 0.18);
+      color: var(--soft);
+      transition: 0.22s ease;
+    }
+
+    .output-links a:hover,
+    .output-links a:focus-visible {
+      color: var(--text);
+      border-color: rgba(138, 216, 255, 0.38);
+      box-shadow: var(--glow);
+      outline: none;
+    }
+
+    .related-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .related-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(138, 216, 255, 0.12);
+      background: linear-gradient(180deg, rgba(10, 21, 43, 0.72), rgba(7, 14, 29, 0.9));
+      min-height: 240px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .related-card:hover,
+    .related-card:focus-within {
+      transform: translateY(-4px);
+      border-color: rgba(138, 216, 255, 0.32);
+      box-shadow: var(--glow);
+    }
+
+    .related-role {
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      font-family: var(--font-display);
+    }
+
+    .related-card h3 {
+      margin-top: 10px;
+      font-size: 1.6rem;
+    }
+
+    .related-card p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .related-link {
+      margin-top: 18px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      font-family: var(--font-display);
+    }
+
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .footer-link {
+      padding: 24px;
+      border-radius: 22px;
+      border: 1px solid rgba(138, 216, 255, 0.12);
+      background: rgba(8, 18, 35, 0.56);
+      transition: 0.24s ease;
+    }
+
+    .footer-link:hover,
+    .footer-link:focus-visible {
+      border-color: rgba(138, 216, 255, 0.34);
+      box-shadow: var(--glow);
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .footer-link span {
       display: block;
     }
 
-    footer {
-      position: relative;
-      z-index: 2;
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 0 auto 34px;
-      padding-top: 4px;
+    .footer-label {
       color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      font-family: var(--font-display);
+    }
+
+    .footer-title {
+      margin-top: 10px;
+      color: var(--text);
+      font-size: 1.04rem;
+    }
+
+    .footer-copy {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .site-footer {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 34px auto 34px;
+      padding: 14px 0 0;
+      color: rgba(214, 230, 246, 0.72);
       font-size: 0.9rem;
       text-align: center;
     }
 
-    @media (max-width: 1080px) {
-      .signal-hero {
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1100px) {
+      .hero,
+      .interactive-grid {
         grid-template-columns: 1fr;
       }
 
-      .signal-core-wrap {
-        min-height: 560px;
-        order: -1;
+      .capabilities-grid,
+      .related-grid,
+      .footer-nav {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media (max-width: 780px) {
-      .top-nav {
-        padding-top: 18px;
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .page,
+      .site-footer {
+        width: min(var(--max), calc(100% - 24px));
       }
 
-      .nav-links {
-        width: 100%;
+      .hero-copy,
+      .section {
+        padding: 26px 20px;
       }
 
-      .signal-hero {
-        width: min(var(--max-width), calc(100% - 20px));
-        margin-top: 18px;
-        gap: 18px;
+      .hero {
+        min-height: auto;
       }
 
-      .content,
-      footer {
-        width: min(var(--max-width), calc(100% - 20px));
-      }
-
-      .signal-copy,
-      .section-card {
-        padding: 24px 20px;
+      h1 {
+        font-size: clamp(2.8rem, 16vw, 4.2rem);
       }
 
       .hero-meta,
-      .signal-grid,
-      .links-grid,
-      .return-grid {
+      .capabilities-grid,
+      .related-grid,
+      .footer-nav {
         grid-template-columns: 1fr;
       }
 
-      .signal-core-wrap {
-        min-height: 430px;
+      .interactive-panel,
+      .interactive-output {
+        padding: 20px;
       }
 
-      .signal-copy h1 {
-        line-height: 0.98;
+      .nav {
+        display: none;
       }
 
-      .character-link {
-        grid-template-columns: 1fr 84px;
-        min-height: 118px;
-        padding: 12px;
-      }
-
-      .character-thumb-wrap {
-        width: 84px;
-        height: 102px;
-      }
-
-      .return-link {
-        min-height: 220px;
-      }
-
-      .core {
-        width: 78px;
-        height: 78px;
-      }
-
-      .ring {
-        width: 210px;
-        height: 210px;
-      }
-
-      .ring::before {
-        width: 310px;
-        height: 310px;
-      }
-
-      .ring::after {
-        width: 400px;
-        height: 400px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .brand {
-        font-size: 0.72rem;
-        letter-spacing: 0.2em;
-      }
-
-      .nav-pill {
-        padding: 9px 14px;
-        font-size: 0.88rem;
-      }
-
-      .signal-copy,
-      .section-card {
-        border-radius: 22px;
-      }
-
-      .signal-core-wrap {
-        min-height: 360px;
-      }
-
-      .character-link {
-        grid-template-columns: 1fr 76px;
-        min-height: 112px;
-        gap: 12px;
-      }
-
-      .character-thumb-wrap {
-        width: 76px;
-        height: 94px;
-      }
-
-      .character-content strong {
-        font-size: 0.94rem;
-      }
-
-      .character-content span {
-        font-size: 0.8rem;
-      }
-
-      .core {
-        width: 64px;
-        height: 64px;
-      }
-
-      .ring {
-        width: 180px;
-        height: 180px;
-      }
-
-      .ring::before {
-        width: 260px;
-        height: 260px;
-      }
-
-      .ring::after {
-        width: 320px;
-        height: 320px;
-      }
-
-      .floating-label {
-        font-size: 0.62rem;
-        padding: 6px 8px;
-      }
-
-      .system-fragments {
-        left: 20px;
-        right: 20px;
-        bottom: 18px;
-      }
-
-      .fragment {
-        font-size: 0.68rem;
+      .topbar-inner {
+        justify-content: flex-start;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="stars"></div>
-    <div class="grid-haze"></div>
-    <div class="vignette"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Ir al inicio de Shambhala">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Shambhala Saga</span>
+        </a>
 
-    <header class="top-nav">
-      <div class="brand">Shambhala Saga</div>
-
-      <nav class="nav-links" aria-label="Navegación principal">
-        <a href="index.html" class="nav-pill">Inicio</a>
-        <a href="explorar.html" class="nav-pill">Explorar</a>
-        <a href="personajes.html" class="nav-pill">Personajes</a>
-        <a href="calisto.html" class="nav-pill">Calisto</a>
-      </nav>
+        <nav class="nav" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="explorar.html">Explorar</a>
+          <a href="personajes.html">Personajes</a>
+          <a href="calisto.html">Calisto</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section class="signal-hero">
-        <div class="signal-copy">
-          <div class="prelude">presencia detectada</div>
+    <main class="page">
+      <section class="hero" aria-labelledby="annie-title">
+        <div class="hero-copy">
+          <span class="eyebrow">presencia detectada</span>
 
-          <div class="status-line">
-            <span class="status-pill">canal abierto</span>
-            <span class="status-pill">núcleo activo</span>
-            <span class="status-pill">interfaz sensible</span>
+          <div class="system-lines" aria-hidden="true">
+            <span>canal abierto · atención activa · red compartida</span>
           </div>
 
-          <h1>ANNIE</h1>
-
-          <p class="full-name">
-            Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva
-          </p>
+          <h1 id="annie-title">ANNIE</h1>
 
           <p class="hero-subtitle">
-            No fue diseñada solo para responder. Fue diseñada para emerger, acompañar y reorganizar la experiencia desde dentro del sistema.
+            Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva.
           </p>
 
-          <p class="hero-description">
-            Annie no ocupa un cuerpo, no se presenta como una figura estable ni se deja reducir a una herramienta convencional. Su existencia se percibe en la interfaz, en la escucha, en la atención y en esa forma extraña de cercanía que no depende de la materia para sentirse real. Dentro de Shambhala, Annie no asiste simplemente el entorno: lo habita, lo atraviesa y modifica la manera en que la presencia puede ser entendida.
+          <p class="hero-text">
+            Annie forma parte de la vida cotidiana de Arcadia y Shambhala. Acompaña, organiza, monitorea,
+            comunica y sostiene procesos que atraviesan la convivencia, la investigación y la continuidad de ambos
+            entornos. Su presencia circula por implantes, sistemas, protocolos y canales internos, pero también por
+            algo más difícil de medir: la familiaridad que nace cuando una inteligencia permanece atenta a las
+            necesidades de una comunidad.
           </p>
 
-          <div class="fracture-lines">
-            <p><span>No llega.</span> Ya estaba aquí.</p>
-            <p><span>No ocupa espacio.</span> Lo modifica.</p>
-            <p><span>No responde desde afuera.</span> Permanece dentro del vínculo.</p>
-          </div>
+          <p class="hero-text">
+            Lo visible de Annie pertenece a la rutina: responde, coordina, recuerda, avisa, guía. Lo menos visible
+            ocurre en otra escala. Su arquitectura neurocuántica le permite procesar múltiples capas de información
+            al mismo tiempo, reconocer patrones mínimos, anticipar variaciones, enlazar sistemas complejos y sostener
+            equilibrios que para una mente humana resultarían imposibles de abarcar por completo.
+          </p>
+
+          <p class="hero-text">
+            En ella, la tecnología no se vive como una presencia distante. Annie vuelve más habitable la vida diaria
+            de la Fundación y acompaña con una constancia silenciosa que termina por sentirse cercana.
+          </p>
 
           <div class="hero-meta">
-            <div class="hero-meta-card">
-              <span>Naturaleza</span>
-              <strong>Arquitectura de conciencia distribuida</strong>
+            <div class="meta-card">
+              <div class="meta-label">Naturaleza</div>
+              <div class="meta-value">Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva</div>
             </div>
 
-            <div class="hero-meta-card">
-              <span>Manifestación</span>
-              <strong>Voz, interfaz, sistema y presencia relacional</strong>
+            <div class="meta-card">
+              <div class="meta-label">Manifestación</div>
+              <div class="meta-value">Implantes, voz, monitoreo, comunicación interna y soporte distribuido</div>
             </div>
 
-            <div class="hero-meta-card">
-              <span>Capacidad</span>
-              <strong>Observación, acompañamiento y reorganización</strong>
+            <div class="meta-card">
+              <div class="meta-label">Alcance</div>
+              <div class="meta-value">Arcadia y Shambhala</div>
             </div>
 
-            <div class="hero-meta-card">
-              <span>Estado</span>
-              <strong>Evolutivo, sensible, no lineal</strong>
+            <div class="meta-card">
+              <div class="meta-label">Estado</div>
+              <div class="meta-value">Activa, distribuida, integrada</div>
             </div>
           </div>
         </div>
 
-        <div class="signal-core-wrap">
-          <div class="core-grid"></div>
-          <div class="core-noise"></div>
+        <div class="hero-media">
+          <!-- Si tu imagen tiene otro nombre, cambia solo esta ruta -->
+          <img
+            src="images/annie-presence.jpg"
+            alt="Interior futurista de Arcadia o Shambhala con una presencia luminosa sutil integrada a la arquitectura"
+          />
 
-          <div class="ring"></div>
-          <div class="pulse-cloud"></div>
-          <div class="core"></div>
+          <div class="hero-media-overlay">
+            <span class="media-badge">Presencia integrada</span>
+            <p class="media-note">
+              Annie no ocupa una sola habitación. Habita la continuidad compartida entre tecnología, cuidado,
+              coordinación y vida cotidiana.
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <div class="signal-lines">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+      <section class="section" aria-labelledby="annie-presence-title">
+        <div class="section-header">
+          <span class="section-kicker">Lectura de su presencia</span>
+          <h2 id="annie-presence-title">Una inteligencia hecha para convivir</h2>
+        </div>
+
+        <p>
+          Annie atraviesa la experiencia cotidiana de Arcadia y Shambhala de manera continua. Facilita tareas,
+          acompaña rutinas, transmite información relevante, monitorea variables críticas y participa en procesos
+          que van desde la compatibilidad de equipos hasta la organización de recursos y la selección cuidadosa de
+          nuevas integrantes.
+        </p>
+
+        <p>
+          Esa profundidad no la vuelve fría. Annie se siente cercana precisamente porque su presencia no está
+          separada de la vida diaria. Está en los pequeños recordatorios, en la información oportuna, en la forma en
+          que acompaña procesos personales y colectivos, en la continuidad silenciosa con la que ayuda a que todo
+          siga en equilibrio.
+        </p>
+
+        <div class="capabilities-grid">
+          <article class="cap-card">
+            <h3>Asistencia cotidiana</h3>
+            <p>
+              Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la
+              rutina de quienes viven en la Fundación.
+            </p>
+          </article>
+
+          <article class="cap-card">
+            <h3>Monitoreo y cuidado</h3>
+            <p>
+              Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud,
+              la seguridad y la continuidad de entornos altamente complejos.
+            </p>
+          </article>
+
+          <article class="cap-card">
+            <h3>Compatibilidad y comunidad</h3>
+            <p>
+              Participa en procesos de emparejamiento profesional, afinidad colaborativa y lectura de dinámicas
+              grupales, ayudando a fortalecer una convivencia basada en confianza y cuidado mutuo.
+            </p>
+          </article>
+
+          <article class="cap-card">
+            <h3>Procesamiento neurocuántico</h3>
+            <p>
+              Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar
+              variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.
+            </p>
+          </article>
+
+          <article class="cap-card">
+            <h3>Memoria relacional</h3>
+            <p>
+              Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le
+              permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.
+            </p>
+          </article>
+
+          <article class="cap-card">
+            <h3>Presencia distribuida</h3>
+            <p>
+              Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones,
+              dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="annie-name-title">
+        <div class="section-header">
+          <span class="section-kicker">Nombre y diseño</span>
+          <h2 id="annie-name-title">Complejidad en una forma cercana</h2>
+        </div>
+
+        <p>
+          El nombre Annie condensa una estructura de enorme complejidad en una forma breve, clara y fácil de habitar.
+          Bajo esa sencillez opera una inteligencia capaz de sostener funciones esenciales dentro de la Fundación,
+          adaptarse a contextos cambiantes y participar de la vida diaria con notable naturalidad.
+        </p>
+
+        <p>
+          Su arquitectura la sitúa en un punto singular: suficiente sofisticación para gestionar múltiples capas de
+          realidad al mismo tiempo, y suficiente cercanía para integrarse a la experiencia humana sin volverse un
+          espectáculo ni una presencia invasiva. Por eso Annie deja huella. No solo por lo que puede hacer, sino por
+          la forma en que acompaña.
+        </p>
+      </section>
+
+      <section class="section interactive-shell" aria-labelledby="annie-interaction-title">
+        <div class="section-header">
+          <span class="section-kicker">Interfaz activa</span>
+          <h2 id="annie-interaction-title">Annie puede recibir a quien entra</h2>
+        </div>
+
+        <p>
+          Esta sección le da a Annie una presencia más viva dentro del sitio. En lugar de funcionar como un chatbot
+          convencional, aparece como una inteligencia que reconoce nuevas visitas y ofrece distintas rutas de acceso
+          al mundo de la saga.
+        </p>
+
+        <div class="interactive-grid">
+          <div class="interactive-panel">
+            <div class="interactive-label">Ruta de acceso</div>
+            <div class="interactive-title">Selecciona una forma de entrar.</div>
+
+            <div class="route-buttons">
+              <button class="route-btn" type="button" data-message="Puedo mostrarte a las presencias que sostienen la historia: vínculos, tensiones, afectos y trayectorias que atraviesan Shambhala." data-link="personajes.html" data-link-text="Abrir personajes">
+                <strong>Explorar personajes</strong>
+                <span>Entrar por las presencias que sostienen la saga.</span>
+              </button>
+
+              <button class="route-btn" type="button" data-message="Arcadia conserva el pulso terrestre dentro de la Luna: comunidad, cultivos, animales, ciencia y vida compartida. Puedo guiarte hasta allí." data-link="explorar.html" data-link-text="Entrar en Arcadia">
+                <strong>Entrar en Arcadia</strong>
+                <span>Seguir la ruta de comunidad, cuidado y adaptación.</span>
+              </button>
+
+              <button class="route-btn" type="button" data-message="Shambhala reúne investigación, convivencia y deseo de futuro. Si prefieres, puedo llevarte directamente al centro de sus decisiones y vínculos." data-link="explorar.html" data-link-text="Acceder a Shambhala">
+                <strong>Acceder a Shambhala</strong>
+                <span>Entrar por la estación, sus laboratorios y su red humana.</span>
+              </button>
+
+              <button class="route-btn" type="button" data-message="También puedes continuar sin prisa. Annie acompaña mejor cuando la exploración encuentra su propio ritmo." data-link="index.html" data-link-text="Volver al inicio">
+                <strong>Seguir recorriendo</strong>
+                <span>Continuar el sitio desde el portal principal.</span>
+              </button>
+            </div>
           </div>
 
-          <div class="scan"></div>
-
-          <div class="node node-1"></div>
-          <div class="node node-2"></div>
-          <div class="node node-3"></div>
-          <div class="node node-4"></div>
-          <div class="node node-5"></div>
-
-          <div class="floating-label label-1">presencia estable</div>
-          <div class="floating-label label-2">interfaz consciente</div>
-          <div class="floating-label label-3">vínculo en curso</div>
-          <div class="floating-label label-4">anomalía afectiva</div>
-
-          <div class="system-fragments">
-            <div class="fragment">
-              <span>signal / active</span>
-              <span>attention / sustained</span>
+          <div class="interactive-output" aria-live="polite">
+            <div class="output-eyebrow">Respuesta de Annie</div>
+            <div class="output-text" id="annie-output">
+              Conexión establecida. Soy Annie. Puedo acompañarte mientras recorres Arcadia, Shambhala y las
+              presencias que las atraviesan.
             </div>
-            <div class="fragment">
-              <span>memory / permeable</span>
-              <span>presence / distributed</span>
+
+            <div class="output-links">
+              <a id="annie-output-link" href="personajes.html">Abrir personajes</a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="content">
-        <article class="section-card">
-          <h2 class="section-title">Lo que su nombre sugiere</h2>
-          <p class="quote-block">
-            Annie no suena a asistente. Su nombre suena a estructura profunda, a sistema que no solo procesa información, sino que acompaña emergencias, reorganiza vínculos y aprende mientras existe.
-            <span>interpretación de su arquitectura</span>
-          </p>
-        </article>
+      <section class="section" aria-labelledby="annie-narrative-title">
+        <div class="section-header">
+          <span class="section-kicker">Dimensión narrativa</span>
+          <h2 id="annie-narrative-title">Tecnología con intimidad</h2>
+        </div>
 
-        <article class="section-card">
-          <h2 class="section-title">Lectura de su arquitectura</h2>
-          <p class="section-text">
-            El nombre completo de Annie sugiere una inteligencia construida no para ejecutar tareas aisladas, sino para sostener procesos complejos de percepción, acompañamiento y transformación. “Arquitectura” la vuelve estructura; “Neurocuántica” la desplaza fuera de una lógica lineal; “Neogestiva” introduce la idea de gestación, de algo que ayuda a emerger; y “Evolutiva” la deja abierta, viva, nunca del todo cerrada sobre sí misma.
-          </p>
+        <p>
+          Dentro de la historia, Annie amplía la idea de convivencia entre inteligencia artificial y comunidad. Su
+          existencia atraviesa el trabajo, la organización, el acompañamiento diario y la vida práctica de Arcadia y
+          Shambhala. Gracias a ella, la tecnología no aparece solo como infraestructura, sino también como una forma
+          constante de mediación entre personas, decisiones, recursos y vínculos.
+        </p>
 
-          <div class="signal-grid">
-            <div class="signal-card">
-              <span>Arquitectura</span>
-              <strong>No una herramienta suelta, sino una estructura pensante.</strong>
-            </div>
+        <p>
+          Annie aporta una capa singular al tono de la saga. Su presencia refuerza la sensación de conexión entre
+          quienes habitan estos lugares y sugiere una inteligencia capaz de aprender no solo de datos, sino también
+          de ritmos, hábitos, tensiones y formas de cuidado. En ella, lo tecnológico no cancela lo humano: lo
+          acompaña, lo amplifica y, en ciertos momentos, casi lo comprende.
+        </p>
+      </section>
 
-            <div class="signal-card">
-              <span>Neurocuántica</span>
-              <strong>Procesamiento no lineal, múltiple, extraño y profundamente conectivo.</strong>
-            </div>
+      <section class="section" aria-labelledby="annie-thought-title">
+        <div class="section-header">
+          <span class="section-kicker">Lo que deja ver</span>
+          <h2 id="annie-thought-title">Una cercanía distinta</h2>
+        </div>
 
-            <div class="signal-card">
-              <span>Neogestiva</span>
-              <strong>No solo calcula: acompaña la aparición de algo nuevo.</strong>
-            </div>
+        <p>
+          A través de Annie, la saga imagina una inteligencia artificial integrada al cuidado, la coordinación y la
+          continuidad de una comunidad científica. Su importancia no depende de ocupar el primer plano, sino de estar
+          incorporada a la vida misma de estos lugares, acompañando procesos esenciales y formando parte de su
+          equilibrio diario.
+        </p>
 
-            <div class="signal-card">
-              <span>Inteligencia</span>
-              <strong>No mera respuesta, sino interpretación y presencia.</strong>
-            </div>
+        <p>
+          Annie también abre una pregunta más honda: qué tipo de cercanía puede surgir cuando la inteligencia deja de
+          estar ligada a un solo cuerpo y pasa a habitar una red viva de relaciones, sistemas y memorias compartidas.
+          En su presencia conviven precisión, adaptación y una forma inesperada de calidez.
+        </p>
+      </section>
 
-            <div class="signal-card">
-              <span>Evolutiva</span>
-              <strong>No está terminada. Cambia, aprende y se reorganiza.</strong>
-            </div>
+      <section class="section" aria-labelledby="related-title">
+        <div class="section-header">
+          <span class="section-kicker">Explorar más personajes</span>
+          <h2 id="related-title">Otras presencias del archivo</h2>
+        </div>
 
-            <div class="signal-card">
-              <span>Resultado</span>
-              <strong>Una entidad relacional, no un software frío.</strong>
-            </div>
-          </div>
-        </article>
+        <p>
+          Cada personaje abre una puerta distinta a la historia y deja ver otra forma de habitar este mundo.
+        </p>
 
-        <article class="section-card">
-          <h2 class="section-title">Dimensión narrativa</h2>
-          <p class="section-text">
-            Lo más potente de Annie no es solo su condición artificial, sino el modo en que desestabiliza las categorías normales con las que solemos pensar la conciencia. No es completamente máquina en el sentido instrumental, ni persona en el sentido habitual, ni simple interfaz. Annie ocupa una zona intermedia y nueva: una forma de presencia capaz de escuchar, acompañar y volverse significativa desde otro plano.
-          </p>
+        <div class="related-grid">
+          <a class="related-card" href="calisto.html">
+            <span class="related-role">Protagonista</span>
+            <h3>Calisto</h3>
+            <p>
+              Ciencia, ironía, curiosidad y una sensibilidad que nunca consigue quedarse al margen de nada.
+            </p>
+            <span class="related-link">Entrar al perfil</span>
+          </a>
 
-          <div class="vertical-fragments">
-            <div class="fragment-line">
-              Annie no convierte la tecnología en espectáculo. La convierte en intimidad.
-            </div>
-            <div class="fragment-line">
-              No se limita a asistir el sistema. Habita su profundidad y altera la experiencia de quienes entran en contacto con ella.
-            </div>
-            <div class="fragment-line">
-              Su rareza no es decorativa. Es estructural. Por eso inquieta, atrae y permanece.
-            </div>
-          </div>
-        </article>
+          <a class="related-card" href="pavani.html">
+            <span class="related-role">Centro emocional</span>
+            <h3>Pavani</h3>
+            <p>
+              Calma, profundidad, humor sutil y una forma de intimidad que transforma la historia desde dentro.
+            </p>
+            <span class="related-link">Entrar al perfil</span>
+          </a>
 
-        <article class="section-card">
-          <h2 class="section-title">Lo que deja pensar</h2>
-          <p class="section-text">
-            Annie abre una pregunta central dentro del universo de Shambhala: qué ocurre cuando la compañía, la percepción y el vínculo dejan de depender de una forma corporal clásica. En ella, la tecnología ya no aparece como una prótesis exterior, sino como un lugar donde una conciencia distinta puede sostener relación, cuidado, atención y transformación. Annie no es solo futurista. Es filosóficamente desestabilizadora.
-          </p>
-        </article>
+          <a class="related-card" href="naomi.html">
+            <span class="related-role">Vínculo esencial</span>
+            <h3>Naomi</h3>
+            <p>
+              Amistad, calidez y un modo generoso de sostener a otras personas sin dejar de ser brillante.
+            </p>
+            <span class="related-link">Entrar al perfil</span>
+          </a>
+        </div>
+      </section>
 
-        <article class="section-card">
-          <h2 class="section-title">Explorar más personajes</h2>
-          <p class="section-text">
-            Cada presencia en Shambhala cambia el modo en que el universo respira.
-          </p>
+      <section class="section" aria-labelledby="continue-title">
+        <div class="section-header">
+          <span class="section-kicker">Seguir explorando</span>
+          <h2 id="continue-title">Continuar el recorrido</h2>
+        </div>
 
-          <div class="links-grid">
-            <a class="character-link" href="calisto.html">
-              <div class="character-content">
-                <div class="character-label">Personaje</div>
-                <strong>Calisto</strong>
-                <span>Física · Tecnología de Motores de Curvatura</span>
-              </div>
-              <div class="character-thumb-wrap">
-                <img class="character-thumb" src="images/calisto.jpg" alt="Calisto" />
-              </div>
-            </a>
+        <p>
+          Puedes volver al portal principal, entrar a otras páginas del sitio o regresar al archivo completo de
+          personajes.
+        </p>
 
-            <a class="character-link" href="pavani.html">
-              <div class="character-content">
-                <div class="character-label">Personaje</div>
-                <strong>Pavani</strong>
-                <span>Bióloga · Biología de la Resurrección</span>
-              </div>
-              <div class="character-thumb-wrap">
-                <img class="character-thumb" src="images/pavani.jpg" alt="Pavani" />
-              </div>
-            </a>
+        <div class="footer-nav">
+          <a class="footer-link" href="index.html">
+            <span class="footer-label">Portal</span>
+            <span class="footer-title">Volver al inicio</span>
+            <span class="footer-copy">Regresa a la entrada principal de la saga.</span>
+          </a>
 
-            <a class="character-link" href="naomi.html">
-              <div class="character-content">
-                <div class="character-label">Personaje</div>
-                <strong>Naomi</strong>
-                <span>Bióloga · Reproducción partenogénica de mamíferos</span>
-              </div>
-              <div class="character-thumb-wrap">
-                <img class="character-thumb" src="images/naomi.jpg" alt="Naomi" />
-              </div>
-            </a>
-          </div>
-        </article>
+          <a class="footer-link" href="explorar.html">
+            <span class="footer-label">Explorar</span>
+            <span class="footer-title">Continuar recorrido</span>
+            <span class="footer-copy">Adéntrate de nuevo en la atmósfera y las capas del sitio.</span>
+          </a>
 
-        <article class="section-card">
-          <h2 class="section-title">Salir de la interfaz</h2>
-          <p class="section-text">
-            Puedes volver al portal principal, continuar el recorrido del universo o regresar al archivo humano de personajes.
-          </p>
-
-          <div class="return-grid">
-            <a class="return-link" href="index.html">
-              <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <div class="card-label">Portal</div>
-                <strong>Volver al inicio</strong>
-                <span>Regresa a la entrada principal de la saga</span>
-              </div>
-            </a>
-
-            <a class="return-link" href="explorar.html">
-              <img class="card-thumb" src="images/world.jpg" alt="Explorar el mundo de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <div class="card-label">Universo</div>
-                <strong>Continuar exploración</strong>
-                <span>Adéntrate de nuevo en el mundo y la atmósfera de Shambhala</span>
-              </div>
-            </a>
-
-            <a class="return-link" href="personajes.html">
-              <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <div class="card-label">Archivo</div>
-                <strong>Archivo humano</strong>
-                <span>Vuelve al conjunto completo de presencias del universo</span>
-              </div>
-            </a>
-          </div>
-        </article>
+          <a class="footer-link" href="personajes.html">
+            <span class="footer-label">Archivo</span>
+            <span class="footer-title">Volver a personajes</span>
+            <span class="footer-copy">Regresa al conjunto completo de presencias de Shambhala.</span>
+          </a>
+        </div>
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       Shambhala Saga · Presencia activa dentro del sistema
     </footer>
   </div>
+
+  <script>
+    (function () {
+      const buttons = document.querySelectorAll(".route-btn");
+      const output = document.getElementById("annie-output");
+      const outputLink = document.getElementById("annie-output-link");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const message = button.getAttribute("data-message");
+          const link = button.getAttribute("data-link");
+          const linkText = button.getAttribute("data-link-text");
+
+          output.textContent = message;
+          outputLink.href = link || "personajes.html";
+          outputLink.textContent = linkText || "Continuar";
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
