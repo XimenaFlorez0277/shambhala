@@ -442,46 +442,6 @@
       color: #ffffff;
     }
 
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      justify-content: center;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 210px;
-      padding: 14px 22px;
-      font-size: 0.8rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border: 1px solid rgba(112, 196, 255, 0.35);
-      background: rgba(10, 20, 38, 0.34);
-      color: #eff8ff;
-      transition: 0.35s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: rgba(112, 196, 255, 0.7);
-      box-shadow: 0 0 28px rgba(71, 164, 245, 0.18);
-    }
-
-    .button.secondary {
-      border-color: rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(245, 248, 255, 0.82);
-    }
-
-    .button.secondary:hover {
-      border-color: rgba(255, 255, 255, 0.28);
-      box-shadow: 0 0 22px rgba(255, 255, 255, 0.08);
-    }
-
     .closing-box {
       text-align: center;
       padding: 40px 28px;
@@ -510,6 +470,70 @@
       line-height: 1.9;
       color: var(--muted);
       font-size: 1rem;
+    }
+
+    /* LINKS DE ABAJO COMO EN LAS OTRAS PÁGINAS */
+    .bottom-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .bottom-link {
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      border: 1px solid rgba(0, 170, 255, 0.28);
+      background: #07111d;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 0 22px rgba(0,0,0,0.2);
+    }
+
+    .bottom-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 170, 255, 0.48);
+      box-shadow:
+        0 0 30px rgba(0, 170, 255, 0.12),
+        0 0 55px rgba(0, 170, 255, 0.08);
+    }
+
+    .bottom-link img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .bottom-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.06) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.04));
+      z-index: 1;
+    }
+
+    .bottom-content {
+      position: relative;
+      z-index: 2;
+      padding: 18px 20px;
+      width: 100%;
+    }
+
+    .bottom-title {
+      color: #ffffff;
+      font-size: 0.88rem;
+      line-height: 1.1;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
     }
 
     .fade-up {
@@ -567,6 +591,10 @@
       .awards-grid.three {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .bottom-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
 
     @media (max-width: 680px) {
@@ -603,14 +631,12 @@
         height: 120px;
       }
 
-      .button-row {
-        flex-direction: column;
-        align-items: stretch;
+      .bottom-nav {
+        grid-template-columns: 1fr;
       }
 
-      .button {
-        width: 100%;
-        min-width: 0;
+      .bottom-link {
+        min-height: 170px;
       }
     }
   </style>
@@ -923,11 +949,34 @@
               Aunque los premios no reemplazan la experiencia de sumergirse en Shambhala, sí celebran el camino recorrido por los libros originales en inglés y muestran la gran acogida que han recibido por parte del público.
             </p>
 
-            <div class="button-row">
-              <a href="index.html" class="button">Inicio</a>
-              <a href="explorar.html" class="button secondary">Explorar</a>
-              <a href="personajes.html" class="button">Personajes</a>
-              <a href="corazon.html" class="button secondary">Corazón</a>
+            <div class="bottom-nav">
+              <a class="bottom-link" href="index.html">
+                <img src="images/hero.jpg" alt="Inicio" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Inicio</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="explorar.html">
+                <img src="images/world.jpg" alt="El mundo" />
+                <div class="bottom-content">
+                  <span class="bottom-title">El mundo</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="personajes.html">
+                <img src="images/personajes.jpg" alt="Personajes" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Personajes</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="corazon.html">
+                <img src="images/galeria/corazon.jpg" alt="Corazón" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Corazón</span>
+                </div>
+              </a>
             </div>
           </div>
         </article>
