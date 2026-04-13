@@ -90,6 +90,57 @@
       flex-shrink: 0;
     }
 
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(111, 195, 255, 0.22);
+      background: rgba(255, 255, 255, 0.03);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      padding: 0;
+      position: relative;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(111, 195, 255, 0.45);
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.14);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: #eff8ff;
+      transition: 0.3s ease;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
     .nav-links {
       display: flex;
       flex-wrap: wrap;
@@ -752,6 +803,43 @@
     }
 
     @media (max-width: 900px) {
+      .topbar {
+        padding: 14px 5%;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+        flex-shrink: 0;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 5%;
+        left: 5%;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(111, 195, 255, 0.18);
+        background:
+          linear-gradient(to bottom, rgba(7, 12, 22, 0.96), rgba(4, 8, 18, 0.96));
+        backdrop-filter: blur(12px);
+        box-shadow:
+          0 16px 42px rgba(0, 0, 0, 0.32),
+          inset 0 0 18px rgba(90, 168, 255, 0.03);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 16px;
+      }
+
       .section {
         padding: 95px 6%;
       }
@@ -762,27 +850,6 @@
 
       .closing {
         padding: 25px 6% 80px;
-      }
-
-      .topbar {
-        padding: 16px 6%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .brand {
-        text-align: center;
-      }
-
-      .nav-links {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-content: stretch;
-      }
-
-      .nav-links a {
-        width: 100%;
       }
 
       .explore-links-grid {
@@ -974,9 +1041,13 @@
         padding-left: 4.5%;
         padding-right: 4.5%;
       }
+
+      .nav-links {
+        left: 4.5%;
+        right: 4.5%;
+      }
     }
 
-    /* En móvil mostramos el contenido directamente para evitar espacios vacíos */
     @media (max-width: 900px), (hover: none) and (pointer: coarse) {
       .fade-up {
         opacity: 1;
@@ -998,10 +1069,16 @@
     <header class="topbar">
       <div class="brand">Saga Shambhala</div>
 
-      <nav class="nav-links">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="siteMenu">
         <a href="index.html">Inicio</a>
         <a href="personajes.html">Personajes</a>
-        <a href="corazon.html">Corazon</a>
+        <a href="corazon.html">Corazón</a>
         <a href="#libros">Libros</a>
         <a href="premios.html">Premios</a>
       </nav>
@@ -1394,11 +1471,40 @@
       fadeElements.forEach((element) => observer.observe(element));
     }
 
-    resizeCanvas();
-    createStars();
-    animateStars();
-    setTopbarHeight();
-    initAnimations();
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 900) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 900) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
 
     window.addEventListener("resize", () => {
       resizeCanvas();
@@ -1412,8 +1518,16 @@
 
       if (mobileView) {
         fadeElements.forEach((element) => element.classList.add("visible"));
+      } else {
+        closeMenu();
       }
     });
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+    setTopbarHeight();
+    initAnimations();
 
     window.addEventListener("load", setTopbarHeight);
 
