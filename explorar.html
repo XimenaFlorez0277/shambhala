@@ -13,6 +13,10 @@
   />
 
   <style>
+    :root {
+      --topbar-height: 90px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -36,6 +40,7 @@
     img {
       max-width: 100%;
       height: auto;
+      display: block;
     }
 
     a {
@@ -56,6 +61,7 @@
     .page-shell {
       position: relative;
       z-index: 1;
+      padding-top: var(--topbar-height);
     }
 
     .topbar {
@@ -63,13 +69,13 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 20;
+      z-index: 50;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
       padding: 18px 5%;
-      background: linear-gradient(to bottom, rgba(2, 5, 12, 0.92), rgba(2, 5, 12, 0.28));
+      background: linear-gradient(to bottom, rgba(2, 5, 12, 0.94), rgba(2, 5, 12, 0.76));
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -96,12 +102,12 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       padding: 10px 14px;
+      min-height: 42px;
       border: 1px solid rgba(111, 195, 255, 0.18);
       background: rgba(255, 255, 255, 0.03);
       color: rgba(236, 245, 255, 0.84);
       transition: 0.3s ease;
       text-align: center;
-      min-height: 42px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -117,10 +123,11 @@
     .section {
       position: relative;
       padding: 110px 7%;
+      scroll-margin-top: calc(var(--topbar-height) + 24px);
     }
 
     .section-first {
-      padding-top: 150px;
+      padding-top: 60px;
     }
 
     .section-header {
@@ -194,7 +201,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
       filter: brightness(0.68) contrast(1.04) saturate(0.95);
     }
 
@@ -319,7 +325,6 @@
       width: 100%;
       aspect-ratio: 2 / 3;
       object-fit: cover;
-      display: block;
       border: 1px solid rgba(255, 255, 255, 0.10);
       box-shadow:
         0 10px 28px rgba(0, 0, 0, 0.38),
@@ -591,7 +596,6 @@
       max-width: 104px;
       max-height: 72px;
       object-fit: contain;
-      display: block;
       filter: drop-shadow(0 0 14px rgba(108, 187, 255, 0.10));
     }
 
@@ -629,7 +633,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
       filter: brightness(0.82) contrast(1.04);
       transform: scale(1.01);
     }
@@ -754,7 +757,7 @@
       }
 
       .section-first {
-        padding-top: 155px;
+        padding-top: 55px;
       }
 
       .closing {
@@ -772,7 +775,13 @@
       }
 
       .nav-links {
-        justify-content: center;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: stretch;
+      }
+
+      .nav-links a {
         width: 100%;
       }
 
@@ -790,7 +799,6 @@
       .book-card {
         grid-template-columns: 1fr;
         justify-items: center;
-        text-align: left;
       }
 
       .book-cover {
@@ -816,7 +824,7 @@
       }
 
       .section-first {
-        padding-top: 170px;
+        padding-top: 45px;
       }
 
       .topbar {
@@ -890,23 +898,9 @@
         right: 20px;
         bottom: 18px;
       }
-
-      .nav-links {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        width: 100%;
-      }
-
-      .nav-links a {
-        width: 100%;
-      }
     }
 
     @media (max-width: 520px) {
-      .section-first {
-        padding-top: 190px;
-      }
-
       .brand {
         font-size: 0.72rem;
         letter-spacing: 0.2em;
@@ -943,10 +937,6 @@
     }
 
     @media (max-width: 430px) {
-      .nav-links {
-        grid-template-columns: 1fr;
-      }
-
       .award-book-badges,
       .award-book-badges.cupids {
         grid-template-columns: 1fr;
@@ -983,6 +973,20 @@
       .closing {
         padding-left: 4.5%;
         padding-right: 4.5%;
+      }
+    }
+
+    /* En móvil mostramos el contenido directamente para evitar espacios vacíos */
+    @media (max-width: 900px), (hover: none) and (pointer: coarse) {
+      .fade-up {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .fade-up.visible {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
@@ -1353,28 +1357,69 @@
       requestAnimationFrame(animateStars);
     }
 
+    function setTopbarHeight() {
+      const topbar = document.querySelector(".topbar");
+      if (!topbar) return;
+      const height = Math.ceil(topbar.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--topbar-height", `${height}px`);
+    }
+
+    function initAnimations() {
+      const fadeElements = document.querySelectorAll(".fade-up");
+      const mobileView =
+        window.matchMedia("(max-width: 900px)").matches ||
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (mobileView || !("IntersectionObserver" in window)) {
+        fadeElements.forEach((element) => element.classList.add("visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.03,
+          rootMargin: "0px 0px -8% 0px"
+        }
+      );
+
+      fadeElements.forEach((element) => observer.observe(element));
+    }
+
     resizeCanvas();
     createStars();
     animateStars();
+    setTopbarHeight();
+    initAnimations();
 
     window.addEventListener("resize", () => {
       resizeCanvas();
       createStars();
+      setTopbarHeight();
+
+      const fadeElements = document.querySelectorAll(".fade-up");
+      const mobileView =
+        window.matchMedia("(max-width: 900px)").matches ||
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
+      if (mobileView) {
+        fadeElements.forEach((element) => element.classList.add("visible"));
+      }
     });
 
-    const fadeElements = document.querySelectorAll(".fade-up");
+    window.addEventListener("load", setTopbarHeight);
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    }, {
-      threshold: 0.12
-    });
-
-    fadeElements.forEach((element) => observer.observe(element));
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(setTopbarHeight);
+    }
   </script>
 </body>
 </html>
