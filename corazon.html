@@ -708,19 +708,19 @@
     }
 
     .page-footer-inner {
-      max-width: 1180px;
+      max-width: 1280px;
       margin: 0 auto;
       padding-top: 26px;
       border-top: 1px solid rgba(255,255,255,0.08);
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
     }
 
     .footer-card {
       position: relative;
       overflow: hidden;
-      min-height: 130px;
+      min-height: 170px;
       border: 1px solid rgba(0,170,255,0.16);
       background: rgba(0,0,0,0.18);
       transition: 0.3s ease;
@@ -740,8 +740,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.56) contrast(1.02);
+      filter: brightness(0.58) contrast(1.02);
       transform: scale(1.03);
+    }
+
+    .footer-card.corazon-card img {
+      object-position: center 28%;
     }
 
     .footer-card::after {
@@ -749,7 +753,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.30) 58%, rgba(0,0,0,0.08) 100%),
+        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.28) 58%, rgba(0,0,0,0.08) 100%),
         radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 44%);
     }
 
@@ -757,11 +761,74 @@
       position: relative;
       z-index: 2;
       padding: 14px 16px;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.92);
       font-family: "Orbitron", sans-serif;
+    }
+
+    .footer-awards {
+      background:
+        radial-gradient(circle at center, rgba(24, 34, 58, 0.92), rgba(3, 7, 14, 0.98) 62%),
+        linear-gradient(145deg, rgba(8, 18, 34, 0.96), rgba(2, 5, 12, 1));
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-awards::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.90) 8%, rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.08) 100%),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 44%);
+      pointer-events: none;
+    }
+
+    .awards-emblem {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 118px;
+      height: 118px;
+      transform: translate(-50%, -56%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255, 245, 188, 0.95), rgba(221, 181, 76, 0.95) 42%, rgba(137, 92, 22, 1) 100%);
+      box-shadow:
+        0 0 24px rgba(255, 210, 98, 0.18),
+        inset 0 0 10px rgba(255,255,255,0.24);
+      z-index: 1;
+    }
+
+    .awards-emblem::before {
+      content: "";
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background:
+        repeating-conic-gradient(
+          from 0deg,
+          rgba(197, 145, 40, 1) 0deg 8deg,
+          rgba(119, 79, 18, 1) 8deg 14deg
+        );
+      z-index: -1;
+      filter: drop-shadow(0 0 12px rgba(227, 181, 77, 0.22));
+    }
+
+    .awards-emblem::after {
+      content: "WINNER";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.92rem;
+      letter-spacing: 1.2px;
+      color: rgba(74, 47, 8, 0.95);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.12);
     }
 
     .reveal {
@@ -939,11 +1006,20 @@
       }
 
       .footer-card {
-        min-height: 110px;
+        min-height: 120px;
       }
 
       .hero-image-shell {
         min-height: 420px;
+      }
+
+      .awards-emblem {
+        width: 98px;
+        height: 98px;
+      }
+
+      .awards-emblem::before {
+        inset: -10px;
       }
     }
 
@@ -1232,9 +1308,19 @@
         <span>Explorar</span>
       </a>
 
+      <a href="corazon.html" class="footer-card corazon-card">
+        <img src="images/galeria/susan-ximena-1.jpg" alt="Corazón" />
+        <span>Corazón</span>
+      </a>
+
       <a href="personajes.html" class="footer-card">
         <img src="images/personajes.jpg" alt="Personajes" />
         <span>Personajes</span>
+      </a>
+
+      <a href="premios.html" class="footer-card footer-awards">
+        <div class="awards-emblem"></div>
+        <span>Premios</span>
       </a>
 
       <a href="explorar.html#libros" class="footer-card">
