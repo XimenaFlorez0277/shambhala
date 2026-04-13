@@ -970,77 +970,10 @@
       filter: saturate(1.02) brightness(1.02) contrast(1.05) drop-shadow(0 0 18px rgba(0, 120, 255, 0.42));
     }
 
-    .ending-link.is-medal {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at top, rgba(255, 208, 90, 0.12), transparent 26%),
-        linear-gradient(145deg, #08111d, #03070d 70%);
-    }
-
     .ending-link.is-medal::after {
       background:
-        radial-gradient(circle at 50% 35%, rgba(255, 215, 120, 0.12), transparent 18%),
-        radial-gradient(circle at 22% 24%, rgba(0,190,255,0.10), transparent 22%);
-    }
-
-    .medal-badge {
-      position: relative;
-      z-index: 2;
-      width: 168px;
-      height: 168px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background:
-        radial-gradient(circle at 35% 35%, #f5e0a4 0%, #d2ae55 38%, #8a6424 68%, #3b2710 100%);
-      box-shadow:
-        0 0 24px rgba(215, 166, 70, 0.18),
-        inset 0 0 18px rgba(255,255,255,0.18),
-        inset 0 0 28px rgba(64, 36, 8, 0.48);
-    }
-
-    .medal-badge::before {
-      content: "";
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      background:
-        repeating-conic-gradient(
-          from 0deg,
-          #946c2c 0deg 10deg,
-          #d2a954 10deg 20deg
-        );
-      mask: radial-gradient(circle, transparent 56%, #000 58%);
-      -webkit-mask: radial-gradient(circle, transparent 56%, #000 58%);
-      opacity: 0.95;
-    }
-
-    .medal-inner {
-      position: relative;
-      width: 118px;
-      height: 118px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 14px;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(0,0,0,0.02)),
-        linear-gradient(145deg, #d9c38a, #9d7a31 78%);
-      border: 2px solid rgba(90, 60, 18, 0.48);
-      box-shadow: inset 0 0 14px rgba(255,255,255,0.15);
-    }
-
-    .medal-inner strong {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.88rem;
-      letter-spacing: 1px;
-      color: #32210d;
-      line-height: 1.4;
-      text-transform: uppercase;
+        radial-gradient(circle at 68% 22%, rgba(255, 204, 102, 0.18), transparent 24%),
+        radial-gradient(circle at 22% 24%, rgba(0,190,255,0.12), transparent 22%);
     }
 
     .ending-link.is-books::after {
@@ -1304,16 +1237,6 @@
       .ending-link {
         min-height: 220px;
       }
-
-      .medal-badge {
-        width: 150px;
-        height: 150px;
-      }
-
-      .medal-inner {
-        width: 106px;
-        height: 106px;
-      }
     }
 
     @media (max-width: 480px) {
@@ -1426,7 +1349,7 @@
     </div>
 
     <div class="hero-image-wrap">
-      <img src="images/secundarios/personajes.jpg" alt="Personajes de Shambhala" />
+      <img src="images/personajes.jpg" alt="Personajes de Shambhala" />
       <div class="hero-image-overlay"></div>
       <div class="hero-image-aura"></div>
       <div class="hero-image-content">
@@ -1580,8 +1503,8 @@
       </a>
 
       <a class="ending-link is-medal" href="premios.html">
-         <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios" />
-         <span>Personajes</span>
+        <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios" />
+        <span>Premios</span>
       </a>
 
       <a class="ending-link is-books" href="corazon.html">
