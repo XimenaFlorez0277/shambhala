@@ -168,6 +168,7 @@
       font-family: var(--font-display);
       background: rgba(6, 18, 39, 0.54);
       box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+      width: fit-content;
     }
 
     .hero {
@@ -274,7 +275,6 @@
       color: var(--text);
       font-size: 0.92rem;
       text-align: left;
-      word-break: normal;
       overflow-wrap: break-word;
       line-height: 1.55;
     }
@@ -286,15 +286,21 @@
       background:
         radial-gradient(circle at center, rgba(104, 197, 255, 0.08), transparent 28%),
         linear-gradient(180deg, rgba(7, 18, 38, 0.92), rgba(5, 14, 29, 0.88));
+      min-height: 100%;
     }
 
-    .hero-media img {
+    .annie-canvas-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    #annieSphere {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      padding: 24px;
-      filter: saturate(1.02) contrast(1.02);
-      transform: scale(0.95);
+      display: block;
     }
 
     .hero-media-overlay {
@@ -302,6 +308,8 @@
       inset: auto 0 0 0;
       padding: 18px 18px 20px;
       background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.14) 16%, rgba(2, 8, 22, 0.9) 100%);
+      z-index: 3;
+      pointer-events: none;
     }
 
     .media-badge {
@@ -322,6 +330,7 @@
       color: var(--muted);
       font-size: 0.88rem;
       text-align: justify;
+      max-width: none;
     }
 
     .section {
@@ -415,8 +424,7 @@
       justify-content: flex-end;
       border-radius: 0;
       border: 1px solid rgba(0,170,255,0.32);
-      background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
+      background: linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
         inset 0 0 28px rgba(0,170,255,0.05),
         0 0 30px rgba(0,0,0,0.24);
@@ -597,6 +605,10 @@
       .presence-card {
         min-height: 440px;
       }
+
+      .hero-media {
+        min-height: 480px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -731,10 +743,9 @@
         </div>
 
         <div class="hero-media">
-          <img
-            src="images/annie-bola.png"
-            alt="Forma orgánica de Annie compuesta por puntos de colores conectados entre sí, como una red neuronal viva"
-          />
+          <div class="annie-canvas-wrap">
+            <canvas id="annieSphere" aria-label="Esfera interactiva de Annie"></canvas>
+          </div>
 
           <div class="hero-media-overlay">
             <span class="media-badge">Presencia neurocuántica</span>
@@ -762,44 +773,32 @@
         <div class="capabilities-grid">
           <article class="cap-card">
             <h3>Asistencia cotidiana</h3>
-            <p>
-              Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la rutina de quienes viven en la Fundación.
-            </p>
+            <p>Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la rutina de quienes viven en la Fundación.</p>
           </article>
 
           <article class="cap-card">
             <h3>Monitoreo y cuidado</h3>
-            <p>
-              Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud, la seguridad y la continuidad de entornos altamente complejos.
-            </p>
+            <p>Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud, la seguridad y la continuidad de entornos altamente complejos.</p>
           </article>
 
           <article class="cap-card">
             <h3>Compatibilidad y selección</h3>
-            <p>
-              Participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, ayudando a fortalecer una convivencia basada en confianza, ética y cuidado mutuo.
-            </p>
+            <p>Participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, ayudando a fortalecer una convivencia basada en confianza, ética y cuidado mutuo.</p>
           </article>
 
           <article class="cap-card">
             <h3>Procesamiento neurocuántico</h3>
-            <p>
-              Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.
-            </p>
+            <p>Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.</p>
           </article>
 
           <article class="cap-card">
             <h3>Memoria relacional</h3>
-            <p>
-              Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.
-            </p>
+            <p>Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.</p>
           </article>
 
           <article class="cap-card">
             <h3>Presencia distribuida</h3>
-            <p>
-              Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones, dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.
-            </p>
+            <p>Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones, dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.</p>
           </article>
         </div>
       </section>
@@ -963,5 +962,203 @@
       Shambhala Saga · Presencia activa dentro del sistema
     </footer>
   </div>
+
+  <script>
+    (() => {
+      const canvas = document.getElementById("annieSphere");
+      const ctx = canvas.getContext("2d");
+
+      let width = 0;
+      let height = 0;
+      let centerX = 0;
+      let centerY = 0;
+      let radius = 0;
+      let nodes = [];
+      let pointer = { x: 0, y: 0, active: false };
+
+      const colors = [
+        "#7ee8ff",
+        "#8bffcc",
+        "#ff7de8",
+        "#ffe27a",
+        "#9f8cff",
+        "#ffffff"
+      ];
+
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        centerX = width * 0.5;
+        centerY = height * 0.44;
+        radius = Math.min(width, height) * 0.27;
+
+        createNodes();
+      }
+
+      function randomBetween(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function createNodes() {
+        nodes = [];
+        const count = width < 700 ? 120 : 180;
+
+        for (let i = 0; i < count; i++) {
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(randomBetween(-1, 1));
+          const r = radius * Math.pow(Math.random(), 0.88);
+
+          const x3 = r * Math.sin(phi) * Math.cos(theta);
+          const y3 = r * Math.sin(phi) * Math.sin(theta);
+          const z3 = r * Math.cos(phi);
+
+          nodes.push({
+            baseX: x3,
+            baseY: y3,
+            baseZ: z3,
+            x: x3,
+            y: y3,
+            z: z3,
+            size: randomBetween(1.4, 3.2),
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speed: randomBetween(0.4, 1.2),
+            phase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function project(node, time) {
+        const wobble = Math.sin(time * node.speed + node.phase) * 6;
+        const wobble2 = Math.cos(time * (node.speed * 0.8) + node.phase) * 4;
+
+        let x = node.baseX + wobble;
+        let y = node.baseY + wobble2;
+        let z = node.baseZ + Math.sin(time * 0.7 + node.phase) * 8;
+
+        const influenceX = pointer.active ? (pointer.x - centerX) * 0.045 : 0;
+        const influenceY = pointer.active ? (pointer.y - centerY) * 0.045 : 0;
+
+        x += influenceX * (z / radius) * 0.6;
+        y += influenceY * (z / radius) * 0.6;
+
+        const rotY = time * 0.22 + (pointer.active ? (pointer.x - centerX) / width * 0.8 : 0);
+        const rotX = time * 0.12 + (pointer.active ? (pointer.y - centerY) / height * 0.5 : 0);
+
+        const cosY = Math.cos(rotY);
+        const sinY = Math.sin(rotY);
+        const cosX = Math.cos(rotX);
+        const sinX = Math.sin(rotX);
+
+        const dx = x * cosY - z * sinY;
+        const dz = x * sinY + z * cosY;
+
+        const dy = y * cosX - dz * sinX;
+        const dz2 = y * sinX + dz * cosX;
+
+        const perspective = 520 / (520 + dz2);
+        const px = centerX + dx * perspective;
+        const py = centerY + dy * perspective;
+        const ps = node.size * perspective;
+
+        return { x: px, y: py, z: dz2, s: ps, color: node.color };
+      }
+
+      function drawGlow() {
+        const gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.12, centerX, centerY, radius * 1.15);
+        gradient.addColorStop(0, "rgba(130, 225, 255, 0.13)");
+        gradient.addColorStop(0.45, "rgba(100, 165, 255, 0.08)");
+        gradient.addColorStop(0.75, "rgba(255, 120, 220, 0.04)");
+        gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius * 1.18, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, width, height);
+        drawGlow();
+
+        const projected = nodes.map(node => project(node, time));
+        projected.sort((a, b) => a.z - b.z);
+
+        for (let i = 0; i < projected.length; i++) {
+          const a = projected[i];
+          for (let j = i + 1; j < projected.length; j++) {
+            const b = projected[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 56) {
+              const alpha = (1 - dist / 56) * 0.22;
+              ctx.strokeStyle = `rgba(175, 225, 255, ${alpha})`;
+              ctx.lineWidth = 0.7;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const node of projected) {
+          ctx.beginPath();
+          ctx.fillStyle = node.color;
+          ctx.shadowColor = node.color;
+          ctx.shadowBlur = 12;
+          ctx.arc(node.x, node.y, Math.max(1.2, node.s), 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;
+      }
+
+      let start = performance.now();
+      function animate(now) {
+        const time = (now - start) / 1000;
+        draw(time);
+        requestAnimationFrame(animate);
+      }
+
+      function updatePointer(event) {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = event.clientX - rect.left;
+        pointer.y = event.clientY - rect.top;
+        pointer.active = true;
+      }
+
+      canvas.addEventListener("mousemove", updatePointer);
+      canvas.addEventListener("mouseenter", updatePointer);
+      canvas.addEventListener("mouseleave", () => {
+        pointer.active = false;
+      });
+
+      canvas.addEventListener("touchstart", (event) => {
+        const touch = event.touches[0];
+        updatePointer(touch);
+      }, { passive: true });
+
+      canvas.addEventListener("touchmove", (event) => {
+        const touch = event.touches[0];
+        updatePointer(touch);
+      }, { passive: true });
+
+      canvas.addEventListener("touchend", () => {
+        pointer.active = false;
+      });
+
+      window.addEventListener("resize", resizeCanvas);
+
+      resizeCanvas();
+      requestAnimationFrame(animate);
+    })();
+  </script>
 </body>
 </html>
