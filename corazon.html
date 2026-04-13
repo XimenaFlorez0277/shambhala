@@ -129,9 +129,9 @@
       min-height: auto;
       display: grid;
       grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-      gap: 42px;
+      gap: 46px;
       align-items: center;
-      padding: 96px 0 30px;
+      padding: 96px 0 40px;
     }
 
     .hero-copy {
@@ -144,7 +144,7 @@
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       padding: 12px 18px;
       border: 1px solid rgba(0,170,255,0.26);
       color: rgba(146, 222, 255, 0.92);
@@ -153,7 +153,7 @@
       letter-spacing: 2.4px;
       text-transform: uppercase;
       width: fit-content;
-      background: rgba(0, 10, 20, 0.12);
+      background: rgba(0, 10, 20, 0.10);
     }
 
     .eyebrow::before {
@@ -164,11 +164,11 @@
     }
 
     h1 {
-      margin: 0 0 20px;
+      margin: 0 0 22px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.2rem, 4.3vw, 4rem);
+      font-size: clamp(2.1rem, 4vw, 3.7rem);
       line-height: 0.98;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.7px;
       text-transform: uppercase;
       color: #f8fbff;
       text-shadow:
@@ -178,35 +178,50 @@
     }
 
     .hero-subtitle {
-      max-width: 950px;
-      font-size: 0.96rem;
+      max-width: 980px;
+      font-size: 0.97rem;
       line-height: 1.9;
       color: rgba(255,255,255,0.82);
-      margin-bottom: 28px;
+      margin-bottom: 30px;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .hero-jump-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       margin: 0;
     }
 
     .hero-jump-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border: 1px solid rgba(84, 195, 255, 0.34);
+      background:
+        linear-gradient(to bottom, rgba(13, 42, 72, 0.52), rgba(8, 20, 35, 0.38));
+      color: rgba(242, 248, 255, 0.92);
+      font-family: "Orbitron", sans-serif;
       font-size: 0.74rem;
-      letter-spacing: 1.6px;
+      letter-spacing: 1.7px;
       text-transform: uppercase;
-      padding: 10px 14px;
-      color: rgba(255,255,255,0.82);
-      border: 1px solid rgba(0,170,255,0.18);
-      background: rgba(0,0,0,0.18);
+      border-radius: 2px;
+      box-shadow:
+        inset 0 0 14px rgba(0,170,255,0.05),
+        0 0 20px rgba(0,170,255,0.06);
       transition: 0.3s ease;
     }
 
     .hero-jump-links a:hover {
-      color: #9be6ff;
-      border-color: rgba(0,170,255,0.42);
-      background: rgba(0, 25, 45, 0.26);
+      color: #ffffff;
+      border-color: rgba(102, 210, 255, 0.60);
+      background:
+        linear-gradient(to bottom, rgba(18, 58, 94, 0.68), rgba(10, 26, 44, 0.46));
+      box-shadow:
+        0 0 22px rgba(0,170,255,0.14),
+        inset 0 0 18px rgba(0,170,255,0.08);
       transform: translateY(-1px);
     }
 
@@ -287,16 +302,16 @@
     .section {
       position: relative;
       z-index: 2;
-      padding: 64px 8% 48px;
+      padding: 68px 8% 52px;
     }
 
     .section.first-section {
-      padding-top: 40px;
+      padding-top: 46px;
     }
 
     .section-header {
       max-width: 860px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
     }
 
     .section-kicker {
@@ -311,8 +326,8 @@
     .section h2 {
       margin: 0 0 16px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.35rem, 2.2vw, 1.9rem);
-      letter-spacing: 1.6px;
+      font-size: clamp(1.3rem, 2.1vw, 1.8rem);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
     }
@@ -323,12 +338,14 @@
       line-height: 1.85;
       color: rgba(255,255,255,0.76);
       font-size: 0.96rem;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .featured-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 26px;
       max-width: 1060px;
     }
 
@@ -444,16 +461,16 @@
     .featured-card h3 {
       margin: 0 0 14px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.4rem, 2vw, 2rem);
-      letter-spacing: 1.4px;
+      font-size: clamp(1.35rem, 1.9vw, 1.8rem);
+      letter-spacing: 1.35px;
       text-transform: uppercase;
       text-shadow: 0 0 15px rgba(0,0,0,0.35);
       line-height: 1.05;
     }
 
     .featured-card.full-width h3 {
-      font-size: clamp(1.7rem, 3.4vw, 3rem);
-      letter-spacing: 1.8px;
+      font-size: clamp(1.65rem, 3vw, 2.5rem);
+      letter-spacing: 1.6px;
       line-height: 1.02;
       margin-bottom: 16px;
     }
@@ -474,6 +491,8 @@
       color: rgba(255,255,255,0.86);
       font-size: 0.95rem;
       text-shadow: 0 0 12px rgba(0,0,0,0.35);
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .featured-card.full-width p {
@@ -510,7 +529,7 @@
     .cinematic-band {
       position: relative;
       z-index: 2;
-      padding: 44px 8% 12px;
+      padding: 46px 8% 14px;
     }
 
     .cinematic-band-inner {
@@ -527,6 +546,8 @@
 
     .cinematic-band-left {
       max-width: 560px;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .cinematic-band-right {
@@ -542,13 +563,13 @@
     .history-feature {
       position: relative;
       z-index: 2;
-      padding: 34px 8% 0;
+      padding: 36px 8% 0;
     }
 
     .text-section {
       position: relative;
       z-index: 2;
-      padding: 22px 8% 0;
+      padding: 24px 8% 0;
     }
 
     .text-panel {
@@ -564,11 +585,53 @@
         0 0 28px rgba(0,0,0,0.20);
     }
 
+    .history-heading-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .history-heading-row h3 {
+      margin: 0;
+    }
+
+    .history-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
+      border: 1px solid rgba(0,170,255,0.30);
+      background:
+        linear-gradient(to bottom, rgba(12, 44, 74, 0.54), rgba(8, 22, 38, 0.40));
+      color: #9be6ff;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.71rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      box-shadow:
+        inset 0 0 12px rgba(0,170,255,0.05),
+        0 0 14px rgba(0,170,255,0.06);
+      transition: 0.3s ease;
+    }
+
+    .history-button:hover {
+      color: #ffffff;
+      border-color: rgba(0,170,255,0.55);
+      background:
+        linear-gradient(to bottom, rgba(16, 58, 92, 0.70), rgba(10, 28, 48, 0.46));
+      box-shadow:
+        0 0 18px rgba(0,170,255,0.14),
+        inset 0 0 16px rgba(0,170,255,0.08);
+      transform: translateY(-1px);
+    }
+
     .text-panel h3 {
       margin: 0 0 14px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1rem, 1.6vw, 1.3rem);
-      letter-spacing: 1.4px;
+      font-size: clamp(0.98rem, 1.5vw, 1.22rem);
+      letter-spacing: 1.3px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.95);
       line-height: 1.15;
@@ -589,6 +652,8 @@
       font-size: 0.96rem;
       line-height: 1.9;
       color: rgba(255,255,255,0.80);
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     .text-panel p:last-child {
@@ -602,7 +667,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 66px 8% 32px;
+      padding: 68px 8% 34px;
       text-align: center;
     }
 
@@ -621,8 +686,8 @@
     .ending-box h2 {
       margin: 0 0 16px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.25rem, 2.3vw, 1.8rem);
-      letter-spacing: 1.6px;
+      font-size: clamp(1.2rem, 2.1vw, 1.6rem);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
     }
@@ -632,14 +697,6 @@
       line-height: 1.85;
       color: rgba(255,255,255,0.76);
       font-size: 0.96rem;
-    }
-
-    .hero-subtitle,
-    .section-header p,
-    .featured-card p,
-    .cinematic-band-left,
-    .text-panel p,
-    .ending-box p {
       text-align: justify;
       text-justify: inter-word;
     }
@@ -745,7 +802,7 @@
     @media (max-width: 1150px) {
       .hero {
         grid-template-columns: 1fr;
-        padding: 110px 0 34px;
+        padding: 110px 0 36px;
       }
 
       .hero-image-wrap {
@@ -784,8 +841,8 @@
       }
 
       h1 {
-        font-size: clamp(2rem, 7vw, 3.4rem);
-        letter-spacing: 1.6px;
+        font-size: clamp(1.95rem, 6.8vw, 3rem);
+        letter-spacing: 1.5px;
       }
 
       .featured-card {
@@ -813,7 +870,7 @@
       .hero {
         width: min(1840px, calc(100% - 24px));
         padding-top: 136px;
-        padding-bottom: 32px;
+        padding-bottom: 34px;
       }
 
       .section {
@@ -822,7 +879,7 @@
       }
 
       .section.first-section {
-        padding-top: 30px;
+        padding-top: 32px;
       }
 
       .hero-image-shell {
@@ -852,8 +909,8 @@
       }
 
       h1 {
-        font-size: clamp(1.8rem, 9vw, 2.9rem);
-        letter-spacing: 1.3px;
+        font-size: clamp(1.75rem, 8.6vw, 2.6rem);
+        letter-spacing: 1.2px;
       }
 
       .hero-subtitle,
@@ -911,11 +968,11 @@
       }
 
       .featured-card h3 {
-        font-size: 1.15rem;
+        font-size: 1.12rem;
       }
 
       .featured-card.full-width h3 {
-        font-size: 1.25rem;
+        font-size: 1.22rem;
       }
 
       .hero-image-shell {
@@ -925,6 +982,10 @@
       .text-panel,
       .ending-box {
         padding: 28px 20px;
+      }
+
+      .history-heading-row {
+        gap: 10px;
       }
     }
   </style>
@@ -978,20 +1039,20 @@
       <div class="section-kicker">Presencias centrales</div>
       <h2>La autora y la historia detrás del pulso</h2>
       <p>
-        Aquí empieza la parte más íntima de Shambhala: la mujer que lo imaginó y los afectos que sostienen este universo desde adentro.
+        Aquí se mantiene el tratamiento visual cinematográfico para las imágenes de autora e historia, integrado al mismo lenguaje del sitio.
       </p>
     </div>
 
     <div class="featured-grid">
       <div class="featured-card reveal">
-        <img class="featured-image" src="images/galeria/susanautor.jpg" alt="Susan English" />
+        <img class="featured-image" src="images/galeria/susan-autor.jpg" alt="Susan English" />
         <div class="featured-overlay"></div>
         <div class="character-aura aura-author"></div>
         <div class="featured-content">
           <span class="character-tag">Autora</span>
           <h3><a class="title-link" href="#historia">Susan English</a></h3>
           <p>
-            Susan escribe como ha vivido: con curiosidad, valentía y una forma muy suya de mirar el mundo, entre la ciencia, la imaginación y la experiencia.
+            Física, aventurera, trotamundos y observadora incansable. Escribe desde el punto donde la ciencia, la imaginación y la experiencia de vida se encuentran.
           </p>
           <a href="#historia" class="card-link">Ir a nuestra historia</a>
         </div>
@@ -1005,7 +1066,7 @@
       <h3>Susan English</h3>
 
       <p>
-        Susan English Tiene una maestría en física y escribe desde un lugar poco común: ese punto donde la ciencia, la imaginación y la experiencia de vida se encuentran. Aventurera por naturaleza, trotamundos por vocación y observadora incansable del mundo, ha construido una vida marcada por la curiosidad, la valentía y el deseo de comprender lo desconocido.
+        Susan English tiene una maestría en física y escribe desde un lugar poco común: ese punto donde la ciencia, la imaginación y la experiencia de vida se encuentran. Aventurera por naturaleza, trotamundos por vocación y observadora incansable del mundo, ha construido una vida marcada por la curiosidad, la valentía y el deseo de comprender lo desconocido.
       </p>
 
       <p>
@@ -1110,7 +1171,11 @@
   <section class="text-section reveal">
     <div class="text-panel">
       <div class="section-kicker">Nuestra historia</div>
-      <h3>Susan y Ximena · <a class="title-link" href="galeria.html">Galería</a></h3>
+
+      <div class="history-heading-row">
+        <h3>Susan y Ximena</h3>
+        <a class="history-button" href="galeria.html">Galería</a>
+      </div>
 
       <p>
         La historia de Susan y Ximena comenzó incluso antes del primer abrazo. Susan había llegado a Medellín el 26 de junio de 2017 y, casi sin darse cuenta, la ciudad empezó a abrirse paso en ella: la calidez de la gente, la belleza de las montañas, la energía cotidiana, esa forma tan viva de estar en el mundo. Había llegado con curiosidad, con valentía y con el deseo de empezar de nuevo, sin imaginar que en esa nueva etapa no solo encontraría un hogar, sino también a la mujer que le cambiaría la vida.
