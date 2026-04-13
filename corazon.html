@@ -128,14 +128,14 @@
       margin: 0 auto;
       min-height: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
-      gap: 40px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+      gap: 42px;
       align-items: center;
-      padding: 92px 0 8px;
+      padding: 96px 0 30px;
     }
 
     .hero-copy {
-      max-width: 960px;
+      max-width: 980px;
       position: relative;
       z-index: 2;
     }
@@ -149,8 +149,8 @@
       border: 1px solid rgba(0,170,255,0.26);
       color: rgba(146, 222, 255, 0.92);
       font-family: "Orbitron", sans-serif;
-      font-size: 0.74rem;
-      letter-spacing: 2.5px;
+      font-size: 0.72rem;
+      letter-spacing: 2.4px;
       text-transform: uppercase;
       width: fit-content;
       background: rgba(0, 10, 20, 0.12);
@@ -166,9 +166,9 @@
     h1 {
       margin: 0 0 20px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.6rem, 5vw, 4.9rem);
+      font-size: clamp(2.2rem, 4.3vw, 4rem);
       line-height: 0.98;
-      letter-spacing: 2px;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
       color: #f8fbff;
       text-shadow:
@@ -178,18 +178,18 @@
     }
 
     .hero-subtitle {
-      max-width: 900px;
-      font-size: 0.98rem;
+      max-width: 950px;
+      font-size: 0.96rem;
       line-height: 1.9;
       color: rgba(255,255,255,0.82);
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .hero-jump-links {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 0 0 26px;
+      margin: 0;
     }
 
     .hero-jump-links a {
@@ -210,37 +210,6 @@
       transform: translateY(-1px);
     }
 
-    .hero-note {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      max-width: 1080px;
-    }
-
-    .note-box {
-      padding: 18px 20px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.020), rgba(255,255,255,0.008)),
-        rgba(8, 10, 16, 0.42);
-      backdrop-filter: blur(4px);
-    }
-
-    .note-label {
-      margin-bottom: 10px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.68rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(134, 221, 255, 0.8);
-    }
-
-    .note-box p {
-      font-size: 0.92rem;
-      line-height: 1.7;
-      color: rgba(255,255,255,0.72);
-    }
-
     .hero-image-wrap {
       position: relative;
       width: 100%;
@@ -258,7 +227,7 @@
       z-index: 0;
       background:
         radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 46%),
-        radial-gradient(circle at center, rgba(0, 170, 255, 0.08), transparent 58%);
+        radial-gradient(circle at center, rgba(0, 170, 255, 0.10), transparent 58%);
       filter: blur(30px);
       pointer-events: none;
     }
@@ -267,15 +236,16 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 620px;
-      min-height: 590px;
+      max-width: 640px;
+      min-height: 610px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(0,170,255,0.30);
       background:
         linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
         inset 0 0 28px rgba(0,170,255,0.05),
-        0 0 30px rgba(0,0,0,0.24);
+        0 0 32px rgba(0,170,255,0.14),
+        0 0 60px rgba(0,0,0,0.26);
     }
 
     .hero-image-shell img {
@@ -285,53 +255,55 @@
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: saturate(0.94) brightness(0.90) contrast(1.03);
-      transform: scale(1.02);
+      filter: saturate(0.95) brightness(0.84) contrast(1.04);
+      transform: scale(1.03);
     }
 
-    .hero-image-overlay {
+    .hero-image-shell::after {
+      content: "";
       position: absolute;
       inset: 0;
       z-index: 2;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.48) 8%, rgba(0,0,0,0.14) 48%, rgba(0,0,0,0.04) 100%),
-        linear-gradient(to right, rgba(0,0,0,0.10), rgba(0,0,0,0.01)),
-        radial-gradient(circle at top, rgba(0,170,255,0.08), transparent 42%);
+        linear-gradient(to top, rgba(0,0,0,0.84) 10%, rgba(0,0,0,0.34) 50%, rgba(0,0,0,0.08) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.02)),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
+      pointer-events: none;
     }
 
     .hero-image-aura {
       position: absolute;
       inset: 0;
       z-index: 1;
-      opacity: 0.95;
+      opacity: 0.92;
       pointer-events: none;
       mix-blend-mode: screen;
       background:
-        radial-gradient(circle at 24% 22%, rgba(0, 190, 255, 0.15), transparent 22%),
-        radial-gradient(circle at 72% 20%, rgba(120, 220, 255, 0.10), transparent 18%),
-        radial-gradient(circle at 50% 72%, rgba(255,255,255,0.04), transparent 20%);
+        radial-gradient(circle at 20% 22%, rgba(0, 190, 255, 0.16), transparent 22%),
+        radial-gradient(circle at 75% 20%, rgba(120, 220, 255, 0.10), transparent 20%),
+        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 20%);
     }
 
     .section {
       position: relative;
       z-index: 2;
-      padding: 52px 8% 42px;
+      padding: 64px 8% 48px;
     }
 
     .section.first-section {
-      padding-top: 22px;
+      padding-top: 40px;
     }
 
     .section-header {
       max-width: 860px;
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .section-kicker {
       margin-bottom: 14px;
       font-family: "Orbitron", sans-serif;
       font-size: 0.72rem;
-      letter-spacing: 2.5px;
+      letter-spacing: 2.4px;
       text-transform: uppercase;
       color: rgba(140, 223, 255, 0.82);
     }
@@ -339,8 +311,8 @@
     .section h2 {
       margin: 0 0 16px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.55rem, 3vw, 2.35rem);
-      letter-spacing: 2px;
+      font-size: clamp(1.35rem, 2.2vw, 1.9rem);
+      letter-spacing: 1.6px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
     }
@@ -348,37 +320,35 @@
     .section-header p {
       margin: 0;
       max-width: 760px;
-      line-height: 1.82;
+      line-height: 1.85;
       color: rgba(255,255,255,0.76);
-      font-size: 0.98rem;
+      font-size: 0.96rem;
     }
 
     .featured-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 22px;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 1060px;
     }
 
     .featured-card {
       position: relative;
       overflow: hidden;
-      min-height: 560px;
+      min-height: 600px;
       padding: 30px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(0,170,255,0.24);
       background:
         linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
         inset 0 0 28px rgba(0,170,255,0.05),
+        0 0 24px rgba(0,170,255,0.10),
         0 0 30px rgba(0,0,0,0.24);
       transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
       isolation: isolate;
-    }
-
-    .featured-card.large {
-      grid-column: span 6;
     }
 
     .featured-card.full-width {
@@ -416,7 +386,7 @@
     }
 
     .featured-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-8px);
       border-color: rgba(0,170,255,0.42);
       box-shadow:
         0 0 28px rgba(0,170,255,0.14),
@@ -450,7 +420,7 @@
     .featured-content {
       position: relative;
       z-index: 3;
-      max-width: 92%;
+      max-width: 760px;
     }
 
     .featured-card.full-width .featured-content {
@@ -472,19 +442,20 @@
     }
 
     .featured-card h3 {
-      margin: 0 0 12px;
+      margin: 0 0 14px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.45rem, 2.2vw, 2.15rem);
-      letter-spacing: 1.6px;
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      letter-spacing: 1.4px;
       text-transform: uppercase;
       text-shadow: 0 0 15px rgba(0,0,0,0.35);
+      line-height: 1.05;
     }
 
     .featured-card.full-width h3 {
-      font-size: clamp(2rem, 4.5vw, 4rem);
-      letter-spacing: 2px;
-      line-height: 1;
-      margin-bottom: 18px;
+      font-size: clamp(1.7rem, 3.4vw, 3rem);
+      letter-spacing: 1.8px;
+      line-height: 1.02;
+      margin-bottom: 16px;
     }
 
     .title-link {
@@ -498,7 +469,7 @@
 
     .featured-card p {
       margin: 0 0 18px;
-      max-width: 95%;
+      max-width: 760px;
       line-height: 1.8;
       color: rgba(255,255,255,0.86);
       font-size: 0.95rem;
@@ -506,7 +477,7 @@
     }
 
     .featured-card.full-width p {
-      font-size: 1rem;
+      font-size: 0.98rem;
       line-height: 1.85;
       max-width: 760px;
       margin-bottom: 24px;
@@ -527,8 +498,8 @@
     }
 
     .featured-card.full-width .card-link {
-      font-size: 0.88rem;
-      letter-spacing: 3px;
+      font-size: 0.84rem;
+      letter-spacing: 2.6px;
     }
 
     .featured-card:hover .card-link {
@@ -539,7 +510,7 @@
     .cinematic-band {
       position: relative;
       z-index: 2;
-      padding: 34px 8% 8px;
+      padding: 44px 8% 12px;
     }
 
     .cinematic-band-inner {
@@ -571,13 +542,13 @@
     .history-feature {
       position: relative;
       z-index: 2;
-      padding: 18px 8% 0;
+      padding: 34px 8% 0;
     }
 
     .text-section {
       position: relative;
       z-index: 2;
-      padding: 12px 8% 0;
+      padding: 22px 8% 0;
     }
 
     .text-panel {
@@ -593,24 +564,21 @@
         0 0 28px rgba(0,0,0,0.20);
     }
 
-    .text-panel + .text-panel {
-      margin-top: 16px;
-    }
-
     .text-panel h3 {
       margin: 0 0 14px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.08rem, 1.8vw, 1.45rem);
-      letter-spacing: 1.7px;
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+      letter-spacing: 1.4px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.95);
+      line-height: 1.15;
     }
 
     .subheading {
       margin: 24px 0 12px;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.92rem;
-      letter-spacing: 1.5px;
+      font-size: 0.88rem;
+      letter-spacing: 1.4px;
       text-transform: uppercase;
       color: rgba(157, 224, 255, 0.9);
     }
@@ -618,7 +586,7 @@
     .text-panel p {
       margin: 0 0 16px;
       max-width: none;
-      font-size: 0.97rem;
+      font-size: 0.96rem;
       line-height: 1.9;
       color: rgba(255,255,255,0.80);
     }
@@ -634,7 +602,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 62px 8% 28px;
+      padding: 66px 8% 32px;
       text-align: center;
     }
 
@@ -653,8 +621,8 @@
     .ending-box h2 {
       margin: 0 0 16px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.45rem, 3vw, 2.2rem);
-      letter-spacing: 2px;
+      font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+      letter-spacing: 1.6px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
     }
@@ -663,11 +631,10 @@
       margin: 0;
       line-height: 1.85;
       color: rgba(255,255,255,0.76);
-      font-size: 0.97rem;
+      font-size: 0.96rem;
     }
 
     .hero-subtitle,
-    .note-box p,
     .section-header p,
     .featured-card p,
     .cinematic-band-left,
@@ -686,7 +653,7 @@
     .page-footer-inner {
       max-width: 1180px;
       margin: 0 auto;
-      padding-top: 24px;
+      padding-top: 26px;
       border-top: 1px solid rgba(255,255,255,0.08);
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -758,16 +725,16 @@
 
     @media (max-width: 1400px) {
       .hero {
-        grid-template-columns: 1.08fr 0.92fr;
+        grid-template-columns: 1.05fr 0.95fr;
       }
 
       .hero-image-shell {
-        max-width: 580px;
-        min-height: 560px;
+        max-width: 600px;
+        min-height: 570px;
       }
 
       .featured-card {
-        min-height: 520px;
+        min-height: 560px;
       }
 
       .featured-card.full-width {
@@ -778,13 +745,7 @@
     @media (max-width: 1150px) {
       .hero {
         grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 108px 0 18px;
-      }
-
-      .hero-note {
-        grid-template-columns: 1fr;
-        max-width: 760px;
+        padding: 110px 0 34px;
       }
 
       .hero-image-wrap {
@@ -798,8 +759,8 @@
         min-height: 540px;
       }
 
-      .featured-card.large {
-        grid-column: span 12;
+      .page-footer-inner {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
@@ -822,17 +783,13 @@
         padding-right: 6%;
       }
 
-      .page-footer-inner {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       h1 {
-        font-size: clamp(2.35rem, 8vw, 4rem);
-        letter-spacing: 2px;
+        font-size: clamp(2rem, 7vw, 3.4rem);
+        letter-spacing: 1.6px;
       }
 
       .featured-card {
-        min-height: 480px;
+        min-height: 500px;
       }
 
       .featured-card.full-width {
@@ -855,51 +812,30 @@
 
       .hero {
         width: min(1840px, calc(100% - 24px));
-        padding-top: 132px;
-        padding-bottom: 14px;
+        padding-top: 136px;
+        padding-bottom: 32px;
       }
 
       .section {
-        padding-top: 48px;
-        padding-bottom: 38px;
+        padding-top: 56px;
+        padding-bottom: 44px;
       }
 
       .section.first-section {
-        padding-top: 14px;
-      }
-
-      .section-header {
-        margin-bottom: 24px;
+        padding-top: 30px;
       }
 
       .hero-image-shell {
-        min-height: 480px;
+        min-height: 500px;
       }
 
       .featured-card {
-        min-height: 440px;
+        min-height: 460px;
         padding: 26px;
       }
 
       .featured-card.full-width {
         min-height: 500px;
-      }
-
-      .featured-card h3 {
-        font-size: 1.55rem;
-      }
-
-      .featured-card.full-width h3 {
-        font-size: clamp(1.55rem, 7vw, 3rem);
-      }
-
-      .featured-card p {
-        font-size: 0.94rem;
-        line-height: 1.72;
-      }
-
-      .text-panel {
-        padding: 30px 22px;
       }
     }
 
@@ -916,18 +852,16 @@
       }
 
       h1 {
-        font-size: clamp(2rem, 10vw, 3.35rem);
-        letter-spacing: 1.4px;
+        font-size: clamp(1.8rem, 9vw, 2.9rem);
+        letter-spacing: 1.3px;
       }
 
-      .hero-subtitle {
-        font-size: 0.94rem;
-        line-height: 1.78;
-      }
-
-      .hero-jump-links {
-        gap: 8px;
-        margin-bottom: 22px;
+      .hero-subtitle,
+      .section-header p,
+      .featured-card p,
+      .text-panel p,
+      .ending-box p {
+        font-size: 0.93rem;
       }
 
       .hero-jump-links a {
@@ -935,43 +869,12 @@
         text-align: center;
       }
 
-      .featured-card.large {
-        grid-column: span 12;
-      }
-
       .featured-card {
-        min-height: 380px;
+        min-height: 390px;
       }
 
       .featured-card.full-width {
-        min-height: 420px;
-      }
-
-      .featured-content {
-        max-width: 100%;
-      }
-
-      .cinematic-band {
-        padding-top: 26px;
-      }
-
-      .cinematic-band-inner {
-        gap: 16px;
-        font-size: 0.9rem;
-      }
-
-      .ending {
-        min-height: auto;
-        padding-top: 48px;
-        padding-bottom: 20px;
-      }
-
-      .ending-box {
-        padding: 30px 22px;
-      }
-
-      .page-footer {
-        padding-bottom: 64px;
+        min-height: 430px;
       }
 
       .page-footer-inner {
@@ -983,34 +886,24 @@
       }
 
       .hero-image-shell {
-        min-height: 400px;
+        min-height: 420px;
       }
     }
 
     @media (max-width: 480px) {
-      .eyebrow,
-      .section-kicker,
-      .note-label,
-      .character-tag,
-      .card-link,
-      .top-links a,
-      .brand {
-        letter-spacing: 1.4px;
-      }
-
       .top-links a {
-        font-size: 0.74rem;
+        font-size: 0.72rem;
         padding: 9px 12px;
       }
 
       .hero {
-        padding-top: 136px;
-        padding-bottom: 12px;
+        padding-top: 140px;
+        padding-bottom: 28px;
       }
 
       .featured-card {
         padding: 20px;
-        min-height: 340px;
+        min-height: 350px;
       }
 
       .featured-card.full-width {
@@ -1018,30 +911,20 @@
       }
 
       .featured-card h3 {
-        font-size: 1.2rem;
+        font-size: 1.15rem;
       }
 
       .featured-card.full-width h3 {
-        font-size: 1.15rem;
-        line-height: 1.1;
-      }
-
-      .featured-card p,
-      .text-panel p {
-        font-size: 0.93rem;
-      }
-
-      .section h2,
-      .ending-box h2 {
-        letter-spacing: 1.5px;
+        font-size: 1.25rem;
       }
 
       .hero-image-shell {
-        min-height: 340px;
+        min-height: 350px;
       }
 
-      .text-panel {
-        padding: 26px 18px;
+      .text-panel,
+      .ending-box {
+        padding: 28px 20px;
       }
     }
   </style>
@@ -1080,30 +963,12 @@
         <a href="#historia">Nuestra historia</a>
         <a href="galeria.html">Galería</a>
       </div>
-
-      <div class="hero-note">
-        <div class="note-box">
-          <div class="note-label">Autora</div>
-          <p>La imaginación aquí nace de una mente científica, viajera y radicalmente curiosa.</p>
-        </div>
-
-        <div class="note-box">
-          <div class="note-label">Vínculo</div>
-          <p>La historia también se sostiene desde el amor, la compañía y una forma compartida de mirar el mundo.</p>
-        </div>
-
-        <div class="note-box">
-          <div class="note-label">Origen</div>
-          <p>Más que una biografía, este espacio deja ver la energía íntima desde donde Shambhala empezó a tomar forma.</p>
-        </div>
-      </div>
     </div>
 
     <div class="hero-image-wrap">
       <div class="hero-image-shell">
         <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
         <div class="hero-image-aura"></div>
-        <div class="hero-image-overlay"></div>
       </div>
     </div>
   </section>
@@ -1118,7 +983,7 @@
     </div>
 
     <div class="featured-grid">
-      <div class="featured-card large reveal">
+      <div class="featured-card reveal">
         <img class="featured-image" src="images/galeria/susan-autor.jpg" alt="Susan English" />
         <div class="featured-overlay"></div>
         <div class="character-aura aura-author"></div>
@@ -1127,20 +992,6 @@
           <h3><a class="title-link" href="#historia">Susan English</a></h3>
           <p>
             Física, aventurera, trotamundos y observadora incansable. Escribe desde el punto donde la ciencia, la imaginación y la experiencia de vida se encuentran.
-          </p>
-          <a href="#historia" class="card-link">Ir a nuestra historia</a>
-        </div>
-      </div>
-
-      <div class="featured-card large reveal">
-        <img class="featured-image" src="images/galeria/susan-ximena-1.jpg" alt="Susan y Ximena" />
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-history"></div>
-        <div class="featured-content">
-          <span class="character-tag">Historia</span>
-          <h3><a class="title-link" href="#historia">Susan y Ximena</a></h3>
-          <p>
-            Un vínculo profundo, luminoso y decisivo dentro del territorio afectivo desde donde también se expandió Shambhala.
           </p>
           <a href="#historia" class="card-link">Ir a nuestra historia</a>
         </div>
@@ -1247,7 +1098,7 @@
       <div class="character-aura aura-history"></div>
       <div class="featured-content">
         <span class="character-tag">Historia</span>
-        <h3><a class="title-link" href="#historia">Susan y Ximena</a></h3>
+        <h3>Susan y Ximena</h3>
         <p>
           Un vínculo profundo, luminoso y decisivo dentro del territorio afectivo desde donde también se expandió Shambhala.
         </p>
