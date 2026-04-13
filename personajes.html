@@ -222,20 +222,19 @@
     }
 
     h1 {
-  margin: 0 0 20px;
-  font-family: "Orbitron", sans-serif;
-  font-size: clamp(2.4rem, 5vw, 4.6rem);
-  line-height: 0.98;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #f8fbff;
-  text-shadow:
-    0 0 8px rgba(255,255,255,0.18),
-    0 0 18px rgba(80,170,255,0.08);
-  max-width: 100%;
-  word-break: normal;
-  overflow-wrap: normal;
-}
+      margin: 0 0 20px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f8fbff;
+      text-shadow:
+        0 0 8px rgba(255,255,255,0.18),
+        0 0 18px rgba(80,170,255,0.08);
+      max-width: 100%;
+      word-break: break-word;
+    }
 
     .hero-subtitle {
       max-width: 980px;
@@ -1097,7 +1096,7 @@
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding: 118px 0 42px;
+        padding: calc(var(--topbar-height) + 26px) 0 42px;
       }
 
       .hero-note {
@@ -1298,9 +1297,39 @@
         min-width: 0;
       }
 
+      .featured-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      .featured-grid::-webkit-scrollbar,
+      .roster-grid::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .featured-grid::-webkit-scrollbar-thumb,
+      .roster-grid::-webkit-scrollbar-thumb {
+        background: rgba(120, 210, 255, 0.28);
+        border-radius: 999px;
+      }
+
+      .featured-grid::-webkit-scrollbar-track,
+      .roster-grid::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.04);
+      }
+
       .featured-card.large,
       .featured-card.small {
-        grid-column: span 12;
+        grid-column: auto;
+        flex: 0 0 84vw;
+        min-width: 84vw;
+        max-width: 84vw;
+        scroll-snap-align: start;
       }
 
       .featured-card {
@@ -1320,13 +1349,22 @@
       }
 
       .roster-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
       }
 
+      .roster-card,
       .roster-card.last-card {
         grid-column: auto;
-        max-width: none;
-        width: 100%;
+        max-width: 82vw;
+        min-width: 82vw;
+        flex: 0 0 82vw;
+        scroll-snap-align: start;
       }
 
       .cinematic-band {
@@ -1383,6 +1421,13 @@
         padding: 22px;
       }
 
+      .featured-card.large,
+      .featured-card.small {
+        min-width: 88vw;
+        max-width: 88vw;
+        flex-basis: 88vw;
+      }
+
       .featured-card.large {
         min-height: 330px;
       }
@@ -1397,6 +1442,13 @@
 
       .featured-card p {
         font-size: 0.92rem;
+      }
+
+      .roster-card,
+      .roster-card.last-card {
+        min-width: 86vw;
+        max-width: 86vw;
+        flex-basis: 86vw;
       }
 
       .section h2 {
@@ -1507,9 +1559,7 @@
         <div class="featured-content">
           <span class="character-tag">Protagonista</span>
           <h3>Calisto</h3>
-          <p>
-            Introspección, curiosidad, vulnerabilidad, deseo.
-          </p>
+          <p>Introspección, curiosidad, vulnerabilidad, deseo.</p>
           <span class="card-link">Entrar al perfil</span>
         </div>
       </a>
@@ -1521,9 +1571,7 @@
         <div class="featured-content">
           <span class="character-tag">Centro emocional</span>
           <h3>Pavani</h3>
-          <p>
-            Calma, profundidad, misterio y una ternura que no necesita imponerse.
-          </p>
+          <p>Calma, profundidad, misterio y una ternura que no necesita imponerse.</p>
           <span class="card-link">Entrar al perfil</span>
         </div>
       </a>
@@ -1579,9 +1627,7 @@
         <div class="featured-content">
           <span class="character-tag">IA · Presencia</span>
           <h3>Annie</h3>
-          <p>
-            No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.
-          </p>
+          <p>No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.</p>
           <span class="card-link">Entrar al perfil</span>
         </div>
       </a>
@@ -1664,6 +1710,7 @@
     function createStars() {
       stars = [];
       const count = window.innerWidth < 768 ? 140 : 240;
+
       for (let i = 0; i < count; i++) {
         stars.push({
           x: Math.random() * canvas.width,
@@ -1696,42 +1743,42 @@
     }
 
     function setTopbarHeight() {
-      const topbar = document.querySelector('.topbar');
+      const topbar = document.querySelector(".topbar");
       if (!topbar) return;
       const height = Math.ceil(topbar.getBoundingClientRect().height);
-      document.documentElement.style.setProperty('--topbar-height', `${height}px`);
+      document.documentElement.style.setProperty("--topbar-height", `${height}px`);
     }
 
-    const menuToggle = document.getElementById('menuToggle');
-    const siteMenu = document.getElementById('siteMenu');
-    const menuLinks = siteMenu.querySelectorAll('a');
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
 
     function closeMenu() {
-      menuToggle.classList.remove('active');
-      siteMenu.classList.remove('is-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
     }
 
     function toggleMenu() {
-      const isOpen = siteMenu.classList.toggle('is-open');
-      menuToggle.classList.toggle('active', isOpen);
-      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       setTopbarHeight();
     }
 
     if (menuToggle) {
-      menuToggle.addEventListener('click', toggleMenu);
+      menuToggle.addEventListener("click", toggleMenu);
     }
 
     menuLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener("click", () => {
         if (window.innerWidth <= 820) {
           closeMenu();
         }
       });
     });
 
-    document.addEventListener('click', event => {
+    document.addEventListener("click", event => {
       if (window.innerWidth > 820) return;
       if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMenu();
@@ -1739,27 +1786,27 @@
     });
 
     function initReveal() {
-      const revealElements = document.querySelectorAll('.reveal');
+      const revealElements = document.querySelectorAll(".reveal");
       const mobileView =
-        window.matchMedia('(max-width: 900px)').matches ||
-        window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.matchMedia("(max-width: 900px)").matches ||
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      if (mobileView || !('IntersectionObserver' in window)) {
-        revealElements.forEach(el => el.classList.add('visible'));
+      if (mobileView || !("IntersectionObserver" in window)) {
+        revealElements.forEach(el => el.classList.add("visible"));
         return;
       }
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
         });
       }, {
         threshold: 0.06,
-        rootMargin: '0px 0px -8% 0px'
+        rootMargin: "0px 0px -8% 0px"
       });
 
       revealElements.forEach(el => observer.observe(el));
@@ -1769,7 +1816,7 @@
     createStars();
     drawStars();
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       resizeCanvas();
       createStars();
       setTopbarHeight();
@@ -1779,7 +1826,7 @@
       }
 
       if (window.innerWidth <= 900) {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
       }
     });
 
