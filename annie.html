@@ -21,7 +21,6 @@
       --text: #eef6ff;
       --muted: #b6c7da;
       --soft: #89b9e8;
-      --accent: #8ad8ff;
       --line: rgba(132, 200, 255, 0.22);
       --glow: 0 0 30px rgba(76, 191, 255, 0.16);
       --radius: 28px;
@@ -403,92 +402,110 @@
       margin-top: 16px;
     }
 
-    .related-card {
+    .presence-card {
       position: relative;
       overflow: hidden;
-      border-radius: 24px;
-      border: 1px solid rgba(138, 216, 255, 0.12);
-      background: linear-gradient(180deg, rgba(10, 21, 43, 0.72), rgba(7, 14, 29, 0.9));
-      min-height: 230px;
-      padding: 18px;
+      min-height: 500px;
+      padding: 34px;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+      border-radius: 0;
+      border: 1px solid rgba(0,170,255,0.32);
+      background:
+        linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.05),
+        0 0 30px rgba(0,0,0,0.24);
+      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
       isolation: isolate;
     }
 
-    .related-card:hover,
-    .related-card:focus-within {
-      transform: translateY(-4px);
-      border-color: rgba(138, 216, 255, 0.32);
-      box-shadow: var(--glow);
+    .presence-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,170,255,0.55);
+      box-shadow:
+        0 0 28px rgba(0,170,255,0.14),
+        0 0 70px rgba(0,170,255,0.10),
+        inset 0 0 30px rgba(0,170,255,0.08);
     }
 
-    .related-thumb {
+    .presence-image {
       position: absolute;
-      top: 14px;
-      right: 14px;
-      width: 74px;
-      height: 96px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid rgba(138, 216, 255, 0.16);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.26);
-      z-index: 1;
-      background: rgba(255,255,255,0.03);
-    }
-
-    .related-thumb img {
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      z-index: 0;
+      transform: scale(1.03);
+      transition: transform 0.8s ease, filter 0.8s ease;
+      filter: saturate(0.95) brightness(0.84) contrast(1.04);
     }
 
-    .related-overlay {
+    .presence-card:hover .presence-image {
+      transform: scale(1.08);
+      filter: saturate(1.02) brightness(0.92) contrast(1.06);
+    }
+
+    .presence-overlay {
       position: absolute;
       inset: 0;
+      z-index: 1;
       background:
-        linear-gradient(180deg, rgba(5, 12, 25, 0.14), rgba(5, 12, 25, 0.9)),
-        radial-gradient(circle at top right, rgba(91, 184, 255, 0.10), transparent 22%);
-      z-index: 0;
+        linear-gradient(to top, rgba(0,0,0,0.84) 10%, rgba(0,0,0,0.34) 50%, rgba(0,0,0,0.08) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.02)),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
     }
 
-    .related-content {
+    .presence-content {
       position: relative;
-      z-index: 2;
-      padding-right: 78px;
+      z-index: 3;
+      max-width: 86%;
     }
 
-    .related-role {
-      color: var(--soft);
+    .presence-tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 7px 12px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.34);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.64rem;
+      color: rgba(176, 230, 255, 0.92);
+      backdrop-filter: blur(4px);
       font-family: var(--font-display);
     }
 
-    .related-card h3 {
-      margin-top: 8px;
-      font-size: 0.96rem;
-      line-height: 1.1;
+    .presence-card h3 {
+      margin: 0 0 12px;
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(0,0,0,0.35);
     }
 
-    .related-card p {
-      margin-top: 10px;
-      width: 100%;
-      max-width: none;
-      color: var(--muted);
-      font-size: 0.88rem;
+    .presence-card p {
+      margin: 0 0 22px;
+      max-width: 92%;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.95rem;
+      text-shadow: 0 0 12px rgba(0,0,0,0.35);
       text-align: left;
     }
 
-    .related-link {
-      margin-top: 12px;
-      color: var(--accent);
+    .presence-link {
+      width: fit-content;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.7rem;
+      color: #c6eeff;
+      border-bottom: 1px solid rgba(198, 238, 255, 0.6);
+      padding-bottom: 4px;
       font-family: var(--font-display);
     }
 
@@ -573,6 +590,10 @@
       .bottom-nav {
         grid-template-columns: 1fr 1fr;
       }
+
+      .presence-card {
+        min-height: 440px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -606,13 +627,17 @@
         grid-template-columns: 1fr;
       }
 
-      .related-content {
-        padding-right: 74px;
+      .presence-card {
+        min-height: 420px;
+        padding: 26px;
       }
 
-      .related-thumb {
-        width: 68px;
-        height: 88px;
+      .presence-card h3 {
+        font-size: clamp(1.45rem, 9vw, 2rem);
+      }
+
+      .presence-content {
+        max-width: 92%;
       }
 
       .bottom-link {
@@ -832,48 +857,36 @@
         </p>
 
         <div class="related-grid">
-          <a class="related-card" href="calisto.html">
-            <div class="related-thumb">
-              <img src="images/calisto.jpg" alt="Calisto" />
-            </div>
-            <div class="related-overlay"></div>
-            <div class="related-content">
-              <span class="related-role">Protagonista</span>
+          <a class="presence-card" href="calisto.html">
+            <img class="presence-image" src="images/calisto.jpg" alt="Calisto" />
+            <div class="presence-overlay"></div>
+            <div class="presence-content">
+              <span class="presence-tag">Protagonista</span>
               <h3>Calisto</h3>
-              <p>
-                Ciencia, ironía, curiosidad y una sensibilidad que nunca consigue quedarse al margen de nada.
-              </p>
-              <span class="related-link">Entrar al perfil</span>
+              <p>Ciencia, ironía, curiosidad y una sensibilidad que nunca consigue quedarse al margen de nada.</p>
+              <span class="presence-link">Entrar al perfil</span>
             </div>
           </a>
 
-          <a class="related-card" href="pavani.html">
-            <div class="related-thumb">
-              <img src="images/pavani.jpg" alt="Pavani" />
-            </div>
-            <div class="related-overlay"></div>
-            <div class="related-content">
-              <span class="related-role">Centro emocional</span>
+          <a class="presence-card" href="pavani.html">
+            <img class="presence-image" src="images/pavani.jpg" alt="Pavani" />
+            <div class="presence-overlay"></div>
+            <div class="presence-content">
+              <span class="presence-tag">Centro emocional</span>
               <h3>Pavani</h3>
-              <p>
-                Calma, profundidad, humor sutil y una forma de intimidad que transforma la historia desde dentro.
-              </p>
-              <span class="related-link">Entrar al perfil</span>
+              <p>Calma, profundidad, humor sutil y una forma de intimidad que transforma la historia desde dentro.</p>
+              <span class="presence-link">Entrar al perfil</span>
             </div>
           </a>
 
-          <a class="related-card" href="naomi.html">
-            <div class="related-thumb">
-              <img src="images/naomi.jpg" alt="Naomi" />
-            </div>
-            <div class="related-overlay"></div>
-            <div class="related-content">
-              <span class="related-role">Vínculo esencial</span>
+          <a class="presence-card" href="naomi.html">
+            <img class="presence-image" src="images/naomi.jpg" alt="Naomi" />
+            <div class="presence-overlay"></div>
+            <div class="presence-content">
+              <span class="presence-tag">Vínculo esencial</span>
               <h3>Naomi</h3>
-              <p>
-                Amistad, calidez y un modo generoso de sostener a otras personas sin dejar de ser brillante.
-              </p>
-              <span class="related-link">Entrar al perfil</span>
+              <p>Amistad, calidez y un modo generoso de sostener a otras personas sin dejar de ser brillante.</p>
+              <span class="presence-link">Entrar al perfil</span>
             </div>
           </a>
         </div>
