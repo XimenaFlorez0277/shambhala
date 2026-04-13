@@ -131,7 +131,7 @@
       grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
       gap: 40px;
       align-items: center;
-      padding: 92px 0 54px;
+      padding: 92px 0 28px;
     }
 
     .hero-copy {
@@ -190,6 +190,31 @@
       gap: 18px;
       flex-wrap: wrap;
       margin-bottom: 54px;
+    }
+
+    .hero-jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 34px;
+    }
+
+    .hero-jump-links a {
+      font-size: 0.76rem;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(0,170,255,0.18);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
+    }
+
+    .hero-jump-links a:hover {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.42);
+      background: rgba(0, 25, 45, 0.26);
+      transform: translateY(-1px);
     }
 
     .btn {
@@ -331,12 +356,12 @@
     .section {
       position: relative;
       z-index: 2;
-      padding: 110px 8%;
+      padding: 74px 8% 48px;
     }
 
     .section-header {
       max-width: 860px;
-      margin-bottom: 46px;
+      margin-bottom: 32px;
     }
 
     .section-kicker {
@@ -481,6 +506,15 @@
       text-shadow: 0 0 15px rgba(0,0,0,0.35);
     }
 
+    .title-link {
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    .title-link:hover {
+      color: #b8eeff;
+    }
+
     .featured-card p {
       margin: 0 0 22px;
       max-width: 95%;
@@ -509,7 +543,7 @@
     .cinematic-band {
       position: relative;
       z-index: 2;
-      padding: 70px 8% 20px;
+      padding: 42px 8% 8px;
     }
 
     .cinematic-band-inner {
@@ -541,7 +575,7 @@
     .text-section {
       position: relative;
       z-index: 2;
-      padding: 34px 8% 0;
+      padding: 14px 8% 0;
     }
 
     .text-panel {
@@ -558,7 +592,7 @@
     }
 
     .text-panel + .text-panel {
-      margin-top: 24px;
+      margin-top: 18px;
     }
 
     .text-panel h3 {
@@ -594,11 +628,11 @@
     .ending {
       position: relative;
       z-index: 2;
-      min-height: 62vh;
+      min-height: auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 110px 8% 150px;
+      padding: 78px 8% 40px;
       text-align: center;
     }
 
@@ -628,6 +662,52 @@
       line-height: 1.9;
       color: rgba(255,255,255,0.76);
       font-size: 1rem;
+    }
+
+    .hero-subtitle,
+    .note-box p,
+    .section-header p,
+    .featured-card p,
+    .cinematic-band-left,
+    .text-panel p,
+    .ending-box p {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .page-footer {
+      position: relative;
+      z-index: 2;
+      padding: 0 8% 84px;
+    }
+
+    .page-footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .page-footer-inner a {
+      font-size: 0.78rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(0,170,255,0.16);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
+    }
+
+    .page-footer-inner a:hover {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.42);
+      background: rgba(0, 25, 45, 0.26);
+      transform: translateY(-1px);
     }
 
     .reveal {
@@ -701,7 +781,8 @@
       .section,
       .ending,
       .cinematic-band,
-      .text-section {
+      .text-section,
+      .page-footer {
         padding-left: 6%;
         padding-right: 6%;
       }
@@ -736,12 +817,12 @@
       }
 
       .section {
-        padding-top: 90px;
-        padding-bottom: 90px;
+        padding-top: 68px;
+        padding-bottom: 42px;
       }
 
       .section-header {
-        margin-bottom: 34px;
+        margin-bottom: 28px;
       }
 
       .hero-image-shell {
@@ -772,7 +853,8 @@
       .section,
       .ending,
       .cinematic-band,
-      .text-section {
+      .text-section,
+      .page-footer {
         padding-left: 5%;
         padding-right: 5%;
       }
@@ -790,7 +872,17 @@
       .hero-actions {
         flex-direction: column;
         align-items: stretch;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
+      }
+
+      .hero-jump-links {
+        gap: 8px;
+        margin-bottom: 26px;
+      }
+
+      .hero-jump-links a {
+        width: 100%;
+        text-align: center;
       }
 
       .btn {
@@ -811,7 +903,7 @@
       }
 
       .cinematic-band {
-        padding-top: 40px;
+        padding-top: 28px;
       }
 
       .cinematic-band-inner {
@@ -821,12 +913,16 @@
 
       .ending {
         min-height: auto;
-        padding-top: 80px;
-        padding-bottom: 100px;
+        padding-top: 56px;
+        padding-bottom: 28px;
       }
 
       .ending-box {
         padding: 34px 24px;
+      }
+
+      .page-footer {
+        padding-bottom: 70px;
       }
 
       .hero-image-shell {
@@ -896,6 +992,7 @@
       <a href="index.html">Inicio</a>
       <a href="explorar.html">Explorar</a>
       <a href="personajes.html">Personajes</a>
+      <a href="explorar.html#libros">Libros</a>
       <a href="galeria.html">Galería</a>
     </nav>
   </header>
@@ -913,6 +1010,14 @@
       <div class="hero-actions">
         <a href="#presencias" class="btn">Entrar al corazón del proyecto</a>
         <a href="galeria.html" class="btn secondary">Ver galería</a>
+      </div>
+
+      <div class="hero-jump-links">
+        <a href="#autora">Autora</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#bigbang">Big Bang</a>
+        <a href="#historia">Nuestra historia</a>
+        <a href="galeria.html">Galería</a>
       </div>
 
       <div class="hero-note">
@@ -958,11 +1063,11 @@
         <div class="character-aura aura-author"></div>
         <div class="featured-content">
           <span class="character-tag">Autora</span>
-          <h3>Susan English</h3>
+          <h3><a class="title-link" href="#historia">Susan English</a></h3>
           <p>
             Física, aventurera, trotamundos y observadora incansable. Escribe desde el punto donde la ciencia, la imaginación y la experiencia de vida se encuentran.
           </p>
-          <span class="card-link">Presencia creadora</span>
+          <span class="card-link">Ir a nuestra historia</span>
         </div>
       </div>
 
@@ -972,11 +1077,11 @@
         <div class="character-aura aura-history"></div>
         <div class="featured-content">
           <span class="character-tag">Historia</span>
-          <h3>Susan y Ximena</h3>
+          <h3><a class="title-link" href="#historia">Susan y Ximena</a></h3>
           <p>
             Un vínculo profundo, luminoso y decisivo dentro del territorio afectivo desde donde también se expandió Shambhala.
           </p>
-          <span class="card-link">Memoria compartida</span>
+          <span class="card-link">Ir a nuestra historia</span>
         </div>
       </div>
     </div>
@@ -1077,7 +1182,7 @@
   <section class="text-section reveal" id="historia">
     <div class="text-panel">
       <div class="section-kicker">Nuestra historia</div>
-      <h3>Nuestra historia</h3>
+      <h3>Nuestra historia · <a class="title-link" href="galeria.html">Galería</a></h3>
 
       <p>
         La historia de Susan y Ximena comenzó incluso antes del primer abrazo. Susan había llegado a Medellín el 26 de junio de 2017 y, casi sin darse cuenta, la ciudad empezó a abrirse paso en ella: la calidez de la gente, la belleza de las montañas, la energía cotidiana, esa forma tan viva de estar en el mundo. Había llegado con curiosidad, con valentía y con el deseo de empezar de nuevo, sin imaginar que en esa nueva etapa no solo encontraría un hogar, sino también a la mujer que le cambiaría la vida.
@@ -1121,6 +1226,15 @@
       </p>
     </div>
   </section>
+
+  <footer class="page-footer reveal">
+    <div class="page-footer-inner">
+      <a href="index.html">Inicio</a>
+      <a href="explorar.html">Explorar</a>
+      <a href="personajes.html">Personajes</a>
+      <a href="explorar.html#libros">Libros</a>
+    </div>
+  </footer>
 
   <script>
     window.addEventListener("load", () => {
