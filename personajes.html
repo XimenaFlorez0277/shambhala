@@ -194,6 +194,7 @@
     .hero-copy {
       padding: 0;
       max-width: 1040px;
+      min-width: 0;
       position: relative;
       z-index: 2;
     }
@@ -226,14 +227,16 @@
       font-family: "Orbitron", sans-serif;
       font-size: clamp(2.4rem, 5vw, 4.6rem);
       line-height: 0.98;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #f8fbff;
       text-shadow:
         0 0 8px rgba(255,255,255,0.18),
         0 0 18px rgba(80,170,255,0.08);
       max-width: 100%;
-      word-break: break-word;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
     }
 
     .hero-subtitle {
@@ -447,6 +450,14 @@
       font-size: 1rem;
       text-align: justify;
       text-justify: inter-word;
+    }
+
+    .carousel-wrap {
+      position: relative;
+    }
+
+    .swipe-cue {
+      display: none;
     }
 
     .featured-grid {
@@ -1150,8 +1161,8 @@
       }
 
       h1 {
-        font-size: clamp(2.8rem, 9vw, 5.2rem);
-        letter-spacing: 2px;
+        font-size: clamp(2.6rem, 8vw, 4.3rem);
+        letter-spacing: 1.2px;
       }
 
       .roster-grid {
@@ -1268,8 +1279,8 @@
       }
 
       h1 {
-        font-size: clamp(1.9rem, 10vw, 3rem);
-        letter-spacing: 1.2px;
+        font-size: clamp(1.65rem, 7.8vw, 2.45rem);
+        letter-spacing: 0.8px;
         line-height: 1.02;
       }
 
@@ -1297,11 +1308,74 @@
         min-width: 0;
       }
 
+      .carousel-wrap {
+        position: relative;
+      }
+
+      .carousel-wrap::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 12px;
+        width: 46px;
+        pointer-events: none;
+        background: linear-gradient(to left, rgba(0,0,0,0.78), rgba(0,0,0,0));
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+      }
+
+      .carousel-wrap.has-scrolled::after {
+        opacity: 0.25;
+      }
+
+      .swipe-cue {
+        position: absolute;
+        top: -6px;
+        right: 2px;
+        z-index: 5;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border: 1px solid rgba(120, 210, 255, 0.24);
+        background: rgba(3, 10, 20, 0.72);
+        color: rgba(180, 230, 255, 0.92);
+        font-family: "Orbitron", sans-serif;
+        font-size: 0.58rem;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        backdrop-filter: blur(8px);
+        pointer-events: none;
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+
+      .swipe-cue .arrow {
+        font-size: 0.95rem;
+        line-height: 1;
+        animation: swipeArrow 1.2s ease-in-out infinite;
+      }
+
+      .carousel-wrap.has-scrolled .swipe-cue {
+        opacity: 0;
+        transform: translateX(8px);
+      }
+
+      @keyframes swipeArrow {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(4px);
+        }
+      }
+
       .featured-grid {
         display: flex;
         overflow-x: auto;
         gap: 16px;
         padding-bottom: 12px;
+        padding-right: 20px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
@@ -1353,6 +1427,7 @@
         overflow-x: auto;
         gap: 16px;
         padding-bottom: 12px;
+        padding-right: 20px;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
@@ -1410,6 +1485,11 @@
       .roster-number,
       .brand {
         letter-spacing: 1.4px;
+      }
+
+      h1 {
+        font-size: clamp(1.55rem, 7.2vw, 2.1rem);
+        letter-spacing: 0.5px;
       }
 
       .hero {
@@ -1471,6 +1551,12 @@
         left: 18px;
         bottom: 16px;
         font-size: 0.86rem;
+      }
+
+      .swipe-cue {
+        font-size: 0.54rem;
+        gap: 6px;
+        padding: 7px 9px;
       }
     }
   </style>
@@ -1551,86 +1637,93 @@
       </p>
     </div>
 
-    <div class="featured-grid">
-      <a class="featured-card large reveal" href="calisto.html">
-        <img class="featured-image" src="images/calisto.jpg" alt="Calisto" />
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-calisto"></div>
-        <div class="featured-content">
-          <span class="character-tag">Protagonista</span>
-          <h3>Calisto</h3>
-          <p>Introspección, curiosidad, vulnerabilidad, deseo.</p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
+    <div class="carousel-wrap" id="featuredWrap">
+      <div class="swipe-cue" aria-hidden="true">
+        <span>Desliza</span>
+        <span class="arrow">→</span>
+      </div>
 
-      <a class="featured-card large reveal" href="pavani.html">
-        <img class="featured-image" src="images/pavani.jpg" alt="Pavani" />
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-pavani"></div>
-        <div class="featured-content">
-          <span class="character-tag">Centro emocional</span>
-          <h3>Pavani</h3>
-          <p>Calma, profundidad, misterio y una ternura que no necesita imponerse.</p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
+      <div class="featured-grid" id="featuredGrid">
+        <a class="featured-card large reveal" href="calisto.html">
+          <img class="featured-image" src="images/calisto.jpg" alt="Calisto" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-calisto"></div>
+          <div class="featured-content">
+            <span class="character-tag">Protagonista</span>
+            <h3>Calisto</h3>
+            <p>Introspección, curiosidad, vulnerabilidad, deseo.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
 
-      <a class="featured-card small reveal" href="diana.html">
-        <img class="featured-image" src="images/diana.jpg" alt="Diana" />
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-diana"></div>
-        <div class="featured-content">
-          <span class="character-tag">Órbita cercana</span>
-          <h3>Diana</h3>
-          <p>Carisma, inteligencia y magnetismo.</p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
+        <a class="featured-card large reveal" href="pavani.html">
+          <img class="featured-image" src="images/pavani.jpg" alt="Pavani" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-pavani"></div>
+          <div class="featured-content">
+            <span class="character-tag">Centro emocional</span>
+            <h3>Pavani</h3>
+            <p>Calma, profundidad, misterio y una ternura que no necesita imponerse.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
 
-      <a class="featured-card small reveal" href="izumi.html">
-        <img class="featured-image" src="images/izumi.jpg" alt="Izumi" />
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-izumi"></div>
-        <div class="featured-content">
-          <span class="character-tag">Órbita cercana</span>
-          <h3>Izumi</h3>
-          <p>Precisión, visión y una calma decisiva.</p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
+        <a class="featured-card small reveal" href="diana.html">
+          <img class="featured-image" src="images/diana.jpg" alt="Diana" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-diana"></div>
+          <div class="featured-content">
+            <span class="character-tag">Órbita cercana</span>
+            <h3>Diana</h3>
+            <p>Carisma, inteligencia y magnetismo.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
 
-      <a class="featured-card small reveal" href="naomi.html">
-        <img class="featured-image" src="images/naomi.jpg" alt="Naomi" />
-        <div class="featured-overlay"></div>
-        <div class="character-aura aura-naomi"></div>
-        <div class="featured-content">
-          <span class="character-tag">Vínculo esencial</span>
-          <h3>Naomi</h3>
-          <p>Amistad, intimidad y refugio humano.</p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
+        <a class="featured-card small reveal" href="izumi.html">
+          <img class="featured-image" src="images/izumi.jpg" alt="Izumi" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-izumi"></div>
+          <div class="featured-content">
+            <span class="character-tag">Órbita cercana</span>
+            <h3>Izumi</h3>
+            <p>Precisión, visión y una calma decisiva.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
 
-      <a class="featured-card small annie-card reveal" href="annie.html">
-        <div class="annie-grid"></div>
-        <div class="annie-rings"></div>
-        <div class="annie-pulse"></div>
-        <div class="annie-core"></div>
-        <div class="annie-lines">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="featured-overlay"></div>
-        <div class="featured-content">
-          <span class="character-tag">IA · Presencia</span>
-          <h3>Annie</h3>
-          <p>No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.</p>
-          <span class="card-link">Entrar al perfil</span>
-        </div>
-      </a>
+        <a class="featured-card small reveal" href="naomi.html">
+          <img class="featured-image" src="images/naomi.jpg" alt="Naomi" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-naomi"></div>
+          <div class="featured-content">
+            <span class="character-tag">Vínculo esencial</span>
+            <h3>Naomi</h3>
+            <p>Amistad, intimidad y refugio humano.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+
+        <a class="featured-card small annie-card reveal" href="annie.html">
+          <div class="annie-grid"></div>
+          <div class="annie-rings"></div>
+          <div class="annie-pulse"></div>
+          <div class="annie-core"></div>
+          <div class="annie-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="featured-overlay"></div>
+          <div class="featured-content">
+            <span class="character-tag">IA · Presencia</span>
+            <h3>Annie</h3>
+            <p>No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -1654,7 +1747,14 @@
       </p>
     </div>
 
-    <div class="roster-grid" id="rosterGrid"></div>
+    <div class="carousel-wrap" id="rosterWrap">
+      <div class="swipe-cue" aria-hidden="true">
+        <span>Desliza</span>
+        <span class="arrow">→</span>
+      </div>
+
+      <div class="roster-grid" id="rosterGrid"></div>
+    </div>
   </section>
 
   <section class="ending reveal">
@@ -1696,6 +1796,7 @@
       document.body.classList.add("loaded");
       setTopbarHeight();
       initReveal();
+      initSwipeCue();
     });
 
     const canvas = document.getElementById("stars");
@@ -1810,6 +1911,37 @@
       });
 
       revealElements.forEach(el => observer.observe(el));
+    }
+
+    function initSwipeCue() {
+      const mobileView = window.matchMedia("(max-width: 680px)").matches;
+      if (!mobileView) return;
+
+      const carousels = [
+        {
+          wrap: document.getElementById("featuredWrap"),
+          grid: document.getElementById("featuredGrid")
+        },
+        {
+          wrap: document.getElementById("rosterWrap"),
+          grid: document.getElementById("rosterGrid")
+        }
+      ];
+
+      carousels.forEach(({ wrap, grid }) => {
+        if (!wrap || !grid) return;
+
+        const updateCue = () => {
+          if (grid.scrollLeft > 8) {
+            wrap.classList.add("has-scrolled");
+          } else {
+            wrap.classList.remove("has-scrolled");
+          }
+        };
+
+        grid.addEventListener("scroll", updateCue, { passive: true });
+        updateCue();
+      });
     }
 
     resizeCanvas();
