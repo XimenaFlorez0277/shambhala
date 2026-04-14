@@ -102,6 +102,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
+      position: relative;
     }
 
     .brand {
@@ -113,6 +114,7 @@
       color: var(--soft);
       font-family: var(--font-display);
       font-size: 0.84rem;
+      flex-shrink: 0;
     }
 
     .brand-dot {
@@ -122,6 +124,60 @@
       background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
       box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
       flex: 0 0 auto;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(138, 216, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(7, 18, 38, 0.54);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.25s ease;
+      padding: 0;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: 0.3s ease;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
     }
 
     .nav {
@@ -620,6 +676,39 @@
         width: min(var(--max), calc(100% - 24px));
       }
 
+      .topbar-inner {
+        min-height: 72px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(138, 216, 255, 0.14);
+        border-radius: 24px;
+        background: rgba(3, 10, 22, 0.94);
+        box-shadow: var(--shadow);
+      }
+
+      .nav.is-open {
+        display: flex;
+      }
+
+      .nav a {
+        width: 100%;
+        text-align: center;
+        border-radius: 999px;
+      }
+
       .hero-copy,
       .section {
         padding: 18px 14px;
@@ -660,14 +749,6 @@
       .bottom-link {
         min-height: 170px;
       }
-
-      .nav {
-        display: none;
-      }
-
-      .topbar-inner {
-        justify-content: flex-start;
-      }
     }
   </style>
 </head>
@@ -680,12 +761,18 @@
           <span>Shambhala Saga</span>
         </a>
 
-        <nav class="nav" aria-label="Navegación principal">
-        <a href="index.html" class="nav-pill">Inicio</a>
-        <a href="explorar.html" class="nav-pill">Explorar</a>
-        <a href="personajes.html" class="nav-pill">Personajes</a>
-        <a href="corazon.html" class="nav-pill">Corazón</a>
-        <a href="explorar.html#libros" class="nav-pill">Libros</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="nav" id="siteMenu" aria-label="Navegación principal">
+          <a href="index.html" class="nav-pill">Inicio</a>
+          <a href="explorar.html" class="nav-pill">Explorar</a>
+          <a href="personajes.html" class="nav-pill">Personajes</a>
+          <a href="corazon.html" class="nav-pill">Corazón</a>
+          <a href="explorar.html#libros" class="nav-pill">Libros</a>
         </nav>
       </div>
     </header>
@@ -936,6 +1023,47 @@
   </div>
 
   <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 760) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", event => {
+      if (window.innerWidth > 760) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) {
+        closeMenu();
+      }
+    });
+
     (() => {
       const canvas = document.getElementById("annieSphere");
       const ctx = canvas.getContext("2d");
