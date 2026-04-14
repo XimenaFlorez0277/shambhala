@@ -1121,7 +1121,7 @@
         <p>
           Para mensajes generales, comentarios sobre la saga, preguntas o una primera toma de contacto.
         </p>
-        <a class="contact-inline-link contact-email" href="#">correo principal</a>
+        <a class="contact-inline-link" href="mailto:shambhalasaga2097@gmail.com">shambhalasaga2097@gmail.com</a>
       </article>
 
       <article class="contact-card reveal">
@@ -1130,7 +1130,7 @@
         <p>
           Un canal pensado para propuestas creativas, editoriales, prensa, entrevistas o alianzas relacionadas con el proyecto.
         </p>
-        <a class="contact-inline-link contact-email" href="#">colaboraciones</a>
+        <a class="contact-inline-link" href="mailto:shambhalasaga2097@gmail.com">shambhalasaga2097@gmail.com</a>
       </article>
 
       <article class="contact-card reveal">
@@ -1139,7 +1139,7 @@
         <p>
           Para continuar el recorrido desde el sitio, seguir las novedades y mantener viva la conexión con este universo.
         </p>
-        <a class="contact-inline-link" href="comunidad.html">ir a Comunidad Shambhala</a>
+        <a class="contact-inline-link" href="comunidad.html">Ir a Comunidad Shambhala</a>
       </article>
     </div>
   </section>
@@ -1149,7 +1149,7 @@
       <div class="section-kicker">Mensaje directo</div>
       <h2>Escríbenos desde aquí</h2>
       <p>
-        Esta versión está pensada para GitHub Pages. El formulario abre tu aplicación de correo con el mensaje listo, así el sitio sigue siendo liviano y no depende todavía de un servicio externo.
+        Esta versión está pensada para GitHub Pages. El formulario abre la aplicación de correo del visitante con el mensaje listo, así el sitio sigue siendo liviano y no depende todavía de un servicio externo.
       </p>
     </div>
 
@@ -1190,25 +1190,25 @@
       </div>
 
       <aside class="info-panel reveal">
-        <h3>Antes de publicar</h3>
+        <h3>Cómo funciona</h3>
         <p>
-          Dejé esta página lista para que funcione bien visualmente desde ya, pero con una configuración sencilla. Solo necesitas poner tu correo real en una sola línea del script.
+          Esta página ya quedó lista con el correo real de Shambhala. Tanto los enlaces como el formulario están conectados a la misma dirección para que todo sea más simple y no tengas que editar nada más.
         </p>
 
         <div class="info-stack">
           <div class="info-item">
-            <strong>Cambio obligatorio</strong>
-            <span>Reemplaza el correo de ejemplo por tu correo real en la constante <code>CONTACT_EMAIL</code>.</span>
+            <strong>Correo activo</strong>
+            <span>Los mensajes se abrirán dirigidos a <strong>shambhalasaga2097@gmail.com</strong>.</span>
           </div>
 
           <div class="info-item">
-            <strong>Cómo funciona</strong>
-            <span>Los botones de correo y el formulario usarán automáticamente esa dirección.</span>
+            <strong>Formulario liviano</strong>
+            <span>Funciona bien en GitHub Pages porque no necesita backend ni servicios externos.</span>
           </div>
 
           <div class="info-item">
             <strong>Más adelante</strong>
-            <span>Cuando quieras un formulario que sí envíe sin abrir el correo, ahí se integra un servicio externo.</span>
+            <span>Cuando quieras, podemos convertirlo en un formulario que envíe directamente sin abrir el correo.</span>
           </div>
         </div>
       </aside>
@@ -1247,10 +1247,9 @@
       document.body.classList.add("loaded");
       setTopbarHeight();
       initReveal();
-      setContactLinks();
     });
 
-    const CONTACT_EMAIL = "TU-CORREO@AQUI.com";
+    const CONTACT_EMAIL = "shambhalasaga2097@gmail.com";
 
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
@@ -1301,15 +1300,6 @@
       if (!topbar) return;
       const height = Math.ceil(topbar.getBoundingClientRect().height);
       document.documentElement.style.setProperty("--topbar-height", `${height}px`);
-    }
-
-    function setContactLinks() {
-      const emailLinks = document.querySelectorAll(".contact-email");
-
-      emailLinks.forEach(link => {
-        link.href = `mailto:${CONTACT_EMAIL}`;
-        link.textContent = CONTACT_EMAIL;
-      });
     }
 
     const menuToggle = document.getElementById("menuToggle");
@@ -1380,30 +1370,30 @@
 
       items.forEach(item => observer.observe(item));
     }
-    
-    const CONTACT_EMAIL = "shambhalasaga2097@gmail.com";
-    
+
     const contactForm = document.getElementById("contactForm");
 
-    contactForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+    if (contactForm) {
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value.trim();
-      const message = document.getElementById("message").value.trim();
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const subject = document.getElementById("subject").value.trim();
+        const message = document.getElementById("message").value.trim();
 
-      const mailSubject = encodeURIComponent(`Mensaje desde Shambhala: ${subject}`);
-      const mailBody = encodeURIComponent(
+        const mailSubject = encodeURIComponent(`Mensaje desde Shambhala: ${subject}`);
+        const mailBody = encodeURIComponent(
 `Nombre: ${name}
 Correo: ${email}
 
 Mensaje:
 ${message}`
-      );
+        );
 
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
-    });
+        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
+      });
+    }
 
     resizeCanvas();
     createStars();
