@@ -104,6 +104,61 @@
       text-transform: uppercase;
       color: #dff4ff;
       white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      padding: 0;
+      transition: 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(111, 195, 255, 0.42);
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: #eef7ff;
+      transition: 0.28s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
     }
 
     .nav-links {
@@ -472,7 +527,6 @@
       font-size: 1rem;
     }
 
-    /* LINKS DE ABAJO COMO EN LAS OTRAS PÁGINAS */
     .bottom-nav {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -572,16 +626,6 @@
     }
 
     @media (max-width: 900px) {
-      .topbar {
-        padding: 16px 6%;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-      }
-
       .section,
       footer {
         width: min(var(--max-width), calc(100% - 12%));
@@ -594,6 +638,40 @@
 
       .bottom-nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar {
+        padding: 16px 6%;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 6%;
+        right: 6%;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(111, 195, 255, 0.18);
+        background: rgba(2, 5, 12, 0.96);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
       }
     }
 
@@ -648,7 +726,13 @@
     <header class="topbar">
       <div class="brand">Saga Shambhala</div>
 
-      <nav class="nav-links">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
         <a href="explorar.html">Explorar</a>
         <a href="personajes.html">Personajes</a>
@@ -1040,6 +1124,10 @@
     window.addEventListener("resize", () => {
       resizeCanvas();
       createStars();
+
+      if (window.innerWidth > 780) {
+        closeMenu();
+      }
     });
 
     const fadeElements = document.querySelectorAll(".fade-up");
@@ -1055,6 +1143,41 @@
     });
 
     fadeElements.forEach((element) => observer.observe(element));
+
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 780) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 780) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
   </script>
 </body>
 </html>
