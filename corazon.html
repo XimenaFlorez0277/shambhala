@@ -791,7 +791,7 @@
       box-shadow: 0 0 24px rgba(0,170,255,0.14);
     }
 
-    .footer-card img {
+    .footer-card > img:not(.awards-badge) {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -827,6 +827,7 @@
 
     .footer-awards {
       position: relative;
+      overflow: hidden;
       justify-content: center;
       align-items: center;
       min-height: 170px;
@@ -848,13 +849,14 @@
 
     .footer-awards .awards-badge {
       position: absolute;
-      top: 50%;
+      top: 42%;
       left: 50%;
-      inset: auto;
-      width: clamp(108px, 32%, 150px);
+      width: clamp(92px, 28%, 128px);
       height: auto;
+      max-width: none;
       object-fit: contain;
-      transform: translate(-50%, -54%);
+      transform: translate(-50%, -50%);
+      z-index: 1;
       filter:
         brightness(1)
         contrast(1.04)
@@ -1084,8 +1086,8 @@
       }
 
       .footer-awards .awards-badge {
-        width: 92px;
-        transform: translate(-50%, -52%);
+        width: 84px;
+        top: 40%;
       }
 
       .footer-awards span {
@@ -1136,7 +1138,7 @@
       }
 
       .footer-awards .awards-badge {
-        width: 84px;
+        width: 76px;
       }
     }
   </style>
