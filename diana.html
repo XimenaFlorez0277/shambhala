@@ -120,7 +120,7 @@
 
     .top-nav {
       position: relative;
-      z-index: 3;
+      z-index: 30;
       width: min(var(--max-width), calc(100% - 32px));
       margin: 0 auto;
       padding: 24px 0 0;
@@ -136,6 +136,62 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--soft);
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(143,211,255,0.35);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      transition: 0.28s ease;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
     }
 
     .nav-links {
@@ -418,7 +474,6 @@
       color: var(--soft);
     }
 
-    /* EXPLORAR MÁS PERSONAJES COMO ANNIE */
     .links-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -536,7 +591,6 @@
       font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
-    /* SEGUIR EXPLORANDO COMO ANNIE */
     .return-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -645,10 +699,37 @@
     @media (max-width: 780px) {
       .top-nav {
         padding-top: 18px;
+        width: min(var(--max-width), calc(100% - 20px));
+      }
+
+      .menu-toggle {
+        display: inline-flex;
       }
 
       .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        background: rgba(8, 12, 19, 0.94);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-pill {
         width: 100%;
+        text-align: center;
       }
 
       .hero {
@@ -715,9 +796,9 @@
         letter-spacing: 0.2em;
       }
 
-      .nav-pill {
-        padding: 9px 14px;
-        font-size: 0.88rem;
+      .menu-toggle {
+        width: 44px;
+        height: 44px;
       }
 
       .hero-copy,
@@ -738,7 +819,13 @@
     <header class="top-nav">
       <div class="brand">Shambhala Saga</div>
 
-      <nav class="nav-links" aria-label="Navegación principal">
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
         <a href="index.html" class="nav-pill">Inicio</a>
         <a href="explorar.html" class="nav-pill">Explorar</a>
         <a href="personajes.html" class="nav-pill">Personajes</a>
@@ -976,5 +1063,48 @@
       Shambhala Saga · Universo en expansión
     </footer>
   </div>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 780) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 780) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 780) {
+        closeMenu();
+      }
+    });
+  </script>
 </body>
 </html>
