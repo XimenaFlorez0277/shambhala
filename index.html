@@ -33,7 +33,7 @@
 
     .ship-wrap {
       position: absolute;
-      top: 63%;
+      top: 58%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: min(108vw, 1120px);
@@ -219,7 +219,7 @@
     @media (min-width: 1600px) {
       .ship-wrap {
         width: min(100vw, 1180px);
-        top: 62%;
+        top: 56%;
       }
     }
 
@@ -230,7 +230,7 @@
 
       .ship-wrap {
         width: min(98vw, 960px);
-        top: 65%;
+        top: 60%;
       }
 
       h1 {
@@ -250,7 +250,7 @@
 
       .ship-wrap {
         width: min(92vw, 680px);
-        top: 74%;
+        top: 68%;
       }
 
       h1 {
@@ -294,7 +294,7 @@
 
       .ship-wrap {
         width: 104vw;
-        top: 78%;
+        top: 72%;
       }
 
       h1 {
@@ -365,9 +365,8 @@
 
   <div class="transition" id="transition"></div>
 
-  <!-- Cambia MYGOATCOUNTERCODE por el código real de tu cuenta -->
-  <script data-goatcounter="https://MYGOATCOUNTERCODE.goatcounter.com/count"
-          async src="https://gc.zgo.at/count.js"></script>
+  <script data-goatcounter="https://shambhalasaga.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 
   <script>
     const canvas = document.getElementById("stars");
@@ -476,19 +475,11 @@
       cinematicTransition("corazon.html");
     });
 
-    /* =========================
-       CONTADOR DE VISITAS
-       ========================= */
-    const GOATCOUNTER_CODE = "MYGOATCOUNTERCODE";
+    const GOATCOUNTER_CODE = "shambhalasaga";
     const visitCount = document.getElementById("visitCount");
 
     function loadVisitCounter() {
-      if (GOATCOUNTER_CODE === "MYGOATCOUNTERCODE") {
-        visitCount.textContent = "Configúralo";
-        return;
-      }
-
-      fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/${encodeURIComponent("TOTAL")}.json`)
+      fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`)
         .then(response => {
           if (!response.ok) {
             throw new Error("No se pudo cargar el contador");
