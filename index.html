@@ -149,6 +149,48 @@
       transform: translateY(-2px);
     }
 
+    .visit-counter-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 7;
+      width: calc(100% - 36px);
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .visit-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(0,170,255,0.22);
+      background: rgba(0,0,0,0.42);
+      backdrop-filter: blur(10px);
+      box-shadow:
+        0 0 20px rgba(0,170,255,0.08),
+        inset 0 0 14px rgba(0,170,255,0.05);
+      color: rgba(255,255,255,0.78);
+      font-size: 0.72rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .visit-counter-label {
+      opacity: 0.75;
+    }
+
+    .visit-counter-value {
+      font-family: 'Orbitron', sans-serif;
+      color: #b9ecff;
+      letter-spacing: 1.6px;
+      opacity: 0.95;
+    }
+
     .transition {
       position: fixed;
       inset: 0;
@@ -233,6 +275,12 @@
         max-width: 360px;
         min-width: 0;
       }
+
+      .visit-counter {
+        font-size: 0.66rem;
+        letter-spacing: 1.2px;
+        padding: 9px 12px;
+      }
     }
 
     @media (max-width: 560px) {
@@ -268,6 +316,19 @@
         font-size: 0.78rem;
         letter-spacing: 1.7px;
       }
+
+      .visit-counter-wrap {
+        bottom: 14px;
+        width: calc(100% - 20px);
+      }
+
+      .visit-counter {
+        max-width: 100%;
+        font-size: 0.60rem;
+        letter-spacing: 1px;
+        padding: 8px 10px;
+        gap: 8px;
+      }
     }
   </style>
 </head>
@@ -293,9 +354,20 @@
         <a href="corazon.html" class="btn" id="heartBtn">El corazón de Shambhala</a>
       </div>
     </div>
+
+    <div class="visit-counter-wrap">
+      <div class="visit-counter" aria-live="polite">
+        <span class="visit-counter-label">Visitas</span>
+        <span class="visit-counter-value" id="visitCount">—</span>
+      </div>
+    </div>
   </div>
 
   <div class="transition" id="transition"></div>
+
+  <!-- Cambia MYGOATCOUNTERCODE por el código real de tu cuenta -->
+  <script data-goatcounter="https://MYGOATCOUNTERCODE.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js"></script>
 
   <script>
     const canvas = document.getElementById("stars");
@@ -403,6 +475,35 @@
       e.preventDefault();
       cinematicTransition("corazon.html");
     });
+
+    /* =========================
+       CONTADOR DE VISITAS
+       ========================= */
+    const GOATCOUNTER_CODE = "MYGOATCOUNTERCODE";
+    const visitCount = document.getElementById("visitCount");
+
+    function loadVisitCounter() {
+      if (GOATCOUNTER_CODE === "MYGOATCOUNTERCODE") {
+        visitCount.textContent = "Configúralo";
+        return;
+      }
+
+      fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/${encodeURIComponent("TOTAL")}.json`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("No se pudo cargar el contador");
+          }
+          return response.json();
+        })
+        .then(data => {
+          visitCount.textContent = data.count || "—";
+        })
+        .catch(() => {
+          visitCount.textContent = "—";
+        });
+    }
+
+    loadVisitCounter();
   </script>
 </body>
 </html>
