@@ -9,7 +9,10 @@
     content="Personajes de Shambhala. Archivo visual del elenco principal y expandido de la saga."
   />
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
@@ -72,7 +75,7 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at center, transparent 48%, rgba(0,0,0,0.14) 74%, rgba(0,0,0,0.50) 100%);
+        radial-gradient(circle at center, transparent 48%, rgba(0, 0, 0, 0.14) 74%, rgba(0, 0, 0, 0.50) 100%);
     }
 
     .topbar {
@@ -86,7 +89,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0.18));
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.18));
       backdrop-filter: blur(8px);
     }
 
@@ -94,7 +97,7 @@
       font-family: "Orbitron", sans-serif;
       letter-spacing: 2px;
       font-size: 0.92rem;
-      color: rgba(255,255,255,0.92);
+      color: rgba(255, 255, 255, 0.92);
       flex-shrink: 0;
     }
 
@@ -102,8 +105,8 @@
       display: none;
       width: 48px;
       height: 48px;
-      border: 1px solid rgba(0,170,255,0.22);
-      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(0, 170, 255, 0.22);
+      background: rgba(0, 0, 0, 0.18);
       align-items: center;
       justify-content: center;
       cursor: pointer;
@@ -114,15 +117,15 @@
     }
 
     .menu-toggle:hover {
-      border-color: rgba(0,170,255,0.46);
-      box-shadow: 0 0 22px rgba(0,170,255,0.14);
+      border-color: rgba(0, 170, 255, 0.46);
+      box-shadow: 0 0 22px rgba(0, 170, 255, 0.14);
     }
 
     .menu-toggle span {
       position: absolute;
       width: 20px;
       height: 2px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 255, 255, 0.92);
       transition: 0.3s ease;
     }
 
@@ -162,9 +165,9 @@
       letter-spacing: 1.8px;
       text-transform: uppercase;
       padding: 10px 14px;
-      color: rgba(255,255,255,0.82);
-      border: 1px solid rgba(0,170,255,0.16);
-      background: rgba(0,0,0,0.18);
+      color: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(0, 170, 255, 0.16);
+      background: rgba(0, 0, 0, 0.18);
       transition: 0.3s ease;
       display: inline-flex;
       align-items: center;
@@ -174,7 +177,7 @@
 
     .top-links a:hover {
       color: #9be6ff;
-      border-color: rgba(0,170,255,0.4);
+      border-color: rgba(0, 170, 255, 0.4);
       background: rgba(0, 25, 45, 0.26);
     }
 
@@ -183,7 +186,6 @@
       z-index: 2;
       width: min(1840px, calc(100% - 40px));
       margin: 0 auto;
-      min-height: auto;
       display: grid;
       grid-template-columns: minmax(0, 1.38fr) minmax(340px, 0.82fr);
       gap: 30px;
@@ -192,7 +194,6 @@
     }
 
     .hero-copy {
-      padding: 0;
       max-width: 1040px;
       min-width: 0;
       position: relative;
@@ -205,7 +206,7 @@
       gap: 14px;
       margin-bottom: 22px;
       padding: 12px 18px;
-      border: 1px solid rgba(0,170,255,0.26);
+      border: 1px solid rgba(0, 170, 255, 0.26);
       color: rgba(146, 222, 255, 0.92);
       font-family: "Orbitron", sans-serif;
       font-size: 0.78rem;
@@ -231,19 +232,16 @@
       text-transform: uppercase;
       color: #f8fbff;
       text-shadow:
-        0 0 8px rgba(255,255,255,0.18),
-        0 0 18px rgba(80,170,255,0.08);
+        0 0 8px rgba(255, 255, 255, 0.18),
+        0 0 18px rgba(80, 170, 255, 0.08);
       max-width: 100%;
-      word-break: normal;
-      overflow-wrap: normal;
-      hyphens: none;
     }
 
     .hero-subtitle {
       max-width: 980px;
       font-size: 1.03rem;
       line-height: 1.9;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255, 255, 255, 0.82);
       margin-bottom: 28px;
       text-align: justify;
       text-justify: inter-word;
@@ -262,32 +260,32 @@
       justify-content: center;
       min-width: 364px;
       padding: 18px 28px;
-      border: 1px solid rgba(0,170,255,0.38);
-      background: rgba(0,0,0,0.22);
-      color: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0, 170, 255, 0.38);
+      background: rgba(0, 0, 0, 0.22);
+      color: rgba(255, 255, 255, 0.92);
       font-size: 0.84rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: 0.3s ease;
-      box-shadow: inset 0 0 18px rgba(0,170,255,0.05);
+      box-shadow: inset 0 0 18px rgba(0, 170, 255, 0.05);
     }
 
     .btn:hover {
       color: #a7ebff;
-      border-color: rgba(0,170,255,0.72);
+      border-color: rgba(0, 170, 255, 0.72);
       background: rgba(0, 30, 50, 0.26);
       transform: translateY(-2px);
     }
 
     .btn.secondary {
-      border-color: rgba(255,255,255,0.12);
-      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.02);
     }
 
     .btn.secondary:hover {
       color: #fff;
-      border-color: rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.04);
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .hero-note {
@@ -299,9 +297,9 @@
 
     .note-box {
       padding: 20px 22px;
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.020), rgba(255,255,255,0.008)),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.020), rgba(255, 255, 255, 0.008)),
         rgba(8, 10, 16, 0.42);
       backdrop-filter: blur(4px);
     }
@@ -318,7 +316,7 @@
     .note-box p {
       font-size: 0.95rem;
       line-height: 1.75;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
       text-align: justify;
       text-justify: inter-word;
     }
@@ -330,29 +328,27 @@
       justify-self: end;
       min-height: 560px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
-        inset 0 0 28px rgba(0,170,255,0.05),
-        0 0 30px rgba(0,0,0,0.24);
+        inset 0 0 28px rgba(0, 170, 255, 0.05),
+        0 0 30px rgba(0, 0, 0, 0.24);
       isolation: isolate;
       transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
     }
 
     .hero-image-wrap:hover {
       transform: translateY(-8px);
-      border-color: rgba(0,170,255,0.40);
+      border-color: rgba(0, 170, 255, 0.40);
       box-shadow:
-        0 0 28px rgba(0,170,255,0.12),
-        0 0 68px rgba(0,170,255,0.08),
-        inset 0 0 28px rgba(0,170,255,0.08);
+        0 0 28px rgba(0, 170, 255, 0.12),
+        0 0 68px rgba(0, 170, 255, 0.08),
+        inset 0 0 28px rgba(0, 170, 255, 0.08);
     }
 
     .hero-image-wrap img {
       position: absolute;
       inset: 0;
-      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -373,9 +369,9 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.82) 10%, rgba(0,0,0,0.34) 48%, rgba(0,0,0,0.10) 100%),
-        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.01)),
-        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
+        linear-gradient(to top, rgba(0, 0, 0, 0.82) 10%, rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.01)),
+        radial-gradient(circle at top, rgba(0, 170, 255, 0.10), transparent 42%);
     }
 
     .hero-image-aura {
@@ -409,8 +405,8 @@
       font-size: 1.4rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
-      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+      color: rgba(255, 255, 255, 0.96);
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
     }
 
     .section {
@@ -439,14 +435,14 @@
       font-size: clamp(1.65rem, 3vw, 2.55rem);
       letter-spacing: 2px;
       text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(0,150,255,0.12);
+      text-shadow: 0 0 20px rgba(0, 150, 255, 0.12);
     }
 
     .section-header p {
       margin: 0;
       max-width: 780px;
       line-height: 1.85;
-      color: rgba(255,255,255,0.76);
+      color: rgba(255, 255, 255, 0.76);
       font-size: 1rem;
       text-align: justify;
       text-justify: inter-word;
@@ -474,12 +470,11 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      border: 1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
-        inset 0 0 28px rgba(0,170,255,0.05),
-        0 0 30px rgba(0,0,0,0.24);
+        inset 0 0 28px rgba(0, 170, 255, 0.05),
+        0 0 30px rgba(0, 0, 0, 0.24);
       transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
       isolation: isolate;
     }
@@ -515,18 +510,18 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.82) 10%, rgba(0,0,0,0.34) 48%, rgba(0,0,0,0.10) 100%),
-        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.01)),
-        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
+        linear-gradient(to top, rgba(0, 0, 0, 0.82) 10%, rgba(0, 0, 0, 0.34) 48%, rgba(0, 0, 0, 0.10) 100%),
+        linear-gradient(to right, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.01)),
+        radial-gradient(circle at top, rgba(0, 170, 255, 0.10), transparent 42%);
     }
 
     .featured-card:hover {
       transform: translateY(-10px);
-      border-color: rgba(0,170,255,0.42);
+      border-color: rgba(0, 170, 255, 0.42);
       box-shadow:
-        0 0 28px rgba(0,170,255,0.14),
-        0 0 70px rgba(0,170,255,0.10),
-        inset 0 0 30px rgba(0,170,255,0.08);
+        0 0 28px rgba(0, 170, 255, 0.14),
+        0 0 70px rgba(0, 170, 255, 0.10),
+        inset 0 0 30px rgba(0, 170, 255, 0.08);
     }
 
     .featured-card .character-aura {
@@ -572,7 +567,7 @@
       background:
         radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.16), transparent 18%),
         radial-gradient(circle at 80% 24%, rgba(140, 170, 255, 0.14), transparent 20%),
-        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 16%),
+        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.05), transparent 16%),
         linear-gradient(145deg, #07101a, #020409 70%);
       border-color: rgba(120, 230, 255, 0.16);
     }
@@ -586,7 +581,7 @@
         linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
         linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
       background-size: 34px 34px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 80%);
     }
 
     .annie-rings {
@@ -631,10 +626,10 @@
       border-radius: 50%;
       z-index: 2;
       background:
-        radial-gradient(circle, rgba(180,245,255,0.95) 0%, rgba(60,210,255,0.72) 35%, rgba(0,120,255,0.08) 70%, transparent 72%);
+        radial-gradient(circle, rgba(180, 245, 255, 0.95) 0%, rgba(60, 210, 255, 0.72) 35%, rgba(0, 120, 255, 0.08) 70%, transparent 72%);
       box-shadow:
-        0 0 24px rgba(80,220,255,0.32),
-        0 0 60px rgba(60,180,255,0.18);
+        0 0 24px rgba(80, 220, 255, 0.32),
+        0 0 60px rgba(60, 180, 255, 0.18);
     }
 
     .annie-lines {
@@ -648,7 +643,7 @@
       position: absolute;
       left: 50%;
       width: 1px;
-      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.35), rgba(120,230,255,0.0));
+      background: linear-gradient(to bottom, rgba(120, 230, 255, 0.0), rgba(120, 230, 255, 0.35), rgba(120, 230, 255, 0.0));
       transform-origin: top center;
     }
 
@@ -709,8 +704,8 @@
       width: fit-content;
       padding: 7px 12px;
       margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.34);
       font-size: 0.72rem;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -724,16 +719,16 @@
       font-size: 1.8rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+      text-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
     }
 
     .featured-card p {
       margin: 0 0 22px;
       max-width: 95%;
       line-height: 1.8;
-      color: rgba(255,255,255,0.86);
+      color: rgba(255, 255, 255, 0.86);
       font-size: 0.98rem;
-      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.35);
     }
 
     .card-link {
@@ -742,14 +737,14 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       color: #8bdfff;
-      border-bottom: 1px solid rgba(139,223,255,0.35);
+      border-bottom: 1px solid rgba(139, 223, 255, 0.35);
       padding-bottom: 5px;
       transition: 0.3s ease;
     }
 
     .featured-card:hover .card-link {
       color: white;
-      border-color: rgba(255,255,255,0.56);
+      border-color: rgba(255, 255, 255, 0.56);
     }
 
     .cinematic-band {
@@ -759,13 +754,13 @@
     }
 
     .cinematic-band-inner {
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       padding-top: 22px;
       display: flex;
       justify-content: space-between;
       gap: 25px;
       align-items: flex-start;
-      color: rgba(255,255,255,0.56);
+      color: rgba(255, 255, 255, 0.56);
       font-size: 0.95rem;
       line-height: 1.8;
     }
@@ -788,24 +783,25 @@
 
     .roster-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 20px;
     }
 
     .roster-card {
       position: relative;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.09);
+      border: 1px solid rgba(255, 255, 255, 0.09);
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        linear-gradient(145deg, rgba(8,12,20,0.92), rgba(4,6,10,0.94));
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01)),
+        linear-gradient(145deg, rgba(8, 12, 20, 0.92), rgba(4, 6, 10, 0.94));
       transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
       box-shadow:
-        inset 0 0 18px rgba(0,170,255,0.03),
-        0 0 18px rgba(0,0,0,0.18);
+        inset 0 0 18px rgba(0, 170, 255, 0.03),
+        0 0 18px rgba(0, 0, 0, 0.18);
       display: flex;
       flex-direction: column;
       min-height: 100%;
+      grid-column: span 3;
     }
 
     .roster-card::before {
@@ -813,24 +809,17 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at top right, rgba(0,170,255,0.08), transparent 32%),
-        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 20%);
+        radial-gradient(circle at top right, rgba(0, 170, 255, 0.08), transparent 32%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent 20%);
       pointer-events: none;
     }
 
     .roster-card:hover {
       transform: translateY(-7px);
-      border-color: rgba(0,170,255,0.30);
+      border-color: rgba(0, 170, 255, 0.30);
       box-shadow:
-        0 0 24px rgba(0,170,255,0.10),
-        0 0 42px rgba(0,170,255,0.05);
-    }
-
-    .roster-card.last-card {
-      grid-column: 2 / span 2;
-      max-width: 320px;
-      width: 100%;
-      justify-self: center;
+        0 0 24px rgba(0, 170, 255, 0.10),
+        0 0 42px rgba(0, 170, 255, 0.05);
     }
 
     .roster-thumb-wrap {
@@ -838,9 +827,9 @@
       width: 100%;
       aspect-ratio: 1 / 1.15;
       overflow: hidden;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       background:
-        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 40%),
+        radial-gradient(circle at top, rgba(0, 170, 255, 0.10), transparent 40%),
         linear-gradient(145deg, rgba(9, 15, 25, 0.96), rgba(3, 6, 10, 0.96));
     }
 
@@ -849,7 +838,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.08) 40%, rgba(0,0,0,0));
+        linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.08) 40%, rgba(0, 0, 0, 0));
       pointer-events: none;
     }
 
@@ -860,11 +849,11 @@
       display: block;
       filter: saturate(0.96) brightness(0.90) contrast(1.04);
       transform: scale(1.02);
+      transition: transform 0.7s ease;
     }
 
     .roster-card:hover .roster-thumb {
       transform: scale(1.06);
-      transition: transform 0.7s ease;
     }
 
     .roster-placeholder {
@@ -895,7 +884,7 @@
       font-family: "Orbitron", sans-serif;
       font-size: 0.76rem;
       letter-spacing: 2px;
-      color: rgba(120,210,255,0.74);
+      color: rgba(120, 210, 255, 0.74);
     }
 
     .roster-card h3 {
@@ -904,7 +893,7 @@
       font-size: 1.02rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
+      color: rgba(255, 255, 255, 0.96);
       line-height: 1.3;
     }
 
@@ -918,7 +907,7 @@
     .roster-summary {
       font-size: 0.94rem;
       line-height: 1.72;
-      color: rgba(255,255,255,0.76);
+      color: rgba(255, 255, 255, 0.76);
     }
 
     .roster-meta {
@@ -926,7 +915,7 @@
       gap: 8px;
       margin-top: auto;
       padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .roster-meta span {
@@ -936,8 +925,38 @@
     }
 
     .roster-meta strong {
-      color: rgba(245,250,255,0.92);
+      color: rgba(245, 250, 255, 0.92);
       font-weight: 600;
+    }
+
+    /* FILAS FINALES CENTRADAS EN DESKTOP */
+    .closing-row-three-1 {
+      grid-column: 2 / span 3;
+    }
+
+    .closing-row-three-2 {
+      grid-column: 5 / span 3;
+    }
+
+    .closing-row-three-3 {
+      grid-column: 8 / span 3;
+    }
+
+    .closing-row-two-1 {
+      grid-column: 3 / span 3;
+    }
+
+    .closing-row-two-2 {
+      grid-column: 7 / span 3;
+    }
+
+    .zoe-card .roster-thumb {
+      object-position: center 14%;
+      transform: scale(1.14);
+    }
+
+    .zoe-card:hover .roster-thumb {
+      transform: scale(1.19);
     }
 
     .ending {
@@ -957,23 +976,22 @@
       position: relative;
       overflow: hidden;
       min-height: 260px;
-      border: 1px solid rgba(0,170,255,0.22);
-      background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
+      border: 1px solid rgba(0, 170, 255, 0.22);
+      background: linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
-        inset 0 0 18px rgba(0,170,255,0.05),
-        0 0 24px rgba(0,0,0,0.22);
+        inset 0 0 18px rgba(0, 170, 255, 0.05),
+        0 0 24px rgba(0, 0, 0, 0.22);
       isolation: isolate;
       transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
     }
 
     .ending-link:hover {
       transform: translateY(-8px);
-      border-color: rgba(0,170,255,0.42);
+      border-color: rgba(0, 170, 255, 0.42);
       box-shadow:
-        0 0 26px rgba(0,170,255,0.12),
-        0 0 58px rgba(0,170,255,0.06),
-        inset 0 0 22px rgba(0,170,255,0.06);
+        0 0 26px rgba(0, 170, 255, 0.12),
+        0 0 58px rgba(0, 170, 255, 0.06),
+        inset 0 0 22px rgba(0, 170, 255, 0.06);
     }
 
     .ending-link img {
@@ -999,8 +1017,8 @@
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(to top, rgba(0,0,0,0.84) 10%, rgba(0,0,0,0.32) 48%, rgba(0,0,0,0.10) 100%),
-        radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 42%);
+        linear-gradient(to top, rgba(0, 0, 0, 0.84) 10%, rgba(0, 0, 0, 0.32) 48%, rgba(0, 0, 0, 0.10) 100%),
+        radial-gradient(circle at top, rgba(0, 170, 255, 0.12), transparent 42%);
     }
 
     .ending-link::after {
@@ -1011,8 +1029,8 @@
       opacity: 0.88;
       mix-blend-mode: screen;
       background:
-        radial-gradient(circle at 22% 24%, rgba(0,190,255,0.18), transparent 22%),
-        radial-gradient(circle at 76% 24%, rgba(120,220,255,0.10), transparent 18%);
+        radial-gradient(circle at 22% 24%, rgba(0, 190, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 76% 24%, rgba(120, 220, 255, 0.10), transparent 18%);
     }
 
     .ending-link span {
@@ -1024,50 +1042,49 @@
       font-size: 0.95rem;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
-      text-shadow: 0 0 14px rgba(0,0,0,0.45);
+      color: rgba(255, 255, 255, 0.96);
+      text-shadow: 0 0 14px rgba(0, 0, 0, 0.45);
     }
 
-   .ending-link.is-home {
-  background:
-    radial-gradient(circle at 18% 50%, rgba(0, 120, 255, 0.24), transparent 18%),
-    linear-gradient(145deg, #030913, #01050c 70%);
-}
+    .ending-link.is-home {
+      background:
+        radial-gradient(circle at 18% 50%, rgba(0, 120, 255, 0.24), transparent 18%),
+        linear-gradient(145deg, #030913, #01050c 70%);
+    }
 
-.ending-link.is-home img {
-  inset: -8%;
-  width: 116%;
-  height: 116%;
-  padding: 0;
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.22);
-  filter: saturate(1) brightness(0.99) contrast(1.05)
-    drop-shadow(0 0 16px rgba(0, 120, 255, 0.22));
-}
+    .ending-link.is-home img {
+      inset: -8%;
+      width: 116%;
+      height: 116%;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.22);
+      filter: saturate(1) brightness(0.99) contrast(1.05)
+        drop-shadow(0 0 16px rgba(0, 120, 255, 0.22));
+    }
 
-.ending-link.is-home:hover img {
-  inset: -8%;
-  width: 116%;
-  height: 116%;
-  object-fit: cover;
-  object-position: center center;
-  transform: scale(1.28);
-  filter: saturate(1.03) brightness(1.02) contrast(1.06)
-    drop-shadow(0 0 18px rgba(0, 120, 255, 0.30));
-}
+    .ending-link.is-home:hover img {
+      inset: -8%;
+      width: 116%;
+      height: 116%;
+      object-fit: cover;
+      object-position: center center;
+      transform: scale(1.28);
+      filter: saturate(1.03) brightness(1.02) contrast(1.06)
+        drop-shadow(0 0 18px rgba(0, 120, 255, 0.30));
+    }
 
     .ending-link.is-medal::after {
       background:
         radial-gradient(circle at 68% 22%, rgba(255, 204, 102, 0.18), transparent 24%),
-        radial-gradient(circle at 22% 24%, rgba(0,190,255,0.12), transparent 22%);
+        radial-gradient(circle at 22% 24%, rgba(0, 190, 255, 0.12), transparent 22%);
     }
 
     .ending-link.is-books::after {
       background:
         radial-gradient(circle at 68% 22%, rgba(162, 109, 255, 0.22), transparent 24%),
-        radial-gradient(circle at 22% 24%, rgba(0,190,255,0.18), transparent 22%),
-        radial-gradient(circle at 82% 14%, rgba(255,255,255,0.14), transparent 10%);
+        radial-gradient(circle at 22% 24%, rgba(0, 190, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 82% 14%, rgba(255, 255, 255, 0.14), transparent 10%);
     }
 
     .reveal {
@@ -1084,21 +1101,6 @@
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
-    }
-
-    @media (max-width: 900px), (hover: none) and (pointer: coarse) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        filter: none;
-        transition: none;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: none;
-        filter: none;
-      }
     }
 
     @media (max-width: 1400px) {
@@ -1118,7 +1120,6 @@
     @media (max-width: 1150px) {
       .hero {
         grid-template-columns: 1fr;
-        min-height: auto;
         padding: calc(var(--topbar-height) + 26px) 0 42px;
       }
 
@@ -1145,9 +1146,13 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .roster-card.last-card {
-        grid-column: 2 / span 1;
-        max-width: none;
+      .roster-card,
+      .closing-row-three-1,
+      .closing-row-three-2,
+      .closing-row-three-3,
+      .closing-row-two-1,
+      .closing-row-two-2 {
+        grid-column: span 1;
       }
     }
 
@@ -1184,13 +1189,6 @@
       .ending-links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .roster-card.last-card {
-        grid-column: 1 / -1;
-        max-width: 340px;
-        width: 100%;
-        justify-self: center;
-      }
     }
 
     @media (max-width: 820px) {
@@ -1211,7 +1209,7 @@
         flex-direction: column;
         gap: 10px;
         padding: 14px;
-        border: 1px solid rgba(0,170,255,0.18);
+        border: 1px solid rgba(0, 170, 255, 0.18);
         background: linear-gradient(to bottom, rgba(7, 12, 22, 0.96), rgba(4, 8, 18, 0.96));
         backdrop-filter: blur(12px);
         box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32), inset 0 0 18px rgba(90, 168, 255, 0.03);
@@ -1320,10 +1318,6 @@
         min-width: 0;
       }
 
-      .carousel-wrap {
-        position: relative;
-      }
-
       .carousel-wrap::after {
         content: "";
         position: absolute;
@@ -1332,7 +1326,7 @@
         bottom: 12px;
         width: 46px;
         pointer-events: none;
-        background: linear-gradient(to left, rgba(0,0,0,0.78), rgba(0,0,0,0));
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0));
         opacity: 0.9;
         transition: opacity 0.3s ease;
       }
@@ -1406,7 +1400,7 @@
 
       .featured-grid::-webkit-scrollbar-track,
       .roster-grid::-webkit-scrollbar-track {
-        background: rgba(255,255,255,0.04);
+        background: rgba(255, 255, 255, 0.04);
       }
 
       .featured-card.large,
@@ -1446,7 +1440,11 @@
       }
 
       .roster-card,
-      .roster-card.last-card {
+      .closing-row-three-1,
+      .closing-row-three-2,
+      .closing-row-three-3,
+      .closing-row-two-1,
+      .closing-row-two-2 {
         grid-column: auto;
         max-width: 82vw;
         min-width: 82vw;
@@ -1537,7 +1535,11 @@
       }
 
       .roster-card,
-      .roster-card.last-card {
+      .closing-row-three-1,
+      .closing-row-three-2,
+      .closing-row-three-3,
+      .closing-row-two-1,
+      .closing-row-two-2 {
         min-width: 86vw;
         max-width: 86vw;
         flex-basis: 86vw;
@@ -1571,8 +1573,24 @@
         padding: 7px 9px;
       }
     }
+
+    @media (max-width: 900px), (hover: none) and (pointer: coarse) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
   </style>
 </head>
+
 <body>
   <canvas id="stars"></canvas>
   <div class="space-mist"></div>
@@ -1581,7 +1599,13 @@
   <header class="topbar">
     <div class="brand">SHAMBHALA SAGA</div>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="siteMenu"
+    >
       <span></span>
       <span></span>
       <span></span>
@@ -1603,7 +1627,8 @@
       <h1>Personajes</h1>
 
       <p class="hero-subtitle">
-        No están aquí para ocupar espacio. Están aquí para abrir preguntas, encender vínculos, tensar el deseo, sostener la herida y darle pulso al universo de Shambhala.
+        No están aquí para ocupar espacio. Están aquí para abrir preguntas, encender vínculos,
+        tensar el deseo, sostener la herida y darle pulso al universo de Shambhala.
       </p>
 
       <div class="hero-actions">
@@ -1614,17 +1639,26 @@
       <div class="hero-note">
         <div class="note-box">
           <div class="note-label">Presencia</div>
-          <p>Cada personaje deja una huella en este mundo: en la ciencia, en los afectos, en las decisiones que cambian una vida.</p>
+          <p>
+            Cada personaje deja una huella en este mundo: en la ciencia, en los afectos,
+            en las decisiones que cambian una vida.
+          </p>
         </div>
 
         <div class="note-box">
           <div class="note-label">Tensión</div>
-          <p>Algunas presencias traen refugio. Otras desordenan el equilibrio. Todas empujan la historia hacia algo más hondo.</p>
+          <p>
+            Algunas presencias traen refugio. Otras desordenan el equilibrio.
+            Todas empujan la historia hacia algo más hondo.
+          </p>
         </div>
 
         <div class="note-box">
           <div class="note-label">Universo</div>
-          <p>La Luna, Shambhala, Arcadia y la intimidad de sus vínculos se revelan a través de quienes habitan este universo.</p>
+          <p>
+            La Luna, Shambhala, Arcadia y la intimidad de sus vínculos se revelan
+            a través de quienes habitan este universo.
+          </p>
         </div>
       </div>
     </div>
@@ -1645,7 +1679,9 @@
       <div class="section-kicker">Centro emocional</div>
       <h2>Figuras que sostienen el pulso de la saga</h2>
       <p>
-        Aquí laten las presencias que cambian la gravedad emocional de Shambhala. No están reunidas para ser observadas desde lejos, sino para dejar huella en la historia, en la ciencia y en los vínculos que la atraviesan.
+        Aquí laten las presencias que cambian la gravedad emocional de Shambhala.
+        No están reunidas para ser observadas desde lejos, sino para dejar huella
+        en la historia, en la ciencia y en los vínculos que la atraviesan.
       </p>
     </div>
 
@@ -1731,7 +1767,10 @@
           <div class="featured-content">
             <span class="character-tag">IA · Presencia</span>
             <h3>Annie</h3>
-            <p>No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.</p>
+            <p>
+              No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica
+              y convierte la cercanía en una presencia distinta.
+            </p>
             <span class="card-link">Entrar al perfil</span>
           </div>
         </a>
@@ -1742,7 +1781,8 @@
   <section class="cinematic-band reveal">
     <div class="cinematic-band-inner">
       <div class="cinematic-band-left">
-        El universo no se vuelve inmenso solo por la distancia, sino por las vidas que lo atraviesan. Cada presencia carga su propia historia y una manera distinta de mirar lo desconocido.
+        El universo no se vuelve inmenso solo por la distancia, sino por las vidas que lo atraviesan.
+        Cada presencia carga su propia historia y una manera distinta de mirar lo desconocido.
       </div>
       <div class="cinematic-band-right">
         archivo de presencias · vínculos · tensiones · memorias
@@ -1755,7 +1795,8 @@
       <div class="section-kicker">Universo expandido</div>
       <h2>Presencias secundarias</h2>
       <p>
-        Aquí aparecen las figuras que ensanchan el mundo de Shambhala. Algunas acompañan, otras alteran, otras dejan preguntas. Todas aportan una forma distinta de habitar esta historia.
+        Aquí aparecen las figuras que ensanchan el mundo de Shambhala. Algunas acompañan,
+        otras alteran, otras dejan preguntas. Todas aportan una forma distinta de habitar esta historia.
       </p>
     </div>
 
@@ -1838,7 +1879,7 @@
     function drawStars() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      stars.forEach(star => {
+      stars.forEach((star) => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
@@ -1883,7 +1924,7 @@
       menuToggle.addEventListener("click", toggleMenu);
     }
 
-    menuLinks.forEach(link => {
+    menuLinks.forEach((link) => {
       link.addEventListener("click", () => {
         if (window.innerWidth <= 820) {
           closeMenu();
@@ -1891,7 +1932,7 @@
       });
     });
 
-    document.addEventListener("click", event => {
+    document.addEventListener("click", (event) => {
       if (window.innerWidth > 820) return;
       if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMenu();
@@ -1906,12 +1947,12 @@
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (mobileView || !("IntersectionObserver" in window)) {
-        revealElements.forEach(el => el.classList.add("visible"));
+        revealElements.forEach((el) => el.classList.add("visible"));
         return;
       }
 
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
             observer.unobserve(entry.target);
@@ -1922,7 +1963,7 @@
         rootMargin: "0px 0px -8% 0px"
       });
 
-      revealElements.forEach(el => observer.observe(el));
+      revealElements.forEach((el) => observer.observe(el));
     }
 
     function initSwipeCue() {
@@ -1970,7 +2011,7 @@
       }
 
       if (window.innerWidth <= 900) {
-        document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("visible"));
       }
     });
 
@@ -2209,13 +2250,26 @@
     ];
 
     const rosterGrid = document.getElementById("rosterGrid");
+    const closingThreeNames = ["Sasha", "Sook", "Tanya"];
+    const closingTwoNames = ["Yasmin", "Zoe"];
 
     secondaryCharacters.forEach((character, index) => {
       const card = document.createElement("article");
       card.className = "roster-card reveal";
 
-      if (index === secondaryCharacters.length - 1) {
-        card.classList.add("last-card");
+      const closingThreeIndex = closingThreeNames.indexOf(character.name);
+      const closingTwoIndex = closingTwoNames.indexOf(character.name);
+
+      if (character.name === "Zoe") {
+        card.classList.add("zoe-card");
+      }
+
+      if (closingThreeIndex !== -1) {
+        card.classList.add(`closing-row-three-${closingThreeIndex + 1}`);
+      }
+
+      if (closingTwoIndex !== -1) {
+        card.classList.add(`closing-row-two-${closingTwoIndex + 1}`);
       }
 
       const fallbackAttr = character.imageAlt
@@ -2241,7 +2295,6 @@
           <h3>${character.name}</h3>
           <div class="roster-role">${character.role}</div>
           <p class="roster-summary">${character.country} · ${character.focus}</p>
-
           <div class="roster-meta">
             <span><strong>Formación:</strong> ${character.education}</span>
             <span><strong>Trayectoria:</strong> ${character.work}</span>
