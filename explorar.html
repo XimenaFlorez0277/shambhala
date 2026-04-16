@@ -1384,16 +1384,6 @@
     </div>
   </footer>
 
-    <section class="closing fade-up">
-      <div class="closing-box">
-        <h2>Entrar a Shambhala es aceptar la expansión</h2>
-        <p>
-          Una invitación a trascender los límites del universo. Más que una explicación de aquello que creemos posible, este espacio es una puerta abierta que seduce e invita a descubrir lo que aguarda en el horizonte.
-        </p>
-      </div>
-    </section>
-  </div>
-
   <script>
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
@@ -1406,37 +1396,37 @@
 
     function createStars() {
       stars = [];
-      const count = window.innerWidth < 768 ? 110 : 180;
+      const count = window.innerWidth < 768 ? 140 : 220;
 
       for (let i = 0; i < count; i++) {
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          radius: Math.random() * 1.4 + 0.2,
-          speed: Math.random() * 0.22 + 0.03,
-          alpha: Math.random() * 0.7 + 0.2
+          r: Math.random() * 1.5 + 0.25,
+          speed: Math.random() * 0.30 + 0.05,
+          alpha: Math.random() * 0.65 + 0.2
         });
       }
     }
 
-    function animateStars() {
+    function drawStars() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      for (const star of stars) {
+      stars.forEach(star => {
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
         ctx.fill();
 
         star.x -= star.speed;
 
-        if (star.x < -2) {
-          star.x = canvas.width + 2;
+        if (star.x < -3) {
+          star.x = canvas.width + 3;
           star.y = Math.random() * canvas.height;
         }
-      }
+      });
 
-      requestAnimationFrame(animateStars);
+      requestAnimationFrame(drawStars);
     }
 
     function setTopbarHeight() {
@@ -1446,34 +1436,31 @@
       document.documentElement.style.setProperty("--topbar-height", `${height}px`);
     }
 
-    function initAnimations() {
-      const fadeElements = document.querySelectorAll(".fade-up");
+    function initReveal() {
+      const revealElements = document.querySelectorAll(".reveal");
       const mobileView =
         window.matchMedia("(max-width: 900px)").matches ||
         window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       if (mobileView || !("IntersectionObserver" in window)) {
-        fadeElements.forEach((element) => element.classList.add("visible"));
+        revealElements.forEach(el => el.classList.add("visible"));
         return;
       }
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.03,
-          rootMargin: "0px 0px -8% 0px"
-        }
-      );
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.04,
+        rootMargin: "0px 0px -8% 0px"
+      });
 
-      fadeElements.forEach((element) => observer.observe(element));
+      revealElements.forEach(el => observer.observe(el));
     }
 
     const menuToggle = document.getElementById("menuToggle");
@@ -1490,49 +1477,47 @@
       const isOpen = siteMenu.classList.toggle("is-open");
       menuToggle.classList.toggle("active", isOpen);
       menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      setTopbarHeight();
     }
 
     if (menuToggle) {
       menuToggle.addEventListener("click", toggleMenu);
     }
 
-    menuLinks.forEach((link) => {
+    menuLinks.forEach(link => {
       link.addEventListener("click", () => {
-        if (window.innerWidth <= 900) {
+        if (window.innerWidth <= 820) {
           closeMenu();
         }
       });
     });
 
-    document.addEventListener("click", (event) => {
-      if (window.innerWidth > 900) return;
+    document.addEventListener("click", event => {
+      if (window.innerWidth > 820) return;
       if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      resizeCanvas();
-      createStars();
-      setTopbarHeight();
-
-      const fadeElements = document.querySelectorAll(".fade-up");
-      const mobileView =
-        window.matchMedia("(max-width: 900px)").matches ||
-        window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-
-      if (mobileView) {
-        fadeElements.forEach((element) => element.classList.add("visible"));
-      } else {
         closeMenu();
       }
     });
 
     resizeCanvas();
     createStars();
-    animateStars();
+    drawStars();
     setTopbarHeight();
-    initAnimations();
+    initReveal();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+      setTopbarHeight();
+
+      if (window.innerWidth > 820) {
+        closeMenu();
+      }
+
+      if (window.innerWidth <= 900) {
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+      }
+    });
 
     window.addEventListener("load", setTopbarHeight);
 
@@ -1542,3 +1527,4 @@
   </script>
 </body>
 </html>
+
