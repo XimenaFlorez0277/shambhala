@@ -5,1535 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Explorar — Saga Shambhala</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    :root {
-      --topbar-height: 90px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       font-family: "Inter", sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(18, 45, 84, 0.35), transparent 35%),
-        linear-gradient(to bottom, #03040a 0%, #050914 35%, #02040a 100%);
-      color: #f5f7fb;
-      overflow-x: hidden;
-      min-height: 100vh;
+      background: #02040a;
+      color: #fff;
+      margin: 0;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
+    /* ====== FOOTER ESTILO CORAZÓN ====== */
+
+    .page-footer {
+      padding: 60px 8% 80px;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    canvas#stars {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.95;
-    }
-
-    .page-shell {
-      position: relative;
-      z-index: 1;
-      padding-top: var(--topbar-height);
-    }
-
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 50;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 18px 5%;
-      background: linear-gradient(to bottom, rgba(2, 5, 12, 0.94), rgba(2, 5, 12, 0.76));
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .brand {
-      font-family: "Orbitron", sans-serif;
-      letter-spacing: 0.28em;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      color: #dff4ff;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(111, 195, 255, 0.22);
-      background: rgba(255, 255, 255, 0.03);
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.3s ease;
-      padding: 0;
-      position: relative;
-    }
-
-    .menu-toggle:hover {
-      border-color: rgba(111, 195, 255, 0.45);
-      box-shadow: 0 0 22px rgba(67, 161, 255, 0.14);
-    }
-
-    .menu-toggle span {
-      position: absolute;
-      width: 20px;
-      height: 2px;
-      background: #eff8ff;
-      transition: 0.3s ease;
-    }
-
-    .menu-toggle span:nth-child(1) {
-      transform: translateY(-6px);
-    }
-
-    .menu-toggle span:nth-child(2) {
-      transform: translateY(0);
-    }
-
-    .menu-toggle span:nth-child(3) {
-      transform: translateY(6px);
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: translateY(0) rotate(45deg);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(0) rotate(-45deg);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .nav-links a {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      padding: 10px 14px;
-      min-height: 42px;
-      border: 1px solid rgba(111, 195, 255, 0.18);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(236, 245, 255, 0.84);
-      transition: 0.3s ease;
-      text-align: center;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-links a:hover {
-      border-color: rgba(111, 195, 255, 0.45);
-      color: #ffffff;
-      box-shadow: 0 0 24px rgba(67, 161, 255, 0.16);
-      transform: translateY(-1px);
-    }
-
-    .section {
-      position: relative;
-      padding: 110px 7%;
-      scroll-margin-top: calc(var(--topbar-height) + 24px);
-    }
-
-    .section-first {
-      padding-top: 60px;
-    }
-
-    .section-header {
-      max-width: 900px;
-      margin-bottom: 46px;
-    }
-
-    .section-kicker {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #9fdcff;
-      margin-bottom: 14px;
-    }
-
-    .section h2 {
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.35rem, 3vw, 2.45rem);
-      line-height: 1.12;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      color: #f7fbff;
-      word-break: break-word;
-    }
-
-    .section-header p {
-      max-width: 820px;
-      line-height: 1.9;
-      color: rgba(240, 245, 255, 0.74);
-      font-size: 0.98rem;
-    }
-
-    .section-header p,
-    .text-panel p,
-    .image-caption p,
-    .book-body,
-    .book-meta p,
-    .awards-text p,
-    .closing-box p {
-      text-align: justify;
-      text-align-last: left;
-    }
-
-    .intro-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .panel {
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.78);
-      box-shadow:
-        inset 0 0 24px rgba(90, 168, 255, 0.03),
-        0 12px 40px rgba(0, 0, 0, 0.22);
-      min-width: 0;
-    }
-
-    .image-panel {
-      position: relative;
-      min-height: 500px;
-      overflow: hidden;
-    }
-
-    .image-panel img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.68) contrast(1.04) saturate(0.95);
-    }
-
-    .image-panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(2, 5, 12, 0.92), rgba(2, 5, 12, 0.14)),
-        radial-gradient(circle at 72% 25%, rgba(93, 182, 255, 0.18), transparent 18%);
-    }
-
-    .image-caption {
-      position: absolute;
-      left: 28px;
-      right: 28px;
-      bottom: 24px;
-      z-index: 2;
-    }
-
-    .image-caption h3 {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.88rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #d8f3ff;
-      margin-bottom: 10px;
-    }
-
-    .image-caption p {
-      line-height: 1.8;
-      color: rgba(247, 250, 255, 0.82);
-      font-size: 0.94rem;
-      max-width: 560px;
-    }
-
-    .text-panel {
-      padding: 34px 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .text-panel .line {
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .text-panel .line:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .text-panel h3 {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.84rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 9px;
-      color: #eef8ff;
-    }
-
-    .text-panel p {
-      line-height: 1.85;
-      color: rgba(236, 243, 255, 0.72);
-      font-size: 0.95rem;
-    }
-
-    .books-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .book-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 24px;
-      min-height: 100%;
-      padding: 26px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
-      box-shadow:
-        inset 0 0 20px rgba(108, 187, 255, 0.03),
-        0 14px 40px rgba(0, 0, 0, 0.2);
-      transition: 0.35s ease;
-      overflow: hidden;
-      align-items: start;
-      min-width: 0;
-    }
-
-    .book-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(86, 176, 255, 0.12), transparent 24%),
-        linear-gradient(to bottom, rgba(255,255,255,0.025), transparent 18%);
-      pointer-events: none;
-    }
-
-    .book-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(112, 196, 255, 0.34);
-      box-shadow:
-        0 0 30px rgba(76, 170, 245, 0.12),
-        0 16px 45px rgba(0, 0, 0, 0.28);
-    }
-
-    .book-cover {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 220px;
-    }
-
-    .book-cover img {
-      width: 100%;
-      aspect-ratio: 2 / 3;
-      object-fit: cover;
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      box-shadow:
-        0 10px 28px rgba(0, 0, 0, 0.38),
-        0 0 22px rgba(87, 174, 255, 0.08);
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .book-content {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 100%;
-      min-width: 0;
-    }
-
-    .book-label {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #9cdcff;
-      margin-bottom: 14px;
-    }
-
-    .book-card h3 {
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.28rem;
-      line-height: 1.2;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      color: #fbfdff;
-      word-break: break-word;
-    }
-
-    .book-subtitle {
-      color: rgba(183, 228, 255, 0.78);
-      font-size: 0.78rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-
-    .book-body {
-      line-height: 1.9;
-      color: rgba(236, 243, 255, 0.78);
-      font-size: 0.96rem;
-      margin-bottom: 18px;
-    }
-
-    .book-meta {
-      margin-top: auto;
-      padding-top: 16px;
+    .page-footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
       border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 30px;
       display: grid;
-      gap: 10px;
-    }
-
-    .book-meta p {
-      font-size: 0.84rem;
-      line-height: 1.7;
-      color: rgba(223, 235, 247, 0.62);
-    }
-
-    .book-meta strong {
-      color: rgba(244, 248, 255, 0.92);
-      font-weight: 600;
-    }
-
-    .awards-showcase {
-      position: relative;
-      margin-top: 42px;
-      padding: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
-      box-shadow:
-        inset 0 0 20px rgba(108, 187, 255, 0.03),
-        0 14px 40px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
-
-    .awards-showcase::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(86, 176, 255, 0.12), transparent 26%),
-        radial-gradient(circle at bottom left, rgba(98, 187, 255, 0.08), transparent 22%);
-      pointer-events: none;
-    }
-
-    .awards-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .awards-kicker {
-      display: inline-block;
-      margin-bottom: 14px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #9cdcff;
-    }
-
-    .awards-text p {
-      line-height: 1.9;
-      color: rgba(236, 243, 255, 0.78);
-      font-size: 0.96rem;
-      margin-bottom: 16px;
-      max-width: 650px;
-    }
-
-    .awards-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 210px;
-      padding: 14px 22px;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border: 1px solid rgba(112, 196, 255, 0.35);
-      background: rgba(10, 20, 38, 0.34);
-      color: #eff8ff;
-      transition: 0.35s ease;
-      text-align: center;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: rgba(112, 196, 255, 0.7);
-      box-shadow: 0 0 28px rgba(71, 164, 245, 0.18);
-    }
-
-    .button.secondary {
-      border-color: rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(245, 248, 255, 0.82);
-    }
-
-    .button.secondary:hover {
-      border-color: rgba(255, 255, 255, 0.32);
-      box-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
-    }
-
-    .awards-groups {
-      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-      min-width: 0;
     }
 
-    .award-book-group {
+    .footer-card {
       position: relative;
-      padding: 20px 18px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
-      box-shadow:
-        inset 0 0 18px rgba(90, 168, 255, 0.03),
-        0 10px 28px rgba(0, 0, 0, 0.18);
       overflow: hidden;
-    }
-
-    .award-book-group::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top, rgba(114, 201, 255, 0.08), transparent 42%),
-        linear-gradient(to top, rgba(3, 7, 14, 0.22), rgba(255,255,255,0));
-      pointer-events: none;
-    }
-
-    .award-book-head {
-      position: relative;
-      z-index: 1;
+      min-height: 170px;
+      border: 1px solid rgba(0,170,255,0.16);
+      background: rgba(0,0,0,0.18);
       display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      margin-bottom: 16px;
-    }
-
-    .award-book-title {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.88rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #f4fbff;
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
-
-    .award-book-subtitle {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(183, 228, 255, 0.74);
-      line-height: 1.5;
-    }
-
-    .award-book-badges {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .award-book-badges.cupids {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .award-mini-badge {
-      position: relative;
-      min-height: 108px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end;
       transition: 0.3s ease;
-      overflow: hidden;
     }
 
-    .award-mini-badge:hover {
-      transform: translateY(-3px);
-      border-color: rgba(112, 196, 255, 0.28);
-      box-shadow:
-        0 0 20px rgba(80, 174, 255, 0.10),
-        0 12px 28px rgba(0, 0, 0, 0.18);
+    .footer-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0,170,255,0.42);
+      box-shadow: 0 0 24px rgba(0,170,255,0.14);
     }
 
-    .award-mini-badge::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(3, 7, 14, 0.24), rgba(255,255,255,0)),
-        radial-gradient(circle at top, rgba(114, 201, 255, 0.07), transparent 40%);
-      pointer-events: none;
-    }
-
-    .award-mini-badge img {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 104px;
-      max-height: 72px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 14px rgba(108, 187, 255, 0.10));
-    }
-
-    .explore-links-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 20px;
-    }
-
-    .explore-link-card {
-      position: relative;
-      display: block;
-      min-height: 210px;
-      overflow: hidden;
-      border: 1px solid rgba(78, 171, 255, 0.24);
-      background-color: #050914;
-      box-shadow:
-        inset 0 0 28px rgba(60, 146, 255, 0.05),
-        0 14px 32px rgba(0, 0, 0, 0.22);
-      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .explore-link-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(111, 195, 255, 0.55);
-      box-shadow:
-        0 0 28px rgba(67, 161, 255, 0.14),
-        0 18px 40px rgba(0, 0, 0, 0.28);
-    }
-
-    .explore-link-card img {
+    .footer-card img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.82) contrast(1.04);
-      transform: scale(1.01);
+      filter: brightness(0.6);
+      transform: scale(1.03);
     }
 
-    .explore-link-card.logo-card {
-      background:
-        radial-gradient(circle at center, rgba(83, 162, 255, 0.12), transparent 42%),
-        linear-gradient(180deg, rgba(6, 10, 20, 0.94), rgba(3, 6, 14, 0.98));
+    .footer-card.corazon-card img {
+      object-position: center 30%;
     }
 
-    .explore-link-card.logo-card img {
-      object-fit: contain;
-      padding: 24px;
-      filter: none;
-    }
-
-    .explore-link-card::before {
+    .footer-card::after {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(3, 7, 14, 0.88) 8%, rgba(3, 7, 14, 0.34) 42%, rgba(3, 7, 14, 0.10) 100%),
-        linear-gradient(to right, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0));
-      z-index: 1;
+        linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(0,0,0,0.2) 60%),
+        radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 44%);
     }
 
-    .explore-link-title {
-      position: absolute;
-      left: 22px;
-      right: 18px;
-      bottom: 18px;
+    .footer-card span {
+      position: relative;
       z-index: 2;
+      padding: 14px 16px;
       font-family: "Orbitron", sans-serif;
-      font-size: 0.86rem;
-      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: #f3f8ff;
-      line-height: 1.25;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
-      word-break: break-word;
     }
 
-    .closing {
-      padding: 40px 7% 90px;
-    }
-
-    .closing-box {
-      max-width: 980px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 42px 28px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    /* PREMIO */
+    .footer-awards {
+      justify-content: center;
+      align-items: center;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
+        radial-gradient(circle at center, rgba(24,34,58,0.92), rgba(3,7,14,0.98));
     }
 
-    .closing-box h2 {
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.3rem, 2.8vw, 2.2rem);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-      color: #f8fbff;
+    .footer-awards img {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 12px gold);
     }
 
-    .closing-box p {
-      max-width: 820px;
-      margin: 0 auto;
-      line-height: 1.9;
-      color: rgba(239, 245, 255, 0.76);
-      font-size: 0.98rem;
+    .footer-awards span {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
     }
 
-    .fade-up {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 1180px) {
-      .book-card {
-        grid-template-columns: 180px 1fr;
-        gap: 20px;
-      }
-
-      .book-cover {
-        max-width: 180px;
-      }
-
-      .award-book-badges {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 1100px) {
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .books-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .image-panel {
-        min-height: 380px;
-      }
-
-      .awards-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .topbar {
-        padding: 14px 5%;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-        flex-shrink: 0;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: calc(100% + 12px);
-        right: 5%;
-        left: 5%;
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        padding: 14px;
-        border: 1px solid rgba(111, 195, 255, 0.18);
-        background:
-          linear-gradient(to bottom, rgba(7, 12, 22, 0.96), rgba(4, 8, 18, 0.96));
-        backdrop-filter: blur(12px);
-        box-shadow:
-          0 16px 42px rgba(0, 0, 0, 0.32),
-          inset 0 0 18px rgba(90, 168, 255, 0.03);
-      }
-
-      .nav-links.is-open {
-        display: flex;
-      }
-
-      .nav-links a {
-        width: 100%;
-        justify-content: center;
-        padding: 14px 16px;
-      }
-
-      .section {
-        padding: 95px 6%;
-      }
-
-      .section-first {
-        padding-top: 55px;
-      }
-
-      .closing {
-        padding: 25px 6% 80px;
-      }
-
-      .explore-links-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .award-book-badges,
-      .award-book-badges.cupids {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 760px) {
-      .book-card {
-        grid-template-columns: 1fr;
-        justify-items: center;
-      }
-
-      .book-cover {
-        max-width: 240px;
-      }
-
-      .book-content {
-        width: 100%;
-      }
-
-      .explore-link-card {
-        min-height: 190px;
-      }
-
-      .image-panel {
-        min-height: 320px;
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .page-footer-inner {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
 
     @media (max-width: 680px) {
-      .section {
-        padding: 85px 5% 85px;
-      }
-
-      .section-first {
-        padding-top: 45px;
-      }
-
-      .topbar {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
-      .closing {
-        padding-left: 5%;
-        padding-right: 5%;
-      }
-
-      .section h2 {
-        letter-spacing: 0.05em;
-      }
-
-      .section-header p,
-      .book-body,
-      .text-panel p,
-      .image-caption p,
-      .awards-text p,
-      .closing-box p {
-        font-size: 0.94rem;
-        line-height: 1.8;
-      }
-
-      .awards-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-        min-width: 0;
-      }
-
-      .book-card,
-      .text-panel,
-      .closing-box,
-      .awards-showcase {
-        padding-left: 22px;
-        padding-right: 22px;
-      }
-
-      .award-book-head {
-        flex-direction: column;
-      }
-
-      .award-book-badges,
-      .award-book-badges.cupids {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .explore-links-grid {
+      .page-footer-inner {
         grid-template-columns: 1fr;
       }
 
-      .explore-link-card {
-        min-height: 180px;
-      }
-
-      .explore-link-title {
-        font-size: 0.8rem;
-        left: 18px;
-        right: 18px;
-        bottom: 16px;
-      }
-
-      .image-caption {
-        left: 20px;
-        right: 20px;
-        bottom: 18px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .brand {
-        font-size: 0.72rem;
-        letter-spacing: 0.2em;
-      }
-
-      .section-header {
-        margin-bottom: 34px;
-      }
-
-      .text-panel {
-        gap: 14px;
-      }
-
-      .image-panel {
-        min-height: 280px;
-      }
-
-      .book-card {
-        padding-top: 22px;
-        padding-bottom: 22px;
-      }
-
-      .book-cover {
-        max-width: 200px;
-      }
-
-      .book-card h3 {
-        font-size: 1.08rem;
-      }
-
-      .closing-box {
-        padding: 32px 20px;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .award-book-badges,
-      .award-book-badges.cupids {
-        grid-template-columns: 1fr;
-      }
-
-      .award-mini-badge {
+      .footer-card {
         min-height: 120px;
-      }
-
-      .award-mini-badge img {
-        max-width: 130px;
-        max-height: 84px;
-      }
-
-      .explore-link-card {
-        min-height: 168px;
-      }
-
-      .explore-link-title {
-        font-size: 0.76rem;
-        letter-spacing: 0.1em;
-      }
-
-      .section {
-        padding-left: 4.5%;
-        padding-right: 4.5%;
-      }
-
-      .topbar {
-        padding-left: 4.5%;
-        padding-right: 4.5%;
-      }
-
-      .closing {
-        padding-left: 4.5%;
-        padding-right: 4.5%;
-      }
-
-      .nav-links {
-        left: 4.5%;
-        right: 4.5%;
-      }
-    }
-
-    @media (max-width: 900px), (hover: none) and (pointer: coarse) {
-      .fade-up {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      .fade-up.visible {
-        opacity: 1;
-        transform: none;
       }
     }
   </style>
 </head>
+
 <body>
-  <canvas id="stars"></canvas>
 
-  <div class="page-shell">
-    <header class="topbar">
-      <div class="brand">Saga Shambhala</div>
+  <!-- CONTENIDO PRINCIPAL (lo que ya tienes arriba lo puedes dejar igual) -->
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+  <!-- ====== MENÚ FINAL ESTILO CORAZÓN ====== -->
+  <footer class="page-footer">
 
-      <nav class="nav-links" id="siteMenu">
-        <a href="index.html">Inicio</a>
-        <a href="personajes.html">Personajes</a>
-        <a href="corazon.html">Corazón</a>
-        <a href="#libros">Libros</a>
-        <a href="premios.html">Premios</a>
-      </nav>
-    </header>
+    <div class="page-footer-inner">
 
-    <section class="section section-first fade-up" id="universo">
-      <div class="section-header">
-        <div class="section-kicker">Cartografía sensible</div>
-        <h2>Un Universo en Expansión</h2>
-        <p>
-          La Saga Shambhala no se construye como una ciencia ficción fría ni distante. Aquí, la exploración espacial convive con vínculos intensos, inteligencia artificial, comunidades utópicas, decisiones imposibles y preguntas profundas sobre quiénes somos.
-        </p>
-      </div>
+      <a href="index.html" class="footer-card">
+        <img src="images/hero.jpg" alt="Inicio">
+        <span>Inicio</span>
+      </a>
 
-      <div class="intro-grid">
-        <div class="panel image-panel fade-up">
-          <img src="images/world.jpg" alt="El universo de Shambhala" />
-          <div class="image-caption">
-            <h3>Más Allá del Planeta</h3>
-            <p>
-              Estaciones orbitales, colonias lunares y viajes warp hacia mundos desconocidos. En Shambhala, la tecnología empuja los límites de lo humano sin soltar jamás el hilo de la emoción.
-            </p>
-          </div>
-        </div>
+      <a href="explorar.html" class="footer-card">
+        <img src="images/world.jpg" alt="Explorar">
+        <span>Explorar</span>
+      </a>
 
-        <div class="panel text-panel fade-up">
-          <div class="line">
-            <h3>Ciencia con Pulso Humano</h3>
-            <p>
-              La física, la biología, la ingeniería, la filosofía y la inteligencia artificial no son solo el escenario; son el motor la historia.
-            </p>
-          </div>
+      <a href="corazon.html" class="footer-card corazon-card">
+        <img src="images/corazon.jpg" alt="Corazón">
+        <span>Corazón</span>
+      </a>
 
-          <div class="line">
-            <h3>Comunidades Imaginadas</h3>
-            <p>
-              Shambhala imagina espacios donde las mujeres crean nuevas formas de convivencia, conocimiento, cuidado y resistencia.
-            </p>
-          </div>
+      <a href="personajes.html" class="footer-card">
+        <img src="images/personajes.jpg" alt="Personajes">
+        <span>Personajes</span>
+      </a>
 
-          <div class="line">
-            <h3>Amor, Pérdida y Transformación</h3>
-            <p>
-              Cada libro expande el universo mientras profundiza en la intimidad de sus personajes: sus anhelos, sus duelos y los descubrimientos que transforman su propia esencia.
-            </p>
-          </div>
+      <a href="premios.html" class="footer-card footer-awards">
+        <img src="images/premio.png" alt="Premios">
+        <span>Premios</span>
+      </a>
 
-          <div class="line">
-            <h3>Una Presencia Distinta</h3>
-            <p>
-              Annie no es un personaje convencional. Su existencia altera la frontera entre compañía, memoria y vínculo.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+      <a href="#libros" class="footer-card">
+        <img src="images/libros.jpg" alt="Libros">
+        <span>Libros</span>
+      </a>
 
-    <section class="section fade-up" id="libros">
-      <div class="section-header">
-        <div class="section-kicker">Constelación narrativa</div>
-        <h2>Los cuatro libros de la saga</h2>
-        <p>
-          Cada libro abre una fase distinta del universo: descubrimiento, resistencia, expansión y horizonte. Juntos forman una trayectoria emocional y cósmica que crece con cada paso.
-        </p>
-      </div>
+    </div>
 
-      <div class="books-grid">
-        <article class="book-card fade-up">
-          <div class="book-cover">
-            <img src="images/explorar/callisto-2-0.jpg" alt="Portada de Calisto 2.0" />
-          </div>
+  </footer>
 
-          <div class="book-content">
-            <div class="book-label">Libro 1</div>
-            <h3>Calisto 2.0</h3>
-            <div class="book-subtitle">Descubrimiento y renacimiento</div>
-
-            <p class="book-body">
-              Estación Espacial Shambhala, 2097. Calisto Collins, una física brillante y solitaria, recibe una invitación inesperada para unirse a Portal al Porvenir, la fundación que impulsa una investigación revolucionaria entre la Luna y la estación orbital Shambhala. Lo que al principio parece la oportunidad profesional de su vida pronto se transforma en algo mucho más profundo: una comunidad de mujeres donde la ciencia, la cooperación y la calidez humana le ofrecen, por primera vez, un verdadero sentido de pertenencia.
-            </p>
-
-            <p class="book-body">
-              Mientras se adentra en el desarrollo de una tecnología de distorsión capaz de alterar el destino de la humanidad, Calisto también deberá enfrentarse a sí misma, a sus heridas y a la posibilidad de que el futuro que la espera sea mucho más grande de lo que jamás imaginó.
-            </p>
-
-            <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> pertenencia, valentía, apertura y transformación interior.</p>
-              <p><strong>Escala narrativa:</strong> el ingreso al universo de Shambhala a través de Cali.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card fade-up">
-          <div class="book-cover">
-            <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Portada de La Flecha de Cupido" />
-          </div>
-
-          <div class="book-content">
-            <div class="book-label">Libro 2</div>
-            <h3>La Flecha de Cupido</h3>
-            <div class="book-subtitle">Ausencia, resistencia y claridad</div>
-
-            <p class="book-body">
-              Mientras Shambhala se adentra en lo desconocido, Pavani permanece en Arcadia con el corazón suspendido entre la ausencia de Calisto y la amenaza que se cierne sobre todo lo que ama. Lo que parecía una despedida dolorosa pronto se convierte en una crisis de gran escala: la Luna queda bajo presión militar, la comunidad es vigilada y puesta a prueba, y las mujeres que se quedan atrás deben aprender a resistir con inteligencia, dignidad y fortaleza.
-            </p>
-
-            <p class="book-body">
-              A medida que la verdad comienza a abrirse paso entre conspiraciones, miedo y pérdidas, Pavani también cambia. En medio de la incertidumbre, descubre una voz más firme, una valentía inesperada y una claridad emocional que ya no le permite esconderse detrás de la espera.
-            </p>
-
-            <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> distancia, resistencia, fortaleza y claridad emocional.</p>
-              <p><strong>Escala narrativa:</strong> una mirada más íntima que amplía la tensión política y emocional de la saga.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card fade-up">
-          <div class="book-cover">
-            <img src="images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Portada de La Luz Naranja de un Sol Alienígena" />
-          </div>
-
-          <div class="book-content">
-            <div class="book-label">Libro 3</div>
-            <h3>La Luz Naranja de un Sol Alienígena</h3>
-            <div class="book-subtitle">Desarraigo y nueva siembra</div>
-
-            <p class="book-body">
-              Más allá del Sistema Solar, bajo la luz extraña de una estrella nueva, Calisto y la tripulación de Shambhala llegan a Bachué, un planeta lleno de promesa, belleza y preguntas. Lo que encuentran allí no es solo un territorio por explorar, sino la posibilidad vertiginosa de comenzar de nuevo.
-            </p>
-
-            <p class="book-body">
-              Pero la maravilla del descubrimiento convive con una ausencia profunda: Calisto carga la distancia de Pavani, la falta de Naomi, el dolor de todo lo que dejó atrás y la incertidumbre de levantar un hogar en un mundo ajeno, donde nada está asegurado. Mientras la ciencia se convierte en una herramienta de supervivencia, creación y esperanza, también se vuelve el lenguaje con el que estas mujeres intentan fundar una nueva vida.
-            </p>
-
-            <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> desarraigo, esperanza, creación y pertenencia.</p>
-              <p><strong>Escala narrativa:</strong> la saga se abre a otro mundo sin perder su intimidad humana.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card fade-up">
-          <div class="book-cover">
-            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes infinitos" />
-          </div>
-
-          <div class="book-content">
-            <div class="book-label">Libro 4</div>
-            <h3>Horizontes infinitos</h3>
-            <div class="book-subtitle">Reencuentro y expansión</div>
-
-            <p class="book-body">
-              Cuando Calisto regresa al Sistema Solar con una misión decisiva, el reencuentro con Pavani no ocurre en un momento de calma, sino en medio del caos. La persecución contra la Fundación se ha intensificado, la Luna vive bajo una presión cada vez más asfixiante y lo que debía ser una operación precisa pronto se transforma en una huida desesperada.
-            </p>
-
-            <p class="book-body">
-              Juntas al fin, Calisto y Pavani deberán atravesar un entorno hostil, improvisar rutas de escape, ocultarse de un sistema que busca controlarlo todo y aferrarse la una a la otra mientras el futuro vuelve a tambalearse bajo sus pies. En medio del peligro, ambas encontrarán también un espacio para la lucidez, la madurez y la elección consciente del camino que desean seguir.
-            </p>
-
-            <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> reencuentro, madurez, lucidez y elección.</p>
-              <p><strong>Escala narrativa:</strong> cierre expansivo de la saga desde la conciencia y la posibilidad.</p>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="awards-showcase fade-up">
-        <div class="awards-grid">
-          <div class="awards-text">
-            <div class="awards-kicker">Premios y reconocimientos</div>
-
-            <p>
-              Las ediciones originales en inglés de algunos libros de la saga han recibido reconocimientos literarios internacionales.
-            </p>
-
-            <p>
-              La obra de Susan English, en sus ediciones originales en inglés, ha recibido distintos premios, medallones y menciones. Aquí aparece una mirada breve y visual dentro del recorrido general de la saga.
-            </p>
-
-            <p>
-              Para mantener precisión dentro de esta web en español, los logos que aparecen a continuación corresponden a las ediciones originales en inglés de <em>Calisto 2.0</em> y <em>Cupid’s Arrow</em>.
-            </p>
-
-            <div class="awards-actions">
-              <a href="premios.html" class="button">Ver premios completos</a>
-              <a href="corazon.html" class="button secondary">Conocer a Susan</a>
-            </div>
-          </div>
-
-          <div class="awards-groups">
-            <div class="award-book-group">
-              <div class="award-book-head">
-                <div>
-                  <div class="award-book-title">Calisto 2.0</div>
-                  <div class="award-book-subtitle">Edición original en inglés</div>
-                </div>
-              </div>
-
-              <div class="award-book-badges">
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-02-readers-favorite-five-stars.png" alt="Readers’ Favorite Five Stars" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-04-brag-medallion.png" alt="B.R.A.G. Medallion" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-06-literary-titan-book-award.png" alt="Literary Titan Book Award" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-07-pencraft-award.png" alt="PenCraft Award" />
-                </div>
-              </div>
-            </div>
-
-            <div class="award-book-group">
-              <div class="award-book-head">
-                <div>
-                  <div class="award-book-title">La Flecha de Cupido</div>
-                  <div class="award-book-subtitle">Cupid’s Arrow · edición original en inglés</div>
-                </div>
-              </div>
-
-              <div class="award-book-badges cupids">
-                <div class="award-mini-badge">
-                  <img src="images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/cupids-arrow-02-brag-medallion.png" alt="B.R.A.G. Medallion" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/cupids-arrow-03-literary-titan-book-award.png" alt="Literary Titan Book Award" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section fade-up">
-      <div class="section-header">
-        <div class="section-kicker">Cómo seguir explorando</div>
-        <h2>Navega por Shambhala</h2>
-        <p>
-          Sigue recorriendo el sitio a través de sus puertas principales y vuelve a entrar en el universo desde el lugar que más te atraiga.
-        </p>
-      </div>
-
-      <div class="explore-links-grid">
-        <a class="explore-link-card" href="index.html">
-          <img src="images/hero.jpg" alt="Inicio" />
-          <span class="explore-link-title">Inicio</span>
-        </a>
-
-        <a class="explore-link-card" href="explorar.html">
-          <img src="images/world.jpg" alt="Explorar" />
-          <span class="explore-link-title">Explorar</span>
-        </a>
-
-        <a class="explore-link-card" href="corazon.html">
-          <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
-          <span class="explore-link-title">Corazón</span>
-        </a>
-
-        <a class="explore-link-card" href="personajes.html">
-          <img src="images/personajes.jpg" alt="Personajes" />
-          <span class="explore-link-title">Personajes</span>
-        </a>
-
-        <a class="explore-link-card logo-card" href="premios.html">
-          <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="Premios" />
-          <span class="explore-link-title">Premios</span>
-        </a>
-
-        <a class="explore-link-card" href="#libros">
-          <img src="images/explorar/horizontes-infinitos.jpg" alt="Libros" />
-          <span class="explore-link-title">Libros</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="closing fade-up">
-      <div class="closing-box">
-        <h2>Entrar a Shambhala es aceptar la expansión</h2>
-        <p>
-          Una invitación a trascender los límites del universo. Más que una explicación de aquello que creemos posible, este espacio es una puerta abierta que seduce e invita a descubrir lo que aguarda en el horizonte.
-        </p>
-      </div>
-    </section>
-  </div>
-
-  <script>
-    const canvas = document.getElementById("stars");
-    const ctx = canvas.getContext("2d");
-    let stars = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createStars() {
-      stars = [];
-      const count = window.innerWidth < 768 ? 110 : 180;
-
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          radius: Math.random() * 1.4 + 0.2,
-          speed: Math.random() * 0.22 + 0.03,
-          alpha: Math.random() * 0.7 + 0.2
-        });
-      }
-    }
-
-    function animateStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (const star of stars) {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
-        ctx.fill();
-
-        star.x -= star.speed;
-
-        if (star.x < -2) {
-          star.x = canvas.width + 2;
-          star.y = Math.random() * canvas.height;
-        }
-      }
-
-      requestAnimationFrame(animateStars);
-    }
-
-    function setTopbarHeight() {
-      const topbar = document.querySelector(".topbar");
-      if (!topbar) return;
-      const height = Math.ceil(topbar.getBoundingClientRect().height);
-      document.documentElement.style.setProperty("--topbar-height", `${height}px`);
-    }
-
-    function initAnimations() {
-      const fadeElements = document.querySelectorAll(".fade-up");
-      const mobileView =
-        window.matchMedia("(max-width: 900px)").matches ||
-        window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-      if (mobileView || !("IntersectionObserver" in window)) {
-        fadeElements.forEach((element) => element.classList.add("visible"));
-        return;
-      }
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        {
-          threshold: 0.03,
-          rootMargin: "0px 0px -8% 0px"
-        }
-      );
-
-      fadeElements.forEach((element) => observer.observe(element));
-    }
-
-    const menuToggle = document.getElementById("menuToggle");
-    const siteMenu = document.getElementById("siteMenu");
-    const menuLinks = siteMenu.querySelectorAll("a");
-
-    function closeMenu() {
-      menuToggle.classList.remove("active");
-      siteMenu.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-
-    function toggleMenu() {
-      const isOpen = siteMenu.classList.toggle("is-open");
-      menuToggle.classList.toggle("active", isOpen);
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    }
-
-    if (menuToggle) {
-      menuToggle.addEventListener("click", toggleMenu);
-    }
-
-    menuLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth <= 900) {
-          closeMenu();
-        }
-      });
-    });
-
-    document.addEventListener("click", (event) => {
-      if (window.innerWidth > 900) return;
-      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      resizeCanvas();
-      createStars();
-      setTopbarHeight();
-
-      const fadeElements = document.querySelectorAll(".fade-up");
-      const mobileView =
-        window.matchMedia("(max-width: 900px)").matches ||
-        window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-
-      if (mobileView) {
-        fadeElements.forEach((element) => element.classList.add("visible"));
-      } else {
-        closeMenu();
-      }
-    });
-
-    resizeCanvas();
-    createStars();
-    animateStars();
-    setTopbarHeight();
-    initAnimations();
-
-    window.addEventListener("load", setTopbarHeight);
-
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(setTopbarHeight);
-    }
-  </script>
 </body>
 </html>
