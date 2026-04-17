@@ -460,6 +460,10 @@
       display: none;
     }
 
+    .swipe-edge-arrow {
+      display: none;
+    }
+
     .featured-grid {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
@@ -1344,36 +1348,50 @@
         top: 0;
         right: 0;
         bottom: 12px;
-        width: 46px;
+        width: 68px;
         pointer-events: none;
-        background: linear-gradient(to left, rgba(0,0,0,0.78), rgba(0,0,0,0));
-        opacity: 0.9;
+        background: linear-gradient(to left, rgba(0,0,0,0.88), rgba(0,0,0,0));
+        opacity: 0.98;
         transition: opacity 0.3s ease;
       }
 
       .carousel-wrap.has-scrolled::after {
-        opacity: 0.25;
+        opacity: 0.22;
       }
 
       .swipe-cue {
         position: absolute;
-        top: -6px;
+        top: -10px;
         right: 2px;
-        z-index: 5;
+        z-index: 6;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 8px 10px;
-        border: 1px solid rgba(120, 210, 255, 0.24);
-        background: rgba(3, 10, 20, 0.72);
-        color: rgba(180, 230, 255, 0.92);
+        padding: 8px 11px;
+        border: 1px solid rgba(120, 210, 255, 0.28);
+        background: rgba(3, 10, 20, 0.78);
+        color: rgba(180, 230, 255, 0.96);
         font-family: "Orbitron", sans-serif;
         font-size: 0.58rem;
         letter-spacing: 1.4px;
         text-transform: uppercase;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(10px);
         pointer-events: none;
+        box-shadow: 0 0 18px rgba(0, 170, 255, 0.12);
         transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+
+      .swipe-cue-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        border: 1px solid rgba(120, 210, 255, 0.34);
+        background: rgba(0, 170, 255, 0.10);
+        box-shadow: inset 0 0 10px rgba(120, 210, 255, 0.12);
+        flex-shrink: 0;
       }
 
       .swipe-cue .arrow {
@@ -1382,9 +1400,35 @@
         animation: swipeArrow 1.2s ease-in-out infinite;
       }
 
-      .carousel-wrap.has-scrolled .swipe-cue {
+      .swipe-edge-arrow {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        z-index: 6;
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        border: 1px solid rgba(120, 210, 255, 0.30);
+        background: rgba(3, 10, 20, 0.82);
+        color: rgba(210, 245, 255, 0.98);
+        font-size: 1rem;
+        line-height: 1;
+        pointer-events: none;
+        transform: translateY(-50%);
+        box-shadow: 0 0 20px rgba(0, 170, 255, 0.14);
+        animation: swipeArrowPulse 1.4s ease-in-out infinite;
+      }
+
+      .carousel-wrap.has-scrolled .swipe-cue,
+      .carousel-wrap.has-scrolled .swipe-edge-arrow {
         opacity: 0;
         transform: translateX(8px);
+      }
+
+      .carousel-wrap.has-scrolled .swipe-edge-arrow {
+        transform: translateY(-50%) translateX(8px);
       }
 
       @keyframes swipeArrow {
@@ -1393,6 +1437,17 @@
         }
         50% {
           transform: translateX(4px);
+        }
+      }
+
+      @keyframes swipeArrowPulse {
+        0%, 100% {
+          transform: translateY(-50%) translateX(0);
+          box-shadow: 0 0 16px rgba(0, 170, 255, 0.10);
+        }
+        50% {
+          transform: translateY(-50%) translateX(4px);
+          box-shadow: 0 0 24px rgba(0, 170, 255, 0.20);
         }
       }
 
@@ -1615,6 +1670,12 @@
         padding: 7px 9px;
       }
 
+      .swipe-edge-arrow {
+        width: 34px;
+        height: 34px;
+        right: 6px;
+      }
+
       .libros-card img {
         object-position: center 33%;
         transform: scale(1.01);
@@ -1701,8 +1762,11 @@
     <div class="carousel-wrap" id="featuredWrap">
       <div class="swipe-cue" aria-hidden="true">
         <span>Desliza</span>
-        <span class="arrow">→</span>
+        <span class="swipe-cue-pill">
+          <span class="arrow">→</span>
+        </span>
       </div>
+      <div class="swipe-edge-arrow" aria-hidden="true">→</div>
 
       <div class="featured-grid" id="featuredGrid">
         <a class="featured-card large reveal" href="calisto.html">
@@ -1811,8 +1875,11 @@
     <div class="carousel-wrap" id="rosterWrap">
       <div class="swipe-cue" aria-hidden="true">
         <span>Desliza</span>
-        <span class="arrow">→</span>
+        <span class="swipe-cue-pill">
+          <span class="arrow">→</span>
+        </span>
       </div>
+      <div class="swipe-edge-arrow" aria-hidden="true">→</div>
 
       <div class="roster-grid" id="rosterGrid"></div>
     </div>
@@ -2156,158 +2223,117 @@
         country: "China",
         education: "PhD en Ingeniería",
         focus: "Nanofiltración",
-        work: "Arcadia 2093–2096 · Shambhala 2096–presente",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
         image: "images/secundarios/mei-xing.jpg"
       },
       {
-        name: "Nalah",
-        role: "Gestión de recursos humanos",
-        country: "Ghana",
-        education: "Maestría en Gestión de Recursos Humanos",
-        focus: "Dinámica de equipos y resolución de conflictos",
-        work: "Arcadia 2091–presente",
-        image: "images/secundarios/Nalah.jpg"
-      },
-      {
-        name: "Olivia",
-        role: "Geóloga y bióloga",
-        country: "California",
-        education: "PhD en Geología",
-        focus: "Terraformación",
-        work: "Shambhala 2097–presente",
-        image: "images/secundarios/olivia.jpg"
-      },
-      {
-        name: "Quinn",
-        role: "Especialista en filtración",
-        country: "Tanzania",
-        education: "PhD en Ingeniería",
-        focus: "Filtración industrial y mecánica de fluidos",
+        name: "Nandi",
+        role: "Médica",
+        country: "Amandla Wobumbano",
+        education: "Doctora en Medicina",
+        focus: "Fertilidad humana en gravedad reducida",
         work: "Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/quin.jpg"
+        image: "images/secundarios/nandi.jpg"
       },
       {
-        name: "Raven",
-        role: "Bióloga",
-        country: "Rusia",
-        education: "PhD en Biología",
-        focus: "Criptobiosis, hibernación e hipotermia terapéutica",
-        work: "Shambhala 2096–presente",
-        image: "images/secundarios/raven.jpg"
+        name: "Nkechi",
+        role: "Ingeniera química",
+        country: "Costa de Marfil",
+        education: "PhD en Ingeniería Química",
+        focus: "Reciclaje químico y análisis de fluidos",
+        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/nkechi.jpg"
       },
       {
-        name: "Remi",
-        role: "Bióloga",
-        country: "Polonia",
-        education: "PhD en Biotecnología",
-        focus: "Biotecnologías, partenogénesis y desextinción",
-        work: "Arcadia 2094–2097",
-        image: "images/secundarios/remi.jpg"
+        name: "Rae",
+        role: "Comandante",
+        country: "Australia",
+        education: "Ingeniería eléctrica",
+        focus: "Piloto y comando de vuelo",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/rae.jpg"
       },
       {
-        name: "Rika",
-        role: "Ingeniera",
-        country: "Finlandia",
-        education: "PhD en Ingeniería",
-        focus: "Ingeniería astronáutica",
-        work: "Arcadia 2093–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/rika.jpg"
+        name: "Sofía",
+        role: "Médica",
+        country: "Argentina",
+        education: "Doctora en Medicina",
+        focus: "Medicina interna",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/sofia.jpg"
       },
       {
-        name: "Sasha",
-        role: "Analista de datos",
-        country: "Irán",
-        education: "PhD en Ciencia de los Datos",
-        focus: "Arquitectura de datos",
-        work: "Portal al Porvenir 2089–2091 · Arcadia 2091–presente",
-        image: "images/secundarios/sasha.jpg"
-      },
-      {
-        name: "Sook",
-        role: "Piloto",
-        country: "Corea",
-        education: "Certificado de Aviación",
-        focus: "Vuelo y navegación",
-        work: "Arcadia 2095–presente",
-        image: "images/secundarios/Sook.jpg"
-      },
-      {
-        name: "Tanya",
-        role: "Científica de materiales",
-        country: "Texas",
-        education: "PhD en Ciencia de los Materiales",
-        focus: "Cerámica, materiales poliméricos y nanomateriales",
-        work: "Portal al Porvenir · Palo Alto 2090–2091 · Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/tanya.jpg"
-      },
-      {
-        name: "Yasmin",
-        role: "Botánica",
-        country: "Turquía",
-        education: "PhD en Botánica",
-        focus: "Apicultura y cultivo lunar",
-        work: "Arcadia 2091–presente",
-        image: "images/secundarios/yasmin.jpg"
+        name: "Valeria",
+        role: "Ingeniera de software",
+        country: "México",
+        education: "PhD en Informática",
+        focus: "Sistemas y arquitectura digital",
+        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/valeria.jpg"
       },
       {
         name: "Zoe",
-        role: "Botánica",
-        country: "Austria",
-        education: "PhD en Botánica",
-        focus: "Cultivo en microgravedad",
-        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/Zoe.jpg",
-        imageAlt: "images/secundarios/zoe.jpg"
+        role: "Piloto",
+        country: "Canadá",
+        education: "Ingeniería aeronáutica",
+        focus: "Pilotaje orbital y maniobras de aproximación",
+        work: "Arcadia 2095–presente",
+        image: "images/secundarios/zoe.jpg",
+        cardClass: "zoe-card"
       }
     ];
 
     const rosterGrid = document.getElementById("rosterGrid");
-    const closingThreeNames = ["Sasha", "Sook", "Tanya"];
-    const closingTwoNames = ["Yasmin", "Zoe"];
+
+    function getClosingClass(index, total) {
+      const remainder = total % 4;
+      const startIndex = total - remainder;
+
+      if (index < startIndex || remainder === 0) return "";
+
+      const position = index - startIndex;
+
+      if (remainder === 3) {
+        return ["closing-row-three-1", "closing-row-three-2", "closing-row-three-3"][position] || "";
+      }
+
+      if (remainder === 2) {
+        return ["closing-row-two-1", "closing-row-two-2"][position] || "";
+      }
+
+      return "";
+    }
 
     secondaryCharacters.forEach((character, index) => {
       const card = document.createElement("article");
-      card.className = "roster-card reveal";
+      const closingClass = getClosingClass(index, secondaryCharacters.length);
 
-      const closingThreeIndex = closingThreeNames.indexOf(character.name);
-      const closingTwoIndex = closingTwoNames.indexOf(character.name);
+      card.className = [
+        "roster-card",
+        "reveal",
+        character.cardClass || "",
+        closingClass
+      ].filter(Boolean).join(" ");
 
-      if (character.name === "Zoe") {
-        card.classList.add("zoe-card");
-      }
-
-      if (closingThreeIndex !== -1) {
-        card.classList.add(`closing-row-three-${closingThreeIndex + 1}`);
-      }
-
-      if (closingTwoIndex !== -1) {
-        card.classList.add(`closing-row-two-${closingTwoIndex + 1}`);
-      }
-
-      const fallbackAttr = character.imageAlt
-        ? ` onerror="this.onerror=null;this.src='${character.imageAlt}'"`
-        : "";
-
-      const thumb = character.image
-        ? `
-          <div class="roster-thumb-wrap">
-            <img class="roster-thumb" src="${character.image}" alt="${character.name}"${fallbackAttr} />
-          </div>
-        `
-        : `
-          <div class="roster-thumb-wrap">
-            <div class="roster-placeholder">${character.name.charAt(0)}</div>
-          </div>
-        `;
+      const hasImage = Boolean(character.image);
 
       card.innerHTML = `
-        ${thumb}
+        <div class="roster-thumb-wrap">
+          ${hasImage
+            ? `<img class="roster-thumb" src="${character.image}" alt="${character.name}" loading="lazy" />`
+            : `<div class="roster-placeholder">${character.name.charAt(0)}</div>`}
+        </div>
+
         <div class="roster-content">
-          <div class="roster-number">${String(index + 1).padStart(2, "0")}</div>
+          <div class="roster-number">Registro ${String(index + 1).padStart(2, "0")}</div>
           <h3>${character.name}</h3>
           <div class="roster-role">${character.role}</div>
-          <p class="roster-summary">${character.country} · ${character.focus}</p>
+          <p class="roster-summary">
+            ${character.focus}
+          </p>
+
           <div class="roster-meta">
+            <span><strong>Procedencia:</strong> ${character.country}</span>
             <span><strong>Formación:</strong> ${character.education}</span>
             <span><strong>Trayectoria:</strong> ${character.work}</span>
           </div>
