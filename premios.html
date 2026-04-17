@@ -346,10 +346,6 @@
       text-transform: uppercase;
     }
 
-    .awards-mobile-wrap {
-      position: relative;
-    }
-
     .awards-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -426,10 +422,6 @@
       color: #f6fbff;
       text-align: center;
       margin-top: auto;
-    }
-
-    .mobile-scroll-arrow {
-      display: none;
     }
 
     .mention-grid {
@@ -708,85 +700,13 @@
         white-space: normal;
       }
 
-      .awards-mobile-wrap {
-        overflow: visible;
-      }
-
       .awards-grid,
       .awards-grid.three {
-        display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: 82%;
-        gap: 14px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 8px;
-        padding-right: 56px;
-        scrollbar-width: none;
-      }
-
-      .awards-grid::-webkit-scrollbar,
-      .awards-grid.three::-webkit-scrollbar {
-        display: none;
-      }
-
-      .award-card {
-        scroll-snap-align: start;
+        grid-template-columns: 1fr;
       }
 
       .award-logo {
         height: 120px;
-      }
-
-      .mobile-scroll-arrow {
-        position: absolute;
-        top: 50%;
-        right: 6px;
-        transform: translateY(-50%);
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(180deg, #5f86bd 0%, #3c659f 100%);
-        border: 1px solid rgba(177, 220, 255, 0.55);
-        box-shadow:
-          0 8px 20px rgba(0, 0, 0, 0.28),
-          0 0 16px rgba(111, 195, 255, 0.18);
-        z-index: 3;
-        pointer-events: none;
-        opacity: 1;
-        transition: opacity 0.3s ease;
-      }
-
-      .mobile-scroll-arrow::before {
-        content: "";
-        display: block;
-        width: 11px;
-        height: 11px;
-        border-top: 3px solid #dff3ff;
-        border-right: 3px solid #dff3ff;
-        transform: rotate(45deg);
-        margin-left: -3px;
-      }
-
-      .mobile-scroll-arrow.is-hidden {
-        opacity: 0;
-      }
-
-      .awards-mobile-wrap::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 72px;
-        height: calc(100% - 8px);
-        background: linear-gradient(to left, rgba(5, 10, 18, 0.96), rgba(5, 10, 18, 0));
-        pointer-events: none;
-        z-index: 2;
       }
 
       .bottom-nav {
@@ -913,59 +833,55 @@
               <div class="book-subtitle">Premios y reconocimientos de la edición original en inglés</div>
             </div>
 
-            <div class="awards-mobile-wrap">
-              <div class="awards-grid awards-scroll" data-scroll-area>
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
-                  </div>
-                  <h3>International Impact Book Awards</h3>
-                </article>
+            <div class="awards-grid">
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
+                </div>
+                <h3>International Impact Book Awards</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-02-readers-favorite-five-stars.png" alt="Readers’ Favorite Five Stars" />
-                  </div>
-                  <h3>Readers’ Favorite Five Stars</h3>
-                </article>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-02-readers-favorite-five-stars.png" alt="Readers’ Favorite Five Stars" />
+                </div>
+                <h3>Readers’ Favorite Five Stars</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
-                  </div>
-                  <h3>Firebird Book Award</h3>
-                </article>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
+                </div>
+                <h3>Firebird Book Award</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-04-brag-medallion.png" alt="B.R.A.G. Medallion" />
-                  </div>
-                  <h3>B.R.A.G. Medallion</h3>
-                </article>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-04-brag-medallion.png" alt="B.R.A.G. Medallion" />
+                </div>
+                <h3>B.R.A.G. Medallion</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
-                  </div>
-                  <h3>Living Now Book Awards</h3>
-                </article>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
+                </div>
+                <h3>Living Now Book Awards</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-06-literary-titan-book-award.png" alt="Literary Titan Book Award" />
-                  </div>
-                  <h3>Literary Titan Book Award</h3>
-                </article>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-06-literary-titan-book-award.png" alt="Literary Titan Book Award" />
+                </div>
+                <h3>Literary Titan Book Award</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/calisto-2-0-07-pencraft-award.png" alt="PenCraft Award" />
-                  </div>
-                  <h3>PenCraft Award</h3>
-                </article>
-              </div>
-
-              <div class="mobile-scroll-arrow" aria-hidden="true"></div>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/calisto-2-0-07-pencraft-award.png" alt="PenCraft Award" />
+                </div>
+                <h3>PenCraft Award</h3>
+              </article>
             </div>
           </div>
         </article>
@@ -977,31 +893,27 @@
               <div class="book-subtitle">Premios y reconocimientos de <em>Cupid’s Arrow</em>, edición original en inglés</div>
             </div>
 
-            <div class="awards-mobile-wrap">
-              <div class="awards-grid three awards-scroll" data-scroll-area>
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
-                  </div>
-                  <h3>Outstanding Creator Awards</h3>
-                </article>
+            <div class="awards-grid three">
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
+                </div>
+                <h3>Outstanding Creator Awards</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/cupids-arrow-02-brag-medallion.png" alt="B.R.A.G. Medallion" />
-                  </div>
-                  <h3>B.R.A.G. Medallion</h3>
-                </article>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/cupids-arrow-02-brag-medallion.png" alt="B.R.A.G. Medallion" />
+                </div>
+                <h3>B.R.A.G. Medallion</h3>
+              </article>
 
-                <article class="award-card">
-                  <div class="award-logo">
-                    <img src="images/premios/cupids-arrow-03-literary-titan-book-award.png" alt="Literary Titan Book Award" />
-                  </div>
-                  <h3>Literary Titan Book Award</h3>
-                </article>
-              </div>
-
-              <div class="mobile-scroll-arrow" aria-hidden="true"></div>
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="images/premios/cupids-arrow-03-literary-titan-book-award.png" alt="Literary Titan Book Award" />
+                </div>
+                <h3>Literary Titan Book Award</h3>
+              </article>
             </div>
           </div>
         </article>
@@ -1216,8 +1128,6 @@
       if (window.innerWidth > 780) {
         closeMenu();
       }
-
-      updateScrollArrows();
     });
 
     const fadeElements = document.querySelectorAll(".fade-up");
@@ -1268,38 +1178,6 @@
         closeMenu();
       }
     });
-
-    const scrollAreas = document.querySelectorAll("[data-scroll-area]");
-
-    function toggleArrowForArea(area) {
-      const wrap = area.closest(".awards-mobile-wrap");
-      if (!wrap) return;
-
-      const arrow = wrap.querySelector(".mobile-scroll-arrow");
-      if (!arrow) return;
-
-      if (window.innerWidth > 680) {
-        arrow.classList.add("is-hidden");
-        return;
-      }
-
-      const maxScrollLeft = area.scrollWidth - area.clientWidth;
-      const isScrollable = maxScrollLeft > 12;
-      const isNearEnd = area.scrollLeft >= maxScrollLeft - 12;
-
-      arrow.classList.toggle("is-hidden", !isScrollable || isNearEnd);
-    }
-
-    function updateScrollArrows() {
-      scrollAreas.forEach((area) => toggleArrowForArea(area));
-    }
-
-    scrollAreas.forEach((area) => {
-      area.addEventListener("scroll", () => toggleArrowForArea(area));
-    });
-
-    window.addEventListener("load", updateScrollArrows);
-    updateScrollArrows();
   </script>
 </body>
 </html>
