@@ -950,6 +950,32 @@
       grid-column: 8 / span 3;
     }
 
+    /* NUEVA DISTRIBUCIÓN PARA PC / PANTALLA GRANDE */
+    .desktop-row-sasha {
+      grid-column: 3 / span 3;
+      grid-row: 6;
+    }
+
+    .desktop-row-sook {
+      grid-column: 6 / span 3;
+      grid-row: 6;
+    }
+
+    .desktop-row-tanya {
+      grid-column: 9 / span 3;
+      grid-row: 6;
+    }
+
+    .desktop-row-yasmin {
+      grid-column: 4 / span 3;
+      grid-row: 7;
+    }
+
+    .desktop-row-zoe {
+      grid-column: 7 / span 3;
+      grid-row: 7;
+    }
+
     .card-mobile-arrows {
       display: none;
     }
@@ -1166,8 +1192,14 @@
       .closing-row-three-2,
       .closing-row-three-3,
       .closing-row-two-1,
-      .closing-row-two-2 {
+      .closing-row-two-2,
+      .desktop-row-sasha,
+      .desktop-row-sook,
+      .desktop-row-tanya,
+      .desktop-row-yasmin,
+      .desktop-row-zoe {
         grid-column: span 1;
+        grid-row: auto;
       }
     }
 
@@ -1397,8 +1429,14 @@
       .closing-row-three-2,
       .closing-row-three-3,
       .closing-row-two-1,
-      .closing-row-two-2 {
+      .closing-row-two-2,
+      .desktop-row-sasha,
+      .desktop-row-sook,
+      .desktop-row-tanya,
+      .desktop-row-yasmin,
+      .desktop-row-zoe {
         grid-column: auto;
+        grid-row: auto;
         max-width: 82vw;
         min-width: 82vw;
         flex: 0 0 82vw;
@@ -1578,7 +1616,12 @@
       .closing-row-three-2,
       .closing-row-three-3,
       .closing-row-two-1,
-      .closing-row-two-2 {
+      .closing-row-two-2,
+      .desktop-row-sasha,
+      .desktop-row-sook,
+      .desktop-row-tanya,
+      .desktop-row-yasmin,
+      .desktop-row-zoe {
         min-width: 86vw;
         max-width: 86vw;
         flex-basis: 86vw;
@@ -2308,14 +2351,28 @@
       return "";
     }
 
+    function getDesktopCustomClass(name) {
+      const map = {
+        "Sasha": "desktop-row-sasha",
+        "Sook": "desktop-row-sook",
+        "Tanya": "desktop-row-tanya",
+        "Yasmin": "desktop-row-yasmin",
+        "Zoe": "desktop-row-zoe"
+      };
+
+      return map[name] || "";
+    }
+
     secondaryCharacters.forEach((character, index) => {
       const card = document.createElement("article");
       const closingClass = getClosingClass(index, secondaryCharacters.length);
+      const desktopCustomClass = getDesktopCustomClass(character.name);
 
       card.className = [
         "roster-card",
         "reveal",
-        closingClass
+        closingClass,
+        desktopCustomClass
       ].filter(Boolean).join(" ");
 
       const fallbackAttr = character.imageAlt
