@@ -950,13 +950,8 @@
       grid-column: 7 / span 3;
     }
 
-    .zoe-card .roster-thumb {
-      object-position: center 14%;
-      transform: scale(1.14);
-    }
-
-    .zoe-card:hover .roster-thumb {
-      transform: scale(1.19);
+    .card-mobile-arrows {
+      display: none;
     }
 
     .ending {
@@ -1105,10 +1100,6 @@
       opacity: 1;
       transform: translateY(0) scale(1);
       filter: blur(0);
-    }
-
-    .card-mobile-arrows {
-      display: none;
     }
 
     @media (max-width: 900px), (hover: none) and (pointer: coarse) {
@@ -1656,7 +1647,7 @@
     <nav class="top-links" id="siteMenu">
       <a href="index.html">Inicio</a>
       <a href="explorar.html">Explorar</a>
-      <a href="corazon.html">Corazón</a>
+      <a href="corazon.html">Corazon</a>
       <a href="explorar.html#libros">Libros</a>
       <a href="premios.html">Premios</a>
     </nav>
@@ -1838,7 +1829,7 @@
       </a>
 
       <a href="corazon.html" class="ending-link corazon-card">
-        <img src="images/galeria/susan-ximena-1.jpg" alt="Corazón" />
+        <img src="images/galeria/corazon.jpg" alt="Corazón" />
         <span>Corazón</span>
       </a>
 
@@ -1857,7 +1848,7 @@
       </a>
 
       <a href="explorar.html#libros" class="ending-link libros-card">
-        <img src="images/explorar/callisto-2-0.jpg" alt="Libros" />
+        <img src="images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Libros" />
         <span>Libros</span>
       </a>
     </div>
@@ -2191,63 +2182,108 @@
         country: "China",
         education: "PhD en Ingeniería",
         focus: "Nanofiltración",
-        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        work: "Arcadia 2093–2096 · Shambhala 2096–presente",
         image: "images/secundarios/mei-xing.jpg"
       },
       {
-        name: "Nandi",
-        role: "Médica",
-        country: "Amandla Wobumbano",
-        education: "Doctora en Medicina",
-        focus: "Fertilidad humana en gravedad reducida",
+        name: "Nalah",
+        role: "Gestión de recursos humanos",
+        country: "Ghana",
+        education: "Maestría en Gestión de Recursos Humanos",
+        focus: "Dinámica de equipos y resolución de conflictos",
+        work: "Arcadia 2091–presente",
+        image: "images/secundarios/Nalah.jpg"
+      },
+      {
+        name: "Olivia",
+        role: "Geóloga y bióloga",
+        country: "California",
+        education: "PhD en Geología",
+        focus: "Terraformación",
+        work: "Shambhala 2097–presente",
+        image: "images/secundarios/olivia.jpg"
+      },
+      {
+        name: "Quinn",
+        role: "Especialista en filtración",
+        country: "Tanzania",
+        education: "PhD en Ingeniería",
+        focus: "Filtración industrial y mecánica de fluidos",
         work: "Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/nandi.jpg"
+        image: "images/secundarios/quin.jpg"
       },
       {
-        name: "Nkechi",
-        role: "Ingeniera química",
-        country: "Costa de Marfil",
-        education: "PhD en Ingeniería Química",
-        focus: "Reciclaje químico y análisis de fluidos",
-        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/nkechi.jpg"
+        name: "Raven",
+        role: "Bióloga",
+        country: "Rusia",
+        education: "PhD en Biología",
+        focus: "Criptobiosis, hibernación e hipotermia terapéutica",
+        work: "Shambhala 2096–presente",
+        image: "images/secundarios/raven.jpg"
       },
       {
-        name: "Rae",
-        role: "Comandante",
-        country: "Australia",
-        education: "Ingeniería eléctrica",
-        focus: "Piloto y comando de vuelo",
-        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/rae.jpg"
+        name: "Remi",
+        role: "Bióloga",
+        country: "Polonia",
+        education: "PhD en Biotecnología",
+        focus: "Biotecnologías, partenogénesis y desextinción",
+        work: "Arcadia 2094–2097",
+        image: "images/secundarios/remi.jpg"
       },
       {
-        name: "Sofía",
-        role: "Médica",
-        country: "Argentina",
-        education: "Doctora en Medicina",
-        focus: "Medicina interna",
-        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/sofia.jpg"
+        name: "Rika",
+        role: "Ingeniera",
+        country: "Finlandia",
+        education: "PhD en Ingeniería",
+        focus: "Ingeniería astronáutica",
+        work: "Arcadia 2093–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/rika.jpg"
       },
       {
-        name: "Valeria",
-        role: "Ingeniera de software",
-        country: "México",
-        education: "PhD en Informática",
-        focus: "Sistemas y arquitectura digital",
-        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/valeria.jpg"
+        name: "Sasha",
+        role: "Analista de datos",
+        country: "Irán",
+        education: "PhD en Ciencia de los Datos",
+        focus: "Arquitectura de datos",
+        work: "Portal al Porvenir 2089–2091 · Arcadia 2091–presente",
+        image: "images/secundarios/sasha.jpg"
+      },
+      {
+        name: "Sook",
+        role: "Piloto",
+        country: "Corea",
+        education: "Certificado de Aviación",
+        focus: "Vuelo y navegación",
+        work: "Arcadia 2095–presente",
+        image: "images/secundarios/Sook.jpg"
+      },
+      {
+        name: "Tanya",
+        role: "Científica de materiales",
+        country: "Texas",
+        education: "PhD en Ciencia de los Materiales",
+        focus: "Cerámica, materiales poliméricos y nanomateriales",
+        work: "Portal al Porvenir · Palo Alto 2090–2091 · Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/tanya.jpg"
+      },
+      {
+        name: "Yasmin",
+        role: "Botánica",
+        country: "Turquía",
+        education: "PhD en Botánica",
+        focus: "Apicultura y cultivo lunar",
+        work: "Arcadia 2091–presente",
+        image: "images/secundarios/yasmin.jpg"
       },
       {
         name: "Zoe",
-        role: "Piloto",
-        country: "Canadá",
-        education: "Ingeniería aeronáutica",
-        focus: "Pilotaje orbital y maniobras de aproximación",
-        work: "Arcadia 2095–presente",
-        image: "images/secundarios/zoe.jpg",
-        cardClass: "zoe-card"
+        role: "Botánica",
+        country: "Austria",
+        education: "PhD en Botánica",
+        focus: "Cultivo en microgravedad",
+        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/Zoe.jpg",
+        imageAlt: "images/secundarios/zoe.jpg"
       }
     ];
 
@@ -2279,16 +2315,19 @@
       card.className = [
         "roster-card",
         "reveal",
-        character.cardClass || "",
         closingClass
       ].filter(Boolean).join(" ");
+
+      const fallbackAttr = character.imageAlt
+        ? ` onerror="this.onerror=null;this.src='${character.imageAlt}'"`
+        : "";
 
       const hasImage = Boolean(character.image);
 
       card.innerHTML = `
         <div class="roster-thumb-wrap">
           ${hasImage
-            ? `<img class="roster-thumb" src="${character.image}" alt="${character.name}" loading="lazy" />`
+            ? `<img class="roster-thumb" src="${character.image}" alt="${character.name}" loading="lazy"${fallbackAttr} />`
             : `<div class="roster-placeholder">${character.name.charAt(0)}</div>`}
         </div>
 
@@ -2296,12 +2335,9 @@
           <div class="roster-number">Registro ${String(index + 1).padStart(2, "0")}</div>
           <h3>${character.name}</h3>
           <div class="roster-role">${character.role}</div>
-          <p class="roster-summary">
-            ${character.focus}
-          </p>
+          <p class="roster-summary">${character.country} · ${character.focus}</p>
 
           <div class="roster-meta">
-            <span><strong>Procedencia:</strong> ${character.country}</span>
             <span><strong>Formación:</strong> ${character.education}</span>
             <span><strong>Trayectoria:</strong> ${character.work}</span>
           </div>
