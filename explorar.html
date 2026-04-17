@@ -218,7 +218,6 @@
     .image-caption p,
     .book-body,
     .book-meta p,
-    .awards-text p,
     .closing-box p {
       text-align: justify;
       text-align-last: left;
@@ -447,209 +446,6 @@
       font-weight: 600;
     }
 
-    .awards-showcase {
-      position: relative;
-      margin-top: 42px;
-      padding: 34px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
-        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
-      box-shadow:
-        inset 0 0 20px rgba(108, 187, 255, 0.03),
-        0 14px 40px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
-
-    .awards-showcase::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(86, 176, 255, 0.12), transparent 26%),
-        radial-gradient(circle at bottom left, rgba(98, 187, 255, 0.08), transparent 22%);
-      pointer-events: none;
-    }
-
-    .awards-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .awards-kicker {
-      display: inline-block;
-      margin-bottom: 14px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #9cdcff;
-    }
-
-    .awards-text p {
-      line-height: 1.9;
-      color: rgba(236, 243, 255, 0.78);
-      font-size: 0.96rem;
-      margin-bottom: 16px;
-      max-width: 650px;
-    }
-
-    .awards-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 210px;
-      padding: 14px 22px;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-weight: 600;
-      border: 1px solid rgba(112, 196, 255, 0.35);
-      background: rgba(10, 20, 38, 0.34);
-      color: #eff8ff;
-      transition: 0.35s ease;
-      text-align: center;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      border-color: rgba(112, 196, 255, 0.7);
-      box-shadow: 0 0 28px rgba(71, 164, 245, 0.18);
-    }
-
-    .button.secondary {
-      border-color: rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(245, 248, 255, 0.82);
-    }
-
-    .button.secondary:hover {
-      border-color: rgba(255, 255, 255, 0.32);
-      box-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
-    }
-
-    .awards-groups {
-      display: grid;
-      gap: 18px;
-      min-width: 0;
-    }
-
-    .award-book-group {
-      position: relative;
-      padding: 20px 18px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
-      box-shadow:
-        inset 0 0 18px rgba(90, 168, 255, 0.03),
-        0 10px 28px rgba(0, 0, 0, 0.18);
-      overflow: hidden;
-    }
-
-    .award-book-group::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top, rgba(114, 201, 255, 0.08), transparent 42%),
-        linear-gradient(to top, rgba(3, 7, 14, 0.22), rgba(255,255,255,0));
-      pointer-events: none;
-    }
-
-    .award-book-head {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      margin-bottom: 16px;
-    }
-
-    .award-book-title {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.88rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #f4fbff;
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
-
-    .award-book-subtitle {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(183, 228, 255, 0.74);
-      line-height: 1.5;
-    }
-
-    .award-book-badges {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .award-book-badges.cupids {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .award-mini-badge {
-      position: relative;
-      min-height: 108px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.72);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.3s ease;
-      overflow: hidden;
-    }
-
-    .award-mini-badge:hover {
-      transform: translateY(-3px);
-      border-color: rgba(112, 196, 255, 0.28);
-      box-shadow:
-        0 0 20px rgba(80, 174, 255, 0.10),
-        0 12px 28px rgba(0, 0, 0, 0.18);
-    }
-
-    .award-mini-badge::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to top, rgba(3, 7, 14, 0.24), rgba(255,255,255,0)),
-        radial-gradient(circle at top, rgba(114, 201, 255, 0.07), transparent 40%);
-      pointer-events: none;
-    }
-
-    .award-mini-badge img {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 104px;
-      max-height: 72px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 14px rgba(108, 187, 255, 0.10));
-    }
-
     .page-footer {
       position: relative;
       z-index: 2;
@@ -816,10 +612,6 @@
       .book-cover {
         max-width: 180px;
       }
-
-      .award-book-badges {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
     }
 
     @media (max-width: 1100px) {
@@ -833,10 +625,6 @@
 
       .image-panel {
         min-height: 380px;
-      }
-
-      .awards-grid {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -892,11 +680,6 @@
 
       .page-footer-inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .award-book-badges,
-      .award-book-badges.cupids {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
 
@@ -973,37 +756,16 @@
       .book-body,
       .text-panel p,
       .image-caption p,
-      .awards-text p,
       .closing-box p {
         font-size: 0.94rem;
         line-height: 1.8;
       }
 
-      .awards-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-        min-width: 0;
-      }
-
       .book-card,
       .text-panel,
-      .closing-box,
-      .awards-showcase {
+      .closing-box {
         padding-left: 22px;
         padding-right: 22px;
-      }
-
-      .award-book-head {
-        flex-direction: column;
-      }
-
-      .award-book-badges,
-      .award-book-badges.cupids {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .image-caption {
@@ -1054,20 +816,6 @@
     }
 
     @media (max-width: 430px) {
-      .award-book-badges,
-      .award-book-badges.cupids {
-        grid-template-columns: 1fr;
-      }
-
-      .award-mini-badge {
-        min-height: 120px;
-      }
-
-      .award-mini-badge img {
-        max-width: 130px;
-        max-height: 84px;
-      }
-
       .section {
         padding-left: 4.5%;
         padding-right: 4.5%;
@@ -1135,40 +883,47 @@
         <div class="section-kicker">Cartografía sensible</div>
         <h2>Un Universo en Expansión</h2>
         <p>
-          La Saga Shambhala no se construye como una ciencia ficción fría ni distante. Aquí, la exploración espacial convive con vínculos intensos, inteligencia artificial, comunidades utópicas, decisiones imposibles y preguntas profundas sobre quiénes somos.
+          La Saga Shambhala no se construye como una ciencia ficción fría ni distante. Aquí, la exploración espacial convive con vínculos intensos, conciencia artificial, comunidades utópicas, decisiones imposibles y preguntas profundas sobre quiénes somos.
         </p>
       </div>
 
       <div class="intro-grid">
         <div class="panel image-panel">
-          <img src="images/world.jpg" alt="Paisaje espacial de Shambhala" />
+          <img src="images/world.jpg" alt="El universo de Shambhala" />
           <div class="image-caption">
-            <h3>Más que un escenario</h3>
+            <h3>Más Allá del Planeta</h3>
             <p>
-              Shambhala es un tejido de realidades conectadas. Un espacio donde lo cósmico y lo íntimo se tocan, y donde cada viaje transforma tanto el territorio como a quienes lo atraviesan.
+              Estaciones orbitales, colonias lunares y viajes warp hacia mundos desconocidos. En Shambhala, la tecnología empuja los límites de lo humano sin soltar jamás el hilo de la emoción.
             </p>
           </div>
         </div>
 
         <div class="panel text-panel">
           <div class="line">
-            <h3>Exploración con alma</h3>
+            <h3>Ciencia con Pulso Humano</h3>
             <p>
-              Cada rincón de este universo guarda una tensión entre descubrimiento y pertenencia. No se trata solo de avanzar hacia lo desconocido, sino de comprender qué significa habitarlo sin perder la humanidad.
+              La física, la biología, la ingeniería, la filosofía y la inteligencia artificial no son solo el escenario; son el motor y el corazón de la historia.
             </p>
           </div>
 
           <div class="line">
-            <h3>Fronteras porosas</h3>
+            <h3>Comunidades Imaginadas</h3>
             <p>
-              En esta saga, la tecnología no reemplaza la emoción: la intensifica. Los sistemas, las inteligencias y las rutas estelares se entrelazan con la memoria, el deseo, el duelo y la posibilidad del amor.
+              Shambhala imagina espacios donde las mujeres crean nuevas formas de convivencia, conocimiento, cuidado y resistencia.
             </p>
           </div>
 
           <div class="line">
-            <h3>Una promesa narrativa</h3>
+            <h3>Amor, Pérdida y Transformación</h3>
             <p>
-              Lo que comienza como exploración se convierte en una pregunta mayor sobre conciencia, destino, ética y evolución. Shambhala crece como una constelación de historias que se responden entre sí.
+              Cada libro expande el universo mientras profundiza en la intimidad de sus personajes: sus anhelos, sus duelos y los descubrimientos que transforman su propia esencia.
+            </p>
+          </div>
+
+          <div class="line">
+            <h3>Una Presencia Distinta</h3>
+            <p>
+              Annie no es un personaje convencional. Su existencia altera la frontera entre compañía, memoria, conciencia y vínculo.
             </p>
           </div>
         </div>
@@ -1177,10 +932,10 @@
 
     <section class="section fade-up" id="libros">
       <div class="section-header">
-        <div class="section-kicker">Bitácora editorial</div>
-        <h2>Libros publicados</h2>
+        <div class="section-kicker">Constelación narrativa</div>
+        <h2>Los cuatro libros de la saga</h2>
         <p>
-          Cada libro abre una puerta distinta dentro del universo Shambhala. Son relatos conectados, pero con identidad propia: viajes, vínculos, dilemas y revelaciones que expanden la saga desde ángulos complementarios.
+          Cada libro abre una fase distinta del universo: descubrimiento, resistencia, expansión y horizonte. Juntos forman una trayectoria emocional y cósmica que crece con cada paso.
         </p>
       </div>
 
@@ -1191,130 +946,99 @@
           </div>
 
           <div class="book-content">
-            <div class="book-label">Libro I</div>
+            <div class="book-label">Libro 1</div>
             <h3>Calisto 2.0</h3>
-            <div class="book-subtitle">Ciencia ficción especulativa · expansión del universo</div>
+            <div class="book-subtitle">Descubrimiento y renacimiento</div>
+
             <p class="book-body">
-              Una historia de exploración, conciencia y transformación en la que la tecnología, el viaje interestelar y las decisiones humanas se enfrentan a preguntas radicales sobre identidad, propósito y futuro.
+              Estación Espacial Shambhala, 2097. Calisto Collins, una física brillante y solitaria, recibe una invitación inesperada para unirse a Portal al Porvenir, la fundación que impulsa una investigación revolucionaria entre la Luna y la estación orbital Shambhala. Lo que al principio parece la oportunidad profesional de su vida pronto se transforma en algo mucho más profundo: una comunidad de mujeres donde la ciencia, la cooperación y la calidez humana le ofrecen, por primera vez, un verdadero sentido de pertenencia.
             </p>
+
+            <p class="book-body">
+              Mientras se adentra en el desarrollo de una tecnología de distorsión capaz de alterar el destino de la humanidad, Calisto también deberá enfrentarse a sí misma, a sus heridas y a la posibilidad de que el futuro que la espera sea mucho más grande de lo que jamás imaginó.
+            </p>
+
             <div class="book-meta">
-              <p><strong>Universo:</strong> Apertura de la saga y consolidación del tono filosófico y emocional.</p>
-              <p><strong>Eje narrativo:</strong> Inteligencia, descubrimiento, dilemas éticos y mutación interior.</p>
+              <p><strong>Núcleo emocional:</strong> pertenencia, valentía, apertura y transformación interior.</p>
+              <p><strong>Escala narrativa:</strong> el ingreso al universo de Shambhala a través de Cali.</p>
             </div>
           </div>
         </article>
 
         <article class="book-card">
           <div class="book-cover">
-            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes Infinitos" />
+            <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Portada de La Flecha de Cupido" />
           </div>
 
           <div class="book-content">
-            <div class="book-label">Libro II</div>
-            <h3>Horizontes Infinitos</h3>
-            <div class="book-subtitle">Continuación de saga · expansión de mundos y vínculos</div>
+            <div class="book-label">Libro 2</div>
+            <h3>La Flecha de Cupido</h3>
+            <div class="book-subtitle">Ausencia, resistencia y claridad</div>
+
             <p class="book-body">
-              La saga se profundiza y amplía sus resonancias. Nuevas capas del universo emergen mientras los personajes enfrentan cambios, decisiones irreversibles y formas más complejas de pertenecer a algo mayor que ellos mismos.
+              Mientras Shambhala se adentra en lo desconocido, Pavani permanece en Arcadia con el corazón suspendido entre la ausencia de Calisto y la amenaza que se cierne sobre todo lo que ama. Lo que parecía una despedida dolorosa pronto se convierte en una crisis de gran escala: la Luna queda bajo presión militar, la comunidad es vigilada y puesta a prueba, y las mujeres que se quedan atrás deben aprender a resistir con inteligencia, dignidad y fortaleza.
             </p>
+
+            <p class="book-body">
+              A medida que la verdad comienza a abrirse paso entre conspiraciones, miedo y pérdidas, Pavani también cambia. En medio de la incertidumbre, descubre una voz más firme, una valentía inesperada y una claridad emocional que ya no le permite esconderse detrás de la espera.
+            </p>
+
             <div class="book-meta">
-              <p><strong>Universo:</strong> Ampliación de geografías, tensiones y relaciones centrales.</p>
-              <p><strong>Eje narrativo:</strong> Continuidad emocional, descubrimiento y maduración del conflicto.</p>
+              <p><strong>Núcleo emocional:</strong> distancia, resistencia, fortaleza y claridad emocional.</p>
+              <p><strong>Escala narrativa:</strong> una mirada más íntima que amplía la tensión política y emocional de la saga.</p>
             </div>
           </div>
         </article>
-      </div>
-    </section>
 
-    <section class="section fade-up" id="premios">
-      <div class="section-header">
-        <div class="section-kicker">Reconocimientos</div>
-        <h2>Premios y distinciones</h2>
-        <p>
-          El recorrido editorial de la saga también ha sido acompañado por reconocimientos internacionales. Estos premios celebran no solo la calidad literaria, sino la fuerza imaginativa, emocional y simbólica de este universo.
-        </p>
-      </div>
-
-      <div class="awards-showcase">
-        <div class="awards-grid">
-          <div class="awards-text">
-            <span class="awards-kicker">Trayectoria premiada</span>
-            <p>
-              Las obras del universo Shambhala han recibido múltiples distinciones en certámenes internacionales, confirmando la potencia de una propuesta narrativa que une ciencia ficción, sensibilidad humana e imaginación visionaria.
-            </p>
-            <p>
-              Cada sello, medalla o reconocimiento es también una señal de diálogo con lectores, jurados y comunidades literarias que encontraron en estos libros una voz singular.
-            </p>
-
-            <div class="awards-actions">
-              <a class="button" href="premios.html">Ver página de premios</a>
-              <a class="button secondary" href="#libros">Volver a libros</a>
-            </div>
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Portada de La Luz Naranja de un Sol Alienígena" />
           </div>
 
-          <div class="awards-groups">
-            <div class="award-book-group">
-              <div class="award-book-head">
-                <div>
-                  <div class="award-book-title">Calisto 2.0</div>
-                  <div class="award-book-subtitle">Edición original en inglés</div>
-                </div>
-              </div>
+          <div class="book-content">
+            <div class="book-label">Libro 3</div>
+            <h3>La Luz Naranja de un Sol Alienígena</h3>
+            <div class="book-subtitle">Desarraigo y nueva siembra</div>
 
-              <div class="award-book-badges">
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
-                </div>
+            <p class="book-body">
+              Más allá del Sistema Solar, bajo la luz extraña de una estrella nueva, Calisto y la tripulación de Shambhala llegan a Bachué, un planeta lleno de promesa, belleza y preguntas. Lo que encuentran allí no es solo un territorio por explorar, sino la posibilidad vertiginosa de comenzar de nuevo.
+            </p>
 
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-02-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
-                </div>
+            <p class="book-body">
+              Pero la maravilla del descubrimiento convive con una ausencia profunda: Calisto carga la distancia de Pavani, la falta de Naomi, el dolor de todo lo que dejó atrás y la incertidumbre de levantar un hogar en un mundo ajeno, donde nada está asegurado. Mientras la ciencia se convierte en una herramienta de supervivencia, creación y esperanza, también se vuelve el lenguaje con el que estas mujeres intentan fundar una nueva vida.
+            </p>
 
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-04-brag-medallion.png" alt="B.R.A.G. Medallion" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-06-literary-titan-book-award.png" alt="Literary Titan Book Award" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/calisto-2-0-07-pencraft-award.png" alt="PenCraft Award" />
-                </div>
-              </div>
-            </div>
-
-            <div class="award-book-group">
-              <div class="award-book-head">
-                <div>
-                  <div class="award-book-title">La Flecha de Cupido</div>
-                  <div class="award-book-subtitle">Cupid’s Arrow · edición original en inglés</div>
-                </div>
-              </div>
-
-              <div class="award-book-badges cupids">
-                <div class="award-mini-badge">
-                  <img src="images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/cupids-arrow-02-brag-medallion.png" alt="B.R.A.G. Medallion" />
-                </div>
-
-                <div class="award-mini-badge">
-                  <img src="images/premios/cupids-arrow-03-literary-titan-book-award.png" alt="Literary Titan Book Award" />
-                </div>
-              </div>
+            <div class="book-meta">
+              <p><strong>Núcleo emocional:</strong> desarraigo, esperanza, creación y pertenencia.</p>
+              <p><strong>Escala narrativa:</strong> la saga se abre a otro mundo sin perder su intimidad humana.</p>
             </div>
           </div>
-        </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes infinitos" />
+          </div>
+
+          <div class="book-content">
+            <div class="book-label">Libro 4</div>
+            <h3>Horizontes infinitos</h3>
+            <div class="book-subtitle">Reencuentro y expansión</div>
+
+            <p class="book-body">
+              Cuando Calisto regresa al Sistema Solar con una misión decisiva, el reencuentro con Pavani no ocurre en un momento de calma, sino en medio del caos. La persecución contra la Fundación se ha intensificado, la Luna vive bajo una presión cada vez más asfixiante y lo que debía ser una operación precisa pronto se transforma en una huida desesperada.
+            </p>
+
+            <p class="book-body">
+              Juntas al fin, Calisto y Pavani deberán atravesar un entorno hostil, improvisar rutas de escape, ocultarse de un sistema que busca controlarlo todo y aferrarse la una a la otra mientras el futuro vuelve a tambalearse bajo sus pies. En medio del peligro, ambas encontrarán también un espacio para la lucidez, la madurez y la elección consciente del camino que desean seguir.
+            </p>
+
+            <div class="book-meta">
+              <p><strong>Núcleo emocional:</strong> reencuentro, madurez, lucidez y elección.</p>
+              <p><strong>Escala narrativa:</strong> cierre expansivo de la saga desde la conciencia y la posibilidad.</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1360,7 +1084,7 @@
       <div class="closing-box">
         <h2>Entrar a Shambhala es aceptar la expansión</h2>
         <p>
-          Una invitación a trascender los límites del universo. Más que una explicación de aquello que creemos posible, este espacio es una puerta abierta que seduce e invita a descubrir lo que aguarda en el horizonte.
+          Una invitación a trascender los límites del universo, la identidad y la conciencia. Más que una explicación de aquello que creemos posible, este espacio es una puerta abierta que seduce e invita a descubrir lo que aguarda en el horizonte.
         </p>
       </div>
     </section>
