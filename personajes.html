@@ -875,6 +875,10 @@
       object-position: center center;
     }
 
+    .roster-card.image-sasha .roster-thumb {
+      object-position: center 24%;
+    }
+
     .roster-card.image-sook .roster-thumb {
       object-position: center 22%;
     }
@@ -976,19 +980,23 @@
       grid-column: 8 / span 3;
     }
 
+    /* FILA CENTRADA DE SASHA, SOOK Y TANYA */
     .desktop-row-sasha {
-      grid-column: 3 / span 3;
+      grid-column: 2 / span 3;
       grid-row: 6;
+      justify-self: center;
     }
 
     .desktop-row-sook {
-      grid-column: 6 / span 3;
+      grid-column: 5 / span 3;
       grid-row: 6;
+      justify-self: center;
     }
 
     .desktop-row-tanya {
-      grid-column: 9 / span 3;
+      grid-column: 8 / span 3;
       grid-row: 6;
+      justify-self: center;
     }
 
     .desktop-row-yasmin {
@@ -1594,7 +1602,6 @@
       .character-tag,
       .card-link,
       .roster-role,
-      .roster-number,
       .brand {
         letter-spacing: 1.4px;
       }
@@ -2289,23 +2296,23 @@
         work: "Arcadia 2094–2097",
         image: "images/secundarios/raven.jpg"
       },
-         {
-        name: "Remi",
-        role: "Bióloga",
-        country: "Polonia",
-        education: "PhD en Biotecnología",
-        focus: "Biotecnologías, partenogénesis y desextinción",
-        work: "Arcadia 2094–2097",
-        image: "images/secundarios/remi.jpg"
+      {
+        name: "Samira",
+        role: "Especialista en comunicaciones",
+        country: "Marruecos",
+        education: "Maestría en Ingeniería de Telecomunicaciones",
+        focus: "Infraestructura de comunicación espacial",
+        work: "Shambhala 2095–presente",
+        image: "images/secundarios/samira.jpg"
       },
       {
-        name: "Rika",
-        role: "Ingeniera",
-        country: "Finlandia",
-        education: "PhD en Ingeniería",
-        focus: "Ingeniería astronáutica",
-        work: "Arcadia 2093–2095 · Shambhala 2095–presente",
-        image: "images/secundarios/rika.jpg"
+        name: "Shirin",
+        role: "Médica",
+        country: "Irán",
+        education: "Doctorado en Medicina",
+        focus: "Medicina interna y atención integral",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/shirin.jpg"
       },
       {
         name: "Sasha",
@@ -2323,13 +2330,13 @@
         education: "Certificado de Aviación",
         focus: "Vuelo y navegación",
         work: "Arcadia 2095–presente",
-        image: "images/secundarios/Sook.jpg"
+        image: "images/secundarios/sook.jpg"
       },
       {
         name: "Tanya",
         role: "Científica de materiales",
         country: "Texas",
-        education: "PhD en Ciencia de los Materiales",
+        education: "PhD en Ciencias de los Materiales",
         focus: "Cerámica, materiales poliméricos y nanomateriales",
         work: "Portal al Porvenir · Palo Alto 2090–2091 · Arcadia 2091–2095 · Shambhala 2095–presente",
         image: "images/secundarios/tanya.jpg"
@@ -2390,7 +2397,7 @@
 
     function getImageClass(name) {
       const map = {
-        "Sasha": "image-center",
+        "Sasha": "image-center image-sasha",
         "Sook": "image-center image-sook",
         "Tanya": "image-center image-tanya"
       };
