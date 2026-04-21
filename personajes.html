@@ -796,10 +796,12 @@
     }
 
     .roster-grid {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 20px;
-    }
+       display: grid;
+       grid-template-columns: repeat(12, minmax(0, 1fr));
+       gap: 20px;
+       max-width: 1280px;
+       margin: 0 auto;
+     }
 
     .roster-card {
       position: relative;
@@ -982,35 +984,32 @@
 
     /* FILA CENTRADA DE SASHA, SOOK Y TANYA */
     .desktop-row-sasha {
-      grid-column: 2 / span 3;
-      grid-row: 6;
-      justify-self: center;
-      transform: translateX(50%);
-    }
+       grid-column: 2 / span 3;
+       grid-row: 6;
+       justify-self: center;
+     }
 
-    .desktop-row-sook {
-      grid-column: 5 / span 3;
-      grid-row: 6;
-      justify-self: center;
-      transform: translateX(50%);
-    }
+     .desktop-row-sook {
+        grid-column: 5 / span 3;
+        grid-row: 6;
+        justify-self: center;
+      }
 
-    .desktop-row-tanya {
-      grid-column: 8 / span 3;
-      grid-row: 6;
-      justify-self: center;
-      transform: translateX(50%);
-    }
+      .desktop-row-tanya {
+         grid-column: 8 / span 3;
+         grid-row: 6;
+         justify-self: center;
+       }
 
-    .desktop-row-yasmin {
-      grid-column: 4 / span 3;
-      grid-row: 7;
-    }
+       .desktop-row-yasmin {
+          grid-column: 4 / span 3;
+          grid-row: 7;
+       }
 
-    .desktop-row-zoe {
-      grid-column: 7 / span 3;
-      grid-row: 7;
-    }
+       .desktop-row-zoe {
+          grid-column: 7 / span 3;
+          grid-row: 7;
+       }
 
     .card-mobile-arrows {
       display: none;
