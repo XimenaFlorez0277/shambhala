@@ -251,7 +251,8 @@
     }
 
     .section-text {
-      max-width: 900px;
+      max-width: none;
+      width: 100%;
       line-height: 1.9;
       color: var(--muted);
       font-size: 1rem;
@@ -353,12 +354,32 @@
 
     .awards-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 18px;
+    }
+
+    .awards-grid > .award-card {
+      grid-column: span 3;
+    }
+
+    .awards-grid.callisto-grid > .award-card:nth-child(5) {
+      grid-column: 2 / span 3;
+    }
+
+    .awards-grid.callisto-grid > .award-card:nth-child(6) {
+      grid-column: 5 / span 3;
+    }
+
+    .awards-grid.callisto-grid > .award-card:nth-child(7) {
+      grid-column: 8 / span 3;
     }
 
     .awards-grid.three {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .awards-grid.three > .award-card {
+      grid-column: span 1;
     }
 
     .award-card {
@@ -617,12 +638,6 @@
       z-index: 1;
     }
 
-    @media (max-width: 1180px) {
-      .awards-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
     @media (max-width: 1040px) {
       .verified-grid,
       .mention-grid {
@@ -639,6 +654,13 @@
       .awards-grid,
       .awards-grid.three {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .awards-grid > .award-card,
+      .awards-grid.callisto-grid > .award-card:nth-child(5),
+      .awards-grid.callisto-grid > .award-card:nth-child(6),
+      .awards-grid.callisto-grid > .award-card:nth-child(7) {
+        grid-column: span 1;
       }
 
       .bottom-nav {
@@ -838,7 +860,7 @@
               <div class="book-subtitle">Premios y reconocimientos de la edición original en inglés</div>
             </div>
 
-            <div class="awards-grid">
+            <div class="awards-grid callisto-grid">
               <article class="award-card">
                 <div class="award-logo">
                   <img src="images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
@@ -1073,7 +1095,7 @@
     </main>
 
     <footer>
-      Saga Shambhala · Premios y reconocimientos de las ediciones originales en inglés
+      Shambhala Saga · Premios y reconocimientos de las ediciones originales en inglés
     </footer>
   </div>
 
