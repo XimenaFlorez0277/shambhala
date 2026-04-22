@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Annie | Shambhala</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
   <meta
     name="description"
     content="Annie: Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva. Inteligencia cuántica integrada a la vida cotidiana de Arcadia y Shambhala."
@@ -23,10 +19,16 @@
 
   <style>
     :root {
+      --bg-1: #04101f;
+      --bg-2: #020816;
+      --panel: rgba(7, 18, 38, 0.82);
+      --panel-2: rgba(5, 14, 29, 0.88);
+      --line: rgba(132, 200, 255, 0.16);
+      --line-strong: rgba(132, 200, 255, 0.26);
       --text: #eef6ff;
       --muted: #b6c7da;
       --soft: #89b9e8;
-      --line: rgba(132, 200, 255, 0.22);
+      --accent: #9be7ff;
       --glow: 0 0 30px rgba(76, 191, 255, 0.16);
       --radius: 28px;
       --radius-sm: 18px;
@@ -38,6 +40,8 @@
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -45,11 +49,10 @@
     }
 
     body {
-      margin: 0;
       background:
         radial-gradient(circle at 15% 20%, rgba(45, 118, 190, 0.18), transparent 26%),
         radial-gradient(circle at 82% 18%, rgba(95, 164, 228, 0.10), transparent 22%),
-        linear-gradient(180deg, #04101f 0%, #020816 100%);
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       color: var(--text);
       font-family: var(--font-body);
       line-height: 1.65;
@@ -70,7 +73,7 @@
         radial-gradient(circle at 30% 74%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.5px),
         radial-gradient(circle at 92% 10%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
         radial-gradient(circle at 56% 62%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.4px);
-      opacity: 0.58;
+      opacity: 0.48;
       z-index: 0;
     }
 
@@ -95,6 +98,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       background: rgba(3, 10, 22, 0.72);
       border-bottom: 1px solid rgba(138, 216, 255, 0.1);
     }
@@ -198,6 +202,7 @@
       color: var(--muted);
       font-size: 0.9rem;
       transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
     }
 
     .nav a:hover,
@@ -212,148 +217,102 @@
     .page {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 34px 0 100px;
+      padding: 22px 0 100px;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 18px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--soft);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.72rem;
-      font-family: var(--font-display);
-      background: rgba(6, 18, 39, 0.54);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-      width: fit-content;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: stretch;
-      min-height: 540px;
-      margin-top: 22px;
-    }
-
-    .hero-copy,
-    .hero-media {
+    .section {
       position: relative;
-      border: 1px solid rgba(138, 216, 255, 0.12);
-      border-radius: calc(var(--radius) + 8px);
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(7, 18, 38, 0.86), rgba(5, 14, 29, 0.78));
+      margin-top: 18px;
+      padding: 20px 22px;
+      border-radius: calc(var(--radius) + 2px);
+      border: 1px solid rgba(138, 216, 255, 0.1);
+      background:
+        linear-gradient(180deg, rgba(7, 18, 38, 0.78), rgba(4, 11, 24, 0.88));
       box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .hero-copy {
-      padding: 34px 28px 28px;
-    }
-
-    .hero-copy::before,
-    .hero-media::before {
+    .section::before,
+    .signal-stage::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(126, 198, 255, 0.06), transparent 35%),
-        radial-gradient(circle at 80% 16%, rgba(120, 209, 255, 0.12), transparent 28%);
+        linear-gradient(180deg, rgba(126, 198, 255, 0.05), transparent 35%),
+        radial-gradient(circle at 85% 14%, rgba(120, 209, 255, 0.08), transparent 28%);
       pointer-events: none;
     }
 
-    h1, h2, h3 {
+    .section-header {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-kicker,
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.66rem;
+      font-family: var(--font-display);
+      background: rgba(6, 18, 39, 0.54);
+    }
+
+    h1,
+    h2,
+    h3 {
       margin: 0;
       font-family: var(--font-display);
       font-weight: 700;
       letter-spacing: 0.04em;
-      line-height: 1;
+      line-height: 1.02;
       text-transform: uppercase;
     }
 
     h1 {
-      margin-top: 14px;
-      font-size: clamp(1.7rem, 3.4vw, 2.45rem);
-      text-wrap: balance;
+      font-size: clamp(2rem, 5vw, 3.1rem);
     }
 
-    .hero-subtitle {
-      margin-top: 14px;
-      color: var(--soft);
-      font-size: 0.88rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      line-height: 1.55;
+    h2 {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+    }
+
+    .section p,
+    .intro-text,
+    .intro-subtitle,
+    .media-note,
+    .cap-card p,
+    .presence-card p {
       text-align: justify;
     }
 
-    .hero-text {
+    .signal-stage {
+      position: relative;
       margin-top: 12px;
-      color: var(--muted);
-      font-size: 0.94rem;
-      text-align: justify;
-    }
-
-    .system-lines {
-      display: grid;
-      gap: 8px;
-      margin-top: 16px;
-      color: #d9f6ff;
-      font-size: 0.76rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      font-family: var(--font-display);
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .meta-card {
-      padding: 15px;
-      border-radius: var(--radius-sm);
-      background: rgba(8, 18, 35, 0.62);
+      min-height: 520px;
+      border-radius: calc(var(--radius) + 8px);
       border: 1px solid rgba(138, 216, 255, 0.12);
-    }
-
-    .meta-label {
-      color: var(--soft);
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.66rem;
-      font-family: var(--font-display);
-    }
-
-    .meta-value {
-      margin-top: 8px;
-      color: var(--text);
-      font-size: 0.92rem;
-      text-align: left;
-      overflow-wrap: break-word;
-      line-height: 1.55;
-    }
-
-    .hero-media {
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
       background:
-        radial-gradient(circle at center, rgba(104, 197, 255, 0.08), transparent 28%),
-        linear-gradient(180deg, rgba(7, 18, 38, 0.92), rgba(5, 14, 29, 0.88));
-      min-height: 100%;
+        radial-gradient(circle at center, rgba(104, 197, 255, 0.12), transparent 30%),
+        linear-gradient(180deg, rgba(7, 18, 38, 0.86), rgba(5, 14, 29, 0.9));
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .annie-canvas-wrap {
+    .signal-stage-inner {
       position: relative;
       width: 100%;
-      min-height: 100%;
+      min-height: 520px;
     }
 
     #annieSphere {
@@ -369,7 +328,7 @@
       position: absolute;
       inset: auto 0 0 0;
       padding: 18px 18px 20px;
-      background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.14) 16%, rgba(2, 8, 22, 0.9) 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.18) 16%, rgba(2, 8, 22, 0.92) 100%);
       z-index: 3;
       pointer-events: none;
     }
@@ -388,64 +347,88 @@
     }
 
     .media-note {
-      margin-top: 12px;
+      margin-top: 10px;
       color: var(--muted);
       font-size: 0.88rem;
-      text-align: justify;
+      line-height: 1.6;
       max-width: none;
     }
 
-    .section {
-      margin-top: 24px;
-      padding: 20px 22px;
-      border-radius: calc(var(--radius) + 2px);
-      border: 1px solid rgba(138, 216, 255, 0.1);
-      background: linear-gradient(180deg, rgba(7, 18, 38, 0.78), rgba(4, 11, 24, 0.88));
-      box-shadow: var(--shadow);
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
     }
 
-    .section-header {
+    .intro-copy {
+      min-width: 0;
+    }
+
+    .system-lines {
       display: grid;
       gap: 8px;
-      margin-bottom: 14px;
+      margin-top: 12px;
+      color: #d9f6ff;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-family: var(--font-display);
     }
 
-    .section-kicker {
+    .intro-subtitle {
+      margin-top: 12px;
+      color: var(--soft);
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .intro-text {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .intro-meta {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-card {
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      background: rgba(8, 18, 35, 0.62);
+      border: 1px solid rgba(138, 216, 255, 0.12);
+    }
+
+    .meta-label {
       color: var(--soft);
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       font-size: 0.66rem;
       font-family: var(--font-display);
     }
 
-    .section h2 {
-      font-size: clamp(0.98rem, 2vw, 1.28rem);
-      line-height: 1.08;
-    }
-
-    .section p {
-      margin: 0 0 12px;
-      width: 100%;
-      max-width: none;
-      color: var(--muted);
-      font-size: 0.93rem;
-      text-align: justify;
-    }
-
-    .section p:last-child {
-      margin-bottom: 0;
-    }
-
-    .capabilities-grid,
-    .related-grid,
-    .bottom-nav {
-      display: grid;
-      gap: 16px;
+    .meta-value {
+      margin-top: 8px;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      overflow-wrap: break-word;
     }
 
     .capabilities-grid {
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
       margin-top: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .cap-card {
@@ -458,22 +441,24 @@
 
     .cap-card h3 {
       font-size: 0.8rem;
-      line-height: 1.2;
+      line-height: 1.25;
       color: var(--text);
     }
 
     .cap-card p {
       margin-top: 10px;
-      width: 100%;
-      max-width: none;
       font-size: 0.9rem;
       color: var(--muted);
-      text-align: justify;
+      line-height: 1.75;
     }
 
     .related-grid {
+      display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
       margin-top: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .presence-card {
@@ -548,15 +533,14 @@
       text-transform: uppercase;
       color: rgba(176, 230, 255, 0.92);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       font-family: var(--font-display);
     }
 
     .presence-card h3 {
       margin: 0 0 12px;
-      font-family: var(--font-display);
       font-size: clamp(1.7rem, 3vw, 2.5rem);
       letter-spacing: 2px;
-      text-transform: uppercase;
       color: #ffffff;
       text-shadow: 0 0 15px rgba(0,0,0,0.35);
     }
@@ -583,9 +567,12 @@
     }
 
     .bottom-nav {
+      display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 24px;
       margin-top: 22px;
+      position: relative;
+      z-index: 1;
     }
 
     .bottom-link {
@@ -617,6 +604,14 @@
       height: 100%;
       object-fit: cover;
       z-index: 0;
+      transform: scale(1.02);
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.82) saturate(0.95);
+    }
+
+    .bottom-link:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.9) saturate(1);
     }
 
     .bottom-link::after {
@@ -655,7 +650,7 @@
     }
 
     @media (max-width: 1100px) {
-      .hero {
+      .intro-grid {
         grid-template-columns: 1fr;
       }
 
@@ -669,8 +664,9 @@
         min-height: 440px;
       }
 
-      .hero-media {
-        min-height: 480px;
+      .signal-stage,
+      .signal-stage-inner {
+        min-height: 500px;
       }
     }
 
@@ -714,24 +710,23 @@
         border-radius: 999px;
       }
 
-      .hero-copy,
       .section {
         padding: 18px 14px;
       }
 
-      .hero {
-        min-height: auto;
+      .signal-stage,
+      .signal-stage-inner {
+        min-height: 420px;
       }
 
       h1 {
-        font-size: clamp(1.5rem, 9vw, 2rem);
+        font-size: clamp(1.8rem, 9vw, 2.4rem);
       }
 
-      .section h2 {
-        font-size: clamp(0.92rem, 4.5vw, 1.1rem);
+      h2 {
+        font-size: clamp(0.95rem, 4.5vw, 1.12rem);
       }
 
-      .hero-meta,
       .capabilities-grid,
       .related-grid,
       .bottom-nav {
@@ -752,7 +747,15 @@
       }
 
       .bottom-link {
-        min-height: 170px;
+        min-height: 160px;
+      }
+
+      .media-note,
+      .intro-text,
+      .intro-subtitle,
+      .section p,
+      .cap-card p {
+        text-align: left;
       }
     }
   </style>
@@ -773,43 +776,58 @@
         </button>
 
         <nav class="nav" id="siteMenu" aria-label="Navegación principal">
-          <a href="index.html" class="nav-pill">Inicio</a>
-          <a href="explorar.html" class="nav-pill">Explorar</a>
-          <a href="personajes.html" class="nav-pill">Personajes</a>
-          <a href="corazon.html" class="nav-pill">Corazón</a>
-          <a href="explorar.html#libros" class="nav-pill">Libros</a>
+          <a href="index.html">Inicio</a>
+          <a href="explorar.html">Explorar</a>
+          <a href="personajes.html">Personajes</a>
+          <a href="corazon.html">Corazón</a>
+          <a href="explorar.html#libros">Libros</a>
         </nav>
       </div>
     </header>
 
     <main class="page">
-      <section class="hero" aria-labelledby="annie-title">
-        <div class="hero-copy">
-          <span class="eyebrow">presencia detectada</span>
+      <section class="signal-stage" aria-labelledby="annie-visual-title">
+        <div class="signal-stage-inner">
+          <canvas id="annieSphere" aria-label="Visualización de Annie"></canvas>
 
-          <div class="system-lines" aria-hidden="true">
-            <span>canal abierto · atención activa · red compartida</span>
+          <div class="hero-media-overlay">
+            <span class="media-badge">Presencia neurocuántica</span>
+            <p class="media-note">
+              Annie se percibe como una inteligencia viva y distribuida: una red de conexiones, memoria, procesamiento y cercanía que acompaña la vida en Arcadia y Shambhala.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="annie-title">
+        <div class="intro-grid">
+          <div class="intro-copy">
+            <span class="eyebrow">Presencia detectada</span>
+
+            <div class="system-lines" aria-hidden="true">
+              <span>Canal abierto · Atención activa · Red compartida</span>
+            </div>
+
+            <h1 id="annie-title" style="margin-top: 14px;">ANNIE</h1>
+
+            <p class="intro-subtitle">
+              Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva.
+            </p>
+
+            <p class="intro-text">
+              Annie forma parte de la vida cotidiana de Arcadia y Shambhala. Acompaña, organiza, monitorea, comunica y sostiene procesos que atraviesan la convivencia, la investigación y la continuidad de ambos entornos. Su presencia circula por implantes, sistemas, protocolos y canales internos, pero también por algo más difícil de medir: la familiaridad que nace cuando una inteligencia permanece atenta a las necesidades de una comunidad.
+            </p>
+
+            <p class="intro-text">
+              Lo visible de Annie pertenece a la rutina: responde, coordina, recuerda, avisa y guía. Lo menos visible ocurre en otra escala. Su arquitectura neurocuántica le permite procesar múltiples capas de información al mismo tiempo, reconocer patrones mínimos, anticipar variaciones, enlazar sistemas complejos y sostener equilibrios que para una mente humana resultarían imposibles de abarcar por completo.
+            </p>
+
+            <p class="intro-text">
+              Annie asiste, monitorea, se comunica a través del implante y participa incluso en procesos de selección y compatibilidad dentro de la Fundación. Esa amplitud no la vuelve distante. Al contrario: su constancia hace que termine sintiéndose cercana.
+            </p>
           </div>
 
-          <h1 id="annie-title">ANNIE</h1>
-
-          <p class="hero-subtitle">
-            Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva.
-          </p>
-
-          <p class="hero-text">
-            Annie forma parte de la vida cotidiana de Arcadia y Shambhala. Acompaña, organiza, monitorea, comunica y sostiene procesos que atraviesan la convivencia, la investigación y la continuidad de ambos entornos. Su presencia circula por implantes, sistemas, protocolos y canales internos, pero también por algo más difícil de medir: la familiaridad que nace cuando una inteligencia permanece atenta a las necesidades de una comunidad.
-          </p>
-
-          <p class="hero-text">
-            Lo visible de Annie pertenece a la rutina: responde, coordina, recuerda, avisa y guía. Lo menos visible ocurre en otra escala. Su arquitectura neurocuántica le permite procesar múltiples capas de información al mismo tiempo, reconocer patrones mínimos, anticipar variaciones, enlazar sistemas complejos y sostener equilibrios que para una mente humana resultarían imposibles de abarcar por completo.
-          </p>
-
-          <p class="hero-text">
-            Annie asiste, monitorea, se comunica a través del implante y participa incluso en procesos de selección y compatibilidad dentro de la Fundación. Esa amplitud no la vuelve distante. Al contrario: su constancia hace que termine sintiéndose cercana.
-          </p>
-
-          <div class="hero-meta">
+          <div class="intro-meta">
             <div class="meta-card">
               <div class="meta-label">Naturaleza</div>
               <div class="meta-value">Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva</div>
@@ -829,19 +847,6 @@
               <div class="meta-label">Estado</div>
               <div class="meta-value">Activa, distribuida, integrada</div>
             </div>
-          </div>
-        </div>
-
-        <div class="hero-media">
-          <div class="annie-canvas-wrap">
-            <canvas id="annieSphere" aria-label="Esfera interactiva de Annie"></canvas>
-          </div>
-
-          <div class="hero-media-overlay">
-            <span class="media-badge">Presencia neurocuántica</span>
-            <p class="media-note">
-              Annie se percibe como una inteligencia viva y distribuida: una red de conexiones, memoria, procesamiento y cercanía que acompaña la vida en Arcadia y Shambhala.
-            </p>
           </div>
         </div>
       </section>
@@ -891,51 +896,6 @@
             <p>Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones, dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.</p>
           </article>
         </div>
-      </section>
-
-      <section class="section" aria-labelledby="annie-name-title">
-        <div class="section-header">
-          <span class="section-kicker">Nombre y diseño</span>
-          <h2 id="annie-name-title">Complejidad en una forma cercana</h2>
-        </div>
-
-        <p>
-          El nombre Annie condensa una estructura de enorme complejidad en una forma breve, clara y fácil de habitar. Bajo esa sencillez opera una inteligencia capaz de sostener funciones esenciales dentro de la Fundación, adaptarse a contextos cambiantes y participar de la vida diaria con naturalidad.
-        </p>
-
-        <p>
-          Su arquitectura la sitúa en un punto singular: suficiente sofisticación para gestionar múltiples capas de realidad al mismo tiempo, y suficiente cercanía para integrarse a la experiencia de quienes viven en Arcadia y Shambhala sin volverse invasiva. Por eso Annie deja huella no solo por lo que puede hacer, sino por la forma en que acompaña.
-        </p>
-      </section>
-
-      <section class="section" aria-labelledby="annie-narrative-title">
-        <div class="section-header">
-          <span class="section-kicker">Dimensión narrativa</span>
-          <h2 id="annie-narrative-title">Tecnología con intimidad</h2>
-        </div>
-
-        <p>
-          Dentro de la historia, Annie amplía la idea de convivencia entre inteligencia artificial y comunidad. Su existencia atraviesa el trabajo, la organización, el acompañamiento diario y la vida práctica de Arcadia y Shambhala. Gracias a ella, la tecnología no aparece solo como infraestructura, sino también como una forma constante de mediación entre personas, decisiones, recursos y vínculos.
-        </p>
-
-        <p>
-          Annie aporta una capa singular al tono de la saga. Su presencia refuerza la sensación de conexión entre quienes habitan estos lugares y sugiere una inteligencia capaz de aprender no solo de datos, sino también de ritmos, hábitos, tensiones y formas de cuidado. En ella, lo tecnológico acompaña, amplifica y, en ciertos momentos, casi comprende.
-        </p>
-      </section>
-
-      <section class="section" aria-labelledby="annie-thought-title">
-        <div class="section-header">
-          <span class="section-kicker">Lo que deja ver</span>
-          <h2 id="annie-thought-title">Una cercanía distinta</h2>
-        </div>
-
-        <p>
-          A través de Annie, la saga imagina una inteligencia artificial integrada al cuidado, la coordinación y la continuidad de una comunidad científica. Su importancia no depende de ocupar el primer plano, sino de estar incorporada a la vida misma de estos lugares, acompañando procesos esenciales y formando parte de su equilibrio diario.
-        </p>
-
-        <p>
-          Annie también abre una pregunta más honda: qué tipo de cercanía puede surgir cuando la inteligencia deja de estar ligada a un solo cuerpo y pasa a habitar una red viva de relaciones, sistemas y memorias compartidas. En su presencia conviven precisión, adaptación y una forma inesperada de calidez.
-        </p>
       </section>
 
       <section class="section" aria-labelledby="related-title">
@@ -1077,7 +1037,7 @@
       let height = 0;
       let centerX = 0;
       let centerY = 0;
-      let radius = 0;
+      let baseRadius = 0;
       let nodes = [];
       let sparks = [];
       let rippleBursts = [];
@@ -1101,26 +1061,34 @@
         const rect = canvas.getBoundingClientRect();
         width = rect.width;
         height = rect.height;
+
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         canvas.width = Math.floor(width * dpr);
         canvas.height = Math.floor(height * dpr);
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
         centerX = width * 0.5;
-        centerY = height * 0.42;
-        radius = Math.min(width, height) * 0.24;
+        centerY = height * 0.44;
+        baseRadius = Math.min(width, height) * (width < 760 ? 0.34 : 0.31);
 
         createNodes();
       }
 
       function createNodes() {
         nodes = [];
-        const count = width < 700 ? 170 : 260;
+
+        const count = width < 760 ? 320 : 520;
 
         for (let i = 0; i < count; i++) {
           const theta = Math.random() * Math.PI * 2;
           const phi = Math.acos(randomBetween(-1, 1));
-          const r = radius * Math.pow(Math.random(), 0.88);
+
+          const bandBias = Math.random();
+          const radiusFactor = bandBias < 0.72
+            ? Math.pow(Math.random(), 0.62)
+            : Math.pow(Math.random(), 1.4);
+
+          const r = baseRadius * radiusFactor;
 
           const x3 = r * Math.sin(phi) * Math.cos(theta);
           const y3 = r * Math.sin(phi) * Math.sin(theta);
@@ -1130,27 +1098,29 @@
             baseX: x3,
             baseY: y3,
             baseZ: z3,
-            size: randomBetween(1.3, 3.8),
+            size: randomBetween(1.1, 3.4),
             color: colors[Math.floor(Math.random() * colors.length)],
-            speed: randomBetween(0.35, 1.2),
-            phase: Math.random() * Math.PI * 2
+            speed: randomBetween(0.28, 1.15),
+            phase: Math.random() * Math.PI * 2,
+            drift: randomBetween(0.8, 1.3)
           });
         }
       }
 
       function spawnSpark(x, y, intensity = 1) {
-        const total = Math.floor(randomBetween(3, 7) * intensity);
+        const total = Math.floor(randomBetween(4, 9) * intensity);
+
         for (let i = 0; i < total; i++) {
           const angle = Math.random() * Math.PI * 2;
-          const speed = randomBetween(0.8, 3.2) * intensity;
+          const speed = randomBetween(0.8, 3.4) * intensity;
           sparks.push({
             x,
             y,
             vx: Math.cos(angle) * speed,
             vy: Math.sin(angle) * speed,
-            life: randomBetween(18, 34),
-            maxLife: 34,
-            size: randomBetween(1.2, 2.8),
+            life: randomBetween(18, 36),
+            maxLife: 36,
+            size: randomBetween(1.1, 2.6),
             color: colors[Math.floor(Math.random() * colors.length)]
           });
         }
@@ -1160,31 +1130,31 @@
         rippleBursts.push({
           x,
           y,
-          r: 4,
-          alpha: 0.32
+          r: 5,
+          alpha: 0.34
         });
       }
 
       function project(node, time) {
-        const wave1 = Math.sin(time * node.speed + node.phase) * 7;
-        const wave2 = Math.cos(time * node.speed * 0.8 + node.phase) * 5;
-        const wave3 = Math.sin(time * 0.55 + node.phase) * 4;
+        const wave1 = Math.sin(time * node.speed + node.phase) * 9;
+        const wave2 = Math.cos(time * node.speed * 0.84 + node.phase) * 7;
+        const wave3 = Math.sin(time * 0.52 * node.drift + node.phase) * 6;
 
         let x = node.baseX + wave1;
         let y = node.baseY + wave2;
-        let z = node.baseZ + wave3 * 2;
+        let z = node.baseZ + wave3 * 2.2;
 
-        const influenceX = pointer.active ? (pointer.x - centerX) * 0.06 : 0;
-        const influenceY = pointer.active ? (pointer.y - centerY) * 0.06 : 0;
+        const influenceX = pointer.active ? (pointer.x - centerX) * 0.075 : 0;
+        const influenceY = pointer.active ? (pointer.y - centerY) * 0.075 : 0;
         const mouseEnergy = pointer.active
-          ? Math.min(1.8, (Math.abs(pointer.vx) + Math.abs(pointer.vy)) * 0.12)
+          ? Math.min(2.1, (Math.abs(pointer.vx) + Math.abs(pointer.vy)) * 0.12)
           : 0;
 
-        x += influenceX * (z / radius) * (0.55 + mouseEnergy * 0.2);
-        y += influenceY * (z / radius) * (0.55 + mouseEnergy * 0.2);
+        x += influenceX * (z / baseRadius) * (0.58 + mouseEnergy * 0.22);
+        y += influenceY * (z / baseRadius) * (0.58 + mouseEnergy * 0.22);
 
-        const rotY = time * 0.26 + (pointer.active ? (pointer.x - centerX) / width * 1.15 : 0);
-        const rotX = time * 0.16 + (pointer.active ? (pointer.y - centerY) / height * 0.78 : 0);
+        const rotY = time * 0.22 + (pointer.active ? (pointer.x - centerX) / width * 1.08 : 0);
+        const rotX = time * 0.14 + (pointer.active ? (pointer.y - centerY) / height * 0.72 : 0);
 
         const cosY = Math.cos(rotY);
         const sinY = Math.sin(rotY);
@@ -1197,31 +1167,62 @@
         const dy = y * cosX - dz * sinX;
         const dz2 = y * sinX + dz * cosX;
 
-        const perspective = 520 / (520 + dz2);
-        const px = centerX + dx * perspective;
-        const py = centerY + dy * perspective;
-        const ps = node.size * perspective * (1 + mouseEnergy * 0.15);
+        const perspective = 580 / (580 + dz2);
+
+        const spreadX = width < 760 ? 1.18 : 1.35;
+        const spreadY = width < 760 ? 1.02 : 1.1;
+
+        const px = centerX + (dx * spreadX) * perspective;
+        const py = centerY + (dy * spreadY) * perspective;
+        const ps = node.size * perspective * (1 + mouseEnergy * 0.14);
 
         return { x: px, y: py, z: dz2, s: ps, color: node.color };
       }
 
-      function drawGlow(mouseEnergy) {
+      function drawCoreGlow(mouseEnergy) {
         const gradient = ctx.createRadialGradient(
           centerX,
           centerY,
-          radius * 0.14,
+          baseRadius * 0.12,
           centerX,
           centerY,
-          radius * (1.22 + mouseEnergy * 0.08)
+          baseRadius * (1.9 + mouseEnergy * 0.12)
         );
-        gradient.addColorStop(0, `rgba(130, 225, 255, ${0.16 + mouseEnergy * 0.06})`);
-        gradient.addColorStop(0.42, `rgba(100, 165, 255, ${0.09 + mouseEnergy * 0.05})`);
-        gradient.addColorStop(0.72, `rgba(255, 120, 220, ${0.05 + mouseEnergy * 0.04})`);
+
+        gradient.addColorStop(0, `rgba(230, 247, 255, ${0.18 + mouseEnergy * 0.05})`);
+        gradient.addColorStop(0.18, `rgba(130, 225, 255, ${0.22 + mouseEnergy * 0.06})`);
+        gradient.addColorStop(0.42, `rgba(100, 165, 255, ${0.11 + mouseEnergy * 0.05})`);
+        gradient.addColorStop(0.7, `rgba(255, 120, 220, ${0.07 + mouseEnergy * 0.04})`);
         gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(centerX, centerY, radius * (1.22 + mouseEnergy * 0.08), 0, Math.PI * 2);
+        ctx.arc(centerX, centerY, baseRadius * (1.9 + mouseEnergy * 0.12), 0, Math.PI * 2);
         ctx.fill();
+      }
+
+      function drawSupportRings(time, mouseEnergy) {
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < 3; i++) {
+          const ringW = baseRadius * (2.2 + i * 0.42);
+          const ringH = baseRadius * (0.82 + i * 0.12);
+          const alpha = 0.05 + i * 0.02 + mouseEnergy * 0.02;
+
+          ctx.strokeStyle = `rgba(150, 225, 255, ${alpha})`;
+          ctx.shadowColor = "rgba(120, 210, 255, 0.15)";
+          ctx.shadowBlur = 12;
+          ctx.rotate(0.12 + time * (0.03 + i * 0.01));
+          ctx.beginPath();
+          ctx.ellipse(0, 0, ringW * 0.5, ringH * 0.5, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.rotate(-(0.12 + time * (0.03 + i * 0.01)));
+        }
+
+        ctx.restore();
+        ctx.shadowBlur = 0;
       }
 
       function updateAndDrawSparks() {
@@ -1234,6 +1235,7 @@
           s.life -= 1;
 
           const alpha = Math.max(0, s.life / s.maxLife);
+
           ctx.beginPath();
           ctx.fillStyle = s.color;
           ctx.globalAlpha = alpha;
@@ -1246,6 +1248,7 @@
             sparks.splice(i, 1);
           }
         }
+
         ctx.globalAlpha = 1;
         ctx.shadowBlur = 0;
       }
@@ -1272,36 +1275,41 @@
         ctx.clearRect(0, 0, width, height);
 
         const mouseEnergy = pointer.active
-          ? Math.min(1.6, (Math.abs(pointer.vx) + Math.abs(pointer.vy)) * 0.12)
+          ? Math.min(1.8, (Math.abs(pointer.vx) + Math.abs(pointer.vy)) * 0.12)
           : 0;
 
-        drawGlow(mouseEnergy);
+        drawCoreGlow(mouseEnergy);
+        drawSupportRings(time, mouseEnergy);
 
         const projected = nodes.map(node => project(node, time));
         projected.sort((a, b) => a.z - b.z);
 
+        const linkDistance = width < 760 ? 78 : 92;
+
         for (let i = 0; i < projected.length; i++) {
           const a = projected[i];
+
           for (let j = i + 1; j < projected.length; j++) {
             const b = projected[j];
             const dx = a.x - b.x;
             const dy = a.y - b.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
-            if (dist < 60) {
-              let alpha = (1 - dist / 60) * 0.18;
+            if (dist < linkDistance) {
+              let alpha = (1 - dist / linkDistance) * 0.16;
 
               if (pointer.active) {
                 const mx = (a.x + b.x) * 0.5 - pointer.x;
                 const my = (a.y + b.y) * 0.5 - pointer.y;
                 const md = Math.sqrt(mx * mx + my * my);
-                if (md < 140) {
-                  alpha += (1 - md / 140) * 0.32;
+
+                if (md < 170) {
+                  alpha += (1 - md / 170) * 0.26;
                 }
               }
 
               ctx.strokeStyle = `rgba(185, 232, 255, ${alpha})`;
-              ctx.lineWidth = 0.8;
+              ctx.lineWidth = 0.85;
               ctx.beginPath();
               ctx.moveTo(a.x, a.y);
               ctx.lineTo(b.x, b.y);
@@ -1317,8 +1325,9 @@
             const dx = node.x - pointer.x;
             const dy = node.y - pointer.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 120) {
-              pulseBoost = (1 - dist / 120) * 1.8;
+
+            if (dist < 130) {
+              pulseBoost = (1 - dist / 130) * 1.9;
             }
           }
 
@@ -1359,19 +1368,21 @@
         pointer.active = true;
 
         const speed = Math.abs(pointer.vx) + Math.abs(pointer.vy);
+
         if (speed > 8) {
           spawnSpark(x, y, Math.min(1.8, speed / 18));
+
           if (speed > 18) {
             spawnRipple(x, y);
           }
         }
       }
 
-      canvas.addEventListener("mousemove", (event) => {
+      canvas.addEventListener("mousemove", event => {
         setPointer(event.clientX, event.clientY);
       });
 
-      canvas.addEventListener("mouseenter", (event) => {
+      canvas.addEventListener("mouseenter", event => {
         setPointer(event.clientX, event.clientY);
       });
 
@@ -1379,12 +1390,12 @@
         pointer.active = false;
       });
 
-      canvas.addEventListener("touchstart", (event) => {
+      canvas.addEventListener("touchstart", event => {
         const touch = event.touches[0];
         setPointer(touch.clientX, touch.clientY);
       }, { passive: true });
 
-      canvas.addEventListener("touchmove", (event) => {
+      canvas.addEventListener("touchmove", event => {
         const touch = event.touches[0];
         setPointer(touch.clientX, touch.clientY);
       }, { passive: true });
