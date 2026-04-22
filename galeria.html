@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Galería | Shambhala</title>
   <meta
     name="description"
     content="Galería íntima de Susan y Ximena dentro del universo visual de Shambhala."
   />
+  <link rel="icon" type="image/png" href="images/logo.png" />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --topbar-height: 92px;
+      --page-max: 1460px;
+      --gallery-max: 1400px;
     }
 
     * {
@@ -192,18 +190,18 @@
     .hero {
       position: relative;
       z-index: 2;
-      width: min(1840px, calc(100% - 40px));
+      width: min(var(--page-max), calc(100% - 40px));
       margin: 0 auto;
-      min-height: 100vh;
+      min-height: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(340px, 0.88fr);
-      gap: 38px;
-      align-items: center;
-      padding: calc(var(--topbar-height) + 20px) 0 54px;
+      grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+      gap: 52px;
+      align-items: start;
+      padding: calc(var(--topbar-height) + 26px) 0 26px;
     }
 
     .hero-copy {
-      max-width: 960px;
+      max-width: 860px;
       position: relative;
       z-index: 2;
     }
@@ -246,25 +244,25 @@
     }
 
     .hero-subtitle {
-      max-width: 900px;
+      max-width: 760px;
       font-size: 1.03rem;
       line-height: 1.95;
       color: rgba(255,255,255,0.82);
-      margin-bottom: 38px;
+      margin-bottom: 34px;
     }
 
     .hero-actions {
       display: flex;
       gap: 18px;
       flex-wrap: wrap;
-      margin-bottom: 54px;
+      margin-bottom: 34px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 280px;
+      min-width: 240px;
       padding: 18px 28px;
       border: 1px solid rgba(0,170,255,0.38);
       background: rgba(0,0,0,0.22);
@@ -297,12 +295,12 @@
     .hero-note {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      max-width: 1080px;
+      gap: 14px;
+      max-width: 860px;
     }
 
     .note-box {
-      padding: 20px 22px;
+      padding: 18px 18px;
       border: 1px solid rgba(255,255,255,0.06);
       background:
         linear-gradient(to bottom, rgba(255,255,255,0.020), rgba(255,255,255,0.008)),
@@ -328,11 +326,12 @@
     .hero-image-wrap {
       position: relative;
       width: 100%;
-      min-height: 560px;
+      min-height: auto;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       isolation: isolate;
+      padding-top: 6px;
     }
 
     .hero-image-wrap::before {
@@ -351,8 +350,8 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 640px;
-      min-height: 620px;
+      max-width: 560px;
+      min-height: 500px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.10);
       background:
@@ -440,28 +439,26 @@
     .cinematic-band {
       position: relative;
       z-index: 2;
-      padding: 34px 8% 20px;
+      padding: 8px 8% 16px;
     }
 
     .cinematic-band-inner {
+      max-width: var(--gallery-max);
+      margin: 0 auto;
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 28px;
+      padding-top: 16px;
       display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
       color: rgba(255,255,255,0.56);
       font-size: 0.95rem;
       line-height: 1.8;
     }
 
-    .cinematic-band-left {
-      max-width: 560px;
-    }
-
     .cinematic-band-right {
-      max-width: 320px;
-      text-align: right;
+      width: 100%;
+      max-width: none;
+      text-align: left;
       font-family: "Orbitron", sans-serif;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -469,15 +466,23 @@
       font-size: 0.76rem;
     }
 
+    .cinematic-band-left {
+      width: 100%;
+      max-width: none;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
     .gallery-section {
       position: relative;
       z-index: 2;
-      padding: 70px 8% 110px;
+      padding: 26px 8% 110px;
     }
 
     .section-header {
       max-width: 860px;
-      margin-bottom: 38px;
+      margin: 0 auto 30px;
     }
 
     .section-kicker {
@@ -508,8 +513,10 @@
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 22px;
+      max-width: var(--gallery-max);
+      margin: 0 auto;
     }
 
     .gallery-card {
@@ -759,16 +766,13 @@
 
     @media (max-width: 1400px) {
       .hero {
-        grid-template-columns: 1.08fr 0.92fr;
+        grid-template-columns: 1fr 0.92fr;
+        gap: 40px;
       }
 
       .hero-image-shell {
-        max-width: 580px;
-        min-height: 580px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-width: 520px;
+        min-height: 470px;
       }
     }
 
@@ -776,7 +780,7 @@
       .hero {
         grid-template-columns: 1fr;
         min-height: auto;
-        padding: calc(var(--topbar-height) + 28px) 0 70px;
+        padding: calc(var(--topbar-height) + 28px) 0 34px;
       }
 
       .hero-note {
@@ -794,17 +798,13 @@
         width: 100%;
         min-height: 560px;
       }
+
+      .cinematic-band-left {
+        white-space: normal;
+      }
     }
 
     @media (max-width: 980px) {
-      .cinematic-band-inner {
-        flex-direction: column;
-      }
-
-      .cinematic-band-right {
-        text-align: left;
-      }
-
       .gallery-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -856,9 +856,9 @@
       }
 
       .hero {
-        width: min(1840px, calc(100% - 24px));
+        width: min(var(--page-max), calc(100% - 24px));
         padding-top: calc(var(--topbar-height) + 24px);
-        padding-bottom: 62px;
+        padding-bottom: 28px;
       }
 
       .hero-image-shell {
@@ -911,11 +911,11 @@
       }
 
       .cinematic-band {
-        padding-top: 30px;
+        padding-top: 8px;
       }
 
       .cinematic-band-inner {
-        gap: 16px;
+        gap: 12px;
         font-size: 0.92rem;
       }
 
@@ -983,7 +983,7 @@
 
       .hero {
         padding-top: calc(var(--topbar-height) + 20px);
-        padding-bottom: 56px;
+        padding-bottom: 24px;
       }
 
       .hero-image-shell {
@@ -1079,11 +1079,11 @@
 
   <section class="cinematic-band reveal">
     <div class="cinematic-band-inner">
-      <div class="cinematic-band-left">
-        Hay imágenes que no solo documentan un momento. También lo vuelven atmósfera, permanencia y luz dentro de una historia más grande.
-      </div>
       <div class="cinematic-band-right">
         memoria · afecto · presencia · intimidad
+      </div>
+      <div class="cinematic-band-left">
+        Hay imágenes que no solo documentan un momento. También lo vuelven atmósfera, permanencia y luz dentro de una historia más grande.
       </div>
     </div>
   </section>
