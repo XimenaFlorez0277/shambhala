@@ -397,12 +397,14 @@
 
     .section-header p {
       margin: 0;
-      max-width: 760px;
+      max-width: 100%;
+      width: 100%;
       line-height: 1.85;
       color: rgba(255,255,255,0.76);
       font-size: 0.96rem;
       text-align: justify;
       text-justify: inter-word;
+      white-space: nowrap;
     }
 
     .featured-grid {
@@ -501,12 +503,12 @@
     .featured-content {
       position: relative;
       z-index: 3;
-      max-width: min(100%, 1120px);
+      max-width: 100%;
       width: 100%;
     }
 
     .featured-card.full-width .featured-content {
-      max-width: min(100%, 1180px);
+      max-width: 100%;
       width: 100%;
     }
 
@@ -552,7 +554,7 @@
 
     .featured-card p {
       margin: 0 0 18px;
-      max-width: min(100%, 1040px);
+      max-width: 100%;
       width: 100%;
       line-height: 1.8;
       color: rgba(255,255,255,0.86);
@@ -560,14 +562,16 @@
       text-shadow: 0 0 12px rgba(0,0,0,0.35);
       text-align: justify;
       text-justify: inter-word;
+      white-space: nowrap;
     }
 
     .featured-card.full-width p {
       font-size: 0.98rem;
       line-height: 1.85;
-      max-width: min(100%, 1140px);
+      max-width: 100%;
       width: 100%;
       margin-bottom: 24px;
+      white-space: nowrap;
     }
 
     .card-link {
@@ -986,6 +990,12 @@
 
       .page-footer-inner {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-header p,
+      .featured-card p,
+      .featured-card.full-width p {
+        white-space: normal;
       }
     }
 
