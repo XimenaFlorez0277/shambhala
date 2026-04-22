@@ -480,34 +480,32 @@
       padding: 26px 8% 110px;
     }
 
-    .section-header {
-      max-width: 860px;
-      margin: 0 auto 30px;
+    .gallery-inner {
+      max-width: var(--gallery-max);
+      margin: 0 auto;
     }
 
-    .section-kicker {
-      margin-bottom: 16px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(140, 223, 255, 0.82);
+    .section-header {
+      max-width: none;
+      margin: 0 0 28px;
+      text-align: left;
     }
 
     .section-header h2 {
       margin: 0 0 18px;
       font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.9rem, 4vw, 3.2rem);
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
       letter-spacing: 3px;
       text-transform: uppercase;
       text-shadow: 0 0 20px rgba(0,150,255,0.12);
+      color: #f8fbff;
     }
 
     .section-header p {
       margin: 0;
-      max-width: 760px;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.76);
+      max-width: none;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
       font-size: 1rem;
     }
 
@@ -962,6 +960,10 @@
         bottom: 24px;
         max-width: 92%;
       }
+
+      .section-header h2 {
+        font-size: clamp(2.1rem, 10vw, 3rem);
+      }
     }
 
     @media (max-width: 480px) {
@@ -971,7 +973,6 @@
       .gallery-index,
       .top-links a,
       .brand,
-      .section-kicker,
       .back-link {
         letter-spacing: 1.4px;
       }
@@ -1035,7 +1036,7 @@
       <h1>Galería</h1>
 
       <p class="hero-subtitle">
-        Un recorrido visual por algunos momentos de Susan y Ximena: afecto, complicidad, historia compartida y la belleza concreta de una vida construida entre dos. Aquí la imagen no funciona como archivo frío, sino como presencia, huella y atmósfera.
+        Un recorrido a través de nuestros mejores recuerdos. Un universo de ciencia ficción por un lado, una historia de amor real por el otro. En este punto exacto, ambos mundos se encuentran y se vuelven uno solo.
       </p>
 
       <div class="hero-actions">
@@ -1046,17 +1047,17 @@
       <div class="hero-note">
         <div class="note-box">
           <div class="note-label">Memoria</div>
-          <p>Las imágenes conservan algo que el texto solo alcanza a rozar: la temperatura real de una historia compartida.</p>
+          <p>Dicen que las fotografías guardan lo que el alma acaricia en silencio. Cada una de estas imágenes es un latido detenido en el tiempo, un refugio para lo que no queremos olvidar.</p>
         </div>
 
         <div class="note-box">
           <div class="note-label">Presencia</div>
-          <p>La galería debía sentirse integrada al universo visual del sitio, no separada de él.</p>
+          <p>Este espacio es un fragmento de nuestra realidad. Es el vínculo que nos inspiró a crear Shambhala y el motor que nos impulsa a compartir este sueño contigo.</p>
         </div>
 
         <div class="note-box">
-          <div class="note-label">Afecto</div>
-          <p>Más que mostrar fotos, esta página deja entrar una dimensión íntima que también sostiene a Shambhala.</p>
+          <div class="note-label">Gratitud</div>
+          <p>Gracias por ser testigo de este viaje y por permitir que nuestra galaxia personal se expanda a través de tu mirada. Al final, las mejores historias están hechas del tiempo que dedicamos a contemplarlas. Gracias por regalarnos un poco del tuyo.</p>
         </div>
       </div>
     </div>
@@ -1089,78 +1090,77 @@
   </section>
 
   <section class="gallery-section reveal" id="galeria">
-    <div class="section-header">
-      <div class="section-kicker">Acompañanos</div>
-      <h2>Momentos</h2>
-      <p>
-        Haz clic sobre cualquier imagen para verla en grande. 
-      </p>
-    </div>
-
-    <div class="gallery-grid">
-      <div class="gallery-card" data-index="0">
-        <img src="images/galeria/susan-ximena-1.jpg" alt="Susan y Ximena 1" />
-        <div class="gallery-index">01</div>
+    <div class="gallery-inner">
+      <div class="section-header">
+        <h2>Momentos</h2>
+        <p>Haz clic sobre cualquier imagen para verla en grande.</p>
       </div>
 
-      <div class="gallery-card" data-index="1">
-        <img src="images/galeria/susan-ximena-2.jpg" alt="Susan y Ximena 2" />
-        <div class="gallery-index">02</div>
+      <div class="gallery-grid">
+        <div class="gallery-card" data-index="0">
+          <img src="images/galeria/susan-ximena-1.jpg" alt="Susan y Ximena 1" />
+          <div class="gallery-index">01</div>
+        </div>
+
+        <div class="gallery-card" data-index="1">
+          <img src="images/galeria/susan-ximena-2.jpg" alt="Susan y Ximena 2" />
+          <div class="gallery-index">02</div>
+        </div>
+
+        <div class="gallery-card" data-index="2">
+          <img src="images/galeria/susan-ximena-3.jpg" alt="Susan y Ximena 3" />
+          <div class="gallery-index">03</div>
+        </div>
+
+        <div class="gallery-card" data-index="3">
+          <img src="images/galeria/susan-ximena-4.jpg" alt="Susan y Ximena 4" />
+          <div class="gallery-index">04</div>
+        </div>
+
+        <div class="gallery-card" data-index="4">
+          <img src="images/galeria/susan-ximena-5.jpg" alt="Susan y Ximena 5" />
+          <div class="gallery-index">05</div>
+        </div>
+
+        <div class="gallery-card" data-index="5">
+          <img src="images/galeria/susan-ximena-6.jpg" alt="Susan y Ximena 6" />
+          <div class="gallery-index">06</div>
+        </div>
+
+        <div class="gallery-card" data-index="6">
+          <img src="images/galeria/susan-ximena-7.jpg" alt="Susan y Ximena 7" />
+          <div class="gallery-index">07</div>
+        </div>
+
+        <div class="gallery-card" data-index="7">
+          <img src="images/galeria/susan-ximena-8.jpg" alt="Susan y Ximena 8" />
+          <div class="gallery-index">08</div>
+        </div>
+
+        <div class="gallery-card" data-index="8">
+          <img src="images/galeria/susan-ximena-9.jpg" alt="Susan y Ximena 9" />
+          <div class="gallery-index">09</div>
+        </div>
+
+        <div class="gallery-card" data-index="9">
+          <img src="images/galeria/susan-ximena-10.jpg" alt="Susan y Ximena 10" />
+          <div class="gallery-index">10</div>
+        </div>
+
+        <div class="gallery-card" data-index="10">
+          <img src="images/galeria/susan-ximena-11.jpg" alt="Susan y Ximena 11" />
+          <div class="gallery-index">11</div>
+        </div>
+
+        <div class="gallery-card" data-index="11">
+          <img src="images/galeria/susan-ximena-12.jpg" alt="Susan y Ximena 12" />
+          <div class="gallery-index">12</div>
+        </div>
       </div>
 
-      <div class="gallery-card" data-index="2">
-        <img src="images/galeria/susan-ximena-3.jpg" alt="Susan y Ximena 3" />
-        <div class="gallery-index">03</div>
+      <div class="back-wrap">
+        <a class="back-link" href="corazon.html">Volver a corazón</a>
       </div>
-
-      <div class="gallery-card" data-index="3">
-        <img src="images/galeria/susan-ximena-4.jpg" alt="Susan y Ximena 4" />
-        <div class="gallery-index">04</div>
-      </div>
-
-      <div class="gallery-card" data-index="4">
-        <img src="images/galeria/susan-ximena-5.jpg" alt="Susan y Ximena 5" />
-        <div class="gallery-index">05</div>
-      </div>
-
-      <div class="gallery-card" data-index="5">
-        <img src="images/galeria/susan-ximena-6.jpg" alt="Susan y Ximena 6" />
-        <div class="gallery-index">06</div>
-      </div>
-
-      <div class="gallery-card" data-index="6">
-        <img src="images/galeria/susan-ximena-7.jpg" alt="Susan y Ximena 7" />
-        <div class="gallery-index">07</div>
-      </div>
-
-      <div class="gallery-card" data-index="7">
-        <img src="images/galeria/susan-ximena-8.jpg" alt="Susan y Ximena 8" />
-        <div class="gallery-index">08</div>
-      </div>
-
-      <div class="gallery-card" data-index="8">
-        <img src="images/galeria/susan-ximena-9.jpg" alt="Susan y Ximena 9" />
-        <div class="gallery-index">09</div>
-      </div>
-
-      <div class="gallery-card" data-index="9">
-        <img src="images/galeria/susan-ximena-10.jpg" alt="Susan y Ximena 10" />
-        <div class="gallery-index">10</div>
-      </div>
-
-      <div class="gallery-card" data-index="10">
-        <img src="images/galeria/susan-ximena-11.jpg" alt="Susan y Ximena 11" />
-        <div class="gallery-index">11</div>
-      </div>
-
-      <div class="gallery-card" data-index="11">
-        <img src="images/galeria/susan-ximena-12.jpg" alt="Susan y Ximena 12" />
-        <div class="gallery-index">12</div>
-      </div>
-    </div>
-
-    <div class="back-wrap">
-      <a class="back-link" href="corazon.html">Volver a corazón</a>
     </div>
   </section>
 
