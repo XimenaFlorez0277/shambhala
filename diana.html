@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
+  <title>Calisto | Shambhala</title>
   <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diana | Shambhala</title>
   <meta
     name="description"
-    content="Diana — Científica jefe de Shambhala. Página de personaje de la saga Shambhala."
+    content="Calisto — Física de Shambhala. Página de personaje de la saga Shambhala."
   />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -124,16 +122,18 @@
     }
 
     .top-nav {
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 30;
       width: min(var(--max-width), calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 0;
+      padding: 18px 0 0;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
       justify-content: space-between;
+      backdrop-filter: blur(10px);
     }
 
     .brand {
@@ -142,6 +142,7 @@
       text-transform: uppercase;
       color: var(--soft);
       flex-shrink: 0;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .menu-toggle {
@@ -158,7 +159,6 @@
       transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      flex-shrink: 0;
     }
 
     .menu-toggle:hover {
@@ -265,6 +265,7 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 20px;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .eyebrow::before {
@@ -281,6 +282,7 @@
       font-weight: 700;
       letter-spacing: -0.04em;
       margin-bottom: 18px;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .hero-subtitle {
@@ -294,36 +296,7 @@
       max-width: 44rem;
       color: var(--muted);
       font-size: 1.04rem;
-      margin-bottom: 36px;
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .hero-meta-card {
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-meta-card span {
-      display: block;
-      color: var(--soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .hero-meta-card strong {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
+      margin-bottom: 0;
     }
 
     .hero-image-wrap {
@@ -374,6 +347,7 @@
       font-size: clamp(1.4rem, 2vw, 1.9rem);
       margin-bottom: 18px;
       letter-spacing: -0.02em;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .section-text {
@@ -410,73 +384,6 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--text);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 20px;
-      padding: 18px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .timeline-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .timeline-date {
-      color: var(--accent);
-      font-size: 0.92rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .timeline-content h3 {
-      font-size: 1.08rem;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .timeline-content p {
-      color: var(--muted);
-    }
-
-    .highlight-box {
-      margin-top: 20px;
-      padding: 24px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(143,211,255,0.18);
-      background:
-        linear-gradient(135deg, rgba(143,211,255,0.08), rgba(255,255,255,0.03));
-    }
-
-    .highlight-box p {
-      font-size: 1.05rem;
-      color: var(--text);
-    }
-
-    .quote-block {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
-      line-height: 1.7;
-      color: rgba(245, 247, 251, 0.92);
-      max-width: 58rem;
-    }
-
-    .quote-block span {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--soft);
     }
 
     .links-grid {
@@ -545,21 +452,6 @@
       z-index: 3;
       max-width: 86%;
       min-width: 0;
-    }
-
-    .character-label {
-      display: inline-block;
-      width: fit-content;
-      padding: 7px 12px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
-      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .character-content strong {
@@ -703,7 +595,7 @@
 
     @media (max-width: 780px) {
       .top-nav {
-        padding-top: 18px;
+        padding-top: 16px;
         width: min(var(--max-width), calc(100% - 20px));
       }
 
@@ -753,20 +645,10 @@
         padding: 24px 20px;
       }
 
-      .hero-meta,
       .profile-grid,
       .links-grid,
       .return-grid {
         grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .timeline-date {
-        white-space: normal;
       }
 
       .hero-image-wrap {
@@ -844,142 +726,60 @@
         <div class="hero-copy">
           <div class="eyebrow">Archivo de personaje</div>
 
-          <h1>Diana</h1>
+          <h1>Calisto</h1>
 
           <p class="hero-subtitle">
-            Científica jefe. Inteligencia, magnetismo y una capacidad poco común para mover el rumbo de las cosas.
+            Física. Impulso intelectual, curiosidad feroz y una manera muy humana de enfrentarse a lo imposible.
           </p>
 
           <p class="hero-description">
-            En Shambhala, Diana ocupa una posición de poder intelectual y emocional. Su presencia mezcla carisma, visión y una forma precisa de leer el movimiento de las personas y de la ciencia. Dirige, decide y organiza, pero también altera la atmósfera de la historia con una intensidad difícil de ignorar.
+            En Shambhala, Calisto ocupa el punto donde la ciencia, la intuición y la emoción se rozan todo el tiempo. Su trabajo se mueve en la frontera de lo impensable: comprender cómo atravesar distancias imposibles sin dejar de sentir el peso humano de cada decisión. Observa, cuestiona, conecta ideas y, a veces, se lanza antes de tener todas las respuestas.
           </p>
-
-          <div class="hero-meta">
-            <div class="hero-meta-card">
-              <span>Rol</span>
-              <strong>Científica jefe</strong>
-            </div>
-
-            <div class="hero-meta-card">
-              <span>Origen</span>
-              <strong>Colombia</strong>
-            </div>
-
-            <div class="hero-meta-card">
-              <span>Educación</span>
-              <strong>PhD en Gestión Estratégica de Sistemas de Ingeniería</strong>
-            </div>
-
-            <div class="hero-meta-card">
-              <span>Área</span>
-              <strong>Gestión de Tecnología e Innovación</strong>
-            </div>
-          </div>
         </div>
 
         <div class="hero-image-wrap">
-          <img src="images/diana.jpg" alt="Diana" />
+          <img src="images/calisto.jpg" alt="Calisto" />
         </div>
       </section>
 
       <section class="content">
         <article class="section-card">
-          <h2 class="section-title">Presencia</h2>
-          <p class="quote-block">
-            Diana tiene la clase de presencia que no se limita a entrar en una sala: reorganiza la energía de quienes la rodean. Su inteligencia, su carisma y su seguridad la convierten en una figura que deja huella incluso antes de explicar nada.
-            <span>Shambhala · Universo de personajes</span>
-          </p>
-        </article>
-
-        <article class="section-card">
           <h2 class="section-title">Perfil</h2>
           <p class="section-text">
-            Como científica jefe, Diana habita el punto donde la investigación, la estrategia y la conducción institucional se cruzan. Su formación en Biología Evolucionaria convive con una mirada amplia sobre la innovación y el desarrollo tecnológico. No solo entiende procesos complejos: sabe cómo conducirlos, protegerlos y empujarlos hacia adelante.
+            Calisto integra el núcleo científico de Shambhala como especialista en tecnología de motores de curvatura y campos de distorsión. Su trabajo se concentra en una de las líneas más delicadas y visionarias del proyecto: explorar nuevas formas de comprender el desplazamiento interestelar y ampliar los márgenes conocidos del viaje espacial. Desde el laboratorio orbital, participa en investigaciones que exigen precisión, audacia y una mirada capaz de sostener preguntas para las que aún no existen respuestas definitivas. Su presencia dentro de ese ámbito la convierte en una figura clave en la exploración de posibilidades que podrían transformar para siempre la relación de la humanidad con el universo.
           </p>
 
           <div class="profile-grid">
             <div class="info-card">
               <span>Nombre</span>
-              <strong>Diana</strong>
+              <strong>Calisto Collins</strong>
             </div>
 
             <div class="info-card">
               <span>Rol</span>
-              <strong>Científica jefe</strong>
+              <strong>Física</strong>
             </div>
 
             <div class="info-card">
               <span>País de origen</span>
-              <strong>Colombia</strong>
+              <strong>California</strong>
             </div>
 
             <div class="info-card">
               <span>Fecha de nacimiento</span>
-              <strong>8 diciembre, 2052</strong>
+              <strong>12 enero, 2066</strong>
             </div>
 
             <div class="info-card">
               <span>Educación</span>
-              <strong>PhD en Gestión Estratégica de Sistemas de Ingeniería</strong>
+              <strong>PhD en Física Teorética</strong>
             </div>
 
             <div class="info-card">
               <span>Interés de investigación</span>
-              <strong>Gestión de Tecnología e Innovación</strong>
+              <strong>Tecnología de Motores de Curvatura</strong>
             </div>
           </div>
-        </article>
-
-        <article class="section-card">
-          <h2 class="section-title">Trayectoria</h2>
-          <p class="section-text">
-            Su recorrido profesional atraviesa distintas etapas clave del universo de Shambhala. En cada una de ellas, Diana aparece ligada a espacios donde la investigación exige visión, liderazgo y capacidad de decisión.
-          </p>
-
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">2088 – 2091</div>
-              <div class="timeline-content">
-                <h3>Sede Principal de Portal al Porvenir</h3>
-                <p>
-                  Participación en el núcleo de investigación y desarrollo, con enfoque en procesos científicos de alto nivel y coordinación tecnológica.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">2091 – 2095</div>
-              <div class="timeline-content">
-                <h3>Arcadia Estación de Investigación</h3>
-                <p>
-                  Trabajo en un entorno decisivo para el crecimiento científico del proyecto, integrando estrategia, visión institucional e innovación.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">2095 – presente</div>
-              <div class="timeline-content">
-                <h3>Shambhala Laboratorio Orbital</h3>
-                <p>
-                  Dirección científica y liderazgo dentro del laboratorio orbital, impulsando decisiones que afectan el desarrollo completo del universo de investigación.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="highlight-box">
-            <p>
-              Diana no solo acompaña el avance de la ciencia: ayuda a definir hacia dónde se dirige.
-            </p>
-          </div>
-        </article>
-
-        <article class="section-card">
-          <h2 class="section-title">Línea de investigación</h2>
-          <p class="section-text">
-            La Gestión de Tecnología e Innovación ocupa en Diana un lugar estratégico. Su mirada no se limita a producir conocimiento, sino a articular personas, recursos, tiempos y decisiones para que ese conocimiento se vuelva viable y transformador. En ella, la ciencia aparece inseparable de la visión, del criterio y del poder de intervenir en el rumbo de lo posible.
-          </p>
         </article>
 
         <article class="section-card">
@@ -989,24 +789,22 @@
           </p>
 
           <div class="links-grid">
-            <a class="character-link" href="calisto.html">
-              <img class="character-image" src="images/calisto.jpg" alt="Calisto" />
+            <a class="character-link" href="pavani.html">
+              <img class="character-image" src="images/pavani.jpg" alt="Pavani" />
               <div class="character-overlay"></div>
               <div class="character-content">
-                <div class="character-label">Protagonista</div>
-                <strong>Calisto</strong>
-                <span>Física · Tecnología de Motores de Curvatura</span>
+                <strong>Pavani</strong>
+                <span>Bióloga · Biología de la Resurrección</span>
                 <span class="character-cta">Entrar al perfil</span>
               </div>
             </a>
 
-            <a class="character-link" href="izumi.html">
-              <img class="character-image" src="images/izumi.jpg" alt="Izumi" />
+            <a class="character-link" href="diana.html">
+              <img class="character-image" src="images/diana.jpg" alt="Diana" />
               <div class="character-overlay"></div>
               <div class="character-content">
-                <div class="character-label">Órbita cercana</div>
-                <strong>Izumi</strong>
-                <span>Antropóloga · Comportamiento Humano</span>
+                <strong>Diana</strong>
+                <span>Científica jefe · Gestión de tecnología e innovación</span>
                 <span class="character-cta">Entrar al perfil</span>
               </div>
             </a>
@@ -1015,7 +813,6 @@
               <img class="character-image" src="images/naomi.jpg" alt="Naomi" />
               <div class="character-overlay"></div>
               <div class="character-content">
-                <div class="character-label">Vínculo esencial</div>
                 <strong>Naomi</strong>
                 <span>Bióloga · Reproducción partenogénica de mamíferos</span>
                 <span class="character-cta">Entrar al perfil</span>
@@ -1040,7 +837,7 @@
               <img class="card-thumb" src="images/world.jpg" alt="El mundo de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
-                <strong>El mundo</strong>
+                <strong>Explorar</strong>
               </div>
             </a>
 
