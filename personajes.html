@@ -799,6 +799,8 @@
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 20px;
+      width: min(1520px, 100%);
+      margin: 0 auto;
     }
 
     .roster-card {
@@ -982,30 +984,27 @@
 
     /* FILA CENTRADA DE SASHA, SOOK Y TANYA */
     .desktop-row-sasha {
-      grid-column: 2 / span 3;
+      grid-column: 1 / span 4;
       grid-row: 6;
-      justify-self: center;
     }
 
     .desktop-row-sook {
-      grid-column: 5 / span 3;
+      grid-column: 5 / span 4;
       grid-row: 6;
-      justify-self: center;
     }
 
     .desktop-row-tanya {
-      grid-column: 8 / span 3;
+      grid-column: 9 / span 4;
       grid-row: 6;
-      justify-self: center;
     }
 
     .desktop-row-yasmin {
-      grid-column: 4 / span 3;
+      grid-column: 3 / span 4;
       grid-row: 7;
     }
 
     .desktop-row-zoe {
-      grid-column: 7 / span 3;
+      grid-column: 7 / span 4;
       grid-row: 7;
     }
 
@@ -2292,7 +2291,7 @@
         work: "Arcadia 2094–2097",
         image: "images/secundarios/raven.jpg"
       },
-         {
+      {
         name: "Remi",
         role: "Bióloga",
         country: "Polonia",
