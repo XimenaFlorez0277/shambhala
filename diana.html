@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Diana | Shambhala</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
   <meta
     name="description"
     content="Diana — Científica de Shambhala. Página de personaje de la saga Shambhala."
@@ -143,6 +143,53 @@
       font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
+    .top-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      margin-left: auto;
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .language-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      min-height: 42px;
+      padding: 10px 12px;
+      font-size: 0.72rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .language-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(143,211,255,0.35);
+    }
+
+    .language-link.active {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(143,211,255,0.35);
+      color: #ffffff;
+      pointer-events: none;
+    }
+
     .menu-toggle {
       display: none;
       width: 48px;
@@ -157,6 +204,7 @@
       transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      flex-shrink: 0;
     }
 
     .menu-toggle:hover {
@@ -680,6 +728,22 @@
       .return-link {
         min-height: 160px;
       }
+
+      .top-nav-right {
+        gap: 8px;
+      }
+
+      .language-switcher {
+        gap: 6px;
+      }
+
+      .language-link {
+        min-width: 42px;
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 0.68rem;
+        letter-spacing: 1.2px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -702,6 +766,14 @@
       .hero-image-wrap {
         min-height: 360px;
       }
+
+      .language-link {
+        min-width: 38px;
+        min-height: 38px;
+        padding: 7px 8px;
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+      }
     }
   </style>
 </head>
@@ -712,19 +784,26 @@
     <header class="top-nav">
       <div class="brand">Shambhala Saga</div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="top-nav-right">
+        <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
+          <a href="index.html" class="nav-pill">Inicio</a>
+          <a href="explorar.html" class="nav-pill">Explorar</a>
+          <a href="personajes.html" class="nav-pill">Personajes</a>
+          <a href="corazon.html" class="nav-pill">Corazón</a>
+          <a href="explorar.html#libros" class="nav-pill">Libros</a>
+        </nav>
 
-      <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
-        <a href="index.html" class="nav-pill">Inicio</a>
-        <a href="explorar.html" class="nav-pill">Explorar</a>
-        <a href="personajes.html" class="nav-pill">Personajes</a>
-        <a href="corazon.html" class="nav-pill">Corazón</a>
-        <a href="explorar.html#libros" class="nav-pill">Libros</a>
-      </nav>
+        <div class="language-switcher" aria-label="Selector de idioma">
+          <a href="/diana.html" class="language-link active" lang="es">ES</a>
+          <a href="/en/diana.html" class="language-link" lang="en">EN</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
     <main>
@@ -746,7 +825,7 @@
         </div>
 
         <div class="hero-image-wrap">
-          <img src="images/diana.jpg" alt="Diana" />
+          <img src="/images/diana.jpg" alt="Diana" />
         </div>
       </section>
 
@@ -798,7 +877,7 @@
 
           <div class="links-grid">
             <a class="character-link" href="pavani.html">
-              <img class="character-image" src="images/pavani.jpg" alt="Pavani" />
+              <img class="character-image" src="/images/pavani.jpg" alt="Pavani" />
               <div class="character-overlay"></div>
               <div class="character-content">
                 <strong>Pavani</strong>
@@ -808,7 +887,7 @@
             </a>
 
             <a class="character-link" href="calisto.html">
-              <img class="character-image" src="images/calisto.jpg" alt="Calisto" />
+              <img class="character-image" src="/images/calisto.jpg" alt="Calisto" />
               <div class="character-overlay"></div>
               <div class="character-content">
                 <strong>Calisto</strong>
@@ -818,7 +897,7 @@
             </a>
 
             <a class="character-link" href="naomi.html">
-              <img class="character-image" src="images/naomi.jpg" alt="Naomi" />
+              <img class="character-image" src="/images/naomi.jpg" alt="Naomi" />
               <div class="character-overlay"></div>
               <div class="character-content">
                 <strong>Naomi</strong>
@@ -834,7 +913,7 @@
 
           <div class="return-grid">
             <a class="return-link" href="index.html">
-              <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
+              <img class="card-thumb" src="/images/hero.jpg" alt="Inicio de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
                 <strong>Inicio</strong>
@@ -842,7 +921,7 @@
             </a>
 
             <a class="return-link" href="explorar.html">
-              <img class="card-thumb" src="images/world.jpg" alt="El mundo de Shambhala" />
+              <img class="card-thumb" src="/images/world.jpg" alt="El mundo de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
                 <strong>Explorar</strong>
@@ -850,7 +929,7 @@
             </a>
 
             <a class="return-link" href="personajes.html">
-              <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
+              <img class="card-thumb" src="/images/personajes.jpg" alt="Personajes de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
                 <strong>Personajes</strong>
@@ -858,7 +937,7 @@
             </a>
 
             <a class="return-link" href="corazon.html">
-              <img class="card-thumb" src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+              <img class="card-thumb" src="/images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
               <div class="card-overlay"></div>
               <div class="card-content">
                 <strong>Corazón</strong>
