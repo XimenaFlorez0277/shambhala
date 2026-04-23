@@ -109,7 +109,6 @@
       min-height: 74px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 20px;
       position: relative;
     }
@@ -133,6 +132,32 @@
       background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
       box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
       flex: 0 0 auto;
+    }
+
+    .nav {
+      margin-left: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav a {
+      padding: 10px 16px;
+      border: 1px solid rgba(138, 216, 255, 0.16);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.active {
+      color: var(--text);
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
+      outline: none;
     }
 
     .topbar-controls {
@@ -226,31 +251,6 @@
 
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(0) rotate(-45deg);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .nav a {
-      padding: 10px 16px;
-      border: 1px solid rgba(138, 216, 255, 0.16);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: 0.25s ease;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible,
-    .nav a.active {
-      color: var(--text);
-      border-color: rgba(138, 216, 255, 0.35);
-      box-shadow: var(--glow);
-      outline: none;
     }
 
     .page {
@@ -667,6 +667,7 @@
 
       .topbar-inner {
         min-height: 72px;
+        justify-content: space-between;
       }
 
       .menu-toggle {
@@ -684,6 +685,7 @@
       }
 
       .nav {
+        margin-left: 0;
         position: absolute;
         top: calc(100% + 12px);
         right: 0;
@@ -767,6 +769,14 @@
           <span>Shambhala Saga</span>
         </a>
 
+        <nav class="nav" id="siteMenu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="explorar.html">Explore</a>
+          <a href="personajes.html">Characters</a>
+          <a href="corazon.html">Heart</a>
+          <a href="explorar.html#libros">Books</a>
+        </nav>
+
         <div class="topbar-controls">
           <div class="language-switch" aria-label="Language selector">
             <a href="../annie.html" lang="es">ES</a>
@@ -779,14 +789,6 @@
             <span></span>
           </button>
         </div>
-
-        <nav class="nav" id="siteMenu" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="explorar.html">Explore</a>
-          <a href="personajes.html">Characters</a>
-          <a href="corazon.html">Heart</a>
-          <a href="explorar.html#libros">Books</a>
-        </nav>
       </div>
     </header>
 
