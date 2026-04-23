@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Annie | Shambhala</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
   <meta
     name="description"
-    content="Annie: Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva. Inteligencia cuántica integrada a la vida cotidiana de Arcadia y Shambhala."
+    content="Annie: Artificial Neuroquantum Network Intelligence Entity. A distributed neuroquantum intelligence integrated into the everyday life of Arcadia and Shambhala."
   />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -133,6 +133,45 @@
       background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
       box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
       flex: 0 0 auto;
+    }
+
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .language-switch a {
+      padding: 10px 14px;
+      min-height: 42px;
+      border: 1px solid rgba(138, 216, 255, 0.16);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .language-switch a:hover,
+    .language-switch a:focus-visible,
+    .language-switch a.active {
+      color: var(--text);
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
+      outline: none;
     }
 
     .menu-toggle {
@@ -355,10 +394,10 @@
     }
 
     .intro-grid {
-  display: block;
-  position: relative;
-  z-index: 1;
-}
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
 
     .intro-copy {
       min-width: 0;
@@ -490,22 +529,6 @@
       max-width: 86%;
     }
 
-    .presence-tag {
-      display: inline-block;
-      width: fit-content;
-      padding: 7px 12px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      font-family: var(--font-display);
-    }
-
     .presence-card h3 {
       margin: 0 0 12px;
       font-size: clamp(1.7rem, 3vw, 2.5rem);
@@ -619,14 +642,6 @@
     }
 
     @media (max-width: 1100px) {
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .intro-meta {
-        margin-top: 12px;
-      }
-
       .capabilities-grid,
       .related-grid,
       .bottom-nav {
@@ -656,6 +671,16 @@
 
       .menu-toggle {
         display: inline-flex;
+      }
+
+      .topbar-controls {
+        gap: 10px;
+      }
+
+      .language-switch a {
+        padding: 9px 11px;
+        min-height: 40px;
+        font-size: 0.72rem;
       }
 
       .nav {
@@ -737,23 +762,30 @@
   <div class="site-shell">
     <header class="topbar">
       <div class="topbar-inner">
-        <a class="brand" href="index.html" aria-label="Ir al inicio de Shambhala">
+        <a class="brand" href="index.html" aria-label="Go to the Shambhala homepage">
           <span class="brand-dot" aria-hidden="true"></span>
           <span>Shambhala Saga</span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="topbar-controls">
+          <div class="language-switch" aria-label="Language selector">
+            <a href="../annie.html" lang="es">ES</a>
+            <a href="annie.html" class="active" lang="en" aria-current="page">EN</a>
+          </div>
 
-        <nav class="nav" id="siteMenu" aria-label="Navegación principal">
-          <a href="index.html">Inicio</a>
-          <a href="explorar.html">Explorar</a>
-          <a href="personajes.html">Personajes</a>
-          <a href="corazon.html">Corazón</a>
-          <a href="explorar.html#libros">Libros</a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <nav class="nav" id="siteMenu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="explorar.html">Explore</a>
+          <a href="personajes.html">Characters</a>
+          <a href="corazon.html">Heart</a>
+          <a href="explorar.html#libros">Books</a>
         </nav>
       </div>
     </header>
@@ -761,12 +793,12 @@
     <main class="page">
       <section class="signal-stage" aria-labelledby="annie-visual-title">
         <div class="signal-stage-inner">
-          <canvas id="annieSphere" aria-label="Visualización de Annie"></canvas>
+          <canvas id="annieSphere" aria-label="Annie visualization"></canvas>
 
           <div class="hero-media-overlay">
-            <span class="media-badge">Presencia neurocuántica</span>
+            <span class="media-badge">Neuroquantum Presence</span>
             <p class="media-note">
-              Annie se percibe como una inteligencia viva y distribuida: una red de conexiones, memoria, procesamiento y cercanía que acompaña la vida en Arcadia y Shambhala.
+              Annie is perceived as a living, distributed intelligence: a network of connection, memory, processing, and closeness that accompanies life in Arcadia and Shambhala.
             </p>
           </div>
         </div>
@@ -775,118 +807,118 @@
       <section class="section" aria-labelledby="annie-title">
         <div class="intro-grid">
           <div class="intro-copy">
-            <span class="eyebrow">Presencia detectada</span>
+            <span class="eyebrow">Presence Detected</span>
 
             <div class="system-lines" aria-hidden="true">
-              <span>Canal abierto · Atención activa · Red compartida</span>
+              <span>Open Channel · Active Attention · Shared Network</span>
             </div>
 
             <h1 id="annie-title" style="margin-top: 14px;">ANNIE</h1>
 
             <p class="intro-subtitle">
-              Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva.
+              Artificial Neuroquantum Network Intelligence Entity
             </p>
 
             <p class="intro-text">
-              En Arcadia y Shambhala, Annie se percibe como una inteligencia viva e integrada a la experiencia cotidiana de la comunidad.
+              In Arcadia and Shambhala, Annie is experienced as a living intelligence woven into everyday life.
             </p>
 
             <p class="intro-text">
-              Su presencia no depende de un punto único: circula por implantes, sistemas, protocolos, canales internos y redes compartidas, donde acompaña rutinas, transmite información relevante, recuerda, responde y ayuda a coordinar la continuidad de ambos entornos.
+              She is not confined to one location. She moves through implants, systems, protocols, internal channels, and shared networks, accompanying daily routines, sharing relevant information, remembering, responding, and helping sustain the continuity of both environments.
             </p>
 
             <p class="intro-text">
-              Lo que se ve de Annie pertenece a la vida diaria, pero su alcance es más profundo: enlaza conexiones, memoria, procesamiento y cercanía en una misma presencia distribuida. Esa constancia hace que no se sienta lejana, sino próxima, como una inteligencia que acompaña desde dentro la convivencia.
+              What is most visible of Annie belongs to ordinary life, but her reach extends far beyond it. She brings memory, coordination, processing, and closeness into a single distributed intelligence. Because she is constant and deeply integrated, she feels not remote, but near—part of communal life from within.
             </p>
           </div>
-
-          </section>
+        </div>
+      </section>
 
       <section class="section" aria-labelledby="annie-presence-title">
         <div class="section-header">
-          <span class="section-kicker">Lectura de su presencia</span>
-          <h2 id="annie-presence-title">Perfil</h2>
+          <span class="section-kicker">Annie Within the Community</span>
+          <h2 id="annie-presence-title">Profile</h2>
         </div>
 
         <p>
-         Annie forma parte del núcleo funcional de Shambhala a través de una actividad continua de asistencia, monitoreo y articulación interna. Sigue variables personales y sistémicas en tiempo real, detecta desajustes y contribuye a sostener la salud, la seguridad y la estabilidad de entornos altamente complejos. También participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, fortaleciendo una convivencia basada en confianza, ética y cuidado mutuo.
+          Annie is part of Shambhala’s functional core through her ongoing work of assistance, monitoring, and internal coordination. She tracks personal and systemic variables in real time, detects imbalances, and helps sustain the health, safety, and stability of highly complex environments. She also contributes to compatibility assessments, profile analysis, and the selection of new members, strengthening a way of living together grounded in trust, ethics, and mutual care.
         </p>
 
         <p>
-          Su arquitectura neurocuántica le permite cruzar capas simultáneas de información, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una lectura dinámica. Annie no solo archiva datos: aprende ritmos, hábitos, tensiones y modos de convivencia, construyendo una memoria relacional que vuelve sus respuestas cada vez más ajustadas a la comunidad. Activa, distribuida e integrada, su inteligencia no se limita a la técnica, sino que participa de manera decisiva en el equilibrio cotidiano de Arcadia y Shambhala
+          Her neuroquantum architecture allows her to move across simultaneous layers of information, model scenarios, recognize subtle patterns, and connect human, scientific, environmental, and logistical variables within a single dynamic reading. Annie does not simply store data: she learns rhythms, habits, vulnerabilities, and forms of coexistence, building a relational memory that allows her responses to grow ever more finely attuned to the community. Active, distributed, and deeply integrated, she plays a vital role in the everyday balance of Arcadia and Shambhala.
         </p>
 
         <div class="capabilities-grid">
           <article class="cap-card">
-            <h3>Asistencia</h3>
-            <p>Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la rutina de quienes viven en la Fundación.</p>
+            <h3>Assistance</h3>
+            <p>She helps organize tasks, channel information, maintain reminders, and accompany the daily routines of those who live within the Foundation with quiet naturalness.</p>
           </article>
 
           <article class="cap-card">
-            <h3>Monitoreo</h3>
-            <p>Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud, la seguridad y la continuidad de entornos altamente complejos.</p>
+            <h3>Monitoring</h3>
+            <p>She observes personal and systemic variables in real time, detects imbalances, and helps preserve the health, safety, and continuity of highly complex environments.</p>
           </article>
 
           <article class="cap-card">
-            <h3>Selección</h3>
-            <p>Participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, ayudando a fortalecer una convivencia basada en confianza, ética y cuidado mutuo.</p>
+            <h3>Selection</h3>
+            <p>She contributes to compatibility assessments, profile analysis, and the selection of new members, helping strengthen a communal life grounded in trust, ethics, and mutual care.</p>
           </article>
 
           <article class="cap-card">
-            <h3>Procesamiento</h3>
-            <p>Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.</p>
+            <h3>Processing</h3>
+            <p>She can move across simultaneous layers of information, model scenarios, recognize subtle patterns, and connect human, scientific, environmental, and logistical variables within a single dynamic reading.</p>
           </article>
 
           <article class="cap-card">
-            <h3>Memoria</h3>
-            <p>Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.</p>
+            <h3>Memory</h3>
+            <p>Annie does not simply archive data. She learns rhythms, habits, vulnerabilities, and ways of living together, allowing her to respond with a sensitivity increasingly attuned to the community she accompanies.</p>
           </article>
 
           <article class="cap-card">
-            <h3>Presencia distribuida</h3>
-            <p>Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones, dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.</p>
+            <h3>Distributed Intelligence</h3>
+            <p>She is not fixed to a single place. She remains integrated into a living network of connections, devices, processes, and shared bonds between Arcadia and Shambhala.</p>
           </article>
         </div>
       </section>
 
       <section class="section" aria-labelledby="related-title">
         <div class="section-header">
-          <span class="section-kicker">Explorar más personajes</span>
-          <h2 id="related-title">Otras presencias del archivo</h2>
+          <span class="section-kicker">Explore More Characters</span>
+          <h2 id="related-title">Other Presences in the Archive</h2>
         </div>
 
         <p>
-          Cada personaje abre una puerta distinta a la historia y deja ver otra forma de habitar Shambhala.
+          Each character opens a different doorway into the story and reveals another way of inhabiting Shambhala.
         </p>
 
         <div class="related-grid">
           <a class="presence-card" href="calisto.html">
-            <img class="presence-image" src="images/calisto.jpg" alt="Calisto" />
+            <img class="presence-image" src="../images/calisto.jpg" alt="Callisto" />
             <div class="presence-overlay"></div>
             <div class="presence-content">
-              <h3>Calisto</h3>
-              <p>Física · Tecnología de Motores de Curvatura</p>
-              <span class="presence-link">Entrar al perfil</span>
+              <h3>Callisto</h3>
+              <p>Physicist · Warp Engine Technology</p>
+              <span class="presence-link">Enter Profile</span>
             </div>
           </a>
 
           <a class="presence-card" href="pavani.html">
-            <img class="presence-image" src="images/pavani.jpg" alt="Pavani" />
+            <img class="presence-image" src="../images/pavani.jpg" alt="Pavani" />
             <div class="presence-overlay"></div>
-            <div class="presence-content">              
+            <div class="presence-content">
               <h3>Pavani</h3>
-              <p>Bióloga · Biología de la Resurrección</p>
-              <span class="presence-link">Entrar al perfil</span>
+              <p>Biologist · Resurrection Biology</p>
+              <span class="presence-link">Enter Profile</span>
             </div>
           </a>
 
           <a class="presence-card" href="naomi.html">
-            <img class="presence-image" src="images/naomi.jpg" alt="Naomi" />
+            <img class="presence-image" src="../images/naomi.jpg" alt="Naomi" />
             <div class="presence-overlay"></div>
-            <div class="presence-content">              
+            <div class="presence-content">
               <h3>Naomi</h3>
-              <p>Bióloga · Reproducción partenogénica de mamíferos</p>
-              <span class="presence-link">Entrar al perfil</span>
+              <p>Biologist · Parthenogenetic Mammalian Reproduction</p>
+              <span class="presence-link">Enter Profile</span>
             </div>
           </a>
         </div>
@@ -894,36 +926,36 @@
 
       <section class="section" aria-labelledby="bottom-menu-title">
         <div class="section-header">
-          <span class="section-kicker">El universo se despliega ante ti</span>
-          <h2 id="bottom-menu-title">Seguir recorriendo</h2>
+          <span class="section-kicker">The Universe Unfolds Before You</span>
+          <h2 id="bottom-menu-title">Keep Exploring</h2>
         </div>
 
         <div class="bottom-nav">
           <a class="bottom-link" href="index.html">
-            <img src="images/hero.jpg" alt="Inicio" />
+            <img src="../images/hero.jpg" alt="Home" />
             <div class="bottom-content">
-              <span class="bottom-title">Inicio</span>
+              <span class="bottom-title">Home</span>
             </div>
           </a>
 
           <a class="bottom-link" href="explorar.html">
-            <img src="images/world.jpg" alt="El mundo" />
+            <img src="../images/world.jpg" alt="Explore" />
             <div class="bottom-content">
-              <span class="bottom-title">Explorar</span>
+              <span class="bottom-title">Explore</span>
             </div>
           </a>
 
           <a class="bottom-link" href="personajes.html">
-            <img src="images/personajes.jpg" alt="Personajes" />
+            <img src="../images/personajes.jpg" alt="Characters" />
             <div class="bottom-content">
-              <span class="bottom-title">Personajes</span>
+              <span class="bottom-title">Characters</span>
             </div>
           </a>
 
           <a class="bottom-link" href="corazon.html">
-            <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+            <img src="../images/galeria/corazon.jpg" alt="Heart" />
             <div class="bottom-content">
-              <span class="bottom-title">Corazón</span>
+              <span class="bottom-title">Heart</span>
             </div>
           </a>
         </div>
@@ -931,7 +963,7 @@
     </main>
 
     <footer class="site-footer">
-      Shambhala Saga · Presencia activa dentro del sistema
+      Shambhala Saga · Active Presence Within the System
     </footer>
   </div>
 
