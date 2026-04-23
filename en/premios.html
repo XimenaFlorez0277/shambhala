@@ -1,1 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awards and Recognition | Shambhala Saga</title>
+  <link rel="icon" type="image/png" href="../images/logo.png" />
+  <meta
+    name="description"
+    content="Awards, distinctions, and editorial recognition for the original English-language editions of Callisto 2.0 and Cupid’s Arrow within the Shambhala Saga universe."
+  />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #03050b;
+      --bg-soft: #08101d;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-strong: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --text: #f5f8ff;
+      --muted: rgba(232, 240, 252, 0.72);
+      --soft: rgba(232, 240, 252, 0.52);
+      --accent: #9ad8ff;
+      --accent-2: #7fb4ff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+      --radius-xl: 30px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max-width: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(60, 130, 210, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 16%, rgba(154, 216, 255, 0.10), transparent 18%),
+        linear-gradient(180deg, #02040a 0%, #050913 35%, #03050b 100%);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    canvas#stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      padding: 18px 5%;
+      background: linear-gradient(to bottom, rgba(2, 5, 12, 0.90), rgba(2, 5, 12, 0.24));
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .topbar-inner {
+      width: min(var(--max-width), 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 52px;
+      position: relative;
+    }
+
+    .brand {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #dff4ff;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      padding: 0;
+      transition: 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(111, 195, 255, 0.42);
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: #eef7ff;
+      transition: 0.28s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .nav-links a,
+    .language-switch a {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(236, 245, 255, 0.84);
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .language-switch a:hover,
+    .language-switch a.active {
+      border-color: rgba(111, 195, 255, 0.42);
+      color: #ffffff;
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .section {
+      position: relative;
+      width: min(var(--max-width), calc(100% - 10%));
+      margin: 0 auto;
+      padding-bottom: 90px;
+    }
+
+    .section-first {
+      padding-top: 140px;
+    }
+
+    .section-card {
+      position: relative;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
+      box-shadow:
+        inset 0 0 20px rgba(108, 187, 255, 0.03),
+        0 14px 40px rgba(0, 0, 0, 0.20);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(86, 176, 255, 0.10), transparent 24%),
+        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 18%);
+      pointer-events: none;
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-kicker {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.6rem, 4vw, 2.7rem);
+      line-height: 1.12;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #f8fbff;
+      margin-bottom: 14px;
+    }
+
+    .section-text {
+      max-width: none;
+      width: 100%;
+      line-height: 1.9;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .verified-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .verified-card {
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(7, 12, 22, 0.72);
+      box-shadow:
+        inset 0 0 18px rgba(90, 168, 255, 0.03),
+        0 10px 28px rgba(0, 0, 0, 0.18);
+    }
+
+    .verified-book-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f6fbff;
+      margin-bottom: 8px;
+    }
+
+    .verified-book-subtitle {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(183, 228, 255, 0.72);
+      margin-bottom: 18px;
+    }
+
+    .verified-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .verified-list li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: start;
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    .verified-list li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .verified-list strong {
+      color: #eef8ff;
+      font-weight: 600;
+    }
+
+    .verified-result {
+      color: rgba(183, 228, 255, 0.86);
+      font-size: 0.84rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .book-head {
+      margin-bottom: 28px;
+    }
+
+    .book-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.15;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fbfdff;
+      margin-bottom: 10px;
+    }
+
+    .book-subtitle {
+      color: rgba(183, 228, 255, 0.78);
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(16, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .awards-grid > .award-card {
+      grid-column: span 4;
+    }
+
+    .awards-grid.callisto-grid > .award-card:nth-child(5) {
+      grid-column: 3 / span 4;
+    }
+
+    .awards-grid.callisto-grid > .award-card:nth-child(6) {
+      grid-column: 7 / span 4;
+    }
+
+    .awards-grid.callisto-grid > .award-card:nth-child(7) {
+      grid-column: 11 / span 4;
+    }
+
+    .awards-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .awards-grid.three > .award-card {
+      grid-column: span 1;
+    }
+
+    .award-card {
+      position: relative;
+      min-height: 100%;
+      padding: 20px 18px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(7, 12, 22, 0.72);
+      box-shadow:
+        inset 0 0 18px rgba(90, 168, 255, 0.03),
+        0 10px 28px rgba(0, 0, 0, 0.18);
+      transition: 0.35s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .award-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(112, 196, 255, 0.28);
+      box-shadow:
+        0 0 26px rgba(80, 174, 255, 0.12),
+        0 16px 34px rgba(0, 0, 0, 0.24);
+    }
+
+    .award-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top, rgba(114, 201, 255, 0.08), transparent 42%),
+        linear-gradient(to top, rgba(3, 7, 14, 0.18), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+
+    .award-logo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 135px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      padding: 8px;
+    }
+
+    .award-logo img {
+      max-width: 100%;
+      max-height: 120px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 16px rgba(108, 187, 255, 0.10));
+    }
+
+    .award-card h3 {
+      position: relative;
+      z-index: 1;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #f6fbff;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .mention-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .mention-card {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(7, 12, 22, 0.72);
+      box-shadow:
+        inset 0 0 18px rgba(90, 168, 255, 0.03),
+        0 10px 28px rgba(0, 0, 0, 0.18);
+      transition: 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .mention-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(112, 196, 255, 0.28);
+      box-shadow:
+        0 0 22px rgba(80, 174, 255, 0.10),
+        0 14px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .mention-label {
+      display: inline-block;
+      width: fit-content;
+      padding: 6px 10px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.22);
+      color: var(--accent);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .mention-card h3 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f7fbff;
+      line-height: 1.45;
+    }
+
+    .mention-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
+      flex-grow: 1;
+    }
+
+    .mention-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(183, 228, 255, 0.86);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    .mention-link:hover {
+      color: #ffffff;
+    }
+
+    .closing-box {
+      text-align: center;
+      padding: 40px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(7, 12, 22, 0.72);
+      box-shadow:
+        inset 0 0 20px rgba(108, 187, 255, 0.03),
+        0 14px 40px rgba(0, 0, 0, 0.20);
+    }
+
+    .closing-box h2 {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.5rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      color: #f8fbff;
+    }
+
+    .closing-box p {
+      max-width: 760px;
+      margin: 0 auto 22px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .bottom-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .bottom-link {
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      border: 1px solid rgba(0, 170, 255, 0.28);
+      background: #07111d;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 0 22px rgba(0,0,0,0.2);
+    }
+
+    .bottom-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 170, 255, 0.48);
+      box-shadow:
+        0 0 30px rgba(0, 170, 255, 0.12),
+        0 0 55px rgba(0, 170, 255, 0.08);
+    }
+
+    .bottom-link img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .bottom-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.06) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.04));
+      z-index: 1;
+    }
+
+    .bottom-content {
+      position: relative;
+      z-index: 2;
+      padding: 18px 20px;
+      width: 100%;
+    }
+
+    .bottom-title {
+      color: #ffffff;
+      font-size: 0.88rem;
+      line-height: 1.1;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      width: min(var(--max-width), calc(100% - 10%));
+      margin: 0 auto;
+      padding: 0 0 36px;
+      text-align: center;
+      color: var(--soft);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1040px) {
+      .verified-grid,
+      .mention-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .section,
+      footer {
+        width: min(var(--max-width), calc(100% - 12%));
+      }
+
+      .awards-grid,
+      .awards-grid.three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .awards-grid > .award-card,
+      .awards-grid.callisto-grid > .award-card:nth-child(5),
+      .awards-grid.callisto-grid > .award-card:nth-child(6),
+      .awards-grid.callisto-grid > .award-card:nth-child(7) {
+        grid-column: span 1;
+      }
+
+      .bottom-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 780px) {
+      .topbar {
+        padding: 16px 6%;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(111, 195, 255, 0.18);
+        background: rgba(2, 5, 12, 0.96);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .section,
+      footer {
+        width: min(var(--max-width), calc(100% - 10%));
+      }
+
+      .section-first {
+        padding-top: 150px;
+      }
+
+      .section-card,
+      .closing-box {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .verified-list li {
+        grid-template-columns: 1fr;
+      }
+
+      .verified-result {
+        text-align: left;
+        white-space: normal;
+      }
+
+      .awards-grid,
+      .awards-grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .award-logo {
+        height: 120px;
+      }
+
+      .bottom-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-link {
+        min-height: 170px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">SHAMBHALA SAGA</div>
+
+        <div class="topbar-right">
+          <nav class="nav-links" id="siteMenu" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="explorar.html">Explore</a>
+            <a href="personajes.html">Characters</a>
+            <a href="corazon.html">Heart</a>
+            <a href="galeria.html">Gallery</a>
+          </nav>
+
+          <div class="language-switch" aria-label="Language selector">
+            <a href="../premios.html" lang="es">ES</a>
+            <a href="premios.html" class="active" lang="en" aria-current="page">EN</a>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-first">
+        <article class="section-card fade-up">
+          <div class="section-inner">
+            <div class="section-kicker">Featured Recognition</div>
+            <h2 class="section-title">Awards</h2>
+            <p class="section-text">
+              This section gathers awards, distinctions, and editorial recognition from external sources, offering a clear picture of the reception of the original English-language books in the Shambhala Saga.
+            </p>
+
+            <div class="verified-grid">
+              <div class="verified-card">
+                <div class="verified-book-title">Callisto 2.0</div>
+                <div class="verified-book-subtitle">Original English-language edition</div>
+
+                <ul class="verified-list">
+                  <li>
+                    <strong>B.R.A.G. Medallion</strong>
+                    <span class="verified-result">Honoree</span>
+                  </li>
+                  <li>
+                    <strong>Living Now Book Awards 2021</strong>
+                    <span class="verified-result">Silver</span>
+                  </li>
+                  <li>
+                    <strong>Royal Dragonfly Book Awards 2021</strong>
+                    <span class="verified-result">2nd Place · LGBTQ+</span>
+                  </li>
+                  <li>
+                    <strong>Independent Author Network 2021</strong>
+                    <span class="verified-result">Finalist</span>
+                  </li>
+                  <li>
+                    <strong>The Wishing Shelf Book Awards 2021</strong>
+                    <span class="verified-result">Finalist</span>
+                  </li>
+                  <li>
+                    <strong>PenCraft Book Awards 2021</strong>
+                    <span class="verified-result">Fiction · Science Fiction</span>
+                  </li>
+                  <li>
+                    <strong>Literary Titan Book Award</strong>
+                    <span class="verified-result">Recipient</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="verified-card">
+                <div class="verified-book-title">Cupid’s Arrow</div>
+                <div class="verified-book-subtitle">Original English-language edition</div>
+
+                <ul class="verified-list">
+                  <li>
+                    <strong>B.R.A.G. Medallion</strong>
+                    <span class="verified-result">Honoree</span>
+                  </li>
+                  <li>
+                    <strong>Literary Titan Book Award</strong>
+                    <span class="verified-result">Recipient</span>
+                  </li>
+                  <li>
+                    <strong>Outstanding Creator Awards · Fall 2022</strong>
+                    <span class="verified-result">3rd Place · Science Fiction</span>
+                  </li>
+                  <li>
+                    <strong>Outstanding Creator Awards · Fall 2022</strong>
+                    <span class="verified-result">3rd Place · Dystopia</span>
+                  </li>
+                  <li>
+                    <strong>Outstanding Creator Awards · Fall 2022</strong>
+                    <span class="verified-result">2nd Place · Space Opera</span>
+                  </li>
+                  <li>
+                    <strong>Outstanding Creator Awards · Fall 2022</strong>
+                    <span class="verified-result">3rd Place · LGBTQIA+</span>
+                  </li>
+                  <li>
+                    <strong>Outstanding Creator Awards · Fall 2022</strong>
+                    <span class="verified-result">Honorable Mention · Best Book Cover</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card fade-up" id="calisto-awards">
+          <div class="section-inner">
+            <div class="book-head">
+              <h2 class="book-title">Callisto 2.0</h2>
+              <div class="book-subtitle">Awards and recognition for the original English-language edition</div>
+            </div>
+
+            <div class="awards-grid callisto-grid">
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-01-international-impact-book-awards.png" alt="International Impact Book Awards" />
+                </div>
+                <h3>International Impact Book Awards</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-02-readers-favorite-five-stars.png" alt="Readers’ Favorite Five Stars" />
+                </div>
+                <h3>Readers’ Favorite Five Stars</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-03-firebird-book-award.png" alt="Firebird Book Award" />
+                </div>
+                <h3>Firebird Book Award</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-04-brag-medallion.png" alt="B.R.A.G. Medallion" />
+                </div>
+                <h3>B.R.A.G. Medallion</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-05-living-now-book-awards.png" alt="Living Now Book Awards" />
+                </div>
+                <h3>Living Now Book Awards</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-06-literary-titan-book-award.png" alt="Literary Titan Book Award" />
+                </div>
+                <h3>Literary Titan Book Award</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/calisto-2-0-07-pencraft-award.png" alt="PenCraft Book Awards" />
+                </div>
+                <h3>PenCraft Book Awards</h3>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card fade-up" id="cupids-arrow-awards">
+          <div class="section-inner">
+            <div class="book-head">
+              <h2 class="book-title">Cupid’s Arrow</h2>
+              <div class="book-subtitle">Awards and recognition for the original English-language edition</div>
+            </div>
+
+            <div class="awards-grid three">
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/cupids-arrow-01-outstanding-creator-awards.png" alt="Outstanding Creator Awards" />
+                </div>
+                <h3>Outstanding Creator Awards</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/cupids-arrow-02-brag-medallion.png" alt="B.R.A.G. Medallion" />
+                </div>
+                <h3>B.R.A.G. Medallion</h3>
+              </article>
+
+              <article class="award-card">
+                <div class="award-logo">
+                  <img src="../images/premios/cupids-arrow-03-literary-titan-book-award.png" alt="Literary Titan Book Award" />
+                </div>
+                <h3>Literary Titan Book Award</h3>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card fade-up">
+          <div class="section-inner">
+            <div class="section-kicker">Editorial Features and Visibility</div>
+            <h2 class="section-title">Public Presence of the Project</h2>
+            <p class="section-text">
+              Beyond these awards, the books have also gained visibility through articles, interviews, guest posts, and editorial features that reflect the growing reach of the project.
+            </p>
+
+            <div class="mention-grid">
+              <article class="mention-card">
+                <div class="mention-label">Article</div>
+                <h3>Hidden Gems Books</h3>
+                <p>
+                  Susan English appears in an article about five authors committed to inclusive and diverse books. <em>Callisto 2.0</em> is also mentioned as part of Amazon’s Top 25 LGBTQ+ Science Fiction list.
+                </p>
+                <a
+                  class="mention-link"
+                  href="https://www.hiddengemsbooks.com/5-authors-writing-inclusive-diverse-books/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Article
+                </a>
+              </article>
+
+              <article class="mention-card">
+                <div class="mention-label">Interview</div>
+                <h3>Hidden Gems Books</h3>
+                <p>
+                  An author interview focused on Susan English, her creative process, and the universe of <em>Callisto 2.0</em>.
+                </p>
+                <a
+                  class="mention-link"
+                  href="https://www.hiddengemsbooks.com/interview-susan-english/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Interview
+                </a>
+              </article>
+
+              <article class="mention-card">
+                <div class="mention-label">Interview</div>
+                <h3>Reading Nook</h3>
+                <p>
+                  An interview feature centered on <em>Callisto 2.0</em> and the development of its characters.
+                </p>
+                <a
+                  class="mention-link"
+                  href="https://readingnook84.wordpress.com/2020/12/16/author-interview-callisto-2-0-by-susan-english/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Interview
+                </a>
+              </article>
+
+              <article class="mention-card">
+                <div class="mention-label">Feature</div>
+                <h3>The Protagonist Speaks</h3>
+                <p>
+                  A feature centered on Liu Mei Xing, a character from <em>Callisto 2.0</em>, presented in a fictional interview format that expands the world of Shambhala.
+                </p>
+                <a
+                  class="mention-link"
+                  href="https://theprotagonistspeaks.com/2023/08/18/liu-mei-xing-of-callisto-2-0-by-susan-english/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Feature
+                </a>
+              </article>
+
+              <article class="mention-card">
+                <div class="mention-label">Guest Post</div>
+                <h3>V.L. Book Reviews</h3>
+                <p>
+                  A guest post and launch feature for <em>Callisto 2.0</em> as part of the book’s editorial visibility.
+                </p>
+                <a
+                  class="mention-link"
+                  href="https://vicariousliving-bookreviews.weebly.com/author-spotlight/guest-post-with-author-susan-english"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Guest Post
+                </a>
+              </article>
+
+              <article class="mention-card">
+                <div class="mention-label">Guest Blog</div>
+                <h3>Sweaters &amp; Raindrops</h3>
+                <p>
+                  A guest blog dedicated to <em>Callisto 2.0</em>, presented as the first book in the Shambhala Saga LGBTQ+ science-fiction series.
+                </p>
+                <a
+                  class="mention-link"
+                  href="https://sweatersandraindrops.wordpress.com/2023/11/06/guest-blog-callisto-2-0-by-susan-english/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read Guest Blog
+                </a>
+              </article>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card fade-up">
+          <div class="section-inner closing-box">
+            <h2>A Lasting Impact Beyond the Page</h2>
+            <p>
+              Awards do not replace the experience of entering Shambhala, but they do honor the journey of these books and reflect the warm reception they have received from readers.
+            </p>
+
+            <div class="bottom-nav">
+              <a class="bottom-link" href="index.html">
+                <img src="../images/hero.jpg" alt="Home" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Home</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="explorar.html">
+                <img src="../images/world.jpg" alt="Explore" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Explore</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="personajes.html">
+                <img src="../images/personajes.jpg" alt="Characters" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Characters</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="corazon.html">
+                <img src="../images/galeria/corazon.jpg" alt="Heart" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Heart</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      Shambhala Saga · Awards and Recognition
+    </footer>
+  </div>
+
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      const count = window.innerWidth < 768 ? 110 : 180;
+
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.4 + 0.2,
+          speed: Math.random() * 0.22 + 0.03,
+          alpha: Math.random() * 0.7 + 0.2
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+
+        star.x -= star.speed;
+
+        if (star.x < -2) {
+          star.x = canvas.width + 2;
+          star.y = Math.random() * canvas.height;
+        }
+      }
+
+      requestAnimationFrame(animateStars);
+    }
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+
+      if (window.innerWidth > 780) {
+        closeMenu();
+      }
+    });
+
+    const fadeElements = document.querySelectorAll(".fade-up");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    fadeElements.forEach((element) => observer.observe(element));
+
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 780) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 780) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
