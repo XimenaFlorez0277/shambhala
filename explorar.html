@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
+  <title>Explorar — Shambhala Saga</title>
   <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorar — Shambhala Saga </title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -75,14 +71,19 @@
       left: 0;
       width: 100%;
       z-index: 50;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
       padding: 18px 5%;
       background: linear-gradient(to bottom, rgba(2, 5, 12, 0.94), rgba(2, 5, 12, 0.76));
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .topbar-inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 54px;
+      position: relative;
     }
 
     .brand {
@@ -93,6 +94,14 @@
       color: #dff4ff;
       white-space: nowrap;
       flex-shrink: 0;
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
     }
 
     .menu-toggle {
@@ -107,6 +116,7 @@
       transition: 0.3s ease;
       padding: 0;
       position: relative;
+      flex-shrink: 0;
     }
 
     .menu-toggle:hover {
@@ -150,10 +160,12 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
+      align-items: center;
       gap: 10px;
     }
 
-    .nav-links a {
+    .nav-links a,
+    .language-switch a {
       font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
@@ -167,13 +179,23 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .language-switch a:hover,
+    .language-switch a.active {
       border-color: rgba(111, 195, 255, 0.45);
       color: #ffffff;
       box-shadow: 0 0 24px rgba(67, 161, 255, 0.16);
       transform: translateY(-1px);
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
     }
 
     .section {
@@ -658,8 +680,8 @@
       .nav-links {
         position: absolute;
         top: calc(100% + 12px);
-        right: 5%;
-        left: 5%;
+        right: 0;
+        left: 0;
         display: none;
         flex-direction: column;
         gap: 10px;
@@ -855,8 +877,8 @@
       }
 
       .nav-links {
-        left: 4.5%;
-        right: 4.5%;
+        left: 0;
+        right: 0;
       }
     }
 
@@ -879,22 +901,31 @@
 
   <div class="page-shell">
     <header class="topbar">
-      <div class="brand">Shambhala Saga </div>
+      <div class="topbar-inner">
+        <div class="brand">Shambhala Saga</div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <div class="topbar-right">
+          <nav class="nav-links" id="siteMenu">
+            <a href="index.html">Inicio</a>
+            <a href="personajes.html">Personajes</a>
+            <a href="corazon.html">Corazón</a>
+            <a href="#libros">Libros</a>
+            <a href="premios.html">Premios</a>
+            <a href="galeria.html">Galería</a>
+          </nav>
 
-      <nav class="nav-links" id="siteMenu">
-        <a href="index.html">Inicio</a>
-        <a href="personajes.html">Personajes</a>
-        <a href="corazon.html">Corazón</a>
-        <a href="#libros">Libros</a>
-        <a href="premios.html">Premios</a>
-        <a href="galeria.html">Galería</a>
-      </nav>
+          <div class="language-switch" aria-label="Selector de idioma">
+            <a href="explorar.html" class="active" lang="es" aria-current="page">ES</a>
+            <a href="en/explorar.html" lang="en">EN</a>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </header>
 
     <section class="section section-first fade-up" id="universo">
