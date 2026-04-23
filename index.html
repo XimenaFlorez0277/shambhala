@@ -240,7 +240,6 @@
       100% { left: 100%; }
     }
 
-    /* TV / pantallas muy grandes */
     @media (min-width: 1700px) {
       :root {
         --hero-padding-top: 4.5vh;
@@ -280,7 +279,6 @@
       }
     }
 
-    /* desktop grande */
     @media (min-width: 1400px) and (max-width: 1699px) {
       :root {
         --hero-padding-top: 5vh;
@@ -308,7 +306,6 @@
       }
     }
 
-    /* laptop / desktop normal */
     @media (min-width: 1101px) and (max-width: 1399px) {
       :root {
         --hero-padding-top: 5.5vh;
@@ -656,6 +653,12 @@
     const GOATCOUNTER_CODE = "shambhalasaga";
     const visitCount = document.getElementById("visitCount");
 
+    function formatWithDots(value) {
+      const number = Number(value);
+      if (Number.isNaN(number)) return "—";
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
     function loadVisitCounter() {
       fetch(`https://${GOATCOUNTER_CODE}.goatcounter.com/counter/TOTAL.json`)
         .then((response) => {
@@ -665,7 +668,7 @@
           return response.json();
         })
         .then((data) => {
-          visitCount.textContent = data.count || "—";
+          visitCount.textContent = formatWithDots(data.count);
         })
         .catch(() => {
           visitCount.textContent = "—";
