@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pavani | Shambhala</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
   <meta
     name="description"
     content="Pavani — Bióloga de Shambhala. Página de personaje de la saga Shambhala."
   />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -124,16 +122,18 @@
     }
 
     .top-nav {
-      position: relative;
+      position: sticky;
+      top: 0;
       z-index: 30;
       width: min(var(--max-width), calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 0;
+      padding: 18px 0 0;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
       align-items: center;
       justify-content: space-between;
+      backdrop-filter: blur(10px);
     }
 
     .brand {
@@ -142,6 +142,55 @@
       text-transform: uppercase;
       color: var(--soft);
       flex-shrink: 0;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
+    }
+
+    .top-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      margin-left: auto;
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .language-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      min-height: 42px;
+      padding: 10px 12px;
+      font-size: 0.72rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-family: "Orbitron", "Segoe UI", sans-serif;
+    }
+
+    .language-link:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(143,211,255,0.35);
+    }
+
+    .language-link.active {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(143,211,255,0.35);
+      color: #ffffff;
+      pointer-events: none;
     }
 
     .menu-toggle {
@@ -265,6 +314,7 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 20px;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .eyebrow::before {
@@ -281,6 +331,7 @@
       font-weight: 700;
       letter-spacing: -0.04em;
       margin-bottom: 18px;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .hero-subtitle {
@@ -294,36 +345,6 @@
       max-width: 44rem;
       color: var(--muted);
       font-size: 1.04rem;
-      margin-bottom: 36px;
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .hero-meta-card {
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-meta-card span {
-      display: block;
-      color: var(--soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .hero-meta-card strong {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
     }
 
     .hero-image-wrap {
@@ -374,6 +395,7 @@
       font-size: clamp(1.4rem, 2vw, 1.9rem);
       margin-bottom: 18px;
       letter-spacing: -0.02em;
+      font-family: "Orbitron", "Segoe UI", sans-serif;
     }
 
     .section-text {
@@ -410,73 +432,6 @@
       font-size: 1rem;
       font-weight: 600;
       color: var(--text);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 20px;
-      padding: 18px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .timeline-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .timeline-date {
-      color: var(--accent);
-      font-size: 0.92rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .timeline-content h3 {
-      font-size: 1.08rem;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .timeline-content p {
-      color: var(--muted);
-    }
-
-    .highlight-box {
-      margin-top: 20px;
-      padding: 24px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(143,211,255,0.18);
-      background:
-        linear-gradient(135deg, rgba(143,211,255,0.08), rgba(255,255,255,0.03));
-    }
-
-    .highlight-box p {
-      font-size: 1.05rem;
-      color: var(--text);
-    }
-
-    .quote-block {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
-      line-height: 1.7;
-      color: rgba(245, 247, 251, 0.92);
-      max-width: 58rem;
-    }
-
-    .quote-block span {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--soft);
     }
 
     .links-grid {
@@ -545,20 +500,6 @@
       z-index: 3;
       max-width: 86%;
       min-width: 0;
-    }
-
-    .character-label {
-      display: inline-block;
-      width: fit-content;
-      padding: 7px 12px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
     }
 
     .character-content strong {
@@ -752,20 +693,10 @@
         padding: 24px 20px;
       }
 
-      .hero-meta,
       .profile-grid,
       .links-grid,
       .return-grid {
         grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .timeline-date {
-        white-space: normal;
       }
 
       .hero-image-wrap {
@@ -792,6 +723,22 @@
       .return-link {
         min-height: 170px;
       }
+
+      .top-nav-right {
+        gap: 8px;
+      }
+
+      .language-switcher {
+        gap: 6px;
+      }
+
+      .language-link {
+        min-width: 42px;
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 0.68rem;
+        letter-spacing: 1.2px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -813,6 +760,14 @@
       .hero-image-wrap {
         min-height: 360px;
       }
+
+      .language-link {
+        min-width: 38px;
+        min-height: 38px;
+        padding: 7px 8px;
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+      }
     }
   </style>
 </head>
@@ -823,19 +778,26 @@
     <header class="top-nav">
       <div class="brand">Shambhala Saga</div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="top-nav-right">
+        <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
+          <a href="index.html" class="nav-pill">Inicio</a>
+          <a href="explorar.html" class="nav-pill">Explorar</a>
+          <a href="personajes.html" class="nav-pill">Personajes</a>
+          <a href="corazon.html" class="nav-pill">Corazón</a>
+          <a href="explorar.html#libros" class="nav-pill">Libros</a>
+        </nav>
 
-      <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
-        <a href="index.html" class="nav-pill">Inicio</a>
-        <a href="explorar.html" class="nav-pill">Explorar</a>
-        <a href="personajes.html" class="nav-pill">Personajes</a>
-        <a href="corazon.html" class="nav-pill">Corazón</a>
-        <a href="explorar.html#libros" class="nav-pill">Libros</a>
-      </nav>
+        <div class="language-switcher" aria-label="Selector de idioma">
+          <a href="/pavani.html" class="language-link active" lang="es">ES</a>
+          <a href="/en/pavani.html" class="language-link" lang="en">EN</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
     <main>
@@ -851,7 +813,7 @@
 
           <p class="hero-description">
             En Shambhala, Pavani ocupa un lugar íntimo y decisivo. Su presencia no necesita imponerse para transformar lo que toca. Trabaja en un campo que mira hacia la vida recuperada, hacia lo que parecía perdido y vuelve a abrirse paso. Hay en ella serenidad, inteligencia y una profundidad emocional que cambia el eje humano de la historia.
-          </p>       
+          </p>
         </div>
 
         <div class="hero-image-wrap">
@@ -860,7 +822,7 @@
       </section>
 
       <section class="content">
-        <article class="section-card">           
+        <article class="section-card">
           <h2 class="section-title">Perfil</h2>
           <p class="section-text">
             Bióloga especializada en Biología de la Resurrección, Pavani integra el núcleo científico de Shambhala desde un campo dedicado al regreso de especies y a los procesos de reactivación genética. Su trabajo dentro del laboratorio orbital la sitúa en una zona decisiva del proyecto: aquella donde la ciencia no solo amplía lo posible, sino que también enfrenta las consecuencias de lo que la humanidad ha perdido. Con una formación rigurosa y una mirada profundamente conectada con el mundo vivo, Pavani encarna una forma de conocimiento orientada no al dominio, sino a la restauración.
@@ -898,7 +860,6 @@
             </div>
           </div>
         </article>
-       
 
         <article class="section-card">
           <h2 class="section-title">Explorar más personajes</h2>
@@ -910,7 +871,7 @@
             <a class="character-link" href="calisto.html">
               <img class="character-image" src="images/calisto.jpg" alt="Calisto" />
               <div class="character-overlay"></div>
-              <div class="character-content">                
+              <div class="character-content">
                 <strong>Calisto</strong>
                 <span>Física · Tecnología de Motores de Curvatura</span>
                 <span class="character-cta">Entrar al perfil</span>
@@ -920,7 +881,7 @@
             <a class="character-link" href="diana.html">
               <img class="character-image" src="images/diana.jpg" alt="Diana" />
               <div class="character-overlay"></div>
-              <div class="character-content">               
+              <div class="character-content">
                 <strong>Diana</strong>
                 <span>Científica jefe · Gestión de tecnología e innovación</span>
                 <span class="character-cta">Entrar al perfil</span>
@@ -930,7 +891,7 @@
             <a class="character-link" href="naomi.html">
               <img class="character-image" src="images/naomi.jpg" alt="Naomi" />
               <div class="character-overlay"></div>
-              <div class="character-content">                
+              <div class="character-content">
                 <strong>Naomi</strong>
                 <span>Bióloga · Reproducción partenogénica de mamíferos</span>
                 <span class="character-cta">Entrar al perfil</span>
