@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shambhala Saga</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -48,6 +48,53 @@
       padding: var(--hero-padding-top) 5vw var(--hero-padding-bottom);
       overflow: hidden;
       isolation: isolate;
+    }
+
+    .language-switcher {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      display: flex;
+      gap: 8px;
+      z-index: 9;
+    }
+
+    .language-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 52px;
+      padding: 9px 14px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.88);
+      font-size: 0.72rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,170,255,0.35);
+      background: rgba(0,0,0,0.34);
+      backdrop-filter: blur(8px);
+      box-shadow:
+        0 0 10px rgba(0,170,255,0.12),
+        inset 0 0 10px rgba(0,170,255,0.05);
+      transition: 0.3s ease;
+    }
+
+    .language-link:hover {
+      color: #00aaff;
+      border-color: #00aaff;
+      box-shadow:
+        0 0 18px rgba(0,170,255,0.45),
+        inset 0 0 10px rgba(0,170,255,0.08);
+    }
+
+    .language-link.active {
+      color: #00aaff;
+      border-color: #00aaff;
+      background: rgba(0,110,180,0.16);
+      box-shadow:
+        0 0 20px rgba(0,170,255,0.35),
+        inset 0 0 14px rgba(0,170,255,0.08);
+      pointer-events: none;
     }
 
     .ship-wrap {
@@ -240,7 +287,6 @@
       100% { left: 100%; }
     }
 
-    /* TV / pantallas muy grandes */
     @media (min-width: 1700px) {
       :root {
         --hero-padding-top: 4.5vh;
@@ -280,7 +326,6 @@
       }
     }
 
-    /* desktop grande */
     @media (min-width: 1400px) and (max-width: 1699px) {
       :root {
         --hero-padding-top: 5vh;
@@ -308,7 +353,6 @@
       }
     }
 
-    /* laptop / desktop normal */
     @media (min-width: 1101px) and (max-width: 1399px) {
       :root {
         --hero-padding-top: 5.5vh;
@@ -399,6 +443,11 @@
         letter-spacing: 1.2px;
         padding: 9px 12px;
       }
+
+      .language-switcher {
+        top: 18px;
+        right: 18px;
+      }
     }
 
     @media (max-width: 560px) {
@@ -444,6 +493,19 @@
         padding: 16px 18px;
         font-size: 0.78rem;
         letter-spacing: 1.7px;
+      }
+
+      .language-switcher {
+        top: 14px;
+        right: 14px;
+        gap: 6px;
+      }
+
+      .language-link {
+        min-width: 46px;
+        padding: 8px 11px;
+        font-size: 0.66rem;
+        letter-spacing: 1.3px;
       }
 
       .visit-counter-wrap {
@@ -512,8 +574,13 @@
 
 <body>
   <div class="hero">
+    <div class="language-switcher" aria-label="Selector de idioma">
+      <a href="/index.html" class="language-link active" lang="es">ES</a>
+      <a href="/en/index.html" class="language-link" lang="en">EN</a>
+    </div>
+
     <div class="ship-wrap" id="shipWrap">
-      <img src="images/hero.jpg" alt="Nave Shambhala">
+      <img src="/images/hero.jpg" alt="Nave Shambhala">
     </div>
 
     <canvas id="stars"></canvas>
