@@ -106,11 +106,10 @@
     .topbar-inner {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      min-height: 74px;
+      min-height: 82px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
       position: relative;
     }
 
@@ -124,6 +123,7 @@
       font-family: var(--font-display);
       font-size: 0.84rem;
       flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .brand-dot {
@@ -133,6 +133,67 @@
       background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
       box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
       flex: 0 0 auto;
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav a,
+    .language-switch a {
+      min-height: 46px;
+      border: 1px solid rgba(138, 216, 255, 0.16);
+      border-radius: 999px;
+      color: var(--text);
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .nav a {
+      padding: 10px 18px;
+      font-size: 0.95rem;
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .language-switch a {
+      min-width: 48px;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.active,
+    .language-switch a:hover,
+    .language-switch a:focus-visible,
+    .language-switch a.active {
+      color: var(--text);
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
+      outline: none;
     }
 
     .menu-toggle {
@@ -187,31 +248,6 @@
 
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(0) rotate(-45deg);
-    }
-
-    .nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .nav a {
-      padding: 10px 16px;
-      border: 1px solid rgba(138, 216, 255, 0.16);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: 0.25s ease;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible,
-    .nav a.active {
-      color: var(--text);
-      border-color: rgba(138, 216, 255, 0.35);
-      box-shadow: var(--glow);
-      outline: none;
     }
 
     .page {
@@ -355,10 +391,10 @@
     }
 
     .intro-grid {
-  display: block;
-  position: relative;
-  z-index: 1;
-}
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
 
     .intro-copy {
       min-width: 0;
@@ -490,22 +526,6 @@
       max-width: 86%;
     }
 
-    .presence-tag {
-      display: inline-block;
-      width: fit-content;
-      padding: 7px 12px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
-      font-family: var(--font-display);
-    }
-
     .presence-card h3 {
       margin: 0 0 12px;
       font-size: clamp(1.7rem, 3vw, 2.5rem);
@@ -619,14 +639,6 @@
     }
 
     @media (max-width: 1100px) {
-      .intro-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .intro-meta {
-        margin-top: 12px;
-      }
-
       .capabilities-grid,
       .related-grid,
       .bottom-nav {
@@ -643,7 +655,7 @@
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       .topbar-inner,
       .page,
       .site-footer {
@@ -651,11 +663,22 @@
       }
 
       .topbar-inner {
-        min-height: 72px;
+        min-height: 76px;
       }
 
       .menu-toggle {
         display: inline-flex;
+      }
+
+      .topbar-right {
+        gap: 10px;
+      }
+
+      .language-switch a {
+        min-height: 42px;
+        min-width: 44px;
+        padding: 9px 12px;
+        font-size: 0.74rem;
       }
 
       .nav {
@@ -731,6 +754,26 @@
         text-align: left;
       }
     }
+
+    @media (max-width: 520px) {
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+      }
+
+      .topbar-inner {
+        gap: 14px;
+      }
+
+      .language-switch {
+        gap: 8px;
+      }
+
+      .language-switch a {
+        min-width: 42px;
+        padding: 8px 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -742,19 +785,26 @@
           <span>Shambhala Saga</span>
         </a>
 
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        <div class="topbar-right">
+          <nav class="nav" id="siteMenu" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="explorar.html">Explorar</a>
+            <a href="personajes.html">Personajes</a>
+            <a href="corazon.html">Corazón</a>
+            <a href="explorar.html#libros">Libros</a>
+          </nav>
 
-        <nav class="nav" id="siteMenu" aria-label="Navegación principal">
-          <a href="index.html">Inicio</a>
-          <a href="explorar.html">Explorar</a>
-          <a href="personajes.html">Personajes</a>
-          <a href="corazon.html">Corazón</a>
-          <a href="explorar.html#libros">Libros</a>
-        </nav>
+          <div class="language-switch" aria-label="Selector de idioma">
+            <a href="annie.html" class="active" lang="es" aria-current="page">ES</a>
+            <a href="en/annie.html" lang="en">EN</a>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -799,8 +849,8 @@
               Lo que se ve de Annie pertenece a la vida diaria, pero su alcance es más profundo: enlaza conexiones, memoria, procesamiento y cercanía en una misma presencia distribuida. Esa constancia hace que no se sienta lejana, sino próxima, como una inteligencia que acompaña desde dentro la convivencia.
             </p>
           </div>
-
-          </section>
+        </div>
+      </section>
 
       <section class="section" aria-labelledby="annie-presence-title">
         <div class="section-header">
@@ -809,11 +859,11 @@
         </div>
 
         <p>
-         Annie forma parte del núcleo funcional de Shambhala a través de una actividad continua de asistencia, monitoreo y articulación interna. Sigue variables personales y sistémicas en tiempo real, detecta desajustes y contribuye a sostener la salud, la seguridad y la estabilidad de entornos altamente complejos. También participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, fortaleciendo una convivencia basada en confianza, ética y cuidado mutuo.
+          Annie forma parte del núcleo funcional de Shambhala a través de una actividad continua de asistencia, monitoreo y articulación interna. Sigue variables personales y sistémicas en tiempo real, detecta desajustes y contribuye a sostener la salud, la seguridad y la estabilidad de entornos altamente complejos. También participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, fortaleciendo una convivencia basada en confianza, ética y cuidado mutuo.
         </p>
 
         <p>
-          Su arquitectura neurocuántica le permite cruzar capas simultáneas de información, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una lectura dinámica. Annie no solo archiva datos: aprende ritmos, hábitos, tensiones y modos de convivencia, construyendo una memoria relacional que vuelve sus respuestas cada vez más ajustadas a la comunidad. Activa, distribuida e integrada, su inteligencia no se limita a la técnica, sino que participa de manera decisiva en el equilibrio cotidiano de Arcadia y Shambhala
+          Su arquitectura neurocuántica le permite cruzar capas simultáneas de información, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una lectura dinámica. Annie no solo archiva datos: aprende ritmos, hábitos, tensiones y modos de convivencia, construyendo una memoria relacional que vuelve sus respuestas cada vez más ajustadas a la comunidad. Activa, distribuida e integrada, su inteligencia no se limita a la técnica, sino que participa de manera decisiva en el equilibrio cotidiano de Arcadia y Shambhala.
         </p>
 
         <div class="capabilities-grid">
@@ -873,7 +923,7 @@
           <a class="presence-card" href="pavani.html">
             <img class="presence-image" src="images/pavani.jpg" alt="Pavani" />
             <div class="presence-overlay"></div>
-            <div class="presence-content">              
+            <div class="presence-content">
               <h3>Pavani</h3>
               <p>Bióloga · Biología de la Resurrección</p>
               <span class="presence-link">Entrar al perfil</span>
@@ -883,7 +933,7 @@
           <a class="presence-card" href="naomi.html">
             <img class="presence-image" src="images/naomi.jpg" alt="Naomi" />
             <div class="presence-overlay"></div>
-            <div class="presence-content">              
+            <div class="presence-content">
               <h3>Naomi</h3>
               <p>Bióloga · Reproducción partenogénica de mamíferos</p>
               <span class="presence-link">Entrar al perfil</span>
@@ -907,7 +957,7 @@
           </a>
 
           <a class="bottom-link" href="explorar.html">
-            <img src="images/world.jpg" alt="El mundo" />
+            <img src="images/world.jpg" alt="Explorar" />
             <div class="bottom-content">
               <span class="bottom-title">Explorar</span>
             </div>
@@ -958,21 +1008,21 @@
 
     menuLinks.forEach(link => {
       link.addEventListener("click", () => {
-        if (window.innerWidth <= 760) {
+        if (window.innerWidth <= 900) {
           closeMenu();
         }
       });
     });
 
     document.addEventListener("click", event => {
-      if (window.innerWidth > 760) return;
+      if (window.innerWidth > 900) return;
       if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMenu();
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 760) {
+      if (window.innerWidth > 900) {
         closeMenu();
       }
     });
