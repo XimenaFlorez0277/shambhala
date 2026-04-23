@@ -106,10 +106,10 @@
     .topbar-inner {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      min-height: 74px;
+      min-height: 82px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 24px;
       position: relative;
     }
 
@@ -123,6 +123,7 @@
       font-family: var(--font-display);
       font-size: 0.84rem;
       flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .brand-dot {
@@ -134,62 +135,58 @@
       flex: 0 0 auto;
     }
 
-    .nav {
-      margin-left: 40px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .nav a {
-      padding: 10px 16px;
-      border: 1px solid rgba(138, 216, 255, 0.16);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      transition: 0.25s ease;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible,
-    .nav a.active {
-      color: var(--text);
-      border-color: rgba(138, 216, 255, 0.35);
-      box-shadow: var(--glow);
-      outline: none;
-    }
-
-    .topbar-controls {
+    .topbar-right {
+      margin-left: auto;
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-left: auto;
+      min-width: 0;
     }
 
-    .language-switch {
+    .nav {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
+      gap: 10px;
     }
 
+    .nav a,
     .language-switch a {
-      padding: 10px 14px;
-      min-height: 42px;
+      min-height: 46px;
       border: 1px solid rgba(138, 216, 255, 0.16);
       border-radius: 999px;
-      color: var(--muted);
-      font-size: 0.76rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      color: var(--text);
       transition: 0.25s ease;
       background: rgba(255,255,255,0.02);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      white-space: nowrap;
     }
 
+    .nav a {
+      padding: 10px 18px;
+      font-size: 0.95rem;
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .language-switch a {
+      min-width: 48px;
+      padding: 10px 16px;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.active,
     .language-switch a:hover,
     .language-switch a:focus-visible,
     .language-switch a.active {
@@ -658,7 +655,7 @@
       }
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 900px) {
       .topbar-inner,
       .page,
       .site-footer {
@@ -666,26 +663,25 @@
       }
 
       .topbar-inner {
-        min-height: 72px;
-        justify-content: space-between;
+        min-height: 76px;
       }
 
       .menu-toggle {
         display: inline-flex;
       }
 
-      .topbar-controls {
+      .topbar-right {
         gap: 10px;
       }
 
       .language-switch a {
-        padding: 9px 11px;
-        min-height: 40px;
-        font-size: 0.72rem;
+        min-height: 42px;
+        min-width: 44px;
+        padding: 9px 12px;
+        font-size: 0.74rem;
       }
 
       .nav {
-        margin-left: 0;
         position: absolute;
         top: calc(100% + 12px);
         right: 0;
@@ -758,6 +754,26 @@
         text-align: left;
       }
     }
+
+    @media (max-width: 520px) {
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+      }
+
+      .topbar-inner {
+        gap: 14px;
+      }
+
+      .language-switch {
+        gap: 8px;
+      }
+
+      .language-switch a {
+        min-width: 42px;
+        padding: 8px 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -769,15 +785,15 @@
           <span>Shambhala Saga</span>
         </a>
 
-        <nav class="nav" id="siteMenu" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="explorar.html">Explore</a>
-          <a href="personajes.html">Characters</a>
-          <a href="corazon.html">Heart</a>
-          <a href="explorar.html#libros">Books</a>
-        </nav>
+        <div class="topbar-right">
+          <nav class="nav" id="siteMenu" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="explorar.html">Explore</a>
+            <a href="personajes.html">Characters</a>
+            <a href="corazon.html">Heart</a>
+            <a href="explorar.html#libros">Books</a>
+          </nav>
 
-        <div class="topbar-controls">
           <div class="language-switch" aria-label="Language selector">
             <a href="../annie.html" lang="es">ES</a>
             <a href="annie.html" class="active" lang="en" aria-current="page">EN</a>
@@ -992,21 +1008,21 @@
 
     menuLinks.forEach(link => {
       link.addEventListener("click", () => {
-        if (window.innerWidth <= 760) {
+        if (window.innerWidth <= 900) {
           closeMenu();
         }
       });
     });
 
     document.addEventListener("click", event => {
-      if (window.innerWidth > 760) return;
+      if (window.innerWidth > 900) return;
       if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMenu();
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 760) {
+      if (window.innerWidth > 900) {
         closeMenu();
       }
     });
