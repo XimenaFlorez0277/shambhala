@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Premios y reconocimientos | Saga Shambhala</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
   <meta
     name="description"
     content="Premios verificados, reconocimientos y menciones editoriales de las ediciones originales en inglés de Callisto 2.0 y La Flecha de Cupido dentro del universo de la Saga Shambhala."
@@ -92,14 +88,20 @@
       left: 0;
       width: 100%;
       z-index: 20;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
       padding: 18px 5%;
       background: linear-gradient(to bottom, rgba(2, 5, 12, 0.90), rgba(2, 5, 12, 0.24));
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .topbar-inner {
+      width: min(var(--max-width), 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 52px;
+      position: relative;
     }
 
     .brand {
@@ -109,6 +111,54 @@
       text-transform: uppercase;
       color: #dff4ff;
       white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-left: auto;
+      align-items: center;
+    }
+
+    .nav-links a,
+    .language-switch a {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(236, 245, 255, 0.84);
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .language-switch a:hover,
+    .language-switch a.active {
+      border-color: rgba(111, 195, 255, 0.42);
+      color: #ffffff;
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       flex-shrink: 0;
     }
 
@@ -164,31 +214,6 @@
 
     .menu-toggle.active span:nth-child(3) {
       transform: translateY(0) rotate(-45deg);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .nav-links a {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 10px 14px;
-      border: 1px solid rgba(111, 195, 255, 0.18);
-      background: rgba(255, 255, 255, 0.03);
-      color: rgba(236, 245, 255, 0.84);
-      transition: 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      border-color: rgba(111, 195, 255, 0.42);
-      color: #ffffff;
-      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
-      transform: translateY(-1px);
     }
 
     .section {
@@ -680,8 +705,8 @@
       .nav-links {
         position: absolute;
         top: calc(100% + 10px);
-        left: 6%;
-        right: 6%;
+        left: 0;
+        right: 0;
         display: none;
         flex-direction: column;
         gap: 10px;
@@ -751,21 +776,30 @@
 
   <div class="page-shell">
     <header class="topbar">
-      <div class="brand">Saga Shambhala</div>
+      <div class="topbar-inner">
+        <div class="brand">Saga Shambhala</div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="explorar.html">Explorar</a>
+          <a href="personajes.html">Personajes</a>
+          <a href="corazon.html">Corazón</a>
+          <a href="galeria.html">Galería</a>
+        </nav>
 
-      <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="explorar.html">Explorar</a>
-        <a href="personajes.html">Personajes</a>
-        <a href="corazon.html">Corazón</a>
-        <a href="galeria.html">Galería</a>
-      </nav>
+        <div class="topbar-controls">
+          <div class="language-switch" aria-label="Selector de idioma">
+            <a href="premios.html" class="active" lang="es" aria-current="page">ES</a>
+            <a href="en/premios.html" lang="en">EN</a>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </header>
 
     <main>
