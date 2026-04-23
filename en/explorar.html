@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorar — Shambhala Saga </title>
+  <title>Explore — Shambhala Saga</title>
+  <link rel="icon" type="image/png" href="/images/logo.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -95,6 +91,53 @@
       flex-shrink: 0;
     }
 
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+      min-width: 0;
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .language-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 50px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(236, 245, 255, 0.84);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+      text-align: center;
+    }
+
+    .language-link:hover {
+      border-color: rgba(111, 195, 255, 0.45);
+      color: #ffffff;
+      box-shadow: 0 0 24px rgba(67, 161, 255, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .language-link.active {
+      border-color: rgba(111, 195, 255, 0.45);
+      color: #ffffff;
+      box-shadow: 0 0 24px rgba(67, 161, 255, 0.16);
+      background: rgba(111, 195, 255, 0.12);
+      pointer-events: none;
+    }
+
     .menu-toggle {
       display: none;
       width: 48px;
@@ -107,6 +150,7 @@
       transition: 0.3s ease;
       padding: 0;
       position: relative;
+      flex-shrink: 0;
     }
 
     .menu-toggle:hover {
@@ -652,7 +696,6 @@
 
       .menu-toggle {
         display: inline-flex;
-        flex-shrink: 0;
       }
 
       .nav-links {
@@ -790,6 +833,17 @@
         right: 20px;
         bottom: 18px;
       }
+
+      .language-switcher {
+        gap: 6px;
+      }
+
+      .language-link {
+        min-width: 46px;
+        min-height: 40px;
+        padding: 9px 12px;
+        font-size: 0.68rem;
+      }
     }
 
     @media (max-width: 520px) {
@@ -858,6 +912,10 @@
         left: 4.5%;
         right: 4.5%;
       }
+
+      .topbar-right {
+        gap: 8px;
+      }
     }
 
     @media (max-width: 900px), (hover: none) and (pointer: coarse) {
@@ -879,181 +937,183 @@
 
   <div class="page-shell">
     <header class="topbar">
-      <div class="brand">Shambhala Saga </div>
+      <div class="brand">Shambhala Saga</div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="topbar-right">
+        <nav class="nav-links" id="siteMenu">
+          <a href="index.html">Home</a>
+          <a href="personajes.html">Characters</a>
+          <a href="corazon.html">Heart</a>
+          <a href="#books">Books</a>
+          <a href="premios.html">Awards</a>
+          <a href="galeria.html">Gallery</a>
+        </nav>
 
-      <nav class="nav-links" id="siteMenu">
-        <a href="index.html">Inicio</a>
-        <a href="personajes.html">Personajes</a>
-        <a href="corazon.html">Corazón</a>
-        <a href="#libros">Libros</a>
-        <a href="premios.html">Premios</a>
-        <a href="galeria.html">Galería</a>
-      </nav>
+        <div class="language-switcher" aria-label="Language selector">
+          <a href="/explorar.html" class="language-link" lang="es">ES</a>
+          <a href="/en/explorar.html" class="language-link active" lang="en">EN</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
     </header>
 
-    <section class="section section-first fade-up" id="universo">
+    <section class="section section-first fade-up" id="universe">
       <div class="section-header">
-        <h2>Un Universo en Expansión</h2>
+        <h2>A Universe in Expansion</h2>
         <p>
-          La Saga Shambhala no se construye como una ciencia ficción fría ni distante. Aquí, la exploración espacial convive con vínculos intensos, comunidades utópicas, decisiones imposibles y preguntas profundas sobre quiénes somos.
+          The Shambhala Saga is not cold or distant science fiction. Here, space exploration exists alongside intense human bonds, utopian communities, impossible choices, and profound questions about who we are.
         </p>
       </div>
 
       <div class="intro-grid">
         <div class="panel image-panel">
-          <img src="images/world.jpg" alt="El universo de Shambhala" />
+          <img src="/images/world.jpg" alt="The universe of Shambhala" />
           <div class="image-caption">
-            <h3>Más Allá del Planeta</h3>
+            <h3>Beyond the Planet</h3>
             <p>
-              Estaciones orbitales, colonias lunares y viajes warp hacia mundos desconocidos. En Shambhala, la tecnología empuja los límites de lo humano sin soltar jamás el hilo de la emoción.
+              Orbital stations, lunar colonies, and warp travel to unknown worlds. In Shambhala, technology stretches the limits of humanity, yet emotion remains its center—shaping every discovery, every connection, and every step into the unknown.
             </p>
           </div>
         </div>
 
         <div class="panel text-panel">
           <div class="line">
-            <h3>Ciencia con Pulso Humano</h3>
+            <h3>Science with a Human Pulse</h3>
             <p>
-              La física, la biología, la ingeniería, la filosofía y la inteligencia artificial no son solo el escenario; son el motor de la historia.
+              Physics, biology, engineering, philosophy, and artificial intelligence are not merely part of the setting; they are woven into the characters’ choices, relationships, and ways of understanding the universe.
             </p>
           </div>
 
           <div class="line">
-            <h3>Comunidades Imaginadas</h3>
+            <h3>Imagined Communities</h3>
             <p>
-              Shambhala imagina espacios donde las mujeres crean nuevas formas de convivencia, conocimiento, cuidado y resistencia.
+              Shambhala imagines spaces where women create new forms of community shaped by knowledge, care, solidarity, and resistance.
             </p>
           </div>
 
           <div class="line">
-            <h3>Amor, Pérdida y Transformación</h3>
+            <h3>Love, Loss, and Transformation</h3>
             <p>
-              Cada libro expande el universo mientras profundiza en la intimidad de sus personajes: sus anhelos, sus duelos y los descubrimientos que transforman su propia esencia.
+              Each book expands the universe while drawing us deeper into the inner lives of its characters: their desires, their connections, and the discoveries that transform them from within.
             </p>
           </div>
 
           <div class="line">
-            <h3>Una Presencia Distinta</h3>
+            <h3>A Different Presence</h3>
             <p>
-              Annie no es un personaje convencional. Su existencia altera la frontera entre compañía, memoria y vínculo.
+              Annie is not a conventional character. Her presence reshapes the boundaries between companionship, memory, and connection.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section fade-up" id="libros">
+    <section class="section fade-up" id="books">
       <div class="section-header">
-        <div class="section-kicker">Constelación narrativa</div>
-        <h2>Los cuatro libros de la saga</h2>
+        <div class="section-kicker">Narrative Constellation</div>
+        <h2>The Four Books of the Saga</h2>
         <p>
-          Cada libro abre una fase distinta del universo: descubrimiento, resistencia, expansión y horizonte. Juntos forman una trayectoria emocional y cósmica que crece con cada paso.
+          Each book opens onto a different phase of the journey: discovery, resistance, expansion, and horizon. Together, they form an emotional and cosmic arc that widens with every step.
         </p>
       </div>
 
       <div class="books-grid">
         <article class="book-card">
           <div class="book-cover">
-            <img src="images/explorar/callisto-2-0.jpg" alt="Portada de Calisto 2.0" />
+            <img src="/images/explorar/callisto-2-0.jpg" alt="Cover of Callisto 2.0" />
           </div>
 
           <div class="book-content">
-            <div class="book-label">Libro 1</div>
-            <h3>Calisto 2.0</h3>
-            <div class="book-subtitle">Descubrimiento y renacimiento</div>
+            <div class="book-label">Book 1</div>
+            <h3>Callisto 2.0</h3>
+            <div class="book-subtitle">Discovery and Belonging</div>
 
             <p class="book-body">
-              Estación Espacial Shambhala, 2097. Calisto Collins, una física brillante y solitaria, recibe una invitación inesperada para unirse a Portal al Porvenir, la fundación que impulsa una investigación revolucionaria entre la Luna y la estación orbital Shambhala. Lo que al principio parece la oportunidad profesional de su vida pronto se transforma en algo mucho más profundo: una comunidad de mujeres donde la ciencia, la cooperación y la calidez humana le ofrecen, por primera vez, un verdadero sentido de pertenencia.
+              Shambhala Space Station, 2097. Solitary physicist Callisto Collins receives an unexpected invitation to join Portal al Porvenir, a foundation at the forefront of visionary scientific research. What at first seems like the professional opportunity of a lifetime soon becomes something far deeper: a women-led scientific community where brilliance, cooperation, and human warmth offer her something she has never truly known—a sense of belonging.
             </p>
 
             <p class="book-body">
-              Mientras se adentra en el desarrollo de una tecnología de distorsión capaz de alterar el destino de la humanidad, Calisto también deberá enfrentarse a sí misma, a sus heridas y a la posibilidad de que el futuro que la espera sea mucho más grande de lo que jamás imaginó.
+              As her work on warp technology moves closer to a breakthrough, Callisto is drawn ever deeper into the Foundation’s world—its ideals, its mysteries, and the relationships that begin to reshape her life, revealing a future she never thought possible.
+            </p>
+          </div>
+        </article>
+
+        <article class="book-card">
+          <div class="book-cover">
+            <img src="/images/explorar/la-flecha-de-cupido.jpg" alt="Cover of Cupid’s Arrow" />
+          </div>
+
+          <div class="book-content">
+            <div class="book-label">Book 2</div>
+            <h3>Cupid’s Arrow</h3>
+            <div class="book-subtitle">Absence, Resistance, and Resolve</div>
+
+            <p class="book-body">
+              As Shambhala ventures into the unknown, Pavani remains in Arcadia, her heart suspended between Callisto’s absence and the threat gathering over the world she has come to call home. What begins as a painful farewell soon becomes a full-scale crisis: the Moon comes under military pressure, the community is watched and tested, and the women left behind must learn to resist with intelligence, dignity, and strength.
+            </p>
+
+            <p class="book-body">
+              As fear spreads and the deeper forces behind the crisis begin to emerge, Pavani is changed as well. In the midst of uncertainty, she finds a steadier voice, a deeper courage, and the resolve to step fully into her own place within the struggle unfolding around her.
             </p>
 
             <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> pertenencia, valentía, apertura y transformación interior.</p>
-              <p><strong>Escala narrativa:</strong> el ingreso al universo de Shambhala a través de Cali.</p>
+              <p><strong>Emotional core:</strong> distance, resistance, strength, and resolve.</p>
+              <p><strong>Narrative scale:</strong> a more intimate perspective that deepens the saga’s political and emotional tension.</p>
             </div>
           </div>
         </article>
 
         <article class="book-card">
           <div class="book-cover">
-            <img src="images/explorar/la-flecha-de-cupido.jpg" alt="Portada de La Flecha de Cupido" />
+            <img src="/images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Cover of The Orange Light of an Alien Sun" />
           </div>
 
           <div class="book-content">
-            <div class="book-label">Libro 2</div>
-            <h3>La Flecha de Cupido</h3>
-            <div class="book-subtitle">Ausencia, resistencia y claridad</div>
+            <div class="book-label">Book 3</div>
+            <h3>The Orange Light of an Alien Sun</h3>
+            <div class="book-subtitle">Wonder and New Beginnings</div>
 
             <p class="book-body">
-              Mientras Shambhala se adentra en lo desconocido, Pavani permanece en Arcadia con el corazón suspendido entre la ausencia de Calisto y la amenaza que se cierne sobre todo lo que ama. Lo que parecía una despedida dolorosa pronto se convierte en una crisis de gran escala: la Luna queda bajo presión militar, la comunidad es vigilada y puesta a prueba, y las mujeres que se quedan atrás deben aprender a resistir con inteligencia, dignidad y fortaleza.
+              Beyond the Solar System, Callisto and the crew of Shambhala arrive in the Amaterasu system and enter orbit around Bachué, a world filled with beauty, promise, and unanswered questions. What opens before them is not simply a planet to explore, but the daunting and exhilarating possibility of beginning again.
             </p>
 
             <p class="book-body">
-              A medida que la verdad comienza a abrirse paso entre conspiraciones, miedo y pérdidas, Pavani también cambia. En medio de la incertidumbre, descubre una voz más firme, una valentía inesperada y una claridad emocional que ya no le permite esconderse detrás de la espera.
+              Yet even in the wonder of discovery, absence remains. Separated from Pavani, marked by Naomi’s absence, and far from everything she left behind, Callisto must learn to inhabit a future as uncertain as it is extraordinary. As science becomes a tool for survival, creation, and hope, it also becomes the language through which these women attempt to build a new life.
             </p>
 
             <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> distancia, resistencia, fortaleza y claridad emocional.</p>
-              <p><strong>Escala narrativa:</strong> una mirada más íntima que amplía la tensión política y emocional de la saga.</p>
+              <p><strong>Emotional core:</strong> wonder, loss, creation, and belonging.</p>
+              <p><strong>Narrative scale:</strong> the saga opens onto another world without losing its human intimacy.</p>
             </div>
           </div>
         </article>
 
         <article class="book-card">
           <div class="book-cover">
-            <img src="images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Portada de La Luz Naranja de un Sol Alienígena" />
+            <img src="/images/explorar/horizontes-infinitos.jpg" alt="Cover of Infinite Horizons" />
           </div>
 
           <div class="book-content">
-            <div class="book-label">Libro 3</div>
-            <h3>La Luz Naranja de un Sol Alienígena</h3>
-            <div class="book-subtitle">Desarraigo y nueva siembra</div>
+            <div class="book-label">Book 4</div>
+            <h3>Infinite Horizons</h3>
+            <div class="book-subtitle">Reunion and Resolve</div>
 
             <p class="book-body">
-              Más allá del Sistema Solar, bajo la luz extraña de una estrella nueva, Calisto y la tripulación de Shambhala llegan a Bachué, un planeta lleno de promesa, belleza y preguntas. Lo que encuentran allí no es solo un territorio por explorar, sino la posibilidad vertiginosa de comenzar de nuevo.
+              When Callisto returns to the Solar System on a covert mission, her reunion with Pavani comes not in a moment of peace, but in the midst of danger. The persecution of the Foundation has deepened, the Moon is under growing military control, and what begins as a carefully planned operation soon becomes a fight to stay one step ahead.
             </p>
 
             <p class="book-body">
-              Pero la maravilla del descubrimiento convive con una ausencia profunda: Calisto carga la distancia de Pavani, la falta de Naomi, el dolor de todo lo que dejó atrás y la incertidumbre de levantar un hogar en un mundo ajeno, donde nada está asegurado. Mientras la ciencia se convierte en una herramienta de supervivencia, creación y esperanza, también se vuelve el lenguaje con el que estas mujeres intentan fundar una nueva vida.
-            </p>
-
-            <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> desarraigo, esperanza, creación y pertenencia.</p>
-              <p><strong>Escala narrativa:</strong> la saga se abre a otro mundo sin perder su intimidad humana.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="book-card">
-          <div class="book-cover">
-            <img src="images/explorar/horizontes-infinitos.jpg" alt="Portada de Horizontes infinitos" />
-          </div>
-
-          <div class="book-content">
-            <div class="book-label">Libro 4</div>
-            <h3>Horizontes infinitos</h3>
-            <div class="book-subtitle">Reencuentro y expansión</div>
-
-            <p class="book-body">
-              Cuando Calisto regresa al Sistema Solar con una misión decisiva, el reencuentro con Pavani no ocurre en un momento de calma, sino en medio del caos. La persecución contra la Fundación se ha intensificado, la Luna vive bajo una presión cada vez más asfixiante y lo que debía ser una operación precisa pronto se transforma en una huida desesperada.
-            </p>
-
-            <p class="book-body">
-              Juntas al fin, Calisto y Pavani deberán atravesar un entorno hostil, improvisar rutas de escape, ocultarse de un sistema que busca controlarlo todo y aferrarse la una a la otra mientras el futuro vuelve a tambalearse bajo sus pies. En medio del peligro, ambas encontrarán también un espacio para la lucidez, la madurez y la elección consciente del camino que desean seguir.
+              At last together, Callisto and Pavani must navigate a world of surveillance, shifting loyalties, and uncertain refuge, holding fast to one another as the future opens before them in unexpected ways. In the midst of danger, they find not only love, but a new sense of clarity, maturity, and the freedom to choose the life they want to build.
             </p>
 
             <div class="book-meta">
-              <p><strong>Núcleo emocional:</strong> reencuentro, madurez, lucidez y elección.</p>
-              <p><strong>Escala narrativa:</strong> un nuevo horizonte expansivo de la saga desde la conciencia y la posibilidad.</p>
+              <p><strong>Emotional core:</strong> reunion, resolve, maturity, and choice.</p>
+              <p><strong>Narrative scale:</strong> a new horizon for the saga, where intimacy and possibility widen together.</p>
             </div>
           </div>
         </article>
@@ -1063,46 +1123,46 @@
     <footer class="page-footer fade-up">
       <div class="page-footer-inner">
         <a href="index.html" class="footer-card">
-          <img src="images/hero.jpg" alt="Inicio" />
-          <span>Inicio</span>
+          <img src="/images/hero.jpg" alt="Home" />
+          <span>Home</span>
         </a>
 
         <a href="explorar.html" class="footer-card">
-          <img src="images/world.jpg" alt="Explorar" />
-          <span>Explorar</span>
+          <img src="/images/world.jpg" alt="Explore" />
+          <span>Explore</span>
         </a>
 
         <a href="corazon.html" class="footer-card corazon-card">
-          <img src="images/galeria/susan-ximena-1.jpg" alt="Corazón" />
-          <span>Corazón</span>
+          <img src="/images/galeria/susan-ximena-1.jpg" alt="Heart" />
+          <span>Heart</span>
         </a>
 
         <a href="personajes.html" class="footer-card">
-          <img src="images/personajes.jpg" alt="Personajes" />
-          <span>Personajes</span>
+          <img src="/images/personajes.jpg" alt="Characters" />
+          <span>Characters</span>
         </a>
 
         <a href="premios.html" class="footer-card footer-awards">
           <img
             class="awards-badge"
-            src="images/premios/calisto-2-0-01-international-impact-book-awards.png"
-            alt="Premios"
+            src="/images/premios/calisto-2-0-01-international-impact-book-awards.png"
+            alt="Awards"
           />
-          <span>Premios</span>
+          <span>Awards</span>
         </a>
 
-        <a href="explorar.html#libros" class="footer-card">
-          <img src="images/explorar/callisto-2-0.jpg" alt="Libros" />
-          <span>Libros</span>
+        <a href="explorar.html#books" class="footer-card">
+          <img src="/images/explorar/callisto-2-0.jpg" alt="Books" />
+          <span>Books</span>
         </a>
       </div>
     </footer>
 
     <section class="closing fade-up">
       <div class="closing-box">
-        <h2>Entrar a Shambhala es aceptar la trascendencia</h2>
+        <h2>To Enter Shambhala Is to Embrace Transcendence</h2>
         <p>
-          Una invitación a rebasar los límites del universo. Más que una explicación de aquello que creemos posible, este espacio es una puerta abierta que seduce e invita a descubrir lo que aguarda en el horizonte.
+          An invitation to move beyond the limits of the known universe. More than an idea or a promise, Shambhala is an open door, drawing us onward toward whatever lies beyond the horizon.
         </p>
       </div>
     </section>
@@ -1232,7 +1292,12 @@
 
     document.addEventListener("click", (event) => {
       if (window.innerWidth > 900) return;
-      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+      if (
+        siteMenu &&
+        menuToggle &&
+        !siteMenu.contains(event.target) &&
+        !menuToggle.contains(event.target)
+      ) {
         closeMenu();
       }
     });
