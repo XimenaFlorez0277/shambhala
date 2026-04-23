@@ -1,1 +1,2449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personajes | Shambhala</title>
+  <meta
+    name="description"
+    content="Personajes de Shambhala. Archivo visual del elenco principal y expandido de la saga."
+  />
 
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --topbar-height: 92px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(8, 18, 40, 0.88), #000 42%),
+        #000;
+      color: #fff;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .space-mist {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.10), transparent 22%),
+        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.06), transparent 18%),
+        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.03), transparent 20%);
+      filter: blur(28px);
+      opacity: 0.9;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 48%, rgba(0,0,0,0.14) 74%, rgba(0,0,0,0.50) 100%);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 60;
+      padding: 18px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0.18));
+      backdrop-filter: blur(8px);
+    }
+
+    .brand {
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 2px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.92);
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(0,170,255,0.22);
+      background: rgba(0,0,0,0.18);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      padding: 0;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(0,170,255,0.46);
+      box-shadow: 0 0 22px rgba(0,170,255,0.14);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: rgba(255,255,255,0.92);
+      transition: 0.3s ease;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-links a {
+      font-size: 0.78rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(0,170,255,0.16);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+    }
+
+    .top-links a:hover {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.4);
+      background: rgba(0, 25, 45, 0.26);
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      width: min(1840px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.38fr) minmax(340px, 0.82fr);
+      gap: 30px;
+      align-items: start;
+      padding: calc(var(--topbar-height) + 26px) 0 26px;
+    }
+
+    .hero-copy {
+      padding: 0;
+      max-width: 1040px;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 22px;
+      padding: 12px 18px;
+      border: 1px solid rgba(0,170,255,0.26);
+      color: rgba(146, 222, 255, 0.92);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      width: fit-content;
+      background: rgba(0, 10, 20, 0.12);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: rgba(146, 222, 255, 0.9);
+    }
+
+    h1 {
+      margin: 0 0 20px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #f8fbff;
+      text-shadow:
+        0 0 8px rgba(255,255,255,0.18),
+        0 0 18px rgba(80,170,255,0.08);
+      max-width: 100%;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+
+    .hero-subtitle {
+      max-width: 980px;
+      font-size: 1.03rem;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 28px;
+      text-align: left;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 364px;
+      padding: 18px 28px;
+      border: 1px solid rgba(0,170,255,0.38);
+      background: rgba(0,0,0,0.22);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.84rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+      box-shadow: inset 0 0 18px rgba(0,170,255,0.05);
+    }
+
+    .btn:hover {
+      color: #a7ebff;
+      border-color: rgba(0,170,255,0.72);
+      background: rgba(0, 30, 50, 0.26);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+    }
+
+    .btn.secondary:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-note {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 1100px;
+    }
+
+    .note-box {
+      padding: 20px 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.020), rgba(255,255,255,0.008)),
+        rgba(8, 10, 16, 0.42);
+      backdrop-filter: blur(4px);
+    }
+
+    .note-label {
+      margin-bottom: 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(134, 221, 255, 0.8);
+    }
+
+    .note-box p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+      text-align: left;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      width: 100%;
+      align-self: start;
+      justify-self: end;
+      min-height: 560px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.05),
+        0 0 30px rgba(0,0,0,0.24);
+      isolation: isolate;
+      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .hero-image-wrap:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,170,255,0.40);
+      box-shadow:
+        0 0 28px rgba(0,170,255,0.12),
+        0 0 68px rgba(0,170,255,0.08),
+        inset 0 0 28px rgba(0,170,255,0.08);
+    }
+
+    .hero-image-wrap img {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.03);
+      transition: transform 0.8s ease, filter 0.8s ease;
+      filter: saturate(0.95) brightness(0.84) contrast(1.04);
+      object-position: center top;
+    }
+
+    .hero-image-wrap:hover img {
+      transform: scale(1.08);
+      filter: saturate(1.02) brightness(0.92) contrast(1.06);
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.82) 10%, rgba(0,0,0,0.34) 48%, rgba(0,0,0,0.10) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.01)),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
+    }
+
+    .hero-image-aura {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(0, 190, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 76% 22%, rgba(120, 220, 255, 0.10), transparent 18%);
+    }
+
+    .hero-image-content {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 28px 30px 30px;
+    }
+
+    .hero-image-content .character-tag {
+      margin-bottom: 12px;
+    }
+
+    .hero-image-content h3 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.96);
+      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+    }
+
+    .section {
+      position: relative;
+      z-index: 2;
+      padding: 88px 8%;
+    }
+
+    .section-header {
+      width: 100%;
+      max-width: none;
+      margin-bottom: 42px;
+    }
+
+    .section-kicker {
+      margin-bottom: 16px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(140, 223, 255, 0.82);
+    }
+
+    .section h2 {
+      margin: 0 0 18px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.65rem, 3vw, 2.55rem);
+      line-height: 0.94;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0,150,255,0.12);
+    }
+
+    .section-header p {
+      margin: 0;
+      width: 100%;
+      max-width: none;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.76);
+      font-size: 1rem;
+      text-align: left;
+    }
+
+    .carousel-wrap {
+      position: relative;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+    }
+
+    .featured-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.05),
+        0 0 30px rgba(0,0,0,0.24);
+      transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+      isolation: isolate;
+    }
+
+    .featured-card.large {
+      grid-column: span 6;
+    }
+
+    .featured-card.small {
+      grid-column: span 3;
+      min-height: 390px;
+    }
+
+    .featured-image.image-calisto {
+      object-position: center 16%;
+    }
+
+    .featured-image.image-izumi {
+      object-position: center 24%;
+    }
+
+    .featured-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      z-index: 0;
+      transform: scale(1.03);
+      transition: transform 0.8s ease, filter 0.8s ease;
+      filter: saturate(0.95) brightness(0.84) contrast(1.04);
+    }
+
+    .featured-card:hover .featured-image {
+      transform: scale(1.08);
+      filter: saturate(1.02) brightness(0.92) contrast(1.06);
+    }
+
+    .featured-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.82) 10%, rgba(0,0,0,0.34) 48%, rgba(0,0,0,0.10) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.01)),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
+    }
+
+    .featured-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0,170,255,0.42);
+      box-shadow:
+        0 0 28px rgba(0,170,255,0.14),
+        0 0 70px rgba(0,170,255,0.10),
+        inset 0 0 30px rgba(0,170,255,0.08);
+    }
+
+    .featured-card .character-aura {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .aura-calisto {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(0, 190, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 75% 20%, rgba(120, 220, 255, 0.10), transparent 20%);
+    }
+
+    .aura-pavani {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(170, 140, 255, 0.16), transparent 24%),
+        radial-gradient(circle at 70% 30%, rgba(90, 170, 255, 0.10), transparent 20%);
+    }
+
+    .aura-diana {
+      background:
+        radial-gradient(circle at 25% 22%, rgba(255, 210, 120, 0.14), transparent 20%),
+        radial-gradient(circle at 72% 24%, rgba(255, 130, 180, 0.10), transparent 18%);
+    }
+
+    .aura-izumi {
+      background:
+        radial-gradient(circle at 30% 22%, rgba(120, 255, 220, 0.13), transparent 22%),
+        radial-gradient(circle at 70% 28%, rgba(100, 180, 255, 0.10), transparent 18%);
+    }
+
+    .aura-naomi {
+      background:
+        radial-gradient(circle at 26% 24%, rgba(255, 160, 120, 0.14), transparent 22%),
+        radial-gradient(circle at 74% 30%, rgba(255, 220, 160, 0.08), transparent 18%);
+    }
+
+    .annie-card {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(0, 220, 255, 0.16), transparent 18%),
+        radial-gradient(circle at 80% 24%, rgba(140, 170, 255, 0.14), transparent 20%),
+        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 16%),
+        linear-gradient(145deg, #07101a, #020409 70%);
+      border-color: rgba(120, 230, 255, 0.16);
+    }
+
+    .annie-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.22;
+      background-image:
+        linear-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 220, 255, 0.16) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+    }
+
+    .annie-rings {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .annie-rings::before,
+    .annie-rings::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(120, 230, 255, 0.25);
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(0, 200, 255, 0.08);
+    }
+
+    .annie-rings::before {
+      width: 190px;
+      height: 190px;
+      top: 18%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .annie-rings::after {
+      width: 290px;
+      height: 290px;
+      top: 8%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .annie-core {
+      position: absolute;
+      top: 28%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      z-index: 2;
+      background:
+        radial-gradient(circle, rgba(180,245,255,0.95) 0%, rgba(60,210,255,0.72) 35%, rgba(0,120,255,0.08) 70%, transparent 72%);
+      box-shadow:
+        0 0 24px rgba(80,220,255,0.32),
+        0 0 60px rgba(60,180,255,0.18);
+    }
+
+    .annie-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .annie-lines span {
+      position: absolute;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom, rgba(120,230,255,0.0), rgba(120,230,255,0.35), rgba(120,230,255,0.0));
+      transform-origin: top center;
+    }
+
+    .annie-lines span:nth-child(1) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(0deg);
+    }
+
+    .annie-lines span:nth-child(2) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .annie-lines span:nth-child(3) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    .annie-lines span:nth-child(4) {
+      height: 150px;
+      top: 10%;
+      transform: translateX(-50%) rotate(135deg);
+    }
+
+    .annie-pulse {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 32%, rgba(90, 220, 255, 0.16), transparent 12%),
+        radial-gradient(circle at 50% 32%, rgba(90, 220, 255, 0.08), transparent 24%);
+      animation: anniePulse 4.5s ease-in-out infinite;
+    }
+
+    @keyframes anniePulse {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.04);
+      }
+    }
+
+    .featured-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .character-tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 7px 12px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.34);
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(176, 230, 255, 0.92);
+      backdrop-filter: blur(4px);
+    }
+
+    .featured-card h3 {
+      margin: 0 0 8px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.8rem;
+      line-height: 0.92;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 15px rgba(0,0,0,0.35);
+    }
+
+    .featured-card p {
+      margin: 0 0 16px;
+      width: 100%;
+      max-width: 100%;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.98rem;
+      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+    }
+
+    .card-link {
+      width: fit-content;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8bdfff;
+      border-bottom: 1px solid rgba(139,223,255,0.35);
+      padding-bottom: 5px;
+      transition: 0.3s ease;
+    }
+
+    .featured-card:hover .card-link {
+      color: white;
+      border-color: rgba(255,255,255,0.56);
+    }
+
+    .cinematic-band {
+      position: relative;
+      z-index: 2;
+      padding: 34px 8% 6px;
+    }
+
+    .cinematic-band-inner {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: flex-start;
+      color: rgba(255,255,255,0.56);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .cinematic-band-left {
+      width: 100%;
+      max-width: none;
+      text-align: left;
+    }
+
+    .cinematic-band-right {
+      width: 100%;
+      max-width: none;
+      text-align: left;
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(130, 220, 255, 0.46);
+      font-size: 0.76rem;
+    }
+
+    .roster-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .roster-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.09);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        linear-gradient(145deg, rgba(8,12,20,0.92), rgba(4,6,10,0.94));
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow:
+        inset 0 0 18px rgba(0,170,255,0.03),
+        0 0 18px rgba(0,0,0,0.18);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      grid-column: span 3;
+    }
+
+    .roster-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(0,170,255,0.08), transparent 32%),
+        linear-gradient(to bottom, rgba(255,255,255,0.03), transparent 20%);
+      pointer-events: none;
+    }
+
+    .roster-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,170,255,0.30);
+      box-shadow:
+        0 0 24px rgba(0,170,255,0.10),
+        0 0 42px rgba(0,170,255,0.05);
+    }
+
+    .roster-thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1.15;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background:
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 40%),
+        linear-gradient(145deg, rgba(9, 15, 25, 0.96), rgba(3, 6, 10, 0.96));
+    }
+
+    .roster-thumb-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.72), rgba(0,0,0,0.08) 40%, rgba(0,0,0,0));
+      pointer-events: none;
+    }
+
+    .roster-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: saturate(0.96) brightness(0.90) contrast(1.04);
+      transform: scale(1.02);
+      transition: transform 0.7s ease;
+    }
+
+    .roster-card:hover .roster-thumb {
+      transform: scale(1.06);
+    }
+
+    .roster-card.image-center .roster-thumb {
+      object-position: center center;
+    }
+
+    .roster-card.image-sasha .roster-thumb {
+      object-position: center 24%;
+    }
+
+    .roster-card.image-sook .roster-thumb {
+      object-position: center 22%;
+    }
+
+    .roster-card.image-tanya .roster-thumb {
+      object-position: center 20%;
+    }
+
+    .roster-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 1;
+      color: rgba(180, 230, 255, 0.9);
+      font-family: "Orbitron", sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .roster-content {
+      position: relative;
+      z-index: 1;
+      padding: 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .roster-number {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 2px;
+      color: rgba(120,210,255,0.74);
+    }
+
+    .roster-card h3 {
+      margin: 0;
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.02rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.96);
+      line-height: 1.3;
+    }
+
+    .roster-role {
+      font-size: 0.78rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(145, 220, 255, 0.76);
+    }
+
+    .roster-summary {
+      font-size: 0.94rem;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.76);
+    }
+
+    .roster-meta {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .roster-meta span {
+      font-size: 0.84rem;
+      line-height: 1.6;
+      color: rgba(210, 230, 245, 0.68);
+    }
+
+    .roster-meta strong {
+      color: rgba(245,250,255,0.92);
+      font-weight: 600;
+    }
+
+    .closing-row-three-1 {
+      grid-column: 3 / span 3;
+    }
+
+    .closing-row-three-2 {
+      grid-column: 6 / span 3;
+    }
+
+    .closing-row-three-3 {
+      grid-column: 9 / span 3;
+    }
+
+    .closing-row-two-1 {
+      grid-column: 4 / span 3;
+    }
+
+    .closing-row-two-2 {
+      grid-column: 8 / span 3;
+    }
+
+    /* FILA CENTRADA DE SASHA, SOOK Y TANYA */
+    .desktop-row-sasha {
+      grid-column: 2 / span 3;
+      grid-row: 6;
+      justify-self: center;
+    }
+
+    .desktop-row-sook {
+      grid-column: 5 / span 3;
+      grid-row: 6;
+      justify-self: center;
+    }
+
+    .desktop-row-tanya {
+      grid-column: 8 / span 3;
+      grid-row: 6;
+      justify-self: center;
+    }
+
+    .desktop-row-yasmin {
+      grid-column: 4 / span 3;
+      grid-row: 7;
+    }
+
+    .desktop-row-zoe {
+      grid-column: 7 / span 3;
+      grid-row: 7;
+    }
+
+    .card-mobile-arrows {
+      display: none;
+    }
+
+    .ending {
+      position: relative;
+      z-index: 2;
+      padding: 54px 8% 110px;
+    }
+
+    .ending-links {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .ending-link {
+      position: relative;
+      overflow: hidden;
+      min-height: 170px;
+      border: 1px solid rgba(0,170,255,0.16);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .ending-link:hover {
+      transform: translateY(-3px);
+      border-color: rgba(0,170,255,0.42);
+      box-shadow: 0 0 24px rgba(0,170,255,0.14);
+    }
+
+    .ending-link > img:not(.awards-badge) {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.58) contrast(1.02);
+      transform: scale(1.03);
+    }
+
+    .ending-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.28) 58%, rgba(0,0,0,0.08) 100%),
+        radial-gradient(circle at top, rgba(0,170,255,0.12), transparent 44%);
+    }
+
+    .ending-link span {
+      position: relative;
+      z-index: 2;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .home-card img {
+      object-position: center 50%;
+    }
+
+    .explorar-card img {
+      object-position: center center;
+    }
+
+    .corazon-card img {
+      object-position: center 28%;
+    }
+
+    .personajes-card img {
+      object-position: center 30%;
+    }
+
+    .libros-card img {
+      object-position: center 52%;
+      transform: scale(0.97);
+    }
+
+    .ending-link.footer-awards {
+      position: relative;
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      min-height: 170px;
+      padding: 18px;
+      background:
+        radial-gradient(circle at center, rgba(24, 34, 58, 0.92), rgba(3, 7, 14, 0.98) 62%),
+        linear-gradient(145deg, rgba(8, 18, 34, 0.96), rgba(2, 5, 12, 1));
+    }
+
+    .ending-link.footer-awards::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.90) 8%, rgba(0,0,0,0.22) 52%, rgba(0,0,0,0.08) 100%),
+        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 44%);
+      pointer-events: none;
+    }
+
+    .ending-link.footer-awards .awards-badge {
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      width: clamp(92px, 28%, 128px);
+      height: auto;
+      max-width: none;
+      object-fit: contain;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      filter:
+        brightness(1)
+        contrast(1.04)
+        drop-shadow(0 0 10px rgba(255, 220, 120, 0.16))
+        drop-shadow(0 0 22px rgba(255, 190, 70, 0.10));
+    }
+
+    .ending-link.footer-awards span {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 2;
+      padding: 0;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(55px) scale(0.985);
+      transition:
+        opacity 1s ease,
+        transform 1s ease,
+        filter 1s ease;
+      filter: blur(10px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    @media (max-width: 900px), (hover: none) and (pointer: coarse) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+      }
+    }
+
+    @media (max-width: 1400px) {
+      .hero {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .btn {
+        min-width: 300px;
+      }
+
+      .hero-image-wrap {
+        min-height: 520px;
+      }
+    }
+
+    @media (max-width: 1150px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: calc(var(--topbar-height) + 26px) 0 42px;
+      }
+
+      .hero-note {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+      }
+
+      .hero-image-wrap {
+        min-height: 520px;
+        max-width: 760px;
+        justify-self: start;
+      }
+
+      .featured-card.large {
+        min-height: 470px;
+      }
+
+      .featured-card.small {
+        min-height: 340px;
+      }
+
+      .roster-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .roster-card,
+      .closing-row-three-1,
+      .closing-row-three-2,
+      .closing-row-three-3,
+      .closing-row-two-1,
+      .closing-row-two-2,
+      .desktop-row-sasha,
+      .desktop-row-sook,
+      .desktop-row-tanya,
+      .desktop-row-yasmin,
+      .desktop-row-zoe {
+        grid-column: span 1;
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .featured-card.large,
+      .featured-card.small {
+        grid-column: span 6;
+      }
+
+      .cinematic-band-inner {
+        flex-direction: column;
+      }
+
+      .cinematic-band-right {
+        text-align: left;
+      }
+
+      .section,
+      .ending,
+      .cinematic-band {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      h1 {
+        font-size: clamp(2.6rem, 8vw, 4.3rem);
+        letter-spacing: 1.2px;
+      }
+
+      .roster-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .ending-links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar {
+        padding: 14px 5%;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .top-links {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 5%;
+        left: 5%;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(0,170,255,0.18);
+        background: linear-gradient(to bottom, rgba(7, 12, 22, 0.96), rgba(4, 8, 18, 0.96));
+        backdrop-filter: blur(12px);
+        box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32), inset 0 0 18px rgba(90, 168, 255, 0.03);
+      }
+
+      .top-links.is-open {
+        display: flex;
+      }
+
+      .top-links a {
+        width: 100%;
+      }
+
+      .hero {
+        width: min(1840px, calc(100% - 24px));
+        padding-top: calc(var(--topbar-height) + 22px);
+        padding-bottom: 36px;
+      }
+
+      .featured-grid {
+        gap: 18px;
+      }
+
+      .featured-card {
+        padding: 26px;
+      }
+
+      .featured-card h3 {
+        font-size: 1.55rem;
+      }
+
+      .featured-card p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .section {
+        padding-top: 82px;
+        padding-bottom: 82px;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+      }
+
+      .hero-image-wrap {
+        min-height: auto;
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
+        aspect-ratio: 4 / 5;
+      }
+
+      .hero-image-wrap img {
+        object-fit: contain;
+        object-position: center center;
+        transform: none;
+        background: #04060a;
+      }
+
+      .hero-image-wrap:hover img {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero,
+      .section,
+      .ending,
+      .cinematic-band {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      h1 {
+        font-size: clamp(1.65rem, 7.8vw, 2.45rem);
+        letter-spacing: 0.8px;
+        line-height: 1.02;
+      }
+
+      .eyebrow {
+        width: 100%;
+        max-width: 100%;
+        font-size: 0.72rem;
+        letter-spacing: 1.6px;
+        gap: 10px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.96rem;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 24px;
+      }
+
+      .btn {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .featured-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 12px;
+        padding-right: 20px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      .featured-grid::-webkit-scrollbar,
+      .roster-grid::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .featured-grid::-webkit-scrollbar-thumb,
+      .roster-grid::-webkit-scrollbar-thumb {
+        background: rgba(120, 210, 255, 0.28);
+        border-radius: 999px;
+      }
+
+      .featured-grid::-webkit-scrollbar-track,
+      .roster-grid::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.04);
+      }
+
+      .featured-card.large,
+      .featured-card.small {
+        grid-column: auto;
+        flex: 0 0 84vw;
+        min-width: 84vw;
+        max-width: 84vw;
+        scroll-snap-align: start;
+      }
+
+      .featured-card {
+        min-height: 300px;
+      }
+
+      .featured-card.large {
+        min-height: 360px;
+      }
+
+      .featured-card.small {
+        min-height: 300px;
+      }
+
+      .featured-content {
+        max-width: 100%;
+      }
+
+      .roster-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 12px;
+        padding-right: 20px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+      }
+
+      .roster-card,
+      .closing-row-three-1,
+      .closing-row-three-2,
+      .closing-row-three-3,
+      .closing-row-two-1,
+      .closing-row-two-2,
+      .desktop-row-sasha,
+      .desktop-row-sook,
+      .desktop-row-tanya,
+      .desktop-row-yasmin,
+      .desktop-row-zoe {
+        grid-column: auto;
+        grid-row: auto;
+        max-width: 82vw;
+        min-width: 82vw;
+        flex: 0 0 82vw;
+        scroll-snap-align: start;
+      }
+
+      .featured-card,
+      .roster-card {
+        position: relative;
+      }
+
+      .card-mobile-arrows {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 8px;
+        pointer-events: none;
+      }
+
+      .card-mobile-arrows .arrow-btn {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+      }
+
+      .card-mobile-arrows .arrow-btn svg {
+        width: 18px;
+        height: 18px;
+        display: block;
+      }
+
+      .card-mobile-arrows .arrow-left {
+        background: rgba(31, 224, 255, 0.18);
+        border: 2px solid rgba(31, 224, 255, 0.9);
+      }
+
+      .card-mobile-arrows .arrow-left svg path {
+        stroke: rgba(160, 245, 255, 1);
+      }
+
+      .card-mobile-arrows .arrow-right {
+        background: rgba(38, 63, 98, 0.86);
+        border: 2px solid rgba(108, 140, 186, 0.95);
+      }
+
+      .card-mobile-arrows .arrow-right svg path {
+        stroke: rgba(255,255,255,0.96);
+      }
+
+      .card-mobile-arrows.only-left {
+        justify-content: flex-start;
+      }
+
+      .card-mobile-arrows.only-right {
+        justify-content: flex-end;
+      }
+
+      .card-mobile-arrows.hide-left .arrow-left {
+        display: none;
+      }
+
+      .card-mobile-arrows.hide-right .arrow-right {
+        display: none;
+      }
+
+      .cinematic-band {
+        padding-top: 24px;
+        padding-bottom: 0;
+      }
+
+      .cinematic-band-inner {
+        gap: 16px;
+        font-size: 0.92rem;
+      }
+
+      .ending {
+        padding-top: 48px;
+        padding-bottom: 90px;
+      }
+
+      .ending-links {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-wrap {
+        aspect-ratio: 4 / 5;
+      }
+
+      .hero {
+        padding-top: calc(var(--topbar-height) + 18px);
+        padding-bottom: 28px;
+      }
+
+      .ending-link {
+        min-height: 120px;
+      }
+
+      .ending-link.footer-awards {
+        min-height: 140px;
+      }
+
+      .ending-link.footer-awards .awards-badge {
+        width: 84px;
+        top: 40%;
+      }
+
+      .ending-link.footer-awards span {
+        left: 14px;
+        bottom: 12px;
+      }
+
+      .libros-card img {
+        object-position: center 50%;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .eyebrow,
+      .section-kicker,
+      .note-label,
+      .character-tag,
+      .card-link,
+      .roster-role,
+      .brand {
+        letter-spacing: 1.4px;
+      }
+
+      h1 {
+        font-size: clamp(1.55rem, 7.2vw, 2.1rem);
+        letter-spacing: 0.5px;
+      }
+
+      .hero {
+        padding-top: calc(var(--topbar-height) + 16px);
+        padding-bottom: 24px;
+      }
+
+      .featured-card {
+        padding: 22px;
+      }
+
+      .featured-card.large,
+      .featured-card.small {
+        min-width: 88vw;
+        max-width: 88vw;
+        flex-basis: 88vw;
+      }
+
+      .featured-card.large {
+        min-height: 330px;
+      }
+
+      .featured-card.small {
+        min-height: 280px;
+      }
+
+      .featured-card h3 {
+        font-size: 1.35rem;
+      }
+
+      .featured-card p {
+        font-size: 0.92rem;
+      }
+
+      .roster-card,
+      .closing-row-three-1,
+      .closing-row-three-2,
+      .closing-row-three-3,
+      .closing-row-two-1,
+      .closing-row-two-2,
+      .desktop-row-sasha,
+      .desktop-row-sook,
+      .desktop-row-tanya,
+      .desktop-row-yasmin,
+      .desktop-row-zoe {
+        min-width: 86vw;
+        max-width: 86vw;
+        flex-basis: 86vw;
+      }
+
+      .section h2 {
+        letter-spacing: 1.4px;
+      }
+
+      .hero-image-wrap {
+        aspect-ratio: 4 / 5;
+      }
+
+      .hero-image-content {
+        padding: 18px 18px 20px;
+      }
+
+      .hero-image-content h3 {
+        font-size: 1.05rem;
+      }
+
+      .ending-link.footer-awards .awards-badge {
+        width: 76px;
+      }
+
+      .ending-link span {
+        font-size: 0.78rem;
+        letter-spacing: 1.5px;
+      }
+
+      .card-mobile-arrows {
+        padding: 0 6px;
+      }
+
+      .card-mobile-arrows .arrow-btn {
+        width: 31px;
+        height: 31px;
+      }
+
+      .card-mobile-arrows .arrow-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .libros-card img {
+        object-position: center 49%;
+        transform: scale(1.01);
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="space-mist"></div>
+  <div class="vignette"></div>
+
+  <header class="topbar">
+    <div class="brand">SHAMBHALA SAGA</div>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="top-links" id="siteMenu">
+      <a href="index.html">Inicio</a>
+      <a href="explorar.html">Explorar</a>
+      <a href="corazon.html">Corazon</a>
+      <a href="explorar.html#libros">Libros</a>
+      <a href="premios.html">Premios</a>
+      <a href="galeria.html">Galería</a>
+    </nav>
+  </header>
+
+  <section class="hero reveal">
+    <div class="hero-copy">
+      <div class="eyebrow">Presencias dentro del universo</div>
+
+      <h1>Personajes</h1>
+
+      <p class="hero-subtitle">
+        Las historias de Shambhala avanzan a través de decisiones difíciles, vínculos que marcan y caminos que se abren hacia lo desconocido.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#destacados" class="btn">Ver personajes centrales</a>
+        <a href="#elenco" class="btn secondary">Explorar el elenco expandido</a>
+      </div>
+
+      <div class="hero-note">
+        <div class="note-box">
+          <div class="note-label">Presencia</div>
+          <p>Cada personaje deja una huella en este mundo: en la ciencia, en los afectos y el rumbo de su propia vida.</p>
+        </div>
+
+        <div class="note-box">
+          <div class="note-label">Tensión</div>
+          <p>Algunas presencias traen refugio. Otras desordenan el equilibrio. Todas empujan la historia hacia algo más hondo.</p>
+        </div>
+
+        <div class="note-box">
+          <div class="note-label">Universo</div>
+          <p>La tierra, la Luna, Shambhala, Arcadia y la intimidad de sus vínculos se revelan a través de quienes habitan este universo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <img src="images/personajes.jpg" alt="Personajes de Shambhala" />
+      <div class="hero-image-overlay"></div>
+      <div class="hero-image-aura"></div>
+      <div class="hero-image-content">
+        <span class="character-tag">Archivo visual</span>
+        <h3>Presencias</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="destacados">
+    <div class="section-header">
+      <div class="section-kicker">Centro emocional</div>
+      <h2>Figuras que sostienen el pulso de la saga</h2>
+      <p>
+        Aquí laten las presencias que cambian la gravedad emocional de Shambhala. Están reunidas para dejar huella en la historia, en la ciencia y en los vínculos.
+      </p>
+    </div>
+
+    <div class="carousel-wrap" id="featuredWrap">
+      <div class="featured-grid" id="featuredGrid">
+        <a class="featured-card large reveal" href="calisto.html">
+          <img class="featured-image" src="images/calisto.jpg" alt="Calisto" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-calisto"></div>
+          <div class="featured-content">
+            <h3>Calisto</h3>
+            <p>Introspección, curiosidad.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+
+        <a class="featured-card large reveal" href="pavani.html">
+          <img class="featured-image" src="images/pavani.jpg" alt="Pavani" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-pavani"></div>
+          <div class="featured-content">
+            <h3>Pavani</h3>
+            <p>Calma, valentía.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+
+        <a class="featured-card small reveal" href="diana.html">
+          <img class="featured-image" src="images/diana.jpg" alt="Diana" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-diana"></div>
+          <div class="featured-content">
+            <h3>Diana</h3>
+            <p>Carisma, magnetismo.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+
+        <a class="featured-card small reveal" href="izumi.html">
+          <img class="featured-image" src="images/izumi.jpg" alt="Izumi" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-izumi"></div>
+          <div class="featured-content">
+            <h3>Izumi</h3>
+            <p>Precisión, visión.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+
+        <a class="featured-card small reveal" href="naomi.html">
+          <img class="featured-image" src="images/naomi.jpg" alt="Naomi" />
+          <div class="featured-overlay"></div>
+          <div class="character-aura aura-naomi"></div>
+          <div class="featured-content">
+            <h3>Naomi</h3>
+            <p>Amistad, intimidad.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+
+        <a class="featured-card small annie-card reveal" href="annie.html">
+          <div class="annie-grid"></div>
+          <div class="annie-rings"></div>
+          <div class="annie-pulse"></div>
+          <div class="annie-core"></div>
+          <div class="annie-lines">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="featured-overlay"></div>
+          <div class="featured-content">
+            <span class="character-tag">IA · Presencia</span>
+            <h3>Annie</h3>
+            <p>No ocupa un lugar físico como las demás. Habita el sistema, acompaña desde otra lógica y convierte la cercanía en una presencia distinta.</p>
+            <span class="card-link">Entrar al perfil</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cinematic-band reveal">
+    <div class="cinematic-band-inner">
+      <div class="cinematic-band-right">
+        archivo de presencias · vínculos · tensiones · memorias
+      </div>
+      <div class="cinematic-band-left">
+        El universo no se vuelve inmenso solo por la distancia, sino por las vidas que lo atraviesan. Cada presencia carga su propia historia y una manera distinta de mirar lo desconocido.
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="elenco">
+    <div class="section-header">
+      <div class="section-kicker">Universo expandido</div>
+      <h2>Presencias secundarias</h2>
+      <p>
+        Aquí aparecen las figuras que ensanchan el mundo de Shambhala. Algunas acompañan, otras alteran, otras dejan preguntas. Todas aportan una forma distinta de habitar esta historia.
+      </p>
+    </div>
+
+    <div class="carousel-wrap" id="rosterWrap">
+      <div class="roster-grid" id="rosterGrid"></div>
+    </div>
+  </section>
+
+  <section class="ending reveal">
+    <div class="ending-links">
+      <a href="index.html" class="ending-link home-card">
+        <img src="images/hero.jpg" alt="Inicio" />
+        <span>Inicio</span>
+      </a>
+
+      <a href="explorar.html" class="ending-link explorar-card">
+        <img src="images/world.jpg" alt="Explorar" />
+        <span>Explorar</span>
+      </a>
+
+      <a href="corazon.html" class="ending-link corazon-card">
+        <img src="images/galeria/corazon.jpg" alt="Corazón" />
+        <span>Corazón</span>
+      </a>
+
+      <a href="personajes.html" class="ending-link personajes-card">
+        <img src="images/personajes.jpg" alt="Personajes" />
+        <span>Personajes</span>
+      </a>
+
+      <a href="premios.html" class="ending-link footer-awards">
+        <img
+          class="awards-badge"
+          src="images/premios/calisto-2-0-01-international-impact-book-awards.png"
+          alt="Premios"
+        />
+        <span>Premios</span>
+      </a>
+
+      <a href="explorar.html#libros" class="ending-link libros-card">
+        <img src="images/explorar/la-luz-naranja-de-un-sol-alienigena.jpg" alt="Libros" />
+        <span>Libros</span>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      setTopbarHeight();
+      initReveal();
+      setupMobileArrows();
+    });
+
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      const count = window.innerWidth < 768 ? 140 : 240;
+
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + 0.25,
+          speed: Math.random() * 0.30 + 0.05,
+          alpha: Math.random() * 0.65 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach(star => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+
+        star.x -= star.speed;
+
+        if (star.x < -3) {
+          star.x = canvas.width + 3;
+          star.y = Math.random() * canvas.height;
+        }
+      });
+
+      requestAnimationFrame(drawStars);
+    }
+
+    function setTopbarHeight() {
+      const topbar = document.querySelector(".topbar");
+      if (!topbar) return;
+      const height = Math.ceil(topbar.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--topbar-height", `${height}px`);
+    }
+
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      setTopbarHeight();
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 820) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", event => {
+      if (window.innerWidth > 820) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    function initReveal() {
+      const revealElements = document.querySelectorAll(".reveal");
+      const mobileView =
+        window.matchMedia("(max-width: 900px)").matches ||
+        window.matchMedia("(hover: none) and (pointer: coarse)").matches ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (mobileView || !("IntersectionObserver" in window)) {
+        revealElements.forEach(el => el.classList.add("visible"));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.06,
+        rootMargin: "0px 0px -8% 0px"
+      });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+
+    function createArrowMarkup(type) {
+      const left = `
+        <span class="arrow-btn arrow-left" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M14.5 5.5L8 12l6.5 6.5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      `;
+
+      const right = `
+        <span class="arrow-btn arrow-right" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M9.5 5.5L16 12l-6.5 6.5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      `;
+
+      if (type === "only-right") {
+        return `<div class="card-mobile-arrows only-right hide-left">${left}${right}</div>`;
+      }
+
+      if (type === "only-left") {
+        return `<div class="card-mobile-arrows only-left hide-right">${left}${right}</div>`;
+      }
+
+      return `<div class="card-mobile-arrows">${left}${right}</div>`;
+    }
+
+    function applyArrowsToCards(cardsSelector) {
+      const cards = document.querySelectorAll(cardsSelector);
+
+      cards.forEach((card, index) => {
+        const existing = card.querySelector(".card-mobile-arrows");
+        if (existing) existing.remove();
+
+        let type = "both";
+
+        if (index === 0) {
+          type = "only-right";
+        } else if (index === cards.length - 1) {
+          type = "only-left";
+        }
+
+        card.insertAdjacentHTML("beforeend", createArrowMarkup(type));
+      });
+    }
+
+    function setupMobileArrows() {
+      const isMobile = window.matchMedia("(max-width: 680px)").matches;
+      if (!isMobile) {
+        document.querySelectorAll(".card-mobile-arrows").forEach(el => el.remove());
+        return;
+      }
+
+      applyArrowsToCards("#featuredGrid .featured-card");
+      applyArrowsToCards("#rosterGrid .roster-card");
+    }
+
+    resizeCanvas();
+    createStars();
+    drawStars();
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+      setTopbarHeight();
+      setupMobileArrows();
+
+      if (window.innerWidth > 820) {
+        closeMenu();
+      }
+
+      if (window.innerWidth <= 900) {
+        document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+      }
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(setTopbarHeight);
+    }
+
+    const secondaryCharacters = [
+      {
+        name: "Andrea",
+        role: "Ingeniera",
+        country: "Nueva Inglaterra",
+        education: "PhD en Ingeniería",
+        focus: "Ingeniería aeroespacial",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/Andrea.jpg",
+        imageAlt: "images/secundarios/andrea.jpg"
+      },
+      {
+        name: "Berit",
+        role: "Botánica",
+        country: "Egipto",
+        education: "PhD en Botánica",
+        focus: "Agrología lunar",
+        work: "Arcadia 2095–presente",
+        image: "images/secundarios/berit.jpg"
+      },
+      {
+        name: "Elena",
+        role: "Astrónoma",
+        country: "Guatemala",
+        education: "PhD en Astronomía",
+        focus: "Planetas extrasolares",
+        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/elena.jpg"
+      },
+      {
+        name: "Fae",
+        role: "Ingeniera nuclear",
+        country: "República del Sur",
+        education: "PhD en Ingeniería Nuclear",
+        focus: "Fusión nuclear y producción alimentaria en microgravedad",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/fae.jpg"
+      },
+      {
+        name: "Fátima",
+        role: "Soldado",
+        country: "Amandla Wobumbano",
+        education: "Maestría en Estudios Ambientales Interdisciplinarios",
+        focus: "Ciberseguridad, ciberinteligencia y artes marciales",
+        work: "Arcadia 2097–presente",
+        image: "images/secundarios/Fatima.jpg"
+      },
+      {
+        name: "Gamon",
+        role: "Médica",
+        country: "Tailandia",
+        education: "Doctora en Medicina",
+        focus: "Fisiología de microgravedad",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/gamon.jpg"
+      },
+      {
+        name: "Hadley",
+        role: "Física",
+        country: "Islandia",
+        education: "PhD en Física",
+        focus: "Mecánica de propulsión",
+        work: "Shambhala 2096–presente",
+        image: "images/secundarios/hadley.jpg"
+      },
+      {
+        name: "Jacinda",
+        role: "Psicóloga",
+        country: "Namibia",
+        education: "PhD en Psicología Social",
+        focus: "Dinámica de grupos, relaciones intergrupales y ética",
+        work: "Portal al Porvenir 2089–2096 · Arcadia 2096–2097",
+        image: "images/secundarios/jacinda.jpg"
+      },
+      {
+        name: "Jordyn",
+        role: "Científica de materiales",
+        country: "Nueva Zelanda",
+        education: "PhD en Ciencias de los Materiales",
+        focus: "Biomateriales y cerámicas",
+        work: "Arcadia 2094–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/Jordyn.jpg"
+      },
+      {
+        name: "Kalifa",
+        role: "Médica",
+        country: "Somalia",
+        education: "Doctorado en Medicina",
+        focus: "Mitigación de gravedad reducida para humanos",
+        work: "Arcadia 2091–presente",
+        image: "images/secundarios/kalifa.jpg"
+      },
+      {
+        name: "Kamana",
+        role: "Científica informática",
+        country: "India",
+        education: "PhD en Ciencias de la Computación",
+        focus: "Inteligencia artificial y robótica",
+        work: "Portal al Porvenir 2089–2091 · Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/kamana.jpg"
+      },
+      {
+        name: "Kenna",
+        role: "Ingeniera eléctrica",
+        country: "Nepal",
+        education: "PhD en Ingeniería Eléctrica",
+        focus: "Sistemas de energía renovable y electrónica de potencia",
+        work: "Arcadia 2096–2097",
+        image: "images/secundarios/kenna.jpg"
+      },
+      {
+        name: "Marta",
+        role: "Ingeniera jefa",
+        country: "Uruguay",
+        education: "PhD en Ingeniería",
+        focus: "Ingeniería espacial",
+        work: "Portal al Porvenir 2089–2091 · Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/marta.jpg"
+      },
+      {
+        name: "Mei Xing",
+        role: "Especialista en filtración",
+        country: "China",
+        education: "PhD en Ingeniería",
+        focus: "Nanofiltración",
+        work: "Arcadia 2093–2096 · Shambhala 2096–presente",
+        image: "images/secundarios/mei-xing.jpg"
+      },
+      {
+        name: "Nalah",
+        role: "Gestión de recursos humanos",
+        country: "Ghana",
+        education: "Maestría en Gestión de Recursos Humanos",
+        focus: "Dinámica de equipos y resolución de conflictos",
+        work: "Arcadia 2091–presente",
+        image: "images/secundarios/Nalah.jpg"
+      },
+      {
+        name: "Olivia",
+        role: "Geóloga y bióloga",
+        country: "California",
+        education: "PhD en Geología",
+        focus: "Terraformación",
+        work: "Shambhala 2097–presente",
+        image: "images/secundarios/olivia.jpg"
+      },
+      {
+        name: "Quinn",
+        role: "Especialista en filtración",
+        country: "Tanzania",
+        education: "PhD en Ingeniería",
+        focus: "Filtración industrial y mecánica de fluidos",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/quin.jpg"
+      },
+      {
+        name: "Raven",
+        role: "Bióloga",
+        country: "Australia",
+        education: "PhD en Biología",
+        focus: "Adaptación biológica a nuevos entornos",
+        work: "Arcadia 2094–2097",
+        image: "images/secundarios/raven.jpg"
+      },
+         {
+        name: "Remi",
+        role: "Bióloga",
+        country: "Polonia",
+        education: "PhD en Biotecnología",
+        focus: "Biotecnologías, partenogénesis y desextinción",
+        work: "Arcadia 2094–2097",
+        image: "images/secundarios/remi.jpg"
+      },
+      {
+        name: "Rika",
+        role: "Ingeniera",
+        country: "Finlandia",
+        education: "PhD en Ingeniería",
+        focus: "Ingeniería astronáutica",
+        work: "Arcadia 2093–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/rika.jpg"
+      },
+      {
+        name: "Sasha",
+        role: "Analista de datos",
+        country: "Irán",
+        education: "PhD en Ciencia de los Datos",
+        focus: "Arquitectura de datos",
+        work: "Portal al Porvenir 2089–2091 · Arcadia 2091–presente",
+        image: "images/secundarios/sasha.jpg"
+      },
+      {
+        name: "Sook",
+        role: "Piloto",
+        country: "Corea",
+        education: "Certificado de Aviación",
+        focus: "Vuelo y navegación",
+        work: "Arcadia 2095–presente",
+        image: "images/secundarios/Sook.jpg"
+      },
+      {
+        name: "Tanya",
+        role: "Científica de materiales",
+        country: "Texas",
+        education: "PhD en Ciencia de los Materiales",
+        focus: "Cerámica, materiales poliméricos y nanomateriales",
+        work: "Portal al Porvenir · Palo Alto 2090–2091 · Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/tanya.jpg"
+      },
+      {
+        name: "Yasmin",
+        role: "Bióloga",
+        country: "India",
+        education: "PhD en Biología",
+        focus: "Microbiología y sistemas vivos",
+        work: "Arcadia 2091–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/yasmin.jpg"
+      },
+      {
+        name: "Zoe",
+        role: "Ingeniera",
+        country: "Canadá",
+        education: "PhD en Ingeniería",
+        focus: "Sistemas de soporte vital y diseño estructural",
+        work: "Arcadia 2093–2095 · Shambhala 2095–presente",
+        image: "images/secundarios/Zoe.jpg",
+        imageAlt: "images/secundarios/zoe.jpg"
+      }
+    ];
+
+    const rosterGrid = document.getElementById("rosterGrid");
+
+    function getClosingClass(index, total) {
+      const remainder = total % 4;
+      const startIndex = total - remainder;
+
+      if (index < startIndex || remainder === 0) return "";
+
+      const position = index - startIndex;
+
+      if (remainder === 3) {
+        return ["closing-row-three-1", "closing-row-three-2", "closing-row-three-3"][position] || "";
+      }
+
+      if (remainder === 2) {
+        return ["closing-row-two-1", "closing-row-two-2"][position] || "";
+      }
+
+      return "";
+    }
+
+    function getDesktopCustomClass(name) {
+      const map = {
+        "Sasha": "desktop-row-sasha",
+        "Sook": "desktop-row-sook",
+        "Tanya": "desktop-row-tanya",
+        "Yasmin": "desktop-row-yasmin",
+        "Zoe": "desktop-row-zoe"
+      };
+
+      return map[name] || "";
+    }
+
+    function getImageClass(name) {
+      const map = {
+        "Sasha": "image-center image-sasha",
+        "Sook": "image-center image-sook",
+        "Tanya": "image-center image-tanya"
+      };
+
+      return map[name] || "";
+    }
+
+    secondaryCharacters.forEach((character, index) => {
+      const card = document.createElement("article");
+      const closingClass = getClosingClass(index, secondaryCharacters.length);
+      const desktopCustomClass = getDesktopCustomClass(character.name);
+      const imageClass = getImageClass(character.name);
+
+      card.className = [
+        "roster-card",
+        "reveal",
+        closingClass,
+        desktopCustomClass,
+        imageClass
+      ].filter(Boolean).join(" ");
+
+      const fallbackAttr = character.imageAlt
+        ? ` onerror="this.onerror=null;this.src='${character.imageAlt}'"`
+        : "";
+
+      const hasImage = Boolean(character.image);
+
+      card.innerHTML = `
+        <div class="roster-thumb-wrap">
+          ${hasImage
+            ? `<img class="roster-thumb" src="${character.image}" alt="${character.name}" loading="lazy"${fallbackAttr} />`
+            : `<div class="roster-placeholder">${character.name.charAt(0)}</div>`}
+        </div>
+
+        <div class="roster-content">
+          <h3>${character.name}</h3>
+          <div class="roster-role">${character.role}</div>
+          <p class="roster-summary">${character.country} · ${character.focus}</p>
+
+          <div class="roster-meta">
+            <span><strong>Formación:</strong> ${character.education}</span>
+            <span><strong>Trayectoria:</strong> ${character.work}</span>
+          </div>
+        </div>
+      `;
+
+      rosterGrid.appendChild(card);
+    });
+
+    setupMobileArrows();
+  </script>
+</body>
+</html>
