@@ -1,1 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Shambhala</title>
+  <meta
+    name="description"
+    content="An intimate gallery of Susan and Ximena within the visual universe of Shambhala."
+  />
+  <link rel="icon" type="image/png" href="../images/logo.png" />
 
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --topbar-height: 92px;
+      --page-max: 1460px;
+      --gallery-max: 1400px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(8, 18, 40, 0.88), #000 42%),
+        #000;
+      color: #fff;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .space-mist {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.10), transparent 22%),
+        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.06), transparent 18%),
+        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.03), transparent 20%);
+      filter: blur(28px);
+      opacity: 0.9;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 48%, rgba(0,0,0,0.14) 74%, rgba(0,0,0,0.50) 100%);
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 40;
+      padding: 18px 28px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.72), rgba(0,0,0,0));
+      backdrop-filter: blur(6px);
+    }
+
+    .topbar-inner {
+      width: min(var(--page-max), calc(100% - 12px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 56px;
+    }
+
+    .brand {
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 2px;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.92);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .topbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(0,170,255,0.22);
+      background: rgba(0,0,0,0.18);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s ease;
+      padding: 0;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(0,170,255,0.46);
+      box-shadow: 0 0 22px rgba(0,170,255,0.14);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: rgba(255,255,255,0.92);
+      transition: 0.3s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .top-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .top-links a,
+    .language-switch a {
+      font-size: 0.78rem;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      color: rgba(255,255,255,0.82);
+      border: 1px solid rgba(0,170,255,0.16);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .top-links a:hover,
+    .language-switch a:hover,
+    .language-switch a.active {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.4);
+      background: rgba(0, 25, 45, 0.26);
+    }
+
+    .language-switch {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .hero {
+      position: relative;
+      z-index: 2;
+      width: min(var(--page-max), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(420px, 0.98fr);
+      gap: 42px;
+      align-items: center;
+      padding: calc(var(--topbar-height) + 26px) 0 26px;
+    }
+
+    .hero-copy {
+      max-width: 860px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding: 12px 18px;
+      border: 1px solid rgba(0,170,255,0.26);
+      color: rgba(146, 222, 255, 0.92);
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      width: fit-content;
+      background: rgba(0, 10, 20, 0.12);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: rgba(146, 222, 255, 0.9);
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(3rem, 6.5vw, 6.2rem);
+      line-height: 0.94;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #f8fbff;
+      text-shadow:
+        0 0 8px rgba(255,255,255,0.18),
+        0 0 18px rgba(80,170,255,0.08);
+      max-width: 100%;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      font-size: 1.03rem;
+      line-height: 1.95;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 240px;
+      padding: 18px 28px;
+      border: 1px solid rgba(0,170,255,0.38);
+      background: rgba(0,0,0,0.22);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.84rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: 0.3s ease;
+      box-shadow: inset 0 0 18px rgba(0,170,255,0.05);
+    }
+
+    .btn:hover {
+      color: #a7ebff;
+      border-color: rgba(0,170,255,0.72);
+      background: rgba(0, 30, 50, 0.26);
+      transform: translateY(-2px);
+    }
+
+    .btn.secondary {
+      border-color: rgba(255,255,255,0.12);
+      box-shadow: inset 0 0 12px rgba(255,255,255,0.02);
+    }
+
+    .btn.secondary:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-note {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 860px;
+    }
+
+    .note-box {
+      padding: 18px 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.020), rgba(255,255,255,0.008)),
+        rgba(8, 10, 16, 0.42);
+      backdrop-filter: blur(4px);
+    }
+
+    .note-label {
+      margin-bottom: 10px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(134, 221, 255, 0.8);
+    }
+
+    .note-box p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      isolation: isolate;
+      padding-top: 0;
+    }
+
+    .hero-image-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -70px -55px -60px -55px;
+      z-index: 0;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.14) 0%, rgba(132, 218, 255, 0.16) 16%, rgba(0, 170, 255, 0.16) 34%, rgba(12, 45, 90, 0.10) 56%, transparent 74%);
+      filter: blur(42px);
+      pointer-events: none;
+      animation: rearGlowPulse 5.4s ease-in-out infinite;
+    }
+
+    .hero-image-wrap::after {
+      content: "";
+      position: absolute;
+      width: min(92%, 640px);
+      height: 86%;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      background:
+        radial-gradient(circle at center, rgba(200, 240, 255, 0.10), rgba(0,170,255,0.08) 42%, transparent 74%);
+      filter: blur(34px);
+      pointer-events: none;
+      animation: rearGlowPulseSoft 7s ease-in-out infinite;
+    }
+
+    @keyframes rearGlowPulse {
+      0%, 100% {
+        opacity: 0.88;
+        transform: scale(0.98);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.03);
+      }
+    }
+
+    @keyframes rearGlowPulseSoft {
+      0%, 100% {
+        opacity: 0.72;
+        transform: translate(-50%, -50%) scale(0.98);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.04);
+      }
+    }
+
+    .hero-image-shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 620px;
+      min-height: 560px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        0 0 28px rgba(0,170,255,0.12),
+        0 0 70px rgba(0,170,255,0.08),
+        inset 0 0 30px rgba(0,170,255,0.06),
+        0 0 30px rgba(0,0,0,0.26);
+    }
+
+    .hero-image-shell img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: saturate(0.98) brightness(0.91) contrast(1.05);
+      transform: scale(1.03);
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.84) 10%, rgba(0,0,0,0.26) 54%, rgba(0,0,0,0.04) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.02)),
+        radial-gradient(circle at 50% 18%, rgba(155, 224, 255, 0.18), transparent 34%),
+        radial-gradient(circle at center, rgba(0,170,255,0.08), transparent 70%);
+    }
+
+    .hero-image-aura {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      opacity: 1;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(108, 214, 255, 0.24), transparent 22%),
+        radial-gradient(circle at 80% 20%, rgba(148, 229, 255, 0.16), transparent 20%),
+        radial-gradient(circle at 52% 12%, rgba(255,255,255,0.10), transparent 18%),
+        radial-gradient(circle at 50% 50%, rgba(0,170,255,0.08), transparent 55%);
+    }
+
+    .hero-image-content {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 34px;
+      z-index: 3;
+      max-width: 86%;
+    }
+
+    .hero-image-content h2 {
+      margin: 0 0 12px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 0 15px rgba(0,0,0,0.45);
+    }
+
+    .hero-image-content p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.86);
+      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+    }
+
+    .cinematic-band {
+      position: relative;
+      z-index: 2;
+      padding: 8px 8% 16px;
+    }
+
+    .cinematic-band-inner {
+      max-width: var(--gallery-max);
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: rgba(255,255,255,0.56);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .cinematic-band-right {
+      width: 100%;
+      max-width: none;
+      text-align: left;
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 2px;
+      text-transform: lowercase;
+      color: rgba(130, 220, 255, 0.46);
+      font-size: 0.76rem;
+    }
+
+    .cinematic-band-left {
+      width: 100%;
+      max-width: none;
+      color: rgba(255,255,255,0.76);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .gallery-section {
+      position: relative;
+      z-index: 2;
+      padding: 26px 8% 110px;
+    }
+
+    .gallery-inner {
+      max-width: var(--gallery-max);
+      margin: 0 auto;
+    }
+
+    .section-header {
+      max-width: none;
+      margin: 0 0 28px;
+      text-align: left;
+    }
+
+    .section-header h2 {
+      margin: 0 0 18px;
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(0,150,255,0.12);
+      color: #f8fbff;
+    }
+
+    .section-header p {
+      margin: 0;
+      max-width: none;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.82);
+      font-size: 1rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      max-width: var(--gallery-max);
+      margin: 0 auto;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 320px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(145deg, #09111d, #04060a 70%);
+      box-shadow:
+        inset 0 0 28px rgba(0,170,255,0.04),
+        0 0 30px rgba(0,0,0,0.20);
+      transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+      cursor: pointer;
+      isolation: isolate;
+    }
+
+    .gallery-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.30), rgba(0,0,0,0.04)),
+        radial-gradient(circle at top, rgba(0,170,255,0.08), transparent 38%);
+    }
+
+    .gallery-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 24% 18%, rgba(0, 190, 255, 0.10), transparent 20%),
+        radial-gradient(circle at 76% 22%, rgba(120, 220, 255, 0.06), transparent 18%);
+      mix-blend-mode: screen;
+      opacity: 0.9;
+    }
+
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,170,255,0.34);
+      box-shadow:
+        0 0 24px rgba(0,170,255,0.10),
+        0 0 52px rgba(0,170,255,0.05),
+        inset 0 0 26px rgba(0,170,255,0.06);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.7s ease, filter 0.7s ease;
+      filter: saturate(0.96) brightness(0.88) contrast(1.03);
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.05);
+      filter: saturate(1.02) brightness(0.95) contrast(1.06);
+    }
+
+    .gallery-index {
+      position: absolute;
+      left: 16px;
+      bottom: 14px;
+      z-index: 3;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(220, 242, 255, 0.9);
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.26);
+      backdrop-filter: blur(4px);
+    }
+
+    .back-wrap {
+      margin-top: 42px;
+      text-align: center;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 24px;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid rgba(112, 196, 255, 0.32);
+      background: rgba(255,255,255,0.03);
+      color: #eaf7ff;
+      transition: 0.3s ease;
+    }
+
+    .back-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(112, 196, 255, 0.62);
+      box-shadow: 0 0 24px rgba(76, 170, 245, 0.14);
+      color: #ffffff;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(1, 4, 10, 0.92);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+    }
+
+    .lightbox-content {
+      position: relative;
+      z-index: 2;
+      max-width: min(92vw, 1100px);
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: lightboxIn 0.35s ease;
+    }
+
+    @keyframes lightboxIn {
+      from {
+        opacity: 0;
+        transform: scale(0.96) translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 90vh;
+      display: block;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.45),
+        0 0 28px rgba(71, 164, 245, 0.08);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      z-index: 3;
+      border: 1px solid rgba(112, 196, 255, 0.28);
+      background: rgba(5, 12, 22, 0.72);
+      color: #eff8ff;
+      cursor: pointer;
+      transition: 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      border-color: rgba(112, 196, 255, 0.62);
+      box-shadow: 0 0 22px rgba(76, 170, 245, 0.16);
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .lightbox-close {
+      top: 18px;
+      right: 18px;
+      width: 52px;
+      height: 52px;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 54px;
+      height: 70px;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .lightbox-prev {
+      left: 18px;
+    }
+
+    .lightbox-next {
+      right: 18px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 3;
+      padding: 10px 14px;
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-family: "Orbitron", sans-serif;
+      color: rgba(234, 247, 255, 0.88);
+      border: 1px solid rgba(112, 196, 255, 0.22);
+      background: rgba(5, 12, 22, 0.66);
+      backdrop-filter: blur(6px);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(55px) scale(0.985);
+      transition:
+        opacity 1s ease,
+        transform 1s ease,
+        filter 1s ease;
+      filter: blur(10px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    @media (max-width: 1400px) {
+      .hero {
+        grid-template-columns: 1fr 0.96fr;
+        gap: 36px;
+      }
+
+      .hero-image-shell {
+        max-width: 590px;
+        min-height: 530px;
+      }
+    }
+
+    @media (max-width: 1150px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: calc(var(--topbar-height) + 28px) 0 34px;
+      }
+
+      .hero-note {
+        grid-template-columns: 1fr;
+        max-width: 760px;
+      }
+
+      .hero-image-wrap {
+        max-width: 760px;
+        justify-self: center;
+        width: 100%;
+      }
+
+      .hero-image-shell {
+        max-width: 660px;
+        width: 100%;
+        min-height: 580px;
+      }
+
+      .cinematic-band-left {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero,
+      .gallery-section,
+      .cinematic-band {
+        padding-left: 6%;
+        padding-right: 6%;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 9vw, 5rem);
+        letter-spacing: 2px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .topbar {
+        padding: 14px 5%;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .top-links {
+        position: absolute;
+        top: calc(100% + 12px);
+        right: 0;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(0,170,255,0.18);
+        background: linear-gradient(to bottom, rgba(7, 12, 22, 0.96), rgba(4, 8, 18, 0.96));
+        backdrop-filter: blur(12px);
+        box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32), inset 0 0 18px rgba(90, 168, 255, 0.03);
+      }
+
+      .top-links.is-open {
+        display: flex;
+      }
+
+      .top-links a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero {
+        width: min(var(--page-max), calc(100% - 24px));
+        padding-top: calc(var(--topbar-height) + 24px);
+        padding-bottom: 28px;
+      }
+
+      .hero-image-shell {
+        min-height: 520px;
+      }
+
+      .hero-image-content {
+        left: 28px;
+        right: 28px;
+        bottom: 26px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero,
+      .gallery-section,
+      .cinematic-band {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 11vw, 3.8rem);
+        letter-spacing: 1.5px;
+      }
+
+      .hero-subtitle {
+        font-size: 0.96rem;
+        line-height: 1.8;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 28px;
+      }
+
+      .btn {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-card,
+      .gallery-card img {
+        min-height: 420px;
+      }
+
+      .cinematic-band {
+        padding-top: 8px;
+      }
+
+      .cinematic-band-inner {
+        gap: 12px;
+        font-size: 0.92rem;
+      }
+
+      .lightbox {
+        padding: 18px;
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        width: 46px;
+        height: 58px;
+        font-size: 1.4rem;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
+
+      .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+      }
+
+      .lightbox-counter {
+        bottom: 10px;
+        font-size: 0.68rem;
+        letter-spacing: 0.14em;
+      }
+
+      .hero-image-shell {
+        min-height: 440px;
+      }
+
+      .hero-image-content {
+        left: 24px;
+        right: 24px;
+        bottom: 24px;
+        max-width: 92%;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2.1rem, 10vw, 3rem);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .eyebrow,
+      .note-label,
+      .gallery-index,
+      .top-links a,
+      .brand,
+      .back-link,
+      .language-switch a {
+        letter-spacing: 1.4px;
+      }
+
+      .top-links a,
+      .language-switch a {
+        font-size: 0.74rem;
+        padding: 9px 12px;
+      }
+
+      .hero {
+        padding-top: calc(var(--topbar-height) + 20px);
+        padding-bottom: 24px;
+      }
+
+      .hero-image-shell {
+        min-height: 380px;
+      }
+
+      .hero-image-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero-image-content p,
+      .section-header p {
+        font-size: 0.94rem;
+      }
+
+      .gallery-card,
+      .gallery-card img {
+        min-height: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+  <div class="space-mist"></div>
+  <div class="vignette"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">SHAMBHALA SAGA</div>
+
+      <div class="topbar-right">
+        <nav class="top-links" id="siteMenu">
+          <a href="index.html">Home</a>
+          <a href="explorar.html">Explore</a>
+          <a href="corazon.html">Heart</a>
+          <a href="personajes.html">Characters</a>
+        </nav>
+
+        <div class="language-switch" aria-label="Language selector">
+          <a href="../galeria.html" lang="es">ES</a>
+          <a href="galeria.html" class="active" lang="en" aria-current="page">EN</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero reveal">
+    <div class="hero-copy">
+      <div class="eyebrow">Shared Memory</div>
+
+      <h1>Gallery</h1>
+
+      <p class="hero-subtitle">
+        A journey through some of our most treasured memories. On one side, a science-fiction universe. On the other, a real love story. Here, the two come together and become one.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#gallery" class="btn">Enter the Gallery</a>
+        <a href="corazon.html" class="btn secondary">Back to Heart</a>
+      </div>
+
+      <div class="hero-note">
+        <div class="note-box">
+          <div class="note-label">Gratitude</div>
+          <p>Thank you for being here, for witnessing this journey, and for allowing our personal galaxy to expand through your presence. In the end, the most meaningful stories are also shaped by the time we give them. Thank you for giving us some of yours.</p>
+        </div>
+
+        <div class="note-box">
+          <div class="note-label">Presence</div>
+          <p>This space holds a glimpse of our reality. It is the bond that inspired us to create Shambhala and the force that continues to move us to share this dream with you.</p>
+        </div>
+
+        <div class="note-box">
+          <div class="note-label">Memory</div>
+          <p>They say photographs preserve what the soul quietly holds close. Each of these images is a heartbeat suspended in time, a refuge for what we do not wish to lose.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-image-wrap">
+      <div class="hero-image-shell">
+        <img src="../images/galeria/susan-ximena-1.jpg" alt="Susan and Ximena" />
+        <div class="hero-image-aura"></div>
+        <div class="hero-image-overlay"></div>
+        <div class="hero-image-content">
+          <h2>Susan and Ximena</h2>
+          <p>
+            A small, real constellation at the heart of Shambhala.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cinematic-band reveal">
+    <div class="cinematic-band-inner">
+      <div class="cinematic-band-right">
+        memory · affection · presence · intimacy
+      </div>
+      <div class="cinematic-band-left">
+        Some images do more than preserve a moment. They turn it into atmosphere, permanence, and light within a larger story.
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery-section reveal" id="gallery">
+    <div class="gallery-inner">
+      <div class="section-header">
+        <h2>Moments</h2>
+        <p>Click on any image to view it full size.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-card" data-index="0">
+          <img src="../images/galeria/susan-ximena-1.jpg" alt="Susan and Ximena 1" />
+          <div class="gallery-index">01</div>
+        </div>
+
+        <div class="gallery-card" data-index="1">
+          <img src="../images/galeria/susan-ximena-2.jpg" alt="Susan and Ximena 2" />
+          <div class="gallery-index">02</div>
+        </div>
+
+        <div class="gallery-card" data-index="2">
+          <img src="../images/galeria/susan-ximena-3.jpg" alt="Susan and Ximena 3" />
+          <div class="gallery-index">03</div>
+        </div>
+
+        <div class="gallery-card" data-index="3">
+          <img src="../images/galeria/susan-ximena-4.jpg" alt="Susan and Ximena 4" />
+          <div class="gallery-index">04</div>
+        </div>
+
+        <div class="gallery-card" data-index="4">
+          <img src="../images/galeria/susan-ximena-5.jpg" alt="Susan and Ximena 5" />
+          <div class="gallery-index">05</div>
+        </div>
+
+        <div class="gallery-card" data-index="5">
+          <img src="../images/galeria/susan-ximena-6.jpg" alt="Susan and Ximena 6" />
+          <div class="gallery-index">06</div>
+        </div>
+
+        <div class="gallery-card" data-index="6">
+          <img src="../images/galeria/susan-ximena-7.jpg" alt="Susan and Ximena 7" />
+          <div class="gallery-index">07</div>
+        </div>
+
+        <div class="gallery-card" data-index="7">
+          <img src="../images/galeria/susan-ximena-8.jpg" alt="Susan and Ximena 8" />
+          <div class="gallery-index">08</div>
+        </div>
+
+        <div class="gallery-card" data-index="8">
+          <img src="../images/galeria/susan-ximena-9.jpg" alt="Susan and Ximena 9" />
+          <div class="gallery-index">09</div>
+        </div>
+
+        <div class="gallery-card" data-index="9">
+          <img src="../images/galeria/susan-ximena-10.jpg" alt="Susan and Ximena 10" />
+          <div class="gallery-index">10</div>
+        </div>
+
+        <div class="gallery-card" data-index="10">
+          <img src="../images/galeria/susan-ximena-11.jpg" alt="Susan and Ximena 11" />
+          <div class="gallery-index">11</div>
+        </div>
+
+        <div class="gallery-card" data-index="11">
+          <img src="../images/galeria/susan-ximena-12.jpg" alt="Susan and Ximena 12" />
+          <div class="gallery-index">12</div>
+        </div>
+      </div>
+
+      <div class="back-wrap">
+        <a class="back-link" href="corazon.html">Back to Heart</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">×</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+
+    <div class="lightbox-content">
+      <img class="lightbox-image" id="lightboxImage" src="" alt="" />
+    </div>
+
+    <div class="lightbox-counter" id="lightboxCounter">1 / 12</div>
+  </div>
+
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+      setTopbarHeight();
+    });
+
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      const count = window.innerWidth < 768 ? 140 : 240;
+
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + 0.25,
+          speed: Math.random() * 0.30 + 0.05,
+          alpha: Math.random() * 0.65 + 0.2
+        });
+      }
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      stars.forEach((star) => {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+
+        star.x -= star.speed;
+
+        if (star.x < -3) {
+          star.x = canvas.width + 3;
+          star.y = Math.random() * canvas.height;
+        }
+      });
+
+      requestAnimationFrame(drawStars);
+    }
+
+    function setTopbarHeight() {
+      const topbar = document.querySelector(".topbar");
+      if (!topbar) return;
+      const height = Math.ceil(topbar.getBoundingClientRect().height);
+      document.documentElement.style.setProperty("--topbar-height", `${height}px`);
+    }
+
+    resizeCanvas();
+    createStars();
+    drawStars();
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    revealElements.forEach((el) => observer.observe(el));
+
+    const galleryCards = document.querySelectorAll(".gallery-card");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const lightboxPrev = document.getElementById("lightboxPrev");
+    const lightboxNext = document.getElementById("lightboxNext");
+    const lightboxBackdrop = document.getElementById("lightboxBackdrop");
+    const lightboxCounter = document.getElementById("lightboxCounter");
+
+    const galleryImages = [
+      { src: "../images/galeria/susan-ximena-1.jpg", alt: "Susan and Ximena 1" },
+      { src: "../images/galeria/susan-ximena-2.jpg", alt: "Susan and Ximena 2" },
+      { src: "../images/galeria/susan-ximena-3.jpg", alt: "Susan and Ximena 3" },
+      { src: "../images/galeria/susan-ximena-4.jpg", alt: "Susan and Ximena 4" },
+      { src: "../images/galeria/susan-ximena-5.jpg", alt: "Susan and Ximena 5" },
+      { src: "../images/galeria/susan-ximena-6.jpg", alt: "Susan and Ximena 6" },
+      { src: "../images/galeria/susan-ximena-7.jpg", alt: "Susan and Ximena 7" },
+      { src: "../images/galeria/susan-ximena-8.jpg", alt: "Susan and Ximena 8" },
+      { src: "../images/galeria/susan-ximena-9.jpg", alt: "Susan and Ximena 9" },
+      { src: "../images/galeria/susan-ximena-10.jpg", alt: "Susan and Ximena 10" },
+      { src: "../images/galeria/susan-ximena-11.jpg", alt: "Susan and Ximena 11" },
+      { src: "../images/galeria/susan-ximena-12.jpg", alt: "Susan and Ximena 12" }
+    ];
+
+    let currentIndex = 0;
+
+    function updateLightbox(index) {
+      const image = galleryImages[index];
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+      currentIndex = index;
+    }
+
+    function openLightbox(index) {
+      updateLightbox(index);
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("lightbox-open");
+    }
+
+    function showNext() {
+      const nextIndex = (currentIndex + 1) % galleryImages.length;
+      updateLightbox(nextIndex);
+    }
+
+    function showPrev() {
+      const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateLightbox(prevIndex);
+    }
+
+    galleryCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const index = Number(card.dataset.index);
+        openLightbox(index);
+      });
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightboxBackdrop.addEventListener("click", closeLightbox);
+    lightboxNext.addEventListener("click", showNext);
+    lightboxPrev.addEventListener("click", showPrev);
+
+    document.addEventListener("keydown", (event) => {
+      if (!lightbox.classList.contains("active")) return;
+
+      if (event.key === "Escape") {
+        closeLightbox();
+      }
+
+      if (event.key === "ArrowRight") {
+        showNext();
+      }
+
+      if (event.key === "ArrowLeft") {
+        showPrev();
+      }
+    });
+
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      setTopbarHeight();
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 900) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", event => {
+      if (window.innerWidth > 900) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+      setTopbarHeight();
+
+      if (window.innerWidth > 900) {
+        closeMenu();
+      }
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(setTopbarHeight);
+    }
+  </script>
+</body>
+</html>
