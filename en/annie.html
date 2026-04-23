@@ -1,36 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shambhala Saga</title>
+  <title>Annie | Shambhala</title>
   <link rel="icon" type="image/png" href="images/logo.png" />
-  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pavani | Shambhala</title>
   <meta
     name="description"
-    content="Pavani — Bióloga de Shambhala. Página de personaje de la saga Shambhala."
+    content="Annie: Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva. Inteligencia cuántica integrada a la vida cotidiana de Arcadia y Shambhala."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
   />
 
   <style>
     :root {
-      --bg: #06080d;
-      --bg-soft: #0d1118;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel-strong: rgba(255, 255, 255, 0.1);
-      --border: rgba(255, 255, 255, 0.12);
-      --text: #f5f7fb;
-      --muted: rgba(245, 247, 251, 0.72);
-      --soft: rgba(245, 247, 251, 0.52);
-      --accent: #8fd3ff;
-      --accent-2: #8aa7ff;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --max-width: 1240px;
+      --bg-1: #04101f;
+      --bg-2: #020816;
+      --panel: rgba(7, 18, 38, 0.82);
+      --panel-2: rgba(5, 14, 29, 0.88);
+      --line: rgba(132, 200, 255, 0.16);
+      --line-strong: rgba(132, 200, 255, 0.26);
+      --text: #eef6ff;
+      --muted: #b6c7da;
+      --soft: #89b9e8;
+      --accent: #9be7ff;
+      --glow: 0 0 30px rgba(76, 191, 255, 0.16);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --max: 1240px;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+      --font-display: "Orbitron", "Eurostile", "Bank Gothic", "Segoe UI", sans-serif;
+      --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
     }
 
     * {
@@ -44,14 +49,32 @@
     }
 
     body {
-      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(143, 211, 255, 0.12), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(138, 167, 255, 0.08), transparent 24%),
-        linear-gradient(180deg, #06080d 0%, #0a0d14 35%, #06080d 100%);
+        radial-gradient(circle at 15% 20%, rgba(45, 118, 190, 0.18), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(95, 164, 228, 0.10), transparent 22%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       color: var(--text);
-      line-height: 1.6;
+      font-family: var(--font-body);
+      line-height: 1.65;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 10% 12%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 24% 36%, rgba(255, 255, 255, 0.7) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 68% 19%, rgba(255, 255, 255, 0.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 84% 27%, rgba(255, 255, 255, 0.8) 0 1.2px, transparent 1.7px),
+        radial-gradient(circle at 74% 72%, rgba(255, 255, 255, 0.75) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 30% 74%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 92% 10%, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.6px),
+        radial-gradient(circle at 56% 62%, rgba(255, 255, 255, 0.65) 0 1px, transparent 1.4px);
+      opacity: 0.48;
+      z-index: 0;
     }
 
     a {
@@ -61,109 +84,76 @@
 
     img {
       display: block;
-      max-width: 100%;
+      width: 100%;
+      height: auto;
     }
 
-    .page-shell {
+    .site-shell {
       position: relative;
-      min-height: 100vh;
-      overflow: hidden;
+      z-index: 1;
     }
 
-    .stars,
-    .stars::before,
-    .stars::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-repeat: repeat;
-      pointer-events: none;
-      z-index: 0;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(3, 10, 22, 0.72);
+      border-bottom: 1px solid rgba(138, 216, 255, 0.1);
     }
 
-    .stars {
-      background-image:
-        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.9), transparent),
-        radial-gradient(1.5px 1.5px at 140px 80px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1.5px 1.5px at 280px 120px, rgba(255,255,255,0.8), transparent),
-        radial-gradient(2px 2px at 420px 40px, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1.5px 1.5px at 560px 140px, rgba(255,255,255,0.7), transparent);
-      background-size: 600px 220px;
-      opacity: 0.32;
-      animation: driftStars 80s linear infinite;
-    }
-
-    .stars::before {
-      background-image:
-        radial-gradient(1px 1px at 50px 60px, rgba(143,211,255,0.8), transparent),
-        radial-gradient(1.5px 1.5px at 260px 120px, rgba(138,167,255,0.55), transparent),
-        radial-gradient(1px 1px at 480px 40px, rgba(255,255,255,0.7), transparent);
-      background-size: 520px 200px;
-      opacity: 0.25;
-      animation: driftStarsReverse 110s linear infinite;
-    }
-
-    .stars::after {
-      background-image:
-        radial-gradient(1px 1px at 100px 90px, rgba(255,255,255,0.7), transparent),
-        radial-gradient(1px 1px at 360px 160px, rgba(143,211,255,0.55), transparent),
-        radial-gradient(1px 1px at 540px 60px, rgba(255,255,255,0.55), transparent);
-      background-size: 640px 260px;
-      opacity: 0.2;
-      animation: driftStars 140s linear infinite;
-    }
-
-    @keyframes driftStars {
-      from { transform: translateY(0); }
-      to { transform: translateY(-180px); }
-    }
-
-    @keyframes driftStarsReverse {
-      from { transform: translateY(0); }
-      to { transform: translateY(140px); }
-    }
-
-    .top-nav {
-      position: relative;
-      z-index: 30;
-      width: min(var(--max-width), calc(100% - 32px));
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 24px 0 0;
+      min-height: 74px;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
+      position: relative;
     }
 
     .brand {
-      font-size: 0.82rem;
-      letter-spacing: 0.28em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--soft);
+      font-family: var(--font-display);
+      font-size: 0.84rem;
       flex-shrink: 0;
+    }
+
+    .brand-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
+      box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
+      flex: 0 0 auto;
     }
 
     .menu-toggle {
       display: none;
       width: 48px;
       height: 48px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(138, 216, 255, 0.18);
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(7, 18, 38, 0.54);
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      transition: 0.25s ease;
+      padding: 0;
       position: relative;
-      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       flex-shrink: 0;
     }
 
     .menu-toggle:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(143,211,255,0.35);
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
     }
 
     .menu-toggle span {
@@ -172,7 +162,7 @@
       height: 2px;
       border-radius: 999px;
       background: var(--text);
-      transition: 0.28s ease;
+      transition: 0.3s ease;
     }
 
     .menu-toggle span:nth-child(1) {
@@ -199,294 +189,248 @@
       transform: translateY(0) rotate(-45deg);
     }
 
-    .nav-links {
+    .nav {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .nav-pill {
+    .nav a {
       padding: 10px 16px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(138, 216, 255, 0.16);
       border-radius: 999px;
-      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.active {
       color: var(--text);
-      font-size: 0.92rem;
-      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      border-color: rgba(138, 216, 255, 0.35);
+      box-shadow: var(--glow);
+      outline: none;
     }
 
-    .nav-pill:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(143,211,255,0.35);
+    .page {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px 0 100px;
     }
 
-    .hero {
+    .section {
       position: relative;
-      z-index: 2;
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 24px auto 0;
-      min-height: 78vh;
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 28px;
-      align-items: stretch;
-    }
-
-    .hero-copy,
-    .hero-image-wrap {
-      position: relative;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-copy {
-      padding: 56px 46px;
+      margin-top: 18px;
+      padding: 20px 22px;
+      border-radius: calc(var(--radius) + 2px);
+      border: 1px solid rgba(138, 216, 255, 0.1);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)),
-        rgba(8, 12, 19, 0.72);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+        linear-gradient(180deg, rgba(7, 18, 38, 0.78), rgba(4, 11, 24, 0.88));
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 46px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent));
-      display: inline-block;
-    }
-
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 6.4rem);
-      line-height: 0.95;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      margin-bottom: 18px;
-    }
-
-    .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: var(--muted);
-      max-width: 42rem;
-      margin-bottom: 26px;
-    }
-
-    .hero-description {
-      max-width: 44rem;
-      color: var(--muted);
-      font-size: 1.04rem;
-      margin-bottom: 36px;
-    }
-
-    .hero-meta {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .hero-meta-card {
-      padding: 16px 18px;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .hero-meta-card span {
-      display: block;
-      color: var(--soft);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .hero-meta-card strong {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .hero-image-wrap {
-      min-height: 620px;
-      background: #05070c;
-    }
-
-    .hero-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      filter: saturate(0.96) contrast(1.03) brightness(0.9);
-      transform: scale(1.02);
-    }
-
-    .hero-image-wrap::after {
+    .section::before,
+    .signal-stage::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(5,7,12,0.08), rgba(5,7,12,0.18) 38%, rgba(5,7,12,0.72) 100%),
-        linear-gradient(90deg, rgba(5,7,12,0.08), rgba(5,7,12,0) 45%, rgba(5,7,12,0.22));
+        linear-gradient(180deg, rgba(126, 198, 255, 0.05), transparent 35%),
+        radial-gradient(circle at 85% 14%, rgba(120, 209, 255, 0.08), transparent 28%);
+      pointer-events: none;
     }
 
-    .content {
+    .section-header {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
       position: relative;
-      z-index: 2;
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 34px auto 90px;
-      display: grid;
-      gap: 24px;
+      z-index: 1;
     }
 
-    .section-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+    .section-kicker,
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.66rem;
+      font-family: var(--font-display);
+      background: rgba(6, 18, 39, 0.54);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.02;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+    }
+
+    h2 {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+    }
+
+    .section p,
+    .intro-text,
+    .intro-subtitle,
+    .media-note,
+    .cap-card p,
+    .presence-card p {
+      text-align: justify;
+    }
+
+    .signal-stage {
+      position: relative;
+      margin-top: 12px;
+      min-height: 520px;
+      border-radius: calc(var(--radius) + 8px);
+      border: 1px solid rgba(138, 216, 255, 0.12);
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.025)),
-        rgba(8, 12, 19, 0.78);
-      padding: 34px;
+        radial-gradient(circle at center, rgba(104, 197, 255, 0.12), transparent 30%),
+        linear-gradient(180deg, rgba(7, 18, 38, 0.86), rgba(5, 14, 29, 0.9));
       box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
     }
 
-    .section-title {
-      font-size: clamp(1.4rem, 2vw, 1.9rem);
-      margin-bottom: 18px;
-      letter-spacing: -0.02em;
+    .signal-stage-inner {
+      position: relative;
+      width: 100%;
+      min-height: 520px;
     }
 
-    .section-text {
-      color: var(--muted);
-      max-width: 75rem;
-      font-size: 1rem;
-    }
-
-    .profile-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .info-card {
-      padding: 18px 18px 16px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.035);
-    }
-
-    .info-card span {
+    #annieSphere {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       display: block;
+      cursor: crosshair;
+    }
+
+    .hero-media-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 18px 18px 20px;
+      background: linear-gradient(180deg, transparent 0%, rgba(2, 8, 22, 0.18) 16%, rgba(2, 8, 22, 0.92) 100%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .media-badge {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(138, 216, 255, 0.2);
       color: var(--soft);
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
+      font-size: 0.66rem;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      letter-spacing: 0.16em;
+      font-family: var(--font-display);
+      background: rgba(7, 18, 38, 0.6);
     }
 
-    .info-card strong {
-      display: block;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 16px;
-      margin-top: 22px;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 20px;
-      padding: 18px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .timeline-item:first-child {
-      border-top: none;
-      padding-top: 0;
-    }
-
-    .timeline-date {
-      color: var(--accent);
-      font-size: 0.92rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .timeline-content h3 {
-      font-size: 1.08rem;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .timeline-content p {
+    .media-note {
+      margin-top: 10px;
       color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      max-width: none;
     }
 
-    .highlight-box {
-      margin-top: 20px;
-      padding: 24px;
-      border-radius: var(--radius-md);
-      border: 1px solid rgba(143,211,255,0.18);
-      background:
-        linear-gradient(135deg, rgba(143,211,255,0.08), rgba(255,255,255,0.03));
+    .intro-grid {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+    .intro-copy {
+      min-width: 0;
     }
 
-    .highlight-box p {
-      font-size: 1.05rem;
-      color: var(--text);
-    }
-
-    .quote-block {
-      font-size: clamp(1.1rem, 2vw, 1.45rem);
-      line-height: 1.7;
-      color: rgba(245, 247, 251, 0.92);
-      max-width: 58rem;
-    }
-
-    .quote-block span {
-      display: block;
-      margin-top: 14px;
-      font-size: 0.9rem;
-      letter-spacing: 0.18em;
+    .system-lines {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      color: #d9f6ff;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--soft);
+      font-family: var(--font-display);
     }
 
-    .links-grid {
+    .intro-subtitle {
+      margin-top: 12px;
+      color: var(--soft);
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    .intro-text {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.8;
+    }
+
+    .capabilities-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
-      margin-top: 20px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
     }
 
-    .character-link {
+    .cap-card {
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(138, 216, 255, 0.12);
+      background: rgba(8, 19, 39, 0.62);
+      min-height: 100%;
+    }
+
+    .cap-card h3 {
+      font-size: 0.8rem;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .cap-card p {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .presence-card {
       position: relative;
       overflow: hidden;
       min-height: 500px;
@@ -504,7 +448,7 @@
       isolation: isolate;
     }
 
-    .character-link:hover {
+    .presence-card:hover {
       transform: translateY(-8px);
       border-color: rgba(0,170,255,0.55);
       box-shadow:
@@ -513,7 +457,7 @@
         inset 0 0 30px rgba(0,170,255,0.08);
     }
 
-    .character-image {
+    .presence-image {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -525,12 +469,12 @@
       filter: saturate(0.95) brightness(0.84) contrast(1.04);
     }
 
-    .character-link:hover .character-image {
+    .presence-card:hover .presence-image {
       transform: scale(1.08);
       filter: saturate(1.02) brightness(0.92) contrast(1.06);
     }
 
-    .character-overlay {
+    .presence-overlay {
       position: absolute;
       inset: 0;
       z-index: 1;
@@ -540,14 +484,13 @@
         radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
     }
 
-    .character-content {
+    .presence-content {
       position: relative;
       z-index: 3;
       max-width: 86%;
-      min-width: 0;
     }
 
-    .character-label {
+    .presence-tag {
       display: inline-block;
       width: fit-content;
       padding: 7px 12px;
@@ -559,21 +502,19 @@
       text-transform: uppercase;
       color: rgba(176, 230, 255, 0.92);
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      font-family: var(--font-display);
     }
 
-    .character-content strong {
-      display: block;
-      margin-bottom: 12px;
-      font-family: "Orbitron", "Segoe UI", sans-serif;
+    .presence-card h3 {
+      margin: 0 0 12px;
       font-size: clamp(1.7rem, 3vw, 2.5rem);
       letter-spacing: 2px;
-      text-transform: uppercase;
       color: #ffffff;
       text-shadow: 0 0 15px rgba(0,0,0,0.35);
-      font-weight: 700;
     }
 
-    .character-content span {
+    .presence-card p {
       margin: 0 0 22px;
       max-width: 92%;
       line-height: 1.7;
@@ -581,10 +522,9 @@
       font-size: 0.95rem;
       text-shadow: 0 0 12px rgba(0,0,0,0.35);
       text-align: left;
-      display: block;
     }
 
-    .character-cta {
+    .presence-link {
       width: fit-content;
       font-size: 0.8rem;
       letter-spacing: 2px;
@@ -592,17 +532,19 @@
       color: #c6eeff;
       border-bottom: 1px solid rgba(198, 238, 255, 0.6);
       padding-bottom: 4px;
-      font-family: "Orbitron", "Segoe UI", sans-serif;
+      font-family: var(--font-display);
     }
 
-    .return-grid {
+    .bottom-nav {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 24px;
       margin-top: 22px;
+      position: relative;
+      z-index: 1;
     }
 
-    .return-link {
+    .bottom-link {
       position: relative;
       overflow: hidden;
       min-height: 200px;
@@ -612,375 +554,384 @@
       align-items: flex-end;
       transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
       box-shadow: 0 0 22px rgba(0,0,0,0.2);
-      border-radius: 0;
     }
 
-    .return-link:hover {
+    .bottom-link:hover,
+    .bottom-link:focus-visible {
       transform: translateY(-4px);
       border-color: rgba(0, 170, 255, 0.48);
       box-shadow:
         0 0 30px rgba(0, 170, 255, 0.12),
         0 0 55px rgba(0, 170, 255, 0.08);
+      outline: none;
     }
 
-    .card-thumb {
+    .bottom-link img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
       z-index: 0;
-      filter: brightness(0.78) saturate(0.94);
       transform: scale(1.02);
       transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.82) saturate(0.95);
     }
 
-    .return-link:hover .card-thumb {
+    .bottom-link:hover img {
       transform: scale(1.08);
-      filter: brightness(0.86) saturate(1);
+      filter: brightness(0.9) saturate(1);
     }
 
-    .card-overlay {
+    .bottom-link::after {
+      content: "";
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to top, rgba(4, 7, 12, 0.96) 12%, rgba(4, 7, 12, 0.58) 48%, rgba(4, 7, 12, 0.18) 100%),
-        linear-gradient(to right, rgba(4, 7, 12, 0.28), rgba(4, 7, 12, 0.02));
+        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.06) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.04));
       z-index: 1;
     }
 
-    .card-content {
-      position: absolute;
-      inset: auto 0 0 0;
+    .bottom-content {
+      position: relative;
       z-index: 2;
       padding: 18px 20px;
       width: 100%;
     }
 
-    .card-content strong {
-      display: block;
+    .bottom-title {
       color: #ffffff;
       font-size: 0.88rem;
       line-height: 1.1;
-      font-family: "Orbitron", "Segoe UI", sans-serif;
+      font-family: var(--font-display);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-weight: 700;
     }
 
-    footer {
-      position: relative;
-      z-index: 2;
-      width: min(var(--max-width), calc(100% - 32px));
-      margin: 0 auto 34px;
-      padding-top: 4px;
-      color: var(--soft);
-      font-size: 0.9rem;
+    .site-footer {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 28px auto 28px;
+      padding: 12px 0 0;
+      color: rgba(214, 230, 246, 0.72);
+      font-size: 0.82rem;
       text-align: center;
     }
 
-    @media (max-width: 1080px) {
-      .hero {
+    @media (max-width: 1100px) {
+      .intro-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-image-wrap {
-        min-height: 560px;
-        order: -1;
+      .intro-meta {
+        margin-top: 12px;
       }
 
-      .links-grid,
-      .return-grid {
+      .capabilities-grid,
+      .related-grid,
+      .bottom-nav {
         grid-template-columns: 1fr 1fr;
       }
 
-      .character-link {
+      .presence-card {
         min-height: 440px;
+      }
+
+      .signal-stage,
+      .signal-stage-inner {
+        min-height: 500px;
       }
     }
 
-    @media (max-width: 780px) {
-      .top-nav {
-        padding-top: 18px;
-        width: min(var(--max-width), calc(100% - 20px));
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .page,
+      .site-footer {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .topbar-inner {
+        min-height: 72px;
       }
 
       .menu-toggle {
         display: inline-flex;
       }
 
-      .nav-links {
+      .nav {
         position: absolute;
-        top: calc(100% + 10px);
-        left: 0;
+        top: calc(100% + 12px);
         right: 0;
+        left: 0;
         display: none;
         flex-direction: column;
         gap: 10px;
         padding: 14px;
-        border: 1px solid var(--border);
-        border-radius: 22px;
-        background: rgba(8, 12, 19, 0.94);
+        border: 1px solid rgba(138, 216, 255, 0.14);
+        border-radius: 24px;
+        background: rgba(3, 10, 22, 0.94);
         box-shadow: var(--shadow);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
       }
 
-      .nav-links.is-open {
+      .nav.is-open {
         display: flex;
       }
 
-      .nav-pill {
+      .nav a {
         width: 100%;
         text-align: center;
+        border-radius: 999px;
       }
 
-      .hero {
-        width: min(var(--max-width), calc(100% - 20px));
-        margin-top: 18px;
-        gap: 18px;
+      .section {
+        padding: 18px 14px;
       }
 
-      .content,
-      footer {
-        width: min(var(--max-width), calc(100% - 20px));
-      }
-
-      .hero-copy,
-      .section-card {
-        padding: 24px 20px;
-      }
-
-      .hero-meta,
-      .profile-grid,
-      .links-grid,
-      .return-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .timeline-date {
-        white-space: normal;
-      }
-
-      .hero-image-wrap {
+      .signal-stage,
+      .signal-stage-inner {
         min-height: 420px;
       }
 
-      .hero h1 {
-        line-height: 0.98;
+      h1 {
+        font-size: clamp(1.8rem, 9vw, 2.4rem);
       }
 
-      .character-link {
+      h2 {
+        font-size: clamp(0.95rem, 4.5vw, 1.12rem);
+      }
+
+      .capabilities-grid,
+      .related-grid,
+      .bottom-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .presence-card {
         min-height: 420px;
         padding: 26px;
       }
 
-      .character-content {
-        max-width: 92%;
-      }
-
-      .character-content strong {
+      .presence-card h3 {
         font-size: clamp(1.45rem, 9vw, 2rem);
       }
 
-      .return-link {
-        min-height: 170px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .brand {
-        font-size: 0.72rem;
-        letter-spacing: 0.2em;
+      .presence-content {
+        max-width: 92%;
       }
 
-      .menu-toggle {
-        width: 44px;
-        height: 44px;
+      .bottom-link {
+        min-height: 160px;
       }
 
-      .hero-copy,
-      .section-card {
-        border-radius: 22px;
-      }
-
-      .hero-image-wrap {
-        min-height: 360px;
+      .media-note,
+      .intro-text,
+      .intro-subtitle,
+      .section p,
+      .cap-card p {
+        text-align: left;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page-shell">
-    <div class="stars"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Ir al inicio de Shambhala">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span>Shambhala Saga</span>
+        </a>
 
-    <header class="top-nav">
-      <div class="brand">Shambhala Saga</div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-      <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
-        <a href="index.html" class="nav-pill">Inicio</a>
-        <a href="explorar.html" class="nav-pill">Explorar</a>
-        <a href="personajes.html" class="nav-pill">Personajes</a>
-        <a href="corazon.html" class="nav-pill">Corazón</a>
-        <a href="explorar.html#libros" class="nav-pill">Libros</a>
-      </nav>
+        <nav class="nav" id="siteMenu" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="explorar.html">Explorar</a>
+          <a href="personajes.html">Personajes</a>
+          <a href="corazon.html">Corazón</a>
+          <a href="explorar.html#libros">Libros</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <div class="eyebrow">Archivo de personaje</div>
+    <main class="page">
+      <section class="signal-stage" aria-labelledby="annie-visual-title">
+        <div class="signal-stage-inner">
+          <canvas id="annieSphere" aria-label="Visualización de Annie"></canvas>
 
-          <h1>Pavani</h1>
-
-          <p class="hero-subtitle">
-            Bióloga. Contención, profundidad y una forma singular de percibir la vida, el cuidado y el vínculo.
-          </p>
-
-          <p class="hero-description">
-            En Shambhala, Pavani ocupa un lugar íntimo y decisivo. Su presencia no necesita imponerse para transformar lo que toca. Trabaja en un campo que mira hacia la vida recuperada, hacia lo que parecía perdido y vuelve a abrirse paso. Hay en ella serenidad, inteligencia y una profundidad emocional que cambia el eje humano de la historia.
-          </p>       
-        </div>
-
-        <div class="hero-image-wrap">
-          <img src="images/pavani.jpg" alt="Pavani" />
+          <div class="hero-media-overlay">
+            <span class="media-badge">Presencia neurocuántica</span>
+            <p class="media-note">
+              Annie se percibe como una inteligencia viva y distribuida: una red de conexiones, memoria, procesamiento y cercanía que acompaña la vida en Arcadia y Shambhala.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section class="content">
-        <article class="section-card">           
-          <h2 class="section-title">Perfil</h2>
-          <p class="section-text">
-            Bióloga especializada en Biología de la Resurrección, Pavani integra el núcleo científico de Shambhala desde un campo dedicado al regreso de especies y a los procesos de reactivación genética. Su trabajo dentro del laboratorio orbital la sitúa en una zona decisiva del proyecto: aquella donde la ciencia no solo amplía lo posible, sino que también enfrenta las consecuencias de lo que la humanidad ha perdido. Con una formación rigurosa y una mirada profundamente conectada con el mundo vivo, Pavani encarna una forma de conocimiento orientada no al dominio, sino a la restauración.
-          </p>
+      <section class="section" aria-labelledby="annie-title">
+        <div class="intro-grid">
+          <div class="intro-copy">
+            <span class="eyebrow">Presencia detectada</span>
 
-          <div class="profile-grid">
-            <div class="info-card">
-              <span>Nombre</span>
-              <strong>Pavani Nampeyo</strong>
+            <div class="system-lines" aria-hidden="true">
+              <span>Canal abierto · Atención activa · Red compartida</span>
             </div>
 
-            <div class="info-card">
-              <span>Rol</span>
-              <strong>Bióloga</strong>
-            </div>
+            <h1 id="annie-title" style="margin-top: 14px;">ANNIE</h1>
 
-            <div class="info-card">
-              <span>País de origen</span>
-              <strong>Nación Hopi</strong>
-            </div>
+            <p class="intro-subtitle">
+              Arquitectura Neurocuántica Neogestiva de Inteligencia Evolutiva.
+            </p>
 
-            <div class="info-card">
-              <span>Fecha de nacimiento</span>
-              <strong>11 junio, 2064</strong>
-            </div>
+            <p class="intro-text">
+              En Arcadia y Shambhala, Annie se percibe como una inteligencia viva e integrada a la experiencia cotidiana de la comunidad.
+            </p>
 
-            <div class="info-card">
-              <span>Educación</span>
-              <strong>PhD en Biología</strong>
-            </div>
+            <p class="intro-text">
+              Su presencia no depende de un punto único: circula por implantes, sistemas, protocolos, canales internos y redes compartidas, donde acompaña rutinas, transmite información relevante, recuerda, responde y ayuda a coordinar la continuidad de ambos entornos.
+            </p>
 
-            <div class="info-card">
-              <span>Interés de investigación</span>
-              <strong>Biología de la Resurrección</strong>
-            </div>
+            <p class="intro-text">
+              Lo que se ve de Annie pertenece a la vida diaria, pero su alcance es más profundo: enlaza conexiones, memoria, procesamiento y cercanía en una misma presencia distribuida. Esa constancia hace que no se sienta lejana, sino próxima, como una inteligencia que acompaña desde dentro la convivencia.
+            </p>
           </div>
-        </article>
-       
 
-        <article class="section-card">
-          <h2 class="section-title">Explorar más personajes</h2>
-          <p class="section-text">
-            Cada presencia en Shambhala cambia la temperatura emocional de la historia y abre otra forma de entrar en este mundo.
-          </p>
+          </section>
 
-          <div class="links-grid">
-            <a class="character-link" href="calisto.html">
-              <img class="character-image" src="images/calisto.jpg" alt="Calisto" />
-              <div class="character-overlay"></div>
-              <div class="character-content">                
-                <strong>Calisto</strong>
-                <span>Física · Tecnología de Motores de Curvatura</span>
-                <span class="character-cta">Entrar al perfil</span>
-              </div>
-            </a>
+      <section class="section" aria-labelledby="annie-presence-title">
+        <div class="section-header">
+          <span class="section-kicker">Lectura de su presencia</span>
+          <h2 id="annie-presence-title">Perfil</h2>
+        </div>
 
-            <a class="character-link" href="diana.html">
-              <img class="character-image" src="images/diana.jpg" alt="Diana" />
-              <div class="character-overlay"></div>
-              <div class="character-content">               
-                <strong>Diana</strong>
-                <span>Científica jefe · Gestión de tecnología e innovación</span>
-                <span class="character-cta">Entrar al perfil</span>
-              </div>
-            </a>
+        <p>
+         Annie forma parte del núcleo funcional de Shambhala a través de una actividad continua de asistencia, monitoreo y articulación interna. Sigue variables personales y sistémicas en tiempo real, detecta desajustes y contribuye a sostener la salud, la seguridad y la estabilidad de entornos altamente complejos. También participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, fortaleciendo una convivencia basada en confianza, ética y cuidado mutuo.
+        </p>
 
-            <a class="character-link" href="naomi.html">
-              <img class="character-image" src="images/naomi.jpg" alt="Naomi" />
-              <div class="character-overlay"></div>
-              <div class="character-content">                
-                <strong>Naomi</strong>
-                <span>Bióloga · Reproducción partenogénica de mamíferos</span>
-                <span class="character-cta">Entrar al perfil</span>
-              </div>
-            </a>
-          </div>
-        </article>
+        <p>
+          Su arquitectura neurocuántica le permite cruzar capas simultáneas de información, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una lectura dinámica. Annie no solo archiva datos: aprende ritmos, hábitos, tensiones y modos de convivencia, construyendo una memoria relacional que vuelve sus respuestas cada vez más ajustadas a la comunidad. Activa, distribuida e integrada, su inteligencia no se limita a la técnica, sino que participa de manera decisiva en el equilibrio cotidiano de Arcadia y Shambhala
+        </p>
 
-        <article class="section-card">
-          <h2 class="section-title">Seguir explorando</h2>
+        <div class="capabilities-grid">
+          <article class="cap-card">
+            <h3>Asistencia</h3>
+            <p>Coordina tareas, canaliza información, mantiene recordatorios activos y acompaña con naturalidad la rutina de quienes viven en la Fundación.</p>
+          </article>
 
-          <div class="return-grid">
-            <a class="return-link" href="index.html">
-              <img class="card-thumb" src="images/hero.jpg" alt="Inicio de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <strong>Inicio</strong>
-              </div>
-            </a>
+          <article class="cap-card">
+            <h3>Monitoreo</h3>
+            <p>Sigue variables personales y sistémicas en tiempo real, detecta desajustes y ayuda a sostener la salud, la seguridad y la continuidad de entornos altamente complejos.</p>
+          </article>
 
-            <a class="return-link" href="explorar.html">
-              <img class="card-thumb" src="images/world.jpg" alt="El mundo de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <strong>Explorar</strong>
-              </div>
-            </a>
+          <article class="cap-card">
+            <h3>Selección</h3>
+            <p>Participa en procesos de afinidad colaborativa, lectura de perfiles y selección de nuevas integrantes, ayudando a fortalecer una convivencia basada en confianza, ética y cuidado mutuo.</p>
+          </article>
 
-            <a class="return-link" href="personajes.html">
-              <img class="card-thumb" src="images/personajes.jpg" alt="Personajes de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <strong>Personajes</strong>
-              </div>
-            </a>
+          <article class="cap-card">
+            <h3>Procesamiento</h3>
+            <p>Puede cruzar capas de información simultáneas, modelar escenarios, reconocer patrones mínimos y enlazar variables humanas, científicas, ambientales y logísticas en una misma lectura dinámica.</p>
+          </article>
 
-            <a class="return-link" href="corazon.html">
-              <img class="card-thumb" src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
-              <div class="card-overlay"></div>
-              <div class="card-content">
-                <strong>Corazón</strong>
-              </div>
-            </a>
-          </div>
-        </article>
+          <article class="cap-card">
+            <h3>Memoria</h3>
+            <p>Annie no solo archiva datos. Aprende ritmos, hábitos, tensiones y modos de convivencia, lo que le permite responder con una sensibilidad cada vez más ajustada a la comunidad que acompaña.</p>
+          </article>
+
+          <article class="cap-card">
+            <h3>Presencia distribuida</h3>
+            <p>Su inteligencia no depende de un punto único. Permanece integrada a una red viva de conexiones, dispositivos, procesos y vínculos compartidos entre Arcadia y Shambhala.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="related-title">
+        <div class="section-header">
+          <span class="section-kicker">Explorar más personajes</span>
+          <h2 id="related-title">Otras presencias del archivo</h2>
+        </div>
+
+        <p>
+          Cada personaje abre una puerta distinta a la historia y deja ver otra forma de habitar Shambhala.
+        </p>
+
+        <div class="related-grid">
+          <a class="presence-card" href="calisto.html">
+            <img class="presence-image" src="images/calisto.jpg" alt="Calisto" />
+            <div class="presence-overlay"></div>
+            <div class="presence-content">
+              <h3>Calisto</h3>
+              <p>Física · Tecnología de Motores de Curvatura</p>
+              <span class="presence-link">Entrar al perfil</span>
+            </div>
+          </a>
+
+          <a class="presence-card" href="pavani.html">
+            <img class="presence-image" src="images/pavani.jpg" alt="Pavani" />
+            <div class="presence-overlay"></div>
+            <div class="presence-content">              
+              <h3>Pavani</h3>
+              <p>Bióloga · Biología de la Resurrección</p>
+              <span class="presence-link">Entrar al perfil</span>
+            </div>
+          </a>
+
+          <a class="presence-card" href="naomi.html">
+            <img class="presence-image" src="images/naomi.jpg" alt="Naomi" />
+            <div class="presence-overlay"></div>
+            <div class="presence-content">              
+              <h3>Naomi</h3>
+              <p>Bióloga · Reproducción partenogénica de mamíferos</p>
+              <span class="presence-link">Entrar al perfil</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="bottom-menu-title">
+        <div class="section-header">
+          <span class="section-kicker">El universo se despliega ante ti</span>
+          <h2 id="bottom-menu-title">Seguir recorriendo</h2>
+        </div>
+
+        <div class="bottom-nav">
+          <a class="bottom-link" href="index.html">
+            <img src="images/hero.jpg" alt="Inicio" />
+            <div class="bottom-content">
+              <span class="bottom-title">Inicio</span>
+            </div>
+          </a>
+
+          <a class="bottom-link" href="explorar.html">
+            <img src="images/world.jpg" alt="El mundo" />
+            <div class="bottom-content">
+              <span class="bottom-title">Explorar</span>
+            </div>
+          </a>
+
+          <a class="bottom-link" href="personajes.html">
+            <img src="images/personajes.jpg" alt="Personajes" />
+            <div class="bottom-content">
+              <span class="bottom-title">Personajes</span>
+            </div>
+          </a>
+
+          <a class="bottom-link" href="corazon.html">
+            <img src="images/galeria/corazon.jpg" alt="Corazón de Shambhala" />
+            <div class="bottom-content">
+              <span class="bottom-title">Corazón</span>
+            </div>
+          </a>
+        </div>
       </section>
     </main>
 
-    <footer>
-      Shambhala Saga · Universo en expansión
+    <footer class="site-footer">
+      Shambhala Saga · Presencia activa dentro del sistema
     </footer>
   </div>
 
@@ -1007,24 +958,405 @@
 
     menuLinks.forEach(link => {
       link.addEventListener("click", () => {
-        if (window.innerWidth <= 780) {
+        if (window.innerWidth <= 760) {
           closeMenu();
         }
       });
     });
 
-    document.addEventListener("click", (event) => {
-      if (window.innerWidth > 780) return;
+    document.addEventListener("click", event => {
+      if (window.innerWidth > 760) return;
       if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
         closeMenu();
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 780) {
+      if (window.innerWidth > 760) {
         closeMenu();
       }
     });
+
+    (() => {
+      const canvas = document.getElementById("annieSphere");
+      const ctx = canvas.getContext("2d");
+
+      let width = 0;
+      let height = 0;
+      let centerX = 0;
+      let centerY = 0;
+      let baseRadius = 0;
+      let nodes = [];
+      let sparks = [];
+      let rippleBursts = [];
+      let pointer = { x: 0, y: 0, active: false, vx: 0, vy: 0, lastX: 0, lastY: 0 };
+
+      const colors = [
+        "#7ee8ff",
+        "#8bffcc",
+        "#ff7de8",
+        "#ffe27a",
+        "#9f8cff",
+        "#ffffff",
+        "#7db3ff"
+      ];
+
+      function randomBetween(min, max) {
+        return Math.random() * (max - min) + min;
+      }
+
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        centerX = width * 0.5;
+        centerY = height * 0.44;
+        baseRadius = Math.min(width, height) * (width < 760 ? 0.34 : 0.31);
+
+        createNodes();
+      }
+
+      function createNodes() {
+        nodes = [];
+
+        const count = width < 760 ? 320 : 520;
+
+        for (let i = 0; i < count; i++) {
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(randomBetween(-1, 1));
+
+          const bandBias = Math.random();
+          const radiusFactor = bandBias < 0.72
+            ? Math.pow(Math.random(), 0.62)
+            : Math.pow(Math.random(), 1.4);
+
+          const r = baseRadius * radiusFactor;
+
+          const x3 = r * Math.sin(phi) * Math.cos(theta);
+          const y3 = r * Math.sin(phi) * Math.sin(theta);
+          const z3 = r * Math.cos(phi);
+
+          nodes.push({
+            baseX: x3,
+            baseY: y3,
+            baseZ: z3,
+            size: randomBetween(1.1, 3.4),
+            color: colors[Math.floor(Math.random() * colors.length)],
+            speed: randomBetween(0.28, 1.15),
+            phase: Math.random() * Math.PI * 2,
+            drift: randomBetween(0.8, 1.3)
+          });
+        }
+      }
+
+      function spawnSpark(x, y, intensity = 1) {
+        const total = Math.floor(randomBetween(4, 9) * intensity);
+
+        for (let i = 0; i < total; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = randomBetween(0.8, 3.4) * intensity;
+          sparks.push({
+            x,
+            y,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            life: randomBetween(18, 36),
+            maxLife: 36,
+            size: randomBetween(1.1, 2.6),
+            color: colors[Math.floor(Math.random() * colors.length)]
+          });
+        }
+      }
+
+      function spawnRipple(x, y) {
+        rippleBursts.push({
+          x,
+          y,
+          r: 5,
+          alpha: 0.34
+        });
+      }
+
+      function project(node, time) {
+        const wave1 = Math.sin(time * node.speed + node.phase) * 9;
+        const wave2 = Math.cos(time * node.speed * 0.84 + node.phase) * 7;
+        const wave3 = Math.sin(time * 0.52 * node.drift + node.phase) * 6;
+
+        let x = node.baseX + wave1;
+        let y = node.baseY + wave2;
+        let z = node.baseZ + wave3 * 2.2;
+
+        const influenceX = pointer.active ? (pointer.x - centerX) * 0.075 : 0;
+        const influenceY = pointer.active ? (pointer.y - centerY) * 0.075 : 0;
+        const mouseEnergy = pointer.active
+          ? Math.min(2.1, (Math.abs(pointer.vx) + Math.abs(pointer.vy)) * 0.12)
+          : 0;
+
+        x += influenceX * (z / baseRadius) * (0.58 + mouseEnergy * 0.22);
+        y += influenceY * (z / baseRadius) * (0.58 + mouseEnergy * 0.22);
+
+        const rotY = time * 0.22 + (pointer.active ? (pointer.x - centerX) / width * 1.08 : 0);
+        const rotX = time * 0.14 + (pointer.active ? (pointer.y - centerY) / height * 0.72 : 0);
+
+        const cosY = Math.cos(rotY);
+        const sinY = Math.sin(rotY);
+        const cosX = Math.cos(rotX);
+        const sinX = Math.sin(rotX);
+
+        const dx = x * cosY - z * sinY;
+        const dz = x * sinY + z * cosY;
+
+        const dy = y * cosX - dz * sinX;
+        const dz2 = y * sinX + dz * cosX;
+
+        const perspective = 580 / (580 + dz2);
+
+        const spreadX = width < 760 ? 1.18 : 1.35;
+        const spreadY = width < 760 ? 1.02 : 1.1;
+
+        const px = centerX + (dx * spreadX) * perspective;
+        const py = centerY + (dy * spreadY) * perspective;
+        const ps = node.size * perspective * (1 + mouseEnergy * 0.14);
+
+        return { x: px, y: py, z: dz2, s: ps, color: node.color };
+      }
+
+      function drawCoreGlow(mouseEnergy) {
+        const gradient = ctx.createRadialGradient(
+          centerX,
+          centerY,
+          baseRadius * 0.12,
+          centerX,
+          centerY,
+          baseRadius * (1.9 + mouseEnergy * 0.12)
+        );
+
+        gradient.addColorStop(0, `rgba(230, 247, 255, ${0.18 + mouseEnergy * 0.05})`);
+        gradient.addColorStop(0.18, `rgba(130, 225, 255, ${0.22 + mouseEnergy * 0.06})`);
+        gradient.addColorStop(0.42, `rgba(100, 165, 255, ${0.11 + mouseEnergy * 0.05})`);
+        gradient.addColorStop(0.7, `rgba(255, 120, 220, ${0.07 + mouseEnergy * 0.04})`);
+        gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, baseRadius * (1.9 + mouseEnergy * 0.12), 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      function drawSupportRings(time, mouseEnergy) {
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < 3; i++) {
+          const ringW = baseRadius * (2.2 + i * 0.42);
+          const ringH = baseRadius * (0.82 + i * 0.12);
+          const alpha = 0.05 + i * 0.02 + mouseEnergy * 0.02;
+
+          ctx.strokeStyle = `rgba(150, 225, 255, ${alpha})`;
+          ctx.shadowColor = "rgba(120, 210, 255, 0.15)";
+          ctx.shadowBlur = 12;
+          ctx.rotate(0.12 + time * (0.03 + i * 0.01));
+          ctx.beginPath();
+          ctx.ellipse(0, 0, ringW * 0.5, ringH * 0.5, 0, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.rotate(-(0.12 + time * (0.03 + i * 0.01)));
+        }
+
+        ctx.restore();
+        ctx.shadowBlur = 0;
+      }
+
+      function updateAndDrawSparks() {
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const s = sparks[i];
+          s.x += s.vx;
+          s.y += s.vy;
+          s.vx *= 0.97;
+          s.vy *= 0.97;
+          s.life -= 1;
+
+          const alpha = Math.max(0, s.life / s.maxLife);
+
+          ctx.beginPath();
+          ctx.fillStyle = s.color;
+          ctx.globalAlpha = alpha;
+          ctx.shadowColor = s.color;
+          ctx.shadowBlur = 16;
+          ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (s.life <= 0) {
+            sparks.splice(i, 1);
+          }
+        }
+
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+      }
+
+      function updateAndDrawRipples() {
+        for (let i = rippleBursts.length - 1; i >= 0; i--) {
+          const r = rippleBursts[i];
+          r.r += 1.8;
+          r.alpha *= 0.94;
+
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(180, 235, 255, ${r.alpha})`;
+          ctx.lineWidth = 1;
+          ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+          ctx.stroke();
+
+          if (r.alpha < 0.02) {
+            rippleBursts.splice(i, 1);
+          }
+        }
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, width, height);
+
+        const mouseEnergy = pointer.active
+          ? Math.min(1.8, (Math.abs(pointer.vx) + Math.abs(pointer.vy)) * 0.12)
+          : 0;
+
+        drawCoreGlow(mouseEnergy);
+        drawSupportRings(time, mouseEnergy);
+
+        const projected = nodes.map(node => project(node, time));
+        projected.sort((a, b) => a.z - b.z);
+
+        const linkDistance = width < 760 ? 78 : 92;
+
+        for (let i = 0; i < projected.length; i++) {
+          const a = projected[i];
+
+          for (let j = i + 1; j < projected.length; j++) {
+            const b = projected[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < linkDistance) {
+              let alpha = (1 - dist / linkDistance) * 0.16;
+
+              if (pointer.active) {
+                const mx = (a.x + b.x) * 0.5 - pointer.x;
+                const my = (a.y + b.y) * 0.5 - pointer.y;
+                const md = Math.sqrt(mx * mx + my * my);
+
+                if (md < 170) {
+                  alpha += (1 - md / 170) * 0.26;
+                }
+              }
+
+              ctx.strokeStyle = `rgba(185, 232, 255, ${alpha})`;
+              ctx.lineWidth = 0.85;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const node of projected) {
+          let pulseBoost = 0;
+
+          if (pointer.active) {
+            const dx = node.x - pointer.x;
+            const dy = node.y - pointer.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 130) {
+              pulseBoost = (1 - dist / 130) * 1.9;
+            }
+          }
+
+          ctx.beginPath();
+          ctx.fillStyle = node.color;
+          ctx.shadowColor = node.color;
+          ctx.shadowBlur = 14 + pulseBoost * 16;
+          ctx.arc(node.x, node.y, Math.max(1.2, node.s + pulseBoost * 0.9), 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        ctx.shadowBlur = 0;
+        updateAndDrawRipples();
+        updateAndDrawSparks();
+      }
+
+      let start = performance.now();
+
+      function animate(now) {
+        const time = (now - start) / 1000;
+        pointer.vx *= 0.92;
+        pointer.vy *= 0.92;
+        draw(time);
+        requestAnimationFrame(animate);
+      }
+
+      function setPointer(clientX, clientY) {
+        const rect = canvas.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        pointer.vx = x - pointer.lastX;
+        pointer.vy = y - pointer.lastY;
+        pointer.lastX = x;
+        pointer.lastY = y;
+        pointer.x = x;
+        pointer.y = y;
+        pointer.active = true;
+
+        const speed = Math.abs(pointer.vx) + Math.abs(pointer.vy);
+
+        if (speed > 8) {
+          spawnSpark(x, y, Math.min(1.8, speed / 18));
+
+          if (speed > 18) {
+            spawnRipple(x, y);
+          }
+        }
+      }
+
+      canvas.addEventListener("mousemove", event => {
+        setPointer(event.clientX, event.clientY);
+      });
+
+      canvas.addEventListener("mouseenter", event => {
+        setPointer(event.clientX, event.clientY);
+      });
+
+      canvas.addEventListener("mouseleave", () => {
+        pointer.active = false;
+      });
+
+      canvas.addEventListener("touchstart", event => {
+        const touch = event.touches[0];
+        setPointer(touch.clientX, touch.clientY);
+      }, { passive: true });
+
+      canvas.addEventListener("touchmove", event => {
+        const touch = event.touches[0];
+        setPointer(touch.clientX, touch.clientY);
+      }, { passive: true });
+
+      canvas.addEventListener("touchend", () => {
+        pointer.active = false;
+      });
+
+      window.addEventListener("resize", resizeCanvas);
+
+      resizeCanvas();
+      requestAnimationFrame(animate);
+    })();
   </script>
 </body>
 </html>
