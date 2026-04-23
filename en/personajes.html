@@ -98,6 +98,52 @@
       flex-shrink: 0;
     }
 
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      margin-left: auto;
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .language-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 46px;
+      min-height: 42px;
+      padding: 10px 12px;
+      font-size: 0.72rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      border: 1px solid rgba(0,170,255,0.22);
+      background: rgba(0,0,0,0.18);
+      transition: 0.3s ease;
+    }
+
+    .language-link:hover {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.46);
+      background: rgba(0, 25, 45, 0.26);
+      box-shadow: 0 0 18px rgba(0,170,255,0.12);
+    }
+
+    .language-link.active {
+      color: #9be6ff;
+      border-color: rgba(0,170,255,0.46);
+      background: rgba(0, 25, 45, 0.26);
+      box-shadow: 0 0 18px rgba(0,170,255,0.12);
+      pointer-events: none;
+    }
+
     .menu-toggle {
       display: none;
       width: 48px;
@@ -1352,6 +1398,22 @@
       .hero-image-wrap:hover img {
         transform: none;
       }
+
+      .topbar-right {
+        gap: 8px;
+      }
+
+      .language-switcher {
+        gap: 6px;
+      }
+
+      .language-link {
+        min-width: 42px;
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 0.68rem;
+        letter-spacing: 1.2px;
+      }
     }
 
     @media (max-width: 680px) {
@@ -1701,6 +1763,14 @@
         object-position: center 49%;
         transform: scale(1.01);
       }
+
+      .language-link {
+        min-width: 38px;
+        min-height: 38px;
+        padding: 7px 8px;
+        font-size: 0.62rem;
+        letter-spacing: 1px;
+      }
     }
   </style>
 </head>
@@ -1712,20 +1782,27 @@
   <header class="topbar">
     <div class="brand">SHAMBHALA SAGA</div>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="topbar-right">
+      <nav class="top-links" id="siteMenu">
+        <a href="index.html">Home</a>
+        <a href="explorar.html">Explore</a>
+        <a href="corazon.html">Heart</a>
+        <a href="explorar.html#libros">Books</a>
+        <a href="premios.html">Awards</a>
+        <a href="galeria.html">Gallery</a>
+      </nav>
 
-    <nav class="top-links" id="siteMenu">
-      <a href="index.html">Home</a>
-      <a href="explorar.html">Explore</a>
-      <a href="corazon.html">Heart</a>
-      <a href="explorar.html#libros">Books</a>
-      <a href="premios.html">Awards</a>
-      <a href="galeria.html">Gallery</a>
-    </nav>
+      <div class="language-switcher" aria-label="Language selector">
+        <a href="/personajes.html" class="language-link" lang="es">ES</a>
+        <a href="/en/personajes.html" class="language-link active" lang="en">EN</a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </header>
 
   <section class="hero reveal">
@@ -1784,7 +1861,7 @@
     <div class="carousel-wrap" id="featuredWrap">
       <div class="featured-grid" id="featuredGrid">
         <a class="featured-card large reveal" href="calisto.html">
-          <img class="featured-image" src="/images/calisto.jpg" alt="Callisto" />
+          <img class="featured-image image-calisto" src="/images/calisto.jpg" alt="Callisto" />
           <div class="featured-overlay"></div>
           <div class="character-aura aura-calisto"></div>
           <div class="featured-content">
@@ -1817,7 +1894,7 @@
         </a>
 
         <a class="featured-card small reveal" href="izumi.html">
-          <img class="featured-image" src="/images/izumi.jpg" alt="Izumi" />
+          <img class="featured-image image-izumi" src="/images/izumi.jpg" alt="Izumi" />
           <div class="featured-overlay"></div>
           <div class="character-aura aura-izumi"></div>
           <div class="featured-content">
@@ -2434,7 +2511,7 @@
 
           <div class="roster-meta">
             <span><strong>Education:</strong> ${character.education}</span>
-            <span><strong>Trajectory:</strong> ${character.work}</span>
+            <span><strong>Path:</strong> ${character.work}</span>
           </div>
         </div>
       `;
