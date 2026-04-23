@@ -104,50 +104,58 @@
     }
 
     .topbar-inner {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      min-height: 74px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      position: relative;
-    }
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* 👈 quitamos justify-content */
+  position: relative;
+}
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--soft);
-      font-family: var(--font-display);
-      font-size: 0.84rem;
-      flex-shrink: 0;
-    }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--soft);
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  flex-shrink: 0;
+}
 
-    .brand-dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
-      box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
-      flex: 0 0 auto;
-    }
+.brand-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #d8f6ff 0%, #66cfff 55%, rgba(102, 207, 255, 0.14) 100%);
+  box-shadow: 0 0 20px rgba(102, 207, 255, 0.55);
+  flex: 0 0 auto;
+}
 
-    .topbar-controls {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-left: auto;
-    }
+/* 👇 NUEVO: controla el espacio del menú */
+.nav {
+  margin-left: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
-    .language-switch {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
+/* 👇 CLAVE: empuja idioma a la derecha */
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.language-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
 
     .language-switch a {
       padding: 10px 14px;
@@ -762,10 +770,19 @@
   <div class="site-shell">
     <header class="topbar">
       <div class="topbar-inner">
+        
         <a class="brand" href="index.html" aria-label="Go to the Shambhala homepage">
           <span class="brand-dot" aria-hidden="true"></span>
           <span>Shambhala Saga</span>
         </a>
+
+        <nav class="nav" id="siteMenu" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="explorar.html">Explore</a>
+          <a href="personajes.html">Characters</a>
+          <a href="corazon.html">Heart</a>
+          <a href="explorar.html#libros">Books</a>
+        </nav>
 
         <div class="topbar-controls">
           <div class="language-switch" aria-label="Language selector">
@@ -779,16 +796,6 @@
             <span></span>
           </button>
         </div>
-
-        <nav class="nav" id="siteMenu" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="explorar.html">Explore</a>
-          <a href="personajes.html">Characters</a>
-          <a href="corazon.html">Heart</a>
-          <a href="explorar.html#libros">Books</a>
-        </nav>
-      </div>
-    </header>
 
     <main class="page">
       <section class="signal-stage" aria-labelledby="annie-visual-title">
