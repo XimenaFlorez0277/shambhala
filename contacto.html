@@ -284,72 +284,40 @@
       outline: none !important;
       background: transparent !important;
       filter:
-        drop-shadow(0 0 8px rgba(154, 216, 255, 0.22))
-        drop-shadow(0 0 18px rgba(0, 170, 255, 0.14))
-        drop-shadow(0 0 48px rgba(0, 0, 0, 0.50));
+        drop-shadow(0 0 10px rgba(154, 216, 255, 0.20))
+        drop-shadow(0 0 26px rgba(0, 170, 255, 0.18))
+        drop-shadow(0 0 60px rgba(0, 0, 0, 0.52));
     }
 
-    .soft-logo-halo {
+    .blue-logo-halo {
       position: absolute;
-      left: 8%;
-      right: 8%;
-      top: 8%;
-      bottom: 3%;
+      left: 9%;
+      right: 9%;
+      top: 10%;
+      bottom: 4%;
       z-index: 1;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 48% 48%, rgba(154, 216, 255, 0.12), transparent 56%),
-        radial-gradient(ellipse at 50% 74%, rgba(0, 170, 255, 0.13), transparent 62%);
-      filter: blur(26px);
-      opacity: 0.9;
+        radial-gradient(ellipse at 50% 48%, rgba(0, 170, 255, 0.17), transparent 58%),
+        radial-gradient(ellipse at 50% 70%, rgba(0, 120, 255, 0.13), transparent 64%),
+        radial-gradient(ellipse at 18% 45%, rgba(0, 200, 255, 0.12), transparent 36%);
+      filter: blur(28px);
+      opacity: 0.88;
       mix-blend-mode: screen;
     }
 
-    .engine-glow {
+    .blue-logo-halo-soft {
       position: absolute;
-      left: 13.8%;
-      top: 37.1%;
-      width: 16%;
-      height: 9%;
+      left: 16%;
+      right: 16%;
+      top: 22%;
+      bottom: 13%;
       z-index: 2;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 10% 50%, rgba(0, 245, 255, 0.62), transparent 35%),
-        radial-gradient(ellipse at 28% 50%, rgba(0, 151, 255, 0.42), transparent 52%),
-        linear-gradient(90deg, rgba(0, 198, 255, 0.24), rgba(0, 105, 255, 0.10), transparent 74%);
-      filter: blur(10px);
-      opacity: 0.82;
-      mix-blend-mode: screen;
-    }
-
-    .lower-glow {
-      position: absolute;
-      left: 28%;
-      right: 28%;
-      bottom: 7%;
-      height: 15%;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at center, rgba(0, 210, 255, 0.18), transparent 58%),
-        radial-gradient(ellipse at center, rgba(151, 74, 255, 0.14), transparent 70%);
-      filter: blur(20px);
-      opacity: 0.82;
-      mix-blend-mode: screen;
-    }
-
-    .warm-edge-glow {
-      position: absolute;
-      left: 18%;
-      right: 12%;
-      bottom: 29%;
-      height: 9%;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        linear-gradient(90deg, transparent 0%, rgba(255, 136, 24, 0.12) 18%, rgba(255, 204, 74, 0.15) 50%, rgba(255, 88, 191, 0.12) 82%, transparent 100%);
-      filter: blur(13px);
-      opacity: 0.58;
+        radial-gradient(ellipse at center, rgba(122, 218, 255, 0.11), transparent 62%);
+      filter: blur(18px);
+      opacity: 0.72;
       mix-blend-mode: screen;
     }
 
@@ -592,11 +560,6 @@
       .bottom-nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-
-      .engine-glow {
-        left: 10%;
-        width: 18%;
-      }
     }
 
     @media (max-width: 900px) {
@@ -670,38 +633,22 @@
         margin: -5px;
       }
 
-      .soft-logo-halo {
-        left: 4%;
-        right: 4%;
-        top: 6%;
-        bottom: 2%;
+      .blue-logo-halo {
+        left: 3%;
+        right: 3%;
+        top: 5%;
+        bottom: 1%;
         filter: blur(20px);
-        opacity: 0.78;
-      }
-
-      .engine-glow {
-        left: 8.5%;
-        top: 36.5%;
-        width: 21%;
-        height: 11%;
-        filter: blur(8px);
         opacity: 0.76;
       }
 
-      .lower-glow {
-        left: 22%;
-        right: 22%;
-        bottom: 5%;
-        height: 15%;
-        filter: blur(16px);
-      }
-
-      .warm-edge-glow {
-        left: 14%;
+      .blue-logo-halo-soft {
+        left: 10%;
         right: 10%;
-        bottom: 28%;
-        height: 9%;
-        filter: blur(10px);
+        top: 16%;
+        bottom: 8%;
+        filter: blur(16px);
+        opacity: 0.58;
       }
 
       .section-card {
@@ -806,13 +753,11 @@
     <main>
       <section class="section section-first">
         <div class="hero-image-card fade-up">
-          <span class="soft-logo-halo"></span>
-          <span class="engine-glow"></span>
-          <span class="lower-glow"></span>
-          <span class="warm-edge-glow"></span>
+          <span class="blue-logo-halo"></span>
+          <span class="blue-logo-halo-soft"></span>
 
           <div class="hero-image-mask">
-            <img src="images/shambhala-facebook-preview.png?v=5" alt="Shambhala Saga" />
+            <img src="images/shambhala-facebook-preview.png?v=6" alt="Shambhala Saga" />
           </div>
         </div>
 
