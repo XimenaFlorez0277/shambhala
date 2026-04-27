@@ -58,11 +58,13 @@
       --form-width: 760px;
       --form-crop-top: 125px;
       --form-visible-height: 1120px;
+      --form-extra-height: 720px;
     }
 
     body.form-submitted {
       --form-crop-top: 0px;
-      --form-visible-height: 560px;
+      --form-visible-height: 460px;
+      --form-extra-height: 80px;
     }
 
     * {
@@ -413,7 +415,7 @@
     .google-form {
       display: block;
       width: 100%;
-      height: calc(var(--form-visible-height) + var(--form-crop-top) + 40px);
+      height: calc(var(--form-visible-height) + var(--form-crop-top) + var(--form-extra-height));
       border: 0;
       background: #ffffff;
       transform: translateY(calc(-1 * var(--form-crop-top)));
@@ -526,6 +528,7 @@
         --form-width: 760px;
         --form-crop-top: 125px;
         --form-visible-height: 1160px;
+        --form-extra-height: 720px;
       }
 
       .bottom-nav {
@@ -543,13 +546,15 @@
     @media (max-width: 780px) {
       :root {
         --form-width: 100%;
-        --form-crop-top: 245px;
-        --form-visible-height: 1680px;
+        --form-crop-top: 250px;
+        --form-visible-height: 1180px;
+        --form-extra-height: 1050px;
       }
 
       body.form-submitted {
         --form-crop-top: 0px;
-        --form-visible-height: 500px;
+        --form-visible-height: 430px;
+        --form-extra-height: 60px;
       }
 
       .topbar {
@@ -557,6 +562,7 @@
       }
 
       .topbar-inner {
+        width: 100%;
         gap: 7px;
         min-height: 46px;
       }
@@ -564,7 +570,7 @@
       .brand {
         flex: 1 1 auto;
         min-width: 0;
-        max-width: none;
+        max-width: calc(100% - 138px);
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: 0.72rem;
@@ -572,7 +578,8 @@
       }
 
       .topbar-controls {
-        gap: 6px;
+        flex: 0 0 auto;
+        gap: 5px;
         margin-left: auto;
       }
 
@@ -581,16 +588,16 @@
       }
 
       .language-switch a {
-        min-width: 42px;
-        padding: 9px 9px;
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
+        min-width: 39px;
+        padding: 9px 8px;
+        font-size: 0.68rem;
+        letter-spacing: 0.11em;
       }
 
       .menu-toggle {
         display: inline-flex;
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
       }
 
       .nav-links {
@@ -616,17 +623,25 @@
         width: 100%;
         text-align: center;
       }
+
+      .form-crop {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
     }
 
     @media (max-width: 680px) {
       :root {
-        --form-crop-top: 240px;
-        --form-visible-height: 1760px;
+        --form-crop-top: 245px;
+        --form-visible-height: 1120px;
+        --form-extra-height: 1100px;
       }
 
       body.form-submitted {
         --form-crop-top: 0px;
-        --form-visible-height: 480px;
+        --form-visible-height: 410px;
+        --form-extra-height: 50px;
       }
 
       .section,
@@ -676,13 +691,15 @@
 
     @media (max-width: 430px) {
       :root {
-        --form-crop-top: 230px;
-        --form-visible-height: 1840px;
+        --form-crop-top: 235px;
+        --form-visible-height: 1040px;
+        --form-extra-height: 1120px;
       }
 
       body.form-submitted {
         --form-crop-top: 0px;
-        --form-visible-height: 460px;
+        --form-visible-height: 390px;
+        --form-extra-height: 40px;
       }
 
       .topbar {
@@ -694,6 +711,7 @@
       }
 
       .brand {
+        max-width: calc(100% - 128px);
         font-size: 0.64rem;
         letter-spacing: 0.13em;
       }
@@ -707,14 +725,14 @@
       }
 
       .language-switch a {
-        min-width: 38px;
-        padding: 8px 7px;
-        font-size: 0.66rem;
+        min-width: 36px;
+        padding: 8px 6px;
+        font-size: 0.64rem;
       }
 
       .menu-toggle {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
       }
 
       .menu-toggle span {
@@ -771,7 +789,7 @@
       <section class="section section-first">
         <div class="hero-image-card fade-up">
           <div class="hero-image-mask">
-            <img src="images/shambhala-facebook-preview.png?v=8" alt="Shambhala Saga" />
+            <img src="images/shambhala-facebook-preview.png?v=10" alt="Shambhala Saga" />
           </div>
         </div>
 
@@ -787,7 +805,7 @@
             </div>
 
             <p class="section-text">
-              Gracias por contactar a Shambhala Saga y por ser parte de esta aventura.
+              Tu voz también hace parte del universo.
             </p>
 
             <div class="form-stage">
