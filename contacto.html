@@ -56,8 +56,8 @@
       --max-width: 1280px;
 
       --form-width: 760px;
-      --form-crop-top: 70px;
-      --form-visible-height: 1040px;
+      --form-crop-top: 125px;
+      --form-visible-height: 1120px;
     }
 
     * {
@@ -74,8 +74,7 @@
       font-family: "Inter", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top, rgba(60, 130, 210, 0.18), transparent 28%),
-        radial-gradient(circle at 80% 16%, rgba(154, 216, 255, 0.10), transparent 18%),
+        radial-gradient(circle at 50% 0%, rgba(60, 130, 210, 0.16), transparent 28%),
         linear-gradient(180deg, #02040a 0%, #050913 35%, #03050b 100%);
       overflow-x: hidden;
       min-height: 100vh;
@@ -284,39 +283,22 @@
       outline: none !important;
       background: transparent !important;
       filter:
-        drop-shadow(0 0 10px rgba(154, 216, 255, 0.20))
-        drop-shadow(0 0 26px rgba(0, 170, 255, 0.18))
-        drop-shadow(0 0 60px rgba(0, 0, 0, 0.52));
+        drop-shadow(0 0 8px rgba(154, 216, 255, 0.18))
+        drop-shadow(0 0 18px rgba(0, 170, 255, 0.14))
+        drop-shadow(0 0 44px rgba(0, 0, 0, 0.52));
     }
 
     .blue-logo-halo {
       position: absolute;
-      left: 9%;
-      right: 9%;
-      top: 10%;
-      bottom: 4%;
+      left: 17%;
+      right: 17%;
+      top: 18%;
+      bottom: 12%;
       z-index: 1;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 50% 48%, rgba(0, 170, 255, 0.17), transparent 58%),
-        radial-gradient(ellipse at 50% 70%, rgba(0, 120, 255, 0.13), transparent 64%),
-        radial-gradient(ellipse at 18% 45%, rgba(0, 200, 255, 0.12), transparent 36%);
-      filter: blur(28px);
-      opacity: 0.88;
-      mix-blend-mode: screen;
-    }
-
-    .blue-logo-halo-soft {
-      position: absolute;
-      left: 16%;
-      right: 16%;
-      top: 22%;
-      bottom: 13%;
-      z-index: 2;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at center, rgba(122, 218, 255, 0.11), transparent 62%);
-      filter: blur(18px);
+        radial-gradient(ellipse at center, rgba(0, 170, 255, 0.12), transparent 64%);
+      filter: blur(22px);
       opacity: 0.72;
       mix-blend-mode: screen;
     }
@@ -553,8 +535,8 @@
     @media (max-width: 1040px) {
       :root {
         --form-width: 760px;
-        --form-crop-top: 68px;
-        --form-visible-height: 1080px;
+        --form-crop-top: 125px;
+        --form-visible-height: 1160px;
       }
 
       .bottom-nav {
@@ -572,8 +554,8 @@
     @media (max-width: 780px) {
       :root {
         --form-width: 100%;
-        --form-crop-top: 64px;
-        --form-visible-height: 1340px;
+        --form-crop-top: 245px;
+        --form-visible-height: 1680px;
       }
 
       .topbar {
@@ -611,8 +593,8 @@
 
     @media (max-width: 680px) {
       :root {
-        --form-crop-top: 58px;
-        --form-visible-height: 1450px;
+        --form-crop-top: 240px;
+        --form-visible-height: 1760px;
       }
 
       .section,
@@ -634,21 +616,12 @@
       }
 
       .blue-logo-halo {
-        left: 3%;
-        right: 3%;
-        top: 5%;
-        bottom: 1%;
-        filter: blur(20px);
-        opacity: 0.76;
-      }
-
-      .blue-logo-halo-soft {
-        left: 10%;
-        right: 10%;
-        top: 16%;
-        bottom: 8%;
-        filter: blur(16px);
-        opacity: 0.58;
+        left: 8%;
+        right: 8%;
+        top: 10%;
+        bottom: 4%;
+        filter: blur(18px);
+        opacity: 0.62;
       }
 
       .section-card {
@@ -680,8 +653,8 @@
 
     @media (max-width: 430px) {
       :root {
-        --form-crop-top: 54px;
-        --form-visible-height: 1540px;
+        --form-crop-top: 230px;
+        --form-visible-height: 1840px;
       }
 
       .brand {
@@ -754,10 +727,9 @@
       <section class="section section-first">
         <div class="hero-image-card fade-up">
           <span class="blue-logo-halo"></span>
-          <span class="blue-logo-halo-soft"></span>
 
           <div class="hero-image-mask">
-            <img src="images/shambhala-facebook-preview.png?v=6" alt="Shambhala Saga" />
+            <img src="images/shambhala-facebook-preview.png?v=7" alt="Shambhala Saga" />
           </div>
         </div>
 
