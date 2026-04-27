@@ -256,8 +256,8 @@
       position: relative;
       overflow: visible;
       margin: 0 auto 32px;
-      border: 0 !important;
-      outline: 0 !important;
+      border: none !important;
+      outline: none !important;
       background: transparent !important;
       box-shadow: none !important;
       isolation: isolate;
@@ -265,115 +265,92 @@
 
     .hero-image-mask {
       position: relative;
-      z-index: 3;
+      z-index: 4;
       overflow: hidden;
-      border: 0 !important;
-      outline: 0 !important;
+      border: none !important;
+      outline: none !important;
       background: transparent !important;
       box-shadow: none !important;
     }
 
     .hero-image-mask img {
-      width: calc(100% + 16px);
+      width: calc(100% + 18px);
       max-width: none;
       height: auto;
-      margin: -8px;
+      margin: -9px;
       object-fit: contain;
       object-position: center;
-      border: 0 !important;
-      outline: 0 !important;
+      border: none !important;
+      outline: none !important;
       background: transparent !important;
       filter:
-        drop-shadow(0 0 10px rgba(0, 170, 255, 0.20))
-        drop-shadow(0 0 24px rgba(0, 170, 255, 0.16))
-        drop-shadow(0 0 44px rgba(0, 0, 0, 0.50));
+        drop-shadow(0 0 8px rgba(154, 216, 255, 0.22))
+        drop-shadow(0 0 18px rgba(0, 170, 255, 0.14))
+        drop-shadow(0 0 48px rgba(0, 0, 0, 0.50));
     }
 
-    .glow {
+    .soft-logo-halo {
       position: absolute;
-      pointer-events: none;
+      left: 8%;
+      right: 8%;
+      top: 8%;
+      bottom: 3%;
       z-index: 1;
-      opacity: 0.95;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 48% 48%, rgba(154, 216, 255, 0.12), transparent 56%),
+        radial-gradient(ellipse at 50% 74%, rgba(0, 170, 255, 0.13), transparent 62%);
+      filter: blur(26px);
+      opacity: 0.9;
       mix-blend-mode: screen;
     }
 
     .engine-glow {
-      left: 10.2%;
-      top: 35.2%;
-      width: 25%;
-      height: 17%;
-      background:
-        radial-gradient(ellipse at 16% 50%, rgba(0, 236, 255, 0.86), transparent 34%),
-        radial-gradient(ellipse at 33% 50%, rgba(0, 159, 255, 0.50), transparent 48%),
-        linear-gradient(90deg, rgba(0, 214, 255, 0.42), rgba(0, 114, 255, 0.18), transparent 72%);
-      filter: blur(15px);
-    }
-
-    .under-blue-glow {
-      left: 35%;
-      bottom: 6.4%;
-      width: 33%;
-      height: 14%;
-      background:
-        radial-gradient(ellipse at center, rgba(0, 225, 255, 0.36), transparent 58%),
-        radial-gradient(ellipse at center, rgba(30, 128, 255, 0.22), transparent 72%);
-      filter: blur(18px);
-    }
-
-    .orange-left-glow {
-      left: 22%;
-      bottom: 32%;
-      width: 24%;
-      height: 8%;
-      background:
-        radial-gradient(ellipse at center, rgba(255, 184, 40, 0.48), transparent 52%),
-        linear-gradient(90deg, transparent, rgba(255, 124, 20, 0.34), rgba(255, 220, 80, 0.30), transparent);
-      filter: blur(13px);
-    }
-
-    .orange-right-glow {
-      right: 13%;
-      bottom: 31%;
-      width: 30%;
+      position: absolute;
+      left: 13.8%;
+      top: 37.1%;
+      width: 16%;
       height: 9%;
+      z-index: 2;
+      pointer-events: none;
       background:
-        radial-gradient(ellipse at center, rgba(255, 184, 40, 0.50), transparent 54%),
-        linear-gradient(90deg, transparent, rgba(255, 126, 24, 0.38), rgba(255, 222, 90, 0.28), transparent);
-      filter: blur(14px);
+        radial-gradient(ellipse at 10% 50%, rgba(0, 245, 255, 0.62), transparent 35%),
+        radial-gradient(ellipse at 28% 50%, rgba(0, 151, 255, 0.42), transparent 52%),
+        linear-gradient(90deg, rgba(0, 198, 255, 0.24), rgba(0, 105, 255, 0.10), transparent 74%);
+      filter: blur(10px);
+      opacity: 0.82;
+      mix-blend-mode: screen;
     }
 
-    .magenta-glow {
-      right: 15%;
-      bottom: 18%;
-      width: 24%;
-      height: 11%;
+    .lower-glow {
+      position: absolute;
+      left: 28%;
+      right: 28%;
+      bottom: 7%;
+      height: 15%;
+      z-index: 2;
+      pointer-events: none;
       background:
-        radial-gradient(ellipse at center, rgba(255, 65, 220, 0.34), transparent 52%),
-        radial-gradient(ellipse at center, rgba(118, 78, 255, 0.28), transparent 70%);
-      filter: blur(16px);
-    }
-
-    .cyan-tip-glow {
-      left: 30%;
-      bottom: 15%;
-      width: 22%;
-      height: 10%;
-      background:
-        radial-gradient(ellipse at center, rgba(0, 215, 255, 0.32), transparent 58%),
-        radial-gradient(ellipse at center, rgba(0, 110, 255, 0.20), transparent 70%);
-      filter: blur(14px);
-    }
-
-    .top-arc-glow {
-      left: 35%;
-      top: 10%;
-      width: 40%;
-      height: 14%;
-      background:
-        radial-gradient(ellipse at center, rgba(255, 132, 34, 0.24), transparent 48%),
-        radial-gradient(ellipse at center, rgba(125, 90, 255, 0.16), transparent 70%);
+        radial-gradient(ellipse at center, rgba(0, 210, 255, 0.18), transparent 58%),
+        radial-gradient(ellipse at center, rgba(151, 74, 255, 0.14), transparent 70%);
       filter: blur(20px);
-      opacity: 0.72;
+      opacity: 0.82;
+      mix-blend-mode: screen;
+    }
+
+    .warm-edge-glow {
+      position: absolute;
+      left: 18%;
+      right: 12%;
+      bottom: 29%;
+      height: 9%;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 0%, rgba(255, 136, 24, 0.12) 18%, rgba(255, 204, 74, 0.15) 50%, rgba(255, 88, 191, 0.12) 82%, transparent 100%);
+      filter: blur(13px);
+      opacity: 0.58;
+      mix-blend-mode: screen;
     }
 
     .section-card {
@@ -617,8 +594,8 @@
       }
 
       .engine-glow {
-        left: 8%;
-        width: 28%;
+        left: 10%;
+        width: 18%;
       }
     }
 
@@ -693,44 +670,38 @@
         margin: -5px;
       }
 
-      .engine-glow {
-        left: 3%;
-        top: 33%;
-        width: 38%;
-        height: 22%;
-        filter: blur(14px);
+      .soft-logo-halo {
+        left: 4%;
+        right: 4%;
+        top: 6%;
+        bottom: 2%;
+        filter: blur(20px);
+        opacity: 0.78;
       }
 
-      .under-blue-glow {
-        left: 28%;
-        width: 48%;
-        height: 14%;
+      .engine-glow {
+        left: 8.5%;
+        top: 36.5%;
+        width: 21%;
+        height: 11%;
+        filter: blur(8px);
+        opacity: 0.76;
+      }
+
+      .lower-glow {
+        left: 22%;
+        right: 22%;
+        bottom: 5%;
+        height: 15%;
         filter: blur(16px);
       }
 
-      .orange-left-glow {
-        left: 17%;
-        width: 30%;
-      }
-
-      .orange-right-glow {
-        right: 9%;
-        width: 35%;
-      }
-
-      .magenta-glow {
+      .warm-edge-glow {
+        left: 14%;
         right: 10%;
-        width: 31%;
-      }
-
-      .cyan-tip-glow {
-        left: 27%;
-        width: 30%;
-      }
-
-      .top-arc-glow {
-        left: 30%;
-        width: 48%;
+        bottom: 28%;
+        height: 9%;
+        filter: blur(10px);
       }
 
       .section-card {
@@ -811,9 +782,10 @@
           <a href="explorar.html">Explorar</a>
           <a href="personajes.html">Personajes</a>
           <a href="corazon.html">Corazón</a>
-        <a href="explorar.html#libros">Libros</a>
+          <a href="explorar.html#libros">Libros</a>
           <a href="premios.html">Premios</a>
-          <a href="galeria.html">Galería</a>          
+          <a href="galeria.html">Galería</a>
+          <a href="contacto.html" class="active" aria-current="page">Contacto</a>
         </nav>
 
         <div class="topbar-controls">
@@ -834,16 +806,13 @@
     <main>
       <section class="section section-first">
         <div class="hero-image-card fade-up">
-          <span class="glow engine-glow"></span>
-          <span class="glow under-blue-glow"></span>
-          <span class="glow orange-left-glow"></span>
-          <span class="glow orange-right-glow"></span>
-          <span class="glow magenta-glow"></span>
-          <span class="glow cyan-tip-glow"></span>
-          <span class="glow top-arc-glow"></span>
+          <span class="soft-logo-halo"></span>
+          <span class="engine-glow"></span>
+          <span class="lower-glow"></span>
+          <span class="warm-edge-glow"></span>
 
           <div class="hero-image-mask">
-            <img src="images/shambhala-facebook-preview.png?v=4" alt="Shambhala Saga" />
+            <img src="images/shambhala-facebook-preview.png?v=5" alt="Shambhala Saga" />
           </div>
         </div>
 
