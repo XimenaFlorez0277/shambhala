@@ -3,1401 +3,927 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto | Shambhala</title>
-  <meta
-    name="description"
-    content="Contacto Shambhala. Un espacio para escribir, conectar y seguir el recorrido de este universo."
-  />
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>Contacto | Shambhala Saga</title>
+  <meta name="description" content="Contacta a Shambhala Saga para mensajes de lectores, prensa, editoriales, traducción, colaboraciones y oportunidades relacionadas con la saga de ciencia ficción LGBTQ+ creada por Susan English." />
+  <meta name="author" content="Susan English" />
+  <link rel="canonical" href="https://www.shambhalasaga.com/contacto.html" />
+
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+
+  <!-- Facebook / WhatsApp / Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="Shambhala Saga" />
+  <meta property="og:url" content="https://www.shambhalasaga.com/contacto.html" />
+  <meta property="og:title" content="Contacto | Shambhala Saga" />
+  <meta property="og:description" content="Escríbenos para contactar a Shambhala Saga: lectores, prensa, editoriales, traducción, colaboraciones y oportunidades para este universo de ciencia ficción LGBTQ+." />
+  <meta property="og:image" content="https://www.shambhalasaga.com/images/shambhala-facebook-preview.jpg" />
+  <meta property="og:image:secure_url" content="https://www.shambhalasaga.com/images/shambhala-facebook-preview.jpg" />
+  <meta property="og:image:alt" content="Vista previa oficial del universo Shambhala Saga" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.shambhalasaga.com/contacto.html" />
+  <meta name="twitter:title" content="Contacto | Shambhala Saga" />
+  <meta name="twitter:description" content="Escríbenos para contactar a Shambhala Saga: lectores, prensa, editoriales, traducción, colaboraciones y oportunidades para este universo de ciencia ficción LGBTQ+." />
+  <meta name="twitter:image" content="https://www.shambhalasaga.com/images/shambhala-facebook-preview.jpg" />
+  <meta name="twitter:image:alt" content="Vista previa oficial del universo Shambhala Saga" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --topbar-height: 92px;
+      --bg: #02040a;
+      --panel: rgba(5, 14, 28, 0.76);
+      --panel-strong: rgba(0, 0, 0, 0.62);
+      --line: rgba(0, 170, 255, 0.26);
+      --line-strong: rgba(0, 170, 255, 0.62);
+      --blue: #00aaff;
+      --blue-soft: #9ce7ff;
+      --white: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.68);
+      --soft: rgba(255, 255, 255, 0.48);
+      --max: 1180px;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
+      min-height: 100%;
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: "Inter", sans-serif;
+      min-height: 100%;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
       background:
-        radial-gradient(circle at top, rgba(8, 18, 40, 0.88), #000 42%),
-        #000;
-      color: #fff;
+        radial-gradient(circle at 50% 0%, rgba(0, 170, 255, 0.18), transparent 34%),
+        radial-gradient(circle at 12% 28%, rgba(35, 82, 160, 0.2), transparent 34%),
+        radial-gradient(circle at 88% 62%, rgba(0, 170, 255, 0.12), transparent 34%),
+        #02040a;
       overflow-x: hidden;
-      opacity: 0;
-      transition: opacity 1.2s ease;
     }
 
-    body.loaded {
-      opacity: 1;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 76%);
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.82) 0 1px, transparent 1.8px),
+        radial-gradient(circle, rgba(130,220,255,0.58) 0 1px, transparent 1.7px);
+      background-size: 130px 130px, 210px 210px;
+      background-position: 0 0, 42px 72px;
+      opacity: 0.28;
+      pointer-events: none;
+      z-index: -3;
     }
 
     a {
       color: inherit;
-      text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    .page {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
     }
 
-    #stars {
-      position: fixed;
+    .page::before {
+      content: "";
+      position: absolute;
       inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .space-mist {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
       background:
-        radial-gradient(circle at 18% 22%, rgba(0, 153, 255, 0.10), transparent 22%),
-        radial-gradient(circle at 78% 28%, rgba(107, 196, 255, 0.06), transparent 18%),
-        radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.03), transparent 20%);
-      filter: blur(28px);
-      opacity: 0.9;
-    }
-
-    .vignette {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at center, transparent 48%, rgba(0,0,0,0.14) 74%, rgba(0,0,0,0.50) 100%);
+        linear-gradient(to bottom, rgba(0,0,0,0.42), rgba(0,0,0,0.92)),
+        url("/images/world.jpg") center / cover no-repeat;
+      opacity: 0.24;
+      z-index: -2;
     }
 
     .topbar {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
+      z-index: 30;
       width: 100%;
-      z-index: 60;
-      padding: 18px 28px;
+      border-bottom: 1px solid rgba(0, 170, 255, 0.12);
+      background: rgba(1, 5, 12, 0.78);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 16px 0;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.82), rgba(0,0,0,0.18));
-      backdrop-filter: blur(8px);
+      justify-content: space-between;
+      gap: 18px;
     }
 
     .brand {
-      font-family: "Orbitron", sans-serif;
-      letter-spacing: 2px;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.92);
-      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.84rem;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+      white-space: nowrap;
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow:
+        0 0 12px rgba(0,170,255,0.95),
+        0 0 28px rgba(0,170,255,0.55);
+    }
+
+    .nav-area {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .site-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .site-menu a {
+      text-decoration: none;
+      padding: 12px 13px;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.72rem;
+      letter-spacing: 1.45px;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+      border: 1px solid rgba(0,170,255,0.18);
+      background: rgba(0,0,0,0.22);
+    }
+
+    .site-menu a:hover,
+    .site-menu a.active {
+      color: var(--blue-soft);
+      border-color: rgba(0,170,255,0.5);
+      background: rgba(0,170,255,0.08);
+      box-shadow: 0 0 16px rgba(0,170,255,0.16);
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .language-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 42px;
+      padding: 12px 11px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.66rem;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,170,255,0.34);
+      background: rgba(0,0,0,0.34);
+      backdrop-filter: blur(8px);
+      transition: 0.25s ease;
+    }
+
+    .language-link:hover,
+    .language-link.active {
+      color: var(--blue-soft);
+      border-color: rgba(0,170,255,0.72);
+      background: rgba(0,110,180,0.18);
+      box-shadow:
+        0 0 18px rgba(0,170,255,0.28),
+        inset 0 0 12px rgba(0,170,255,0.06);
+    }
+
+    .language-link.active {
+      pointer-events: none;
     }
 
     .menu-toggle {
       display: none;
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(0,170,255,0.22);
-      background: rgba(0,0,0,0.18);
-      align-items: center;
-      justify-content: center;
+      width: 44px;
+      height: 42px;
+      border: 1px solid rgba(0,170,255,0.35);
+      background: rgba(0,0,0,0.38);
+      color: white;
       cursor: pointer;
-      transition: 0.3s ease;
-      padding: 0;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .menu-toggle:hover {
-      border-color: rgba(0,170,255,0.46);
-      box-shadow: 0 0 22px rgba(0,170,255,0.14);
+      backdrop-filter: blur(10px);
     }
 
     .menu-toggle span {
-      position: absolute;
-      width: 20px;
+      display: block;
+      width: 18px;
       height: 2px;
-      background: rgba(255,255,255,0.92);
-      transition: 0.3s ease;
-    }
-
-    .menu-toggle span:nth-child(1) {
-      transform: translateY(-6px);
-    }
-
-    .menu-toggle span:nth-child(2) {
-      transform: translateY(0);
-    }
-
-    .menu-toggle span:nth-child(3) {
-      transform: translateY(6px);
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: translateY(0) rotate(45deg);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(0) rotate(-45deg);
-    }
-
-    .top-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .top-links a {
-      font-size: 0.78rem;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      padding: 10px 14px;
-      color: rgba(255,255,255,0.82);
-      border: 1px solid rgba(0,170,255,0.16);
-      background: rgba(0,0,0,0.18);
-      transition: 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-    }
-
-    .top-links a:hover,
-    .top-links a.active {
-      color: #9be6ff;
-      border-color: rgba(0,170,255,0.42);
-      background: rgba(0, 25, 45, 0.26);
-      box-shadow: 0 0 18px rgba(0,170,255,0.10);
+      margin: 4px auto;
+      background: rgba(255,255,255,0.86);
+      box-shadow: 0 0 10px rgba(0,170,255,0.25);
     }
 
     .hero {
-      position: relative;
-      z-index: 2;
-      width: min(1840px, calc(100% - 40px));
+      width: min(var(--max), calc(100% - 36px));
       margin: 0 auto;
+      padding: 76px 0 42px;
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-      gap: 42px;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
       align-items: center;
-      padding: calc(var(--topbar-height) + 24px) 0 42px;
-    }
-
-    .hero-copy {
-      max-width: 980px;
-      min-width: 0;
-      position: relative;
-      z-index: 2;
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 22px;
-      padding: 12px 18px;
-      border: 1px solid rgba(0,170,255,0.26);
-      color: rgba(146, 222, 255, 0.92);
-      font-family: "Orbitron", sans-serif;
+      gap: 9px;
+      margin: 0 0 18px;
+      color: var(--blue-soft);
       font-size: 0.72rem;
-      letter-spacing: 2.4px;
+      letter-spacing: 2.8px;
       text-transform: uppercase;
-      width: fit-content;
-      background: rgba(0, 10, 20, 0.10);
     }
 
     .eyebrow::before {
       content: "";
-      width: 26px;
+      width: 34px;
       height: 1px;
-      background: rgba(146, 222, 255, 0.9);
+      background: var(--blue);
+      box-shadow: 0 0 12px rgba(0,170,255,0.8);
     }
 
     h1 {
       margin: 0 0 20px;
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(2.3rem, 5vw, 4.3rem);
-      line-height: 0.98;
-      letter-spacing: 1.4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.45rem, 6vw, 5.1rem);
+      line-height: 0.95;
+      letter-spacing: 5px;
       text-transform: uppercase;
-      color: #f8fbff;
       text-shadow:
-        0 0 8px rgba(255,255,255,0.18),
-        0 0 18px rgba(80,170,255,0.08);
-      max-width: 100%;
+        0 0 18px rgba(255,255,255,0.52),
+        0 0 62px rgba(0,150,255,0.72);
     }
 
-    .hero-subtitle {
-      max-width: 940px;
-      font-size: 1rem;
-      line-height: 1.9;
+    .hero-copy {
+      max-width: 730px;
+      margin: 0;
       color: rgba(255,255,255,0.82);
-      margin-bottom: 30px;
-      text-align: justify;
-      text-justify: inter-word;
+      font-size: 1.06rem;
+      line-height: 1.78;
+    }
+
+    .hero-copy strong {
+      color: var(--blue-soft);
+      font-weight: 600;
     }
 
     .hero-actions {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 30px;
+      gap: 14px;
+      margin-top: 28px;
     }
 
     .btn {
+      position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 250px;
-      padding: 16px 24px;
-      border: 1px solid rgba(0,170,255,0.34);
-      background:
-        linear-gradient(to bottom, rgba(13, 42, 72, 0.38), rgba(8, 20, 35, 0.22));
+      min-width: 210px;
+      padding: 14px 22px;
+      text-decoration: none;
       color: rgba(255,255,255,0.92);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
+      letter-spacing: 1.7px;
       text-transform: uppercase;
-      transition: 0.3s ease;
+      font-size: 0.75rem;
+      border: 1px solid rgba(0,170,255,0.5);
+      background: rgba(0,0,0,0.4);
+      overflow: hidden;
+      transition: 0.28s ease;
       box-shadow:
-        inset 0 0 16px rgba(0,170,255,0.04),
-        0 0 20px rgba(0,170,255,0.04);
-      text-align: center;
+        0 0 12px rgba(0,170,255,0.22),
+        inset 0 0 16px rgba(0,170,255,0.08);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: -140%;
+      background: linear-gradient(120deg, transparent, rgba(0,170,255,0.65), transparent);
+      transition: 0.5s ease;
     }
 
     .btn:hover {
-      color: #ffffff;
-      border-color: rgba(0,170,255,0.60);
-      background:
-        linear-gradient(to bottom, rgba(18, 58, 94, 0.54), rgba(10, 26, 44, 0.32));
+      color: var(--blue-soft);
+      border-color: rgba(0,170,255,0.9);
       transform: translateY(-2px);
       box-shadow:
-        0 0 22px rgba(0,170,255,0.12),
-        inset 0 0 18px rgba(0,170,255,0.08);
+        0 0 22px rgba(0,170,255,0.55),
+        0 0 60px rgba(0,170,255,0.24);
+    }
+
+    .btn:hover::before {
+      left: 120%;
     }
 
     .btn.secondary {
-      border-color: rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-      color: rgba(255,255,255,0.84);
+      border-color: rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.76);
     }
 
-    .btn.secondary:hover {
-      border-color: rgba(255,255,255,0.28);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .hero-note {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      max-width: 1100px;
-    }
-
-    .note-box {
-      padding: 20px 22px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.020), rgba(255,255,255,0.008)),
-        rgba(8, 10, 16, 0.42);
-      backdrop-filter: blur(4px);
-      min-width: 0;
-    }
-
-    .note-label {
-      margin-bottom: 10px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(134, 221, 255, 0.8);
-    }
-
-    .note-box p {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.72);
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    .hero-image-wrap {
+    .hero-panel {
       position: relative;
-      width: 100%;
-      min-height: 560px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      isolation: isolate;
-    }
-
-    .hero-image-wrap::before {
-      content: "";
-      position: absolute;
-      inset: -30px;
-      z-index: 0;
+      min-height: 440px;
+      border: 1px solid rgba(0,170,255,0.24);
       background:
-        radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 46%),
-        radial-gradient(circle at center, rgba(0, 170, 255, 0.10), transparent 58%);
-      filter: blur(30px);
-      pointer-events: none;
-    }
-
-    .hero-image-shell {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 660px;
-      min-height: 620px;
+        radial-gradient(circle at 50% 32%, rgba(0,170,255,0.18), transparent 34%),
+        rgba(0,0,0,0.38);
       overflow: hidden;
-      border: 1px solid rgba(0,170,255,0.28);
-      background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
       box-shadow:
-        inset 0 0 28px rgba(0,170,255,0.05),
-        0 0 32px rgba(0,170,255,0.14),
-        0 0 60px rgba(0,0,0,0.26);
+        0 0 50px rgba(0,170,255,0.09),
+        inset 0 0 40px rgba(0,170,255,0.04);
     }
 
-    .hero-image-shell img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      filter: saturate(0.95) brightness(0.84) contrast(1.04);
-      transform: scale(1.03);
-      transition: transform 0.8s ease, filter 0.8s ease;
-    }
-
-    .hero-image-shell:hover img {
-      transform: scale(1.07);
-      filter: saturate(1.02) brightness(0.92) contrast(1.06);
-    }
-
-    .hero-image-shell::after {
+    .hero-panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 2;
-      background:
-        linear-gradient(to top, rgba(0,0,0,0.84) 10%, rgba(0,0,0,0.34) 50%, rgba(0,0,0,0.08) 100%),
-        linear-gradient(to right, rgba(0,0,0,0.18), rgba(0,0,0,0.02)),
-        radial-gradient(circle at top, rgba(0,170,255,0.10), transparent 42%);
-      pointer-events: none;
+      background: url("/images/hero.jpg") center / contain no-repeat;
+      opacity: 0.92;
+      filter: drop-shadow(0 0 24px rgba(0,170,255,0.28));
+      transform: scale(1.06);
     }
 
-    .hero-image-aura {
+    .hero-panel::after {
+      content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
-      opacity: 0.92;
-      pointer-events: none;
-      mix-blend-mode: screen;
       background:
-        radial-gradient(circle at 20% 22%, rgba(0, 190, 255, 0.16), transparent 22%),
-        radial-gradient(circle at 75% 20%, rgba(120, 220, 255, 0.10), transparent 20%),
-        radial-gradient(circle at 50% 75%, rgba(255,255,255,0.05), transparent 20%);
+        linear-gradient(to bottom, transparent, rgba(0,0,0,0.68)),
+        linear-gradient(90deg, rgba(0,0,0,0.55), transparent, rgba(0,0,0,0.45));
     }
 
-    .hero-image-content {
+    .signal-card {
       position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 3;
-      padding: 28px 30px 30px;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 18px;
+      border: 1px solid rgba(0,170,255,0.24);
+      background: rgba(0,0,0,0.54);
+      backdrop-filter: blur(14px);
     }
 
-    .hero-image-tag {
-      display: inline-block;
-      padding: 7px 12px;
-      margin-bottom: 14px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.34);
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: rgba(176, 230, 255, 0.92);
-      backdrop-filter: blur(4px);
-      font-family: "Orbitron", sans-serif;
-    }
-
-    .hero-image-content h3 {
-      margin: 0 0 10px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.45rem;
+    .signal-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--blue-soft);
+      font-size: 0.88rem;
       letter-spacing: 1.8px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.96);
-      text-shadow: 0 0 15px rgba(0,0,0,0.35);
     }
 
-    .hero-image-content p {
-      max-width: 540px;
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.84);
-      text-shadow: 0 0 12px rgba(0,0,0,0.35);
+    .signal-card span {
+      display: block;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.92rem;
+      line-height: 1.55;
     }
 
     .section {
-      position: relative;
-      z-index: 2;
-      padding: 88px 8%;
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 76px;
     }
 
-    .section.first-section {
-      padding-top: 38px;
-    }
-
-    .section-header {
-      max-width: 920px;
-      margin-bottom: 42px;
-    }
-
-    .section-kicker {
-      margin-bottom: 16px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(140, 223, 255, 0.82);
-    }
-
-    .section h2 {
-      margin: 0 0 18px;
-      font-family: "Orbitron", sans-serif;
-      font-size: clamp(1.65rem, 3vw, 2.55rem);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(0,150,255,0.12);
-    }
-
-    .section-header p {
-      margin: 0;
-      max-width: 780px;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.76);
-      font-size: 1rem;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    .contact-grid {
+    .intro-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-bottom: 30px;
     }
 
-    .contact-card {
-      position: relative;
-      padding: 28px 24px;
-      min-height: 255px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
+    .mini-card {
+      border: 1px solid rgba(0,170,255,0.2);
+      background: rgba(0,0,0,0.38);
+      padding: 22px;
+      min-height: 166px;
       box-shadow:
-        inset 0 0 20px rgba(108, 187, 255, 0.03),
-        0 14px 40px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      transition: 0.35s ease;
+        inset 0 0 20px rgba(0,170,255,0.035),
+        0 0 28px rgba(0,170,255,0.045);
     }
 
-    .contact-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at top right, rgba(86, 176, 255, 0.12), transparent 24%),
-        linear-gradient(to bottom, rgba(255,255,255,0.025), transparent 18%);
-      pointer-events: none;
-    }
-
-    .contact-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(112, 196, 255, 0.34);
-      box-shadow:
-        0 0 30px rgba(76, 170, 245, 0.12),
-        0 16px 45px rgba(0, 0, 0, 0.28);
-    }
-
-    .contact-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      margin-bottom: 18px;
-      border: 1px solid rgba(112, 196, 255, 0.26);
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.82rem;
-      letter-spacing: 1px;
-      color: #aee8ff;
-      background: rgba(0, 30, 55, 0.22);
-    }
-
-    .contact-card h3 {
+    .mini-card h2 {
       margin: 0 0 12px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.12rem;
-      line-height: 1.2;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: #fbfdff;
-    }
-
-    .contact-card p {
-      line-height: 1.82;
-      color: rgba(236, 243, 255, 0.78);
-      font-size: 0.96rem;
-      text-align: justify;
-      text-justify: inter-word;
-      margin-bottom: 16px;
-    }
-
-    .contact-inline-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #b6ecff;
-      font-size: 0.92rem;
-      word-break: break-word;
-      border-bottom: 1px solid rgba(182, 236, 255, 0.22);
-      padding-bottom: 3px;
-    }
-
-    .contact-inline-link:hover {
-      color: #ffffff;
-      border-color: rgba(255,255,255,0.42);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 24px;
-      align-items: stretch;
-    }
-
-    .form-panel,
-    .info-panel {
-      position: relative;
-      padding: 30px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
-        rgba(7, 12, 22, 0.78);
-      box-shadow:
-        inset 0 0 24px rgba(90, 168, 255, 0.03),
-        0 12px 40px rgba(0, 0, 0, 0.22);
-      min-width: 0;
-    }
-
-    .form-panel h3,
-    .info-panel h3 {
-      margin: 0 0 14px;
-      font-family: "Orbitron", sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 1.4px;
-      text-transform: uppercase;
-      color: #f7fbff;
-    }
-
-    .form-panel p,
-    .info-panel p {
-      line-height: 1.9;
-      color: rgba(240, 245, 255, 0.76);
-      font-size: 0.97rem;
-      margin-bottom: 16px;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    .form-panel p:last-child,
-    .info-panel p:last-child {
-      margin-bottom: 0;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .field {
-      display: grid;
-      gap: 8px;
-    }
-
-    .field label {
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.72rem;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      color: rgba(166, 229, 255, 0.86);
-    }
-
-    .field input,
-    .field textarea {
-      width: 100%;
-      border: 1px solid rgba(0,170,255,0.20);
-      background: rgba(255,255,255,0.03);
-      color: #fff;
-      font-family: "Inter", sans-serif;
-      font-size: 0.96rem;
-      padding: 15px 16px;
-      outline: none;
-      transition: 0.3s ease;
-      resize: vertical;
-    }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: rgba(255,255,255,0.36);
-    }
-
-    .field input:focus,
-    .field textarea:focus {
-      border-color: rgba(0,170,255,0.48);
-      box-shadow: 0 0 0 1px rgba(0,170,255,0.10), 0 0 18px rgba(0,170,255,0.08);
-      background: rgba(255,255,255,0.05);
-    }
-
-    .field textarea {
-      min-height: 200px;
-    }
-
-    .submit-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      min-height: 56px;
-      padding: 16px 24px;
-      border: 1px solid rgba(0,170,255,0.34);
-      background:
-        linear-gradient(to bottom, rgba(13, 42, 72, 0.42), rgba(8, 20, 35, 0.24));
-      color: rgba(255,255,255,0.94);
-      font-family: "Orbitron", sans-serif;
-      font-size: 0.78rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: 0.3s ease;
-      cursor: pointer;
-      box-shadow:
-        inset 0 0 16px rgba(0,170,255,0.04),
-        0 0 20px rgba(0,170,255,0.04);
-    }
-
-    .submit-btn:hover {
-      color: #ffffff;
-      border-color: rgba(0,170,255,0.60);
-      background:
-        linear-gradient(to bottom, rgba(18, 58, 94, 0.58), rgba(10, 26, 44, 0.34));
-      transform: translateY(-2px);
-      box-shadow:
-        0 0 22px rgba(0,170,255,0.12),
-        inset 0 0 18px rgba(0,170,255,0.08);
-    }
-
-    .mini-note {
-      margin-top: 14px;
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: rgba(215, 231, 244, 0.62);
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    .info-stack {
-      display: grid;
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .info-item {
-      padding: 16px 16px 16px 18px;
-      border-left: 2px solid rgba(96, 196, 255, 0.34);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .info-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.82rem;
-      font-family: "Orbitron", sans-serif;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #b6ecff;
-      font-weight: 500;
-    }
-
-    .info-item span {
-      display: block;
-      line-height: 1.75;
-      font-size: 0.94rem;
-      color: rgba(235, 244, 255, 0.76);
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    .closing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .ending-link {
-      position: relative;
-      min-height: 220px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.10);
-      background:
-        linear-gradient(145deg, #09111d, #04060a 70%);
-      box-shadow:
-        inset 0 0 22px rgba(0,170,255,0.04),
-        0 0 28px rgba(0,0,0,0.20);
-      transition: transform 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
-      isolation: isolate;
-    }
-
-    .ending-link img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.04);
-      transition: transform 0.8s ease, filter 0.8s ease;
-      filter: saturate(0.95) brightness(0.82) contrast(1.05);
-      z-index: 0;
-    }
-
-    .ending-link::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(to top, rgba(0,0,0,0.88) 14%, rgba(0,0,0,0.34) 54%, rgba(0,0,0,0.08) 100%),
-        radial-gradient(circle at top, rgba(0,170,255,0.08), transparent 42%);
-    }
-
-    .ending-link span {
-      position: absolute;
-      left: 22px;
-      bottom: 20px;
-      z-index: 2;
-      font-family: "Orbitron", sans-serif;
+      font-family: 'Orbitron', sans-serif;
       font-size: 0.9rem;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.7px;
+      color: var(--blue-soft);
       text-transform: uppercase;
-      color: #ffffff;
     }
 
-    .ending-link:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0,170,255,0.40);
+    .mini-card p {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .contact-shell {
+      border: 1px solid rgba(0,170,255,0.28);
+      background:
+        linear-gradient(180deg, rgba(5,20,38,0.74), rgba(0,0,0,0.76)),
+        rgba(0,0,0,0.62);
       box-shadow:
-        0 0 26px rgba(0,170,255,0.14),
-        0 0 52px rgba(0,170,255,0.08),
-        inset 0 0 24px rgba(0,170,255,0.08);
+        0 0 54px rgba(0,170,255,0.1),
+        inset 0 0 40px rgba(0,170,255,0.04);
+      overflow: hidden;
     }
 
-    .ending-link:hover img {
-      transform: scale(1.09);
-      filter: saturate(1.02) brightness(0.92) contrast(1.07);
+    .contact-header {
+      padding: 30px 30px 22px;
+      border-bottom: 1px solid rgba(0,170,255,0.18);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
+    .contact-header h2 {
+      margin: 0 0 10px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.35rem, 3vw, 2.2rem);
+      letter-spacing: 2.6px;
+      text-transform: uppercase;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .contact-header p {
+      max-width: 800px;
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.98rem;
+      line-height: 1.65;
     }
 
-    @media (max-width: 1400px) {
-      .hero {
-        grid-template-columns: 1.05fr 0.95fr;
-      }
-
-      .hero-image-shell {
-        max-width: 610px;
-        min-height: 580px;
-      }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 13px;
+      border: 1px solid rgba(0,170,255,0.28);
+      color: var(--blue-soft);
+      background: rgba(0,170,255,0.07);
+      font-size: 0.68rem;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    @media (max-width: 1150px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: calc(var(--topbar-height) + 22px) 0 36px;
-      }
-
-      .hero-image-wrap {
-        max-width: 760px;
-        justify-self: start;
-      }
-
-      .hero-image-shell {
-        max-width: 640px;
-        width: 100%;
-        min-height: 540px;
-      }
-
-      .hero-note,
-      .contact-grid,
-      .closing-grid {
-        grid-template-columns: 1fr;
-        max-width: 760px;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
+    .status-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 14px rgba(0,170,255,0.9);
     }
 
-    @media (max-width: 980px) {
-      .section {
-        padding-left: 6%;
-        padding-right: 6%;
-      }
-
-      h1 {
-        font-size: clamp(1.95rem, 6.8vw, 3.2rem);
-        letter-spacing: 1.2px;
-      }
+    .form-frame-wrap {
+      position: relative;
+      padding: 18px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(0,170,255,0.12), transparent 35%),
+        rgba(0,0,0,0.34);
     }
 
-    @media (max-width: 820px) {
-      .topbar {
-        padding: 14px 5%;
+    .form-frame {
+      width: 100%;
+      border: 1px solid rgba(0,170,255,0.24);
+      background: rgba(255,255,255,0.96);
+      overflow: hidden;
+      box-shadow:
+        0 0 42px rgba(0,170,255,0.11),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    .google-form {
+      display: block;
+      width: 100%;
+      height: 1900px;
+      border: 0;
+      background: white;
+    }
+
+    .fallback {
+      padding: 20px 30px 30px;
+      border-top: 1px solid rgba(0,170,255,0.18);
+      background: rgba(0,0,0,0.56);
+      color: rgba(255,255,255,0.72);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .fallback a {
+      color: var(--blue-soft);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,170,255,0.4);
+    }
+
+    .footer {
+      width: min(var(--max), calc(100% - 36px));
+      margin: 0 auto;
+      padding: 26px 0 46px;
+      color: rgba(255,255,255,0.48);
+      font-size: 0.78rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.62);
+      transition: 0.25s ease;
+    }
+
+    .footer a:hover {
+      color: var(--blue-soft);
+    }
+
+    @media (max-width: 1080px) {
+      .topbar-inner {
+        align-items: center;
       }
 
       .menu-toggle {
-        display: inline-flex;
+        display: inline-block;
       }
 
-      .top-links {
+      .nav-area {
+        position: relative;
+        gap: 8px;
+      }
+
+      .site-menu {
         position: absolute;
-        top: calc(100% + 12px);
-        right: 5%;
-        left: 5%;
+        top: 56px;
+        right: 0;
+        width: min(82vw, 330px);
         display: none;
         flex-direction: column;
-        gap: 10px;
-        padding: 14px;
-        border: 1px solid rgba(0,170,255,0.18);
-        background: linear-gradient(to bottom, rgba(7, 12, 22, 0.96), rgba(4, 8, 18, 0.96));
-        backdrop-filter: blur(12px);
-        box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32), inset 0 0 18px rgba(90, 168, 255, 0.03);
+        align-items: stretch;
+        padding: 10px;
+        border: 1px solid rgba(0,170,255,0.22);
+        background: rgba(0,0,0,0.86);
+        backdrop-filter: blur(16px);
+        box-shadow:
+          0 18px 48px rgba(0,0,0,0.46),
+          0 0 24px rgba(0,170,255,0.08);
       }
 
-      .top-links.is-open {
+      .site-menu.open {
         display: flex;
       }
 
-      .top-links a {
+      .site-menu a {
         width: 100%;
+        padding: 13px 14px;
       }
 
       .hero {
-        width: min(1840px, calc(100% - 24px));
+        grid-template-columns: 1fr;
+        padding-top: 56px;
+      }
+
+      .hero-panel {
+        min-height: 360px;
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-header {
+        grid-template-columns: 1fr;
+      }
+
+      .status-pill {
+        width: fit-content;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner {
+        width: min(100% - 24px, var(--max));
+        padding: 14px 0;
+      }
+
+      .brand {
+        font-size: 0.72rem;
+        letter-spacing: 1.55px;
+      }
+
+      .brand-dot {
+        width: 8px;
+        height: 8px;
+      }
+
+      .language-link {
+        min-width: 36px;
+        padding: 10px 8px;
+        font-size: 0.58rem;
+      }
+
+      .menu-toggle {
+        width: 40px;
+        height: 38px;
+      }
+
+      .hero,
+      .section,
+      .footer {
+        width: min(100% - 24px, var(--max));
+      }
+
+      .hero {
+        padding: 44px 0 36px;
+      }
+
+      .eyebrow {
+        font-size: 0.66rem;
+        letter-spacing: 2px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 12vw, 3.4rem);
+        letter-spacing: 2.2px;
+      }
+
+      .hero-copy {
+        font-size: 0.96rem;
+        line-height: 1.65;
       }
 
       .hero-actions {
         flex-direction: column;
-        align-items: stretch;
       }
 
       .btn {
-        min-width: 0;
         width: 100%;
       }
 
-      .hero-image-shell {
-        min-height: 460px;
+      .hero-panel {
+        min-height: 300px;
+      }
+
+      .signal-card {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        padding: 14px;
+      }
+
+      .mini-card {
+        padding: 18px;
+      }
+
+      .contact-header {
+        padding: 22px 18px 18px;
+      }
+
+      .form-frame-wrap {
+        padding: 10px;
+      }
+
+      .google-form {
+        height: 2050px;
+      }
+
+      .fallback {
+        padding: 18px;
       }
     }
 
-    @media (max-width: 520px) {
-      .brand,
-      .eyebrow,
-      .section-kicker,
-      .note-label,
-      .hero-image-tag {
-        letter-spacing: 1.4px;
-      }
-
-      .hero {
-        padding-top: calc(var(--topbar-height) + 16px);
-        padding-bottom: 26px;
-      }
-
-      .section {
-        padding-top: 72px;
-        padding-bottom: 72px;
-      }
-
-      .hero-image-shell {
-        min-height: 390px;
-      }
-
-      .contact-card,
-      .form-panel,
-      .info-panel {
-        padding: 24px 20px;
-      }
-
-      .ending-link {
-        min-height: 190px;
-      }
-
-      .ending-link span {
-        left: 18px;
-        bottom: 16px;
-        font-size: 0.84rem;
-      }
-    }
-
-    @media (max-width: 430px) {
-      .section {
-        padding-left: 4.5%;
-        padding-right: 4.5%;
-      }
-
-      .topbar {
-        padding-left: 4.5%;
-        padding-right: 4.5%;
-      }
-
-      .top-links {
-        left: 4.5%;
-        right: 4.5%;
+    @media (max-width: 420px) {
+      .brand span:last-child {
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       h1 {
-        font-size: clamp(1.55rem, 7.2vw, 2.15rem);
-        letter-spacing: 0.5px;
+        font-size: clamp(1.85rem, 11vw, 2.65rem);
       }
 
-      .hero-subtitle,
-      .section-header p,
-      .contact-card p,
-      .form-panel p,
-      .info-panel p,
-      .info-item span,
-      .mini-note {
-        font-size: 0.93rem;
-      }
-    }
-
-    @media (max-width: 900px), (hover: none) and (pointer: coarse) {
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      .reveal.visible {
-        opacity: 1;
-        transform: none;
+      .google-form {
+        height: 2140px;
       }
     }
   </style>
 </head>
+
 <body>
-  <canvas id="stars"></canvas>
-  <div class="space-mist"></div>
-  <div class="vignette"></div>
+  <main class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/index.html" aria-label="Ir al inicio de Shambhala Saga">
+          <span class="brand-dot"></span>
+          <span>Shambhala Saga</span>
+        </a>
 
-  <header class="topbar">
-    <div class="brand">SHAMBHALA SAGA</div>
+        <div class="nav-area">
+          <nav class="site-menu" id="siteMenu" aria-label="Menú principal">
+            <a href="/index.html">Inicio</a>
+            <a href="/explorar.html">Explorar</a>
+            <a href="/personajes.html">Personajes</a>
+            <a href="/corazon.html">Corazón</a>
+            <a href="/libros.html">Libros</a>
+            <a href="/premios.html">Premios</a>
+            <a href="/galeria.html">Galería</a>
+            <a href="/contacto.html" class="active">Contacto</a>
+          </nav>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+          <div class="language-switcher" aria-label="Selector de idioma">
+            <a href="/contacto.html" class="language-link active" lang="es">ES</a>
+            <a href="/en/contact.html" class="language-link" lang="en">EN</a>
+          </div>
 
-    <nav class="top-links" id="siteMenu">
-      <a href="index.html">Inicio</a>
-      <a href="explorar.html">Explorar</a>
-      <a href="personajes.html">Personajes</a>
-      <a href="corazon.html">Corazón</a>
-      <a href="galeria.html">Galería</a>
-      <a href="comunidad.html">Comunidad</a>
-      <a href="contacto.html" class="active" aria-current="page">Contacto</a>
-    </nav>
-  </header>
-
-  <section class="hero reveal">
-    <div class="hero-copy">
-      <div class="eyebrow">Puente directo</div>
-
-      <h1>Contacto</h1>
-
-      <p class="hero-subtitle">
-        Un espacio para escribir, compartir una idea, abrir una conversación o seguir tendiendo un puente con el universo de Shambhala.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#mensaje" class="btn">Enviar mensaje</a>
-        <a href="comunidad.html" class="btn secondary">Volver a Comunidad</a>
-      </div>
-
-      <div class="hero-note">
-        <div class="note-box">
-          <div class="note-label">Escribir</div>
-          <p>
-            Este espacio está pensado para recibir mensajes, preguntas, comentarios y formas de acercarse al proyecto desde un lugar claro y amable.
-          </p>
-        </div>
-
-        <div class="note-box">
-          <div class="note-label">Conectar</div>
-          <p>
-            También puede funcionar como un punto de contacto para colaboraciones, prensa, propuestas editoriales o conversaciones alrededor de la saga.
-          </p>
-        </div>
-
-        <div class="note-box">
-          <div class="note-label">Continuidad</div>
-          <p>
-            La idea es que el recorrido no termine de golpe, sino que tenga una puerta de salida natural para seguir en vínculo con Shambhala.
-          </p>
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div class="hero-image-wrap">
-      <div class="hero-image-shell">
-        <img src="images/hero.jpg" alt="Shambhala Saga" />
-        <div class="hero-image-aura"></div>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Canal abierto · Contacto</p>
 
-        <div class="hero-image-content">
-          <div class="hero-image-tag">Conexión abierta</div>
-          <h3>Una puerta para seguir cerca</h3>
-          <p>
-            El universo no termina al cerrar una página. A veces también sigue creciendo cuando alguien decide escribir.
-          </p>
+        <h1>Escríbenos</h1>
+
+        <p class="hero-copy">
+          Si quieres conocer más sobre <strong>Shambhala Saga</strong>, enviar un mensaje para Susan,
+          hablar de oportunidades editoriales, prensa, lectores, traducción, colaboraciones o futuras publicaciones en español,
+          este es el lugar para abrir el canal.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#formulario" class="btn">Abrir formulario</a>
+          <a href="/explorar.html" class="btn secondary">Explorar la saga</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section class="section first-section reveal">
-    <div class="section-header">
-      <div class="section-kicker">Canales</div>
-      <h2>Formas de contacto</h2>
-      <p>
-        Puedes usar esta página como una puerta directa hacia Shambhala. Dejé una estructura clara, elegante y flexible para que luego puedas ajustarla al tipo de mensajes que quieras recibir.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-      <article class="contact-card reveal">
-        <div class="contact-icon">01</div>
-        <h3>Correo principal</h3>
-        <p>
-          Para mensajes generales, comentarios sobre la saga, preguntas o una primera toma de contacto.
-        </p>
-        <a class="contact-inline-link" href="mailto:shambhalasaga2097@gmail.com">shambhalasaga2097@gmail.com</a>
-      </article>
-
-      <article class="contact-card reveal">
-        <div class="contact-icon">02</div>
-        <h3>Colaboraciones</h3>
-        <p>
-          Un canal pensado para propuestas creativas, editoriales, prensa, entrevistas o alianzas relacionadas con el proyecto.
-        </p>
-        <a class="contact-inline-link" href="mailto:shambhalasaga2097@gmail.com">shambhalasaga2097@gmail.com</a>
-      </article>
-
-      <article class="contact-card reveal">
-        <div class="contact-icon">03</div>
-        <h3>Comunidad</h3>
-        <p>
-          Para continuar el recorrido desde el sitio, seguir las novedades y mantener viva la conexión con este universo.
-        </p>
-        <a class="contact-inline-link" href="comunidad.html">Ir a Comunidad Shambhala</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section reveal" id="mensaje">
-    <div class="section-header">
-      <div class="section-kicker">Mensaje directo</div>
-      <h2>Escríbenos desde aquí</h2>
-      <p>
-        Esta versión está pensada para GitHub Pages. El formulario abre la aplicación de correo del visitante con el mensaje listo, así el sitio sigue siendo liviano y no depende todavía de un servicio externo.
-      </p>
-    </div>
-
-    <div class="form-grid">
-      <div class="form-panel reveal">
-        <h3>Enviar mensaje</h3>
-        <p>
-          Completa los campos y el botón preparará el correo automáticamente. El texto saldrá con asunto y cuerpo ya organizados para que el contacto sea más claro.
-        </p>
-
-        <form class="contact-form" id="contactForm">
-          <div class="field">
-            <label for="name">Nombre</label>
-            <input id="name" name="name" type="text" placeholder="Tu nombre" required />
-          </div>
-
-          <div class="field">
-            <label for="email">Correo</label>
-            <input id="email" name="email" type="email" placeholder="tucorreo@ejemplo.com" required />
-          </div>
-
-          <div class="field">
-            <label for="subject">Asunto</label>
-            <input id="subject" name="subject" type="text" placeholder="Motivo del mensaje" required />
-          </div>
-
-          <div class="field">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" placeholder="Escribe aquí tu mensaje..." required></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">Abrir correo</button>
-        </form>
-
-        <p class="mini-note">
-          Este formulario no guarda datos en la página. Solo organiza el contenido y abre el correo desde el dispositivo del visitante.
-        </p>
-      </div>
-
-      <aside class="info-panel reveal">
-        <h3>Cómo funciona</h3>
-        <p>
-          Esta página ya quedó lista con el correo real de Shambhala. Tanto los enlaces como el formulario están conectados a la misma dirección para que todo sea más simple y no tengas que editar nada más.
-        </p>
-
-        <div class="info-stack">
-          <div class="info-item">
-            <strong>Correo activo</strong>
-            <span>Los mensajes se abrirán dirigidos a <strong>shambhalasaga2097@gmail.com</strong>.</span>
-          </div>
-
-          <div class="info-item">
-            <strong>Formulario liviano</strong>
-            <span>Funciona bien en GitHub Pages porque no necesita backend ni servicios externos.</span>
-          </div>
-
-          <div class="info-item">
-            <strong>Más adelante</strong>
-            <span>Cuando quieras, podemos convertirlo en un formulario que envíe directamente sin abrir el correo.</span>
-          </div>
+      <aside class="hero-panel" aria-label="Imagen cinematográfica de Shambhala Saga">
+        <div class="signal-card">
+          <strong>Transmisión recibida</strong>
+          <span>
+            Cada mensaje también puede ser una puerta: una lectura, una posibilidad, una editorial,
+            una alianza o una nueva persona entrando al universo de Shambhala.
+          </span>
         </div>
       </aside>
-    </div>
-  </section>
+    </section>
 
-  <section class="section reveal">
-    <div class="section-header">
-      <div class="section-kicker">Seguir explorando</div>
-      <h2>Continúa el recorrido</h2>
-      <p>
-        Desde aquí puedes volver a la comunidad, entrar en el corazón del proyecto o regresar al inicio del universo.
-      </p>
-    </div>
+    <section class="section" aria-label="Opciones de contacto">
+      <div class="intro-grid">
+        <article class="mini-card">
+          <h2>Lectores</h2>
+          <p>
+            Cuéntanos qué te emociona de la saga, qué personaje te llamó la atención
+            o cómo llegaste a este universo.
+          </p>
+        </article>
 
-    <div class="closing-grid">
-      <a class="ending-link reveal" href="comunidad.html">
-        <img src="images/secundarios/calisto.jpg" alt="Comunidad Shambhala" />
-        <span>Comunidad</span>
-      </a>
+        <article class="mini-card">
+          <h2>Editoriales</h2>
+          <p>
+            Estamos abiertas a conversaciones para la publicación de la saga completa
+            en español y nuevas oportunidades de expansión.
+          </p>
+        </article>
 
-      <a class="ending-link reveal" href="corazon.html">
-        <img src="images/secundarios/pavani.jpg" alt="Corazón de Shambhala" />
-        <span>Corazón</span>
-      </a>
+        <article class="mini-card">
+          <h2>Prensa y alianzas</h2>
+          <p>
+            Para entrevistas, reseñas, colaboraciones, eventos o propuestas relacionadas
+            con Shambhala Saga.
+          </p>
+        </article>
+      </div>
 
-      <a class="ending-link reveal" href="index.html">
-        <img src="images/secundarios/naomi.jpg" alt="Inicio Shambhala" />
-        <span>Inicio</span>
-      </a>
-    </div>
-  </section>
+      <div class="contact-shell" id="formulario">
+        <div class="contact-header">
+          <div>
+            <h2>Formulario de contacto</h2>
+            <p>
+              Completa el formulario y nos pondremos en contacto contigo. Gracias por acompañarnos
+              en esta aventura por un universo de ciencia ficción LGBTQ+, amor, identidad y posibilidades infinitas.
+            </p>
+          </div>
+
+          <div class="status-pill">Canal activo</div>
+        </div>
+
+        <div class="form-frame-wrap">
+          <div class="form-frame">
+            <iframe
+              class="google-form"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSd5_ZNRaj7QVSbUor7DJjreD5RENCVPvmmeDBegue0jXAznbA/viewform?embedded=true"
+              marginheight="0"
+              marginwidth="0"
+              loading="lazy"
+              title="Formulario de contacto de Shambhala Saga">
+              Cargando…
+            </iframe>
+          </div>
+        </div>
+
+        <div class="fallback">
+          Si el formulario no carga correctamente, también puedes abrirlo en una nueva pestaña desde aquí:
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5_ZNRaj7QVSbUor7DJjreD5RENCVPvmmeDBegue0jXAznbA/viewform" target="_blank" rel="noopener noreferrer">
+            abrir formulario de contacto
+          </a>.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="/index.html">Shambhala Saga</a> · Ciencia ficción LGBTQ+ · Contacto
+    </footer>
+  </main>
+
+  <script data-goatcounter="https://shambhalasaga.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
 
   <script>
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-      setTopbarHeight();
-      initReveal();
-    });
-
-    const CONTACT_EMAIL = "shambhalasaga2097@gmail.com";
-
-    const canvas = document.getElementById("stars");
-    const ctx = canvas.getContext("2d");
-    let stars = [];
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    function createStars() {
-      stars = [];
-      const count = window.innerWidth < 768 ? 140 : 240;
-
-      for (let i = 0; i < count; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 1.5 + 0.25,
-          speed: Math.random() * 0.30 + 0.05,
-          alpha: Math.random() * 0.65 + 0.2
-        });
-      }
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
-        ctx.fill();
-
-        star.x -= star.speed;
-
-        if (star.x < -3) {
-          star.x = canvas.width + 3;
-          star.y = Math.random() * canvas.height;
-        }
-      });
-
-      requestAnimationFrame(drawStars);
-    }
-
-    function setTopbarHeight() {
-      const topbar = document.querySelector(".topbar");
-      if (!topbar) return;
-      const height = Math.ceil(topbar.getBoundingClientRect().height);
-      document.documentElement.style.setProperty("--topbar-height", `${height}px`);
-    }
-
     const menuToggle = document.getElementById("menuToggle");
     const siteMenu = document.getElementById("siteMenu");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = siteMenu.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+    });
+
+    document.addEventListener("click", (event) => {
+      const clickedInsideMenu = siteMenu.contains(event.target);
+      const clickedToggle = menuToggle.contains(event.target);
+
+      if (!clickedInsideMenu && !clickedToggle && siteMenu.classList.contains("open")) {
+        siteMenu.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+      }
+    });
+
     const menuLinks = siteMenu.querySelectorAll("a");
 
-    function closeMenu() {
-      if (!menuToggle || !siteMenu) return;
-      menuToggle.classList.remove("active");
-      siteMenu.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-
-    function toggleMenu() {
-      const isOpen = siteMenu.classList.toggle("is-open");
-      menuToggle.classList.toggle("active", isOpen);
-      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-      setTopbarHeight();
-    }
-
-    if (menuToggle) {
-      menuToggle.addEventListener("click", toggleMenu);
-    }
-
-    menuLinks.forEach(link => {
+    menuLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        if (window.innerWidth <= 820) {
-          closeMenu();
+        if (siteMenu.classList.contains("open")) {
+          siteMenu.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Abrir menú");
         }
       });
     });
-
-    document.addEventListener("click", event => {
-      if (window.innerWidth > 820) return;
-      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      resizeCanvas();
-      createStars();
-      setTopbarHeight();
-
-      if (window.innerWidth > 820) {
-        closeMenu();
-      }
-    });
-
-    function initReveal() {
-      const items = document.querySelectorAll(".reveal");
-
-      if (!("IntersectionObserver" in window) || window.innerWidth <= 900) {
-        items.forEach(item => item.classList.add("visible"));
-        return;
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.16
-      });
-
-      items.forEach(item => observer.observe(item));
-    }
-
-    const contactForm = document.getElementById("contactForm");
-
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const subject = document.getElementById("subject").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        const mailSubject = encodeURIComponent(`Mensaje desde Shambhala: ${subject}`);
-        const mailBody = encodeURIComponent(
-`Nombre: ${name}
-Correo: ${email}
-
-Mensaje:
-${message}`
-        );
-
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailSubject}&body=${mailBody}`;
-      });
-    }
-
-    resizeCanvas();
-    createStars();
-    drawStars();
   </script>
 </body>
 </html>
