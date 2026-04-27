@@ -2,7 +2,933 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /><!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contacto | Shambhala Saga</title>
+  <meta name="description" content="Contacta a Shambhala Saga para mensajes de lectores, prensa, editoriales, traducción, colaboraciones y oportunidades relacionadas con la saga de ciencia ficción LGBTQ+ creada por Susan English." />
+  <meta name="author" content="Susan English" />
+  <link rel="canonical" href="https://www.shambhalasaga.com/contacto.html" />
+
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Facebook / WhatsApp / Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="Shambhala Saga" />
+  <meta property="og:url" content="https://www.shambhalasaga.com/contacto.html" />
+  <meta property="og:title" content="Contacto | Shambhala Saga" />
+  <meta property="og:description" content="Escríbenos para contactar a Shambhala Saga: lectores, prensa, editoriales, traducción, colaboraciones y oportunidades para este universo de ciencia ficción LGBTQ+." />
+  <meta property="og:image" content="https://www.shambhalasaga.com/images/shambhala-facebook-preview.png" />
+  <meta property="og:image:secure_url" content="https://www.shambhalasaga.com/images/shambhala-facebook-preview.png" />
+  <meta property="og:image:alt" content="Vista previa oficial del universo Shambhala Saga" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.shambhalasaga.com/contacto.html" />
+  <meta name="twitter:title" content="Contacto | Shambhala Saga" />
+  <meta name="twitter:description" content="Escríbenos para contactar a Shambhala Saga: lectores, prensa, editoriales, traducción, colaboraciones y oportunidades para este universo de ciencia ficción LGBTQ+." />
+  <meta name="twitter:image" content="https://www.shambhalasaga.com/images/shambhala-facebook-preview.png" />
+  <meta name="twitter:image:alt" content="Vista previa oficial del universo Shambhala Saga" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg: #03050b;
+      --bg-soft: #08101d;
+      --panel: rgba(255, 255, 255, 0.05);
+      --panel-strong: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.10);
+      --text: #f5f8ff;
+      --muted: rgba(232, 240, 252, 0.72);
+      --soft: rgba(232, 240, 252, 0.52);
+      --accent: #9ad8ff;
+      --accent-2: #7fb4ff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+      --max-width: 1280px;
+
+      --form-width: 760px;
+      --form-crop-top: 112px;
+      --form-visible-height: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(60, 130, 210, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 16%, rgba(154, 216, 255, 0.10), transparent 18%),
+        linear-gradient(180deg, #02040a 0%, #050913 35%, #03050b 100%);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    canvas#stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.95;
+    }
+
+    .page-shell {
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      padding: 18px 5%;
+      background: linear-gradient(to bottom, rgba(2, 5, 12, 0.90), rgba(2, 5, 12, 0.24));
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .topbar-inner {
+      width: min(var(--max-width), 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 52px;
+      position: relative;
+    }
+
+    .brand {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #dff4ff;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-left: auto;
+      align-items: center;
+    }
+
+    .nav-links a,
+    .language-switch a {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 10px 14px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(236, 245, 255, 0.84);
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active,
+    .language-switch a:hover,
+    .language-switch a.active {
+      border-color: rgba(111, 195, 255, 0.42);
+      color: #ffffff;
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .topbar-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(111, 195, 255, 0.18);
+      background: rgba(255, 255, 255, 0.03);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      padding: 0;
+      transition: 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .menu-toggle:hover {
+      border-color: rgba(111, 195, 255, 0.42);
+      box-shadow: 0 0 22px rgba(67, 161, 255, 0.15);
+      transform: translateY(-1px);
+    }
+
+    .menu-toggle span {
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: #eef7ff;
+      transition: 0.28s ease;
+      border-radius: 999px;
+    }
+
+    .menu-toggle span:nth-child(1) {
+      transform: translateY(-6px);
+    }
+
+    .menu-toggle span:nth-child(2) {
+      transform: translateY(0);
+    }
+
+    .menu-toggle span:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(0) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(0) rotate(-45deg);
+    }
+
+    .section {
+      position: relative;
+      width: min(var(--max-width), calc(100% - 10%));
+      margin: 0 auto;
+      padding-bottom: 90px;
+    }
+
+    .section-first {
+      padding-top: 128px;
+    }
+
+    .hero-image-card {
+      position: relative;
+      overflow: visible;
+      margin: 0 auto 30px;
+      border: none;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .hero-image-card::before {
+      content: "";
+      position: absolute;
+      left: 9%;
+      top: 36%;
+      width: 34%;
+      height: 22%;
+      background:
+        radial-gradient(ellipse at left center, rgba(0, 170, 255, 0.85), transparent 58%),
+        linear-gradient(90deg, rgba(0, 170, 255, 0.38), transparent 72%);
+      filter: blur(22px);
+      opacity: 0.95;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-image-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 6%;
+      width: 58%;
+      height: 24%;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(ellipse at center, rgba(0, 170, 255, 0.32), transparent 70%),
+        radial-gradient(ellipse at center, rgba(154, 216, 255, 0.16), transparent 58%);
+      filter: blur(26px);
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center;
+      filter:
+        drop-shadow(0 0 18px rgba(0, 170, 255, 0.18))
+        drop-shadow(0 0 48px rgba(0, 0, 0, 0.45));
+    }
+
+    .section-card {
+      position: relative;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,0.035), rgba(255,255,255,0.01)),
+        linear-gradient(145deg, rgba(9, 14, 25, 0.95), rgba(4, 7, 14, 0.98));
+      box-shadow:
+        inset 0 0 20px rgba(108, 187, 255, 0.03),
+        0 14px 40px rgba(0, 0, 0, 0.20);
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+
+    .section-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(86, 176, 255, 0.10), transparent 24%),
+        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 18%);
+      pointer-events: none;
+    }
+
+    .section-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-kicker {
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: "Orbitron", sans-serif;
+      font-size: clamp(1.7rem, 4vw, 2.9rem);
+      line-height: 1.12;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #f8fbff;
+      margin-bottom: 14px;
+    }
+
+    .section-text {
+      max-width: 900px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 9px;
+      padding: 10px 13px;
+      border: 1px solid rgba(111, 195, 255, 0.22);
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #00aaff;
+      box-shadow: 0 0 14px rgba(0,170,255,0.9);
+    }
+
+    .form-stage {
+      border: 1px solid rgba(0, 170, 255, 0.25);
+      background:
+        radial-gradient(circle at 18% 22%, rgba(0, 170, 255, 0.10), transparent 30%),
+        linear-gradient(180deg, rgba(2, 9, 18, 0.88), rgba(0, 0, 0, 0.76));
+      padding: 22px;
+      box-shadow:
+        inset 0 0 22px rgba(0, 170, 255, 0.04),
+        0 0 34px rgba(0, 170, 255, 0.06);
+    }
+
+    .form-window {
+      width: min(var(--form-width), 100%);
+      margin: 0 auto;
+      border: 1px solid rgba(0, 170, 255, 0.28);
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow:
+        0 0 38px rgba(0, 170, 255, 0.10),
+        0 16px 48px rgba(0, 0, 0, 0.25);
+    }
+
+    .form-crop {
+      width: 100%;
+      height: var(--form-visible-height);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .google-form {
+      display: block;
+      width: 100%;
+      height: calc(var(--form-visible-height) + var(--form-crop-top) + 40px);
+      border: 0;
+      background: #ffffff;
+      transform: translateY(calc(-1 * var(--form-crop-top)));
+    }
+
+    .fallback {
+      padding: 18px 22px;
+      border: 1px solid rgba(0, 170, 255, 0.18);
+      border-top: none;
+      background: rgba(0,0,0,0.56);
+      color: rgba(255,255,255,0.72);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .fallback a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(154, 216, 255, 0.45);
+      font-weight: 600;
+    }
+
+    .bottom-nav {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .bottom-link {
+      position: relative;
+      overflow: hidden;
+      min-height: 200px;
+      border: 1px solid rgba(0, 170, 255, 0.28);
+      background: #07111d;
+      display: flex;
+      align-items: flex-end;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 0 22px rgba(0,0,0,0.2);
+    }
+
+    .bottom-link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 170, 255, 0.48);
+      box-shadow:
+        0 0 30px rgba(0, 170, 255, 0.12),
+        0 0 55px rgba(0, 170, 255, 0.08);
+    }
+
+    .bottom-link img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .bottom-link::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(0,0,0,0.88) 10%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.06) 100%),
+        linear-gradient(to right, rgba(0,0,0,0.16), rgba(0,0,0,0.04));
+      z-index: 1;
+    }
+
+    .bottom-content {
+      position: relative;
+      z-index: 2;
+      padding: 18px 20px;
+      width: 100%;
+    }
+
+    .bottom-title {
+      color: #ffffff;
+      font-size: 0.88rem;
+      line-height: 1.1;
+      font-family: "Orbitron", sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      width: min(var(--max-width), calc(100% - 10%));
+      margin: 0 auto;
+      padding: 0 0 36px;
+      text-align: center;
+      color: var(--soft);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1040px) {
+      :root {
+        --form-width: 760px;
+        --form-crop-top: 108px;
+        --form-visible-height: 1190px;
+      }
+
+      .bottom-nav {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .section,
+      footer {
+        width: min(var(--max-width), calc(100% - 12%));
+      }
+    }
+
+    @media (max-width: 780px) {
+      :root {
+        --form-width: 100%;
+        --form-crop-top: 96px;
+        --form-visible-height: 1440px;
+      }
+
+      .topbar {
+        padding: 16px 6%;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border: 1px solid rgba(111, 195, 255, 0.18);
+        background: rgba(2, 5, 12, 0.96);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.42);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-links.is-open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 680px) {
+      :root {
+        --form-crop-top: 90px;
+        --form-visible-height: 1540px;
+      }
+
+      .section,
+      footer {
+        width: min(var(--max-width), calc(100% - 10%));
+      }
+
+      .section-first {
+        padding-top: 150px;
+      }
+
+      .hero-image-card {
+        margin-bottom: 22px;
+      }
+
+      .hero-image-card::before {
+        left: 3%;
+        top: 34%;
+        width: 48%;
+        height: 24%;
+        filter: blur(18px);
+      }
+
+      .hero-image-card::after {
+        width: 75%;
+        bottom: 2%;
+        filter: blur(22px);
+      }
+
+      .section-card {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .section-title {
+        font-size: clamp(1.45rem, 8vw, 2.25rem);
+      }
+
+      .section-text {
+        font-size: 0.95rem;
+        line-height: 1.75;
+      }
+
+      .form-stage {
+        padding: 10px;
+      }
+
+      .bottom-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-link {
+        min-height: 170px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      :root {
+        --form-crop-top: 84px;
+        --form-visible-height: 1650px;
+      }
+
+      .brand {
+        max-width: 160px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .language-switch {
+        gap: 6px;
+      }
+
+      .language-switch a {
+        padding: 9px 10px;
+        font-size: 0.68rem;
+      }
+
+      .menu-toggle {
+        width: 42px;
+        height: 42px;
+      }
+
+      .section-card {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .form-stage {
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="stars"></canvas>
+
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html" aria-label="Ir al inicio de Shambhala Saga">Shambhala Saga</a>
+
+        <nav class="nav-links" id="siteMenu" aria-label="Navegación principal">
+          <a href="index.html">Inicio</a>
+          <a href="explorar.html">Explorar</a>
+          <a href="personajes.html">Personajes</a>
+          <a href="corazon.html">Corazón</a>
+          <a href="libros.html">Libros</a>
+          <a href="premios.html">Premios</a>
+          <a href="galeria.html">Galería</a>
+          <a href="contacto.html" class="active" aria-current="page">Contacto</a>
+        </nav>
+
+        <div class="topbar-controls">
+          <div class="language-switch" aria-label="Selector de idioma">
+            <a href="contacto.html" class="active" lang="es" aria-current="page">ES</a>
+            <a href="en/contact.html" lang="en">EN</a>
+          </div>
+
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="siteMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-first">
+        <div class="hero-image-card fade-up">
+          <img src="images/shambhala-facebook-preview.png" alt="Shambhala Saga" />
+        </div>
+
+        <article class="section-card fade-up" id="formulario">
+          <div class="section-inner">
+            <div class="status-row">
+              <div>
+                <div class="section-kicker">Canal activo</div>
+                <h1 class="section-title">Formulario de contacto</h1>
+              </div>
+
+              <div class="status-pill">Mensaje abierto</div>
+            </div>
+
+            <p class="section-text">
+              Gracias por contactar a Shambhala Saga. Hemos recibido tu mensaje. Gracias por ser parte de esta aventura.
+            </p>
+
+            <div class="form-stage">
+              <div class="form-window">
+                <div class="form-crop">
+                  <iframe
+                    class="google-form"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSd5_ZNRaj7QVSbUor7DJjreD5RENCVPvmmeDBegue0jXAznbA/viewform?embedded=true"
+                    marginheight="0"
+                    marginwidth="0"
+                    loading="lazy"
+                    title="Formulario de contacto de Shambhala Saga">
+                    Cargando…
+                  </iframe>
+                </div>
+              </div>
+
+              <div class="fallback">
+                Si el formulario no carga correctamente, también puedes abrirlo en una nueva pestaña desde aquí:
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd5_ZNRaj7QVSbUor7DJjreD5RENCVPvmmeDBegue0jXAznbA/viewform" target="_blank" rel="noopener noreferrer">
+                  abrir formulario de contacto
+                </a>.
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="section-card fade-up">
+          <div class="section-inner">
+            <div class="bottom-nav">
+              <a class="bottom-link" href="index.html">
+                <img src="images/hero.jpg" alt="Inicio" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Inicio</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="explorar.html">
+                <img src="images/world.jpg" alt="Explorar" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Explorar</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="personajes.html">
+                <img src="images/personajes.jpg" alt="Personajes" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Personajes</span>
+                </div>
+              </a>
+
+              <a class="bottom-link" href="corazon.html">
+                <img src="images/galeria/corazon.jpg" alt="Corazón" />
+                <div class="bottom-content">
+                  <span class="bottom-title">Corazón</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      Shambhala Saga · Ciencia ficción LGBTQ+ · Contacto
+    </footer>
+  </div>
+
+  <script data-goatcounter="https://shambhalasaga.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createStars() {
+      stars = [];
+      const count = window.innerWidth < 768 ? 120 : 220;
+
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5 + 0.2,
+          speed: Math.random() * 0.24 + 0.03,
+          alpha: Math.random() * 0.75 + 0.25
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${star.alpha})`;
+        ctx.fill();
+
+        star.x -= star.speed;
+
+        if (star.x < -2) {
+          star.x = canvas.width + 2;
+          star.y = Math.random() * canvas.height;
+        }
+      }
+
+      requestAnimationFrame(animateStars);
+    }
+
+    resizeCanvas();
+    createStars();
+    animateStars();
+
+    const fadeElements = document.querySelectorAll(".fade-up");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.12
+    });
+
+    fadeElements.forEach((element) => observer.observe(element));
+
+    const menuToggle = document.getElementById("menuToggle");
+    const siteMenu = document.getElementById("siteMenu");
+    const menuLinks = siteMenu.querySelectorAll("a");
+
+    function closeMenu() {
+      menuToggle.classList.remove("active");
+      siteMenu.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Abrir menú");
+    }
+
+    function toggleMenu() {
+      const isOpen = siteMenu.classList.toggle("is-open");
+      menuToggle.classList.toggle("active", isOpen);
+      menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      menuToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+    }
+
+    if (menuToggle) {
+      menuToggle.addEventListener("click", toggleMenu);
+    }
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 780) {
+          closeMenu();
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (window.innerWidth > 780) return;
+      if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      createStars();
+
+      if (window.innerWidth > 780) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>
 
   <title>Contacto | Shambhala Saga</title>
   <meta name="description" content="Contacta a Shambhala Saga para mensajes de lectores, prensa, editoriales, traducción, colaboraciones y oportunidades relacionadas con la saga de ciencia ficción LGBTQ+ creada por Susan English." />
