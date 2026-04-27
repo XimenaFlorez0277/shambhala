@@ -60,6 +60,11 @@
       --form-visible-height: 1120px;
     }
 
+    body.form-submitted {
+      --form-crop-top: 0px;
+      --form-visible-height: 560px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -73,9 +78,7 @@
     body {
       font-family: "Inter", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 50% 0%, rgba(60, 130, 210, 0.16), transparent 28%),
-        linear-gradient(180deg, #02040a 0%, #050913 35%, #03050b 100%);
+      background: linear-gradient(180deg, #02040a 0%, #050913 35%, #03050b 100%);
       overflow-x: hidden;
       min-height: 100vh;
     }
@@ -177,6 +180,7 @@
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
+      margin-left: auto;
     }
 
     .language-switch {
@@ -283,24 +287,9 @@
       outline: none !important;
       background: transparent !important;
       filter:
-        drop-shadow(0 0 8px rgba(154, 216, 255, 0.18))
-        drop-shadow(0 0 18px rgba(0, 170, 255, 0.14))
-        drop-shadow(0 0 44px rgba(0, 0, 0, 0.52));
-    }
-
-    .blue-logo-halo {
-      position: absolute;
-      left: 17%;
-      right: 17%;
-      top: 18%;
-      bottom: 12%;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(ellipse at center, rgba(0, 170, 255, 0.12), transparent 64%);
-      filter: blur(22px);
-      opacity: 0.72;
-      mix-blend-mode: screen;
+        drop-shadow(0 0 10px rgba(154, 216, 255, 0.22))
+        drop-shadow(0 0 26px rgba(0, 170, 255, 0.18))
+        drop-shadow(0 0 54px rgba(0, 0, 0, 0.52));
     }
 
     .section-card {
@@ -558,12 +547,50 @@
         --form-visible-height: 1680px;
       }
 
+      body.form-submitted {
+        --form-crop-top: 0px;
+        --form-visible-height: 500px;
+      }
+
       .topbar {
-        padding: 16px 6%;
+        padding: 14px 4.5%;
+      }
+
+      .topbar-inner {
+        gap: 7px;
+        min-height: 46px;
+      }
+
+      .brand {
+        flex: 1 1 auto;
+        min-width: 0;
+        max-width: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+      }
+
+      .topbar-controls {
+        gap: 6px;
+        margin-left: auto;
+      }
+
+      .language-switch {
+        gap: 5px;
+      }
+
+      .language-switch a {
+        min-width: 42px;
+        padding: 9px 9px;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
       }
 
       .menu-toggle {
         display: inline-flex;
+        width: 44px;
+        height: 44px;
       }
 
       .nav-links {
@@ -597,13 +624,18 @@
         --form-visible-height: 1760px;
       }
 
+      body.form-submitted {
+        --form-crop-top: 0px;
+        --form-visible-height: 480px;
+      }
+
       .section,
       footer {
         width: min(var(--max-width), calc(100% - 10%));
       }
 
       .section-first {
-        padding-top: 150px;
+        padding-top: 134px;
       }
 
       .hero-image-card {
@@ -613,15 +645,6 @@
       .hero-image-mask img {
         width: calc(100% + 10px);
         margin: -5px;
-      }
-
-      .blue-logo-halo {
-        left: 8%;
-        right: 8%;
-        top: 10%;
-        bottom: 4%;
-        filter: blur(18px);
-        opacity: 0.62;
       }
 
       .section-card {
@@ -657,24 +680,45 @@
         --form-visible-height: 1840px;
       }
 
+      body.form-submitted {
+        --form-crop-top: 0px;
+        --form-visible-height: 460px;
+      }
+
+      .topbar {
+        padding: 13px 4%;
+      }
+
+      .topbar-inner {
+        gap: 5px;
+      }
+
       .brand {
-        max-width: 160px;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        font-size: 0.64rem;
+        letter-spacing: 0.13em;
+      }
+
+      .topbar-controls {
+        gap: 4px;
       }
 
       .language-switch {
-        gap: 6px;
+        gap: 4px;
       }
 
       .language-switch a {
-        padding: 9px 10px;
-        font-size: 0.68rem;
+        min-width: 38px;
+        padding: 8px 7px;
+        font-size: 0.66rem;
       }
 
       .menu-toggle {
-        width: 42px;
-        height: 42px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .menu-toggle span {
+        width: 18px;
       }
 
       .section-card {
@@ -726,10 +770,8 @@
     <main>
       <section class="section section-first">
         <div class="hero-image-card fade-up">
-          <span class="blue-logo-halo"></span>
-
           <div class="hero-image-mask">
-            <img src="images/shambhala-facebook-preview.png?v=7" alt="Shambhala Saga" />
+            <img src="images/shambhala-facebook-preview.png?v=8" alt="Shambhala Saga" />
           </div>
         </div>
 
@@ -752,6 +794,7 @@
               <div class="form-window">
                 <div class="form-crop">
                   <iframe
+                    id="contactGoogleForm"
                     class="google-form"
                     src="https://docs.google.com/forms/d/e/1FAIpQLSd5_ZNRaj7QVSbUor7DJjreD5RENCVPvmmeDBegue0jXAznbA/viewform?embedded=true"
                     marginheight="0"
@@ -916,6 +959,27 @@
         closeMenu();
       }
     });
+
+    const contactGoogleForm = document.getElementById("contactGoogleForm");
+    const formBlock = document.getElementById("formulario");
+    let googleFormLoadCount = 0;
+
+    if (contactGoogleForm && formBlock) {
+      contactGoogleForm.addEventListener("load", () => {
+        googleFormLoadCount += 1;
+
+        if (googleFormLoadCount > 1) {
+          document.body.classList.add("form-submitted");
+
+          setTimeout(() => {
+            formBlock.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+          }, 350);
+        }
+      });
+    }
 
     window.addEventListener("resize", () => {
       resizeCanvas();
