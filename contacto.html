@@ -260,67 +260,120 @@
       outline: 0 !important;
       background: transparent !important;
       box-shadow: none !important;
+      isolation: isolate;
     }
 
-    .hero-image-card::before {
-      content: "";
-      position: absolute;
-      left: -4%;
-      top: 32%;
-      width: 42%;
-      height: 30%;
-      background:
-        radial-gradient(ellipse at left center, rgba(0, 170, 255, 0.95), transparent 48%),
-        linear-gradient(90deg, rgba(0, 174, 255, 0.55), rgba(0, 174, 255, 0.20), transparent 74%);
-      filter: blur(24px);
-      opacity: 1;
-      pointer-events: none;
-      z-index: -1;
+    .hero-image-mask {
+      position: relative;
+      z-index: 3;
+      overflow: hidden;
+      border: 0 !important;
+      outline: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
 
-    .hero-image-card::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 2%;
-      width: 72%;
-      height: 30%;
-      transform: translateX(-50%);
-      background:
-        radial-gradient(ellipse at center, rgba(0, 170, 255, 0.36), transparent 68%),
-        radial-gradient(ellipse at center, rgba(154, 216, 255, 0.22), transparent 58%);
-      filter: blur(28px);
-      opacity: 1;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .ship-blue-halo {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 6%;
-      height: 42%;
-      pointer-events: none;
-      z-index: -2;
-      background:
-        radial-gradient(ellipse at 50% 78%, rgba(0, 170, 255, 0.20), transparent 66%),
-        radial-gradient(ellipse at 18% 50%, rgba(0, 170, 255, 0.42), transparent 36%);
-      filter: blur(18px);
-    }
-
-    .hero-image-card img {
-      width: 100%;
+    .hero-image-mask img {
+      width: calc(100% + 16px);
+      max-width: none;
       height: auto;
+      margin: -8px;
       object-fit: contain;
       object-position: center;
       border: 0 !important;
       outline: 0 !important;
       background: transparent !important;
       filter:
-        drop-shadow(0 0 22px rgba(0, 170, 255, 0.30))
-        drop-shadow(0 0 62px rgba(0, 170, 255, 0.18))
-        drop-shadow(0 0 54px rgba(0, 0, 0, 0.55));
+        drop-shadow(0 0 10px rgba(0, 170, 255, 0.20))
+        drop-shadow(0 0 24px rgba(0, 170, 255, 0.16))
+        drop-shadow(0 0 44px rgba(0, 0, 0, 0.50));
+    }
+
+    .glow {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.95;
+      mix-blend-mode: screen;
+    }
+
+    .engine-glow {
+      left: 10.2%;
+      top: 35.2%;
+      width: 25%;
+      height: 17%;
+      background:
+        radial-gradient(ellipse at 16% 50%, rgba(0, 236, 255, 0.86), transparent 34%),
+        radial-gradient(ellipse at 33% 50%, rgba(0, 159, 255, 0.50), transparent 48%),
+        linear-gradient(90deg, rgba(0, 214, 255, 0.42), rgba(0, 114, 255, 0.18), transparent 72%);
+      filter: blur(15px);
+    }
+
+    .under-blue-glow {
+      left: 35%;
+      bottom: 6.4%;
+      width: 33%;
+      height: 14%;
+      background:
+        radial-gradient(ellipse at center, rgba(0, 225, 255, 0.36), transparent 58%),
+        radial-gradient(ellipse at center, rgba(30, 128, 255, 0.22), transparent 72%);
+      filter: blur(18px);
+    }
+
+    .orange-left-glow {
+      left: 22%;
+      bottom: 32%;
+      width: 24%;
+      height: 8%;
+      background:
+        radial-gradient(ellipse at center, rgba(255, 184, 40, 0.48), transparent 52%),
+        linear-gradient(90deg, transparent, rgba(255, 124, 20, 0.34), rgba(255, 220, 80, 0.30), transparent);
+      filter: blur(13px);
+    }
+
+    .orange-right-glow {
+      right: 13%;
+      bottom: 31%;
+      width: 30%;
+      height: 9%;
+      background:
+        radial-gradient(ellipse at center, rgba(255, 184, 40, 0.50), transparent 54%),
+        linear-gradient(90deg, transparent, rgba(255, 126, 24, 0.38), rgba(255, 222, 90, 0.28), transparent);
+      filter: blur(14px);
+    }
+
+    .magenta-glow {
+      right: 15%;
+      bottom: 18%;
+      width: 24%;
+      height: 11%;
+      background:
+        radial-gradient(ellipse at center, rgba(255, 65, 220, 0.34), transparent 52%),
+        radial-gradient(ellipse at center, rgba(118, 78, 255, 0.28), transparent 70%);
+      filter: blur(16px);
+    }
+
+    .cyan-tip-glow {
+      left: 30%;
+      bottom: 15%;
+      width: 22%;
+      height: 10%;
+      background:
+        radial-gradient(ellipse at center, rgba(0, 215, 255, 0.32), transparent 58%),
+        radial-gradient(ellipse at center, rgba(0, 110, 255, 0.20), transparent 70%);
+      filter: blur(14px);
+    }
+
+    .top-arc-glow {
+      left: 35%;
+      top: 10%;
+      width: 40%;
+      height: 14%;
+      background:
+        radial-gradient(ellipse at center, rgba(255, 132, 34, 0.24), transparent 48%),
+        radial-gradient(ellipse at center, rgba(125, 90, 255, 0.16), transparent 70%);
+      filter: blur(20px);
+      opacity: 0.72;
     }
 
     .section-card {
@@ -562,6 +615,11 @@
       .bottom-nav {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .engine-glow {
+        left: 8%;
+        width: 28%;
+      }
     }
 
     @media (max-width: 900px) {
@@ -630,22 +688,49 @@
         margin-bottom: 22px;
       }
 
-      .hero-image-card::before {
-        left: -12%;
+      .hero-image-mask img {
+        width: calc(100% + 10px);
+        margin: -5px;
+      }
+
+      .engine-glow {
+        left: 3%;
         top: 33%;
-        width: 58%;
-        height: 34%;
-        filter: blur(18px);
+        width: 38%;
+        height: 22%;
+        filter: blur(14px);
       }
 
-      .hero-image-card::after {
-        width: 86%;
-        bottom: 2%;
-        filter: blur(22px);
+      .under-blue-glow {
+        left: 28%;
+        width: 48%;
+        height: 14%;
+        filter: blur(16px);
       }
 
-      .ship-blue-halo {
-        height: 50%;
+      .orange-left-glow {
+        left: 17%;
+        width: 30%;
+      }
+
+      .orange-right-glow {
+        right: 9%;
+        width: 35%;
+      }
+
+      .magenta-glow {
+        right: 10%;
+        width: 31%;
+      }
+
+      .cyan-tip-glow {
+        left: 27%;
+        width: 30%;
+      }
+
+      .top-arc-glow {
+        left: 30%;
+        width: 48%;
       }
 
       .section-card {
@@ -726,7 +811,7 @@
           <a href="explorar.html">Explorar</a>
           <a href="personajes.html">Personajes</a>
           <a href="corazon.html">Corazón</a>
-          <a href="explorar.html#libros">Libros</a>
+          <a href="libros.html">Libros</a>
           <a href="premios.html">Premios</a>
           <a href="galeria.html">Galería</a>
           <a href="contacto.html" class="active" aria-current="page">Contacto</a>
@@ -750,8 +835,17 @@
     <main>
       <section class="section section-first">
         <div class="hero-image-card fade-up">
-          <div class="ship-blue-halo"></div>
-          <img src="images/shambhala-facebook-preview.png?v=3" alt="Shambhala Saga" />
+          <span class="glow engine-glow"></span>
+          <span class="glow under-blue-glow"></span>
+          <span class="glow orange-left-glow"></span>
+          <span class="glow orange-right-glow"></span>
+          <span class="glow magenta-glow"></span>
+          <span class="glow cyan-tip-glow"></span>
+          <span class="glow top-arc-glow"></span>
+
+          <div class="hero-image-mask">
+            <img src="images/shambhala-facebook-preview.png?v=4" alt="Shambhala Saga" />
+          </div>
         </div>
 
         <article class="section-card fade-up" id="formulario">
@@ -766,7 +860,7 @@
             </div>
 
             <p class="section-text">
-              Gracias por contactar a Shambhala Saga y por ser parte de esta aventura.
+              Gracias por contactar a Shambhala Saga. Hemos recibido tu mensaje. Gracias por ser parte de esta aventura.
             </p>
 
             <div class="form-stage">
