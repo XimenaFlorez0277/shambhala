@@ -1184,10 +1184,11 @@
       drawStars();
 
       stars.forEach((star) => {
-        star.y += star.speed;
-        if (star.y > canvas.height) {
-          star.y = -2;
-          star.x = Math.random() * canvas.width;
+        star.x -= star.speed;
+
+        if (star.x < -2) {
+          star.x = canvas.width + 2;
+          star.y = Math.random() * canvas.height;
         }
       });
 
